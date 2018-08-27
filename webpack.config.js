@@ -11,5 +11,15 @@ module.exports = {
     path: path.resolve(__dirname, 'build')
   },
 
+  module: {
+    rules: [
+      {
+        loader: 'babel-loader',
+        exclude: /node_modules/,
+        test: /\.js$/
+      }
+    ]
+  },
+
   target: 'node'
 }
