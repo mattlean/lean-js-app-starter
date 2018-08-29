@@ -5,6 +5,7 @@
   "main": "src/main.js",
   "scripts": {
     "build": "webpack --config webpack.config.js",
+    "flow": "flow",
     "start": "node build/server.js"
   },
   "repository": {
@@ -18,13 +19,19 @@
   },
   "homepage": "https://github.com/IsaacLean/lean-web-app-starter#readme",
   "dependencies": {
-    "express": "^4.16.3"
+    "express": "^4.16.3",
+    "moment": "^2.22.2",
+    "winston": "^3.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
+    "@babel/preset-flow": "^7.0.0",
+    "babel-eslint": "^9.0.0",
     "babel-loader": "^8.0.0",
     "eslint": "^5.4.0",
+    "eslint-plugin-flowtype": "^2.50.0",
+    "flow-bin": "^0.79.1",
     "webpack": "^4.17.1",
     "webpack-cli": "^3.1.0",
     "webpack-node-externals": "^1.7.2"
