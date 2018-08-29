@@ -3,12 +3,18 @@
         "es6": true,
         "node": true
     },
-    "extends": "eslint:recommended",
+    "extends": [
+        "eslint:recommended",
+        "plugin:jest/recommended"
+    ],
     "parser": "babel-eslint",
     "parserOptions": {
         "sourceType": "module"
     },
-    "plugins": ["flowtype"],
+    "plugins": [
+        "flowtype",
+        "jest"
+    ],
     "rules": {
         "indent": [
             "error",

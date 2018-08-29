@@ -1,9 +1,13 @@
 // @flow
 
 const express = require('express')
-const app = express()
+const helmet = require('helmet')
 
 const logger = require('./logger')
+
+const app = express()
+
+app.use(helmet())
 
 app.get('/', (req, res) => res.send('Hello world!'))
 
