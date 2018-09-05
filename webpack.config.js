@@ -2,6 +2,8 @@ const path = require('path')
 const nodeExternals = require('webpack-node-externals')
 
 module.exports = {
+  devtool: 'source-map',
+
   entry: './src/main.js',
 
   externals: [ nodeExternals() ],
@@ -20,6 +22,8 @@ module.exports = {
       }
     ]
   },
+
+  mode: process.env.NODE_ENV,
 
   target: 'node'
 }

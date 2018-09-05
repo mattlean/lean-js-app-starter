@@ -4,10 +4,12 @@
   "description": "",
   "main": "src/main.js",
   "scripts": {
-    "build": "webpack --config webpack.config.js",
+    "build": "webpack",
     "flow": "flow",
     "start": "node build/server.js",
-    "test": "jest"
+    "start:dev": "NODE_ENV=development nodemon --watch webpack.config.js --watch src --exec \"npm test && npm run flow && npm run build && npm start\"",
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "repository": {
     "type": "git",
@@ -20,13 +22,18 @@
   },
   "homepage": "https://github.com/IsaacLean/lean-web-app-starter#readme",
   "dependencies": {
+    "body-parser": "^1.18.3",
+    "compression": "^1.7.3",
     "express": "^4.16.3",
     "helmet": "^3.13.0",
     "moment": "^2.22.2",
+    "mongoose": "^5.2.10",
     "winston": "^3.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
+    "@babel/plugin-proposal-class-properties": "^7.0.0",
+    "@babel/plugin-transform-spread": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-flow": "^7.0.0",
     "babel-core": "^7.0.0-bridge.0",
@@ -38,7 +45,11 @@
     "eslint-plugin-jest": "^21.22.0",
     "flow-bin": "^0.79.1",
     "jest": "^23.5.0",
+    "nodemon": "^1.18.4",
     "regenerator-runtime": "^0.12.1",
+    "source-map-support": "^0.5.9",
+    "superagent": "^3.8.3",
+    "supertest": "^3.1.0",
     "webpack": "^4.17.1",
     "webpack-cli": "^3.1.0",
     "webpack-node-externals": "^1.7.2"

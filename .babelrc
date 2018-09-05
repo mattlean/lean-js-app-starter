@@ -1,4 +1,8 @@
 {
+  "plugins": [
+    "@babel/plugin-proposal-class-properties",
+    "@babel/plugin-transform-spread"
+  ],
   "presets": [
     "@babel/preset-flow",
     "@babel/env"

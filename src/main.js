@@ -1,14 +1,12 @@
 // @flow
 
-const express = require('express')
-const helmet = require('helmet')
+const { DB_URI, PORT } = require('./config')
+const { db, logger } = require('./util')
 
-const logger = require('./logger')
+db.connect(DB_URI)
+  .then(() => {
+    const app = require('./app')
 
-const app = express()
-
-app.use(helmet())
-
-app.get('/', (req, res) => res.send('Hello world!'))
-
-app.listen(3000, () => logger.info({message: 'Server listening on port 3000!'}))
+    app.listen(PORT, () => logger.info(`Server listening on port ${PORT}!`))
+  })
+  .catch(err => logger.error(err))
