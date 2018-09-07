@@ -7,7 +7,7 @@
     "build": "webpack",
     "flow": "flow",
     "start": "node build/server.js",
-    "start:dev": "NODE_ENV=development nodemon --watch webpack.config.js --watch src --exec \"npm test && npm run flow && npm run build && npm start\"",
+    "start:dev": "NODE_ENV=development nodemon --watch webpack.config.js --watch src --exec \"NODE_ENV=test npm test && npm run flow && npm run build && npm start\"",
     "test": "jest",
     "test:watch": "jest --watch"
   },

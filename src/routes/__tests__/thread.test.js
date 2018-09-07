@@ -16,20 +16,21 @@ afterAll(() => {
 
 describe('Thread routes', () => {
   let thread
-  const data = {
-    _id: 1,
+  const threadData = {
     subject: 'Test Thread',
     comment: 'Test Comment'
   }
+  const firstReplyData = { comment: 'First Test Reply Comment' }
+  const secondReplyData = { comment: 'Second Test Reply Comment' }
 
   test('should create a thread', () => {
     return request(app)
       .post('/thread')
-      .send(data)
+      .send(threadData)
       .then(res => {
         expect(res.statusCode).toBe(200)
-        expect(res.body.subject).toBe(data.subject)
-        expect(res.body.comment).toBe(data.comment)
+        expect(res.body.subject).toBe(threadData.subject)
+        expect(res.body.comment).toBe(threadData.comment)
         thread = res.body
       })
   })
@@ -48,8 +49,29 @@ describe('Thread routes', () => {
       .get(`/thread/${thread._id}`)
       .then(res => {
         expect(res.statusCode).toBe(200)
-        expect(res.body.subject).toBe(data.subject)
-        expect(res.body.comment).toBe(data.comment)
+        expect(res.body.subject).toBe(threadData.subject)
+        expect(res.body.comment).toBe(threadData.comment)
+      })
+  })
+
+  test('should create first reply', () => {
+    return request(app)
+      .post(`/thread/${thread._id}/reply`)
+      .send(firstReplyData)
+      .then(res => {
+        expect(res.statusCode).toBe(200)
+        expect(res.body.replies[0].comment).toBe(firstReplyData.comment)
+      })
+  })
+
+  test('should create second reply and maintain first reply', () => {
+    return request(app)
+      .post(`/thread/${thread._id}/reply`)
+      .send(secondReplyData)
+      .then(res => {
+        expect(res.statusCode).toBe(200)
+        expect(res.body.replies[0].comment).toBe(firstReplyData.comment)
+        expect(res.body.replies[1].comment).toBe(secondReplyData.comment)
       })
   })
 })

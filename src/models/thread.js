@@ -2,14 +2,11 @@
 
 const mongoose = require('mongoose')
 
+const Reply = require('./reply')
+
 const schemaType = 'Thread'
 const schema = new mongoose.Schema(
   {
-    _id: {
-      type: Number,
-      required: true
-    },
-
     createdAt: {
       type: Date,
       default: Date.now,
@@ -25,7 +22,9 @@ const schema = new mongoose.Schema(
     comment: {
       type: String,
       required: true
-    }
+    },
+
+    replies: [Reply]
   },
   {
     toObject: {

@@ -10,8 +10,6 @@ const helmet = require('helmet')
 const { logger } = require('./util')
 const routeThread = require('./routes/thread')
 
-if(process.env.NODE_ENV) logger.info(`Environment: ${process.env.NODE_ENV}`)
-
 const app = express()
 
 app.use(helmet())
@@ -36,7 +34,17 @@ app.use((req, res, next) => res.status(404).send('404 Not Found')) // eslint-dis
 // error handler
 app.use((err, req, res, next) => {  // eslint-disable-line no-unused-vars
   logger.error(err.stack)
-  res.status(err.status || 500).send('Something broke! :(')
+
+  const status = err.status || 500
+
+  let message
+  if(status === 500) {
+    message = 'Something broke! :('
+  } else {
+    message = err.message
+  }
+
+  res.status(status).send(message)
 })
 
 module.exports = app

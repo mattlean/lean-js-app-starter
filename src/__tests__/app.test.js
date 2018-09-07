@@ -4,13 +4,9 @@ const app = require('../app')
 const { db } = require('../util')
 const { DB_URI } = require('../config')
 
-beforeAll(() => {
-  db.connect(DB_URI)
-})
+beforeAll(() => db.connect(DB_URI))
 
-afterAll(() => {
-  db.disconnect()
-})
+afterAll(() => db.disconnect())
 
 describe('Hello world!', () => {
   test('should respond to GET request with 200 and "Hello world!" text', () => {
