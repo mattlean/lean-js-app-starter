@@ -46,10 +46,9 @@ router.post('/:id/reply', (req, res, next) => {
 
       thread.replies.push({comment: req.body.comment})
 
-      thread.save()
-        .then(res.json(thread))
-        .catch(err => next(err))
+      return thread.save()
     })
+    .then(thread => res.json(thread))
     .catch(err => next(err))
 })
 
