@@ -1,5 +1,8 @@
+const CleanWebpackPlugin = require('clean-webpack-plugin')
 const path = require('path')
 const nodeExternals = require('webpack-node-externals')
+
+const PATHS = { build: path.resolve(__dirname, 'build') }
 
 module.exports = {
   devtool: 'source-map',
@@ -10,7 +13,7 @@ module.exports = {
 
   output: {
     filename: 'server.js',
-    path: path.resolve(__dirname, 'build')
+    path: PATHS.build
   },
 
   module: {
@@ -24,6 +27,8 @@ module.exports = {
   },
 
   mode: process.env.NODE_ENV,
+
+  plugins: [new CleanWebpackPlugin([PATHS.build])],
 
   target: 'node'
 }
