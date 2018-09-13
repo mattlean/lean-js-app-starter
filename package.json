@@ -8,8 +8,9 @@
     "build:stats": "webpack --env production --json > stats.json",
     "flow": "flow",
     "start": "http-server ./build",
-    "start:dev": "nodemon --watch webpack.config.js --watch webpack.parts.js --exec \"webpack-dev-server --env development\"",
-    "test": "jest"
+    "start:dev": "nodemon --watch webpack.config.js --watch config --exec \"webpack-dev-server --env development\"",
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "repository": {
     "type": "git",
