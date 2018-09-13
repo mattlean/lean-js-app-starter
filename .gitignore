@@ -1,4 +1,4 @@
 build/
 node_modules/
 *.sublime-workspace
-status.json
+stats.json
