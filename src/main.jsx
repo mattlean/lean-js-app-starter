@@ -1,7 +1,20 @@
+// @flow
+
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-ReactDOM.render(
-  <h1>Hello, world!</h1>,
-  document.getElementById('root')
-)
+import nodeTurtle from './assets/imgs/nodejs.png'
+import './main.scss'
+
+const root = document.getElementById('root')
+
+
+if(root) {
+  ReactDOM.render(
+    <div>
+      <h1>Hello, world!</h1>
+      <img src={nodeTurtle} />
+    </div>,
+    root
+  )
+}

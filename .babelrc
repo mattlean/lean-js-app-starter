@@ -1,5 +1,6 @@
 {
   "presets": [
+    "@babel/preset-flow",
     ["@babel/env", { "modules": false }],
     "@babel/preset-react"
   ]
