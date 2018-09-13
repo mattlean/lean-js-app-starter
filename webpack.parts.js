@@ -13,13 +13,13 @@ exports.autoprefix = () => ({
   options: { plugins: () => [require('autoprefixer')()] }
 })
 
-// Clean path
-exports.cleanPath = path => ({ plugins: [new CleanWebpackPlugin([path])] })
-
 // Run flow type checking
 exports.checkTypes = () => ({
   plugins: [new FlowWebpackPlugin()]
 })
+
+// Clean path
+exports.cleanPath = path => ({ plugins: [new CleanWebpackPlugin([path])] })
 
 // Extract styles into its own CSS file
 exports.extractStyles = ({ exclude, include, use = [] }) => {
@@ -48,13 +48,10 @@ exports.loadImgs = ({ exclude, include, options } = {}) => ({
   module: {
     rules: [
       {
-        use: [
-          {
-            loader: 'url-loader',
-            options
-          },
-          'image-webpack-loader'
-        ],
+        use: {
+          loader: 'url-loader',
+          options
+        },
         exclude,
         include,
         test: /\.(gif|jpe?g|png)$/i
@@ -92,7 +89,10 @@ exports.loadStyles = ({ exclude, include } = {}) => ({
           loader: 'css-loader',
           options: { sourceMap: true }
         },
-        'sass-loader'
+        {
+          loader: 'sass-loader',
+          options: { sourceMap: true }
+        }
       ],
       exclude,
       include,

@@ -24,8 +24,7 @@ const productionConfig = merge([
     output: {
       chunkFilename: '[name].[chunkhash:4].js',
       filename: '[name].[chunkhash:4].js',
-      path: PATHS.build,
-      publicPath: '/'
+      path: PATHS.build
     }
   },
 
@@ -40,18 +39,7 @@ const productionConfig = merge([
     }
   }),
 
-  parts.extractStyles(
-    {
-      use: [
-        {
-          loader: 'css-loader',
-          options: { url: false }
-        },
-        'sass-loader',
-        parts.autoprefix()
-      ]
-    }
-  ),
+  parts.extractStyles({ use: ['css-loader', 'sass-loader', parts.autoprefix()] }),
 
   parts.purifyCSS({ paths: glob.sync(`${PATHS.src}/**/*.{js,jsx}`, { nodir: true }) }),
 
