@@ -6,6 +6,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const PurifyCSSPlugin = require('purifycss-webpack')
 const UglifyWebpackPlugin = require('uglifyjs-webpack-plugin')
+const webpack = require('webpack')
 
 // Autoprefix CSS
 exports.autoprefix = () => ({
@@ -123,11 +124,13 @@ exports.purifyCSS = ({ paths }) => ({
 })
 
 // Setup webpack-dev-server
-exports.setupDevServer = ({ host, port } = {}) => ({
+exports.setupDevServer = ({ host, hot, port } = {}) => ({
   devServer: {
     host,
     port,
+    hot,
     stats: 'errors-only',
     overlay: true
-  }
+  },
+  plugins: [new webpack.HotModuleReplacementPlugin()]
 })

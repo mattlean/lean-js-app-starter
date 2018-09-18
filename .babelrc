@@ -4,6 +4,7 @@
       "plugins": ["@babel/plugin-transform-modules-commonjs"]
     }
   },
+  "plugins": ["@babel/plugin-proposal-class-properties", "react-hot-loader/babel"],
   "presets": [
     "@babel/preset-flow",
     ["@babel/env", { "modules": false }],

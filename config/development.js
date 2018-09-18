@@ -7,7 +7,8 @@ module.exports = merge([
 
   parts.setupDevServer({
     host: process.env.HOST,
-    port: process.env.PORT
+    port: process.env.PORT,
+    hot: true
   }),
 
   parts.loadStyles(),
