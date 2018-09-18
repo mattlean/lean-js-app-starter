@@ -6,7 +6,9 @@
     },
     "extends": [
         "eslint:recommended",
-        "plugin:react/recommended"
+        "plugin:flowtype/recommended",
+        "plugin:react/recommended",
+        "plugin:jest/recommended"
     ],
     "parserOptions": {
         "ecmaFeatures": {
@@ -17,7 +19,8 @@
     },
     "plugins": [
         "flowtype",
-        "react"
+        "react",
+        "jest"
     ],
     "rules": {
         "indent": [

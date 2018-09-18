@@ -8,6 +8,8 @@ const productionConfig = require('./config/production')
 const commonConfig = merge([
   {
     entry: `${PATHS.src}/main.jsx`,
+
+    resolve: { extensions: ['.js', '.jsx', '.json'] }
   },
 
   parts.loadJS({ include: PATHS.src }),
