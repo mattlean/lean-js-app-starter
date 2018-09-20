@@ -1,10 +1,9 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
-import store from '../store'
+import { addTodo } from '../actions'
 
-let nextTodoId = 0
-
-const AddTodo = () => {
+let AddTodo = ({ dispatch }) => {
   let input
 
   return (
@@ -13,11 +12,7 @@ const AddTodo = () => {
         input = node
       }} />
       <button onClick={() => {
-        store.dispatch({
-          type: 'ADD_TODO',
-          id: nextTodoId++,
-          text: input.value
-        })
+        dispatch(addTodo(input.value))
         input.value = ''
       }}>
         Add Todo
@@ -26,6 +21,6 @@ const AddTodo = () => {
   )
 }
 
-
+AddTodo = connect()(AddTodo)
 
 export default AddTodo
