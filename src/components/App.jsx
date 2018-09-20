@@ -8,7 +8,7 @@ type State = {
   count: number
 }
 
-class App extends Component<*, State> {
+class App extends Component<{}, State> {
   state = {
     count: 0
   }

@@ -1,6 +1,9 @@
+// @flow
 import React from 'react'
 
-const Todo = ({ completed, onClick, text }) => (
+const Todo = (
+  { completed, onClick, text }: {completed: boolean, onClick: () => void, text: string}
+) => (
   <li
     onClick={onClick}
     style={{

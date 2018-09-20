@@ -1,3 +1,4 @@
+// @flow
 import React from 'react'
 import { connect } from 'react-redux'
 
@@ -12,8 +13,10 @@ let AddTodo = ({ dispatch }) => {
         input = node
       }} />
       <button onClick={() => {
-        dispatch(addTodo(input.value))
-        input.value = ''
+        if(input) {
+          dispatch(addTodo(input.value))
+          input.value = ''
+        }
       }}>
         Add Todo
       </button>

@@ -1,4 +1,7 @@
-const todo = (state, action) => {
+// @flow
+import type { Todo } from '../types/todo'
+
+const todo = (state?: Todo, action) => {
   switch(action.type) {
   case 'ADD_TODO':
     return {
@@ -8,21 +11,25 @@ const todo = (state, action) => {
     }
 
   case 'TOGGLE_TODO':
-    if(state.id !== action.id) {
-      return state
+    if(state) {
+      if(state.id !== action.id) {
+        return state
+      }
+
+      return {
+        ...state,
+        completed: !state.completed
+      }
     }
 
-    return {
-      ...state,
-      completed: !state.completed
-    }
+    return state
 
   default:
     return state
   }
 }
 
-const todos = (state = [], action) => {
+const todos = (state: Array<Todo> = [], action: {type: string, id: number, text: string}) => {
   switch(action.type) {
   case 'ADD_TODO':
     return [
@@ -31,7 +38,7 @@ const todos = (state = [], action) => {
     ]
 
   case 'TOGGLE_TODO':
-    return state.map(t => todo(t, action))
+    return state.map<?Todo>(t => todo(t, action))
 
   default:
     return state

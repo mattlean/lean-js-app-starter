@@ -1,6 +1,13 @@
-import React from 'react'
+// @flow
+import * as React from 'react'
 
-const Link = ({ active, children, onClick }) => {
+type LinkType = {
+  active: boolean,
+  children?: React.Node,
+  onClick: () => void
+}
+
+const Link = ({ active, children, onClick }: LinkType) => {
   if(active) {
     return <span>{children}</span>
   }
