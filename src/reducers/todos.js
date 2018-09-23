@@ -1,59 +1,50 @@
 // @flow
-import type { Todo } from '../types/todo'
+import { combineReducers } from 'redux'
+import type { Store } from 'redux'
 
-const todo = (state?: Todo, action) => {
+import todo from './todo'
+
+const byId = (state = {}, action) => {
   switch(action.type) {
   case 'ADD_TODO':
+  case 'TOGGLE_TODO':
     return {
-      id: action.id,
-      text: action.text,
-      completed: false
+      ...state,
+      [action.id]: todo(state[action.id], action)
     }
-
-  case 'TOGGLE_TODO':
-    if(state) {
-      if(state.id !== action.id) {
-        return state
-      }
-
-      return {
-        ...state,
-        completed: !state.completed
-      }
-    }
-
-    return state
 
   default:
     return state
   }
 }
 
-const todos = (state: Array<Todo> = [], action: {type: string, id: number, text: string}) => {
+const allIds = (state = [], action) => {
   switch(action.type) {
   case 'ADD_TODO':
-    return [
-      ...state,
-      todo(undefined, action)
-    ]
-
-  case 'TOGGLE_TODO':
-    return state.map<?Todo>(t => todo(t, action))
-
+    return [...state, action.id]
   default:
     return state
   }
 }
+
+const todos = combineReducers({
+  byId,
+  allIds
+})
 
 export default todos
 
-export const getVisibleTodos = (state: Array<Todo>, filter: string) => {
+const getAllTodos = state => state.allIds.map(id => state.byId[id])
+
+export const getVisibleTodos = (state: Store, filter: string) => {
+  const allTodos = getAllTodos(state)
+
   switch(filter) {
   case 'all':
-    return state
+    return allTodos
   case 'completed':
-    return state.filter(t => t.completed)
+    return allTodos.filter(t => t.completed)
   case 'active':
-    return state.filter(t => !t.completed)
+    return allTodos.filter(t => !t.completed)
   }
 }
