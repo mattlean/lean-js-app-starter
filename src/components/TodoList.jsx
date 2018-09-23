@@ -5,12 +5,7 @@ import Todo from './Todo'
 
 import type { Todo as TodoType } from '../types/todo'
 
-type TodoListType = {
-  onTodoClick: (id: number) => void,
-  todos: Array<TodoType>
-}
-
-const TodoList = ({ onTodoClick, todos }: TodoListType) => (
+const TodoList = ({ onTodoClick, todos }: { onTodoClick: (id: number) => void, todos: Array<TodoType> }) => (
   <ul>
     {todos.map(
       todo => (

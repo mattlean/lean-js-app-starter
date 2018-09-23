@@ -1,10 +1,11 @@
 // @flow
 import { combineReducers } from 'redux'
+import type { State } from 'redux'
 
-import todos from './todos'
-import visibilityFilter from './visibilityFilter'
+import todos, * as fromTodos from './todos'
 
 export const todoApp = combineReducers({
-  todos,
-  visibilityFilter
+  todos
 })
+
+export const getVisibleTodos = (state: State, filter: string) => fromTodos.getVisibleTodos(state.todos, filter)

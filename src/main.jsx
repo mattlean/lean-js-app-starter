@@ -1,28 +1,19 @@
 // @flow
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Provider } from 'react-redux'
 
 // import ReduxCounter from './containers/ReduxCounter'
 // import counter from './reducers/counter'
-import TodoApp from './components/TodoApp'
-import { createStore } from 'redux'
-import { todoApp } from './reducers'
+import Root from './components/Root'
+import configureStore from './util/configureStore'
 
 import './main.scss'
 
 const root = document.getElementById('root')
+const store = configureStore()
 
-if(root) {
-  ReactDOM.render(
-    <Provider store={createStore(
-      todoApp,
-      window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-    )}>
-      <TodoApp />
-    </Provider>,
-    root
-  )
+if(root && store) {
+  ReactDOM.render(<Root store={store} />, root)
 }
 
 // if(root) {
@@ -32,8 +23,7 @@ if(root) {
 //       window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 //     )}>
 //       <ReduxCounter />
-//     </Provider>
-//     ,
+//     </Provider>,
 //     root
 //   )
 // }

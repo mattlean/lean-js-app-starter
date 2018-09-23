@@ -8,6 +8,7 @@ module.exports = merge([
   parts.setupDevServer({
     host: process.env.HOST,
     port: process.env.PORT,
+    historyApiFallback: true,
     hot: true
   }),
 

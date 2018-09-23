@@ -3,7 +3,7 @@
 	[
 		{
 			"path": ".",
-			"binary_file_patterns": ["build/*", "node_modules/*"]
+			"binary_file_patterns": ["build/*", "flow-typed/*", "node_modules/*"]
 		},
 	],
 	"settings":

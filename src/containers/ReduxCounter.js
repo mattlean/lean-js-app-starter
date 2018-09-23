@@ -8,8 +8,12 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  onDecrement: () => dispatch({type: 'DECREMENT'}),
-  onIncrement: () => dispatch({type: 'INCREMENT'})
+  onDecrement() {
+    dispatch({type: 'DECREMENT'})
+  },
+  onIncrement() {
+    dispatch({type: 'INCREMENT'})
+  }
 })
 
 const ReduxCounter = connect(mapStateToProps, mapDispatchToProps)(Counter)
