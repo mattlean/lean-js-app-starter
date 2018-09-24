@@ -1,7 +1,13 @@
-// @flow
 import { v4 } from 'uuid'
+import * as api from '../util/fakeAPI'
 
-export const addTodo = (text: string) => (
+const receiveTodos = (response, filter) => ({
+  type: 'RECEIVE_TODOS',
+  filter,
+  response
+})
+
+export const addTodo = (text) => (
   {
     type: 'ADD_TODO',
     id: v4(),
@@ -9,7 +15,12 @@ export const addTodo = (text: string) => (
   }
 )
 
-export const toggleTodo = (id: number) => ({
+export const fetchTodos = filter => (
+  api.fetchTodos(filter)
+    .then(response => receiveTodos(filter, response))
+)
+
+export const toggleTodo = (id) => ({
   type: 'TOGGLE_TODO',
   id
 })
