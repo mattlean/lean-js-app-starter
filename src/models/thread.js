@@ -15,8 +15,7 @@ const schema = new mongoose.Schema(
 
     subject: {
       type: String,
-      trim: true,
-      required: true
+      trim: true
     },
 
     comment: {
