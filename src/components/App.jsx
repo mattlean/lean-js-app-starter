@@ -1,30 +1,17 @@
 // @flow
-import React, { Component } from 'react'
-import { hot } from 'react-hot-loader'
+import React from 'react'
+import type { Match } from 'react-router-dom'
 
-import nodeTurtle from '../assets/imgs/nodejs.png'
+import AddTodo from '../containers/AddTodo'
+import Footer from './Footer'
+import VisibleTodoList from '../containers/VisibleTodoList'
 
-type State = {
-  count: number
-}
+const App = ({ match }: { match: Match }) => (
+  <div>
+    <AddTodo />
+    <VisibleTodoList filter={match.params.filter || 'all'} />
+    <Footer />
+  </div>
+)
 
-class App extends Component<{}, State> {
-  state = {
-    count: 0
-  }
-
-  add = () => {
-    this.setState(state => ({ count: state.count + 1 }))
-  }
-
-  render() {
-    return <div>
-      <h1>Hello, world!</h1>
-      <button onClick={this.add}>+</button>
-      <p>Count: {this.state.count}</p>
-      <img src={nodeTurtle} />
-    </div>
-  }
-}
-
-export default hot(module)(App)
+export default App
