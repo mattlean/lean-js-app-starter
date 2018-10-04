@@ -1,11 +1,8 @@
-// @flow
 import React from 'react'
 
 import Todo from './Todo'
 
-import type { Todo as TodoType } from '../types/todo'
-
-const TodoList = ({ onTodoClick, todos }: { onTodoClick?: (id: number) => void, todos: Array<TodoType> }) => (
+const TodoList = ({ onTodoClick, todos }) => (
   <ul>
     {todos.map(
       todo => {
