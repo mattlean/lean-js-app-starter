@@ -1,14 +1,18 @@
-const byId = (state = {}, action) => {
-  if(action.response) {
-    return {
-      ...state,
-      ...action.response.entities.todos
-    }
-  }
+// @flow
+import type { Action, State_ById } from '../types'
 
-  return state
+const byId = (state: State_ById = {}, action: Action): State_ById => {
+  switch(action.type) {
+    case 'FETCH_THREADS_SUCCESS':
+      return {
+        ...state,
+        ...action.res.entities.threads
+      }
+    default:
+      return state
+  }
 }
 
 export default byId
 
-export const getTodo = (state, id) => state[id]
+export const getThread = (state: State_ById, id: string) => state[id]

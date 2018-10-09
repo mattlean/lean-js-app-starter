@@ -2,14 +2,13 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-import Root from './components/Root'
-import configureStore from './util/configureStore'
-
+import Root from './containers/Root'
+import setupStore from './util/setupStore'
 import './main.scss'
 
 const root = document.getElementById('root')
-const store = configureStore()
 
-if(root && store) {
+if(root) {
+  const store = setupStore()
   ReactDOM.render(<Root store={store} />, root)
 }

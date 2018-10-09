@@ -1,48 +1,17 @@
+// @flow
 import { normalize } from 'normalizr'
 
-import * as api from '../util/fakeAPI'
-import * as schema from './schema'
-import { getIsFetching } from '../reducers'
+import { getThreads } from '../util/api'
+import { Threads } from '../types/schema'
+import type { Dispatch, ThunkAction } from '../types'
 
-export const addTodo = (text) => dispatch =>
-  api.addTodo(text).then(response => {
+export const fetchThreads = (): ThunkAction => (dispatch: Dispatch) => {
+  dispatch({ type: 'FETCH_THREADS_REQUEST' })
+
+  return getThreads().then(res => {
     dispatch({
-      type: 'ADD_TODO_SUCCESS',
-      response: normalize(response, schema.todo)
+      type: 'FETCH_THREADS_SUCCESS',
+      res: normalize(res, Threads)
     })
   })
-
-export const fetchTodos = filter => (dispatch, getState) => {
-  if(getIsFetching(getState(), filter)) {
-    return Promise.resolve()
-  }
-
-  dispatch({
-    type: 'FETCH_TODOS_REQUEST',
-    filter
-  })
-
-  return api.fetchTodos(filter)
-    .then(response => {
-      dispatch({
-        type: 'FETCH_TODOS_SUCCESS',
-        filter,
-        response: normalize(response, schema.arrayOfTodos)
-      })
-    },
-    error => {
-      dispatch({
-        type: 'FETCH_TODOS_FAILURE',
-        filter,
-        message: error.message || 'Something went wrong.'
-      })
-    })
 }
-
-export const toggleTodo = id => dispatch =>
-  api.toggleTodo(id).then(response => {
-    dispatch({
-      type: 'TOGGLE_TODO_SUCCESS',
-      response: normalize(response, schema.todo)
-    })
-  })

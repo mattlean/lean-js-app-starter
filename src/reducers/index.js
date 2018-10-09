@@ -1,26 +1,25 @@
+// @flow
 import { combineReducers } from 'redux'
 
-import byId, * as fromById from './byId'
-import createList, * as fromList from './createList'
+import byId, { getThread as byIdGetThread } from './byId'
+import list from './list'
+import type { State, Thread } from '../types'
 
-const listByFilter = combineReducers({
-  all: createList('all'),
-  active: createList('active'),
-  completed: createList('completed')
-})
-
-const todos = combineReducers({
+const rootReducer = combineReducers({
   byId,
-  listByFilter
+  list
 })
 
-export default todos
+export default rootReducer
 
-export const getErrorMessage = (state, filter) => fromList.getErrorMessage(state.listByFilter[filter])
+export const getThread = (state: State, id: string): ?Thread => {
+  if(state.byId) {
+    return byIdGetThread(state.byId, id)
+  }
+}
 
-export const getIsFetching = (state, filter) => fromList.getIsFetching(state.listByFilter[filter])
-
-export const getVisibleTodos = (state, filter) => {
-  const ids = fromList.getIds(state.listByFilter[filter])
-  return ids.map(id => fromById.getTodo(state.byId, id))
+export const getThreads = (state: State): ?Array<?Thread> => {
+  if(state.list) {
+    return state.list.map(id => getThread(state, id))
+  }
 }

@@ -1,4 +1,45 @@
 body {
-  background-color: papayaWhip;
-  background-image: url('./assets/imgs/react.png');
+  font-family: Arial, Heltica, sans-serif;
+  font-size: 10pt;
+}
+
+#title {
+  display: flex;
+  justify-content: center;
+}
+
+#threads {
+  list-style-type: none;
+  margin-block-start: 0;
+  padding-inline-start: 0;
+}
+
+#threads ul {
+  list-style-type: none;
+  margin-block-start: 0;
+  padding-inline-start: 0;
+}
+
+#threads li {
+  margin-bottom: 1em;
+}
+
+#threads .thread:first-child {
+  margin-top: 1em;
+}
+
+#threads .thread > .comment {
+  margin-bottom: 1em;
+}
+
+#threads .reply {
+  background-color: #ccc;
+  margin-left: 0;
+  padding: 1em;
+}
+
+#threads .reply:before {
+  content: '>>';
+  float: left;
+  margin-right: 4px;
 }

@@ -124,14 +124,15 @@ exports.purifyCSS = ({ paths }) => ({
 })
 
 // Setup webpack-dev-server
-exports.setupDevServer = ({ host, historyApiFallback, hot, port } = {}) => ({
+exports.setupDevServer = ({ host, historyApiFallback, hot, port, proxy } = {}) => ({
   devServer: {
     host,
     port,
     historyApiFallback,
     hot,
     stats: 'errors-only',
-    overlay: true
+    overlay: true,
+    proxy
   },
   plugins: [new webpack.HotModuleReplacementPlugin()]
 })
