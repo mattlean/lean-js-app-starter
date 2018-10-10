@@ -11,9 +11,9 @@ import type { Action, Dispatch, State } from '../types'
 
 const App = ({ store }: { store: Store<State, Action, Dispatch> }) => {
   return <Provider store={store}>
-      <Page>
-        <ThreadList />
-      </Page>
+    <Page>
+      <ThreadList />
+    </Page>
   </Provider>
 }
 

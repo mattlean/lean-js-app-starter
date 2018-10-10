@@ -20,7 +20,7 @@ const Thread = ({ data }: { data: ThreadType }) => {
   return <li className="thread">
     <header>
       {subject}
-      <b>Anonymous</b>
+      <b className="name">Anonymous</b>
       {' '}
       {moment(data.createdAt).format('MM/DD/YY(ddd)HH:DD:SS')}
       {' Id.'}
