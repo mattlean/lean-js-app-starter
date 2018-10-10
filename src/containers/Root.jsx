@@ -5,6 +5,7 @@ import { hot } from 'react-hot-loader'
 import { Provider } from 'react-redux'
 import type { Store } from 'redux'
 
+import NewThreadForm from '../components/NewThreadForm'
 import NotFound from '../components/NotFound'
 import Page from '../components/Page'
 import ThreadList from '../containers/ThreadList'
@@ -21,9 +22,7 @@ const App = ({ store }: { store: Store<State, Action, Dispatch> }) => {
         )} />
         <Route exact path="/new" component={() => (
           <Page>
-            <div>
-              New Page
-            </div>
+            <NewThreadForm />
           </Page>
         )} />
         <Route component={() => (
