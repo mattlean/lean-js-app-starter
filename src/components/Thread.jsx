@@ -29,9 +29,7 @@ const Thread = ({ data }: { data: ThreadType }) => {
     <section className="comment">
       {data.comment}
     </section>
-    <section>
-      {replies}
-    </section>
+    {replies}
   </li>
 }
 

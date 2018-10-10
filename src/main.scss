@@ -23,8 +23,11 @@ a, a:visited {
 
 #page-head span {
   font-size: 22px;
-  font-weight: 700;
   margin-bottom: 1em;
+}
+
+#page-head span, #not-found span {
+  font-weight: 700;
 }
 
 #threads {
