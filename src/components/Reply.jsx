@@ -14,9 +14,9 @@ const Reply = ({ data }: { data: ReplyType }) => (
         {' Id.'}
         {data._id}
       </header>
-      <section className="comment">
+      <pre className="comment">
         {data.comment}
-      </section>
+      </pre>
     </div>
   </li>
 )
