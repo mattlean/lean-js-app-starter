@@ -15,17 +15,17 @@ const App = ({ store }: { store: Store<State, Action, Dispatch> }) => {
   return <Provider store={store}>
     <Router>
       <Switch>
-        <Route exact path="/" component={() => (
+        <Route exact path="/" render={() => (
           <Page>
             <ThreadList />
           </Page>
         )} />
-        <Route exact path="/new" component={() => (
+        <Route exact path="/new" render={() => (
           <Page>
             <NewThreadForm />
           </Page>
         )} />
-        <Route component={() => (
+        <Route render={() => (
           <Page>
             <NotFound />
           </Page>
