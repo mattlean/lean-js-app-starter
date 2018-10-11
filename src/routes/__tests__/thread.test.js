@@ -31,6 +31,7 @@ describe('Thread routes', () => {
         expect(res.statusCode).toBe(200)
         expect(res.body.subject).toBe(threadData.subject)
         expect(res.body.comment).toBe(threadData.comment)
+        expect(res.body.type).toBe('Thread')
         thread = res.body
       })
   })
@@ -41,6 +42,9 @@ describe('Thread routes', () => {
       .then(res => {
         expect(res.statusCode).toBe(200)
         expect(res.body).toBeInstanceOf(Array)
+        expect(res.body[0].subject).toBe(threadData.subject)
+        expect(res.body[0].comment).toBe(threadData.comment)
+        expect(res.body[0].type).toBe('Thread')
       })
   })
 
@@ -51,6 +55,7 @@ describe('Thread routes', () => {
         expect(res.statusCode).toBe(200)
         expect(res.body.subject).toBe(threadData.subject)
         expect(res.body.comment).toBe(threadData.comment)
+        expect(res.body.type).toBe('Thread')
       })
   })
 

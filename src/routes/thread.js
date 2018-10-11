@@ -20,7 +20,7 @@ router.post('/', (req, res, next) => {
 
 // List threads
 router.get('/', (req, res, next) => {
-  Thread.find().exec()
+  Thread.find().sort({ createdAt: -1 }).exec()
     .then(threads => res.json(threads))
     .catch(err => next(err))
 })
