@@ -1,27 +1,40 @@
 // @flow
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
+
+import { postThreads } from '../util/api'
 
 type State = {
   subject: string,
-  comment: string
+  comment: string,
+  redirect: boolean
 }
 
 class NewThreadForm extends Component<{}, State> {
   state = {
     subject: '',
-    comment: ''
+    comment: '',
+    redirect: false
   }
 
   handleChange = (e: SyntheticEvent<HTMLInputElement>, state: string) => {
-    this.setState({[state]: e.currentTarget.value})
+    this.setState({ [state]: e.currentTarget.value })
   }
 
   handleSubmit = (e: SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault()
+    postThreads({
+      subject: this.state.subject,
+      comment: this.state.comment
+    }).then(() => {
+      this.setState({ redirect: true })
+    })
   }
 
   render() {
+    if(this.state.redirect) {
+      return <Redirect to="/" />
+    }
     return <>
       <form id="new-thread-form" className="center" onSubmit={this.handleSubmit}>
         <table>
