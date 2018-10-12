@@ -2,9 +2,20 @@
 import type { Dispatch as ReduxDispatch } from 'redux'
 
 export type Action =
+  | Action_CreateThreadRequest
+  | Action_CreateThreadSuccess
   | Action_FetchThreadsRequest
   | Action_FetchThreadSuccess
   | Action_FetchThreadsSuccess
+
+export type Action_CreateThreadRequest = {
+  type: 'CREATE_THREAD_REQUEST'
+}
+
+export type Action_CreateThreadSuccess = {
+  type: 'CREATE_THREAD_SUCCESS',
+  res: NormalizedRes
+}
 
 export type Action_FetchThreadsRequest = {
   type: 'FETCH_THREADS_REQUEST'
@@ -58,6 +69,11 @@ export type Thread = {|
   subject?: string,
   comment: string,
   replies?: Array<Reply>
+|}
+
+export type ThreadData = {|
+  subject?: string,
+  comment: string
 |}
 
 export type ThunkAction = (dispatch: Dispatch, getState: GetState) => any

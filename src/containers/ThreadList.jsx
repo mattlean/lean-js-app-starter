@@ -18,8 +18,18 @@ class ThreadList extends Component {
 }
 
 ThreadList.propTypes = {
-  fetchThreads: PropTypes.func,
-  threads: PropTypes.array
+  fetchThreads: PropTypes.func.isRequired,
+  threads: PropTypes.arrayOf(PropTypes.shape({
+    _id: PropTypes.string.isRequired,
+    createdAt: PropTypes.string.isRequired,
+    subject: PropTypes.string,
+    comment: PropTypes.string.isRequired,
+    replies: PropTypes.arrayOf(PropTypes.shape({
+      _id: PropTypes.string.isRequired,
+      createdAt: PropTypes.string.isRequired,
+      comment: PropTypes.string.isRequired
+    }))
+  }))
 }
 
 const mapStateToProps = state => ({

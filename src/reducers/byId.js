@@ -3,6 +3,7 @@ import type { Action, State_ById } from '../types'
 
 const byId = (state: State_ById = {}, action: Action): State_ById => {
   switch(action.type) {
+    case 'CREATE_THREAD_SUCCESS':
     case 'FETCH_THREAD_SUCCESS':
     case 'FETCH_THREADS_SUCCESS':
       return {
