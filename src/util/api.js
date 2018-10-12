@@ -7,9 +7,17 @@ if(process.env.NODE_ENV === 'test') {
   rootPath = 'http://localhost:8080/api/'
 }
 
-export const getThreads = () => fetch(`${rootPath}thread`)
-  .then(res => res.json())
-  .catch(err => console.error('Fetch failed!'))
+export const getThreads = (id?: string) => {
+  let path = `${rootPath}thread`
+
+  if(id) {
+    path += `/${id}`
+  }
+
+  return fetch(path)
+    .then(res => res.json())
+    .catch(err => console.error('Fetch failed!'))
+}
 
 export const postThreads = (data: *) => fetch(`${rootPath}thread`, {
   method: 'POST',

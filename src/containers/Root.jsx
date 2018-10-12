@@ -9,6 +9,7 @@ import NewThreadForm from '../components/NewThreadForm'
 import NotFound from '../components/NotFound'
 import Page from '../components/Page'
 import ThreadList from '../containers/ThreadList'
+import ThreadPage from '../containers/ThreadPage'
 import type { Action, Dispatch, State } from '../types'
 
 const App = ({ store }: { store: Store<State, Action, Dispatch> }) => {
@@ -23,6 +24,11 @@ const App = ({ store }: { store: Store<State, Action, Dispatch> }) => {
         <Route exact path="/new" render={() => (
           <Page>
             <NewThreadForm />
+          </Page>
+        )} />
+        <Route exact path="/:id" render={({ match }) => (
+          <Page>
+            <ThreadPage id={match.params.id} />
           </Page>
         )} />
         <Route render={() => (

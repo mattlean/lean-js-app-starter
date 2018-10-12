@@ -3,10 +3,16 @@ import type { Dispatch as ReduxDispatch } from 'redux'
 
 export type Action =
   | Action_FetchThreadsRequest
+  | Action_FetchThreadSuccess
   | Action_FetchThreadsSuccess
 
 export type Action_FetchThreadsRequest = {
   type: 'FETCH_THREADS_REQUEST'
+}
+
+export type Action_FetchThreadSuccess = {
+  type: 'FETCH_THREAD_SUCCESS',
+  res: NormalizedRes
 }
 
 export type Action_FetchThreadsSuccess = {

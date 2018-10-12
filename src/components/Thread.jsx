@@ -1,11 +1,13 @@
 // @flow
-import React from 'react'
 import moment from 'moment'
+import React from 'react'
+import { Link, withRouter } from 'react-router-dom'
+import type { Match } from 'react-router-dom'
 
 import Reply from './Reply'
 import type { Thread as ThreadType } from '../types'
 
-const Thread = ({ data }: { data: ThreadType }) => {
+const Thread = ({ data, match }: { data: ThreadType, match: Match }) => {
   let subject
   if(data.subject) {
     subject = <strong>{data.subject} {' '}</strong>
@@ -17,6 +19,12 @@ const Thread = ({ data }: { data: ThreadType }) => {
     replies = <ul>{replies}</ul>
   }
 
+  let replyLink
+  if(!match.params.id) replyLink = <>
+    {' '}
+    [<Link to={`/${data._id}`}>Reply</Link>]
+  </>
+
   return <li className="thread">
     <header>
       {subject}
@@ -25,6 +33,7 @@ const Thread = ({ data }: { data: ThreadType }) => {
       {moment(data.createdAt).format('MM/DD/YY(ddd)HH:DD:SS')}
       {' Id.'}
       {data._id}
+      {replyLink}
     </header>
     <pre className="comment">
       {data.comment}
@@ -33,4 +42,4 @@ const Thread = ({ data }: { data: ThreadType }) => {
   </li>
 }
 
-export default Thread
+export default withRouter(Thread)

@@ -1,7 +1,8 @@
 // @flow
 import React, { Component } from 'react'
-import { Link, Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 
+import Nav from './Nav'
 import { postThreads } from '../util/api'
 
 type State = {
@@ -68,10 +69,7 @@ class NewThreadForm extends Component<{}, State> {
           </tbody>
         </table>
       </form>
-      <hr />
-      <footer>
-        [<Link to="/">Return</Link>]
-      </footer>
+      <Nav mode="bottom" />
     </>
   }
 }
