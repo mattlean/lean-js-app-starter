@@ -1,12 +1,12 @@
 import { getThreads, postReply, postThread } from '../api'
 
 describe('API', () => {
+  let thread
   const threadData = {
     subject: 'New Thread',
     comment: 'I am the new thread comment.'
   }
 
-  let thread
 
   test('getThreads() lists all threads', () => {
     expect.assertions(1)

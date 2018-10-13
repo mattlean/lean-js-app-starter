@@ -30,20 +30,10 @@ class NewThreadForm extends Component {
     })
       .then(thread => {
         this.props.history.push(`/${thread._id}`)
-        this.setState({ show: false })
-        this.reset()
       })
   }
 
-  reset = () => {
-    this.setState({
-      subject: '',
-      comment: ''
-    })
-  }
-
   render() {
-
     if(this.state.show) {
       return <form id="new-thread-form" className="center" onSubmit={this.handleSubmit}>
         <table>

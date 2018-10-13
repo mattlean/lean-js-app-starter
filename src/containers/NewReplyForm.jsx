@@ -27,14 +27,16 @@ class NewReplyForm extends Component {
       this.props.match.params.id,
       { comment: this.state.comment }
     )
-      .then(thread => {
-        this.setState({ show: false })
+      .then(() => {
         this.reset()
       })
   }
 
   reset = () => {
-    this.setState({ comment: '' })
+    this.setState({
+      comment: '',
+      show: false
+    })
   }
 
   render() {
