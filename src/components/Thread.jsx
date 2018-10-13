@@ -13,9 +13,14 @@ const Thread = ({ data, match }: { data: ThreadType, match: Match }) => {
     subject = <strong>{data.subject} {' '}</strong>
   }
 
+  let repliesData = data.replies
+  if(!match.params.id && Array.isArray(data.replies) && data.replies.length > 5) {
+    repliesData = data.replies.slice(data.replies.length - 5)
+  }
+
   let replies
-  if(Array.isArray(data.replies) && data.replies.length > 0) {
-    replies = data.replies.map(reply => <Reply key={reply._id} data={reply} />)
+  if(Array.isArray(repliesData) && repliesData.length > 0) {
+    replies = repliesData.map(reply => <Reply key={reply._id} data={reply} />)
     replies = <ul>{replies}</ul>
   }
 
