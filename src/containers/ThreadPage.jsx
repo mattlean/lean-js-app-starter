@@ -7,11 +7,17 @@ import Nav from '../components/Nav'
 import Threads from '../components/Threads'
 import { fetchThreads } from '../actions'
 import { getThread } from '../reducers'
+import { setDocTitle } from '../util'
 
 class ThreadPage extends Component {
   componentDidMount() {
     if(!this.props.thread) {
       this.props.fetchThreads(this.props.id)
+        .then(thread => {
+          setDocTitle(thread.subject || `Thread ${thread._id}`)
+        })
+    } else {
+      setDocTitle(this.props.thread.subject || `Thread ${this.props.thread._id}`)
     }
   }
 

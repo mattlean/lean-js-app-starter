@@ -6,9 +6,11 @@ import { connect } from 'react-redux'
 import Threads from '../components/Threads'
 import { fetchThreads } from '../actions'
 import { getThreads } from '../reducers'
+import { setDocTitle } from '../util'
 
 class ThreadList extends Component {
   componentDidMount() {
+    setDocTitle()
     this.props.fetchThreads()
   }
 
