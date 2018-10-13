@@ -8,6 +8,8 @@ const PurifyCSSPlugin = require('purifycss-webpack')
 const UglifyWebpackPlugin = require('uglifyjs-webpack-plugin')
 const webpack = require('webpack')
 
+const PATHS = require('../PATHS')
+
 // Autoprefix CSS
 exports.autoprefix = () => ({
   loader: 'postcss-loader',
@@ -20,7 +22,12 @@ exports.checkTypes = () => ({
 })
 
 // Clean path
-exports.cleanPath = path => ({ plugins: [new CleanWebpackPlugin([path])] })
+exports.cleanPaths = paths => ({
+  plugins: [new CleanWebpackPlugin(
+    paths,
+    { root: PATHS.root }
+  )]
+})
 
 // Extract styles into its own CSS file
 exports.extractStyles = ({ exclude, include, use = [] }) => {
