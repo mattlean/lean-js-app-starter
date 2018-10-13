@@ -4,11 +4,10 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 
-import { createThread } from '../actions'
+import { createReply } from '../actions'
 
-class NewThreadForm extends Component {
+class NewReplyForm extends Component {
   state = {
-    subject: '',
     comment: '',
     show: false
   }
@@ -24,41 +23,25 @@ class NewThreadForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault()
-    this.props.createThread({
-      subject: this.state.subject,
-      comment: this.state.comment
-    })
+    this.props.createReply(
+      this.props.match.params.id,
+      { comment: this.state.comment }
+    )
       .then(thread => {
-        this.props.history.push(`/${thread._id}`)
         this.setState({ show: false })
         this.reset()
       })
   }
 
   reset = () => {
-    this.setState({
-      subject: '',
-      comment: ''
-    })
+    this.setState({ comment: '' })
   }
 
   render() {
-
     if(this.state.show) {
       return <form id="new-thread-form" className="center" onSubmit={this.handleSubmit}>
         <table>
           <tbody>
-            <tr>
-              <th><label htmlFor="subject">Subject</label></th>
-              <td>
-                <input
-                  id="subject"
-                  type="text"
-                  value={this.state.subject}
-                  onChange={e => this.handleChange(e, 'subject')}
-                />
-              </td>
-            </tr>
             <tr>
               <th><label htmlFor="comment">Comment</label></th>
               <td>
@@ -79,15 +62,15 @@ class NewThreadForm extends Component {
         </table>
       </form>
     }
-    return <span className="center">[<a href="#" onClick={this.handleClick}>Start a New Thread</a>]</span>
+    return <span className="center">[<a href="#" onClick={this.handleClick}>Post a Reply</a>]</span>
   }
 }
 
-NewThreadForm.propTypes = {
-  createThread: PropTypes.func.isRequired,
-  history: PropTypes.object.isRequired
+NewReplyForm.propTypes = {
+  createReply: PropTypes.func.isRequired,
+  match: PropTypes.object.isRequired
 }
 
-const mapDispatchToProps = dispatch => bindActionCreators({ createThread }, dispatch)
+const mapDispatchToProps = dispatch => bindActionCreators({ createReply }, dispatch)
 
-export default withRouter(connect(null, mapDispatchToProps)(NewThreadForm))
+export default withRouter(connect(null, mapDispatchToProps)(NewReplyForm))

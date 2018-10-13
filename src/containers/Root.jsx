@@ -6,6 +6,7 @@ import { Provider } from 'react-redux'
 import type { Store } from 'redux'
 
 import NewThreadForm from '../containers/NewThreadForm'
+import NewReplyForm from '../containers/NewReplyForm'
 import NotFound from '../components/NotFound'
 import Page from '../components/Page'
 import ThreadList from '../containers/ThreadList'
@@ -17,12 +18,12 @@ const App = ({ store }: { store: Store<State, Action, Dispatch> }) => {
     <Router>
       <Switch>
         <Route exact path="/" render={() => (
-          <Page>
+          <Page Form={NewThreadForm}>
             <ThreadList />
           </Page>
         )} />
         <Route exact path="/:id" render={({ match }) => (
-          <Page>
+          <Page Form={NewReplyForm}>
             <ThreadPage id={match.params.id} />
           </Page>
         )} />

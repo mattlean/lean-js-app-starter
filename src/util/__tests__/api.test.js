@@ -1,4 +1,4 @@
-import { getThreads, postThreads } from '../api'
+import { getThreads, postReply, postThread } from '../api'
 
 describe('API', () => {
   const threadData = {
@@ -16,10 +16,10 @@ describe('API', () => {
     })
   })
 
-  test('postThreads() creates a thread', () => {
+  test('postThread() creates a thread', () => {
     expect.assertions(3)
 
-    return postThreads(threadData).then(res => {
+    return postThread(threadData).then(res => {
       thread = res
 
       expect(res.subject).toBe(threadData.subject)
@@ -33,6 +33,16 @@ describe('API', () => {
 
     return getThreads(thread._id).then(res => {
       expect(res._id).toBe(thread._id)
+    })
+  })
+
+  test('postReply() creates a reply', () => {
+    expect.assertions(1)
+
+    const replyData = { comment: 'All your base are belong to us.' }
+
+    return postReply(thread._id, replyData).then(res => {
+      expect(res.replies[0].comment).toBe(replyData.comment)
     })
   })
 })

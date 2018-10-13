@@ -1,14 +1,27 @@
 // @flow
 import { normalize } from 'normalizr'
 
-import { getThreads, postThreads } from '../util/api'
+import { getThreads, postReply, postThread } from '../util/api'
 import { Thread, Threads } from '../types/schema'
-import type { Dispatch, ThreadData, ThunkAction } from '../types'
+import type { Dispatch, ThreadData, ReplyData, ThunkAction } from '../types'
+
+export const createReply = (id: string, data: ReplyData): ThunkAction => (dispatch: Dispatch) => {
+  dispatch({ type: 'CREATE_REPLY_REQUEST' })
+
+  return postReply(id, data).then(res => {
+    dispatch({
+      type: 'CREATE_THREAD_SUCCESS',
+      res: normalize(res, Thread)
+    })
+
+    return res
+  })
+}
 
 export const createThread = (data: ThreadData): ThunkAction => (dispatch: Dispatch) => {
   dispatch({ type: 'CREATE_THREAD_REQUEST' })
 
-  return postThreads(data).then(res => {
+  return postThread(data).then(res => {
     dispatch({
       type: 'CREATE_THREAD_SUCCESS',
       res: normalize(res, Thread)

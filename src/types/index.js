@@ -2,11 +2,22 @@
 import type { Dispatch as ReduxDispatch } from 'redux'
 
 export type Action =
+  | Action_CreateReplyRequest
+  | Action_CreateReplySuccess
   | Action_CreateThreadRequest
   | Action_CreateThreadSuccess
   | Action_FetchThreadsRequest
   | Action_FetchThreadSuccess
   | Action_FetchThreadsSuccess
+
+export type Action_CreateReplyRequest = {
+  type: 'CREATE_REPLY_REQUEST'
+}
+
+export type Action_CreateReplySuccess = {
+  type: 'CREATE_REPLY_SUCCESS',
+  res: NormalizedRes
+}
 
 export type Action_CreateThreadRequest = {
   type: 'CREATE_THREAD_REQUEST'
@@ -49,6 +60,10 @@ export type NormalizedRes = {
 export type Reply = {|
   _id: string,
   createdAt: Date,
+  comment: string
+|}
+
+export type ReplyData = {|
   comment: string
 |}
 

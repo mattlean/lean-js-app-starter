@@ -1,7 +1,7 @@
 // @flow
 import fetch from 'cross-fetch'
 
-import type { ThreadData } from '../types'
+import type { ReplyData, ThreadData } from '../types'
 
 let rootPath = '/api/'
 
@@ -21,7 +21,15 @@ export const getThreads = (id?: string) => {
     .catch(err => console.error('Fetch failed!'))
 }
 
-export const postThreads = (data: ThreadData) => fetch(`${rootPath}thread`, {
+export const postReply = (id: string, data: ReplyData) => fetch(`${rootPath}thread/${id}/reply`, {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify(data)
+})
+  .then(res => res.json())
+  .catch(err => console.error('Fetch failed!'))
+
+export const postThread = (data: ThreadData) => fetch(`${rootPath}thread`, {
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify(data)
