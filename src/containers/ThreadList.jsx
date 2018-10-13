@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
+import Loading from '../components/Loading'
 import Threads from '../components/Threads'
 import { fetchThreads } from '../actions'
 import { getThreads } from '../reducers'
@@ -15,12 +16,16 @@ class ThreadList extends Component {
   }
 
   render() {
+    if(this.props.isFetching && Array.isArray(this.props.threads) && this.props.threads.length === 0) {
+      return <Loading />
+    }
     return <Threads threads={this.props.threads} />
   }
 }
 
 ThreadList.propTypes = {
   fetchThreads: PropTypes.func.isRequired,
+  isFetching: PropTypes.bool.isRequired,
   threads: PropTypes.arrayOf(PropTypes.shape({
     _id: PropTypes.string.isRequired,
     createdAt: PropTypes.string.isRequired,
@@ -35,6 +40,7 @@ ThreadList.propTypes = {
 }
 
 const mapStateToProps = state => ({
+  isFetching: state.isFetching,
   threads: getThreads(state)
 })
 

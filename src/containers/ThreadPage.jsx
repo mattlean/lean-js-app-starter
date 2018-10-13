@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
+import Loading from '../components/Loading'
 import Nav from '../components/Nav'
 import Threads from '../components/Threads'
 import { fetchThreads } from '../actions'
@@ -22,26 +23,30 @@ class ThreadPage extends Component {
   }
 
   render() {
-    let thread = []
+    let content
     if(this.props.thread) {
-      thread.push(this.props.thread)
+      content = <Threads threads={[this.props.thread]} />
+    } else if(!this.props.thread && this.props.isFetching) {
+      content = <Loading />
     }
 
     return <>
       <Nav mode="top" />
-      <Threads threads={thread} />
+      {content}
       <Nav mode="bottom" />
     </>
   }
 }
 
 ThreadPage.propTypes = {
-  fetchThreads: PropTypes.func,
-  id: PropTypes.string,
+  fetchThreads: PropTypes.func.isRequired,
+  id: PropTypes.string.isRequired,
+  isFetching: PropTypes.bool.isRequired,
   thread: PropTypes.object
 }
 
 const mapStateToProps = (state, ownProps) => ({
+  isFetching: state.isFetching,
   thread: getThread(state, ownProps.id)
 })
 

@@ -2,11 +2,13 @@
 import { combineReducers } from 'redux'
 
 import byId, { getThread as byIdGetThread } from './byId'
+import isFetching from './isFetching'
 import list from './list'
 import type { State, Thread } from '../types'
 
 const rootReducer = combineReducers({
   byId,
+  isFetching,
   list
 })
 
