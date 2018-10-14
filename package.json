@@ -28,14 +28,14 @@
   "dependencies": {
     "cross-fetch": "^2.2.2",
     "moment": "^2.22.2",
-    "normalizr": "^3.2.4",
+    "normalizr": "^3.3.0",
     "prop-types": "^15.6.2",
-    "react": "^16.4.2",
-    "react-dom": "^16.4.2",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2",
     "react-hot-loader": "^4.3.11",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",
-    "redux": "^4.0.0",
+    "redux": "^4.0.1",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
     "uuid": "^3.3.2"
