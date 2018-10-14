@@ -2,13 +2,11 @@
 import fetch from 'cross-fetch'
 
 import HTTPErr from '../util/HTTPErr'
+import settings from './apiSettings'
 import type { ReplyData, ThreadData } from '../types'
 
 let rootPath = '/api/'
-
-if(process.env.NODE_ENV === 'test') {
-  rootPath = 'http://localhost:8080/api/'
-}
+if(settings.api) rootPath = settings.api
 
 export const getThreads = (id?: string) => {
   let path = `${rootPath}thread`

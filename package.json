@@ -10,7 +10,7 @@
     "flow-typed": "flow-typed",
     "lint": "eslint --cache src/**/*.jsx",
     "lint:styles": "stylelint src/**/*.scss src/**/*.css",
-    "start": "http-server ./build",
+    "start": "http-server ./build -p 9090",
     "start:dev": "nodemon --watch webpack.config.js --watch config --exec \"webpack-dev-server --env development\"",
     "test": "jest",
     "test:watch": "jest --watch"
