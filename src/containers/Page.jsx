@@ -11,7 +11,7 @@ const Page = ({ children, err, Form }: { children?: React.Node, err?: HTTPErr, F
   let content
   let form
 
-  if(err && err.message) {
+  if(err) {
     content = <Err data={err} />
   } else {
     content = <main>{ children }</main>
@@ -32,7 +32,7 @@ const Page = ({ children, err, Form }: { children?: React.Node, err?: HTTPErr, F
 }
 
 const mapStateToProps = state => ({
-  err: state.err
+  err: state.err.read
 })
 
 export default connect(mapStateToProps)(Page)

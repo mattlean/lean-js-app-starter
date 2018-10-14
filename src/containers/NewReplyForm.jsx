@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 
-import { createReply } from '../actions'
+import { createReply, setErr } from '../actions'
 
 class NewReplyForm extends Component {
   state = {
@@ -30,6 +30,9 @@ class NewReplyForm extends Component {
       .then(() => {
         this.reset()
       })
+      .catch(err => {
+        this.props.setErr('create', err)
+      })
   }
 
   reset = () => {
@@ -41,6 +44,20 @@ class NewReplyForm extends Component {
 
   render() {
     if(this.state.show) {
+      let err
+      if(this.props.err) {
+        let statusTxt
+        if(this.props.err.res && this.props.err.res.status) statusTxt = `${this.props.err.res.status} - `
+
+        err = (
+          <tr>
+            <td colSpan="2">
+              <b className="center">ERROR: {statusTxt}{this.props.err.message}</b>
+            </td>
+          </tr>
+        )
+      }
+
       return <form id="new-thread-form" className="center" onSubmit={this.handleSubmit}>
         <table>
           <tbody>
@@ -55,6 +72,7 @@ class NewReplyForm extends Component {
                 />
               </td>
             </tr>
+            {err}
             <tr>
               <td colSpan="2">
                 <button type="submit">Post</button>
@@ -70,9 +88,15 @@ class NewReplyForm extends Component {
 
 NewReplyForm.propTypes = {
   createReply: PropTypes.func.isRequired,
-  match: PropTypes.object.isRequired
+  err: PropTypes.object,
+  match: PropTypes.object.isRequired,
+  setErr: PropTypes.func.isRequired
 }
 
-const mapDispatchToProps = dispatch => bindActionCreators({ createReply }, dispatch)
+const mapStateToProps = state => ({
+  err: state.err.create
+})
 
-export default withRouter(connect(null, mapDispatchToProps)(NewReplyForm))
+const mapDispatchToProps = dispatch => bindActionCreators({ createReply, setErr }, dispatch)
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(NewReplyForm))

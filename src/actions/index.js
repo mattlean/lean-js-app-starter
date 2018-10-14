@@ -4,16 +4,24 @@ import { normalize } from 'normalizr'
 import HTTPErr from '../util/HTTPErr'
 import { getThreads, postReply, postThread } from '../util/api'
 import { Thread, Threads } from '../types/schema'
-import type { Action_ClearErr, Dispatch, ThreadData, ReplyData, ThunkAction } from '../types'
+import type { Action_ClearAllErrs, Action_ClearErr, Action_FetchEnd, Dispatch, ThreadData, ReplyData, ThunkAction } from '../types'
 
-export const clearErr = (): Action_ClearErr => ({ type: 'CLEAR_ERR' })
+export const clearErr = (key: string): Action_ClearErr => ({
+  type: 'CLEAR_ERR',
+  key
+})
+
+export const clearAllErrs = (): Action_ClearAllErrs => ({
+  type: 'CLEAR_ALL_ERRS'
+})
 
 export const createReply = (id: string, data: ReplyData): ThunkAction => (dispatch: Dispatch) => {
+  dispatch(clearErr('create'))
   dispatch({ type: 'CREATE_REPLY_REQUEST' })
 
   return postReply(id, data).then(res => {
     dispatch({
-      type: 'CREATE_THREAD_SUCCESS',
+      type: 'CREATE_REPLY_SUCCESS',
       res: normalize(res, Thread)
     })
 
@@ -22,6 +30,7 @@ export const createReply = (id: string, data: ReplyData): ThunkAction => (dispat
 }
 
 export const createThread = (data: ThreadData): ThunkAction => (dispatch: Dispatch) => {
+  dispatch(clearErr('create'))
   dispatch({ type: 'CREATE_THREAD_REQUEST' })
 
   return postThread(data).then(res => {
@@ -33,6 +42,10 @@ export const createThread = (data: ThreadData): ThunkAction => (dispatch: Dispat
     return res
   })
 }
+
+export const endFetch = (): Action_FetchEnd => ({
+  type: 'FETCH_END'
+})
 
 export const fetchThreads = (id?: string): ThunkAction => (dispatch: Dispatch) => {
   dispatch({ type: 'FETCH_THREADS_REQUEST' })
@@ -57,9 +70,10 @@ export const fetchThreads = (id?: string): ThunkAction => (dispatch: Dispatch) =
   })
 }
 
-export const setErr = (err: HTTPErr): ThunkAction => (dispatch: Dispatch) => {
+export const setErr = (key: string, err: HTTPErr): ThunkAction => (dispatch: Dispatch) => {
   dispatch({
     type: 'SET_ERR',
+    key,
     err
   })
 }

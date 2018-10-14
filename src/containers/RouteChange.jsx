@@ -1,17 +1,17 @@
 import * as React from 'react'
+import PropTypes from 'prop-types'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 
-import { clearErr } from '../actions'
-
+import { clearAllErrs } from '../actions'
 
 class RouteChange extends React.Component {
   componentDidUpdate(prevProps) {
-    const { clearErr, err, location } = this.props
+    const { clearAllErrs, err, location } = this.props
 
     if (location !== prevProps.location) {
-      if(err.message) clearErr()
+      if(Object.keys(err).length > 0) clearAllErrs()
 
       window.scrollTo(0, 0)
     }
@@ -22,10 +22,20 @@ class RouteChange extends React.Component {
   }
 }
 
+RouteChange.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.node,
+    PropTypes.arrayOf(PropTypes.node)
+  ]),
+  clearAllErrs: PropTypes.func.isRequired,
+  err: PropTypes.object,
+  location: PropTypes.object.isRequired
+}
+
 const mapStateToProps = state => ({
   err: state.err
 })
 
-const mapDispatchToProps = dispatch => bindActionCreators({ clearErr }, dispatch)
+const mapDispatchToProps = dispatch => bindActionCreators({ clearAllErrs }, dispatch)
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(RouteChange))

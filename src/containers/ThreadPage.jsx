@@ -18,7 +18,7 @@ class ThreadPage extends Component {
           setDocTitle(thread.subject || `Thread ${thread._id}`)
         })
         .catch(err => {
-          this.props.setErr(err)
+          this.props.setErr('read', err)
         })
     } else {
       setDocTitle(this.props.thread.subject || `Thread ${this.props.thread._id}`)

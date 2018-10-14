@@ -19,7 +19,6 @@ export const getThreads = (id?: string) => {
 
   return fetch(path).then(res => {
     if(!res.ok) throw new HTTPErr(res.statusText, res)
-
     return res.json()
   })
 }
@@ -29,11 +28,17 @@ export const postReply = (id: string, data: ReplyData) => fetch(`${rootPath}thre
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify(data)
 })
-  .then(res => res.json())
+  .then(res => {
+    if(!res.ok) throw new HTTPErr(res.statusText, res)
+    return res.json()
+  })
 
 export const postThread = (data: ThreadData) => fetch(`${rootPath}thread`, {
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify(data)
 })
-  .then(res => res.json())
+  .then(res => {
+    if(!res.ok) throw new HTTPErr(res.statusText, res)
+    return res.json()
+  })
