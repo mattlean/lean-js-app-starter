@@ -137,9 +137,9 @@ exports.setupDevServer = ({ host, historyApiFallback, hot, port, proxy } = {}) =
     port,
     historyApiFallback,
     hot,
+    proxy,
     stats: 'errors-only',
-    overlay: true,
-    proxy
+    overlay: true
   },
   plugins: [new webpack.HotModuleReplacementPlugin()]
 })

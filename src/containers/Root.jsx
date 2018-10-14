@@ -13,7 +13,7 @@ import ThreadList from '../containers/ThreadList'
 import ThreadPage from '../containers/ThreadPage'
 import type { Action, Dispatch, State } from '../types'
 
-const App = ({ store }: { store: Store<State, Action, Dispatch> }) => {
+const Root = ({ store }: { store: Store<State, Action, Dispatch> }) => {
   return (
     <Provider store={store}>
       <Router>
@@ -36,4 +36,4 @@ const App = ({ store }: { store: Store<State, Action, Dispatch> }) => {
   )
 }
 
-export default hot(module)(App)
+export default hot(module)(Root)
