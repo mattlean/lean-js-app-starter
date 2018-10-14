@@ -9,12 +9,12 @@ beforeAll(() => db.connect(DB_URI))
 afterAll(() => db.disconnect())
 
 describe('Hello world!', () => {
-  test('should respond to GET request with 200 and "Hello world!" text', () => {
+  it('should respond to GET request with 200 and "*chan API" text', () => {
     return request(app)
       .get('/')
       .then(res => {
         expect(res.statusCode).toBe(200)
-        expect(res.text).toBe('Hello world!')
+        expect(res.text).toBe('*chan API')
       })
   })
 })

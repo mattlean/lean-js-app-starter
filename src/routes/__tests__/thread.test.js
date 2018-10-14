@@ -23,7 +23,7 @@ describe('Thread routes', () => {
   const firstReplyData = { comment: 'First Test Reply Comment' }
   const secondReplyData = { comment: 'Second Test Reply Comment' }
 
-  test('should create a thread', () => {
+  it('should create a thread', () => {
     return request(app)
       .post('/thread')
       .send(threadData)
@@ -36,7 +36,7 @@ describe('Thread routes', () => {
       })
   })
 
-  test('should list all threads', () => {
+  it('should list all threads', () => {
     return request(app)
       .get('/thread')
       .then(res => {
@@ -48,7 +48,7 @@ describe('Thread routes', () => {
       })
   })
 
-  test('should read specific thread', () => {
+  it('should read specific thread', () => {
     return request(app)
       .get(`/thread/${thread._id}`)
       .then(res => {
@@ -59,7 +59,7 @@ describe('Thread routes', () => {
       })
   })
 
-  test('should create first reply', () => {
+  it('should create first reply', () => {
     return request(app)
       .post(`/thread/${thread._id}/reply`)
       .send(firstReplyData)
@@ -69,7 +69,7 @@ describe('Thread routes', () => {
       })
   })
 
-  test('should create second reply and maintain first reply', () => {
+  it('should create second reply and maintain first reply', () => {
     return request(app)
       .post(`/thread/${thread._id}/reply`)
       .send(secondReplyData)
