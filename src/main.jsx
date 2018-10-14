@@ -2,10 +2,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-import Root from './components/Root'
+import Root from './containers/Root'
 import configureStore from './util/configureStore'
-
-import './main.scss'
 
 const root = document.getElementById('root')
 const store = configureStore()

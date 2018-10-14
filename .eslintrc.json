@@ -25,7 +25,8 @@
     "rules": {
         "indent": [
             "error",
-            2
+            2,
+            { "SwitchCase": 1 }
         ],
         "linebreak-style": [
             "error",
@@ -39,5 +40,11 @@
             "error",
             "never"
         ]
+    },
+    "settings": {
+        "react": {
+            "version": "16.4",
+            "flowVersion": "0.80"
+        }
     }
 }

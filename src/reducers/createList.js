@@ -14,14 +14,14 @@ const createList = filter => {
 
   const ids = (state = [], action) => {
     switch(action.type) {
-    case 'FETCH_TODOS_SUCCESS':
-      return filter === action.filter ? action.response.result : state
-    case 'ADD_TODO_SUCCESS':
-      return filter !== 'completed' ? [...state, action.response.result] : state
-    case 'TOGGLE_TODO_SUCCESS':
-      return handleToggle(state, action)
-    default:
-      return state
+      case 'FETCH_TODOS_SUCCESS':
+        return filter === action.filter ? action.response.result : state
+      case 'ADD_TODO_SUCCESS':
+        return filter !== 'completed' ? [...state, action.response.result] : state
+      case 'TOGGLE_TODO_SUCCESS':
+        return handleToggle(state, action)
+      default:
+        return state
     }
   }
 
@@ -31,13 +31,13 @@ const createList = filter => {
     }
 
     switch(action.type) {
-    case 'FETCH_TODOS_REQUEST':
-      return true
-    case 'FETCH_TODOS_SUCCESS':
-    case 'FETCH_TODOS_FAILURE':
-      return false
-    default:
-      return state
+      case 'FETCH_TODOS_REQUEST':
+        return true
+      case 'FETCH_TODOS_SUCCESS':
+      case 'FETCH_TODOS_FAILURE':
+        return false
+      default:
+        return state
     }
   }
 
@@ -47,13 +47,13 @@ const createList = filter => {
     }
 
     switch(action.type) {
-    case 'FETCH_TODOS_FAILURE':
-      return action.message
-    case 'FETCH_TODOS_REQUEST':
-    case 'FETCH_TODOS_SUCCESS':
-      return null
-    default:
-      return state
+      case 'FETCH_TODOS_FAILURE':
+        return action.message
+      case 'FETCH_TODOS_REQUEST':
+      case 'FETCH_TODOS_SUCCESS':
+        return null
+      default:
+        return state
     }
   }
 
