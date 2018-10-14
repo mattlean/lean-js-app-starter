@@ -3,13 +3,17 @@ const merge = require('webpack-merge')
 const parts = require('./parts')
 
 module.exports = merge([
-  parts.checkTypes(),
-
   parts.setupDevServer({
     host: process.env.HOST,
     port: process.env.PORT,
     historyApiFallback: true,
-    hot: true
+    hot: true,
+    proxy: {
+      '/api': {
+        target: 'http://localhost:9001',
+        pathRewrite: { '^/api': '' }
+      }
+    }
   }),
 
   parts.loadStyles(),

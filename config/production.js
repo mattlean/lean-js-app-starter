@@ -13,7 +13,9 @@ module.exports = merge([
     }
   },
 
-  parts.cleanPath(PATHS.build),
+  parts.cleanPaths(['build']),
+
+  parts.checkTypes(),
 
   parts.minJS(),
 
