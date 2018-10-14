@@ -3,10 +3,10 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 
 import Root from './containers/Root'
-import configureStore from './util/configureStore'
+import setupStore from './util/setupStore'
 
 const root = document.getElementById('root')
-const store = configureStore()
+const store = setupStore()
 
 if(root && store) {
   ReactDOM.render(<Root store={store} />, root)

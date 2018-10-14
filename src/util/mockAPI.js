@@ -1,6 +1,6 @@
 import { v4 } from 'uuid'
 
-const fakeDatabase = {
+const mockDatabase = {
   todos: [{
     id: v4(),
     text: 'hey',
@@ -25,13 +25,13 @@ export const addTodo = (text) =>
       text,
       completed: false
     }
-    fakeDatabase.todos.push(todo)
+    mockDatabase.todos.push(todo)
     return todo
   })
 
 export const toggleTodo = (id) =>
   delay(500).then(() => {
-    const todo = fakeDatabase.todos.find(t => t.id === id)
+    const todo = mockDatabase.todos.find(t => t.id === id)
     todo.completed = !todo.completed
     return todo
   })
@@ -43,11 +43,11 @@ export const fetchTodos = filter => delay(500).then(() => {
 
   switch(filter) {
     case 'all':
-      return fakeDatabase.todos
+      return mockDatabase.todos
     case 'active':
-      return fakeDatabase.todos.filter(t => !t.completed)
+      return mockDatabase.todos.filter(t => !t.completed)
     case 'completed':
-      return fakeDatabase.todos.filter(t => t.completed)
+      return mockDatabase.todos.filter(t => t.completed)
     default:
       throw new Error(`Unknown filter: ${filter}`)
   }

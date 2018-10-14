@@ -5,7 +5,7 @@ import { createLogger } from 'redux-logger'
 
 import todos from '../reducers'
 
-const configureStore = () => {
+const setupStore = () => {
   const middlewares = [thunk]
 
   if(process.env.NODE_ENV !== 'production') {
@@ -20,4 +20,4 @@ const configureStore = () => {
   )
 }
 
-export default configureStore
+export default setupStore

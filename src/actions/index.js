@@ -1,6 +1,6 @@
 import { normalize } from 'normalizr'
 
-import * as api from '../util/fakeAPI'
+import * as api from '../util/mockAPI'
 import * as schema from './schema'
 import { getIsFetching } from '../reducers'
 
