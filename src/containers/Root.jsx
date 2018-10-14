@@ -7,9 +7,8 @@ import type { Store } from 'redux'
 
 import NewThreadForm from '../containers/NewThreadForm'
 import NewReplyForm from '../containers/NewReplyForm'
-import NotFound from '../components/NotFound'
-import Page from '../components/Page'
-import RouteChange from '../components/RouteChange'
+import Page from '../containers/Page'
+import RouteChange from '../containers/RouteChange'
 import ThreadList from '../containers/ThreadList'
 import ThreadPage from '../containers/ThreadPage'
 import type { Action, Dispatch, State } from '../types'
@@ -25,14 +24,9 @@ const App = ({ store }: { store: Store<State, Action, Dispatch> }) => {
                 <ThreadList />
               </Page>
             )} />
-            <Route exact path="/:id" render={({ match }) => (
+            <Route path="/:id" render={({ match }) => (
               <Page Form={NewReplyForm}>
                 <ThreadPage id={match.params.id} />
-              </Page>
-            )} />
-            <Route render={() => (
-              <Page>
-                <NotFound />
               </Page>
             )} />
           </Switch>

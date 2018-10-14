@@ -1,6 +1,7 @@
 // @flow
 import fetch from 'cross-fetch'
 
+import HTTPErr from '../util/HTTPErr'
 import type { ReplyData, ThreadData } from '../types'
 
 let rootPath = '/api/'
@@ -16,9 +17,11 @@ export const getThreads = (id?: string) => {
     path += `/${id}`
   }
 
-  return fetch(path)
-    .then(res => res.json())
-    .catch(err => console.error('Fetch failed!'))
+  return fetch(path).then(res => {
+    if(!res.ok) throw new HTTPErr(res.statusText, res)
+
+    return res.json()
+  })
 }
 
 export const postReply = (id: string, data: ReplyData) => fetch(`${rootPath}thread/${id}/reply`, {
@@ -27,12 +30,10 @@ export const postReply = (id: string, data: ReplyData) => fetch(`${rootPath}thre
   body: JSON.stringify(data)
 })
   .then(res => res.json())
-  .catch(err => console.error('Fetch failed!'))
 
 export const postThread = (data: ThreadData) => fetch(`${rootPath}thread`, {
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify(data)
 })
-  .then(res =>  res.json())
-  .catch(err => console.error('Fetch failed!'))
+  .then(res => res.json())

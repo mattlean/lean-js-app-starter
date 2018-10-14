@@ -1,7 +1,9 @@
 // @flow
+import HTTPErr from '../util/HTTPErr'
 import type { Dispatch as ReduxDispatch } from 'redux'
 
 export type Action =
+  | Action_ClearErr
   | Action_CreateReplyRequest
   | Action_CreateReplySuccess
   | Action_CreateThreadRequest
@@ -9,6 +11,11 @@ export type Action =
   | Action_FetchThreadsRequest
   | Action_FetchThreadSuccess
   | Action_FetchThreadsSuccess
+  | Action_SetErr
+
+export type Action_ClearErr = {
+  type: 'CLEAR_ERR'
+}
 
 export type Action_CreateReplyRequest = {
   type: 'CREATE_REPLY_REQUEST'
@@ -42,6 +49,11 @@ export type Action_FetchThreadsSuccess = {
   res: NormalizedRes
 }
 
+export type Action_SetErr = {
+  type: 'SET_ERR',
+  err: HTTPErr
+}
+
 export type ActionCreator_FetchThreads = () => ThunkAction
 
 export type Dispatch = ReduxDispatch<Action> & (action: ThunkAction) => any
@@ -69,12 +81,16 @@ export type ReplyData = {|
 
 export type State = {|
   +byId: State_ById,
+  +err: State_Err,
+  +isFetching: boolean,
   +list: State_List
 |} | {||}
 
 export type State_ById = {
   +[string]: Thread
 } | {||}
+
+export type State_Err = HTTPErr | {||}
 
 export type State_List = Array<string>
 

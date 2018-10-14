@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 
 import Loading from '../components/Loading'
 import Threads from '../components/Threads'
-import { fetchThreads } from '../actions'
+import { fetchThreads, setErr } from '../actions'
 import { getThreads } from '../reducers'
 import { setDocTitle } from '../util'
 
@@ -13,6 +13,9 @@ class ThreadList extends Component {
   componentDidMount() {
     setDocTitle()
     this.props.fetchThreads()
+      .catch(err => {
+        this.props.setErr(err)
+      })
   }
 
   render() {
@@ -44,6 +47,9 @@ const mapStateToProps = state => ({
   threads: getThreads(state)
 })
 
-const mapDispatchToProps = dispatch => bindActionCreators({ fetchThreads }, dispatch)
+const mapDispatchToProps = dispatch => bindActionCreators({
+  fetchThreads,
+  setErr
+}, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(ThreadList)

@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 import Loading from '../components/Loading'
 import Nav from '../components/Nav'
 import Threads from '../components/Threads'
-import { fetchThreads } from '../actions'
+import { fetchThreads, setErr } from '../actions'
 import { getThread } from '../reducers'
 import { setDocTitle } from '../util'
 
@@ -16,6 +16,9 @@ class ThreadPage extends Component {
       this.props.fetchThreads(this.props.id)
         .then(thread => {
           setDocTitle(thread.subject || `Thread ${thread._id}`)
+        })
+        .catch(err => {
+          this.props.setErr(err)
         })
     } else {
       setDocTitle(this.props.thread.subject || `Thread ${this.props.thread._id}`)
@@ -42,6 +45,7 @@ ThreadPage.propTypes = {
   fetchThreads: PropTypes.func.isRequired,
   id: PropTypes.string.isRequired,
   isFetching: PropTypes.bool.isRequired,
+  setErr: PropTypes.func.isRequired,
   thread: PropTypes.object
 }
 
@@ -50,6 +54,6 @@ const mapStateToProps = (state, ownProps) => ({
   thread: getThread(state, ownProps.id)
 })
 
-const mapDispatchToProps = dispatch => bindActionCreators({ fetchThreads }, dispatch)
+const mapDispatchToProps = dispatch => bindActionCreators({ fetchThreads, setErr }, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(ThreadPage)

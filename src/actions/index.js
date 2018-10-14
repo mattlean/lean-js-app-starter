@@ -1,9 +1,12 @@
 // @flow
 import { normalize } from 'normalizr'
 
+import HTTPErr from '../util/HTTPErr'
 import { getThreads, postReply, postThread } from '../util/api'
 import { Thread, Threads } from '../types/schema'
-import type { Dispatch, ThreadData, ReplyData, ThunkAction } from '../types'
+import type { Action_ClearErr, Dispatch, ThreadData, ReplyData, ThunkAction } from '../types'
+
+export const clearErr = (): Action_ClearErr => ({ type: 'CLEAR_ERR' })
 
 export const createReply = (id: string, data: ReplyData): ThunkAction => (dispatch: Dispatch) => {
   dispatch({ type: 'CREATE_REPLY_REQUEST' })
@@ -51,5 +54,12 @@ export const fetchThreads = (id?: string): ThunkAction => (dispatch: Dispatch) =
     })
 
     return res
+  })
+}
+
+export const setErr = (err: HTTPErr): ThunkAction => (dispatch: Dispatch) => {
+  dispatch({
+    type: 'SET_ERR',
+    err
   })
 }
