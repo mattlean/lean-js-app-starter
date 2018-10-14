@@ -7,7 +7,7 @@ const settings = {
 
 switch(process.env.NODE_ENV) {
   case 'test':
-    settings.api = 'http://localhost:8080/api/'
+    settings.api = 'http://localhost:9001/'
     break
 }
 
