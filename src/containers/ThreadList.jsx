@@ -14,7 +14,7 @@ class ThreadList extends Component {
     setDocTitle()
     this.props.fetchThreads()
       .catch(err => {
-        if(Array.isArray(this.props.threads) && this.props.threads.length === 0) {
+        if(!this.props.threads || (Array.isArray(this.props.threads) && this.props.threads.length === 0)) {
           this.props.setErr('read', err)
         } else {
           this.props.endFetch()
