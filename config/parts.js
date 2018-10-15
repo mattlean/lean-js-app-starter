@@ -21,7 +21,7 @@ exports.checkTypes = () => ({
   plugins: [new FlowWebpackPlugin()]
 })
 
-// Clean path
+// Clean paths
 exports.cleanPaths = paths => ({
   plugins: [new CleanWebpackPlugin(
     paths,
