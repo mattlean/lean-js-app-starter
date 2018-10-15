@@ -1,5 +1,3 @@
-// @flow
-
 require('source-map-support').install()
 
 const bodyParser = require('body-parser')

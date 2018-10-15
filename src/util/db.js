@@ -5,11 +5,10 @@ const mongoose = require('mongoose')
 const logger = require('./logger')
 
 const db = {
-  connect(uri: string, successMsg?: string) {
-    if(!successMsg) successMsg = `Connected to database: ${uri}`
-
+  connect(uri: string) {
     return mongoose.connect(uri, { useNewUrlParser: true })
       .then(() => {
+        const successMsg = `Connected to database: ${uri}`
         logger.info(successMsg)
         return successMsg
       })

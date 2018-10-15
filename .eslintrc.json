@@ -5,6 +5,7 @@
     },
     "extends": [
         "eslint:recommended",
+        "plugin:flowtype/recommended",
         "plugin:jest/recommended"
     ],
     "parser": "babel-eslint",
@@ -18,7 +19,8 @@
     "rules": {
         "indent": [
             "error",
-            2
+            2,
+            { "SwitchCase": 1 }
         ],
         "linebreak-style": [
             "error",

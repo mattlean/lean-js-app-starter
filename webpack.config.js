@@ -1,34 +1,35 @@
-const CleanWebpackPlugin = require('clean-webpack-plugin')
-const path = require('path')
-const nodeExternals = require('webpack-node-externals')
+const merge = require('webpack-merge')
 
-const PATHS = { build: path.resolve(__dirname, 'build') }
+const developmentConfig = require('./config/development')
+const parts = require('./config/parts')
+const PATHS = require('./PATHS')
+const productionConfig = require('./config/production')
 
-module.exports = {
-  devtool: 'source-map',
+const commonConfig = merge([
+  {
+    entry: `${PATHS.src}/main.js`,
 
-  entry: './src/main.js',
+    output: {
+      filename: 'server.js',
+      path: PATHS.build
+    },
 
-  externals: [ nodeExternals() ],
+    resolve: { extensions: ['.js', '.json'] },
 
-  output: {
-    filename: 'server.js',
-    path: PATHS.build
+    target: 'node'
   },
 
-  module: {
-    rules: [
-      {
-        loader: 'babel-loader',
-        exclude: /node_modules/,
-        test: /\.js$/
-      }
-    ]
-  },
+  parts.setExternals(),
 
-  mode: process.env.NODE_ENV,
+  parts.loadJS({ include: PATHS.src }),
 
-  plugins: [new CleanWebpackPlugin([PATHS.build])],
+  parts.cleanPaths(['build'])
+])
 
-  target: 'node'
+module.exports = mode => {
+  if(mode === 'production') {
+    return merge(commonConfig, productionConfig, { mode })
+  }
+
+  return merge(commonConfig, developmentConfig, { mode })
 }

@@ -6,11 +6,11 @@ const err = {
   genErr(status?: number, message?: string) {
     if(!message) {
       switch(status) {
-      case 404:
-        message = 'Not found'
-        break
-      default:
-        message = 'Error'
+        case 404:
+          message = 'Not found'
+          break
+        default:
+          message = 'Error'
       }
     }
 
