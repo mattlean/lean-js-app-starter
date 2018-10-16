@@ -43,7 +43,6 @@
     "helmet": "^3.13.0",
     "moment": "^2.22.2",
     "mongoose": "^5.2.10",
-    "winston": "^3.0.0",
     "normalizr": "^3.3.0",
     "prop-types": "^15.6.2",
     "react": "^16.5.2",
@@ -53,7 +52,8 @@
     "react-router-dom": "^4.3.1",
     "redux": "^4.0.1",
     "redux-logger": "^3.0.6",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "winston": "^3.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
@@ -96,20 +96,20 @@
     "purify-css": "^1.2.5",
     "purifycss-webpack": "^0.7.0",
     "react-test-renderer": "^16.5.0",
+    "regenerator-runtime": "^0.12.1",
     "sass-loader": "^7.1.0",
+    "source-map-support": "^0.5.9",
     "style-loader": "^0.23.0",
     "stylelint": "^9.5.0",
     "stylelint-config-recommended": "^2.1.0",
+    "superagent": "^3.8.3",
+    "supertest": "^3.1.0",
     "uglifyjs-webpack-plugin": "^2.0.1",
     "url-loader": "^1.1.1",
     "webpack": "^4.17.1",
     "webpack-cli": "^3.1.0",
     "webpack-dev-server": "^3.1.6",
     "webpack-merge": "^4.1.4",
-    "regenerator-runtime": "^0.12.1",
-    "source-map-support": "^0.5.9",
-    "superagent": "^3.8.3",
-    "supertest": "^3.1.0",
     "webpack-node-externals": "^1.7.2"
   }
 }
