@@ -4,7 +4,7 @@
   "description": "",
   "main": "src/server/main.js",
   "scripts": {
-    "build": "webpack --env production",
+    "build": "npm run front:build && npm run back:build",
     "flow": "flow",
     "flow-typed": "flow-typed",
     "lint": "eslint --cache --ext .js,.jsx src/",
@@ -21,7 +21,8 @@
     "back:build:dev": "webpack --env development --config config/server/index.js",
     "back:build:stats": "webpack --env production --config config/server/index.js --json > stats.json",
     "back:start": "node build/server/server.js",
-    "back:start:dev": "nodemon -e js,jsx,json --watch webpack.config.js --watch config --watch src --exec \"npm run back:build:dev && npm run back:start\"",
+    "back:start:ssr:dev": "nodemon -e js,jsx,json --watch webpack.config.js --watch config --watch src --exec \"npm run front:build && npm run back:build:dev && npm run back:start\"",
+    "back:start:api:dev": "nodemon -e js,jsx,json --watch webpack.config.js --watch config --watch src --exec \"npm run back:build:dev && npm run back:start\"",
     "back:test": "jest src/server",
     "back:test:watch": "jest src/server --watch"
   },
