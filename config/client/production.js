@@ -39,6 +39,8 @@ module.exports = merge([
 
   parts.genSourceMaps({ type: 'source-map' }),
 
+  parts.genAssetList({ format: 'object', key: 'name' }),
+
   {
     optimization: {
       splitChunks: {

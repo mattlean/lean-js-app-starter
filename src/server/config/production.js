@@ -6,7 +6,7 @@ if(process.env.NODE_ENV === 'production') {
   if(!process.env.CLIENT) throw new Error('CLIENT must be explicitly defined when running in production mode')
 }
 
-module.exports = {
+export default {
   PORT: process.env.PORT,
   DB_URI: process.env.DB_URI,
   CLIENT: process.env.CLIENT

@@ -21,7 +21,7 @@
     "back:build:dev": "webpack --env development --config config/server/index.js",
     "back:build:stats": "webpack --env production --config config/server/index.js --json > stats.json",
     "back:start": "node build/server/server.js",
-    "back:start:dev": "nodemon --watch webpack.config.js --watch src --exec \"NODE_ENV=test npm run back:test && npm run back:build:dev && npm run back:start\"",
+    "back:start:dev": "nodemon -e js,jsx,json --watch webpack.config.js --watch config --watch src --exec \"npm run back:build:dev && npm run back:start\"",
     "back:test": "jest src/server",
     "back:test:watch": "jest src/server --watch"
   },
@@ -62,6 +62,7 @@
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-flow": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
+    "asset-list-webpack-plugin": "^0.2.0",
     "autoprefixer": "^9.1.5",
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^9.0.0",
@@ -106,9 +107,9 @@
     "supertest": "^3.1.0",
     "uglifyjs-webpack-plugin": "^2.0.1",
     "url-loader": "^1.1.1",
-    "webpack": "^4.17.1",
-    "webpack-cli": "^3.1.0",
-    "webpack-dev-server": "^3.1.6",
+    "webpack": "^4.20.2",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.9",
     "webpack-merge": "^4.1.4",
     "webpack-node-externals": "^1.7.2"
   }

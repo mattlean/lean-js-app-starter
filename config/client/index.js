@@ -14,7 +14,9 @@ const commonConfig = merge([
 
   parts.loadJS({ include: PATHS.src }),
 
-  parts.loadHTML({ template: `${PATHS.src}/index.html` })
+  parts.loadHTML({ template: `${PATHS.src}/index.html` }),
+
+  parts.setFreeVariable('__isBrowser__', true)
 ])
 
 module.exports = mode => {

@@ -1,8 +1,8 @@
-const request = require('supertest')
+import request from 'supertest'
 
-const app = require('../../app')
-const { db, test: testUtil } = require('../../util')
-const { DB_URI } = require('../../config')
+import app from '../../../app'
+import { db, test as testUtil } from '../../../util'
+import { DB_URI } from '../../../config'
 
 beforeAll(() => {
   testUtil.clearDBCollection('thread')
@@ -15,6 +15,7 @@ afterAll(() => {
 })
 
 describe('Thread routes', () => {
+  const endpoint = '/api/thread'
   let thread
   const threadData = {
     subject: 'Test Thread',
@@ -24,8 +25,10 @@ describe('Thread routes', () => {
   const secondReplyData = { comment: 'Second Test Reply Comment' }
 
   it('should create a thread', () => {
+    expect.assertions(4)
+
     return request(app)
-      .post('/thread')
+      .post(endpoint)
       .send(threadData)
       .then(res => {
         expect(res.statusCode).toBe(200)
@@ -37,8 +40,10 @@ describe('Thread routes', () => {
   })
 
   it('should list all threads', () => {
+    expect.assertions(5)
+
     return request(app)
-      .get('/thread')
+      .get(endpoint)
       .then(res => {
         expect(res.statusCode).toBe(200)
         expect(res.body).toBeInstanceOf(Array)
@@ -49,8 +54,10 @@ describe('Thread routes', () => {
   })
 
   it('should read specific thread', () => {
+    expect.assertions(4)
+
     return request(app)
-      .get(`/thread/${thread._id}`)
+      .get(`${endpoint}/${thread._id}`)
       .then(res => {
         expect(res.statusCode).toBe(200)
         expect(res.body.subject).toBe(threadData.subject)
@@ -60,8 +67,10 @@ describe('Thread routes', () => {
   })
 
   it('should create first reply', () => {
+    expect.assertions(2)
+
     return request(app)
-      .post(`/thread/${thread._id}/reply`)
+      .post(`${endpoint}/${thread._id}/reply`)
       .send(firstReplyData)
       .then(res => {
         expect(res.statusCode).toBe(200)
@@ -70,8 +79,10 @@ describe('Thread routes', () => {
   })
 
   it('should create second reply and maintain first reply', () => {
+    expect.assertions(3)
+
     return request(app)
-      .post(`/thread/${thread._id}/reply`)
+      .post(`${endpoint}/${thread._id}/reply`)
       .send(secondReplyData)
       .then(res => {
         expect(res.statusCode).toBe(200)

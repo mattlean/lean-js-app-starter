@@ -1,17 +1,11 @@
 // @flow
 
-const db = require('./db')
-const err = require('./err')
-const logger = require('./logger')
-const model = require('./model')
-const test = require('./test')
+export { default as db } from './db'
 
-const util = {
-  db,
-  err,
-  logger,
-  model,
-  test
-}
+export { default as err } from './err'
 
-module.exports = util
+export { default as logger } from './logger'
+
+export { default as model } from './model'
+
+export { default as test } from './test'

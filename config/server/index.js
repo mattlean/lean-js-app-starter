@@ -2,19 +2,19 @@ const merge = require('webpack-merge')
 
 const developmentConfig = require('./development')
 const parts = require('../parts')
-const PATHS = require('../../PATHS').server
+const PATHS = require('../../PATHS')
 const productionConfig = require('./production')
 
 const commonConfig = merge([
   {
-    entry: `${PATHS.src}/main.js`,
+    entry: `${PATHS.server.src}/main.js`,
 
     output: {
       filename: 'server.js',
-      path: PATHS.build
+      path: PATHS.server.build
     },
 
-    resolve: { extensions: ['.js', '.json'] },
+    resolve: { extensions: ['.js', '.jsx', '.json'] },
 
     target: 'node'
   },
@@ -23,7 +23,9 @@ const commonConfig = merge([
 
   parts.loadJS({ include: PATHS.src }),
 
-  parts.cleanPaths(['build/server'])
+  parts.cleanPaths(['build/server']),
+
+  parts.setFreeVariable('__isBrowser__', false)
 ])
 
 module.exports = mode => {

@@ -1,8 +1,7 @@
 // @flow
+import mongoose from 'mongoose'
 
-const mongoose = require('mongoose')
-
-const Reply = require('./reply')
+import Reply from './reply'
 
 const schemaType = 'Thread'
 const schema = new mongoose.Schema(
@@ -29,6 +28,8 @@ const schema = new mongoose.Schema(
     toObject: {
       transform: (doc, ret) => {
         delete ret.__v
+        ret._id = ret._id.toString()
+        ret.createdAt = ret.createdAt.toJSON()
         ret.type = schemaType
         return ret
       }
@@ -36,4 +37,4 @@ const schema = new mongoose.Schema(
   }
 )
 
-module.exports = mongoose.model(schemaType, schema)
+export default mongoose.model(schemaType, schema)

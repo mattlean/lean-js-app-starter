@@ -1,10 +1,11 @@
-const express = require('express')
+import Thread from '../../models/thread'
+import { err, model } from '../../util'
+import { Router } from 'express'
 
-const Thread = require('../models/thread')
-const { genErr } = require('../util').err
-const { clearReadOnlyProps } = require('../util').model
+const { clearReadOnlyProps } = model
+const { genErr } = err
 
-const router = express.Router()
+const router = Router()
 
 // Create thread
 router.post('/', (req, res, next) => {
@@ -50,4 +51,4 @@ router.post('/:id/reply', (req, res, next) => {
     .catch(err => next(err))
 })
 
-module.exports = router
+export default router

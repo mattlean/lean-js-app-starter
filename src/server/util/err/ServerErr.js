@@ -14,4 +14,4 @@ class ServerErr extends Error {
   }
 }
 
-module.exports = ServerErr
+export default ServerErr

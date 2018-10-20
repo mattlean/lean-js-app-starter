@@ -1,7 +1,8 @@
 // @flow
 
-const { DB_URI, PORT } = require('./config')
-const { db, logger } = require('./util')
+import app from './app'
+import { db, logger } from './util'
+import { DB_URI, PORT } from './config'
 
 if(process.env.NODE_ENV) {
   logger.info(`Environment: ${process.env.NODE_ENV}`)
@@ -11,8 +12,6 @@ if(process.env.NODE_ENV) {
 
 db.connect(DB_URI)
   .then(() => {
-    const app = require('./app')
-
     app.listen(PORT, () => logger.info(`Server listening on port ${PORT}!`))
   })
   .catch(err => logger.error(err))

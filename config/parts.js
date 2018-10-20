@@ -1,3 +1,4 @@
+const AssetListWebpackPlugin = require('asset-list-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const cssnano = require('cssnano')
 const FlowWebpackPlugin = require('flow-webpack-plugin')
@@ -32,7 +33,7 @@ exports.cleanPaths = paths => ({
 
 // Extract styles into its own CSS file
 exports.extractStyles = ({ exclude, include, use = [] }) => {
-  const plugin = new MiniCssExtractPlugin({ filename: '[name].[contenthash:4].css'})
+  const plugin = new MiniCssExtractPlugin({ filename: 'style.[name].[contenthash:4].css'})
 
   return {
     module: {
@@ -51,6 +52,11 @@ exports.extractStyles = ({ exclude, include, use = [] }) => {
 
 // Create source maps
 exports.genSourceMaps = ({ type }) => ({ devtool: type })
+
+// Create asset list
+exports.genAssetList = ({ format, key, name }) => ({
+  plugins: [ new AssetListWebpackPlugin({ format, key, name }) ]
+})
 
 // Load images
 exports.loadImgs = ({ exclude, include, options } = {}) => ({
@@ -130,6 +136,14 @@ exports.minJS = () => ({
 exports.purifyCSS = ({ paths }) => ({
   plugins: [new PurifyCSSPlugin({ paths })]
 })
+
+// Set free variable
+exports.setFreeVariable = (key, val) => {
+  const env = {}
+  env[key] = JSON.stringify(val)
+
+  return { plugins: [new webpack.DefinePlugin(env)] }
+}
 
 // Ignore node_modules dependencies in bundling
 exports.setExternals = () => ({ externals: [ nodeExternals() ] })

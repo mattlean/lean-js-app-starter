@@ -1,6 +1,6 @@
 // @flow
 
-const ServerErr = require('./ServerErr')
+import ServerErr from './ServerErr'
 
 const err = {
   genErr(status?: number, message?: string) {
@@ -18,4 +18,4 @@ const err = {
   }
 }
 
-module.exports = err
+export default err

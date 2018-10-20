@@ -1,6 +1,5 @@
 // @flow
-
-const moment = require('moment')
+import moment from 'moment'
 const { createLogger, format, transports } = require('winston')
 
 const { printf } = format
@@ -13,4 +12,4 @@ const logger = createLogger({
   transports: [ new transports.Console() ]
 })
 
-module.exports = logger
+export default logger

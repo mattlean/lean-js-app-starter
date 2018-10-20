@@ -1,19 +1,21 @@
-require('source-map-support').install()
+import bodyParser from 'body-parser'
+import compression from 'compression'
+import express from 'express'
+import helmet from 'helmet'
+import 'source-map-support/register'
 
-const bodyParser = require('body-parser')
-const compression = require('compression')
-const express = require('express')
-const helmet = require('helmet')
-
-const { CLIENT } = require('./config')
-const { logger } = require('./util')
-const routeThread = require('./routes/thread')
+import routePages from './routes/pages'
+import routeAPIThread from './routes/api/thread'
+import { CLIENT } from './config'
+import { logger } from './util'
 
 const app = express()
 
 app.use(helmet())
 app.use(compression())
 app.use(bodyParser.json())
+
+app.use('/static', express.static('build/client'))
 
 // logging middleware
 if(process.env.NODE_ENV === 'development') {
@@ -36,9 +38,9 @@ if(CLIENT) {
   })
 }
 
-app.get('/', (req, res) => res.send('*chan API'))
+app.use('/', routePages)
 
-app.use('/thread', routeThread)
+app.use('/api/thread', routeAPIThread)
 
 // 404
 app.use((req, res, next) => res.status(404).send('404 Not Found')) // eslint-disable-line no-unused-vars
@@ -59,4 +61,4 @@ app.use((err, req, res, next) => {  // eslint-disable-line no-unused-vars
   res.status(status).send(message)
 })
 
-module.exports = app
+export default app

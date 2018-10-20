@@ -9,8 +9,14 @@ let config = {
 if(process.env.NODE_ENV) {
   config = {
     ...config,
-    ...require(`./${process.env.NODE_ENV}`)
+    ...require(`./${process.env.NODE_ENV}`).default
   }
 }
 
-module.exports = config
+export default config
+
+export const DB_URI = config.DB_URI
+
+export const CLIENT = config.CLIENT
+
+export const PORT = config.PORT
