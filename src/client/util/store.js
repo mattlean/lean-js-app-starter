@@ -4,7 +4,15 @@ import { createLogger } from 'redux-logger'
 
 import rootReducer from '../../client/reducers'
 
-const setupStore = (preloadedState) => {
+export const isServerRendered = () => {
+  if(window.__PRELOADED_STATE__) {
+    delete window.__PRELOADED_STATE__
+    return true
+  }
+  return false
+}
+
+export const setupStore = (preloadedState) => {
   const middlewares = [thunk]
 
   let composeEnhancers
@@ -25,5 +33,3 @@ const setupStore = (preloadedState) => {
   }
   return createStore(rootReducer, applyMiddleware(...middlewares))
 }
-
-export default setupStore

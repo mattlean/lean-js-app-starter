@@ -7,9 +7,9 @@ import { StaticRouter } from 'react-router-dom'
 
 import clientAssets from '../../../build/client/assets'
 import Root from '../../client/containers/Root'
-import setupStore from '../../client/util/setupStore'
 import Thread from '../models/thread'
 import { err, model } from '../util'
+import { setupStore } from '../../client/util/store'
 import { Thread as ThreadSchema, Threads } from '../../client/types/schema'
 
 const { docToObject } = model

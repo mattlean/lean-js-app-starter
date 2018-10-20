@@ -7,19 +7,23 @@ import Loading from '../components/Loading'
 import Threads from '../components/Threads'
 import { endFetch, fetchThreads, setErr } from '../actions'
 import { getThreads } from '../reducers'
+import { isServerRendered } from '../util/store'
 import { setDocTitle } from '../util'
 
 class ThreadList extends Component {
   componentDidMount() {
     setDocTitle()
-    this.props.fetchThreads()
-      .catch(err => {
-        if(!this.props.threads || (Array.isArray(this.props.threads) && this.props.threads.length === 0)) {
-          this.props.setErr('read', err)
-        } else {
-          this.props.endFetch()
-        }
-      })
+
+    if(!isServerRendered()) {
+      this.props.fetchThreads()
+        .catch(err => {
+          if(!this.props.threads || (Array.isArray(this.props.threads) && this.props.threads.length === 0)) {
+            this.props.setErr('read', err)
+          } else {
+            this.props.endFetch()
+          }
+        })
+    }
   }
 
   render() {

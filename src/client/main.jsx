@@ -5,14 +5,13 @@ import { hydrate } from 'react-dom'
 import { Provider } from 'react-redux'
 
 import Root from './containers/Root'
-import setupStore from './util/setupStore'
+import { setupStore } from './util/store'
 import './main.scss'
 
 const root = document.getElementById('root')
 
 if(root) {
   const preloadedState = window.__PRELOADED_STATE__
-  delete window.__PRELOADED_STATE__
 
   const store = setupStore(preloadedState)
   hydrate(

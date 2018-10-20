@@ -8,6 +8,7 @@ import Nav from '../components/Nav'
 import Threads from '../components/Threads'
 import { endFetch, fetchThreads, setErr } from '../actions'
 import { getThread } from '../reducers'
+import { isServerRendered } from '../util/store'
 import { setDocTitle } from '../util'
 
 class ThreadPage extends Component {
@@ -16,17 +17,19 @@ class ThreadPage extends Component {
       setDocTitle(this.props.thread.subject || `Thread ${this.props.thread._id}`)
     }
 
-    this.props.fetchThreads(this.props.id)
-      .then(thread => {
-        setDocTitle(thread.subject || `Thread ${thread._id}`)
-      })
-      .catch(err => {
-        if(!this.props.thread) {
-          this.props.setErr('read', err)
-        } else {
-          this.props.endFetch()
-        }
-      })
+    if(!isServerRendered()) {
+      this.props.fetchThreads(this.props.id)
+        .then(thread => {
+          setDocTitle(thread.subject || `Thread ${thread._id}`)
+        })
+        .catch(err => {
+          if(!this.props.thread) {
+            this.props.setErr('read', err)
+          } else {
+            this.props.endFetch()
+          }
+        })
+    }
   }
 
   render() {
