@@ -13,7 +13,12 @@ router.post('/', (req, res, next) => {
   if(req.body.replies) delete req.body.replies
 
   Thread.create(req.body)
-    .then(thread => res.json(thread))
+    .then(thread => {
+      if(req.headers['content-type'] === 'application/x-www-form-urlencoded') {
+        return res.redirect(`/${thread._id}`)
+      }
+      return res.json(thread)
+    })
     .catch(err => next(err))
 })
 
@@ -44,10 +49,14 @@ router.post('/:id/reply', (req, res, next) => {
       if(!thread) throw genErr(404)
 
       thread.replies.push({comment: req.body.comment})
-
       return thread.save()
     })
-    .then(thread => res.json(thread))
+    .then(thread => {
+      if(req.headers['content-type'] === 'application/x-www-form-urlencoded') {
+        return res.redirect(`/${thread._id}`)
+      }
+      return res.json(thread)
+    })
     .catch(err => next(err))
 })
 

@@ -14,6 +14,7 @@ const app = express()
 app.use(helmet())
 app.use(compression())
 app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }))
 
 app.use('/static', express.static('build/client'))
 

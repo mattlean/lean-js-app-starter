@@ -43,7 +43,6 @@ const renderFullPage = (html, preloadedState) => {
       </head>
       <body>
         <div id="root">${html}</div>
-        <noscript>You must enable JavaScript to use this application!</noscript>
         ${preloadedState}
         <script type="text/javascript" src="/static/${clientAssets.manifest[0].filename}"></script>
         <script type="text/javascript" src="/static/${clientAssets.vendor[0].filename}"></script>
