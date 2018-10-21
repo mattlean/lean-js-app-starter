@@ -32,7 +32,7 @@ You can find some example browser apps in the following branches:
 - *`todolist-frontend`*: A todo list app. Connects with mock backend API and can be run standalone.
 - *`starchan-frontend`*: An anonymous text board called *chan (pronounced star-chan). Requires connection with backend API on *`starchan-backend`*.
 
-*Click here for more information and guides on building browser apps with Lean Web App Starter.*
+[Click here for documentation on building browser apps with Lean Web App Starter.](docs/browser/README.md)
 
 #### Node.js
 ##### Downloads
@@ -47,7 +47,7 @@ You can find example Node.js apps in the following branches:
 - *`starchan-backend`*: An API for an anonymous text board. Optionally connects with the *chan browser app on *`starchan-frontend`*.
 - *`starchan-ssr`*: A version of the *chan backend app that supports server-side rendering of React components. Can be run standalone.
 
-*Click here for more information and guides on building Node.js apps with Lean Web App Starter.*
+[Click here for documentation on building Node.js apps with Lean Web App Starter.](docs/nodejs/README.md)
 
 ## License
 This open source project is licensed under the [MIT License](https://choosealicense.com/licenses/mit).
