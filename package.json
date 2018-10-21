@@ -5,7 +5,9 @@
   "main": "src/main.jsx",
   "scripts": {
     "build": "webpack --env production",
+    "build:debug": "node --inspect-brk node_modules/.bin/webpack --env production",
     "build:dev": "webpack --env development",
+    "build:dev:debug": "node --inspect-brk node_modules/.bin/webpack --env development",
     "build:stats": "webpack --env production --json > stats.json",
     "flow": "flow",
     "flow-typed": "flow-typed",
