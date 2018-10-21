@@ -23,8 +23,10 @@ All environments use these technologies when relevant:
 
 ### Environments
 #### Browser
+##### Download
 If you're looking to build an app for a web browser, you can start with the *latest `browser` release*.
 
+#### Examples
 You can find some example browser apps in the following branches:
 
 - *`todolist-frontend`*: A todo list app. Connects with mock backend API and can be run standalone.
@@ -33,11 +35,13 @@ You can find some example browser apps in the following branches:
 *Click here for more information and guides on building browser apps with Lean Web App Starter.*
 
 #### Node.js
+##### Downloads
 If you're looking to build a Node.js app like a web server, you have two options:
 
 - *`nodejs`*: A simple Express, MongoDB, and Mongoose app starter project
 - *`nodejs-ssr`*: An Express, MongoDB, and Mongoose app that supports server-side rendering of React components
 
+##### Examples
 You can find example Node.js apps in the following branches:
 
 - *`starchan-backend`*: An API for an anonymous text board. Optionally connects with the *chan browser app on *`starchan-frontend`*.
