@@ -1,8 +1,19 @@
 const merge = require('webpack-merge')
 
 const parts = require('../parts')
+const PATHS = require('../../PATHS').client
 
 module.exports = merge([
+  {
+    output: {
+      chunkFilename: '[name].js',
+      filename: '[name].js',
+      path: PATHS.build
+    }
+  },
+
+  parts.cleanPaths(['build/client']),
+
   parts.setupDevServer({
     host: process.env.HOST,
     port: process.env.PORT,
@@ -20,5 +31,7 @@ module.exports = merge([
 
   parts.loadImgs(),
 
-  parts.genSourceMaps({ type: 'cheap-module-eval-source-map' })
+  parts.genSourceMaps({ type: 'cheap-module-eval-source-map' }),
+
+  parts.genAssetList({ format: 'object', key: 'name' })
 ])
