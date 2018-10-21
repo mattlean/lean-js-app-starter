@@ -29,11 +29,6 @@ const commonConfig = merge([
 module.exports = mode => {
   if(mode === 'production') {
     return merge(commonConfig, productionConfig, { mode })
-  } else if (mode === 'debug') {
-    /* eslint-disable */
-    console.log('webpack config debug started...');
-    debugger;
-    /* eslint-enable */
   }
 
   return merge(commonConfig, developmentConfig, { mode })
