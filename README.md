@@ -29,8 +29,8 @@ If you're looking to build an app for a web browser, you can start with the *lat
 #### Examples
 You can find some example browser apps in the following branches:
 
-- *`todolist-frontend`*: A todo list app. Connects with mock backend API and can be run standalone.
-- *`starchan-frontend`*: An anonymous text board called *chan (pronounced star-chan). Requires connection with backend API on *`starchan-backend`*.
+- [`todolist-frontend`](https://github.com/IsaacLean/lean-web-app-starter/tree/todolist-frontend): A todo list app. Connects with mock backend API and can be run standalone.
+- [`starchan-frontend`](https://github.com/IsaacLean/lean-web-app-starter/tree/starchan-frontend): An anonymous text board called *chan (pronounced star-chan). Requires connection with backend API on [`starchan-backend`](https://github.com/IsaacLean/lean-web-app-starter/tree/starchan-backend).
 
 [Click here for documentation on building browser apps with Lean Web App Starter.](docs/browser/README.md)
 
@@ -44,8 +44,8 @@ If you're looking to build a Node.js app like a web server, you have two options
 ##### Examples
 You can find example Node.js apps in the following branches:
 
-- *`starchan-backend`*: An API for an anonymous text board. Optionally connects with the *chan browser app on *`starchan-frontend`*.
-- *`starchan-ssr`*: A version of the *chan backend app that supports server-side rendering of React components. Can be run standalone.
+- [`starchan-backend`](https://github.com/IsaacLean/lean-web-app-starter/tree/starchan-backend): An API for an anonymous text board. Optionally connects with the *chan browser app on [`starchan-frontend`](https://github.com/IsaacLean/lean-web-app-starter/tree/starchan-frontend).
+- [`starchan-ssr`](https://github.com/IsaacLean/lean-web-app-starter/tree/starchan-ssr): A version of the *chan backend app that supports server-side rendering of React components. Can be run standalone.
 
 [Click here for documentation on building Node.js apps with Lean Web App Starter.](docs/nodejs/README.md)
 
