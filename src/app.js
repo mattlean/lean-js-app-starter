@@ -5,9 +5,9 @@ const compression = require('compression')
 const express = require('express')
 const helmet = require('helmet')
 
+const routeThread = require('./routes/thread')
 const { CLIENT } = require('./config')
 const { logger } = require('./util')
-const routeThread = require('./routes/thread')
 
 const app = express()
 

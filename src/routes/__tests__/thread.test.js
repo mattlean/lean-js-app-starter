@@ -15,6 +15,7 @@ afterAll(() => {
 })
 
 describe('Thread routes', () => {
+  const endpoint = '/thread'
   let thread
   const threadData = {
     subject: 'Test Thread',
@@ -25,7 +26,7 @@ describe('Thread routes', () => {
 
   it('should create a thread', () => {
     return request(app)
-      .post('/thread')
+      .post(endpoint)
       .send(threadData)
       .then(res => {
         expect(res.statusCode).toBe(200)
@@ -38,7 +39,7 @@ describe('Thread routes', () => {
 
   it('should list all threads', () => {
     return request(app)
-      .get('/thread')
+      .get(endpoint)
       .then(res => {
         expect(res.statusCode).toBe(200)
         expect(res.body).toBeInstanceOf(Array)
@@ -50,7 +51,7 @@ describe('Thread routes', () => {
 
   it('should read specific thread', () => {
     return request(app)
-      .get(`/thread/${thread._id}`)
+      .get(`${endpoint}/${thread._id}`)
       .then(res => {
         expect(res.statusCode).toBe(200)
         expect(res.body.subject).toBe(threadData.subject)
@@ -61,7 +62,7 @@ describe('Thread routes', () => {
 
   it('should create first reply', () => {
     return request(app)
-      .post(`/thread/${thread._id}/reply`)
+      .post(`${endpoint}/${thread._id}/reply`)
       .send(firstReplyData)
       .then(res => {
         expect(res.statusCode).toBe(200)
@@ -71,7 +72,7 @@ describe('Thread routes', () => {
 
   it('should create second reply and maintain first reply', () => {
     return request(app)
-      .post(`/thread/${thread._id}/reply`)
+      .post(`${endpoint}/${thread._id}/reply`)
       .send(secondReplyData)
       .then(res => {
         expect(res.statusCode).toBe(200)

@@ -11,7 +11,7 @@
     "flow-typed": "flow-typed",
     "lint": "eslint --cache --ext .js src/",
     "start": "node build/server.js",
-    "start:dev": "nodemon --watch webpack.config.js --watch config --watch src --exec \"NODE_ENV=test npm test && npm run build:dev && npm start\"",
+    "start:dev": "nodemon --watch webpack.config.js --watch config --watch src --exec \"npm run build:dev && npm start\"",
     "test": "jest",
     "test:watch": "jest --watch"
   },
@@ -58,8 +58,8 @@
     "superagent": "^3.8.3",
     "supertest": "^3.1.0",
     "uglifyjs-webpack-plugin": "^2.0.1",
-    "webpack": "^4.17.1",
-    "webpack-cli": "^3.1.0",
+    "webpack": "^4.20.2",
+    "webpack-cli": "^3.1.2",
     "webpack-merge": "^4.1.4",
     "webpack-node-externals": "^1.7.2"
   }
