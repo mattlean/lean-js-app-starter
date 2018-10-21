@@ -1,9 +1,5 @@
 # Lean Web App Starter
-Rocket launch your next JavaScript application with Lean Web App Starter. The build configuration is already done, so all you need to do is just choose an environment, download, and start coding!
-
-Both browser and Node.js environments are supported. If you ever need to switch environments, you can do so comfortably as the build configuration and dependencies between all environments are basically identical.
-
-If you ever need customize the build configuration you can easily do so as the project is completely transparent and the webpack config is pretty barebones.
+Rocket launch your next JavaScript application with Lean Web App Starter. The launch pad has already been setup for you, so all you need to do is just download and start coding!
 
 ## Overview
 ### Technologies Used
@@ -14,12 +10,42 @@ All environments use these technologies when relevant:
 3. Testing: Jest
 4. JavaScript Compiler: Babel
 5. Module Bundler: webpack
-6. Node.js Application Framework: Express
+6. Node.js App Framework: Express
 7. Database: MongoDB
 8. Object Modeling: Mongoose
-9. UI Library: React
-10. UI State Management Library: Redux
+9. UI: React
+10. UI State Management: Redux
+11. UI Routing: React Router
 11. Styling: Sass
+
+### Benefits
+- **Don't worry about build configuration**
+
+  Everything you need for your next modern JavaScript app is already ready to go.
+
+- **Modern JavaScript**
+
+  Whether you're coding a browser app or a server API, use modern JavaScript with support for the ECMAScript 2015 specification.
+
+- **Same technology, no matter the environment**
+
+  Both browser and Node.js environments are supported with identical technology stacks and build configuration, making it easy to switch between environments.
+
+- **Hot reloading & automatic development builds**
+
+  No need to refresh or rebuild and run your apps manually during development. Hot loading allows you to tweak your React components in real-time, and automatic building quickly rebuilds your Node.js application for you any time your codebase changes.
+
+- **Server-side rendering**
+
+  Render React components on the server and neatly integrate your browser and Node.js codebases together.
+
+- **Optimized production builds**
+
+  Build for production with one simple command that handles all of the optimization for you.
+
+- **Fully customizable**
+
+  If you ever need to change the build configuration, you can easily do so. There is no need to eject anything. The config source is accessible, pretty barebones, and documented making it easy to customize.
 
 ### Environments
 #### Browser
