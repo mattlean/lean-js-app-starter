@@ -15,13 +15,12 @@ export const isServerRendered = () => {
 export const setupStore = (preloadedState) => {
   const middlewares = [thunk]
 
-  let composeEnhancers
   if(__isBrowser__) { // eslint-disable-line no-undef
     if(process.env.NODE_ENV !== 'production') {
       middlewares.push(createLogger())
     }
 
-    composeEnhancers =  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+    const composeEnhancers =  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
     if(preloadedState) {
       return createStore(rootReducer, preloadedState, composeEnhancers(applyMiddleware(...middlewares)))
     }
