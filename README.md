@@ -3,6 +3,8 @@ Rocket launch your next JavaScript application with Lean Web App Starter. The bu
 
 Both browser and Node.js environments are supported. If you ever need to switch environments, you can do so comfortably as the build configuration and dependencies between all environments are basically identical.
 
+If you ever need customize the build configuration you can easily do so as the project is completely transparent and the webpack config is pretty barebones.
+
 ## Overview
 ### Technologies Used
 All environments use these technologies when relevant:
@@ -15,8 +17,9 @@ All environments use these technologies when relevant:
 6. Node.js Application Framework: Express
 7. Database: MongoDB
 8. Object Modeling: Mongoose
-9. User Interface Library: React
-10. User Interface State Management Library: Redux
+9. UI Library: React
+10. UI State Management Library: Redux
+11. Styling: Sass
 
 ### Environments
 #### Browser
@@ -25,7 +28,7 @@ If you're looking to build an app for a web browser, you can start with the *lat
 You can find some example browser apps in the following branches:
 
 - *`todolist-frontend`*: A todo list app. Connects with mock backend API and can be run standalone.
-- *`starchan-frontend`*: An anonymous text board called *chan (pronounced star-chan). Requires connection with backend API on `starchan-backend`.
+- *`starchan-frontend`*: An anonymous text board called *chan (pronounced star-chan). Requires connection with backend API on *`starchan-backend`*.
 
 *Click here for more information and guides on building browser apps with Lean Web App Starter.*
 
