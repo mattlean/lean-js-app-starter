@@ -58,7 +58,7 @@ class NewReplyForm extends Component {
         )
       }
 
-      return <form id="new-thread-form" className="center" onSubmit={this.handleSubmit}>
+      return <form id="new-form" className="center" onSubmit={this.handleSubmit}>
         <table>
           <tbody>
             <tr>

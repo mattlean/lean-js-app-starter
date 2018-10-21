@@ -5,6 +5,7 @@
   "main": "src/main.jsx",
   "scripts": {
     "build": "webpack --env production",
+    "build:dev": "webpack --env development",
     "build:stats": "webpack --env production --json > stats.json",
     "flow": "flow",
     "flow-typed": "flow-typed",
@@ -86,9 +87,9 @@
     "stylelint-config-recommended": "^2.1.0",
     "uglifyjs-webpack-plugin": "^2.0.1",
     "url-loader": "^1.1.1",
-    "webpack": "^4.17.1",
-    "webpack-cli": "^3.1.0",
-    "webpack-dev-server": "^3.1.6",
+    "webpack": "^4.20.2",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.9",
     "webpack-merge": "^4.1.4"
   }
 }

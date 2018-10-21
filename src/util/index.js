@@ -1,10 +1,13 @@
 // @flow
 
-export const setDocTitle = (title?: string): string => {
-  let newTitle = '*chan'
-  if(title && title !== '*chan') {
-    newTitle = `${title} - *chan`
+export const genTitle = (title?: string = '*chan'): string => {
+  if(title !== '*chan') {
+    return `${title} - *chan`
   }
-  document.title = newTitle
-  return newTitle
+  return title
+}
+
+export const setDocTitle = (title?: string): string => {
+  const newTitle = genTitle(title)
+  return document.title = newTitle
 }
