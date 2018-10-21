@@ -13,6 +13,6 @@ db.connect(DB_URI)
   .then(() => {
     const app = require('./app')
 
-    app.listen(PORT, () => logger.info(`Server listening on port ${PORT}!`))
+    app.listen(PORT, () => logger.info(`Server listening on port: ${PORT}`))
   })
   .catch(err => logger.error(err))

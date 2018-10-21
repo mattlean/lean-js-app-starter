@@ -5,13 +5,16 @@
   "main": "src/main.js",
   "scripts": {
     "build": "webpack --env production",
+    "build:debug": "node --inspect-brk node_modules/.bin/webpack --env debug",
     "build:dev": "webpack --env development",
     "build:stats": "webpack --env production --json > stats.json",
     "flow": "flow",
     "flow-typed": "flow-typed",
     "lint": "eslint --cache --ext .js src/",
     "start": "node build/server.js",
+    "start:debug": "node --inspect-brk build/server.js",
     "start:dev": "nodemon --watch webpack.config.js --watch config --watch src --exec \"npm run build:dev && npm start\"",
+    "start:dev:debug": "nodemon --watch webpack.config.js --watch config --watch src --exec \"npm run build:dev && npm run start:debug\"",
     "test": "jest",
     "test:watch": "jest --watch"
   },
