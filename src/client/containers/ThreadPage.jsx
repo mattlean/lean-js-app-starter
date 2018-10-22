@@ -8,6 +8,7 @@ import Nav from '../components/Nav'
 import Threads from '../components/Threads'
 import { endFetch, fetchThreads, setErr } from '../actions'
 import { getThread } from '../reducers'
+import { isFresh } from '../util/api'
 import { isServerRendered } from '../util/store'
 import { setDocTitle } from '../util'
 
@@ -15,6 +16,7 @@ class ThreadPage extends Component {
   componentDidMount() {
     if(this.props.thread) {
       setDocTitle(this.props.thread.subject || `Thread ${this.props.thread._id}`)
+      if(isFresh(this.props.thread.received)) return
     }
 
     if(!isServerRendered()) {
