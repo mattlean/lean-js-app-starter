@@ -1,7 +1,14 @@
 const path = require('path')
 
 module.exports = {
-  build: path.join(__dirname, 'build'),
+  root: path.join(__dirname),
   src: path.join(__dirname, 'src'),
-  root: path.join(__dirname)
+  main: {
+    build: path.join(__dirname, 'build/main'),
+    src: path.join(__dirname, 'src/main')
+  },
+  renderer: {
+    build: path.join(__dirname, 'build/renderer'),
+    src: path.join(__dirname, 'src/renderer')
+  }
 }

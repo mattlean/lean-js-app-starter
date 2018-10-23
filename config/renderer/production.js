@@ -1,19 +1,19 @@
 const glob = require('glob')
 const merge = require('webpack-merge')
 
-const parts = require('./parts')
-const PATHS = require('../PATHS')
+const parts = require('../parts')
+const PATHS = require('../../PATHS').renderer
 
 module.exports = merge([
   {
     output: {
-      chunkFilename: '[name].[chunkhash:4].js',
-      filename: '[name].[chunkhash:4].js',
+      chunkFilename: '[name].js',
+      filename: '[name].js',
       path: PATHS.build
     }
   },
 
-  parts.cleanPaths(['build']),
+  parts.cleanPaths(['build/renderer']),
 
   parts.checkTypes(),
 
@@ -33,7 +33,7 @@ module.exports = merge([
   parts.loadImgs({
     options: {
       limit: 15000,
-      name: '/assets/imgs/[name].[hash:4].[ext]'
+      name: '/assets/imgs/[name].[ext]'
     }
   }),
 
@@ -50,9 +50,6 @@ module.exports = merge([
           }
         }
       },
-      runtimeChunk: { name: 'manifest' }
-    },
-
-    recordsPath: `${PATHS.root}/records.json`
+    }
   }
 ])

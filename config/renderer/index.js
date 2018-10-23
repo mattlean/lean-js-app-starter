@@ -1,15 +1,19 @@
 const merge = require('webpack-merge')
 
-const developmentConfig = require('./config/development')
-const parts = require('./config/parts')
-const PATHS = require('./PATHS')
-const productionConfig = require('./config/production')
+const developmentConfig = require('./development')
+const parts = require('../parts')
+const PATHS = require('../../PATHS').renderer
+const productionConfig = require('./production')
 
 const commonConfig = merge([
   {
     entry: `${PATHS.src}/main.jsx`,
 
-    resolve: { extensions: ['.js', '.jsx', '.json'] }
+    resolve: { extensions: ['.js', '.jsx', '.json'] },
+
+    target: 'electron-renderer',
+
+    node: { __dirname: false }
   },
 
   parts.loadJS({ include: PATHS.src }),

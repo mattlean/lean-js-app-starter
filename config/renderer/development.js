@@ -1,18 +1,18 @@
 const merge = require('webpack-merge')
 
-const parts = require('./parts')
-const PATHS = require('../PATHS')
+const parts = require('../parts')
+const PATHS = require('../../PATHS')
 
 module.exports = merge([
   {
     output: {
       chunkFilename: '[name].js',
       filename: '[name].js',
-      path: PATHS.build
+      path: PATHS.renderer.build
     }
   },
 
-  parts.cleanPaths(['build']),
+  parts.cleanPaths(['build/renderer']),
 
   parts.setupDevServer({
     host: process.env.HOST,
