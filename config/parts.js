@@ -1,5 +1,4 @@
 const CleanWebpackPlugin = require('clean-webpack-plugin')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
 const cssnano = require('cssnano')
 const FlowWebpackPlugin = require('flow-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
@@ -28,11 +27,6 @@ exports.cleanPaths = paths => ({
     paths,
     { root: PATHS.root }
   )]
-})
-
-// Copy files
-exports.copyFiles = patterns => ({
-  plugins: [new CopyWebpackPlugin(patterns)]
 })
 
 // Extract styles into its own CSS file

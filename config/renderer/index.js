@@ -11,9 +11,7 @@ const commonConfig = merge([
 
     resolve: { extensions: ['.js', '.jsx', '.json'] },
 
-    target: 'electron-renderer',
-
-    node: { __dirname: false }
+    target: 'electron-renderer'
   },
 
   parts.loadJS({ include: PATHS.src }),

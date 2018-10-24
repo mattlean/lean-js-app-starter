@@ -9,23 +9,23 @@ const commonConfig = merge([
   {
     entry: `${PATHS.src}/main.js`,
 
-    output: {
-      filename: 'main.js',
-      path: PATHS.build
-    },
-
     resolve: { extensions: ['.js', '.json'] },
+
+    externals: [
+      function(context, request, callback) {
+        if (request.match(/devtron/)) {
+          return callback(null, 'commonjs ' + request)
+        }
+        callback()
+      }
+    ],
 
     target: 'electron-main',
 
     node: { __dirname: false }
   },
 
-  parts.loadJS({ include: PATHS.src }),
-
-  parts.loadHTML({ template: `${PATHS.src}/index.html` }),
-
-  parts.cleanPaths(['build/main'])
+  parts.loadJS({ include: PATHS.src })
 ])
 
 module.exports = mode => {

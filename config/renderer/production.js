@@ -2,18 +2,18 @@ const glob = require('glob')
 const merge = require('webpack-merge')
 
 const parts = require('../parts')
-const PATHS = require('../../PATHS').renderer
+const PATHS = require('../../PATHS')
 
 module.exports = merge([
   {
     output: {
       chunkFilename: '[name].js',
       filename: '[name].js',
-      path: PATHS.build
+      path: `${PATHS.build}/main/renderer`
     }
   },
 
-  parts.cleanPaths(['build/renderer']),
+  parts.cleanPaths(['build/production/main']),
 
   parts.checkTypes(),
 
@@ -28,7 +28,7 @@ module.exports = merge([
 
   parts.extractStyles({ use: ['css-loader', 'sass-loader', parts.autoprefix()] }),
 
-  parts.purifyCSS({ paths: glob.sync(`${PATHS.src}/**/*.{js,jsx}`, { nodir: true }) }),
+  parts.purifyCSS({ paths: glob.sync(`${PATHS.renderer.src}/**/*.{js,jsx}`, { nodir: true }) }),
 
   parts.loadImgs({
     options: {
