@@ -1,6 +1,8 @@
 import { v4 } from 'uuid'
 
-const mockDatabase = {
+const delay = ms => new Promise(resolve => setTimeout(resolve, ms))
+
+export const mockDatabase = {
   todos: [{
     id: v4(),
     text: 'hey',
@@ -16,9 +18,7 @@ const mockDatabase = {
   }]
 }
 
-const delay = ms => new Promise(resolve => setTimeout(resolve, ms))
-
-export const addTodo = (text) =>
+export const addTodo = text =>
   delay(500).then(() => {
     const todo = {
       id: v4(),
@@ -29,17 +29,10 @@ export const addTodo = (text) =>
     return todo
   })
 
-export const toggleTodo = (id) =>
-  delay(500).then(() => {
-    const todo = mockDatabase.todos.find(t => t.id === id)
-    todo.completed = !todo.completed
-    return todo
-  })
-
 export const fetchTodos = filter => delay(500).then(() => {
-  if(Math.random() > 0.5) {
-    throw new Error('Boom!')
-  }
+  // if(Math.random() > 0.5) {
+  //   throw new Error('Boom!')
+  // }
 
   switch(filter) {
     case 'all':
@@ -52,3 +45,10 @@ export const fetchTodos = filter => delay(500).then(() => {
       throw new Error(`Unknown filter: ${filter}`)
   }
 })
+
+export const toggleTodo = id =>
+  delay(500).then(() => {
+    const todo = mockDatabase.todos.find(t => t.id === id)
+    todo.completed = !todo.completed
+    return todo
+  })

@@ -7,15 +7,19 @@ const PATHS = require('../../PATHS')
 module.exports = merge([
   {
     output: {
-      chunkFilename: '[name].js',
-      filename: '[name].js',
-      path: `${PATHS.build}/main/renderer`
+      filename: 'renderer.js',
+      path: `${PATHS.build}`
     }
   },
 
-  parts.cleanPaths(['build/production/main']),
+  parts.cleanPaths(['build/production/webpack']),
 
   parts.checkTypes(),
+
+  parts.loadHTML({
+    template: `${PATHS.renderer.src}/index.html`,
+    templateParameters: { csp: '<meta http-equiv="Content-Security-Policy" content="script-src \'self\'">' }
+  }),
 
   parts.minJS(),
 
@@ -37,19 +41,5 @@ module.exports = merge([
     }
   }),
 
-  parts.genSourceMaps({ type: 'source-map' }),
-
-  {
-    optimization: {
-      splitChunks: {
-        cacheGroups: {
-          commons: {
-            name: 'vendor',
-            chunks: 'initial',
-            test: /[\\/]node_modules[\\/]/
-          }
-        }
-      },
-    }
-  }
+  parts.genSourceMaps({ type: 'source-map' })
 ])

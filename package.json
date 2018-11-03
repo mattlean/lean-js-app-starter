@@ -2,17 +2,22 @@
   "name": "lean-web-app-starter",
   "version": "0.0.1",
   "description": "",
-  "main": "./build/production/main/main.js",
+  "main": "build/production/webpack/main.js",
   "productName": "Todo List",
   "build": {
     "appId": "com.LeanJSAppStarter.TodoList",
     "directories": {
       "output": "build/production/dist"
-    }
+    },
+    "files": [
+      "./build/production/webpack/**/*",
+      "./src/**/*"
+    ]
   },
   "scripts": {
     "setup": "npm i && npm run flow-typed install",
-    "build": "npm run rend:build && npm run main:build && electron-builder",
+    "build": "webpack --env production",
+    "dist": "electron-builder",
     "flow": "flow",
     "flow-typed": "flow-typed",
     "lint": "eslint --cache --ext .js,.jsx src/",
@@ -23,7 +28,7 @@
     "main:build:dev": "webpack --env development --config config/main/index.js",
     "main:build:dev:debug": "node --inspect-brk node_modules/.bin/webpack --env development --config config/main/index.js",
     "main:build:dev:stats": "npm run main:build:dev -- --json > stats.json",
-    "main:start": "electron build/production/main/main.js",
+    "main:start": "electron build/production/webpack/main.js",
     "main:start:dev": "nodemon --watch --watch webpack.config.js --watch config/main --watch src/main --exec \"npm run main:build:dev && electron build/development/main/main.js\"",
     "rend:build": "webpack --env production --config config/renderer/index.js",
     "rend:build:debug": "node --inspect-brk node_modules/.bin/webpack --env production --config config/renderer/index.js",
@@ -31,10 +36,10 @@
     "rend:build:dev": "webpack --env development --config config/renderer/index.js",
     "rend:build:dev:debug": "node --inspect-brk node_modules/.bin/webpack --env development --config config/renderer/index.js",
     "rend:build:dev:stats": "npm run rend:build:dev -- --json > stats.json",
-    "rend:start": "http-server ./build/production/main/renderer -p 9090",
+    "rend:start": "http-server ./build/production/webpack -p 9090",
     "rend:start:dev": "nodemon --watch webpack.config.js --watch config/renderer --exec \"webpack-dev-server --env development --config config/renderer/index.js\"",
-    "start": "npm run main:start",
     "pack": "electron-builder --dir",
+    "start": "npm run main:start",
     "test": "jest",
     "test:watch": "jest --watch"
   },
@@ -82,6 +87,7 @@
     "devtron": "^1.4.0",
     "electron": "^3.0.5",
     "electron-builder": "^20.28.4",
+    "electron-devtools-installer": "^2.2.4",
     "enzyme": "^3.6.0",
     "enzyme-adapter-react-16": "^1.5.0",
     "enzyme-to-json": "^3.3.4",
@@ -107,6 +113,7 @@
     "purify-css": "^1.2.5",
     "purifycss-webpack": "^0.7.0",
     "react-test-renderer": "^16.5.0",
+    "redux-mock-store": "^1.5.3",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.0",
     "stylelint": "^9.5.0",

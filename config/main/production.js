@@ -7,7 +7,7 @@ module.exports = merge([
   {
     output: {
       filename: 'main.js',
-      path: `${PATHS.build}/main`
+      path: `${PATHS.build}`
     }
   },
 

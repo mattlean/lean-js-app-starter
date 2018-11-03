@@ -1,4 +1,10 @@
-const byId = (state = {}, action) => {
+// @flow
+
+import type { Action, State, State_ById } from '../types'
+
+export const defaultState = {}
+
+const byId = (state: State = defaultState, action: Action): State => {
   if(action.response) {
     return {
       ...state,
@@ -11,4 +17,4 @@ const byId = (state = {}, action) => {
 
 export default byId
 
-export const getTodo = (state, id) => state[id]
+export const getTodo = (state: State_ById, id: string) => state[id]

@@ -14,9 +14,7 @@ const commonConfig = merge([
     target: 'electron-renderer'
   },
 
-  parts.loadJS({ include: PATHS.src }),
-
-  parts.loadHTML({ template: `${PATHS.src}/index.html` })
+  parts.loadJS({ include: PATHS.src })
 ])
 
 module.exports = mode => {

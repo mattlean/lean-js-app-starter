@@ -3,11 +3,13 @@ const merge = require('webpack-merge')
 const parts = require('../parts')
 const PATHS = require('../../PATHS').renderer
 
+const HOST = process.env.HOST || 'localhost'
+const PORT = process.env.PORT || 8080
+
 module.exports = merge([
   {
     output: {
-      chunkFilename: '[name].js',
-      filename: '[name].js',
+      filename: 'renderer.js',
       path: PATHS.build
     }
   },
@@ -15,10 +17,14 @@ module.exports = merge([
   parts.cleanPaths(['build/development/renderer']),
 
   parts.setupDevServer({
-    host: process.env.HOST,
-    port: process.env.PORT,
-    historyApiFallback: true,
+    host: HOST,
+    port: PORT,
     hot: true
+  }),
+
+  parts.loadHTML({
+    template: `${PATHS.src}/index.html`,
+    templateParameters: { csp: `<meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-eval'; connect-src 'self' ws://${HOST}:${PORT}; default-src 'self' http://${HOST}:${PORT}">` }
   }),
 
   parts.loadStyles(),
