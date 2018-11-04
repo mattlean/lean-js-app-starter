@@ -1,7 +1,7 @@
 const glob = require('glob')
 const merge = require('webpack-merge')
 
-const parts = require('../parts')
+const parts = require('../common/parts')
 const PATHS = require('../../PATHS')
 
 module.exports = merge([
@@ -30,7 +30,10 @@ module.exports = merge([
     }
   }),
 
-  parts.extractStyles({ use: ['css-loader', 'sass-loader', parts.autoprefix()] }),
+  parts.extractStyles({
+    filename: 'style.css',
+    use: ['css-loader', 'sass-loader', parts.autoprefix()]
+  }),
 
   parts.purifyCSS({ paths: glob.sync(`${PATHS.renderer.src}/**/*.{js,jsx}`, { nodir: true }) }),
 

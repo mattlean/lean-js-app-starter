@@ -1,6 +1,6 @@
 const merge = require('webpack-merge')
 
-const parts = require('../parts')
+const parts = require('../common/parts')
 const PATHS = require('../../PATHS').renderer
 
 const HOST = process.env.HOST || 'localhost'
@@ -24,7 +24,7 @@ module.exports = merge([
 
   parts.loadHTML({
     template: `${PATHS.src}/index.html`,
-    templateParameters: { csp: `<meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-eval'; connect-src 'self' ws://${HOST}:${PORT}; default-src 'self' http://${HOST}:${PORT}">` }
+    templateParameters: { csp: `<meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-eval'; connect-src 'self' ws://${HOST}:${PORT}; default-src 'self' http://${HOST}:${PORT}; style-src 'self' blob:">` }
   }),
 
   parts.loadStyles(),
