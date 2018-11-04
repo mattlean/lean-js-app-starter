@@ -41,6 +41,8 @@
     "pack": "electron-builder --dir",
     "start": "npm run main:start",
     "test": "jest",
+    "test:coverage": "jest --coverage",
+    "test:update": "jest -u",
     "test:watch": "jest --watch"
   },
   "repository": {
