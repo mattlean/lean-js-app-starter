@@ -1,23 +1,33 @@
+// @flow
 import { combineReducers } from 'redux'
 
-const createList = filter => {
-  const handleToggle = (state, action) => {
-    const { result: toggledId, entities } = action.response
-    const { completed } = entities.todos[toggledId]
-    const shouldRemove = (
-      (completed && filter === 'active') ||
-      (!completed && filter === 'completed')
-    )
+import type { Action, State_List, State_List_ErrorMessage, State_List_Ids, State_List_IsFetching } from '../types'
 
-    return shouldRemove ? state.filter(id => id !== toggledId) : state
+const createList = (filter: string) => {
+  const handleToggle = (state: State_List_Ids, action: Action) => {
+    if(action.response) {
+      const { result: toggledId, entities } = action.response
+
+      if(!Array.isArray(toggledId)) {
+        const { completed } = entities.todos[toggledId]
+        const shouldRemove = (
+          (completed && filter === 'active') ||
+          (!completed && filter === 'completed')
+        )
+
+        return shouldRemove ? state.filter(id => id !== toggledId) : state
+      }
+    }
+
+    return state
   }
 
-  const ids = (state = [], action) => {
+  const ids = (state: State_List_Ids = [], action: Action) => {
     switch(action.type) {
-      case 'FETCH_TODOS_SUCCESS':
-        return filter === action.filter ? action.response.result : state
       case 'ADD_TODO_SUCCESS':
         return filter !== 'completed' ? [...state, action.response.result] : state
+      case 'FETCH_TODOS_SUCCESS':
+        return filter === action.filter ? action.response.result : state
       case 'TOGGLE_TODO_SUCCESS':
         return handleToggle(state, action)
       default:
@@ -25,7 +35,7 @@ const createList = filter => {
     }
   }
 
-  const isFetching = (state = false, action) => {
+  const isFetching = (state: State_List_IsFetching = false, action) => {
     if(action.filter !== filter) {
       return state
     }
@@ -41,7 +51,7 @@ const createList = filter => {
     }
   }
 
-  const errorMessage = (state = null, action) => {
+  const errorMessage = (state: State_List_ErrorMessage = null, action) => {
     if(filter !== action.filter) {
       return state
     }
@@ -66,6 +76,14 @@ const createList = filter => {
 
 export default createList
 
-export const getErrorMessage = state => state.errorMessage
-export const getIds = state => state.ids
-export const getIsFetching = state => state.isFetching
+export const getErrorMessage = (state: State_List) => {
+  if(state.errorMessage || state.errorMessage === null) return state.errorMessage
+}
+
+export const getIds = (state: State_List) => {
+  if(state.ids) return state.ids
+}
+
+export const getIsFetching = (state: State_List) => {
+  if(state.isFetching || state.isFetching === false) return state.isFetching
+}
