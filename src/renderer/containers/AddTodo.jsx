@@ -3,8 +3,9 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import { addTodo } from '../actions'
+import type { Dispatch } from '../types'
 
-let AddTodo = ({ dispatch }) => {
+let AddTodo = ({ dispatch }: { dispatch: Dispatch }) => {
   let input
 
   return <>
