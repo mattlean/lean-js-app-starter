@@ -3,9 +3,16 @@ import type { Dispatch as ReduxDispatch } from 'redux'
 
 export type Action =
   | Action_AddTodoSuccess
+  | Action_FetchTodosFailure
   | Action_FetchTodosRequest
   | Action_FetchTodosSuccess
   | Action_ToggleTodoSuccess
+
+export type Action_FetchTodosFailure = {|
+  type: 'FETCH_TODOS_FAILURE',
+  filter: string,
+  message: string
+|}
 
 export type Action_AddTodoSuccess = {|
   type: 'ADD_TODO_SUCCESS',
@@ -34,8 +41,8 @@ export type GetState = () => State
 
 export type NormalizedRes = {
   entities: {
-    [string]: {
-      [string]: any
+    todos: {
+      [string]: Todo
     }
   },
   result: string | Array<string>
@@ -50,12 +57,20 @@ export type State_ById = {
   +[string]: Todo
 } | {||}
 
+export type State_List_ErrorMessage = string | null
+
 export type State_ListByFilter = {|
-  +all: State_List
+  +all: State_List,
+  +active: State_List,
+  +completed: State_List
 |} | {||}
 
+export type State_List_IsFetching = boolean
+
 export type State_List = {
-  +ids: State_List_Ids
+  +errorMessage: State_List_ErrorMessage,
+  +ids: State_List_Ids,
+  +isFetching: State_List_IsFetching
 } | {||}
 
 export type State_List_Ids = Array<string>

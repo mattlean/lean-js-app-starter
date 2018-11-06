@@ -7,7 +7,7 @@ import Footer from '../Footer'
 Enzyme.configure({ adapter: new Adapter() })
 
 describe('Footer', () => {
-  test('snapshot', () => {
+  it('renders properly', () => {
     const component = shallow(<Footer />)
     expect(component).toMatchSnapshot()
   })

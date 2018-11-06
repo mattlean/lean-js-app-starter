@@ -3,6 +3,7 @@ import { normalize } from 'normalizr'
 
 import * as api from '../util/mockAPI'
 import { arrayOfTodos, todo } from '../types/schema'
+import { getIsFetching } from '../reducers'
 import type { Dispatch, ThunkAction, Todo } from '../types'
 
 export const addTodo = (text: string) => (dispatch: Dispatch) =>
@@ -11,15 +12,34 @@ export const addTodo = (text: string) => (dispatch: Dispatch) =>
     response: normalize(response, todo)
   }))
 
-export const fetchTodos = (filter: string): ThunkAction => (dispatch: Dispatch) => {
-  dispatch({
-    type: 'FETCH_TODOS_REQUEST',
-    filter
-  })
+export const fetchTodos = (filter: string): ThunkAction => (dispatch: Dispatch, getState) => {
+  if(getIsFetching(getState(), filter)) {
+    return Promise.resolve()
+  }
+
+  dispatch(fetchTodosRequest(filter))
 
   return api.fetchTodos(filter)
-    .then(response => dispatch(fetchTodosSuccess(filter, response)))
+    .then(
+      response => {
+        return dispatch(fetchTodosSuccess(filter, response))
+      },
+      error => {
+        return dispatch(fetchTodosFailure(filter, error.message))
+      }
+    )
 }
+
+export const fetchTodosFailure = (filter: string, message: string = 'Something went wrong.') => ({
+  type: 'FETCH_TODOS_FAILURE',
+  filter,
+  message
+})
+
+export const fetchTodosRequest = (filter: string) => ({
+  type: 'FETCH_TODOS_REQUEST',
+  filter
+})
 
 export const fetchTodosSuccess = (filter: string, response: Array<Todo>) => ({
   type: 'FETCH_TODOS_SUCCESS',
