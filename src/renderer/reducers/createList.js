@@ -85,5 +85,5 @@ export const getIds = (state: State_List) => {
 }
 
 export const getIsFetching = (state: State_List) => {
-  if(state.isFetching) return state.isFetching
+  if(state.isFetching || state.isFetching === false) return state.isFetching
 }
