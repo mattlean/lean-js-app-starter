@@ -30,8 +30,8 @@ exports.cleanPaths = paths => ({
 })
 
 // Extract styles into its own CSS file
-exports.extractStyles = ({ exclude, include, use = [] }) => {
-  const plugin = new MiniCssExtractPlugin({ filename: '[name].[contenthash:4].css'})
+exports.extractStyles = ({ exclude, filename, include, use = [] }) => {
+  const plugin = new MiniCssExtractPlugin({ filename })
 
   return {
     module: {

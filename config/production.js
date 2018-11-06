@@ -9,11 +9,11 @@ module.exports = merge([
     output: {
       chunkFilename: '[name].[chunkhash:4].js',
       filename: '[name].[chunkhash:4].js',
-      path: PATHS.build
+      path: `${PATHS.build}/production`
     }
   },
 
-  parts.cleanPaths(['build']),
+  parts.cleanPaths(['build/production']),
 
   parts.checkTypes(),
 
@@ -26,7 +26,10 @@ module.exports = merge([
     }
   }),
 
-  parts.extractStyles({ use: ['css-loader', 'sass-loader', parts.autoprefix()] }),
+  parts.extractStyles({
+    filename: '[name].[contenthash:4].css',
+    use: ['css-loader', 'sass-loader', parts.autoprefix()]
+  }),
 
   parts.purifyCSS({ paths: glob.sync(`${PATHS.src}/**/*.{js,jsx}`, { nodir: true }) }),
 
