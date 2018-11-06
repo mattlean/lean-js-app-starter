@@ -1,31 +1,32 @@
-import rootReducer, { getErrorMessage, getIsFetching, getVisibleTodos } from '../index'
+import reducer, { getErrorMessage, getIsFetching, getVisibleTodos } from '../index'
 import { fetchTodosFailure, fetchTodosRequest, fetchTodosSuccess } from '../../actions'
 import { mockDatabase } from '../../util/mockAPI'
 
-let state = {}
-const filter = 'all'
 
-describe('root selector', () => {
+describe('root selectors', () => {
+  const filter = 'all'
+  const defaultState = reducer(undefined, {})
+
   test('getErrorMessage() should return null when todos fetch was successful', () => {
-    state = rootReducer(undefined, fetchTodosSuccess('all', mockDatabase.todos))
+    const state = reducer(defaultState, fetchTodosSuccess('all', mockDatabase.todos))
 
     expect(getErrorMessage(state, filter)).toBe(null)
   })
 
   test('getErrorMessage() should return error message when todos fetch was successful', () => {
-    state = rootReducer(undefined, fetchTodosFailure('all', 'Boom!'))
+    const state = reducer(defaultState, fetchTodosFailure('all', 'Boom!'))
 
     expect(getErrorMessage(state, filter)).toBe('Boom!')
   })
 
   test('getIsFetching() should return true when todos fetch was initiated', () => {
-    state = rootReducer(undefined, fetchTodosRequest('all'))
+    const state = reducer(defaultState, fetchTodosRequest('all'))
 
     expect(getIsFetching(state, filter)).toBe(true)
   })
 
   test('getVisibleTodos() should return visible todos', () => {
-    state = rootReducer(undefined, fetchTodosSuccess('all', mockDatabase.todos))
+    const state = reducer(defaultState, fetchTodosSuccess('all', mockDatabase.todos))
 
     expect(getVisibleTodos(state, filter)).toEqual([
       {

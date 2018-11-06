@@ -2,34 +2,34 @@ import createList, { getErrorMessage, getIds } from '../createList'
 import { fetchTodosFailure, fetchTodosRequest, fetchTodosSuccess } from '../../actions'
 import { mockDatabase } from '../../util/mockAPI'
 
-const all = createList('all')
-const defaultState = all(undefined, {})
-let state = {}
+const filter = 'all'
+const reducer = createList(filter)
+const defaultState = reducer(undefined, {})
 
 describe('createList reducer', () => {
   it('should return the initial state', () => {
-    expect(all(undefined, defaultState)).toEqual(defaultState)
+    expect(reducer(undefined, defaultState)).toEqual(defaultState)
   })
 
   it('should handle FETCH_TODOS_REQUEST', () => {
-    const action = fetchTodosRequest('all')
+    const action = fetchTodosRequest(filter)
+    const state = reducer(defaultState, action)
 
-    state = all(defaultState, action)
     expect(state.isFetching).toEqual(true)
   })
 
   it('should handle FETCH_TODOS_SUCCESS', () => {
-    const action = fetchTodosSuccess('all', mockDatabase.todos)
+    const action = fetchTodosSuccess(filter, mockDatabase.todos)
+    const state = reducer(defaultState, action)
 
-    state = all(defaultState, action)
     expect(state.ids).toEqual(action.response.result)
   })
 
   it('should handle FETCH_TODOS_FAILURE', () => {
     const message = 'Boom!'
-    const action = fetchTodosFailure('all', message)
+    const action = fetchTodosFailure(filter, message)
+    const state = reducer(defaultState, action)
 
-    state = all(defaultState, action)
     expect(state.message).toEqual()
   })
 })
@@ -37,17 +37,17 @@ describe('createList reducer', () => {
 describe('createList selectors', () => {
   test('getErrorMessage() should return error message', () => {
     const message = 'Boom!'
-    const fetchTodosFailureAction = fetchTodosFailure('all', message)
+    const fetchTodosFailureAction = fetchTodosFailure(filter, message)
+    const state = reducer(defaultState, fetchTodosFailureAction)
 
-    state = all(defaultState, fetchTodosFailureAction)
     expect(getErrorMessage(state)).toEqual(message)
   })
 
   test('getIds() should return IDs', () => {
     const todoIds = mockDatabase.todos.map(todo => todo.id)
-    const fetchTodosSuccessAction = fetchTodosSuccess('all', mockDatabase.todos)
+    const fetchTodosSuccessAction = fetchTodosSuccess(filter, mockDatabase.todos)
+    const state = reducer(defaultState, fetchTodosSuccessAction)
 
-    state = all(defaultState, fetchTodosSuccessAction)
     expect(getIds(state)).toEqual(todoIds)
   })
 })
