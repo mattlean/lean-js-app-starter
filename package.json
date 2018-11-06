@@ -4,6 +4,7 @@
   "description": "",
   "main": "src/main.jsx",
   "scripts": {
+    "setup": "npm i && npm run flow-typed install",
     "build": "webpack --env production",
     "build:debug": "node --inspect-brk node_modules/.bin/webpack --env production",
     "build:dev": "webpack --env development",
@@ -16,6 +17,8 @@
     "start": "http-server ./build -p 9090",
     "start:dev": "nodemon --watch webpack.config.js --watch config --exec \"webpack-dev-server --env development\"",
     "test": "jest",
+    "test:coverage": "jest --coverage",
+    "test:update": "jest -u",
     "test:watch": "jest --watch"
   },
   "repository": {
