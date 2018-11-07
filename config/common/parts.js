@@ -10,7 +10,7 @@ const PurifyCSSPlugin = require('purifycss-webpack')
 const UglifyWebpackPlugin = require('uglifyjs-webpack-plugin')
 const webpack = require('webpack')
 
-const PATHS = require('../PATHS')
+const PATHS = require('../../PATHS')
 
 // Autoprefix CSS
 exports.autoprefix = () => ({
@@ -32,8 +32,8 @@ exports.cleanPaths = paths => ({
 })
 
 // Extract styles into its own CSS file
-exports.extractStyles = ({ exclude, include, use = [] }) => {
-  const plugin = new MiniCssExtractPlugin({ filename: 'style.[name].[contenthash:4].css'})
+exports.extractStyles = ({ exclude, filename, include, use = [] }) => {
+  const plugin = new MiniCssExtractPlugin({ filename })
 
   return {
     module: {

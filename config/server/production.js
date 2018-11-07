@@ -1,6 +1,6 @@
 const merge = require('webpack-merge')
 
-const parts = require('../parts')
+const parts = require('../common/parts')
 
 module.exports = merge([
   parts.checkTypes(),

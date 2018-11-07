@@ -1,7 +1,7 @@
 const merge = require('webpack-merge')
 
 const developmentConfig = require('./development')
-const parts = require('../parts')
+const parts = require('../common/parts')
 const PATHS = require('../../PATHS')
 const productionConfig = require('./production')
 
