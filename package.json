@@ -1,5 +1,5 @@
 {
-  "name": "lean-web-app-starter",
+  "name": "lean-js-app-starter",
   "version": "0.0.1",
   "description": "",
   "main": "src/server/main.js",
@@ -36,14 +36,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/IsaacLean/lean-web-app-starter.git"
+    "url": "git+https://github.com/IsaacLean/lean-js-app-starter.git"
   },
   "author": "Matthew Lean",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/IsaacLean/lean-web-app-starter/issues"
+    "url": "https://github.com/IsaacLean/lean-js-app-starter/issues"
   },
-  "homepage": "https://github.com/IsaacLean/lean-web-app-starter#readme",
+  "homepage": "https://github.com/IsaacLean/lean-js-app-starter#readme",
   "dependencies": {
     "body-parser": "^1.18.3",
     "compression": "^1.7.3",
