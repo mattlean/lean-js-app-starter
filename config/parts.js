@@ -130,6 +130,14 @@ exports.purifyCSS = ({ paths }) => ({
   plugins: [new PurifyCSSPlugin({ paths })]
 })
 
+// Set free variable
+exports.setFreeVariable = (key, val) => {
+  const env = {}
+  env[key] = JSON.stringify(val)
+
+  return { plugins: [new webpack.DefinePlugin(env)] }
+}
+
 // Setup webpack-dev-server
 exports.setupDevServer = ({ host, historyApiFallback, hot, port, proxy } = {}) => ({
   devServer: {
