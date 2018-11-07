@@ -7,9 +7,10 @@
     "setup": "npm i && npm run flow-typed install",
     "build": "webpack --env production",
     "build:debug": "node --inspect-brk node_modules/.bin/webpack --env production",
+    "build:stats": "npm run build -- --json > stats.json",
     "build:dev": "webpack --env development",
     "build:dev:debug": "node --inspect-brk node_modules/.bin/webpack --env development",
-    "build:stats": "webpack --env production --json > stats.json",
+    "build:dev:stats": "npm run build:dev -- --json > stats.json",
     "flow": "flow",
     "flow-typed": "flow-typed",
     "lint": "eslint --cache --ext .js src/",
@@ -18,6 +19,8 @@
     "start:dev": "nodemon --watch webpack.config.js --watch config --watch src --exec \"npm run build:dev && npm start\"",
     "start:dev:debug": "nodemon --watch webpack.config.js --watch config --watch src --exec \"npm run build:dev && npm run start:debug\"",
     "test": "jest",
+    "test:coverage": "jest --coverage",
+    "test:update": "jest -u",
     "test:watch": "jest --watch"
   },
   "repository": {

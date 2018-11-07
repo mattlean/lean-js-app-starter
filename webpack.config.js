@@ -9,11 +9,6 @@ const commonConfig = merge([
   {
     entry: `${PATHS.src}/main.js`,
 
-    output: {
-      filename: 'server.js',
-      path: PATHS.build
-    },
-
     resolve: { extensions: ['.js', '.json'] },
 
     target: 'node'
@@ -21,9 +16,7 @@ const commonConfig = merge([
 
   parts.setExternals(),
 
-  parts.loadJS({ include: PATHS.src }),
-
-  parts.cleanPaths(['build'])
+  parts.loadJS({ include: PATHS.src })
 ])
 
 module.exports = mode => {
