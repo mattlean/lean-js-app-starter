@@ -3,7 +3,16 @@
 	[
 		{
 			"path": ".",
-			"binary_file_patterns": [".eslintcache", "package-lock.json", "build/*", "flow-typed/*", "node_modules/*"]
+			"binary_file_patterns":
+			[
+				".eslintcache",
+				"package-lock.json",
+				"records.json",
+				"stats.*.json",
+				"build/*",
+				"flow-typed/*",
+				"node_modules/*"
+			]
 		},
 	],
 	"settings":
