@@ -9,11 +9,11 @@ module.exports = merge([
     output: {
       chunkFilename: '[name].[chunkhash:4].js',
       filename: '[name].[chunkhash:4].js',
-      path: PATHS.client.build
+      path: `${PATHS.client.build}/production`
     }
   },
 
-  parts.cleanPaths(['build/client']),
+  parts.cleanPaths(['build/client/production']),
 
   parts.checkTypes(),
 

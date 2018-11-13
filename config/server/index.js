@@ -9,11 +9,6 @@ const commonConfig = merge([
   {
     entry: `${PATHS.server.src}/main.js`,
 
-    output: {
-      filename: 'server.js',
-      path: PATHS.server.build
-    },
-
     resolve: { extensions: ['.js', '.jsx', '.json'] },
 
     target: 'node'
@@ -22,8 +17,6 @@ const commonConfig = merge([
   parts.setExternals(),
 
   parts.loadJS({ include: PATHS.src }),
-
-  parts.cleanPaths(['build/server']),
 
   parts.setFreeVariable('__isBrowser__', false)
 ])

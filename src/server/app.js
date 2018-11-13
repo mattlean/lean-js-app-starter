@@ -16,14 +16,17 @@ app.use(compression())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
-app.use('/static', express.static('build/client'))
 
 // logging middleware
 if(process.env.NODE_ENV === 'development') {
+  app.use('/static', express.static('build/client/development'))
+
   app.use((req, res, next) => {
     logger.debug(`${req.method} ${req.path}`)
     next()
   })
+} else {
+  app.use('/static', express.static('build/client/production'))
 }
 
 // CORS setup

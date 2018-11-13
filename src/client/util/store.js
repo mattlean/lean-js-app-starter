@@ -16,7 +16,7 @@ export const setupStore = (preloadedState) => {
   const middlewares = [thunk]
 
   if(__isBrowser__) { // eslint-disable-line no-undef
-    if(process.env.NODE_ENV !== 'production') {
+    if(process.env.NODE_ENV === 'development') {
       middlewares.push(createLogger())
     }
 

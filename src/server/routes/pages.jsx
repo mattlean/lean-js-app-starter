@@ -5,13 +5,19 @@ import { renderToString } from 'react-dom/server'
 import { Router } from 'express'
 import { StaticRouter } from 'react-router-dom'
 
-import clientAssets from '../../../build/client/assets'
 import Root from '../../client/containers/Root'
 import Thread from '../models/thread'
 import { err, model } from '../util'
 import { genTitle } from '../../client/util'
 import { setupStore } from '../../client/util/store'
 import { Thread as ThreadSchema, Threads } from '../../client/types/schema'
+
+let clientAssets
+if(process.env.NODE_ENV === 'development') {
+  clientAssets = require('../../../build/client/development/assets')
+} else {
+  clientAssets = require('../../../build/client/production/assets')
+}
 
 const { docToObject } = model
 const { genErr } = err

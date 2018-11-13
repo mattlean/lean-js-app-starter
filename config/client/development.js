@@ -8,11 +8,11 @@ module.exports = merge([
     output: {
       chunkFilename: '[name].js',
       filename: '[name].js',
-      path: PATHS.build
+      path: `${PATHS.build}/development`
     }
   },
 
-  parts.cleanPaths(['build/client']),
+  parts.cleanPaths(['build/client/development']),
 
   parts.setupDevServer({
     host: process.env.HOST,
