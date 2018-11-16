@@ -7,20 +7,22 @@ import Loading from '../components/Loading'
 import Threads from '../components/Threads'
 import { endFetch, fetchThreads, setErr } from '../actions'
 import { getThreads } from '../reducers'
-import { isServerRendered } from '../util/store'
 import { setDocTitle } from '../util'
 
-class ThreadList extends Component {
+export class ThreadList extends Component {
   componentDidMount() {
     setDocTitle()
-
-    if(!isServerRendered()) {
+    if(this.props.fetchThreads) {
       this.props.fetchThreads()
         .catch(err => {
           if(!this.props.threads || (Array.isArray(this.props.threads) && this.props.threads.length === 0)) {
-            this.props.setErr('read', err)
+            if(this.props.setErr) {
+              this.props.setErr('read', err)
+            }
           } else {
-            this.props.endFetch()
+            if(this.props.endFetch) {
+              this.props.endFetch()
+            }
           }
         })
     }
@@ -39,10 +41,10 @@ class ThreadList extends Component {
 }
 
 ThreadList.propTypes = {
-  endFetch: PropTypes.func.isRequired,
-  fetchThreads: PropTypes.func.isRequired,
+  endFetch: PropTypes.func,
+  fetchThreads: PropTypes.func,
   isFetching: PropTypes.bool.isRequired,
-  setErr: PropTypes.func.isRequired,
+  setErr: PropTypes.func,
   threads: PropTypes.arrayOf(PropTypes.shape({
     _id: PropTypes.string.isRequired,
     createdAt: PropTypes.string.isRequired,
@@ -53,7 +55,7 @@ ThreadList.propTypes = {
       createdAt: PropTypes.string.isRequired,
       comment: PropTypes.string.isRequired
     }))
-  }))
+  })).isRequired
 }
 
 const mapStateToProps = state => ({
