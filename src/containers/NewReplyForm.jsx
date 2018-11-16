@@ -6,7 +6,7 @@ import { withRouter } from 'react-router-dom'
 
 import { createReply, setErr } from '../actions'
 
-class NewReplyForm extends Component {
+class NewReplyFormClass extends Component {
   state = {
     comment: '',
     show: false
@@ -23,16 +23,20 @@ class NewReplyForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault()
-    this.props.createReply(
-      this.props.match.params.id,
-      { comment: this.state.comment }
-    )
-      .then(() => {
-        this.reset()
-      })
-      .catch(err => {
-        this.props.setErr('create', err)
-      })
+    if(this.props.createReply) {
+      this.props.createReply(
+        this.props.match.params.id,
+        { comment: this.state.comment }
+      )
+        .then(() => {
+          this.reset()
+        })
+        .catch(err => {
+          if(this.props.setErr) {
+            this.props.setErr('create', err)
+          }
+        })
+    }
   }
 
   reset = () => {
@@ -86,12 +90,14 @@ class NewReplyForm extends Component {
   }
 }
 
-NewReplyForm.propTypes = {
-  createReply: PropTypes.func.isRequired,
+NewReplyFormClass.propTypes = {
+  createReply: PropTypes.func,
   err: PropTypes.object,
   match: PropTypes.object.isRequired,
-  setErr: PropTypes.func.isRequired
+  setErr: PropTypes.func
 }
+
+export const NewReplyForm = withRouter(NewReplyFormClass)
 
 const mapStateToProps = state => ({
   err: state.err.create
@@ -99,4 +105,4 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => bindActionCreators({ createReply, setErr }, dispatch)
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(NewReplyForm))
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(NewReplyFormClass))

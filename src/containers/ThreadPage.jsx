@@ -11,24 +11,30 @@ import { getThread } from '../reducers'
 import { isFresh } from '../util/api'
 import { setDocTitle } from '../util'
 
-class ThreadPage extends Component {
+export class ThreadPage extends Component {
   componentDidMount() {
     if(this.props.thread) {
       setDocTitle(this.props.thread.subject || `Thread ${this.props.thread._id}`)
       if(isFresh(this.props.thread.received)) return
     }
 
-    this.props.fetchThreads(this.props.id)
-      .then(thread => {
-        setDocTitle(thread.subject || `Thread ${thread._id}`)
-      })
-      .catch(err => {
-        if(!this.props.thread) {
-          this.props.setErr('read', err)
-        } else {
-          this.props.endFetch()
-        }
-      })
+    if(this.props.fetchThreads) {
+      this.props.fetchThreads(this.props.id)
+        .then(thread => {
+          setDocTitle(thread.subject || `Thread ${thread._id}`)
+        })
+        .catch(err => {
+          if(!this.props.thread) {
+            if(this.props.setErr) {
+              this.props.setErr('read', err)
+            }
+          } else {
+            if(this.props.endFetch) {
+              this.props.endFetch()
+            }
+          }
+        })
+    }
   }
 
   render() {
@@ -48,11 +54,11 @@ class ThreadPage extends Component {
 }
 
 ThreadPage.propTypes = {
-  endFetch: PropTypes.func.isRequired,
-  fetchThreads: PropTypes.func.isRequired,
+  endFetch: PropTypes.func,
+  fetchThreads: PropTypes.func,
   id: PropTypes.string.isRequired,
   isFetching: PropTypes.bool.isRequired,
-  setErr: PropTypes.func.isRequired,
+  setErr: PropTypes.func,
   thread: PropTypes.object
 }
 

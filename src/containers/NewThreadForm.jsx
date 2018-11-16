@@ -6,7 +6,7 @@ import { withRouter } from 'react-router-dom'
 
 import { createThread, setErr } from '../actions'
 
-class NewThreadForm extends Component {
+class NewThreadFormClass extends Component {
   state = {
     subject: '',
     comment: '',
@@ -24,16 +24,20 @@ class NewThreadForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault()
-    this.props.createThread({
-      subject: this.state.subject,
-      comment: this.state.comment
-    })
-      .then(thread => {
-        this.props.history.push(`/${thread._id}`)
+    if(this.props.createThread) {
+      this.props.createThread({
+        subject: this.state.subject,
+        comment: this.state.comment
       })
-      .catch(err => {
-        this.props.setErr('create', err)
-      })
+        .then(thread => {
+          this.props.history.push(`/${thread._id}`)
+        })
+        .catch(err => {
+          if(this.props.setErr) {
+            this.props.setErr('create', err)
+          }
+        })
+    }
   }
 
   render() {
@@ -91,12 +95,14 @@ class NewThreadForm extends Component {
   }
 }
 
-NewThreadForm.propTypes = {
-  createThread: PropTypes.func.isRequired,
+NewThreadFormClass.propTypes = {
+  createThread: PropTypes.func,
   err: PropTypes.object,
   history: PropTypes.object.isRequired,
-  setErr: PropTypes.func.isRequired
+  setErr: PropTypes.func
 }
+
+export const NewThreadForm = withRouter(NewThreadFormClass)
 
 const mapStateToProps = state => ({
   err: state.err.create
@@ -104,4 +110,4 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => bindActionCreators({ createThread, setErr }, dispatch)
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(NewThreadForm))
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(NewThreadFormClass))

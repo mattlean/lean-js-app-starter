@@ -7,7 +7,7 @@ import HTTPErr from '../util/HTTPErr'
 import NewReplyForm from '../containers/NewReplyForm'
 import NewThreadForm from '../containers/NewThreadForm'
 
-const Page = ({ children, err, Form }: { children?: React.Node, err?: HTTPErr, Form?: NewReplyForm | NewThreadForm} ) => {
+export const Page = ({ children, err, Form }: { children?: React.Node, err?: HTTPErr, Form?: NewReplyForm | NewThreadForm} ) => {
   let content
   let form
 
