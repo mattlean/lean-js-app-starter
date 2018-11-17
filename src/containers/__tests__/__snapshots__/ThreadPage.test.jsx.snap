@@ -1,17 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ThreadPage renders properly 1`] = `
-<Fragment>
-  <Nav
-    mode="top"
-  />
-  <Loading />
-  <Nav
-    mode="bottom"
-  />
-</Fragment>
-`;
-
 exports[`ThreadPage renders properly when loaded 1`] = `
 <Fragment>
   <Nav
