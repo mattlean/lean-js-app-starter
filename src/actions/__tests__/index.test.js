@@ -19,7 +19,7 @@ describe('actions', () => {
     expect(actions.clearAllErrs()).toEqual(expectedAction)
   })
 
-  test('clearErr(\'{KEY}\') creates an action that clears an error with the specific key', () => {
+  test('clearErr({KEY}) creates an action that clears an error with the specific key', () => {
     const expectedAction = {
       type: 'CLEAR_ERR',
       key
@@ -36,7 +36,7 @@ describe('actions', () => {
     expect(actions.endFetch()).toEqual(expectedAction)
   })
 
-  test('setErr() creates an action that sets an error', () => {
+  test('setErr({KEY}, {ERR}) creates an action that sets an error', () => {
     const expectedAction = {
       type: 'SET_ERR',
       key
