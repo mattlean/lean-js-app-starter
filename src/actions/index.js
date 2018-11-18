@@ -6,13 +6,13 @@ import { getThreads, postReply, postThread } from '../util/api'
 import { Thread, Threads } from '../types/schema'
 import type { Action_ClearAllErrs, Action_ClearErr, Action_FetchEnd, Dispatch, ThreadData, ReplyData, ThunkAction } from '../types'
 
+export const clearAllErrs = (): Action_ClearAllErrs => ({
+  type: 'CLEAR_ALL_ERRS'
+})
+
 export const clearErr = (key: string): Action_ClearErr => ({
   type: 'CLEAR_ERR',
   key
-})
-
-export const clearAllErrs = (): Action_ClearAllErrs => ({
-  type: 'CLEAR_ALL_ERRS'
 })
 
 export const createReply = (id: string, data: ReplyData): ThunkAction => (dispatch: Dispatch) => {
