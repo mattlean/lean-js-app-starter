@@ -1,9 +1,11 @@
 import configureMockStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
+import { normalize } from 'normalizr'
 
 import * as actions from '../index'
 import reducer from '../../reducers'
 import { newThread, threads } from '../../util/test/data'
+import { Thread, Threads } from '../../types/schema'
 
 describe('actions', () => {
   const middlewares = [thunk]
@@ -34,6 +36,24 @@ describe('actions', () => {
     }
 
     expect(actions.endFetch()).toEqual(expectedAction)
+  })
+
+  test('fetchThreadsSuccess({ARRAY}) creates an action that ends threads fetch request successfully', () => {
+    const expectedAction = {
+      type: 'FETCH_THREADS_SUCCESS',
+      res: normalize(threads, Threads)
+    }
+
+    expect(actions.fetchThreadsSuccess(threads)).toEqual(expectedAction)
+  })
+
+  test('fetchThreadSuccess({OBJECT}) creates an action that ends thread fetch request successfully', () => {
+    const expectedAction = {
+      type: 'FETCH_THREAD_SUCCESS',
+      res: normalize(threads[0], Thread)
+    }
+
+    expect(actions.fetchThreadSuccess(threads[0])).toEqual(expectedAction)
   })
 
   test('setErr({KEY}, {ERR}) creates an action that sets an error', () => {
