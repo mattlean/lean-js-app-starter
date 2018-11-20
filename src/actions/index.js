@@ -17,31 +17,43 @@ export const clearErr = (key: string): Action_ClearErr => ({
 
 export const createReply = (id: string, data: ReplyData): ThunkAction => (dispatch: Dispatch) => {
   dispatch(clearErr('create'))
-  dispatch({ type: 'CREATE_REPLY_REQUEST' })
+  dispatch(createReplyRequest())
 
   return postReply(id, data).then(res => {
-    dispatch({
-      type: 'CREATE_REPLY_SUCCESS',
-      res: normalize(res, ThreadSchema)
-    })
+    dispatch(createReplySuccess(res))
 
     return res
   })
 }
+
+export const createReplyRequest = () => ({
+  type: 'CREATE_REPLY_REQUEST'
+})
+
+export const createReplySuccess = (res: Thread) => ({
+  type: 'CREATE_REPLY_SUCCESS',
+  res: normalize(res, ThreadSchema)
+})
 
 export const createThread = (data: ThreadData): ThunkAction => (dispatch: Dispatch) => {
   dispatch(clearErr('create'))
-  dispatch({ type: 'CREATE_THREAD_REQUEST' })
+  dispatch(createThreadRequest())
 
   return postThread(data).then(res => {
-    dispatch({
-      type: 'CREATE_THREAD_SUCCESS',
-      res: normalize(res, ThreadSchema)
-    })
+    dispatch(createThreadSuccess(res))
 
     return res
   })
 }
+
+export const createThreadRequest = () => ({
+  type: 'CREATE_THREAD_REQUEST'
+})
+
+export const createThreadSuccess = (res: Thread) => ({
+  type: 'CREATE_THREAD_SUCCESS',
+  res: normalize(res, ThreadSchema)
+})
 
 export const endFetch = (): Action_FetchEnd => ({
   type: 'FETCH_END'

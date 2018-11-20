@@ -1,5 +1,5 @@
 import reducer, { defaultState, getThread } from '../byId'
-import { fetchThreadsSuccess } from '../../actions'
+import { createReplySuccess, createThreadSuccess, fetchThreadsSuccess, fetchThreadSuccess } from '../../actions'
 import { threads } from '../../util/test/data'
 
 describe('byId reducer', () => {
@@ -9,7 +9,28 @@ describe('byId reducer', () => {
     expect(state).toEqual(defaultState)
   })
 
-  it('should handle action res', () => {
+  it('should handle CREATE_REPLY_SUCCESS', () => {
+    const action = createReplySuccess(threads[0])
+    const state = reducer(defaultState, action)
+
+    expect(state).toEqual(action.res.entities.threads)
+  })
+
+  it('should handle CREATE_THREAD_SUCCESS', () => {
+    const action = createThreadSuccess(threads[0])
+    const state = reducer(defaultState, action)
+
+    expect(state).toEqual(action.res.entities.threads)
+  })
+
+  it('should handle FETCH_THREAD_SUCCESS', () => {
+    const action = fetchThreadSuccess(threads[0])
+    const state = reducer(defaultState, action)
+
+    expect(state).toEqual(action.res.entities.threads)
+  })
+
+  it('should handle FETCH_THREADS_SUCCESS', () => {
     const action = fetchThreadsSuccess(threads)
     const state = reducer(defaultState, action)
 

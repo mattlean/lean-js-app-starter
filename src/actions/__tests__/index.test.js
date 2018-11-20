@@ -30,6 +30,40 @@ describe('actions', () => {
     expect(actions.clearErr(key)).toEqual(expectedAction)
   })
 
+  test('createReplyRequest() creates an action that starts a create reply request', () => {
+    const expectedAction = {
+      type: 'CREATE_REPLY_REQUEST'
+    }
+
+    expect(actions.createReplyRequest()).toEqual(expectedAction)
+  })
+
+  test('createReplySuccess() creates an action that ends a create reply request successfully', () => {
+    const expectedAction = {
+      type: 'CREATE_REPLY_SUCCESS',
+      res: normalize(threads[0], Thread)
+    }
+
+    expect(actions.createReplySuccess(threads[0])).toEqual(expectedAction)
+  })
+
+  test('createThreadRequest() creates an action that starts a create thread request', () => {
+    const expectedAction = {
+      type: 'CREATE_THREAD_REQUEST'
+    }
+
+    expect(actions.createThreadRequest()).toEqual(expectedAction)
+  })
+
+  test('createThreadSuccess() creates an action that ends a create thread request successfully', () => {
+    const expectedAction = {
+      type: 'CREATE_THREAD_SUCCESS',
+      res: normalize(threads[0], Thread)
+    }
+
+    expect(actions.createThreadSuccess(threads[0])).toEqual(expectedAction)
+  })
+
   test('endFetch() creates an action that ends fetch request', () => {
     const expectedAction = {
       type: 'FETCH_END'
@@ -135,9 +169,12 @@ describe('actions', () => {
 
   test('createReply({ID}, {DATA}) creates a reply', () => {
     const expectedActions = [
-      actions.clearErr(key),
       {
-        type: 'CREATE_REPLY_REQUEST',
+        type: 'CLEAR_ERR',
+        key
+      },
+      {
+        type: 'CREATE_REPLY_REQUEST'
       },
       {
         type: 'CREATE_REPLY_SUCCESS'
