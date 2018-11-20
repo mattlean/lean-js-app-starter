@@ -1,7 +1,9 @@
 // @flow
 import type { Action, Thread } from '../types'
 
-const list = (state: Array<Thread> = [], action: Action) => {
+export const defaultState = []
+
+const list = (state: Array<Thread> = defaultState, action: Action) => {
   switch(action.type) {
     case 'FETCH_THREADS_SUCCESS':
       return action.res.result
