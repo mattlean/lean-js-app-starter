@@ -86,10 +86,8 @@ export const fetchThreadSuccess = (res: Thread) => ({
   res: normalize(res, ThreadSchema)
 })
 
-export const setErr = (key: string, err: HTTPErr): ThunkAction => (dispatch: Dispatch) => {
-  dispatch({
-    type: 'SET_ERR',
-    key,
-    err
-  })
-}
+export const setErr = (key: string, err: HTTPErr) => ({
+  type: 'SET_ERR',
+  key,
+  err
+})
