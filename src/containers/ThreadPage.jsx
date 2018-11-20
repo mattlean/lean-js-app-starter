@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 import Loading from '../components/Loading'
 import Nav from '../components/Nav'
 import Threads from '../components/Threads'
-import { endFetch, fetchThreads, setErr } from '../actions'
+import { fetchEnd, fetchThreads, setErr } from '../actions'
 import { getThread } from '../reducers'
 import { isFresh } from '../util/api'
 import { setDocTitle } from '../util'
@@ -29,8 +29,8 @@ export class ThreadPage extends Component {
               this.props.setErr('read', err)
             }
           } else {
-            if(this.props.endFetch) {
-              this.props.endFetch()
+            if(this.props.fetchEnd) {
+              this.props.fetchEnd()
             }
           }
         })
@@ -54,7 +54,7 @@ export class ThreadPage extends Component {
 }
 
 ThreadPage.propTypes = {
-  endFetch: PropTypes.func,
+  fetchEnd: PropTypes.func,
   fetchThreads: PropTypes.func,
   id: PropTypes.string.isRequired,
   isFetching: PropTypes.bool.isRequired,
@@ -68,7 +68,7 @@ const mapStateToProps = (state, ownProps) => ({
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-  endFetch,
+  fetchEnd,
   fetchThreads,
   setErr
 }, dispatch)

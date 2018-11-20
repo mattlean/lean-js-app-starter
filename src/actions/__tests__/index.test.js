@@ -64,12 +64,20 @@ describe('actions', () => {
     expect(actions.createThreadSuccess(threads[0])).toEqual(expectedAction)
   })
 
-  test('endFetch() creates an action that ends fetch request', () => {
+  test('fetchEnd() creates an action that ends fetch request', () => {
     const expectedAction = {
       type: 'FETCH_END'
     }
 
-    expect(actions.endFetch()).toEqual(expectedAction)
+    expect(actions.fetchEnd()).toEqual(expectedAction)
+  })
+
+  test('fetchThreadsRequest() creates an action that starts a fetch threads request', () => {
+    const expectedAction = {
+      type: 'FETCH_THREADS_REQUEST'
+    }
+
+    expect(actions.fetchThreadsRequest()).toEqual(expectedAction)
   })
 
   test('fetchThreadsSuccess({ARRAY}) creates an action that ends threads fetch request successfully', () => {

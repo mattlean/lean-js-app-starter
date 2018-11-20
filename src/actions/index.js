@@ -55,12 +55,16 @@ export const createThreadSuccess = (res: Thread) => ({
   res: normalize(res, ThreadSchema)
 })
 
-export const endFetch = (): Action_FetchEnd => ({
+export const fetchEnd = (): Action_FetchEnd => ({
   type: 'FETCH_END'
 })
 
+export const fetchThreadsRequest = () => ({
+  type: 'FETCH_THREADS_REQUEST'
+})
+
 export const fetchThreads = (id?: string): ThunkAction => (dispatch: Dispatch) => {
-  dispatch({ type: 'FETCH_THREADS_REQUEST' })
+  dispatch(fetchThreadsRequest())
 
   if(id) {
     return getThreads(id).then(res => {
