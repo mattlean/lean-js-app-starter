@@ -9,6 +9,7 @@
 				"package-lock.json",
 				"stats.*.json",
 				"build/*",
+				"coverage/*",
 				"flow-typed/*",
 				"node_modules/*"
 			]
