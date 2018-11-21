@@ -1,7 +1,9 @@
 // @flow
 import type { Action, State_ById } from '../types'
 
-const byId = (state: State_ById = {}, action: Action): State_ById => {
+export const defaultState = {}
+
+const byId = (state: State_ById = defaultState, action: Action): State_ById => {
   switch(action.type) {
     case 'CREATE_REPLY_SUCCESS':
     case 'CREATE_THREAD_SUCCESS':

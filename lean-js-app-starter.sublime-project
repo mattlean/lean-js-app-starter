@@ -10,6 +10,7 @@
 				"records.json",
 				"stats.*.json",
 				"build/*",
+				"coverage/",
 				"flow-typed/*",
 				"node_modules/*"
 			]

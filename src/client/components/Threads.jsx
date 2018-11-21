@@ -4,13 +4,13 @@ import React, { Component } from 'react'
 import Thread from './Thread'
 import type { Thread as ThreadType } from '../types'
 
-type Props = { threads: Array<ThreadType> }
+type Props = { data: Array<ThreadType> }
 
 class Threads extends Component<Props> {
   render() {
     return <ul id="threads">
-      {this.props.threads.map((thread, i) => {
-        if(i < this.props.threads.length-1) {
+      {this.props.data.map((thread, i) => {
+        if(i < this.props.data.length-1) {
           return <React.Fragment key={thread._id}>
             <Thread data={thread} />
             <hr />

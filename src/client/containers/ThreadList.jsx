@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 
 import Loading from '../components/Loading'
 import Threads from '../components/Threads'
-import { endFetch, fetchThreads, setErr } from '../actions'
+import { fetchEnd, fetchThreads, setErr } from '../actions'
 import { getThreads } from '../reducers'
 import { setDocTitle } from '../util'
 
@@ -20,8 +20,8 @@ export class ThreadList extends Component {
               this.props.setErr('read', err)
             }
           } else {
-            if(this.props.endFetch) {
-              this.props.endFetch()
+            if(this.props.fetchEnd) {
+              this.props.fetchEnd()
             }
           }
         })
@@ -36,12 +36,12 @@ export class ThreadList extends Component {
     if(Array.isArray(this.props.threads) && this.props.threads.length === 0) {
       return <div className="center">No threads found. Be the first to post one by clicking on &quot;Start a New Thread&quot; above!</div>
     }
-    return <Threads threads={this.props.threads} />
+    return <Threads data={this.props.threads} />
   }
 }
 
 ThreadList.propTypes = {
-  endFetch: PropTypes.func,
+  fetchEnd: PropTypes.func,
   fetchThreads: PropTypes.func,
   isFetching: PropTypes.bool.isRequired,
   setErr: PropTypes.func,
@@ -64,7 +64,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-  endFetch,
+  fetchEnd,
   fetchThreads,
   setErr
 }, dispatch)

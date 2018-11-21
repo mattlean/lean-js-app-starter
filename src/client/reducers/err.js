@@ -1,7 +1,7 @@
 // @flow
 import type { Action, State_Err } from '../types'
 
-const defaultState = {}
+export const defaultState = {}
 
 const err = (state: State_Err = defaultState, action: Action): State_Err => {
   switch(action.type) {

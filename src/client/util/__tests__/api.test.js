@@ -1,12 +1,8 @@
 import { getThreads, postReply, postThread } from '../api'
+import { newThread, threads } from '../../util/test/data'
 
 describe('API', () => {
   let thread
-  const threadData = {
-    subject: 'New Thread',
-    comment: 'I am the new thread comment.'
-  }
-
 
   test('getThreads() lists all threads', () => {
     expect.assertions(1)
@@ -16,19 +12,19 @@ describe('API', () => {
     })
   })
 
-  test('postThread() creates a thread', () => {
+  test('postThread({DATA}) creates a thread', () => {
     expect.assertions(3)
 
-    return postThread(threadData).then(res => {
+    return postThread(newThread).then(res => {
       thread = res
 
-      expect(res.subject).toBe(threadData.subject)
-      expect(res.comment).toBe(threadData.comment)
+      expect(res.subject).toBe(newThread.subject)
+      expect(res.comment).toBe(newThread.comment)
       expect(res.type).toBe('Thread')
     })
   })
 
-  test('getThreads(id) reads specific thread', () => {
+  test('getThreads({ID}) reads specific thread', () => {
     expect.assertions(1)
 
     return getThreads(thread._id).then(res => {
@@ -39,7 +35,7 @@ describe('API', () => {
   test('postReply() creates a reply', () => {
     expect.assertions(1)
 
-    const replyData = { comment: 'All your base are belong to us.' }
+    const replyData = { comment: threads[0].replies[0].comment }
 
     return postReply(thread._id, replyData).then(res => {
       expect(res.replies[0].comment).toBe(replyData.comment)

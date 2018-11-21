@@ -110,22 +110,26 @@ router.get('/', (req, res, next) => { // eslint-disable-line no-unused-vars
 })
 
 router.get('/:id', (req, res, next) => { // eslint-disable-line no-unused-vars
-  Thread.findById(req.params.id).exec()
-    .then(thread => {
-      if(!thread) throw genErr(404)
+  if(req.params.id === 'favicon.ico') {
+    next()
+  } else {
+    Thread.findById(req.params.id).exec()
+      .then(thread => {
+        if(!thread) throw genErr(404)
 
-      thread = thread.toObject()
+        thread = thread.toObject()
 
-      const store = setupStore()
-      store.dispatch({
-        type: 'FETCH_THREAD_SUCCESS',
-        res: normalize(thread, ThreadSchema)
+        const store = setupStore()
+        store.dispatch({
+          type: 'FETCH_THREAD_SUCCESS',
+          res: normalize(thread, ThreadSchema)
+        })
+
+        const title = thread.subject || `Thread ${thread._id}`
+        res.send(renderFullPage(genHTML(store, req.url), store.getState(), genTitle(title)))
       })
-
-      const title = thread.subject || `Thread ${thread._id}`
-      res.send(renderFullPage(genHTML(store, req.url), store.getState(), genTitle(title)))
-    })
-    .catch(err => next(err))
+      .catch(err => next(err))
+  }
 })
 
 export default router
