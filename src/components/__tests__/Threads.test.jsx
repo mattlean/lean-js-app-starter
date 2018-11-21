@@ -9,7 +9,7 @@ Enzyme.configure({ adapter: new Adapter() })
 
 describe('Threads', () => {
   it('renders properly', () => {
-    const component = shallow(<Threads threads={threads} />)
+    const component = shallow(<Threads data={threads} />)
     expect(component).toMatchSnapshot()
   })
 })

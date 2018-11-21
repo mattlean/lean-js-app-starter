@@ -6,7 +6,7 @@ exports[`ThreadPage renders properly when loaded 1`] = `
     mode="top"
   />
   <Threads
-    threads={
+    data={
       Array [
         Object {
           "_id": "5bee2f90c43e83433b5e5d24",

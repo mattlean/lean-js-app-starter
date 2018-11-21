@@ -40,7 +40,7 @@ export class ThreadPage extends Component {
   render() {
     let content
     if(this.props.thread) {
-      content = <Threads threads={[this.props.thread]} />
+      content = <Threads data={[this.props.thread]} />
     } else if(!this.props.thread && this.props.isFetching) {
       content = <Loading />
     }

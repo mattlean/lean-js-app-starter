@@ -36,7 +36,7 @@ export class ThreadList extends Component {
     if(Array.isArray(this.props.threads) && this.props.threads.length === 0) {
       return <div className="center">No threads found. Be the first to post one by clicking on &quot;Start a New Thread&quot; above!</div>
     }
-    return <Threads threads={this.props.threads} />
+    return <Threads data={this.props.threads} />
   }
 }
 
