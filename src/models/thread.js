@@ -29,6 +29,8 @@ const schema = new mongoose.Schema(
     toObject: {
       transform: (doc, ret) => {
         delete ret.__v
+        ret._id = ret._id.toString()
+        ret.createdAt = ret.createdAt.toJSON()
         ret.type = schemaType
         return ret
       }
