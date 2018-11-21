@@ -1,13 +1,19 @@
-// @flow
 import fetch from 'cross-fetch'
 import moment from 'moment'
 
 import HTTPErr from '../util/HTTPErr'
-import settings from './apiSettings'
-import type { ReplyData, ThreadData } from '../types'
 
-let rootPath = '/api/'
-if(settings.api) rootPath = settings.api
+let rootPath = '/'
+switch(process.env.NODE_ENV) {
+  case 'development':
+    rootPath = `/api${rootPath}`
+    break
+  case 'test':
+    rootPath = `http://localhost:9001${rootPath}`
+    break
+  default:
+    rootPath = `${__server__}${rootPath}` // eslint-disable-line no-undef
+}
 
 const setReceived = (res) => {
   if(Array.isArray(res)) {
@@ -20,7 +26,7 @@ const setReceived = (res) => {
   return res
 }
 
-export const getThreads = (id?: string) => {
+export const getThreads = id => {
   let path = `${rootPath}thread`
 
   if(id) {
@@ -34,7 +40,7 @@ export const getThreads = (id?: string) => {
     .then(res => setReceived(res))
 }
 
-export const isFresh = (received?: string) => {
+export const isFresh = received => {
   if(!received) return false
 
   const a = moment()
@@ -46,7 +52,7 @@ export const isFresh = (received?: string) => {
   return true
 }
 
-export const postReply = (id: string, data: ReplyData) => fetch(`${rootPath}thread/${id}/reply`, {
+export const postReply = (id, data) => fetch(`${rootPath}thread/${id}/reply`, {
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify(data)
@@ -57,7 +63,7 @@ export const postReply = (id: string, data: ReplyData) => fetch(`${rootPath}thre
   })
   .then(res => setReceived(res))
 
-export const postThread = (data: ThreadData) => fetch(`${rootPath}thread`, {
+export const postThread = data => fetch(`${rootPath}thread`, {
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify(data)
