@@ -83,7 +83,7 @@ export type NormalizedRes = {
 
 export type Reply = {|
   _id: string,
-  createdAt: Date,
+  createdAt: string,
   comment: string
 |}
 
@@ -110,9 +110,10 @@ export type State_List = Array<string>
 
 export type Thread = {|
   _id: string,
-  createdAt: Date,
+  createdAt: string,
   subject?: string,
   comment: string,
+  received?: string,
   replies?: Array<Reply>
 |}
 
