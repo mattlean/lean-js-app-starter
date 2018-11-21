@@ -3,13 +3,18 @@ import fetch from 'cross-fetch'
 import moment from 'moment'
 
 import HTTPErr from '../util/HTTPErr'
-import settings from './apiSettings'
-import type { ReplyData, ThreadData } from '../types'
+import type { ReplyData, Thread, ThreadData } from '../types'
 
-let rootPath = '/api/'
-if(settings.api) rootPath = settings.api
+let rootPath = '/'
+switch(process.env.NODE_ENV) {
+  case 'test':
+    rootPath = `http://localhost:9001/api${rootPath}`
+    break
+  default:
+    rootPath = `/api${rootPath}`
+}
 
-const setReceived = (res) => {
+const setReceived = (res: Thread | Array<Thread>) => {
   if(Array.isArray(res)) {
     res.forEach(thread => {
       thread.received = new Date().toJSON()

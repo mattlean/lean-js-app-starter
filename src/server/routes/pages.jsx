@@ -59,20 +59,25 @@ const renderFullPage = (html, preloadedState, title = '*chan') => {
   }
 
   let main = ''
+  let style = ''
   if(clientAssets.main) {
     if(Array.isArray(clientAssets.main)) {
-      main = `<script type="text/javascript" src="/static/${clientAssets.main[0].filename}"></script>`
-    } else {
-      main = `<script type="text/javascript" src="/static/${clientAssets.main.filename}"></script>`
-    }
-  }
+      for(let i=0; i < clientAssets.main.length; ++i) {
+        if(main && style) break
 
-  let style = ''
-  if(clientAssets.style) {
-    if(Array.isArray(clientAssets.style)) {
-      style = `<link href="/static/${clientAssets.style[0].filename}" rel="stylesheet">`
-    } else {
-      style = `<link href="/static/${clientAssets.style.filename}" rel="stylesheet">`
+        const currAsset = clientAssets.main[i]
+
+        if(currAsset.type === 'js') {
+          main = `<script type="text/javascript" src="/static/${currAsset.filename}"></script>`
+          continue
+        }
+
+        if(currAsset.type === 'css') {
+          style = `<link href="/static/${currAsset.filename}" rel="stylesheet">`
+        }
+      }
+    } else if(main.type === 'js') {
+      main = `<script type="text/javascript" src="/static/${clientAssets.main.filename}"></script>`
     }
   }
 

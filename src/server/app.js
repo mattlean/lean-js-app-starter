@@ -16,7 +16,6 @@ app.use(compression())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
-
 // logging middleware
 if(process.env.NODE_ENV === 'development') {
   app.use('/static', express.static('build/client/development'))
