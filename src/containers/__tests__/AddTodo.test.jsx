@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer'
 import { Provider } from 'react-redux'
 
 import AddTodo from '../AddTodo'
-import setupStore from '../../util/setupStore'
+import { setupStore } from '../../util/store'
 
 describe('AddTodo', () => {
   it('renders properly', () => {

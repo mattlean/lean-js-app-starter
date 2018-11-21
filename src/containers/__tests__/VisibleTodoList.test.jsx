@@ -4,7 +4,7 @@ import { HashRouter as Router } from 'react-router-dom'
 import { Provider } from 'react-redux'
 
 import VisibleTodoList from '../VisibleTodoList'
-import setupStore from '../../util/setupStore'
+import { setupStore } from '../../util/store'
 
 describe('VisibleTodoList', () => {
   it('renders properly', () => {
