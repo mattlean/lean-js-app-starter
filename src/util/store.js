@@ -7,7 +7,7 @@ import rootReducer from '../reducers'
 export const setupStore = preloadedState => {
   const middlewares = [thunk]
 
-  if(process.env.NODE_ENV !== 'production') {
+  if(process.env.NODE_ENV !== 'development') {
     middlewares.push(createLogger())
   }
 

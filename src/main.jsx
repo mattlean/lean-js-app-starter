@@ -3,7 +3,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 
 import Root from './containers/Root'
-import setupStore from './util/setupStore'
+import { setupStore } from './util/store'
 import './main.scss'
 
 const root = document.getElementById('root')

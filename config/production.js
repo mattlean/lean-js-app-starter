@@ -4,10 +4,6 @@ const merge = require('webpack-merge')
 const parts = require('./parts')
 const PATHS = require('../PATHS')
 
-if(!process.env.SERVER) {
-  throw new Error('SERVER must be explicitly defined when running in production mode')
-}
-
 module.exports = merge([
   {
     output: {
