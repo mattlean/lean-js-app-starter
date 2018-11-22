@@ -5,40 +5,24 @@ Skip boilerplate setup and get straight to the code you care about for your next
 ### 🚀 No Setup Required
 Just download the release for your environment and start coding.
 
-### 🌕 Consistent Codebase Across Multiple Platforms
+### 🌙 Consistent Codebase Across Multiple Platforms
 Consistent JavaScript standard, webpack config, and dependencies no matter what environment you're building for.
 
-| 🏄‍ Browser           | 🌐 Node.js           | 💻 Desktop           |
-|---------------------|---------------------|---------------------|
-| JavaScript (ES2015) | JavaScript (ES2015) | JavaScript (ES2015) |
-| Babel               | Babel               | Babel               |
-| Flow                | Flow                | Flow                |
-| Jest                | Jest                | Jest                |
-| webpack             | webpack             | webpack             |
-| React               | React               | React               |
-| Redux               | Redux               | Redux               |
-| React Router        | React Router        | React Router        |
-| Sass                | Sass                | Sass                |
-|                     | Node.js             | Electron            |
-|                     | Express             |                     |
-|                     | MongoDB             |                     |
-|                     | Mongoose            |                     |
-
-### 🤖 Technologies Used
-Environments use these technologies where relevant:
-
-1. Language: JavaScript (ES2015)
-4. JavaScript Compiler: Babel
-2. Type Checking: Flow
-3. Testing: Jest
-5. Module Bundler: webpack
-6. Node.js App Framework: Express
-7. Database: MongoDB
-8. Object Modeling: Mongoose
-9. UI: React
-10. UI State Management: Redux
-11. UI Routing: React Router
-12. Styling: Sass
+| 🏄‍ Browser                                              | 🌐 Node.js                                              | 🖥️ Desktop                                              |
+|--------------------------------------------------------|--------------------------------------------------------|--------------------------------------------------------|
+| JavaScript (ES2015)                                    | JavaScript (ES2015)                                    | JavaScript (ES2015)                                    |
+| [Babel](https://babeljs.io)                            | [Babel](https://babeljs.io)                            | [Babel](https://babeljs.io)                            |
+| [Flow](https://flow.org)                               | [Flow](https://flow.org)                               | [Flow](https://flow.org)                               |
+| [Jest](https://jestjs.io)                              | [Jest](https://jestjs.io)                              | [Jest](https://jestjs.io)                              |
+| [webpack](https://webpack.js.org)                      | [webpack](https://webpack.js.org)                      | [webpack](https://webpack.js.org)                      |
+| [React](https://reactjs.org)                           | [React](https://reactjs.org)                           | [React](https://reactjs.org)                           |
+| [Redux](https://redux.js.org)                          | [Redux](https://redux.js.org)                          | [Redux](https://redux.js.org)                          |
+| [React Router](https://reacttraining.com/react-router) | [React Router](https://reacttraining.com/react-router) | [React Router](https://reacttraining.com/react-router) |
+| [Sass](https://sass-lang.com)                          | [Sass](https://sass-lang.com)                          | [Sass](https://sass-lang.com)                          |
+|                                                        | [Node.js](https://nodejs.org)                          | [Electron](https://electronjs.org)                     |
+|                                                        | [Express](https://expressjs.com)                       |                                                        |
+|                                                        | [MongoDB](https://mongodb.com)                         |                                                        |
+|                                                        | [Mongoose](https://mongoosejs.com)                     |                                                        |
 
 ### 👩‍💻 Convenient Development Environment
 **Automatic Reloading & Hot Loading**
@@ -53,7 +37,7 @@ Render React components on the server and neatly integrate your browser and Node
 
 Tools, plugins, and scripts like Redux DevTools, Devtron, and many others are already setup for you to make debugging easier.
 
-### 🏭 Build For Production
+### 🏛️ Build For Production
 
 Build for production with one simple command that handles all of the optimization for you.
 
@@ -61,7 +45,7 @@ Build for production with one simple command that handles all of the optimizatio
 If you ever need to change the build configuration, you can easily do so. The starting codebases are small, easy to understand, and ready to adjust to all of your needs.
 
 ## Get Started
-### Browser
+### 🏄‍ Browser
 **Download**
 
 If you want to build an app for web browsers, start with the *latest `browser` release*.
@@ -75,7 +59,7 @@ You can find some example browser apps in the following branches:
 
 [Click here for documentation on building browser apps with Lean JS App Starter.](docs/browser/README.md)
 
-### Node.js
+### 🌐 Node.js
 **Downloads**
 
 If you want to build an app for Node.js, you have two options:
@@ -92,7 +76,7 @@ You can find example Node.js apps in the following branches:
 
 [Click here for documentation on building Node.js apps with Lean JS App Starter.](docs/nodejs/README.md)
 
-### Desktop
+### 🖥️ Desktop
 **Downloads**
 
 If you want to build an app for desktop, start with the *latest `desktop` release*.
