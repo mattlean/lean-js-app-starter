@@ -2,8 +2,7 @@ import reducer, { getErrorMessage, getIsFetching, getVisibleTodos } from '../ind
 import { fetchTodosFailure, fetchTodosRequest, fetchTodosSuccess } from '../../actions'
 import { mockDatabase } from '../../util/mockAPI'
 
-
-describe('root selectors', () => {
+describe('Root reducer selectors', () => {
   const filter = 'all'
   const defaultState = reducer(undefined, {})
 

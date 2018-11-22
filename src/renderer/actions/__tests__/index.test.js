@@ -13,7 +13,7 @@ describe('actions', () => {
   const filter = 'all'
   const newTodoText = 'new todo'
 
-  test(`addTodo('${newTodoText}')`, () => {
+  test(`addTodo('${newTodoText}') creates an action to add a todo`, () => {
     const store = mockStore(reducer(undefined, {}))
 
     return store.dispatch(actions.addTodo(newTodoText)).then(action => {
@@ -70,7 +70,7 @@ describe('actions', () => {
     expect(actions.fetchTodosSuccess(filter, mockDatabase.todos)).toEqual(expectedAction)
   })
 
-  test('toggleTodo(\'{ID}\')', () => {
+  test('toggleTodo({ID}) creates an action to toggle a todo', () => {
     const newTodo = {
       ...mockDatabase.todos[0],
       completed: false

@@ -1,4 +1,4 @@
-import reducer, { defaultState } from '../byId'
+import reducer, { defaultState, getTodo } from '../byId'
 import { fetchTodosSuccess } from '../../actions'
 import { mockDatabase } from '../../util/mockAPI'
 
@@ -19,18 +19,18 @@ describe('byId reducer', () => {
   })
 })
 
-describe('byId selector', () => {
+describe('byId selectors', () => {
   test('getTodo() should return todo', () => {
     const action = fetchTodosSuccess(filter, mockDatabase.todos)
     const state = reducer(defaultState, action)
     const todo = mockDatabase.todos[0]
 
-    expect(state[todo.id]).toEqual(todo)
+    expect(getTodo(state, todo.id)).toEqual(todo)
   })
 
   test('getTodo() should return undefined when todo is not found', () => {
     const state = reducer(defaultState, {})
 
-    expect(state['123']).toEqual(undefined)
+    expect(getTodo(state, '123')).toEqual(undefined)
   })
 })
