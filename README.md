@@ -6,11 +6,11 @@ Skip boilerplate setup and get straight to the code you care about for your next
 Just download the release for your environment and start coding.
 
 ### 🌙 Consistent Codebase Across Multiple Platforms
-Consistent JavaScript standard, webpack config, and dependencies no matter what environment you're building for.
+Consistent JavaScript standard, webpack configuration, and dependencies no matter what environment you're building for.
 
-| 🏄‍ Browser                                              | 🌐 Node.js                                              | 🖥️ Desktop                                              |
+| 🏄‍ Web Browser                                          | 🌐 Node.js                                              | 💻 Desktop                                              |
 |--------------------------------------------------------|--------------------------------------------------------|--------------------------------------------------------|
-| JavaScript (ES2015)                                    | JavaScript (ES2015)                                    | JavaScript (ES2015)                                    |
+| *JavaScript (ES2015)*                                  | *JavaScript (ES2015)*                                  | *JavaScript (ES2015)*                                  |
 | [Babel](https://babeljs.io)                            | [Babel](https://babeljs.io)                            | [Babel](https://babeljs.io)                            |
 | [Flow](https://flow.org)                               | [Flow](https://flow.org)                               | [Flow](https://flow.org)                               |
 | [Jest](https://jestjs.io)                              | [Jest](https://jestjs.io)                              | [Jest](https://jestjs.io)                              |
@@ -24,28 +24,30 @@ Consistent JavaScript standard, webpack config, and dependencies no matter what 
 |                                                        | [MongoDB](https://mongodb.com)                         |                                                        |
 |                                                        | [Mongoose](https://mongoosejs.com)                     |                                                        |
 
+Future support for more environments and UI libraries are being considered.
+
 ### 👩‍💻 Convenient Development Environment
 **Automatic Reloading & Hot Loading**
 
 No need to manually refresh, rebuild, and rerun your apps during development. Let a script automate all of that for you so you can see your changes as soon as possible. When coding with React, take advantage of hot loading so you can tweak components in real-time without refreshing and losing state.
 
-**Server-Side Rendering Support**
-
-Render React components on the server and neatly integrate your browser and Node.js codebases together.
-
 **Useful Debugging Tools**
 
 Tools, plugins, and scripts like Redux DevTools, Devtron, and many others are already setup for you to make debugging easier.
 
+**Server-Side Rendering Support**
+
+Render React components on the server and neatly integrate your browser and Node.js codebases together.
+
 ### 🏛️ Build For Production
 
-Build for production with one simple command that handles all of the optimization for you.
+Create a production ready build with one simple command.
 
 ### 🔧 Fully Customizable
-If you ever need to change the build configuration, you can easily do so. The starting codebases are small, easy to understand, and ready to adjust to all of your needs.
+If you ever need to change the webpack configuration, you can easily do so. The starting codebases are small, easy to understand, and ready to adjust to all of your needs.
 
 ## Get Started
-### 🏄‍ Browser
+### 🏄‍ Web Browser
 **Download**
 
 If you want to build an app for web browsers, start with the *latest `browser` release*.
@@ -77,7 +79,7 @@ You can find example Node.js apps in the following branches:
 [Click here for documentation on building Node.js apps with Lean JS App Starter.](docs/nodejs/README.md)
 
 ### 🖥️ Desktop
-**Downloads**
+**Download**
 
 If you want to build an app for desktop, start with the *latest `desktop` release*.
 
