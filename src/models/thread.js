@@ -26,7 +26,7 @@ const schema = new mongoose.Schema(
     replies: [Reply]
   },
   {
-    toObject: {
+    toJSON: {
       transform: (doc, ret) => {
         delete ret.__v
         ret._id = ret._id.toString()
@@ -37,5 +37,6 @@ const schema = new mongoose.Schema(
     }
   }
 )
+schema.virtual('type').get(() => schemaType)
 
 module.exports = mongoose.model(schemaType, schema)
