@@ -19,10 +19,6 @@ const commonConfig = merge([
 
 module.exports = mode => {
   if(mode === 'production') {
-    if(!process.env.SERVER) {
-      throw new Error('SERVER must be explicitly defined when running in production mode')
-    }
-
     return merge(commonConfig, productionConfig, { mode })
   }
 

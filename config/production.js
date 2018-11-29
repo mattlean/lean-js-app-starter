@@ -40,6 +40,12 @@ module.exports = merge([
     }
   }),
 
+  parts.loadFonts({
+    options: {
+      name: '/assets/fonts/[name].[ext]'
+    }
+  }),
+
   parts.genSourceMaps({ type: 'source-map' }),
 
   parts.setFreeVariable('__server__', process.env.SERVER),

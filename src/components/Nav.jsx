@@ -2,25 +2,14 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const Nav = ({ mode = 'top' }: { mode: string }) => {
-  if(mode === 'bottom') {
-    return (
-      <nav id="bottom">
-        <hr />
-        [<Link to="/">Return</Link>]
-        {' '}
-        [<a href="#">Top</a>]
-      </nav>
-    )
-  }
-  return (
-    <nav>
-      [<Link to="/">Return</Link>]
-      {' '}
-      [<a href="#bottom">Bottom</a>]
-      <hr />
-    </nav>
-  )
-}
+const Nav = () => <nav id="nav">
+  <Link to="/">Home</Link>
+  <span>·</span>
+  <Link to="/counter">Counter Example</Link>
+  <span>·</span>
+  <a href="#">Docs</a>
+  <span>·</span>
+  <a href="https://github.com/IsaacLean/lean-js-app-starter">GitHub</a>
+</nav>
 
 export default Nav
