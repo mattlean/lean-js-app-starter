@@ -18,7 +18,7 @@ const Home = () => <Page>
     <img src={JestLogo} alt="Jest" title="Jest" />
     <img src={SassLogo} alt="Sass" title="Sass" />
   </div>
-  <p>Get started by editing the files in <code>src/</code>!</p>
+  <p>Edit files in <code>src/</code> to get started!</p>
 </Page>
 
 export default Home
