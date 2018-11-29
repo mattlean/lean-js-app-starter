@@ -16,7 +16,7 @@ const schema = new mongoose.Schema(
     }
   },
   {
-    toObject: {
+    toJSON: {
       transform: (doc, ret) => {
         ret._id = ret._id.toString()
         ret.createdAt = ret.createdAt.toJSON()

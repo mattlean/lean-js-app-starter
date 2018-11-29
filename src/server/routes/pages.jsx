@@ -40,44 +40,51 @@ const renderFullPage = (html, preloadedState, title = '*chan') => {
     preloadedState = ''
   }
 
-  let manifest = ''
-  if(clientAssets.manifest) {
-    if(Array.isArray(clientAssets.manifest)) {
-      manifest = `<script type="text/javascript" src="/static/${clientAssets.manifest[0].filename}"></script>`
-    } else {
-      manifest = `<script type="text/javascript" src="/static/${clientAssets.manifest.filename}"></script>`
-    }
-  }
-
-  let vendor = ''
-  if(clientAssets.vendor) {
-    if(Array.isArray(clientAssets.vendor)) {
-      vendor = `<script type="text/javascript" src="/static/${clientAssets.vendor[0].filename}"></script>`
-    } else {
-      vendor = `<script type="text/javascript" src="/static/${clientAssets.vendor.filename}"></script>`
-    }
-  }
-
   let main = ''
+  let manifest = ''
   let style = ''
-  if(clientAssets.main) {
-    if(Array.isArray(clientAssets.main)) {
-      for(let i=0; i < clientAssets.main.length; ++i) {
-        if(main && style) break
+  let vendor = ''
 
-        const currAsset = clientAssets.main[i]
-
-        if(currAsset.type === 'js') {
-          main = `<script type="text/javascript" src="/static/${currAsset.filename}"></script>`
-          continue
-        }
-
-        if(currAsset.type === 'css') {
-          style = `<link href="/static/${currAsset.filename}" rel="stylesheet">`
-        }
-      }
-    } else if(main.type === 'js') {
+  if(process.env.NODE_ENV === 'development') {
+    if(clientAssets.main) {
       main = `<script type="text/javascript" src="/static/${clientAssets.main.filename}"></script>`
+    }
+  } else {
+    if(clientAssets.manifest) {
+      if(Array.isArray(clientAssets.manifest)) {
+        manifest = `<script type="text/javascript" src="/static/${clientAssets.manifest[0].filename}"></script>`
+      } else {
+        manifest = `<script type="text/javascript" src="/static/${clientAssets.manifest.filename}"></script>`
+      }
+    }
+
+    if(clientAssets.vendor) {
+      if(Array.isArray(clientAssets.vendor)) {
+        vendor = `<script type="text/javascript" src="/static/${clientAssets.vendor[0].filename}"></script>`
+      } else {
+        vendor = `<script type="text/javascript" src="/static/${clientAssets.vendor.filename}"></script>`
+      }
+    }
+
+    if(clientAssets.main) {
+      if(Array.isArray(clientAssets.main)) {
+        for(let i=0; i < clientAssets.main.length; ++i) {
+          if(main && style) break
+
+          const currAsset = clientAssets.main[i]
+
+          if(currAsset.type === 'js') {
+            main = `<script type="text/javascript" src="/static/${currAsset.filename}"></script>`
+            continue
+          }
+
+          if(currAsset.type === 'css') {
+            style = `<link href="/static/${currAsset.filename}" rel="stylesheet">`
+          }
+        }
+      } else if(main.type === 'js') {
+        main = `<script type="text/javascript" src="/static/${clientAssets.main.filename}"></script>`
+      }
     }
   }
 

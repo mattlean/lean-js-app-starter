@@ -25,7 +25,7 @@ const schema = new mongoose.Schema(
     replies: [Reply]
   },
   {
-    toObject: {
+    toJSON: {
       transform: (doc, ret) => {
         delete ret.__v
         ret._id = ret._id.toString()
