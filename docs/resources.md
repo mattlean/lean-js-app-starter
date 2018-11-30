@@ -8,9 +8,12 @@ If you have zero experience in something used in this project and want to get a 
 * Babel Documentation: https://babeljs.io/docs/en
 
 ## Cascading Style Sheets (CSS)
-* Learn CSS Layout: http://learnlayout.com
 * Flexbox Froggy: https://flexboxfroggy.com
+* Learn CSS Layout: http://learnlayout.com
 * MDN CSS Documentation: https://developer.mozilla.org/en-US/docs/Web/CSS
+
+## Electron
+* Electron Documentation: https://electronjs.org/docs
 
 ## Express
 * Express Documentation: https://expressjs.com/en/starter/installing.html
@@ -49,10 +52,10 @@ If you have zero experience in something used in this project and want to get a 
 * React Router Documentation: https://reacttraining.com/react-router/web/guides/quick-start
 
 ## Redux
-*Notes: While Redux has excellent documentation, I highly recommend **Getting Started with Redux** and **Building React Applications with Idiomatic Redux** as they give an excellent dive into Redux and are written by the library's creator, Dan Abramov.*
-* Redux Documentation: https://redux.js.org
-* Getting Started with Redux: https://egghead.io/courses/getting-started-with-redux
+*Notes: While Redux has excellent documentation, I highly recommend starting with **Getting Started with Redux** and **Building React Applications with Idiomatic Redux** as they give an excellent dive into Redux and are written by the library's creator, Dan Abramov.*
 * Building React Applications with Idiomatic Redux: https://egghead.io/courses/building-react-applications-with-idiomatic-redux
+* Getting Started with Redux: https://egghead.io/courses/getting-started-with-redux
+* Redux Documentation: https://redux.js.org
 
 ## Representational State Transfer (REST)
 * REST API Tutorial: https://www.restapitutorial.com
@@ -67,9 +70,9 @@ If you have zero experience in something used in this project and want to get a 
 * Test Renderer Documentation: https://www.npmjs.com/package/react-test-renderer
 
 ## webpack
-*Notes: I highlly recommend **SurviveJS - webpack**, as it was the main resource that really gave me a deeper understanding of webpack and really influenced the way the webpack configuration was built for this project. It was written by Juho Vepsäläinen, an ex-core team member for webpack.*
-* webpack Documentation: https://webpack.js.org/concepts
+*Notes: I highly recommend **SurviveJS - webpack** as it was the main resource that really gave me a deeper understanding of webpack and really influenced the way the webpack configuration was built for this project. It was written by Juho Vepsäläinen, an ex-core team member for webpack.*
 * SurviveJS - webpack: https://survivejs.com/webpack
+* webpack Documentation: https://webpack.js.org/concepts
 
 ## Yarn
 * Yarn Documentation: https://yarnpkg.com/lang/en/docs

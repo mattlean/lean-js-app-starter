@@ -91,5 +91,8 @@ You can find an example desktop app in the following branch:
 
 [Click here for documentation on building desktop apps with Lean JS App Starter.](docs/desktop/README.md)
 
+### 🏊‍♂ Documentation
+You can dive deeper into the project by reading the [documentation](docs) which also comes included locally with each copy of your project.
+
 ## License
 This open source project is licensed under the [MIT License](https://choosealicense.com/licenses/mit).
