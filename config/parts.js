@@ -66,6 +66,11 @@ exports.loadFonts = ({ options } = {}) => ({
   }
 })
 
+// Load HTML
+exports.loadHTML = (options) => ({
+  plugins: [ new HtmlWebpackPlugin(options) ]
+})
+
 // Load images
 exports.loadImgs = ({ exclude, include, options } = {}) => ({
   module: {
@@ -81,11 +86,6 @@ exports.loadImgs = ({ exclude, include, options } = {}) => ({
       }
     ]
   }
-})
-
-// Load HTML
-exports.loadHTML = (options) => ({
-  plugins: [ new HtmlWebpackPlugin(options) ]
 })
 
 // Load JavaScript through Babel
