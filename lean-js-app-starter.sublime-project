@@ -9,6 +9,7 @@
 				"package-lock.json",
 				"records.json",
 				"stats.*.json",
+				"yarn.lock",
 				"build/*",
 				"coverage/*",
 				"flow-typed/*",
