@@ -1,6 +1,7 @@
 // @flow
-import HTTPErr from '../util/HTTPErr'
 import type { Dispatch as ReduxDispatch } from 'redux'
+
+import HTTPErr from '../util/HTTPErr'
 
 export type Action =
   | Action_ClearAllErrs
