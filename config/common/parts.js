@@ -58,6 +58,26 @@ exports.genAssetList = ({ format, key, name }) => ({
   plugins: [ new AssetListWebpackPlugin({ format, key, name }) ]
 })
 
+// Load fonts
+exports.loadFonts = ({ options } = {}) => ({
+  module: {
+    rules: [
+      {
+        use: {
+          loader: 'file-loader',
+          options
+        },
+        test: /\.(ttf|eot|woff|woff2)$/
+      }
+    ]
+  }
+})
+
+// Load HTML
+exports.loadHTML = (options) => ({
+  plugins: [ new HtmlWebpackPlugin(options) ]
+})
+
 // Load images
 exports.loadImgs = ({ exclude, include, options } = {}) => ({
   module: {
@@ -70,14 +90,9 @@ exports.loadImgs = ({ exclude, include, options } = {}) => ({
         exclude,
         include,
         test: /\.(gif|jpe?g|png)$/i
-      },
+      }
     ]
   }
-})
-
-// Load HTML
-exports.loadHTML = (options) => ({
-  plugins: [ new HtmlWebpackPlugin(options) ]
 })
 
 // Load JavaScript through Babel
