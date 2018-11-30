@@ -1,7 +1,7 @@
 {
   "name": "lean-web-app-starter",
   "version": "0.0.1",
-  "description": "",
+  "description": "A starter project to kickoff development your next JavaScript application.",
   "main": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
