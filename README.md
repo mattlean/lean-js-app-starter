@@ -50,7 +50,7 @@ If you ever need to change the webpack configuration, you can easily do so. The 
 ### 🏄‍ Web Browser
 **Download**
 
-If you want to build an app for web browsers, start with the *latest `browser` release*.
+If you want to build an app for web browsers, start with the [latest `browser` release].
 
 **Examples**
 
@@ -66,8 +66,8 @@ You can find some example browser apps in the following branches:
 
 If you want to build an app for Node.js, you have two options:
 
-- *`nodejs`*: An Express, MongoDB, and Mongoose app starter project
-- *`nodejs-ssr`*: An Express, MongoDB, and Mongoose app that supports server-side rendering of React components
+- [`nodejs`]: An Express, MongoDB, and Mongoose app starter project
+- [`nodejs-ssr`]: An Express, MongoDB, and Mongoose app that supports server-side rendering of React components
 
 **Examples**
 

@@ -20,6 +20,9 @@
 ### Development Server
 To run the development server, run the [`package.json`](../../package.json) script `start:dev:watch`. This will start [webpack-dev-server](https://github.com/webpack/webpack-dev-server) which will automatically create a development build and host it at [localhost:8080](http://localhost:8080). Any changes you do to the codebase will automatically update the application. Any errors that occur will show up in the terminal where you are running the [`package.json`](../../package.json) script as well as the browser.
 
+### Creating JavaScript Files
+When creating JavaScript files, if it includes any JSX at all, it is recommended that you end the filename with `.jsx`, otherwise end it with `.js`. This is to make it easier to distinguish when files use JSX or not.
+
 ### Debugging
 Redux DevTools is already setup for you in the codebase, all you need to do is install the extension for your browser: https://github.com/zalmoxisus/redux-devtools-extension
 
@@ -63,7 +66,7 @@ Use the following [`package.json`](../../package.json) scripts to have [Jest](ht
 * `test:watch`: Watch files for changes and rerun the tests affected by these changes
 
 #### Creating Tests
-When you create tests, it is recommended that you end your file names with `.test.js` (or `.test.jsx` if it uses JSX) and put them in a `__tests__` folder.
+When creating tests, it is recommended that you end your file names with `.test.js` (or `.test.jsx` if it uses JSX) and put them in a `__tests__` folder.
 
 #### Code Coverage
-Run [Istanbul](https://istanbul.js.org) to collect coverage information with `test:coverage`. Doing so will output the results in the terminal as well as generate `coverage/` (which is not versioned).
+Use the [`package.json`](../../package.json) script `test:coverage` to run [Istanbul](https://istanbul.js.org) to collect coverage information. Doing so will output the results in the terminal as well as generate `coverage/` (which is not versioned).
