@@ -1,5 +1,5 @@
 # Web Browser: Examples
-## Basic Redux and React Router Example
+## Basic Redux & React Router Example
 An example application that showcases a basic Redux implementation of a React counter component along with routing with React Router. Available by default with the [`browser` release].
 
 * Download: *URL*

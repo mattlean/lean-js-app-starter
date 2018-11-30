@@ -1,5 +1,5 @@
 # Web Browser: Dependencies
-To check versions for each dependency, please view [`package.json`](../../package.json).
+To check versions for dependencies, please view [`package.json`](../../package.json).
 
 ## Production
 * [**`cross-fetch`**](https://npmjs.com/package/cross-fetch)  
@@ -28,8 +28,6 @@ JavaScript compiler
 [`@babel/core` plugin that transforms static class properties as well as properties declared with the property initializer syntax](https://babeljs.io/docs/en/next/babel-plugin-proposal-class-properties.html)
 * [**`@babel/plugin-transform-modules-commonjs`**](https://npmjs.com/package/@babel/plugin-transform-modules-commonjs)  
 [`@babel/core` plugin that transforms ES2015 modules to CommonJS](https://babeljs.io/docs/en/next/babel-plugin-transform-modules-commonjs.html)
-* [**`@babel/plugin-transform-react-jsx-source`**](https://npmjs.com/package/@babel/plugin-transform-react-jsx-source)  
-[`@babel/core` plugin that adds a __source prop to all JSX elements and enables filenames and line numbers in component stack traces](https://babeljs.io/docs/en/next/babel-plugin-transform-react-jsx-source.html)
 * [**`@babel/preset-env`**](https://npmjs.com/package/@babel/preset-env)  
 [`@babel/core` smart preset that allows you to use the latest JavaScript without needing to micromanage which syntax transforms (and optionally, browser polyfills) are needed by your target environment(s)](https://babeljs.io/docs/en/next/babel-preset-env.html)
 * [**`@babel/preset-flow`**](https://npmjs.com/package/@babel/preset-flow)  

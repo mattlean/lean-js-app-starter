@@ -4,4 +4,5 @@
 - [Web Browser](browser/README.md)
 - [Node.js](nodejs/README.md)
 - [Desktop](desktop/README.md)
+- [JavaScript Features](javascript_features.md)
 - [Resources](resources.md)

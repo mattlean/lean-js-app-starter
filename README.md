@@ -8,9 +8,9 @@ Just download the release for your environment and start coding.
 ### 🌙 Consistent Codebase Across Multiple Platforms
 Consistent JavaScript standard, webpack configuration, and dependencies no matter what environment you're building for.
 
-| 🏄‍ Web Browser                                          | 🌐 Node.js                                              | 💻 Desktop                                              |
+| 🏄‍ Web Browser                                          | 🌐 Node.js                                              | 🖥️ Desktop                                              |
 |--------------------------------------------------------|--------------------------------------------------------|--------------------------------------------------------|
-| *JavaScript (ES2015)*                                  | *JavaScript (ES2015)*                                  | *JavaScript (ES2015)*                                  |
+| [JavaScript (ES2015)](docs/javascript_features.md)     | [JavaScript (ES2015)](docs/javascript_features.md)     | [JavaScript (ES2015)](docs/javascript_features.md)     |
 | [Babel](https://babeljs.io)                            | [Babel](https://babeljs.io)                            | [Babel](https://babeljs.io)                            |
 | [Flow](https://flow.org)                               | [Flow](https://flow.org)                               | [Flow](https://flow.org)                               |
 | [Jest](https://jestjs.io)                              | [Jest](https://jestjs.io)                              | [Jest](https://jestjs.io)                              |
@@ -91,7 +91,7 @@ You can find an example desktop app in the following branch:
 
 [Click here for documentation on building desktop apps with Lean JS App Starter.](docs/desktop/README.md)
 
-### 🏊‍♂ Documentation
+### 🏊 Documentation
 You can dive deeper into the project by reading the [documentation](docs) which also comes included locally with each copy of your project.
 
 ## License
