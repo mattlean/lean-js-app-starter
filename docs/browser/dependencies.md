@@ -39,7 +39,7 @@ JavaScript compiler
 * [**`autoprefixer`**](https://npmjs.com/package/autoprefixer)  
 `postcss` plugin that adds vendor prefixes to styles based on what you need for your target environments
 * [**`babel-core@^7.0.0-bridge`**](https://npmjs.com/package/babel-core)  
-Duplicate of `@babel/core`, but is needed for some older `@babel/core` related dependencies.
+Duplicate of `@babel/core`, but is needed for some older Babel related dependencies.
 * [**`babel-eslint`**](https://npmjs.com/package/babel-eslint)  
 Parser for `eslint` that enables linting of `@babel/core` code
 * [**`babel-jest`**](https://npmjs.com/package/babel-jest)  

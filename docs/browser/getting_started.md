@@ -1,15 +1,15 @@
 # Web Browser: Getting Started
 ## 0. Prerequisites
-You must have Node.js and npm or Yarn.
+You must have [Node.js](https://nodejs.org) and [npm](https://npmjs.com) or [Yarn](https://yarnpkg.com).
 
-* Download Node.js and npm here: [https://nodejs.org](https://nodejs.org)
-* If you don't want to use npm, download Yarn here: [https://yarnpkg.com](https://yarnpkg.com)
+* Download Node.js and npm here: https://nodejs.org/en/download
+* If you don't want to use npm, download Yarn here: https://yarnpkg.com/en/docs/install
 
 ## 1. Download
 Download and extract the latest browser release here: *URL*
 
-## 2. Initialize Command
-After extracting the release, open a terminal, go to the project root directory, and then run the following `package.json` script to install dependencies and Flow library interface definitions:
+## 2. Setup
+After extracting the release, open a terminal, go to the project root directory, and then run the following [`package.json`](../../package.json) script to install dependencies and [Flow](https://flow.org) library interface definitions:
 
 * npm: `npm run setup`
 * Yarn: `yarn run setup`
