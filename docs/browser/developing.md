@@ -35,10 +35,7 @@ You can use the following [`package.json`](../../package.json) scripts to lint y
 * `lint:js` or `lint`: Lint JavaScript with [ESLint](https://eslint.org)
 * `lint:styles`: Lint CSS and Sass with [stylelint](https://stylelint.io)
 
-Instead of only using these scripts, it is highly recommended that you enable plugins/extensions in your code editor to allow it to lint JavaScript with ESLint and styles with stylelint.
-
-#### Sublime Text
-*TODO...*
+Instead of only using these scripts, it is highly recommended that you enable plugins/extensions in your code editor to allow it to lint JavaScript with ESLint and styles with stylelint. Details on how to set this up for Sublime Text can be found in the ["Sublime Text" documentation](../sublime_text.md).
 
 #### Configuration
 If you want to configure the linters, you can edit the following files:
@@ -49,10 +46,7 @@ If you want to configure the linters, you can edit the following files:
 ### Type Checking
 You can run the [`package.json`](../../package.json) script `flow` to run [Flow](https://flow.org) to type check your code.
 
-Instead of only using this script, it is highly recommended that you enable plugins/extensions in your code editor to allow it to type check with Flow.
-
-#### Sublime Text
-*TODO...*
+Instead of only using this script, it is highly recommended that you enable plugins/extensions in your code editor to allow it to type check with Flow. Details on how to set this up for Sublime Text can be found in the ["Sublime Text" documentation](../sublime_text.md).
 
 #### Configuration
 If you want to configure Flow, you can edit [`.flowconfig`](../../.flowconfig).
@@ -70,3 +64,6 @@ When creating tests, it is recommended that you end your file names with `.test.
 
 #### Code Coverage
 Use the [`package.json`](../../package.json) script `test:coverage` to run [Istanbul](https://istanbul.js.org) to collect coverage information. Doing so will output the results in the terminal as well as generate `coverage/` (which is not versioned).
+
+### Editor Setup
+At the moment there is only [documentation on how to setup Sublime Text with this project](../sublime_text.md), but documentation for other editors is being considered.
