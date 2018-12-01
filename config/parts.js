@@ -154,12 +154,13 @@ exports.setFreeVariable = (key, val) => {
 }
 
 // Setup webpack-dev-server
-exports.setupDevServer = ({ host, historyApiFallback, hot, port, proxy } = {}) => ({
+exports.setupDevServer = ({ host, historyApiFallback, hot, open, port, proxy } = {}) => ({
   devServer: {
     host,
     port,
     historyApiFallback,
     hot,
+    open,
     proxy,
     stats: 'errors-only',
     overlay: true
