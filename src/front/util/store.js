@@ -2,7 +2,7 @@ import thunk from 'redux-thunk'
 import { applyMiddleware, compose, createStore } from 'redux'
 import { createLogger } from 'redux-logger'
 
-import rootReducer from '../../client/reducers'
+import rootReducer from '../../front/reducers'
 
 export const isServerRendered = () => {
   if(window.__PRELOADED_STATE__) {

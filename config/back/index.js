@@ -7,7 +7,7 @@ const productionConfig = require('./production')
 
 const commonConfig = merge([
   {
-    entry: `${PATHS.server.src}/main.js`,
+    entry: `${PATHS.back.src}/main.js`,
 
     resolve: { extensions: ['.js', '.jsx', '.json'] },
 

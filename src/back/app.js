@@ -18,14 +18,14 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 // logging middleware
 if(process.env.NODE_ENV === 'development') {
-  app.use('/static', express.static('build/client/development'))
+  app.use('/static', express.static('build/front/development'))
 
   app.use((req, res, next) => {
     logger.debug(`${req.method} ${req.path}`)
     next()
   })
 } else {
-  app.use('/static', express.static('build/client/production'))
+  app.use('/static', express.static('build/front/production'))
 }
 
 // CORS setup

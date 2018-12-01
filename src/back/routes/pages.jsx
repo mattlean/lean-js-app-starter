@@ -5,18 +5,18 @@ import { renderToString } from 'react-dom/server'
 import { Router } from 'express'
 import { StaticRouter } from 'react-router-dom'
 
-import Root from '../../client/containers/Root'
+import Root from '../../front/containers/Root'
 import Thread from '../models/thread'
 import { err, model } from '../util'
-import { genTitle } from '../../client/util'
-import { setupStore } from '../../client/util/store'
-import { Thread as ThreadSchema, Threads } from '../../client/types/schema'
+import { genTitle } from '../../front/util'
+import { setupStore } from '../../front/util/store'
+import { Thread as ThreadSchema, Threads } from '../../front/types/schema'
 
-let clientAssets
+let frontAssets
 if(process.env.NODE_ENV === 'development') {
-  clientAssets = require('../../../build/client/development/assets')
+  frontAssets = require('../../../build/front/development/assets')
 } else {
-  clientAssets = require('../../../build/client/production/assets')
+  frontAssets = require('../../../build/front/production/assets')
 }
 
 const { docToObject } = model
@@ -46,32 +46,32 @@ const renderFullPage = (html, preloadedState, title = '*chan') => {
   let vendor = ''
 
   if(process.env.NODE_ENV === 'development') {
-    if(clientAssets.main) {
-      main = `<script type="text/javascript" src="/static/${clientAssets.main.filename}"></script>`
+    if(frontAssets.main) {
+      main = `<script type="text/javascript" src="/static/${frontAssets.main.filename}"></script>`
     }
   } else {
-    if(clientAssets.manifest) {
-      if(Array.isArray(clientAssets.manifest)) {
-        manifest = `<script type="text/javascript" src="/static/${clientAssets.manifest[0].filename}"></script>`
+    if(frontAssets.manifest) {
+      if(Array.isArray(frontAssets.manifest)) {
+        manifest = `<script type="text/javascript" src="/static/${frontAssets.manifest[0].filename}"></script>`
       } else {
-        manifest = `<script type="text/javascript" src="/static/${clientAssets.manifest.filename}"></script>`
+        manifest = `<script type="text/javascript" src="/static/${frontAssets.manifest.filename}"></script>`
       }
     }
 
-    if(clientAssets.vendor) {
-      if(Array.isArray(clientAssets.vendor)) {
-        vendor = `<script type="text/javascript" src="/static/${clientAssets.vendor[0].filename}"></script>`
+    if(frontAssets.vendor) {
+      if(Array.isArray(frontAssets.vendor)) {
+        vendor = `<script type="text/javascript" src="/static/${frontAssets.vendor[0].filename}"></script>`
       } else {
-        vendor = `<script type="text/javascript" src="/static/${clientAssets.vendor.filename}"></script>`
+        vendor = `<script type="text/javascript" src="/static/${frontAssets.vendor.filename}"></script>`
       }
     }
 
-    if(clientAssets.main) {
-      if(Array.isArray(clientAssets.main)) {
-        for(let i=0; i < clientAssets.main.length; ++i) {
+    if(frontAssets.main) {
+      if(Array.isArray(frontAssets.main)) {
+        for(let i=0; i < frontAssets.main.length; ++i) {
           if(main && style) break
 
-          const currAsset = clientAssets.main[i]
+          const currAsset = frontAssets.main[i]
 
           if(currAsset.type === 'js') {
             main = `<script type="text/javascript" src="/static/${currAsset.filename}"></script>`
@@ -83,7 +83,7 @@ const renderFullPage = (html, preloadedState, title = '*chan') => {
           }
         }
       } else if(main.type === 'js') {
-        main = `<script type="text/javascript" src="/static/${clientAssets.main.filename}"></script>`
+        main = `<script type="text/javascript" src="/static/${frontAssets.main.filename}"></script>`
       }
     }
   }

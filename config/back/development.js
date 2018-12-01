@@ -7,15 +7,11 @@ module.exports = merge([
   {
     output: {
       filename: 'server.js',
-      path: `${PATHS.server.build}/production`
+      path: `${PATHS.back.build}/development`
     }
   },
 
-  parts.cleanPaths(['build/server/production']),
+  parts.cleanPaths(['build/back/development']),
 
-  parts.checkTypes(),
-
-  parts.minJS(),
-
-  parts.genSourceMaps({ type: 'source-map' }),
+  parts.genSourceMaps({ type: 'cheap-module-eval-source-map' })
 ])

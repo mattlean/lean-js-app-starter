@@ -1,7 +1,7 @@
 const merge = require('webpack-merge')
 
 const parts = require('../common/parts')
-const PATHS = require('../../PATHS').client
+const PATHS = require('../../PATHS').front
 
 module.exports = merge([
   {
@@ -12,7 +12,7 @@ module.exports = merge([
     }
   },
 
-  parts.cleanPaths(['build/client/development']),
+  parts.cleanPaths(['build/front/development']),
 
   parts.setupDevServer({
     host: process.env.HOST,

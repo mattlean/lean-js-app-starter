@@ -9,11 +9,11 @@ module.exports = merge([
     output: {
       chunkFilename: '[name].[chunkhash:4].js',
       filename: '[name].[chunkhash:4].js',
-      path: `${PATHS.client.build}/production`
+      path: `${PATHS.front.build}/production`
     }
   },
 
-  parts.cleanPaths(['build/client/production']),
+  parts.cleanPaths(['build/front/production']),
 
   parts.checkTypes(),
 
@@ -31,7 +31,7 @@ module.exports = merge([
     use: ['css-loader', 'sass-loader', parts.autoprefix()]
   }),
 
-  parts.purifyCSS({ paths: glob.sync(`${PATHS.client.src}/**/*.{js,jsx}`, { nodir: true }) }),
+  parts.purifyCSS({ paths: glob.sync(`${PATHS.front.src}/**/*.{js,jsx}`, { nodir: true }) }),
 
   parts.loadImgs({
     options: {
