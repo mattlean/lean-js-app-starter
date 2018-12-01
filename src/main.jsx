@@ -1,7 +1,6 @@
 // @flow
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { createLogger } from 'redux-logger'
 
 import Root from './containers/Root'
 import rootReducer from './reducers'
@@ -11,6 +10,6 @@ import './main.scss'
 const root = document.getElementById('root')
 
 if(root) {
-  const store = setupStore(rootReducer, null, [], [createLogger()])
+  const store = setupStore(rootReducer)
   ReactDOM.render(<Root store={store} />, root)
 }
