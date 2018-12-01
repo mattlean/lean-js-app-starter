@@ -1,4 +1,5 @@
 import React from 'react'
+import thunk from 'redux-thunk'
 import { normalize } from 'normalizr'
 import { Provider } from 'react-redux'
 import { renderToString } from 'react-dom/server'
@@ -6,6 +7,7 @@ import { Router } from 'express'
 import { StaticRouter } from 'react-router-dom'
 
 import Root from '../../front/containers/Root'
+import rootReducer from '../../front/reducers'
 import Thread from '../models/thread'
 import { err, model } from '../util'
 import { genTitle } from '../../front/util'
@@ -19,7 +21,7 @@ if(process.env.NODE_ENV === 'development') {
   frontAssets = require('../../../build/front/production/assets')
 }
 
-const { docToObject } = model
+const { docToJSON } = model
 const { genErr } = err
 
 const router = Router()
@@ -110,10 +112,10 @@ const renderFullPage = (html, preloadedState, title = '*chan') => {
 router.get('/', (req, res, next) => { // eslint-disable-line no-unused-vars
   Thread.find().sort({ createdAt: -1 }).exec()
     .then(threads => {
-      const store = setupStore()
+      const store = setupStore(rootReducer, null, [thunk])
       store.dispatch({
         type: 'FETCH_THREADS_SUCCESS',
-        res: normalize(docToObject(threads), Threads)
+        res: normalize(docToJSON(threads), Threads)
       })
 
       res.send(renderFullPage(genHTML(store, req.url), store.getState(), genTitle()))
@@ -131,7 +133,7 @@ router.get('/:id', (req, res, next) => { // eslint-disable-line no-unused-vars
 
         thread = thread.toObject()
 
-        const store = setupStore()
+        const store = setupStore(rootReducer, null, [thunk])
         store.dispatch({
           type: 'FETCH_THREAD_SUCCESS',
           res: normalize(thread, ThreadSchema)

@@ -1,8 +1,4 @@
-import thunk from 'redux-thunk'
 import { applyMiddleware, compose, createStore } from 'redux'
-import { createLogger } from 'redux-logger'
-
-import rootReducer from '../../front/reducers'
 
 export const isServerRendered = () => {
   if(window.__PRELOADED_STATE__) {
@@ -12,23 +8,26 @@ export const isServerRendered = () => {
   return false
 }
 
-export const setupStore = (preloadedState) => {
-  const middlewares = [thunk]
+export const setupStore = (reducer, preloadedState, middlewares = [], devMiddlewares) => {
+  if(!middlewares) middlewares = []
+
+  if(process.env.NODE_ENV === 'development' && Array.isArray(devMiddlewares)) {
+    middlewares = [...middlewares, ...devMiddlewares]
+  }
 
   if(__isBrowser__) { // eslint-disable-line no-undef
-    if(process.env.NODE_ENV === 'development') {
-      middlewares.push(createLogger())
+    const composeEnhancers =  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+    if(preloadedState !== null && preloadedState !== undefined) {
+      return createStore(reducer, preloadedState, composeEnhancers(applyMiddleware(...middlewares)))
     }
 
-    const composeEnhancers =  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
-    if(preloadedState) {
-      return createStore(rootReducer, preloadedState, composeEnhancers(applyMiddleware(...middlewares)))
-    }
-    return createStore(rootReducer, composeEnhancers(applyMiddleware(...middlewares)))
+    return createStore(reducer, composeEnhancers(applyMiddleware(...middlewares)))
   }
 
   if(preloadedState) {
-    return createStore(rootReducer, preloadedState, applyMiddleware(...middlewares))
+    return createStore(reducer, preloadedState, applyMiddleware(...middlewares))
   }
-  return createStore(rootReducer, applyMiddleware(...middlewares))
+  return createStore(reducer, applyMiddleware(...middlewares))
 }
+
+export default setupStore

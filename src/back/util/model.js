@@ -7,9 +7,9 @@ const model = {
     return data
   },
 
-  docToObject(data: Object | Array<Object>): Object | Array<Object> {
+  docToJSON(data: Object | Array<Object>): Object | Array<Object> {
     if(Array.isArray(data)) {
-      return data.map(d => d.toObject())
+      return data.map(d => d.toJSON())
     }
     return data.toObject()
   }
