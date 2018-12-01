@@ -28,6 +28,8 @@ Redux DevTools is already setup for you in the codebase, all you need to do is i
 
 It is also highly recommend you use your browser's developer tools (such as [Chrome DevTools](https://developers.google.com/web/tools/chrome-devtools) or [Firefox Developer Tools](https://developer.mozilla.org/en-US/docs/Tools)) and also install the React Developer Tools extension: https://github.com/facebook/react-devtools
 
+Source maps are also generated so you can still debug compiled code. Just make sure that source map support is enabled in your browser developer tool!
+
 ### Linting
 #### Scripts
 You can use the following [`package.json`](../../package.json) scripts to lint your code:
