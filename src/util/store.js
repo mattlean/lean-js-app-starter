@@ -1,6 +1,8 @@
 import { applyMiddleware, compose, createStore } from 'redux'
 
 export const setupStore = (reducer, preloadedState, middlewares = [], devMiddlewares) => {
+  if(!middlewares) middlewares = []
+
   if(process.env.NODE_ENV === 'development' && Array.isArray(devMiddlewares)) {
     middlewares = [...middlewares, ...devMiddlewares]
   }

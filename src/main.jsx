@@ -1,6 +1,6 @@
 // @flow
 import React from 'react'
-import ReactDOM from 'react-dom'
+import { render } from 'react-dom'
 
 import Root from './containers/Root'
 import rootReducer from './reducers'
@@ -11,5 +11,5 @@ const root = document.getElementById('root')
 
 if(root) {
   const store = setupStore(rootReducer)
-  ReactDOM.render(<Root store={store} />, root)
+  render(<Root store={store} />, root)
 }
