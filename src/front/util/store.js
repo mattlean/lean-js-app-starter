@@ -29,5 +29,3 @@ export const setupStore = (reducer, preloadedState, middlewares = [], devMiddlew
   }
   return createStore(reducer, applyMiddleware(...middlewares))
 }
-
-export default setupStore
