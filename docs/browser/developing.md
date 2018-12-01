@@ -12,16 +12,33 @@
   * [`containers`](../../src/containers): Redux connected React components
   * [`reducers`](../../src/reducers): Redux reducers
   * [`types`](../../src/types): Flow type definitions
-  * [`util`](../../src/util): Miscellaneous scripts
+  * [`util`](../../src/util): Utility scripts
 
 *Jest tests are found throughout several parts of the project within `__tests__` folders.*
 
 ## Development Process
 ### Development Server
-To run the development server, run the [`package.json`](../../package.json) script `start:dev:watch`. This will start [webpack-dev-server](https://github.com/webpack/webpack-dev-server) which will automatically create a development build and host it at [localhost:8080](http://localhost:8080). Any changes you do to the codebase will automatically update the application. Any errors that occur will show up in the terminal where you are running the [`package.json`](../../package.json) script as well as the browser.
+To run the development server, run the [`package.json`](../../package.json) script `start:dev:watch`. This will start [webpack-dev-server](https://github.com/webpack/webpack-dev-server) which will automatically create a development build and host it at [localhost:8080](http://localhost:8080). Any changes you do to the codebase will automatically update the app. Any errors that occur will show up in the terminal where you are running the [`package.json`](../../package.json) script as well as the browser.
 
 ### Creating JavaScript Files
 When creating JavaScript files, if it includes any JSX at all, it is recommended that you end the filename with `.jsx`, otherwise end it with `.js`. This is to make it easier to distinguish when files use JSX or not.
+
+### Root Container
+In the entry of the app source ([`main.jsx`](../../src/main.jsx)) you will find the [`Root` container](../../src/containers/Root.jsx) being rendered. This is the app's top-level container, so all other components/containers should be built under it.
+
+By default the [`Root` container](../../src/containers/Root.jsx) handles Redux setup and routing, but you are free to change its behavior to handle whatever you need. The only caveat you should heed is that you need to ensure this [`Root` container](../../src/containers/Root.jsx) always remains the top-level container as it is setup so it and its children will hot reload.
+
+### Redux Store
+The app source comes with one utility script called [`store.js`](../../src/util/store.js) which exports a function called `createStore`. You can see it already being used in [`main.jsx`](../../src/main.jsx).
+
+#### Arguments
+1. `reducer` *(Function)*: A Redux reducer that is required. Likely the root reducer that combines all of the reducers for your app.
+2. `preloadedState` *(any)*: An optional initial state for the store. If `null` or `undefined` is passed, it will be ignored.
+3. `middlewares` *(Array)*: An optional array of Redux middlewares.
+4. `devMiddlewares` *(Array)*: An optional array of Redux middlewares only to be included when the store is running in a development environment.
+
+#### Returns
+*(Store)*: A Redux store that is compatible with Redux DevTools.
 
 ### Debugging
 Redux DevTools is already setup for you in the codebase, all you need to do is install the extension for your browser: https://github.com/zalmoxisus/redux-devtools-extension
@@ -30,8 +47,14 @@ It is also highly recommend you use your browser's developer tools (such as [Chr
 
 Source maps are also generated so you can still debug compiled code. Just make sure that source map support is enabled in your browser developer tool!
 
+### Type Checking
+You can run the [`package.json`](../../package.json) script `flow` to run [Flow](https://flow.org) to type check your code.
+
+Instead of only using this script, it is highly recommended that you enable plugins/extensions in your code editor to allow it to type check with Flow. Details on how to set this up for Sublime Text can be found in the ["Sublime Text" documentation](../sublime_text.md).
+
+If you want to configure Flow, you can edit [`.flowconfig`](../../.flowconfig).
+
 ### Linting
-#### Scripts
 You can use the following [`package.json`](../../package.json) scripts to lint your code:
 
 * `lint:js` or `lint`: Lint JavaScript with [ESLint](https://eslint.org)
@@ -39,19 +62,10 @@ You can use the following [`package.json`](../../package.json) scripts to lint y
 
 Instead of only using these scripts, it is highly recommended that you enable plugins/extensions in your code editor to allow it to lint JavaScript with ESLint and styles with stylelint. Details on how to set this up for Sublime Text can be found in the ["Sublime Text" documentation](../sublime_text.md).
 
-#### Configuration
 If you want to configure the linters, you can edit the following files:
 
 * [`.eslintrc.json`](../../.eslintrc.json): ESLint configuration for JavaScript
 * [`.stylelintrc`](../../.stylelintrc): stylelint configuration for CSS and Sass
-
-### Type Checking
-You can run the [`package.json`](../../package.json) script `flow` to run [Flow](https://flow.org) to type check your code.
-
-Instead of only using this script, it is highly recommended that you enable plugins/extensions in your code editor to allow it to type check with Flow. Details on how to set this up for Sublime Text can be found in the ["Sublime Text" documentation](../sublime_text.md).
-
-#### Configuration
-If you want to configure Flow, you can edit [`.flowconfig`](../../.flowconfig).
 
 ### Testing
 #### Running Tests
