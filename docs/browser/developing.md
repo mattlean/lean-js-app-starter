@@ -34,7 +34,7 @@ The app source comes with one utility script called [`store.js`](../../src/util/
 #### Arguments
 1. `reducer` *(Function)*: A Redux reducer that is required. Likely the root reducer that combines all of the reducers for your app.
 2. `preloadedState` *(any)*: An optional initial state for the store. If `null` or `undefined` is passed, it will be ignored.
-3. `middlewares` *(Array)*: An optional array of Redux middlewares.
+3. `middlewares` *(Array)*: An optional array of Redux middlewares. If `null` or `undefined` is passed, it will be ignored.
 4. `devMiddlewares` *(Array)*: An optional array of Redux middlewares only to be included when the store is running in a development environment.
 
 #### Returns
