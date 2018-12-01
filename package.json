@@ -12,6 +12,7 @@
   },
   "author": "Matthew Lean",
   "license": "MIT",
+  "private": true,
   "bugs": {
     "url": "https://github.com/IsaacLean/lean-web-app-starter/issues"
   },

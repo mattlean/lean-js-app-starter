@@ -28,19 +28,15 @@ Future support for more environments and UI libraries are being considered.
 
 ### 👩‍💻 Helpful Features for Development
 #### Automatic Reloading & Hot Loading
-
 No need to manually refresh, rebuild, and rerun your apps during development. Let a script automate all of that for you so you can see your changes as soon as possible. When coding with React, take advantage of hot loading so you can tweak components in real-time without refreshing and losing state.
 
 #### Improved Debugging
-
-Tools, plugins, and scripts like Redux DevTools, Devtron, and many others are already setup for you to make debugging easier.
+Plugins, source maps, scripts, and tools like Redux DevTools, Devtron, and many others are already setup for you to make debugging easier.
 
 #### Server-Side Rendering Support
-
 Render React components on the server and neatly integrate your browser and Node.js codebases together.
 
 ### 🏛️ Build For Production
-
 Create a production ready build with one simple command.
 
 ### 🔧 Fully Customizable
@@ -49,11 +45,9 @@ If you ever need to change the configuration for anything, you can easily do so.
 ## Get Started
 ### 🏄‍ Web Browser
 #### Download
-
 If you want to build an app for web browsers, start with the [latest `browser` release].
 
 #### Examples
-
 You can find some example browser apps in the following branches:
 
 - [`todolist-frontend`](https://github.com/IsaacLean/lean-web-app-starter/tree/todolist-browser): A todo list app. Connects with mock backend API.
@@ -63,14 +57,12 @@ You can find some example browser apps in the following branches:
 
 ### 🌐 Node.js
 #### Downloads
-
 If you want to build an app for Node.js, you have two options:
 
 - [`nodejs`]: An Express, MongoDB, and Mongoose starter project
 - [`nodejs-ssr`]: An Express, MongoDB, and Mongoose starter project that supports server-side rendering for React
 
 #### Examples
-
 You can find example Node.js apps in the following branches:
 
 - [`starchan-backend`](https://github.com/IsaacLean/lean-web-app-starter/tree/starchan-backend): A REST API for an anonymous text board called *\*chan* (pronounced star-chan). Optionally connects with the *\*chan* frontend app on the [`starchan-frontend` branch](https://github.com/IsaacLean/lean-web-app-starter/tree/starchan-frontend).
@@ -80,11 +72,9 @@ You can find example Node.js apps in the following branches:
 
 ### 🖥️ Desktop
 #### Download
-
 If you want to build an app for desktop, start with the [latest `desktop` release].
 
 #### Examples
-
 You can find an example desktop app in the following branch:
 
 - [`todolist-desktop`](https://github.com/IsaacLean/lean-web-app-starter/tree/todolist-desktop): A todo list app ported from the browser targeted app on the [`todolist-browser` branch](https://github.com/IsaacLean/lean-web-app-starter/tree/todolist-browser).
@@ -92,7 +82,7 @@ You can find an example desktop app in the following branch:
 [Click here for documentation on building desktop apps.](docs/desktop/README.md)
 
 ### 🏊 Documentation
-You can dive deeper into the project by reading the [documentation](docs) which also comes included locally with each copy of your project.
+You can dive deeper into the project by reading the [documentation](docs/README.md) which is also included locally with each copy of the project in the [`docs/`](docs) folder.
 
 ## License
 This open source project is licensed under the [MIT License](https://choosealicense.com/licenses/mit).

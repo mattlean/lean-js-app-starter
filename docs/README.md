@@ -1,4 +1,5 @@
-# Table of Contents
+# Lean JavaScript Application Starter Documentation
+## Table of Contents
 - [Read Me](../README.md)
 - [Motivation](motivation.md)
 - [Web Browser](browser/README.md)
