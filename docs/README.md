@@ -6,7 +6,7 @@
   * [Developing](browser/developing.md)
   * [Building](browser/building.md)
   * [Examples](browser/examples.md)
-  * [Dependencies](dependencies.md)
+  * [Dependencies](browser/dependencies.md)
 * [Node.js](nodejs/README.md)
 * [Desktop](desktop/README.md)
 * [JavaScript Features](javascript_features.md)

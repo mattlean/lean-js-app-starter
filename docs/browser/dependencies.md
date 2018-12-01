@@ -18,8 +18,6 @@ Update `react` components without refreshing the browser while maintaining state
 Routing library for `react`
 * [**`redux`**](https://npmjs.com/package/redux)  
 State management library
-* [**`redux-logger`**](https://npmjs.com/package/redux-logger)  
-`redux` logging middleware. Only used in development builds.
 
 ## Development
 * [**`@babel/core`**](https://npmjs.com/package/@babel/core)  

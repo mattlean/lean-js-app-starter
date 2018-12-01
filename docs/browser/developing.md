@@ -26,7 +26,7 @@ When creating JavaScript files, if it includes any JSX at all, it is recommended
 ### Root Container
 In the entry of the app source ([`main.jsx`](../../src/main.jsx)) you will find the [`Root` container](../../src/containers/Root.jsx) being rendered. This is the app's top-level container, so all other components/containers should be built under it.
 
-By default the [`Root` container](../../src/containers/Root.jsx) handles Redux setup and routing, but you are free to change its behavior to handle whatever you need. The only caveat you should heed is that you need to ensure this [`Root` container](../../src/containers/Root.jsx) always remains the top-level container as it is setup so it and its children will hot reload.
+By default the [`Root` container](../../src/containers/Root.jsx) handles Redux setup and routing, but you are free to change its behavior to handle whatever you need. The only caveat is that you need to ensure this [`Root` container](../../src/containers/Root.jsx) always remains the top-level container as it is setup to hot reload itself and its children.
 
 ### Redux Store
 The app source comes with one utility script called [`store.js`](../../src/util/store.js) which exports a function called `createStore`. You can see it already being used in [`main.jsx`](../../src/main.jsx).
