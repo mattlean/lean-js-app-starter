@@ -19,6 +19,7 @@
     },
     "plugins": [
         "flowtype",
+        "react",
         "jest"
     ],
     "rules": {
@@ -42,7 +43,7 @@
     },
     "settings": {
         "react": {
-            "version": "16.5",
+            "version": "16.6",
             "flowVersion": "0.83"
         }
     }
