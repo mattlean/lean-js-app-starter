@@ -131,7 +131,7 @@ router.get('/:id', (req, res, next) => { // eslint-disable-line no-unused-vars
       .then(thread => {
         if(!thread) throw genErr(404)
 
-        thread = thread.toObject()
+        thread = thread.toJSON()
 
         const store = setupStore(rootReducer, null, [thunk])
         store.dispatch({

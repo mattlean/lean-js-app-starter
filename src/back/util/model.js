@@ -11,7 +11,7 @@ const model = {
     if(Array.isArray(data)) {
       return data.map(d => d.toJSON())
     }
-    return data.toObject()
+    return data.toJSON()
   }
 }
 

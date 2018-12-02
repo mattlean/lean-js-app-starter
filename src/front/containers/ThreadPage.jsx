@@ -9,6 +9,7 @@ import Threads from '../components/Threads'
 import { fetchEnd, fetchThreads, setErr } from '../actions'
 import { getThread } from '../reducers'
 import { isFresh } from '../util/api'
+import { isServerRendered } from '../util/store'
 import { setDocTitle } from '../util'
 
 export class ThreadPage extends Component {
@@ -18,22 +19,24 @@ export class ThreadPage extends Component {
       if(isFresh(this.props.thread.received)) return
     }
 
-    if(this.props.fetchThreads) {
-      this.props.fetchThreads(this.props.id)
-        .then(thread => {
-          setDocTitle(thread.subject || `Thread ${thread._id}`)
-        })
-        .catch(err => {
-          if(!this.props.thread) {
-            if(this.props.setErr) {
-              this.props.setErr('read', err)
+    if(!isServerRendered()) {
+      if(this.props.fetchThreads) {
+        this.props.fetchThreads(this.props.id)
+          .then(thread => {
+            setDocTitle(thread.subject || `Thread ${thread._id}`)
+          })
+          .catch(err => {
+            if(!this.props.thread) {
+              if(this.props.setErr) {
+                this.props.setErr('read', err)
+              }
+            } else {
+              if(this.props.fetchEnd) {
+                this.props.fetchEnd()
+              }
             }
-          } else {
-            if(this.props.fetchEnd) {
-              this.props.fetchEnd()
-            }
-          }
-        })
+          })
+      }
     }
   }
 
