@@ -7,11 +7,8 @@ const model = {
     return data
   },
 
-  docToJSON(data: Object | Array<Object>): Object | Array<Object> {
-    if(Array.isArray(data)) {
-      return data.map(d => d.toJSON())
-    }
-    return data.toJSON()
+  docArrayToJSON(data: Array<Object>): Array<Object> {
+    return data.map(d => d.toJSON())
   }
 }
 

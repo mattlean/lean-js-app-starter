@@ -21,7 +21,7 @@ if(process.env.NODE_ENV === 'development') {
   frontAssets = require('../../../build/front/production/assets')
 }
 
-const { docToJSON } = model
+const { docArrayToJSON } = model
 const { genErr } = err
 
 const router = Router()
@@ -115,7 +115,7 @@ router.get('/', (req, res, next) => { // eslint-disable-line no-unused-vars
       const store = setupStore(rootReducer, null, [thunk])
       store.dispatch({
         type: 'FETCH_THREADS_SUCCESS',
-        res: normalize(docToJSON(threads), Threads)
+        res: normalize(docArrayToJSON(threads), Threads)
       })
 
       res.send(renderFullPage(genHTML(store, req.url), store.getState(), genTitle()))
