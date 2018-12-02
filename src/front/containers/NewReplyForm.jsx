@@ -86,7 +86,28 @@ class NewReplyFormClass extends Component {
         </table>
       </form>
     }
-    return <span className="center">[<a href="#" onClick={this.handleClick}>Post a Reply</a>]</span>
+    return <>
+      <span className="center">[<a href="#" onClick={this.handleClick}>Post a Reply</a>]</span>
+      <noscript>
+        <form id="new-form" action={`/api/thread/${this.props.match.params.id}/reply`} method="post" className="center">
+          <table>
+            <tbody>
+              <tr>
+                <th><label htmlFor="comment">Comment</label></th>
+                <td>
+                  <textarea id="comment" name="comment" required />
+                </td>
+              </tr>
+              <tr>
+                <td colSpan="2">
+                  <button type="submit">Post</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </form>
+      </noscript>
+    </>
   }
 }
 
