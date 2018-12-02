@@ -25,7 +25,7 @@ JavaScript compiler
 * [**`@babel/plugin-proposal-class-properties`**](https://npmjs.com/package/@babel/plugin-proposal-class-properties)  
 [`@babel/core` plugin that transforms static class properties as well as properties declared with the property initializer syntax](https://babeljs.io/docs/en/next/babel-plugin-proposal-class-properties.html)
 * [**`@babel/preset-env`**](https://npmjs.com/package/@babel/preset-env)  
-[`@babel/core` smart preset that allows you to use the latest JavaScript without needing to micromanage which syntax transforms (and optionally, browser polyfills) are needed by your target environment(s)](https://babeljs.io/docs/en/next/babel-preset-env.html)
+[`@babel/core` smart preset that allows you to use the latest JavaScript without needing to micromanage which syntax transforms (and optionally, browser polyfills) are needed by your target environments](https://babeljs.io/docs/en/next/babel-preset-env.html)
 * [**`@babel/preset-flow`**](https://npmjs.com/package/@babel/preset-flow)  
 [`@babel/core` preset for all `flow-bin` plugins](https://babeljs.io/docs/en/next/babel-preset-flow.html)
 * [**`@babel/preset-react`**](https://npmjs.com/package/@babel/preset-react)  
