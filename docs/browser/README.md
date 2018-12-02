@@ -1,5 +1,5 @@
 # Web Browser
 * [Developing](developing.md)
-* [Building](building.md)
-* [Examples](examples.md)
+* [Configuration](configuration.md)
 * [Dependencies](dependencies.md)
+* [Examples](examples.md)
