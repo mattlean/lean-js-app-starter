@@ -37,10 +37,10 @@ Plugins, source maps, scripts, and tools like Redux DevTools, Devtron, and many 
 Render React components on the server and neatly integrate your browser and Node.js codebases together.
 
 ### 🏛️ Build For Production
-Create a production ready build with one simple command. Minification and exclusion of unused code are all handled for you. Only the necessary JavaScript transformations and CSS vendor prefixes for targeted browsers are included. This ensures the build works everywhere you need while being the smallest size possible.
+Create a production ready build with one simple command. Minification and exclusion of unused code are all handled for you. Only the necessary JavaScript transformations/polyfills and CSS vendor prefixes for targeted browser versions are included. This ensures the build works everywhere you need while being the smallest size possible.
 
 ### 🔧 Fully Customizable
-If you ever need to change the configuration for anything, you can easily do so. The starting codebases are small, easy to understand, and ready to adjust to all of your needs.
+If you ever need to change the configuration for anything, you can easily do so. The starting codebases are small, documented, easy to understand, and ready to adjust to all of your needs.
 
 ## Get Started
 ### 🏄‍ Web Browser

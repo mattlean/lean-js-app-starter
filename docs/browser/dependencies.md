@@ -35,7 +35,7 @@ JavaScript compiler
 * [**`babel-core@^7.0.0-bridge`**](https://npmjs.com/package/babel-core)  
 Duplicate of `@babel/core`, but is needed for some older Babel related dependencies.
 * [**`babel-eslint`**](https://npmjs.com/package/babel-eslint)  
-Parser for `eslint` that enables linting of `@babel/core` code
+Parser for `eslint` that enables linting of all `@babel/core` code
 * [**`babel-jest`**](https://npmjs.com/package/babel-jest)  
 `jest` plugin for `@babel/core`
 * [**`babel-loader`**](https://npmjs.com/package/babel-loader)  
