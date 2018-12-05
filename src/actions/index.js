@@ -1,5 +1,7 @@
 // @flow
 
-export const decrement = () => ({ type: 'DECREMENT' })
+import type { Action_Decrement, Action_Increment } from '../types'
 
-export const increment = () => ({ type: 'INCREMENT' })
+export const decrement = (): Action_Decrement => ({ type: 'DECREMENT' })
+
+export const increment = (): Action_Increment => ({ type: 'INCREMENT' })
