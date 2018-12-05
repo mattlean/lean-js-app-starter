@@ -27,11 +27,13 @@ Consistent JavaScript standard, dependencies, and configuration no matter what e
 Future support for more environments and UI libraries are being considered.
 
 ### 👩‍💻 Helpful Features for Development
+#### Useful Tooling
+Plugins, source maps, scripts, and tool integrations like Redux DevTools, Devtron, and many others are already setup for you to make debugging easier.
+
+Optionally use Flow, ESLint, and stylelint to help identify potential problems and produce better, safer code.
+
 #### Automatic Reloading & Hot Loading
 No need to manually refresh, rebuild, and rerun your apps during development. Let a script automate all of that for you so you can see your changes as soon as possible. When coding with React, take advantage of hot loading so you can tweak components in real-time without refreshing and losing state.
-
-#### Improved Debugging
-Plugins, source maps, scripts, and tools like Redux DevTools, Devtron, and many others are already setup for you to make debugging easier.
 
 #### Server-Side Rendering Support
 Render React components on the server and neatly integrate your browser and Node.js codebases together.
