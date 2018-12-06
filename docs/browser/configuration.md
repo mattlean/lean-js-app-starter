@@ -86,6 +86,20 @@ module.name_mapper.extension='css' -> 'empty/object'
 module.name_mapper.extension='scss' -> 'empty/object'
 ```
 
+## Jest
+[Jest](https://jestjs.io) lets you build and run tests on your JavaScript. The config file can be found in the project's root directory as [`jest.config.js`](../../.jest.config.js).
+
+### Options
+`moduleNameMapper` is set to the following so snapshots can handle assets like images and fonts as well as styles in spapshot tests:
+```javascript
+moduleNameMapper: {
+  "\\.(jpg|jpeg|png|gif|eot|ttf|woff|woff2)$": "<rootDir>/src/__mocks__/fileMock.js",
+  "\\.(css|scss)$": "<rootDir>/src/__mocks__/styleMock.js"
+},
+```
+
+`snapshotSeralizer` is set to [enzyme-to-json](https://github.com/adriantoine/enzyme-to-json) so Enzyme wrappers are converted to a format compatible with Jest snapshot tests.
+
 ## stylelint
 [stylelint](https://stylelint.io) helps identify potential problems and deviations from code style guidelines in your CSS and Sass. The config file can be found in the project's root directory as [`.stylelintrc`](../../.stylelintrc).
 
