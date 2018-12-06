@@ -18,13 +18,7 @@ module.exports = merge([
     host: process.env.HOST,
     port: process.env.PORT,
     historyApiFallback: true,
-    hot: true,
-    proxy: {
-      '/api': {
-        target: 'http://localhost:9001',
-        pathRewrite: { '^/api': '' }
-      }
-    }
+    hot: true
   }),
 
   parts.loadStyles(),

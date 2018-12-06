@@ -10,6 +10,41 @@ const webpack = require('webpack')
 
 const PATHS = require('../PATHS')
 
+// Load files
+const loadFiles = ({ exclude, include, options, test, type } = {}) => {
+  if(type === 'url' || type === undefined) {
+    return {
+      module: {
+        rules: [
+          {
+            use: {
+              loader: 'url-loader',
+              options
+            },
+            exclude,
+            include,
+            test
+          }
+        ]
+      }
+    }
+  } else if(type === 'file') {
+    return {
+      module: {
+        rules: [
+          {
+            use: {
+              loader: 'file-loader',
+              options
+            },
+            test
+          }
+        ]
+      }
+    }
+  }
+}
+
 // Autoprefix CSS
 exports.autoprefix = () => ({
   loader: 'postcss-loader',
@@ -52,40 +87,26 @@ exports.extractStyles = ({ exclude, filename, include, use = [] }) => {
 exports.genSourceMaps = ({ type }) => ({ devtool: type })
 
 // Load fonts
-exports.loadFonts = ({ options } = {}) => ({
-  module: {
-    rules: [
-      {
-        use: {
-          loader: 'file-loader',
-          options
-        },
-        test: /\.(ttf|eot|woff|woff2)$/
-      }
-    ]
-  }
+exports.loadFonts = ({ exclude, include, options, type } = {}) => loadFiles({
+  exclude,
+  include,
+  options,
+  test: /\.(eot|ttf|woff|woff2)$/,
+  type
 })
 
 // Load HTML
-exports.loadHTML = (options) => ({
+exports.loadHTML = options => ({
   plugins: [ new HtmlWebpackPlugin(options) ]
 })
 
 // Load images
-exports.loadImgs = ({ exclude, include, options } = {}) => ({
-  module: {
-    rules: [
-      {
-        use: {
-          loader: 'url-loader',
-          options
-        },
-        exclude,
-        include,
-        test: /\.(gif|jpe?g|png)$/i
-      }
-    ]
-  }
+exports.loadImgs = ({ exclude, include, options, type } = {}) => loadFiles({
+  exclude,
+  include,
+  options,
+  test: /\.(gif|jpe?g|png)$/i,
+  type
 })
 
 // Load JavaScript through Babel
@@ -125,7 +146,7 @@ exports.loadStyles = ({ exclude, include } = {}) => ({
 })
 
 // Minify CSS
-exports.minCSS = ({ options }) => ({
+exports.minCSS = ({ options } = {}) => ({
   plugins: [new OptimizeCSSAssetsPlugin({
     canPrint: false,
     cssProcessor: cssnano,

@@ -35,15 +35,16 @@ module.exports = merge([
 
   parts.loadImgs({
     options: {
-      limit: 15000,
-      name: '/assets/imgs/[name].[hash:4].[ext]'
-    }
+      name: `${PATHS.assets}/imgs/[name].[hash:4].[ext]`
+    },
+    type: 'file'
   }),
 
   parts.loadFonts({
     options: {
-      name: '/assets/fonts/[name].[ext]'
-    }
+      name: `${PATHS.assets}/fonts/[name].[hash:4].[ext]`
+    },
+    type: 'file'
   }),
 
   parts.genSourceMaps({ type: 'source-map' }),
