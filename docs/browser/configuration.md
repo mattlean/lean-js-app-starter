@@ -114,5 +114,96 @@ These specific rules override any rules set by config extensions and will trigge
 
 ## webpack
 ### Development
+#### Entry
+[`webpack.config.js`](../../webpack.config.js)
+```javascript
+entry: `${PATHS.src}/main.jsx`,
+```
+Start building from `src/main.jsx`. More info can be found in the [webpack "Entry and Context" docs](https://webpack.js.org/configuration/entry-context).
+
+#### Resolve
+[`webpack.config.js`](../../webpack.config.js)
+```javascript
+resolve: { extensions: ['.js', '.jsx', '.json'] }
+```
+Look for files with .js, .jsx, or .json extensions. More info can be found in the [webpack "Resolve" docs](https://webpack.js.org/configuration/resolve).
+
+#### Compile JavaScript through Babel
+[`webpack.config.js`](../../webpack.config.js)
+```javascript
+parts.loadJS({ include: PATHS.src }),
+```
+Load all JavaScript in `src/` and compile them with Babel using [Babel Loader](https://github.com/babel/babel-loader).
+
+#### Create HTML
+[`webpack.config.js`](../../webpack.config.js)
+```javascript
+parts.loadHTML({ template: `${PATHS.src}/index.html` })
+```
+Create an HTML file using the template at `src/index.html` with [HTML Webpack Plugin](https://github.com/jantimon/html-webpack-plugin).
+
+#### Output
+[`config/development.js`](../../config/development.js)
+```javascript
+output: {
+  chunkFilename: '[name].js',
+  filename: '[name].js',
+  path: `${PATHS.build}/development`
+}
+```
+Output bundle at `build/development` and name the bundled JavaScript `main.js`. More info in the [webpack "Output" docs](https://webpack.js.org/configuration/output).
+
+#### Delete old build
+[`config/development.js`](../../config/development.js)
+```javascript
+parts.cleanPaths(['build/development']),
+```
+Delete old development build at `build/development` with [clean-webpack-plugin](https://github.com/johnagan/clean-webpack-plugin).
+
+#### Setup Development Server
+[`config/development.js`](../../config/development.js)
+```javascript
+parts.setupDevServer({
+  host: process.env.HOST,
+  port: process.env.PORT,
+  historyApiFallback: true,
+  hot: true
+}),
+```
+Host [webpack-dev-server](https://github.com/webpack/webpack-dev-server). Host and port are determined by the Node.js `process.env` `HOST` and `PORT` variables respectively. If they are not set, the default host will be set to `localhost` and the port will be set to `8080`.
+
+`historyApiFallback` is set to `true` to allow use of the [HTML5 History API](https://developer.mozilla.org/en-US/docs/Web/API/History) which allows the use of [React Router's BrowserRouter](https://reacttraining.com/react-router/web/api/browserrouter).
+
+`hot` is set to `true` to enable webpack's [hot module replacement](https://webpack.js.org/concepts/hot-module-replacement) which allows the use of [React Hot Loader](https://github.com/gaearon/react-hot-loader).
+
+More info can be found in the [webpack "DevServer" docs](https://webpack.js.org/configuration/dev-server).
+
+#### Load Styles
+[`config/development.js`](../../config/development.js)
+```javascript
+parts.loadStyles(),
+```
+Load all Sass and compile them into CSS using [Sass Loader](https://github.com/webpack-contrib/sass-loader). Then go through possible `@import` and `url()` lookups within all CSS and treat them like an ES2015 `import` or `require()` using [CSS Loader](https://github.com/webpack-contrib/css-loader). Finally inject styling into the DOM using [Style Loader](https://github.com/webpack-contrib/style-loader) so styles can be hot reloaded with webpack-dev-server.
+
+#### Load Images
+[`config/development.js`](../../config/development.js)
+```javascript
+parts.loadImgs(),
+```
+Load image files with .gif, .jpg, .jpeg, or .png extensions and transform them into base64 URIs which are inlined into the JavaScript bundles using [url-loader](https://github.com/webpack-contrib/url-loader).
+
+### Load Fonts
+[`config/development.js`](../../config/development.js)
+```javascript
+parts.loadFonts(),
+```
+Load font files with .eot, .tff, .woff, or .woff2 extensions and transform them into base64 URIs which are inlined into the JavaScript bundles using [url-loader](https://github.com/webpack-contrib/url-loader).
+
+### Generate source maps
+[`config/development.js`](../../config/development.js)
+```javascript
+parts.genSourceMaps({ type: 'cheap-module-eval-source-map' })
+```
+Enable JavaScript source maps with `'cheap-module-eval-source-map'`. More info can be found in the [webpack "Devtool" docs](https://webpack.js.org/configuration/devtool).
 
 ### Production
