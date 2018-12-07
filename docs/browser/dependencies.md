@@ -96,14 +96,14 @@ Transform styles with JavaScript plugins. Used with `autoprefixer`.
 Delete unused styles in production build
 * [**`purifycss-webpack`**](https://npmjs.com/package/purifycss-webpack)  
 `webpack` plugin for `purify-css`
-* [**`react-test-renderer`**](https://npmjs.com/package/react-test-renderer)
+* [**`react-test-renderer`**](https://npmjs.com/package/react-test-renderer)  
 Test renderer for `react` components
 * [**`redux-mock-store`**](https://npmjs.com/package/redux-mock-store)  
 Mock store for testing `redux` asynchronous action creators and middleware
 * [**`sass-loader`**](https://npmjs.com/package/sass-loader)  
 `webpack` loader to compile `node-sass` into CSS
 * [**`style-loader`**](https://npmjs.com/package/style-loader)  
-`webpack` loader for adds CSS to the DOM by injecting a <style> tag
+`webpack` loader that adds CSS to the DOM by injecting a <style> tag
 * [**`stylelint`**](https://npmjs.com/package/stylelint)  
 Style linter
 * [**`stylelint-config-recommended`**](https://npmjs.com/package/stylelint-config-recommended)  
