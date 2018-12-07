@@ -51,7 +51,7 @@ exports.autoprefix = () => ({
   options: { plugins: () => [require('autoprefixer')()] }
 })
 
-// Run flow type checking
+// Run Flow type checking
 exports.checkTypes = () => ({
   plugins: [new FlowWebpackPlugin()]
 })

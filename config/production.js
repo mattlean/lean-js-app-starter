@@ -49,8 +49,6 @@ module.exports = merge([
 
   parts.genSourceMaps({ type: 'source-map' }),
 
-  parts.setFreeVariable('__server__', process.env.SERVER),
-
   {
     optimization: {
       splitChunks: {
