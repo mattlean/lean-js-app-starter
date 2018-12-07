@@ -41,7 +41,7 @@ The app source comes with one utility script called [`store.js`](../../src/util/
 *(Store)*: A Redux store that is compatible with Redux DevTools.
 
 ### Type Checking
-Run the `flow` [`package.json`](../../package.json) script to run [Flow](https://flow.org) to type check your code. It will then type check all .json files and .js, .jsx, and .mjs files with the following code at the top of each file:
+Run the `flow` [`package.json`](../../package.json) script to run [Flow](https://flow.org) to type check your code. It will then type check all .json files and .js, .jsx, and .mjs files with the following comment at the top of each file:
 ```javascript
 // @flow
 ```
@@ -50,7 +50,7 @@ Running the `flow` [`package.json`](../../package.json) script will start the Fl
 
 Instead of only using these scripts, it is highly recommended that you enable plugins/extensions in your code editor to allow it to type check with Flow. Details on how to set this up for Sublime Text can be found in the ["Sublime Text" documentation](../sublime_text.md).
 
-If you want to configure Flow, you can edit [`.flowconfig`](../../.flowconfig).
+If you want to configure Flow, you can edit [`.flowconfig`](../../.flowconfig). For more information on the default configuration, read the ["Configuration" documentation](configuration.md).
 
 ### Linting
 You can use the following [`package.json`](../../package.json) scripts to lint your code:
@@ -58,12 +58,14 @@ You can use the following [`package.json`](../../package.json) scripts to lint y
 * `lint:js` or `lint`: Lint JavaScript with [ESLint](https://eslint.org)
 * `lint:styles`: Lint CSS and Sass with [stylelint](https://stylelint.io)
 
-Instead of only using these scripts, it is highly recommended that you enable plugins/extensions in your code editor to allow it to lint JavaScript with ESLint and styles with stylelint. Details on how to set this up for Sublime Text can be found in the ["Sublime Text" documentation](../sublime_text.md).
+Instead of only using these scripts, it is highly recommended that you enable plugins/extensions in your code editor to allow it to lint with ESLint and stylelint. Details on how to set this up for Sublime Text can be found in the ["Sublime Text" documentation](../sublime_text.md).
 
 If you want to configure the linters, you can edit the following files:
 
-* [`.eslintrc.json`](../../.eslintrc.json): ESLint configuration for JavaScript
-* [`.stylelintrc`](../../.stylelintrc): stylelint configuration for CSS and Sass
+* [`.eslintrc.json`](../../.eslintrc.json): ESLint configuration
+* [`.stylelintrc`](../../.stylelintrc): stylelint configuration
+
+For more information on the default configuration, read the ["Configuration" documentation](configuration.md).
 
 ### Testing
 #### Running Tests
@@ -72,6 +74,8 @@ Use the following [`package.json`](../../package.json) scripts to have [Jest](ht
 * `test`: Run all tests
 * `test:update`: Re-record snapshots
 * `test:watch`: Watch files for changes and rerun the tests affected by these changes
+
+If you want to configure Jest, you can edit [`jest.config.js`](../../jest.config.js). For more information on the default configuration, read the ["Configuration" documentation](configuration.md).
 
 #### Creating Tests
 When creating tests, it is recommended that you end your file names with `.test.js` (or `.test.jsx` if it uses JSX) and put them in a `__tests__` folder.
@@ -84,7 +88,7 @@ Use the `test:coverage` [`package.json`](../../package.json) script to run [Ista
 ### Debugging
 Redux DevTools is already setup for you in the codebase, all you need to do is install the extension for your browser: https://github.com/zalmoxisus/redux-devtools-extension
 
-It is also highly recommend you use your browser's developer tools (such as [Chrome DevTools](https://developers.google.com/web/tools/chrome-devtools) or [Firefox Developer Tools](https://developer.mozilla.org/en-US/docs/Tools)) and also install the React Developer Tools extension: https://github.com/facebook/react-devtools
+It is highly recommended that you use your browser's developer tools (such as [Chrome DevTools](https://developers.google.com/web/tools/chrome-devtools) or [Firefox Developer Tools](https://developer.mozilla.org/en-US/docs/Tools)). It is also highly recommended to install the React Developer Tools extension: https://github.com/facebook/react-devtools
 
 Source maps are also generated so you can still debug compiled code. Just make sure that source map support is enabled in your browser developer tool.
 
