@@ -72,7 +72,7 @@ module.exports = {
 
   // A map from regular expressions to module names that allow to stub out resources with a single module
   moduleNameMapper: {
-    "\\.(jpg|jpeg|png|gif|eot|ttf|woff|woff2)$": "<rootDir>/src/__mocks__/fileMock.js",
+    "\\.(eot|gif|jpg|jpeg|png|ttf|woff|woff2)$": "<rootDir>/src/__mocks__/fileMock.js",
     "\\.(css|scss)$": "<rootDir>/src/__mocks__/styleMock.js"
   },
 
