@@ -5,15 +5,15 @@
 			"path": ".",
 			"binary_file_patterns":
 			[
+				"build/*",
+				"coverage/*",
+				"flow-typed/*",
+				"node_modules/*",
 				".eslintcache",
 				"package-lock.json",
 				"records.json",
 				"stats.*.json",
-				"yarn.lock",
-				"build/*",
-				"coverage/*",
-				"flow-typed/*",
-				"node_modules/*"
+				"yarn.lock"
 			]
 		},
 	],
