@@ -35,13 +35,13 @@ JavaScript compiler
 * [**`babel-core@^7.0.0-bridge`**](https://npmjs.com/package/babel-core)  
 Duplicate of `@babel/core`, but is needed for some older Babel related dependencies.
 * [**`babel-eslint`**](https://npmjs.com/package/babel-eslint)  
-Parser for `eslint` that enables linting of all `@babel/core` code
+Parser for `eslint` that enables linting of all `@babel/core` code, particularly for `flow-bin`
 * [**`babel-jest`**](https://npmjs.com/package/babel-jest)  
 `jest` plugin for `@babel/core`
 * [**`babel-loader`**](https://npmjs.com/package/babel-loader)  
 `webpack` loader that allows transpiling of JavaScript files using `@babel/core`
 * [**`clean-webpack-plugin`**](https://npmjs.com/package/clean-webpack-plugin)  
-`webpack` plugin that removes build folders before building
+`webpack` plugin used for removing build folders before new build
 * [**`css-loader`**](https://npmjs.com/package/css-loader)  
 `webpack` loader that interprets @import and url() like import/require() and will resolve them
 * [**`cssnano`**](https://npmjs.com/package/cssnano)  
@@ -67,7 +67,7 @@ JavaScript linter
 * [**`flow-bin`**](https://npmjs.com/package/flow-bin)  
 Type checker
 * [**`flow-typed`**](https://npmjs.com/package/flow-typed)  
-Repository of third-party library interface definitions for use with `flow-bin`
+Repository of third-party `flow-bin` library interface definitions
 * [**`flow-webpack-plugin`**](https://npmjs.com/package/flow-webpack-plugin)  
 `webpack` plugin that calls `flow-bin` during each production build
 * [**`glob`**](https://npmjs.com/package/glob)  
@@ -75,11 +75,11 @@ Match files using the patterns the shell uses
 * [**`html-webpack-plugin`**](https://npmjs.com/package/html-webpack-plugin)  
 `webpack` plugin that generates HTML files
 * [**`http-server`**](https://npmjs.com/package/http-server)  
-Web server for previewing production builds
+Web server used for previewing production builds
 * [**`jest`**](https://npmjs.com/package/jest)  
 JavaScript tester
 * [**`jsdom`**](https://npmjs.com/package/jsdom)  
-JavaScript-based headless browser used for testing
+JavaScript-based headless browser used in testing with `jest`
 * [**`mini-css-extract-plugin`**](https://npmjs.com/package/mini-css-extract-plugin)  
 Extract styles into separate files
 * [**`node-sass`**](https://npmjs.com/package/node-sass)  
@@ -117,6 +117,6 @@ Module bundler
 * [**`webpack-cli`**](https://npmjs.com/package/webpack-cli)  
 `webpack` CLI tool
 * [**`webpack-dev-server`**](https://npmjs.com/package/webpack-dev-server)  
-`webpack` development server that provides live reloading
+`webpack` development server that supports live reloading
 * [**`webpack-merge`**](https://npmjs.com/package/webpack-merge)  
 Merge arrays and objects for `webpack` configuration

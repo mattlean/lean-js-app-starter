@@ -32,6 +32,7 @@ If you have zero experience in something used in this project and want to get a 
 * Learn ES2015: https://babeljs.io/docs/en/learn
 * MDN JavaScript Documentation: https://developer.mozilla.org/en-US/docs/Web/JavaScript
 * MDN Web APIs Documentation: https://developer.mozilla.org/en-US/docs/Web/API
+* You Don't Know JS: https://github.com/getify/You-Dont-Know-JS
 
 ## MongoDB
 * MongoDB Documentation: https://docs.mongodb.com

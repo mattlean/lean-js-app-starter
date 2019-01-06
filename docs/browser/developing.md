@@ -3,7 +3,7 @@
 * `build`: webpack builds output here. Not versioned.
   * `development`: Development builds generated here
   * `production`: Production builds generated here
-* [`config`](../../config): webpack configuration
+* [`config`](../../config): webpack environment configuration
 * [`src`](../../src): Application source code
   * [`__mocks__`](../../src/__mocks__): Mock test files
   * [`actions`](../../src/actions): Redux actions
@@ -41,12 +41,12 @@ The app source comes with one utility script called [`store.js`](../../src/util/
 *(Store)*: A Redux store that is compatible with Redux DevTools.
 
 ### Type Checking
-Run the `flow` [`package.json`](../../package.json) script to run [Flow](https://flow.org) to type check your code. It will then type check all .json files and .js, .jsx, and .mjs files with the following comment at the top of each file:
+Run the `flow` [`package.json`](../../package.json) script to run [Flow](https://flow.org) to type check your code. It will then type check all `.js`, `.jsx`, `.mjs`, and `.json` files that have the following comment at the top their code:
 ```javascript
 // @flow
 ```
 
-Running the `flow` [`package.json`](../../package.json) script will start the Flow background process. If you need to end this process, run the `flow stop` script.
+Running the `flow` script will start the Flow background process. If you need to end this process, run the `flow stop` script.
 
 Instead of only using these scripts, it is highly recommended that you enable plugins/extensions in your code editor to allow it to type check with Flow. Details on how to set this up for Sublime Text can be found in the ["Sublime Text" documentation](../sublime_text.md).
 
@@ -68,6 +68,11 @@ If you want to configure the linters, you can edit the following files:
 For more information on the default configuration, read the ["Configuration" documentation](configuration.md).
 
 ### Testing
+#### Creating Tests
+When creating tests, it is recommended that you end your file names with `.test.js` (or `.test.jsx` if it uses JSX) and put them in a `__tests__` folder.
+
+If you are snapshot testing, you can use or [Enzyme](https://airbnb.io/enzyme) or [React test renderer](https://reactjs.org/docs/test-renderer.html).
+
 #### Running Tests
 Use the following [`package.json`](../../package.json) scripts to have [Jest](https://jestjs.io) run your tests:
 
@@ -77,11 +82,6 @@ Use the following [`package.json`](../../package.json) scripts to have [Jest](ht
 
 If you want to configure Jest, you can edit [`jest.config.js`](../../jest.config.js). For more information on the default configuration, read the ["Configuration" documentation](configuration.md).
 
-#### Creating Tests
-When creating tests, it is recommended that you end your file names with `.test.js` (or `.test.jsx` if it uses JSX) and put them in a `__tests__` folder.
-
-If you are snapshot testing, you can use or [Enzyme](https://airbnb.io/enzyme) or [React test renderer](https://reactjs.org/docs/test-renderer.html).
-
 #### Code Coverage
 Use the `test:coverage` [`package.json`](../../package.json) script to run [Istanbul](https://istanbul.js.org) to collect coverage information. Doing so will output the results in the terminal as well as generate `coverage/` (which is not versioned).
 
@@ -90,7 +90,7 @@ Redux DevTools is already setup for you in the codebase, all you need to do is i
 
 It is highly recommended that you use your browser's developer tools (such as [Chrome DevTools](https://developers.google.com/web/tools/chrome-devtools) or [Firefox Developer Tools](https://developer.mozilla.org/en-US/docs/Tools)). It is also highly recommended to install the React Developer Tools extension: https://github.com/facebook/react-devtools
 
-Source maps are also generated so you can still debug compiled code. Just make sure that source map support is enabled in your browser developer tool.
+Source maps are also generated making debugging compiled code manageable. Just make sure that source map support is enabled in your browser developer tool.
 
 ### Editor Setup
-At the moment there is only [documentation on how to setup Sublime Text with this project](../sublime_text.md), but documentation for other editors is being considered.
+To setup the project with Sublime Text, [read the "Sublime Text" documentation](../sublime_text.md). More docs for setup with other editors are being considered.

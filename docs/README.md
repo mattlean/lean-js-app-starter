@@ -11,4 +11,5 @@
 * [Node.js](nodejs/README.md)
 * [Desktop](desktop/README.md)
 * [JavaScript Features](javascript_features.md)
+* [Sublime Text](sublime_text.md)
 * [Resources](resources.md)

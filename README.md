@@ -24,7 +24,7 @@ Consistent JavaScript standard, dependencies, and configuration no matter what e
 |                                                        | [MongoDB](https://mongodb.com)                         |                                                        |
 |                                                        | [Mongoose](https://mongoosejs.com)                     |                                                        |
 
-Future support for more environments and UI libraries are being considered.
+Future support for more environments and libraries are being considered.
 
 ### 👩‍💻 Helpful Features for Development
 #### Useful Tooling
@@ -53,7 +53,7 @@ If you want to build an app for web browsers, start with the [latest `browser` r
 You can find some example browser apps in the following branches:
 
 - [`todolist-frontend`](https://github.com/IsaacLean/lean-web-app-starter/tree/todolist-browser): A todo list app. Connects with mock backend API.
-- [`starchan-frontend`](https://github.com/IsaacLean/lean-web-app-starter/tree/starchan-frontend): The frontend app for an anonymous text board called *\*chan* (pronounced star-chan). Requires connection with the *\*chan* backend API on the [`starchan-backend` branch](https://github.com/IsaacLean/lean-web-app-starter/tree/starchan-backend).
+- [`starchan-frontend`](https://github.com/IsaacLean/lean-web-app-starter/tree/starchan-frontend): The frontend app for an anonymous text board called *chan (pronounced star-chan). Requires connection with the *chan backend API on the [`starchan-backend` branch](https://github.com/IsaacLean/lean-web-app-starter/tree/starchan-backend).
 
 [Click here for documentation on building browser apps.](docs/browser/README.md)
 
@@ -67,8 +67,8 @@ If you want to build an app for Node.js, you have two options:
 #### Examples
 You can find example Node.js apps in the following branches:
 
-- [`starchan-backend`](https://github.com/IsaacLean/lean-web-app-starter/tree/starchan-backend): A REST API for an anonymous text board called *\*chan* (pronounced star-chan). Optionally connects with the *\*chan* frontend app on the [`starchan-frontend` branch](https://github.com/IsaacLean/lean-web-app-starter/tree/starchan-frontend).
-- [`starchan-ssr`](https://github.com/IsaacLean/lean-web-app-starter/tree/starchan-ssr): A version of the *\*chan* backend that supports server-side rendering of the frontend app.
+- [`starchan-backend`](https://github.com/IsaacLean/lean-web-app-starter/tree/starchan-backend): A REST API for an anonymous text board called *chan (pronounced star-chan). Optionally connects with the *chan frontend app on the [`starchan-frontend` branch](https://github.com/IsaacLean/lean-web-app-starter/tree/starchan-frontend).
+- [`starchan-ssr`](https://github.com/IsaacLean/lean-web-app-starter/tree/starchan-ssr): A version of the *chan backend that supports server-side rendering of the frontend app.
 
 [Click here for documentation on building Node.js apps.](docs/nodejs/README.md)
 
