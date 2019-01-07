@@ -3,9 +3,9 @@
   "version": "0.0.1",
   "description": "",
   "main": "build/production/webpack/main.js",
-  "productName": "Todo List",
+  "productName": "Lean JavaScript Application Starter",
   "build": {
-    "appId": "com.LeanJSAppStarter.TodoList",
+    "appId": "com.LeanJSAppStarter.LeanJavaScriptApplicationStarter",
     "directories": {
       "output": "build/production/electron-builder"
     },

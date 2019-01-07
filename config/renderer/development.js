@@ -31,5 +31,7 @@ module.exports = merge([
 
   parts.loadImgs(),
 
+  parts.loadFonts(),
+
   parts.genSourceMaps({ type: 'cheap-module-eval-source-map' })
 ])
