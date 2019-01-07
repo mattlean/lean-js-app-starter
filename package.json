@@ -7,11 +7,10 @@
   "build": {
     "appId": "com.LeanJSAppStarter.TodoList",
     "directories": {
-      "output": "build/production/dist"
+      "output": "build/production/electron-builder"
     },
     "files": [
-      "./build/production/webpack/**/*",
-      "./src/**/*"
+      "./build/production/webpack/**/*"
     ]
   },
   "scripts": {
@@ -22,7 +21,8 @@
     "build:dev:debug": "npm run rend:build:dev:debug && npm run main:build:dev:debug",
     "build:dev:stats": "npm run rend:build:dev:stats && npm run main:build:dev:stats",
     "build:stats": "npm run build -- --json > stats.production.json",
-    "dist": "electron-builder",
+    "dist": "npm run build && electron-builder",
+    "dist:debug": "DEBUG=electron-builder npm run dist",
     "flow": "flow",
     "flow-typed": "flow-typed",
     "lint": "npm run lint:js",
@@ -48,7 +48,7 @@
     "rend:build:dev:stats": "npm run rend:build:dev -- --json > stats.rend.development.json",
     "rend:build:stats": "npm run rend:build -- --json > stats.rend.production.json",
     "rend:start": "http-server ./build/production/webpack -p 9090",
-    "rend:start:dev": "http-server ./build/production/webpack -p 9090",
+    "rend:start:dev": "http-server ./build/development/renderer -p 8080",
     "rend:start:dev:watch": "nodemon --watch webpack.config.js --watch config/renderer --watch config/common --exec \"webpack-dev-server --env development --config config/renderer/index.js\"",
     "start": "npm run main:start",
     "start:debug": "npm run main:start:debug",
@@ -88,7 +88,6 @@
   "devDependencies": {
     "@babel/core": "^7.1.6",
     "@babel/plugin-proposal-class-properties": "^7.1.0",
-    "@babel/plugin-transform-modules-commonjs": "^7.1.0",
     "@babel/preset-env": "^7.1.6",
     "@babel/preset-flow": "^7.0.0",
     "@babel/preset-react": "^7.0.0",

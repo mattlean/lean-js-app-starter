@@ -8,7 +8,7 @@ module.exports = merge([
   {
     output: {
       filename: 'renderer.js',
-      path: `${PATHS.build}`
+      path: PATHS.build
     }
   },
 
@@ -39,9 +39,9 @@ module.exports = merge([
 
   parts.loadImgs({
     options: {
-      limit: 15000,
-      name: '/assets/imgs/[name].[ext]'
-    }
+      name: `${PATHS.assets}/imgs/[name].[ext]`
+    },
+    type: 'file'
   }),
 
   parts.genSourceMaps({ type: 'source-map' })
