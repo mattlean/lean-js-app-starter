@@ -3,6 +3,7 @@
 * [Read Me](../README.md)
 * [Motivation](motivation.md)
 * [Web Browser](browser/README.md)
+  * [Getting Started](browser/getting_started.md)
   * [Developing](browser/developing.md)
   * [Building](browser/building.md)
   * [Dependencies](browser/dependencies.md)

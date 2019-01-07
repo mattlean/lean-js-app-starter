@@ -9,7 +9,7 @@ You must have [Node.js](https://nodejs.org) and [npm](https://npmjs.com) or [Yar
 Download and extract the latest browser release here: [URL]
 
 ## 2. Setup
-After extracting the release, open a terminal, go to the project root directory, and then run the following [`package.json`](../../package.json) script to install dependencies and [Flow](https://flow.org) library interface definitions:
+Open a terminal, go to the project root directory, and then run one of the following [`package.json`](../../package.json) scripts to install dependencies and [Flow](https://flow.org) library interface definitions:
 
 * npm: `npm run setup`
 * Yarn: `yarn run setup`
@@ -25,8 +25,4 @@ If you want to just install Flow library interface definitions, you can run:
 * Yarn: `npm run flow-typed install`
 
 ## 3. Start Developing
-🎉 Ta-da! You can start coding! To learn more about how to make the most of your development environment, read the "Developing" documentation for your environment.
-
-* [Developing for Web Browser](browser/developing.md)
-* [Developing for Node.js]
-* [Developing for Desktop]
+🎉 Ta-da! You can start coding! To learn more about how to make the most of your development environment, read the ["Developing" documentation](developing.md).
