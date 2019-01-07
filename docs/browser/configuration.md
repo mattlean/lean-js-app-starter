@@ -270,12 +270,12 @@ Minify JavaScript with [UglifyJS](http://lisperator.net/uglifyjs) using the [Ugl
 #### Minify CSS
 [`config/production.js`](../../config/production.js)
 ```javascript
-  parts.minCSS({
-    options: {
-      discardComments: { removeAll: true },
-      safe: true
-    }
-  }),
+parts.minCSS({
+  options: {
+    discardComments: { removeAll: true },
+    safe: true
+  }
+}),
 ```
 Minify CSS with [Optimize CSS Assets Webpack Plugin](https://github.com/NMFR/optimize-css-assets-webpack-plugin) using [cssnano](https://cssnano.co) while discarding all comments and running in safe mode to avoid potentially unsafe transformations.
 
@@ -289,7 +289,7 @@ parts.extractStyles({
 ```
 First use [PostCSS Loader](https://github.com/postcss/postcss-loader) with the [Autoprefixer](https://github.com/postcss/autoprefixer) plugin to parse styles and add vendor prefixes based on targeted browsers in the project's Browserslist. Then load all Sass and compile them into CSS using [Sass Loader](https://github.com/webpack-contrib/sass-loader). Then go through possible `@import` and `url()` lookups within all CSS and treat them like an ES2015 `import` or `require()` using [CSS Loader](https://github.com/webpack-contrib/css-loader).
 
-Finally separate CSS into its own file called `main.[contenthash:4].css` using [mini-css-extract-plugin](https://github.com/webpack-contrib/mini-css-extract-plugin). Like the chunkhash used in the output option, part of the contenthash is used as a fingerprint to allow for [cache invalidation](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching#invalidating_and_updating_cached_responses). The reason why styles use contenthashes instead of chunkhashes is because using chunkhashes would cause both JavaScript and CSS files to invalidate if either is edited. For example, in this scenario if you were to edit your style source, the JavaScript files would become invalidated as well even though the JavaScript source has not changed. By using contenthashes we can avoid this problem by separating them and making sure cached JavaScript and CSS remain cached as long as necessary.
+Finally separate CSS into its own file called `main.[contenthash:4].css` using [mini-css-extract-plugin](https://github.com/webpack-contrib/mini-css-extract-plugin). Like the chunkhash used in the output option, part of the contenthash is used as a fingerprint to allow for [cache invalidation](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching#invalidating_and_updating_cached_responses). The reason why styles use contenthashes instead of chunkhashes is because using chunkhashes would cause both JavaScript and CSS files to invalidate if either is edited. For example, in this scenario if you were to only edit your style source, the JavaScript bundles would become invalidated as well even though the JavaScript source has not changed. By using contenthashes we can avoid this problem by separating them and making sure JavaScript and CSS fingerprints are independent of each other, ensuring their caches remain valid as long as possible.
 
 #### Delete unused CSS
 [`config/production.js`](../../config/production.js)
