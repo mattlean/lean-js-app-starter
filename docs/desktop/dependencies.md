@@ -1,4 +1,4 @@
-# Web Browser: Dependencies
+# Desktop: Dependencies
 To check versions for dependencies, please view [`package.json`](../../package.json).
 
 ## Production
@@ -48,6 +48,14 @@ Parser for `eslint` that enables linting of all `@babel/core` code, particularly
 Modular compression tool used with `optimize-css-assets-webpack-plugin` to minify styles
 * [**`deep-freeze`**](https://npmjs.com/package/deep-freeze)  
 Disable mutations on objects. Mainly used for testing `redux` reducers to ensure they are pure functions.
+* [**`devtron`**](https://www.npmjs.com/package/devtron)  
+DevTools extension to help inspect, monitor, and debug `electron` applications
+* [**`electron`**](https://www.npmjs.com/package/electron)  
+Framework that allows the development of cross-platform desktop applications using JavaScript, HTML, and CSS
+* [**`electron-builder`**](https://www.npmjs.com/package/electron-builder)  
+Package and build solution for `electron` applications
+* [**`electron-devtools-installer`**](https://www.npmjs.com/package/electron)  
+DevTools extension installer for `electron` applications
 * [**`enzyme`**](https://npmjs.com/package/enzyme)  
 Testing utility for `react` that makes it easier to assert, manipulate, and traverse your `react` components' output
 * [**`enzyme-adapter-react-16`**](https://npmjs.com/package/enzyme-adapter-react-16)  
