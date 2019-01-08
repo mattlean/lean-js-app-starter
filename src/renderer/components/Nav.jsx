@@ -1,6 +1,7 @@
 // @flow
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { shell } from 'electron'
 
 const Nav = () => <nav id="nav">
   <Link to="/">Home</Link>
@@ -9,7 +10,10 @@ const Nav = () => <nav id="nav">
   <span>·</span>
   <a href="#">Docs</a>
   <span>·</span>
-  <a href="https://github.com/IsaacLean/lean-js-app-starter">GitHub</a>
+  <a href="https://github.com/IsaacLean/lean-js-app-starter" onClick={e => {
+    e.preventDefault()
+    shell.openExternal(e.target.href)
+  }}>GitHub</a>
 </nav>
 
 export default Nav
