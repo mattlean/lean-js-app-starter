@@ -11,6 +11,7 @@
   * [Examples](browser/examples.md)
 * [Node.js](nodejs/README.md)
 * [Desktop](desktop/README.md)
+* [Getting Started](getting_started.md)
 * [JavaScript Features](javascript_features.md)
 * [Sublime Text](sublime_text.md)
 * [Resources](resources.md)
