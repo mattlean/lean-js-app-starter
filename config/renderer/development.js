@@ -24,7 +24,7 @@ module.exports = merge([
 
   parts.loadHTML({
     template: `${PATHS.src}/index.html`,
-    templateParameters: { csp: `<meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-eval'; connect-src 'self' ws://${HOST}:${PORT}; default-src 'self' http://${HOST}:${PORT}; style-src 'self' blob:">` }
+    templateParameters: { csp: `<meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-eval' http://${HOST}:${PORT} ws://${HOST}:${PORT} blob: data:">` }
   }),
 
   parts.loadStyles(),
