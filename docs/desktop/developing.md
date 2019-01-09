@@ -7,7 +7,7 @@
 * [`src`](../../src): Application source code
   * [`__mocks__`](../../src/__mocks__): Mock test files
   * [`main`](../../src/main): Source code for main process
-  * [`renderer`](../../src/renderer): Source code for renderer processes
+  * [`renderer`](../../src/renderer): Source code for renderer process
     * [`actions`](../../src/renderer/actions): Redux actions
     * [`assets`](../../src/renderer/assets): Images, fonts & other assets
     * [`components`](../../src/renderer/components): React presentational components
@@ -22,7 +22,7 @@
 ### Application Development Mode
 There are two steps to running the app in development mode.
 
-First the renderer processes must be started through the development server. In one terminal window, run the `rend:start:dev:watch` [`package.json`](../../package.json) script. This will start [webpack-dev-server](https://github.com/webpack/webpack-dev-server) which will automatically create a development build and host it at [localhost:8080](http://localhost:8080).
+First the renderer process must be started through the development server. In one terminal window, run the `rend:start:dev:watch` [`package.json`](../../package.json) script. This will start [webpack-dev-server](https://github.com/webpack/webpack-dev-server) which will automatically create a development build and host it at [localhost:8080](http://localhost:8080).
 
 After that the main process must be started to open the Electron app. In another terminal window, run the `main:start:dev:watch` [`package.json`](../../package.json) script.
 
