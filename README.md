@@ -3,7 +3,7 @@ Skip boilerplate setup and get straight to the code you care about for your next
 
 ## Overview
 ### 🚀 Simple Setup
-Follow three quick steps in the ["Getting Started" documentation](docs/getting_started.md) and get straight to coding!
+Follow a few simple steps in the ["Getting Started" documentation](docs/getting_started.md) for your desired environment, and get straight to coding!
 
 ### 🌙 Consistent Codebase Across Multiple Environments
 Consistent JavaScript standard, dependencies, and configuration no matter what environment you're building for.

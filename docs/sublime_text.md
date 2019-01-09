@@ -37,12 +37,12 @@ It sets the following:
 * Trim trailing white space on save
 
 These locations will be ignored in *Goto Anything* or *Find in Files*:
-* build/
-* coverage/
-* flow-typed/
-* node_modules/
-* .eslintcache
-* package-lock.json
-* records.json
-* stats.*.json
-* yarn.lock
+* `build/`
+* `coverage/`
+* `flow-typed/`
+* `node_modules/`
+* `.eslintcache`
+* `package-lock.json`
+* `records.json`
+* `stats.*.json`
+* `yarn.lock`

@@ -1,5 +1,5 @@
 # Web Browser: Developing
-## File Structure
+## Folder Structure
 * `build`: webpack builds output here. Not versioned.
   * `development`: Development builds generated here
   * `production`: Production builds generated here
