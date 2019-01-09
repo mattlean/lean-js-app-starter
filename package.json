@@ -1,5 +1,5 @@
 {
-  "name": "lean-web-app-starter",
+  "name": "lean-js-app-starter",
   "version": "0.0.1",
   "description": "A starter project to kickoff development your next JavaScript application.",
   "main": "",
@@ -8,13 +8,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/IsaacLean/lean-web-app-starter.git"
+    "url": "git+https://github.com/IsaacLean/lean-js-app-starter.git"
   },
   "author": "Matthew Lean",
   "license": "MIT",
-  "private": true,
   "bugs": {
-    "url": "https://github.com/IsaacLean/lean-web-app-starter/issues"
+    "url": "https://github.com/IsaacLean/lean-js-app-starter/issues"
   },
-  "homepage": "https://github.com/IsaacLean/lean-web-app-starter#readme"
+  "homepage": "https://github.com/IsaacLean/lean-js-app-starter#readme"
 }
