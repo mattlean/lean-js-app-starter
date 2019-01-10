@@ -8,7 +8,6 @@
         "plugin:flowtype/recommended",
         "plugin:jest/recommended"
     ],
-    "parser": "babel-eslint",
     "parserOptions": {
         "sourceType": "module"
     },

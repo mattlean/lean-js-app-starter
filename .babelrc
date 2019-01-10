@@ -3,7 +3,7 @@
     "@babel/plugin-proposal-class-properties"
   ],
   "presets": [
-    "@babel/preset-flow",
-    "@babel/env"
+    "@babel/env",
+    "@babel/preset-flow"
   ]
 }
