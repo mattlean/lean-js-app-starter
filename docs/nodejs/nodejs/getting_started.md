@@ -3,8 +3,10 @@
 You must have [Node.js](https://nodejs.org), MongoDB (https://mongodb.com), and [npm](https://npmjs.com) or [Yarn](https://yarnpkg.com).
 
 * Download Node.js and npm here: https://nodejs.org/en/download
-* Download MongoDB here: https://docs.mongodb.com/manual/installation/#mongodb-community-edition
 * If you don't want to use npm, download Yarn here: https://yarnpkg.com/en/docs/install
+* Download MongoDB here: https://www.mongodb.com/download-center/community
+
+If you need a guide on installing MongoDB, read the [MongoDB Community Edition tutorials](https://docs.mongodb.com/manual/installation/#mongodb-community-edition).
 
 ## 1. Download
 Download and extract the latest Node.js release here: [URL]

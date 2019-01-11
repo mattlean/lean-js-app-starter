@@ -16,6 +16,8 @@
 ### Development Server
 To run the development server, first start MongoDB by running the command `mongod` in a terminal window. Then in another terminal window, run the `start:dev:watch` [`package.json`](../../package.json) script. This will create a development build and run it at [localhost:9001](http://localhost:9001). Any changes you do to the codebase will automatically rebuild and rerun the app.
 
+[Postman](https://getpostman.com) is recommended for interfacing with the app's REST API.
+
 ### Type Checking
 Run the `flow` [`package.json`](../../package.json) script to run [Flow](https://flow.org) to type check your code. It will then type check all `.js`, `.jsx`, `.mjs`, and `.json` files that have the following comment at the top their code:
 ```javascript
