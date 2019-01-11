@@ -13,8 +13,10 @@
 *Jest tests are found throughout several parts of the project within `__tests__` folders.*
 
 ## Development Process
-### Development Server
-To run the development server, first start MongoDB by running the command `mongod` in a terminal window. Then in another terminal window, run the `start:dev:watch` [`package.json`](../../package.json) script. This will create a development build and run it at [localhost:9001](http://localhost:9001). Any changes you do to the codebase will automatically rebuild and rerun the app.
+### Application Development Mode
+There are two steps to running the app in development mode.
+
+First start MongoDB by running the command `mongod` in a terminal window. Then in another terminal window, run the `start:dev:watch` [`package.json`](../../package.json) script. This will create a development build and run it at [localhost:9001](http://localhost:9001) while connecting to MongoDB at `mongodb://localhost/nodejs`. Any changes you do to the codebase will automatically rebuild and rerun the app.
 
 [Postman](https://getpostman.com) is recommended for interfacing with the app's REST API.
 
