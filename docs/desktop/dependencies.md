@@ -1,5 +1,5 @@
 # Desktop: Dependencies
-To check versions for dependencies, please view [`package.json`](../../package.json).
+To check versions for dependencies, view [`package.json`](../../package.json).
 
 ## Production
 * [**`cross-fetch`**](https://npmjs.com/package/cross-fetch)  
