@@ -1,16 +1,70 @@
-# Developing
-## Dependencies
+# Node.js: Developing
+## Folder Structure
+* `build`: webpack builds output here. Not versioned.
+  * `development`: Development builds generated here
+  * `production`: Production builds generated here
+* [`config`](../../config): webpack environment configuration
+* [`src`](../../src): Application source code
+  * [`config`](../../src/config): Application configuration
+  * [`models`](../../src/assets): Database models
+  * [`routes`](../../src/routes): Routes
+  * [`util`](../../src/util): Utility scripts
 
-## File Structure
+*Jest tests are found throughout several parts of the project within `__tests__` folders.*
 
 ## Development Process
-### Debugging
-
-### Linting
+### Development Server
+To run the development server, first start MongoDB by running the command `mongod` in a terminal window. Then in another terminal window, run the `start:dev:watch` [`package.json`](../../package.json) script. This will create a development build and run it at [localhost:9001](http://localhost:9001). Any changes you do to the codebase will automatically rebuild and rerun the app.
 
 ### Type Checking
+Run the `flow` [`package.json`](../../package.json) script to run [Flow](https://flow.org) to type check your code. It will then type check all `.js`, `.jsx`, `.mjs`, and `.json` files that have the following comment at the top their code:
+```javascript
+// @flow
+```
+
+Running the `flow` script will start the Flow background process. If you need to end this process, run the `flow stop` script.
+
+Instead of only using these scripts, it is highly recommended that you enable plugins/extensions in your code editor to allow it to type check with Flow. Details on how to set this up for Sublime Text can be found in the ["Sublime Text" documentation](../sublime_text.md).
+
+If you want to configure Flow, you can edit [`.flowconfig`](../../.flowconfig). For more information on the config, read the ["Configuration" documentation](configuration.md).
+
+### Linting
+Run the `lint:js` or `lint` [`package.json`](../../package.json) scripts to run [ESLint](https://eslint.org) to lint your JavaScript.
+
+Instead of only using these scripts, it is highly recommended that you enable plugins/extensions in your code editor to allow it to lint with ESLint and stylelint. Details on how to set this up for Sublime Text can be found in the ["Sublime Text" documentation](../sublime_text.md).
+
+If you want to configure ESLint, you can edit [`.eslintrc.json`](../../.eslintrc.json). For more information on the config, read the ["Configuration" documentation](configuration.md).
 
 ### Testing
 #### Creating Tests
+When creating tests, it is recommended that you end your file names with `.test.js` and put them in a `__tests__` folder.
+
+If you are snapshot testing, you can use or [Enzyme](https://airbnb.io/enzyme) or [React test renderer](https://reactjs.org/docs/test-renderer.html).
 
 #### Running Tests
+Use the following [`package.json`](../../package.json) scripts to have [Jest](https://jestjs.io) run your tests:
+
+* `test`: Run all tests
+* `test:update`: Re-record snapshots
+* `test:watch`: Watch files for changes and rerun the tests affected by these changes
+
+If you want to configure Jest, you can edit [`jest.config.js`](../../jest.config.js). For more information on the config, read the ["Configuration" documentation](configuration.md).
+
+#### Code Coverage
+Use the `test:coverage` [`package.json`](../../package.json) script to run [Istanbul](https://istanbul.js.org) to collect coverage information. Doing so will output the results in the terminal as well as generate `coverage/` (which is not versioned).
+
+### Debugging
+Run the `start:dev:watch:debug` [`package.json`](../../package.json) script to enable the inspector agent. The debugger will automatically put a breakpoint on first line of executed code.
+
+Now you have multiple options on what inspector client you want to use. If you want to use [Chrome DevTools](https://developers.google.com/web/tools/chrome-devtools), go through the following steps:
+
+1. Open [Google Chrome](https://google.com/chrome) and go to `about:inspect`
+2. Click on "Open dedicated DevTools for Node"
+3. A new Chrome DevTools window specifically for the application will pop-up
+
+More info on Node.js debugging and other options for inspector clients can be found in the [Node.js "Debugging Guide"](https://nodejs.org/en/docs/guides/debugging-getting-started).
+
+Source maps are also generated, making debugging compiled code manageable. Just make sure that source map support is enabled in your browser developer tool.
+
+### Editor Setup
+To setup the project with Sublime Text, [read the "Sublime Text" documentation](../sublime_text.md). More docs for setup with other editors are being considered.

@@ -58,7 +58,7 @@ Running the `flow` script will start the Flow background process. If you need to
 
 Instead of only using these scripts, it is highly recommended that you enable plugins/extensions in your code editor to allow it to type check with Flow. Details on how to set this up for Sublime Text can be found in the ["Sublime Text" documentation](../sublime_text.md).
 
-If you want to configure Flow, you can edit [`.flowconfig`](../../.flowconfig). For more information on the default configuration, read the ["Configuration" documentation](configuration.md).
+If you want to configure Flow, you can edit [`.flowconfig`](../../.flowconfig). For more information on the config, read the ["Configuration" documentation](configuration.md).
 
 ### Linting
 You can use the following [`package.json`](../../package.json) scripts to lint your code:
@@ -73,7 +73,7 @@ If you want to configure the linters, you can edit the following files:
 * [`.eslintrc.json`](../../.eslintrc.json): ESLint configuration
 * [`.stylelintrc`](../../.stylelintrc): stylelint configuration
 
-For more information on the default configuration, read the ["Configuration" documentation](configuration.md).
+For more information on the config, read the ["Configuration" documentation](configuration.md).
 
 ### Testing
 #### Creating Tests
@@ -88,7 +88,7 @@ Use the following [`package.json`](../../package.json) scripts to have [Jest](ht
 * `test:update`: Re-record snapshots
 * `test:watch`: Watch files for changes and rerun the tests affected by these changes
 
-If you want to configure Jest, you can edit [`jest.config.js`](../../jest.config.js). For more information on the default configuration, read the ["Configuration" documentation](configuration.md).
+If you want to configure Jest, you can edit [`jest.config.js`](../../jest.config.js). For more information on the config, read the ["Configuration" documentation](configuration.md).
 
 #### Code Coverage
 Use the `test:coverage` [`package.json`](../../package.json) script to run [Istanbul](https://istanbul.js.org) to collect coverage information. Doing so will output the results in the terminal as well as generate `coverage/` (which is not versioned).
@@ -98,7 +98,7 @@ Redux DevTools is already setup for you in the codebase, all you need to do is i
 
 It is highly recommended that you use your browser's developer tools (such as [Chrome DevTools](https://developers.google.com/web/tools/chrome-devtools) or [Firefox Developer Tools](https://developer.mozilla.org/en-US/docs/Tools)). It is also highly recommended to install the React Developer Tools extension: https://github.com/facebook/react-devtools
 
-Source maps are also generated making debugging compiled code manageable. Just make sure that source map support is enabled in your browser developer tool.
+Source maps are also generated, making debugging compiled code manageable. Just make sure that source map support is enabled in your browser developer tool.
 
 ### Editor Setup
 To setup the project with Sublime Text, [read the "Sublime Text" documentation](../sublime_text.md). More docs for setup with other editors are being considered.
