@@ -1,5 +1,5 @@
 # Desktop: Examples
-**Before running these examples, you must first you run the `setup` [`package.json`](../../package.json) script.**
+**Before running these examples, you must first go through the steps in the ["Getting Started" documentation](getting_started.md).**
 
 ## Basic Redux & React Router Example
 An example app that showcases a basic Redux implementation of a React counter along with routing with React Router. Available by default with the [`desktop` release].
