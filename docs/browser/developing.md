@@ -93,6 +93,35 @@ It is highly recommended that you use your browser's developer tools (such as [C
 Source maps are also generated, making debugging compiled code manageable. Just make sure that source map support is enabled in your browser developer tool.
 
 ### package.json Scripts
+#### Setup
+* `setup`: Install dependencies and Flow library interface definitions
+
+#### Building
+* `build`: Create a build for production
+* `build:debug`: Debug the production webpack configuration
+* `build:stats`: Create a build for production and generate `stats.production.json`
+* `build:dev`: Create a build for development
+* `build:dev:debug`: Debug the development webpack configuration
+* `build:dev:stats`: Create a build for development and generate `stats.development.json`
+
+#### Running the Application
+* `start`: Run production build
+* `start:dev`: Run development build
+* `start:dev:watch`: Run development build with hot loading for app code updates and auto-reload for config updates
+
+#### Type Checking
+* `flow`: Run Flow
+* `flow-typed`: Run flow-typed
+
+#### Linting
+* `lint` & `lint:js`: Run ESLint
+* `lint:styles`: Run stylelint
+
+#### Testing
+* `test`: Run Jest
+* `test:coverage`: Generate test coverage info
+* `test:update`: Re-record snapshots
+* `test:watch`: Watch files for changes and rerun the tests affected by these changes
 
 ### Editor Setup
 To setup the project with Sublime Text, [read the "Sublime Text" documentation](../sublime_text.md). More docs for setup with other editors are being considered.

@@ -64,7 +64,7 @@ By default Flow throws an error when it finds `require()` statements that use so
 `testPathIgnorePatterns` will have Jest ignore `node_modules/` (which is ignored by default) as well as `src/config/test.js` and `src/util/test.js` because these files are not tests and by default Jest looks for anything named "test.js".
 
 ## package.json
-[`package.json`](../../../package.json) is the main file that tells npm and Yarn about the project. For more info on the project's [`package.json`](../../../package.json) scripts, read the ["Developing" documentation](developing.md). For more info on configuring `package.json`, read the [npm "package.json" docs](https://docs.npmjs.com/files/package.json).
+[`package.json`](../../../package.json) is the main file that tells npm and Yarn about the project. For more info on the project's [`package.json`](../../../package.json) scripts, read the ["Developing: package.json Scripts" documentation](developing.md#packagejson-scripts). For more info on configuring `package.json`, read the [npm "package.json" docs](https://docs.npmjs.com/files/package.json).
 
 ## webpack
 [webpack](https://webpack.js.org) builds the project. The config files can be found in the project's root directory as [`webpack.config.js`](../../../webpack.config.js) and within [`config/`](../../../config). For more info on configuring webpack, read the [webpack "Configuration" docs](https://webpack.js.org/configuration).

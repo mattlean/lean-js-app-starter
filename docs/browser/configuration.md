@@ -101,7 +101,7 @@ moduleNameMapper: {
 `snapshotSeralizer` is set to [enzyme-to-json](https://github.com/adriantoine/enzyme-to-json) so Enzyme wrappers are converted to a format compatible with Jest snapshot tests.
 
 ## package.json
-[`package.json`](../../package.json) is the main file that tells npm and Yarn about the project. For more info on the project's [`package.json`](../../package.json) scripts, read the ["Developing" documentation](developing.md). For more info on configuring `package.json`, read the [npm "package.json" docs](https://docs.npmjs.com/files/package.json).
+[`package.json`](../../package.json) is the main file that tells npm and Yarn about the project. For more info on the project's [`package.json`](../../package.json) scripts, read the ["Developing: package.json Scripts" documentation](developing.md#packagejson-scripts). For more info on configuring `package.json`, read the [npm "package.json" docs](https://docs.npmjs.com/files/package.json).
 
 ## stylelint
 [stylelint](https://stylelint.io) helps identify potential problems and deviations from code style guidelines in your CSS and Sass. The config file can be found in the project's root directory as [`.stylelintrc`](../../.stylelintrc). For more info on configuring stylelint, read the [stylelint "Configuration" docs](https://stylelint.io/user-guide/configuration).

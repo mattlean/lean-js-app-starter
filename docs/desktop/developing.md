@@ -100,5 +100,7 @@ It is highly recommended that you use your browser's developer tools (such as [C
 
 Source maps are also generated, making debugging compiled code manageable. Just make sure that source map support is enabled in your browser developer tool.
 
+### package.json Scripts
+
 ### Editor Setup
 To setup the project with Sublime Text, [read the "Sublime Text" documentation](../sublime_text.md). More docs for setup with other editors are being considered.
