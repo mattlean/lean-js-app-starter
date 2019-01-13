@@ -30,14 +30,14 @@ Running the `flow` script will start the Flow background process. If you need to
 
 Instead of only using these scripts, it is highly recommended that you enable plugins/extensions in your code editor to allow it to type check with Flow. Details on how to set this up for Sublime Text can be found in the ["Sublime Text" documentation](../../sublime_text.md).
 
-If you want to configure Flow, you can edit [`.flowconfig`](../../../.flowconfig). For more information on the config, read the ["Configuration" documentation](configuration.md).
+If you want to configure Flow, you can edit [`.flowconfig`](../../../.flowconfig). For more information on the config, read the ["Configuration: Flow" documentation](configuration.md#flow).
 
 ### Linting
 Run the `lint:js` or `lint` [`package.json`](../../../package.json) scripts to run [ESLint](https://eslint.org) to lint your JavaScript.
 
 Instead of only using these scripts, it is highly recommended that you enable plugins/extensions in your code editor to allow it to lint with ESLint and stylelint. Details on how to set this up for Sublime Text can be found in the ["Sublime Text" documentation](../../sublime_text.md).
 
-If you want to configure ESLint, you can edit [`.eslintrc.json`](../../../.eslintrc.json). For more information on the config, read the ["Configuration" documentation](configuration.md).
+If you want to configure ESLint, you can edit [`.eslintrc.json`](../../../.eslintrc.json). For more information on the ESLint config, read the ["Configuration: ESLint" documentation](configuration.md#eslint).
 
 ### Testing
 #### Creating Tests
@@ -52,7 +52,7 @@ Use the following [`package.json`](../../../package.json) scripts to have [Jest]
 * `test:update`: Re-record snapshots
 * `test:watch`: Watch files for changes and rerun the tests affected by these changes
 
-If you want to configure Jest, you can edit [`jest.config.js`](../../../jest.config.js). For more information on the config, read the ["Configuration" documentation](configuration.md).
+If you want to configure Jest, you can edit [`jest.config.js`](../../../jest.config.js). For more information on the config, read the ["Configuration: Jest" documentation](configuration.md#jest).
 
 #### Code Coverage
 Use the `test:coverage` [`package.json`](../../../package.json) script to run [Istanbul](https://istanbul.js.org) to collect coverage information. Doing so will output the results in the terminal as well as generate `coverage/` (which is not versioned).
