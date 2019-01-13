@@ -70,19 +70,21 @@ By default Flow throws an error when it finds `require()` statements that use so
 ```javascript
 entry: `${PATHS.src}/main.js`,
 ```
+Start building from `src/main.js`. More info can be found in the [webpack "Entry and Context" docs](https://webpack.js.org/configuration/entry-context).
 
 #### Resolve
 [`webpack.config.js`](../../../webpack.config.js)
 ```javascript
 resolve: { extensions: ['.js', '.json'] },
 ```
+Look for files with .js or .json extensions. More info can be found in the [webpack "Resolve" docs](https://webpack.js.org/configuration/resolve).
 
 #### Target
-[`config/main/index.js`](../../../config/main/index.js)
+[`webpack.config.js`](../../../webpack.config.js)
 ```javascript
 target: 'node'
 ```
-Sets target environment to Electron's main process. More info can be found in the [webpack "Target" docs](https://webpack.js.org/configuration/target).
+Sets target environment to Node.js. More info can be found in the [webpack "Target" docs](https://webpack.js.org/configuration/target).
 
 #### Externals
 [`webpack.config.js`](../../../webpack.config.js)
@@ -106,7 +108,7 @@ output: {
   path: `${PATHS.build}/development`
 },
 ```
-Output bundle at `build/development/` and name the bundled JavaScript `main.js`. More info in the [webpack "Output" docs](https://webpack.js.org/configuration/output).
+Output bundle at `build/development/` and name the bundled JavaScript `server.js`. More info in the [webpack "Output" docs](https://webpack.js.org/configuration/output).
 
 #### Delete old build
 [`config/development.js`](../../../config/development.js)
@@ -123,3 +125,75 @@ parts.genSourceMaps({ type: 'cheap-module-eval-source-map' })
 Enable JavaScript source maps with `'cheap-module-eval-source-map'`. More info can be found in the [webpack "Devtool" docs](https://webpack.js.org/configuration/devtool).
 
 ### Production
+#### Entry
+[`webpack.config.js`](../../../webpack.config.js)
+```javascript
+entry: `${PATHS.src}/main.js`,
+```
+Start building from `src/main.js`. More info can be found in the [webpack "Entry and Context" docs](https://webpack.js.org/configuration/entry-context).
+
+#### Resolve
+[`webpack.config.js`](../../../webpack.config.js)
+```javascript
+resolve: { extensions: ['.js', '.json'] },
+```
+Look for files with .js or .json extensions. More info can be found in the [webpack "Resolve" docs](https://webpack.js.org/configuration/resolve).
+
+#### Target
+[`webpack.config.js`](../../../webpack.config.js)
+```javascript
+target: 'node'
+```
+Sets target environment to Node.js. More info can be found in the [webpack "Target" docs](https://webpack.js.org/configuration/target).
+
+#### Externals
+[`webpack.config.js`](../../../webpack.config.js)
+```javascript
+parts.setExternals(),
+```
+Exclude dependencies in webpack bundling process with webpack node modules externals. More info can be found in the [webpack "Externals" docs](https://webpack.js.org/configuration/externals) and the [webpack  node modules externals README](https://github.com/liady/webpack-node-externals/blob/master/README.md).
+
+#### Compile JavaScript
+[`webpack.config.js`](../../../webpack.config.js)
+```javascript
+parts.loadJS({ include: PATHS.src })
+```
+Load all JavaScript in `src/` and compile them with Babel using [Babel Loader](https://github.com/babel/babel-loader).
+
+#### Output
+[`config/production.js`](../../../config/production.js)
+```javascript
+output: {
+  filename: 'server.js',
+  path: `${PATHS.build}/production`
+},
+```
+Output bundle at `build/production/` and name the bundled JavaScript `server.js`. More info in the [webpack "Output" docs](https://webpack.js.org/configuration/output).
+
+#### Delete old build
+[`config/production.js`](../../../config/production.js)
+```javascript
+parts.cleanPaths(['build/production']),
+```
+Delete old development build at `build/production/` with [clean-webpack-plugin](https://github.com/johnagan/clean-webpack-plugin).
+
+#### Check types
+[`config/production.js`](../../../config/production.js)
+```javascript
+parts.checkTypes(),
+```
+Check types in JavaScript with Flow using [flow-webpack-plugin](https://github.com/happylynx/flow-webpack-plugin).
+
+#### Minify JavaScript
+[`config/production.js`](../../../config/production.js)
+```javascript
+parts.minJS(),
+```
+Minify JavaScript with [UglifyJS](http://lisperator.net/uglifyjs) using the [UglifyJS Webpack Plugin](https://github.com/webpack-contrib/uglifyjs-webpack-plugin).
+
+#### Generate source maps
+[`config/production.js`](../../../config/production.js)
+```javascript
+parts.genSourceMaps({ type: 'source-map' })
+```
+Enable JavaScript source maps with `'cheap-module-eval-source-map'`. More info can be found in the [webpack "Devtool" docs](https://webpack.js.org/configuration/devtool).
