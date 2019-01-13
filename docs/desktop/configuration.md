@@ -146,12 +146,10 @@ Load all JavaScript in `src/main/` and compile them with Babel using [Babel Load
 ##### Output
 [`config/main/development.js`](../../config/main/development.js)
 ```javascript
-{
-  output: {
-    filename: 'main.js',
-    path: PATHS.build
-  }
-},
+output: {
+  filename: 'main.js',
+  path: PATHS.build
+}
 ```
 Output bundle at `build/development/main/` and name the bundled JavaScript `main.js`. More info in the [webpack "Output" docs](https://webpack.js.org/configuration/output).
 
@@ -208,12 +206,10 @@ Load all JavaScript in `src/main/` and compile them with Babel using [Babel Load
 ##### Output
 [`config/main/production.js`](../../config/main/production.js)
 ```javascript
-{
-  output: {
-    filename: 'main.js',
-    path: PATHS.build
-  }
-},
+output: {
+  filename: 'main.js',
+  path: PATHS.build
+}
 ```
 Output bundle at `build/production/webpack/` and name the bundled JavaScript `main.js`. More info in the [webpack "Output" docs](https://webpack.js.org/configuration/output).
 

@@ -1,5 +1,5 @@
 # Node.js: Dependencies
-To check versions for dependencies, view [`package.json`](../../package.json).
+To check versions for dependencies, view [`package.json`](../../../package.json).
 
 ## Production
 * [**`body-parser`**](https://npmjs.com/package/body-parser)  
