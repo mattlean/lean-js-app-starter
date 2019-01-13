@@ -63,7 +63,11 @@ By default Flow throws an error when it finds `require()` statements that use so
 
 `testPathIgnorePatterns` will have Jest ignore `node_modules/` (which is ignored by default) as well as `src/config/test.js` and `src/util/test.js` because these files are not tests and by default Jest looks for anything named "test.js".
 
+## package.json
+
 ## webpack
+[webpack](https://webpack.js.org/) builds the project. The config files can be found in the project's root directory as [`webpack.config.js`](../../../webpack.config.js) and within [`config/`](../../../config).
+
 ### Development
 #### Entry
 [`webpack.config.js`](../../../webpack.config.js)
@@ -196,4 +200,4 @@ Minify JavaScript with [UglifyJS](http://lisperator.net/uglifyjs) using the [Ugl
 ```javascript
 parts.genSourceMaps({ type: 'source-map' })
 ```
-Enable JavaScript source maps with `'cheap-module-eval-source-map'`. More info can be found in the [webpack "Devtool" docs](https://webpack.js.org/configuration/devtool).
+Enable JavaScript source maps with `'source-map'`. More info can be found in the [webpack "Devtool" docs](https://webpack.js.org/configuration/devtool).

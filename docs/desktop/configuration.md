@@ -18,6 +18,8 @@
 * [@babel/preset-react](https://babeljs.io/docs/en/babel-preset-react)  
   Enable support for React and JSX. When running in a development environment, the `development` option is set to `true` and enables useful developer features like [component stack traces](https://reactjs.org/blog/2017/07/26/error-handling-in-react-16.html#component-stack-traces).
 
+## electron-builder
+
 ## ESLint
 [ESLint](https://eslint.org) helps identify potential problems and deviations from code style guidelines in your JavaScript. The config file can be found in the project's root directory as [`.eslintrc`](../../.eslintrc.json).
 
@@ -93,6 +95,8 @@ moduleNameMapper: {
 
 `snapshotSeralizer` is set to [enzyme-to-json](https://github.com/adriantoine/enzyme-to-json) so Enzyme wrappers are converted to a format compatible with Jest snapshot tests.
 
+## package.json
+
 ## stylelint
 [stylelint](https://stylelint.io) helps identify potential problems and deviations from code style guidelines in your CSS and Sass. The config file can be found in the project's root directory as [`.stylelintrc`](../../.stylelintrc).
 
@@ -106,6 +110,8 @@ These specific rules override any rules set by config extensions and will trigge
 * Line endings must be Unix
 
 ## webpack
+[webpack](https://webpack.js.org/) builds the project. The config files can be found in the project's root directory as [`webpack.config.js`](../../webpack.config.js) and within [`config/`](../../config).
+
 ### Main Process
 #### Development
 ##### Entry

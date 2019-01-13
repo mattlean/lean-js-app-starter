@@ -100,6 +100,8 @@ moduleNameMapper: {
 
 `snapshotSeralizer` is set to [enzyme-to-json](https://github.com/adriantoine/enzyme-to-json) so Enzyme wrappers are converted to a format compatible with Jest snapshot tests.
 
+## package.json
+
 ## stylelint
 [stylelint](https://stylelint.io) helps identify potential problems and deviations from code style guidelines in your CSS and Sass. The config file can be found in the project's root directory as [`.stylelintrc`](../../.stylelintrc).
 
@@ -113,6 +115,8 @@ These specific rules override any rules set by config extensions and will trigge
 * Line endings must be Unix
 
 ## webpack
+[webpack](https://webpack.js.org/) builds the project. The config files can be found in the project's root directory as [`webpack.config.js`](../../webpack.config.js) and within [`config/`](../../config).
+
 ### Development
 #### Entry
 [`webpack.config.js`](../../webpack.config.js)
