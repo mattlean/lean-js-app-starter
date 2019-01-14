@@ -1,5 +1,5 @@
 // @flow
 
 module.exports = {
-  DB_URI: 'mongodb://localhost/starchan-test'
+  DB_URI: 'mongodb://localhost/nodejs-test'
 }
