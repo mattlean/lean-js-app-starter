@@ -71,6 +71,37 @@ More info on Node.js debugging and other options for inspector clients can be fo
 Source maps are also generated, making debugging compiled code manageable. Just make sure that source map support is enabled in your browser developer tool.
 
 ### package.json Scripts
+#### Setup
+* `setup`: Install dependencies and Flow library interface definitions
+
+#### Building
+* `build`: Run webpack and create a production build
+* `build:debug`: Run webpack and debug the production configuration
+* `build:stats`: Run webpack, create a production build, and generate `stats.production.json`
+* `build:dev`: Run webpack and create a development build
+* `build:dev:debug`: Run webpack and debug the development configuration
+* `build:dev:stats`: Run webpack, create a development build, and generate `stats.development.json`
+
+#### Running the Application
+* `start`: Run production build
+* `start:debug`: Debug production build
+* `start:dev`: Run development build
+* `start:dev:debug`: Debug development build
+* `start:dev:watch`: Run development build with hot loading for app code updates and auto-reload for config updates
+* `start:dev:watch:debug`: Debug development build with hot loading for app code updates and auto-reload for config updates
+
+#### Type Checking
+* `flow`: Run Flow
+* `flow-typed`: Run flow-typed
+
+#### Linting
+* `lint:js` & `lint`: Run ESLint
+
+#### Testing
+* `test`: Run Jest
+* `test:coverage`: Generate test coverage info
+* `test:update`: Re-record snapshots
+* `test:watch`: Watch files for changes and rerun the tests affected by these changes
 
 ### Editor Setup
 To setup the project with Sublime Text, [read the "Sublime Text" documentation](../../sublime_text.md). More docs for setup with other editors are being considered.
