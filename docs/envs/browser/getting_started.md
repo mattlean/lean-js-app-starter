@@ -6,7 +6,7 @@ You must have [Node.js](https://nodejs.org) and [npm](https://npmjs.com) or [Yar
 * If you don't want to use npm, download Yarn here: https://yarnpkg.com/en/docs/install
 
 ## 1. Download
-Download and extract the latest browser release here: [URL]
+Download and extract the latest `browser` release here: https://github.com/IsaacLean/lean-js-app-starter/releases
 
 ## 2. Setup
 Open a terminal, go to the project root directory, and then run one of the following [`package.json`](../../../../package.json) scripts to install dependencies and [Flow](https://flow.org) library interface definitions:

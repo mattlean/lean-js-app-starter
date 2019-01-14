@@ -28,14 +28,14 @@ Run the `flow` [`package.json`](../../../../package.json) script to run [Flow](h
 
 Running the `flow` script will start the Flow background process. If you need to end this process, run the `flow stop` script.
 
-Instead of only using these scripts, it is highly recommended that you enable plugins/extensions in your code editor to allow it to type check with Flow. Details on how to set this up for Sublime Text can be found in the ["Sublime Text" documentation](../../tools/sublime_text.md).
+Instead of only using these scripts, it is highly recommended that you enable plugins/extensions in your code editor to allow it to type check with Flow. Details on how to set this up for Sublime Text can be found in the ["Sublime Text" documentation](../../../tools/sublime_text.md).
 
 If you want to configure Flow, you can edit [`.flowconfig`](../../../../.flowconfig). For more information on the config, read the ["Configuration: Flow" documentation](configuration.md#flow).
 
 ### Linting
 Run the `lint:js` or `lint` [`package.json`](../../../../package.json) scripts to run [ESLint](https://eslint.org) to lint your JavaScript.
 
-Instead of only using these scripts, it is highly recommended that you enable plugins/extensions in your code editor to allow it to lint with ESLint and stylelint. Details on how to set this up for Sublime Text can be found in the ["Sublime Text" documentation](../../tools/sublime_text.md).
+Instead of only using these scripts, it is highly recommended that you enable plugins/extensions in your code editor to allow it to lint with ESLint and stylelint. Details on how to set this up for Sublime Text can be found in the ["Sublime Text" documentation](../../../tools/sublime_text.md).
 
 If you want to configure ESLint, you can edit [`.eslintrc.json`](../../../../.eslintrc.json). For more information on the ESLint config, read the ["Configuration: ESLint" documentation](configuration.md#eslint).
 
@@ -106,4 +106,4 @@ Source maps are also generated, making debugging compiled code manageable. Just 
 * `test:watch`: Watch files for changes and rerun the tests affected by these changes
 
 ### Editor Setup
-To setup the project with Sublime Text, [read the "Sublime Text" documentation](../../tools/sublime_text.md). More docs for setup with other editors are being considered.
+To setup the project with Sublime Text, [read the "Sublime Text" documentation](../../../tools/sublime_text.md). More docs for setup with other editors are being considered.

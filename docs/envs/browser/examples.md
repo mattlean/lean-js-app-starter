@@ -2,11 +2,11 @@
 **Before running these examples, you must first go through the steps in the ["Getting Started" documentation](getting_started.md).**
 
 ## Basic Redux & React Router Example
-An example app that showcases a basic Redux implementation of a React counter along with routing with React Router. Available by default with the [`browser` release].
+An example app that showcases a basic Redux implementation of a React counter along with routing with React Router. Available by default with the `browser` release.
 
 To try the app, run the `start:dev:watch` [`package.json`](../../../../package.json) script and navigate to [localhost:8080](http://localhost:8080) in a browser.
 
-* Download: [URL]
+* Download: [Releases prefixed with `browser`](https://github.com/IsaacLean/lean-js-app-starter/releases)
 * Branch: https://github.com/IsaacLean/lean-js-app-starter/tree/browser
 
 ## Todo List
@@ -14,7 +14,7 @@ A todo list app. Connects with mock backend API.
 
 To try the app, run the `start:dev:watch` [`package.json`](../../../../package.json) script and navigate to [localhost:8080](http://localhost:8080) in a browser.
 
-* Download: [URL]
+* Download: [Releases prefixed with `todolist-browser`](https://github.com/IsaacLean/lean-js-app-starter/releases)
 * Branch: https://github.com/IsaacLean/lean-js-app-starter/tree/todolist-browser
 
 ## *chan: Anonymous Text Board
@@ -26,5 +26,5 @@ To try the app you must first [setup the backend API](../nodejs/nodejs/getting_s
 3. After the backend API is running, in yet another terminal window run the frontend app with the `start:dev:watch` script.
 4. Navigate to [localhost:8080](http://localhost:8080) in a browser.
 
-* Download: [URL]
+* Download: [Releases prefixed with `nodejs`](https://github.com/IsaacLean/lean-js-app-starter/releases)
 * Branch: https://github.com/IsaacLean/lean-js-app-starter/tree/starchan-frontend
