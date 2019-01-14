@@ -33,13 +33,6 @@ module.exports = merge([
 
   parts.purifyCSS({ paths: glob.sync(`${PATHS.src}/**/*.{js,jsx}`, { nodir: true }) }),
 
-  parts.loadImgs({
-    options: {
-      name: `${PATHS.assets}/imgs/[name].[hash:4].[ext]`
-    },
-    type: 'file'
-  }),
-
   parts.genSourceMaps({ type: 'source-map' }),
 
   parts.setFreeVariable('__server__', process.env.SERVER),
