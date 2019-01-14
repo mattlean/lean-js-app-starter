@@ -19,27 +19,6 @@ module.exports = merge([
 
   parts.minJS(),
 
-  parts.minCSS({
-    options: {
-      discardComments: { removeAll: true },
-      safe: true
-    }
-  }),
-
-  parts.extractStyles({
-    filename: '[name].[contenthash:4].css',
-    use: ['css-loader', 'sass-loader', parts.autoprefix()]
-  }),
-
-  parts.purifyCSS({ paths: glob.sync(`${PATHS.src}/**/*.{js,jsx}`, { nodir: true }) }),
-
-  parts.loadImgs({
-    options: {
-      name: `${PATHS.assets}/imgs/[name].[hash:4].[ext]`
-    },
-    type: 'file'
-  }),
-
   parts.genSourceMaps({ type: 'source-map' }),
 
   {

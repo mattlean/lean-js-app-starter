@@ -21,9 +21,5 @@ module.exports = merge([
     hot: true
   }),
 
-  parts.loadStyles(),
-
-  parts.loadImgs(),
-
   parts.genSourceMaps({ type: 'cheap-module-eval-source-map' })
 ])
