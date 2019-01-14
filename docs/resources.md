@@ -59,7 +59,7 @@ If you have zero experience in something used in this project and want to get a 
 * Redux Documentation: https://redux.js.org
 
 ## Representational State Transfer (REST)
-* REST API Tutorial: https://www.restapitutorial.com
+* REST API Tutorial: https://restapitutorial.com
 
 ## Sass
 * Sass Basics: https://sass-lang.com/guide
@@ -68,7 +68,7 @@ If you have zero experience in something used in this project and want to get a 
 * Enzyme Documentation: https://airbnb.io/enzyme
 * Jest Documentation: https://jestjs.io/docs/en/getting-started.html
 * SuperTest Documentation: https://github.com/visionmedia/supertest
-* Test Renderer Documentation: https://www.npmjs.com/package/react-test-renderer
+* Test Renderer Documentation: https://npmjs.com/package/react-test-renderer
 
 ## webpack
 *Notes: I highly recommend **SurviveJS - webpack** as it was the main resource that really gave me a deeper understanding of webpack and really influenced the way the webpack configuration was built for this project. It was written by Juho Vepsäläinen, an ex-core team member for webpack.*
