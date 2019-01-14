@@ -20,7 +20,7 @@ Naomi extends Sublime Text to support syntax highlighting for ECMAScript 2015 Ja
 ### [SublimeLinter](https://packagecontrol.io/packages/SublimeLinter-eslint)
 SublimeLinter is a linting framework that will allow us to install SublimeLinter plugins that will enable linting functionality.
 
-#### [Sublime​Linter-eslint: Lint ECMAScript 2015 JavaScript, JSX & Flow](https://packagecontrol.io/packages/SublimeLinter-eslint)
+#### [SublimeLinter-eslint: Lint ECMAScript 2015 JavaScript, JSX & Flow](https://packagecontrol.io/packages/SublimeLinter-eslint)
 Connects Sublime Text with the project's [ESLint](https://eslint.org) configuration ([`.eslintrc.json`](../../.eslintrc.json)). Make sure the ESLint dependency has been installed. [Read #2 in "Getting Started" to learn how to install dependencies.](getting_started.md)
 
 #### [SublimeLinter-flow: Type check with Flow](https://packagecontrol.io/packages/SublimeLinter-flow)

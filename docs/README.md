@@ -27,5 +27,7 @@
   * [Examples](desktop/examples.md)
 * [Getting Started](getting_started.md)
 * [JavaScript Features](javascript_features.md)
-* [Sublime Text](sublime_text.md)
+* [Tools](tools/README.md)
+  * [Postman](tools/postman.md)
+  * [Sublime Text](tools/sublime_text.md)
 * [Resources](resources.md)

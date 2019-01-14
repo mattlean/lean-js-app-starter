@@ -18,7 +18,7 @@ There are two steps to running the app in development mode.
 
 First start MongoDB by running the command `mongod` in a terminal window. Then in another terminal window, run the `start:dev:watch` [`package.json`](../../../package.json) script. This will create a development build and run it at [localhost:9001](http://localhost:9001) while connecting to MongoDB at `mongodb://localhost/nodejs`. Any changes you do to the codebase will automatically rebuild and rerun the app.
 
-[Postman](https://getpostman.com) is recommended for interfacing with the app's REST API.
+[Postman](https://getpostman.com) is recommended for interfacing with the app's REST API. Details on how to import a collection and environment for this can be found in the ["Postman" documentation](../../tools/postman.md).
 
 ### Type Checking
 Run the `flow` [`package.json`](../../../package.json) script to run [Flow](https://flow.org) to type check your code. It will then type check all `.js`, `.jsx`, `.mjs`, and `.json` files that have the following comment at the top their code:
@@ -28,14 +28,14 @@ Run the `flow` [`package.json`](../../../package.json) script to run [Flow](http
 
 Running the `flow` script will start the Flow background process. If you need to end this process, run the `flow stop` script.
 
-Instead of only using these scripts, it is highly recommended that you enable plugins/extensions in your code editor to allow it to type check with Flow. Details on how to set this up for Sublime Text can be found in the ["Sublime Text" documentation](../../sublime_text.md).
+Instead of only using these scripts, it is highly recommended that you enable plugins/extensions in your code editor to allow it to type check with Flow. Details on how to set this up for Sublime Text can be found in the ["Sublime Text" documentation](../../tools/sublime_text.md).
 
 If you want to configure Flow, you can edit [`.flowconfig`](../../../.flowconfig). For more information on the config, read the ["Configuration: Flow" documentation](configuration.md#flow).
 
 ### Linting
 Run the `lint:js` or `lint` [`package.json`](../../../package.json) scripts to run [ESLint](https://eslint.org) to lint your JavaScript.
 
-Instead of only using these scripts, it is highly recommended that you enable plugins/extensions in your code editor to allow it to lint with ESLint and stylelint. Details on how to set this up for Sublime Text can be found in the ["Sublime Text" documentation](../../sublime_text.md).
+Instead of only using these scripts, it is highly recommended that you enable plugins/extensions in your code editor to allow it to lint with ESLint and stylelint. Details on how to set this up for Sublime Text can be found in the ["Sublime Text" documentation](../../tools/sublime_text.md).
 
 If you want to configure ESLint, you can edit [`.eslintrc.json`](../../../.eslintrc.json). For more information on the ESLint config, read the ["Configuration: ESLint" documentation](configuration.md#eslint).
 
@@ -51,6 +51,8 @@ Use the following [`package.json`](../../../package.json) scripts to have [Jest]
 * `test`: Run all tests
 * `test:update`: Re-record snapshots
 * `test:watch`: Watch files for changes and rerun the tests affected by these changes
+
+Any test utilizing the database will connect to MongoDB at `mongodb://localhost/nodejs-test`.
 
 If you want to configure Jest, you can edit [`jest.config.js`](../../../jest.config.js). For more information on the config, read the ["Configuration: Jest" documentation](configuration.md#jest).
 
@@ -104,4 +106,4 @@ Source maps are also generated, making debugging compiled code manageable. Just 
 * `test:watch`: Watch files for changes and rerun the tests affected by these changes
 
 ### Editor Setup
-To setup the project with Sublime Text, [read the "Sublime Text" documentation](../../sublime_text.md). More docs for setup with other editors are being considered.
+To setup the project with Sublime Text, [read the "Sublime Text" documentation](../../tools/sublime_text.md). More docs for setup with other editors are being considered.
