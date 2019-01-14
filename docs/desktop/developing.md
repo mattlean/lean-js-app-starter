@@ -101,6 +101,66 @@ It is highly recommended that you use your browser's developer tools (such as [C
 Source maps are also generated, making debugging compiled code manageable. Just make sure that source map support is enabled in your browser developer tool.
 
 ### package.json Scripts
+#### Setup
+* `setup`: Install dependencies and Flow library interface definitions
+
+#### Building
+##### Both Processes
+* `build`: Run webpack in production mode and create a renderer process build, then a main process build
+* `build:debug`: Run webpack and debug the production configuration
+* `build:stats`: Run webpack in production mode, create a renderer process build, then a main process build, and generate `stats.production.json`
+* `build:dev`: Run webpack in development mode and create a renderer process build, then a main process build
+* `build:dev:debug`: Run webpack and debug the development configuration
+* `build:dev:stats`: Run webpack in production mode, create a renderer process build, then a main process build, and generate `stats.development.json`
+* `dist`: Run webpack and create a production build, then run electron-builder and create an executable
+* `dist:debug`: Run webpack and create a production build, then run electron-builder and create an executable while displaying more info about the build process
+* `pack`: Run electron-builder and create an unpacked directory for testing purposes
+
+##### Main Process
+* `main:build`: Run webpack and create a main process production build
+* `main:build:debug`: Run webpack and debug the main process production configuration
+* `main:build:stats`: Run webpack, create a main process production build, and generate `stats.main.production.json`
+* `main:build:dev`: Run webpack and create a main process development build
+* `main:build:dev:debug`: Run webpack and debug the main process development configuration
+* `main:build:dev:stats`: Run webpack, create a main process development build, and generate `stats.main.development.json`
+
+##### Renderer Process
+* `rend:build`: Run webpack and create a renderer process production build
+* `rend:build:debug`: Run webpack and debug the renderer process production configuration
+* `rend:build:stats`: Run webpack, create a renderer process production build, and generate `stats.rend.production.json`
+* `rend:build:dev`: Run webpack and create a renderer process development build
+* `rend:build:dev:debug`: Run webpack and debug the renderer process development configuration
+* `rend:build:dev:stats`: Run webpack, create a renderer process development build, and generate `stats.rend.development.json`
+
+#### Running the Application
+##### Both Processes
+* `main:start` & `start`: Run production build
+* `main:start:debug` & `start:debug`: Debug production build
+
+##### Main Process
+* `main:start:dev` & `start:dev`: Run main process development build
+* `main:start:dev:debug` & `start:dev:debug`: Debug main process development build
+* `main:start:dev:watch` & `start:dev:watch`: Run main process development build with auto-reload
+* `main:start:dev:watch:debug` & `start:dev:watch:debug`: Debug main process development build with auto-reload
+
+##### Renderer Process
+* `rend:start`: Preview renderer process production build
+* `rend:start:dev`: Run development renderer process build
+* `rend:start:dev:watch`: Run renderer process development build with hot loading for app code updates and auto-reload for config updates
+
+#### Type Checking
+* `flow`: Run Flow
+* `flow-typed`: Run flow-typed
+
+#### Linting
+* `lint` & `lint:js`: Run ESLint
+* `lint:styles`: Run stylelint
+
+#### Testing
+* `test`: Run Jest
+* `test:coverage`: Generate test coverage info
+* `test:update`: Re-record snapshots
+* `test:watch`: Watch files for changes and rerun the tests affected by these changes
 
 ### Editor Setup
 To setup the project with Sublime Text, [read the "Sublime Text" documentation](../sublime_text.md). More docs for setup with other editors are being considered.

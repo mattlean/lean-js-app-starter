@@ -97,12 +97,12 @@ Source maps are also generated, making debugging compiled code manageable. Just 
 * `setup`: Install dependencies and Flow library interface definitions
 
 #### Building
-* `build`: Create a build for production
-* `build:debug`: Debug the production webpack configuration
-* `build:stats`: Create a build for production and generate `stats.production.json`
-* `build:dev`: Create a build for development
-* `build:dev:debug`: Debug the development webpack configuration
-* `build:dev:stats`: Create a build for development and generate `stats.development.json`
+* `build`: Run webpack and create a production build
+* `build:debug`: Run webpack and debug the production configuration
+* `build:stats`: Run webpack, create a production build, and generate `stats.production.json`
+* `build:dev`: Run webpack and create a development build
+* `build:dev:debug`: Run webpack and debug the development configuration
+* `build:dev:stats`: Run webpack, create a development build, and generate `stats.development.json`
 
 #### Running the Application
 * `start`: Run production build
@@ -114,7 +114,7 @@ Source maps are also generated, making debugging compiled code manageable. Just 
 * `flow-typed`: Run flow-typed
 
 #### Linting
-* `lint` & `lint:js`: Run ESLint
+* `lint:js` & `lint`: Run ESLint
 * `lint:styles`: Run stylelint
 
 #### Testing
