@@ -55,7 +55,7 @@ You can find some example browser apps in the following branches:
 - [`todolist-frontend`](https://github.com/IsaacLean/lean-web-app-starter/tree/todolist-browser): A todo list app. Connects with mock backend API.
 - [`starchan-frontend`](https://github.com/IsaacLean/lean-web-app-starter/tree/starchan-frontend): The frontend app for an anonymous text board called *chan (pronounced star-chan). Requires connection with the *chan backend API on the [`nodejs` branch](https://github.com/IsaacLean/lean-web-app-starter/tree/nodejs).
 
-[Click here for documentation on building browser apps.](docs/browser/README.md)
+[Click here for documentation on building browser apps.](docs/envs/browser/README.md)
 
 ### 🌐 Node.js
 #### Downloads
@@ -66,7 +66,7 @@ You can find an example Node.js app in the following branch:
 
 - [`nodejs`](https://github.com/IsaacLean/lean-web-app-starter/tree/nodejs): A REST API for an anonymous text board called *chan (pronounced star-chan). Optionally connects with the *chan frontend app on the [`starchan-frontend` branch](https://github.com/IsaacLean/lean-web-app-starter/tree/starchan-frontend).
 
-[Click here for documentation on building Node.js apps.](docs/nodejs/README.md)
+[Click here for documentation on building Node.js apps.](docs/envs/nodejs/README.md)
 
 ### 🖥️ Desktop
 #### Download
@@ -77,7 +77,7 @@ You can find an example desktop app in the following branch:
 
 - [`todolist-desktop`](https://github.com/IsaacLean/lean-web-app-starter/tree/todolist-desktop): A todo list app ported from the browser targeted app on the [`todolist-browser` branch](https://github.com/IsaacLean/lean-web-app-starter/tree/todolist-browser).
 
-[Click here for documentation on building desktop apps.](docs/desktop/README.md)
+[Click here for documentation on building desktop apps.](docs/envs/desktop/README.md)
 
 ### 🏊 Documentation
 You can dive deeper into the project by reading the [documentation](docs/README.md) which is also included locally with each copy of the project in the [`docs/`](docs) folder.
