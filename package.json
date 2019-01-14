@@ -1,6 +1,6 @@
 {
   "name": "lean-js-app-starter",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "A starter project to kickoff development your next JavaScript application.",
   "main": "build/production/webpack/main.js",
   "productName": "Lean JavaScript Application Starter",
