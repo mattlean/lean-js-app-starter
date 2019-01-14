@@ -7,7 +7,7 @@ const Nav = () => <nav id="nav">
   <span>·</span>
   <Link to="/counter">Counter Example</Link>
   <span>·</span>
-  <a href="#">Docs</a>
+  <a href="https://github.com/IsaacLean/lean-js-app-starter/tree/master/docs">Docs</a>
   <span>·</span>
   <a href="https://github.com/IsaacLean/lean-js-app-starter">GitHub</a>
 </nav>
