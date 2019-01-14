@@ -47,19 +47,19 @@ If you ever need to change the configuration for anything, you can easily do so.
 ## Get Started
 ### 🏄‍ Web Browser
 #### Download
-If you want to build an app for web browsers, start with the [latest `browser` release].
+If you want to build an app for web browsers, start with the [latest `browser` release](https://github.com/IsaacLean/lean-web-app-starter/releases).
 
 #### Examples
 You can find some example browser apps in the following branches:
 
 - [`todolist-frontend`](https://github.com/IsaacLean/lean-web-app-starter/tree/todolist-browser): A todo list app. Connects with mock backend API.
-- [`starchan-frontend`](https://github.com/IsaacLean/lean-web-app-starter/tree/starchan-frontend): The frontend app for an anonymous text board called *chan (pronounced star-chan). Requires connection with the *chan backend API on the [`starchan-backend` branch](https://github.com/IsaacLean/lean-web-app-starter/tree/starchan-backend).
+- [`starchan-frontend`](https://github.com/IsaacLean/lean-web-app-starter/tree/starchan-frontend): The frontend app for an anonymous text board called *chan (pronounced star-chan). Requires connection with the *chan backend API on the [`nodejs` branch](https://github.com/IsaacLean/lean-web-app-starter/tree/nodejs).
 
 [Click here for documentation on building browser apps.](docs/browser/README.md)
 
 ### 🌐 Node.js
 #### Downloads
-If you want to build an app for Node.js, start with the [latest `nodejs` release].
+If you want to build an app for Node.js, start with the [latest `nodejs` release](https://github.com/IsaacLean/lean-web-app-starter/releases).
 
 #### Examples
 You can find an example Node.js app in the following branch:
@@ -70,7 +70,7 @@ You can find an example Node.js app in the following branch:
 
 ### 🖥️ Desktop
 #### Download
-If you want to build an app for desktop, start with the [latest `desktop` release].
+If you want to build an app for desktop, start with the [latest `desktop` release](https://github.com/IsaacLean/lean-js-app-starter/releases).
 
 #### Examples
 You can find an example desktop app in the following branch:
