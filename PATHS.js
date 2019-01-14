@@ -1,6 +1,7 @@
 const path = require('path')
 
 module.exports = {
+  assets: '/assets',
   root: path.join(__dirname),
   src: path.join(__dirname, 'src'),
   back: {
