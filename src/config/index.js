@@ -2,7 +2,7 @@
 
 let config = {
   PORT: 3000,
-  DB_URI: 'mongodb://localhost/starchan',
+  DB_URI: 'mongodb://localhost/nodejs',
   CLIENT: null
 }
 

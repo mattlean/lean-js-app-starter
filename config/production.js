@@ -17,5 +17,5 @@ module.exports = merge([
 
   parts.minJS(),
 
-  parts.genSourceMaps({ type: 'source-map' }),
+  parts.genSourceMaps({ type: 'source-map' })
 ])
