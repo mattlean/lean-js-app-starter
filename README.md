@@ -52,7 +52,7 @@ If you want to build an app for web browsers, start with the [latest `browser` r
 #### Examples
 You can find some example browser apps in the following branches:
 
-- [`todolist-frontend`](https://github.com/IsaacLean/lean-web-app-starter/tree/todolist-browser): A todo list app. Connects with mock backend API.
+- [`todolist-browser`](https://github.com/IsaacLean/lean-web-app-starter/tree/todolist-browser): A todo list app. Connects with mock backend API.
 - [`starchan-frontend`](https://github.com/IsaacLean/lean-web-app-starter/tree/starchan-frontend): The frontend app for an anonymous text board called *chan (pronounced star-chan). Requires connection with the *chan backend API on the [`nodejs` branch](https://github.com/IsaacLean/lean-web-app-starter/tree/nodejs).
 
 [Click here for documentation on building browser apps.](docs/envs/browser/README.md)
