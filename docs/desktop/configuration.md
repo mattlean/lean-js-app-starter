@@ -19,6 +19,7 @@
   Enable support for React and JSX. When running in a development environment, the `development` option is set to `true` and enables useful developer features like [component stack traces](https://reactjs.org/blog/2017/07/26/error-handling-in-react-16.html#component-stack-traces).
 
 ## electron-builder
+[electron-builder](https://electron.build/configuration/configuration) builds the app into an executable for macOS, Windows, or Linux. The config utilizes [`package.json`](../../package.json). For more info on configurating electron-builder, read the [electron-builder "Common Configuration" docs](https://electron.build/configuration/configuration).
 
 ## ESLint
 [ESLint](https://eslint.org) helps identify potential problems and deviations from code style guidelines in your JavaScript. The config file can be found in the project's root directory as [`.eslintrc`](../../.eslintrc.json). For more info on configuring ESLint, read the [ESLint "Configuring ESLint" docs](https://eslint.org/docs/user-guide/configuring).
