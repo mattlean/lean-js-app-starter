@@ -23,7 +23,8 @@ exports[`Nav renders properly 1`] = `
     ·
   </span>
   <a
-    href="#"
+    href="https://github.com/IsaacLean/lean-js-app-starter/tree/master/docs"
+    onClick={[Function]}
   >
     Docs
   </a>
@@ -32,6 +33,7 @@ exports[`Nav renders properly 1`] = `
   </span>
   <a
     href="https://github.com/IsaacLean/lean-js-app-starter"
+    onClick={[Function]}
   >
     GitHub
   </a>
