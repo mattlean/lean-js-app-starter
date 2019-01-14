@@ -1,5 +1,5 @@
 // @flow
 
 export default {
-  DB_URI: 'mongodb://localhost/starchan-test'
+  DB_URI: 'mongodb://localhost/nodejs-ssr-test'
 }
