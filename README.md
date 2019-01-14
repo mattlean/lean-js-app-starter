@@ -59,16 +59,12 @@ You can find some example browser apps in the following branches:
 
 ### 🌐 Node.js
 #### Downloads
-If you want to build an app for Node.js, you have two options:
-
-- [`nodejs`]: An Express, MongoDB, and Mongoose starter project
-- [`nodejs-ssr`]: An Express, MongoDB, and Mongoose starter project that supports server-side rendering for React
+If you want to build an app for Node.js, start with the [latest `nodejs` release].
 
 #### Examples
-You can find example Node.js apps in the following branches:
+You can find an example Node.js app in the following branch:
 
-- [`starchan-backend`](https://github.com/IsaacLean/lean-web-app-starter/tree/starchan-backend): A REST API for an anonymous text board called *chan (pronounced star-chan). Optionally connects with the *chan frontend app on the [`starchan-frontend` branch](https://github.com/IsaacLean/lean-web-app-starter/tree/starchan-frontend).
-- [`starchan-ssr`](https://github.com/IsaacLean/lean-web-app-starter/tree/starchan-ssr): A version of the *chan backend that supports server-side rendering of the frontend app.
+- [`nodejs`](https://github.com/IsaacLean/lean-web-app-starter/tree/nodejs): A REST API for an anonymous text board called *chan (pronounced star-chan). Optionally connects with the *chan frontend app on the [`starchan-frontend` branch](https://github.com/IsaacLean/lean-web-app-starter/tree/starchan-frontend).
 
 [Click here for documentation on building Node.js apps.](docs/nodejs/README.md)
 
