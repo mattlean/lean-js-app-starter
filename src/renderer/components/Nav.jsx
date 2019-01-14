@@ -8,7 +8,10 @@ const Nav = () => <nav id="nav">
   <span>·</span>
   <Link to="/counter">Counter Example</Link>
   <span>·</span>
-  <a href="#">Docs</a>
+  <a href="https://github.com/IsaacLean/lean-js-app-starter/tree/master/docs" onClick={e => {
+    e.preventDefault()
+    shell.openExternal(e.target.href)
+  }}>Docs</a>
   <span>·</span>
   <a href="https://github.com/IsaacLean/lean-js-app-starter" onClick={e => {
     e.preventDefault()
