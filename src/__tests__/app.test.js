@@ -1,14 +1,8 @@
 const request = require('supertest')
 
 const app = require('../app')
-const { db } = require('../util')
-const { DB_URI } = require('../config')
 
-beforeAll(() => db.connect(DB_URI))
-
-afterAll(() => db.disconnect())
-
-describe('Hello world!', () => {
+describe('Root endpoint', () => {
   it('should respond to GET request with 200 and "*chan API" text', () => {
     return request(app)
       .get('/')

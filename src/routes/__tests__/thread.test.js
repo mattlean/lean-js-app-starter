@@ -14,8 +14,9 @@ afterAll(() => {
   db.disconnect()
 })
 
-describe('Thread routes', () => {
+describe('Thread endpoints', () => {
   const endpoint = '/thread'
+  const type = 'Thread'
   let thread
   const threadData = {
     subject: 'Test Thread',
@@ -29,10 +30,10 @@ describe('Thread routes', () => {
       .post(endpoint)
       .send(threadData)
       .then(res => {
-        expect(res.statusCode).toBe(200)
+        expect(res.statusCode).toBe(201)
         expect(res.body.subject).toBe(threadData.subject)
         expect(res.body.comment).toBe(threadData.comment)
-        expect(res.body.type).toBe('Thread')
+        expect(res.body.type).toBe(type)
         thread = res.body
       })
   })
@@ -45,7 +46,7 @@ describe('Thread routes', () => {
         expect(res.body).toBeInstanceOf(Array)
         expect(res.body[0].subject).toBe(threadData.subject)
         expect(res.body[0].comment).toBe(threadData.comment)
-        expect(res.body[0].type).toBe('Thread')
+        expect(res.body[0].type).toBe(type)
       })
   })
 
@@ -56,7 +57,7 @@ describe('Thread routes', () => {
         expect(res.statusCode).toBe(200)
         expect(res.body.subject).toBe(threadData.subject)
         expect(res.body.comment).toBe(threadData.comment)
-        expect(res.body.type).toBe('Thread')
+        expect(res.body.type).toBe(type)
       })
   })
 
@@ -65,7 +66,7 @@ describe('Thread routes', () => {
       .post(`${endpoint}/${thread._id}/reply`)
       .send(firstReplyData)
       .then(res => {
-        expect(res.statusCode).toBe(200)
+        expect(res.statusCode).toBe(201)
         expect(res.body.replies[0].comment).toBe(firstReplyData.comment)
       })
   })
@@ -75,7 +76,7 @@ describe('Thread routes', () => {
       .post(`${endpoint}/${thread._id}/reply`)
       .send(secondReplyData)
       .then(res => {
-        expect(res.statusCode).toBe(200)
+        expect(res.statusCode).toBe(201)
         expect(res.body.replies[0].comment).toBe(firstReplyData.comment)
         expect(res.body.replies[1].comment).toBe(secondReplyData.comment)
       })

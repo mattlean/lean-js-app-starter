@@ -12,7 +12,7 @@ router.post('/', (req, res, next) => {
   if(req.body.replies) delete req.body.replies
 
   Thread.create(req.body)
-    .then(thread => res.json(thread))
+    .then(thread => res.status(201).json(thread))
     .catch(err => next(err))
 })
 
@@ -46,7 +46,7 @@ router.post('/:id/reply', (req, res, next) => {
 
       return thread.save()
     })
-    .then(thread => res.json(thread))
+    .then(thread => res.status(201).json(thread))
     .catch(err => next(err))
 })
 
