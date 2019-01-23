@@ -6,7 +6,7 @@ const PATHS = require('../PATHS')
 module.exports = merge([
   {
     output: {
-      filename: 'server.js',
+      filename: 'app.js',
       path: `${PATHS.build}/production`
     },
   },
