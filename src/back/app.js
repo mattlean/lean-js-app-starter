@@ -5,7 +5,7 @@ import helmet from 'helmet'
 import 'source-map-support/register'
 
 import routePages from './routes/pages'
-import routeAPIThread from './routes/api/thread'
+import routeAPI from './routes/api'
 import { CLIENT } from './config'
 import { logger } from './util'
 
@@ -41,9 +41,9 @@ if(CLIENT) {
   })
 }
 
-app.use('/', routePages)
+app.use('/api', routeAPI)
 
-app.use('/api/thread', routeAPIThread)
+app.use('/', routePages)
 
 // 404
 app.use((req, res, next) => res.status(404).send('404 Not Found')) // eslint-disable-line no-unused-vars

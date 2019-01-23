@@ -17,7 +17,7 @@ router.post('/', (req, res, next) => {
       if(req.headers['content-type'] === 'application/x-www-form-urlencoded') {
         return res.redirect(`/${thread._id}`)
       }
-      return res.json(thread)
+      return res.status(201).json(thread)
     })
     .catch(err => next(err))
 })
@@ -55,7 +55,7 @@ router.post('/:id/reply', (req, res, next) => {
       if(req.headers['content-type'] === 'application/x-www-form-urlencoded') {
         return res.redirect(`/${thread._id}`)
       }
-      return res.json(thread)
+      return res.status(201).json(thread)
     })
     .catch(err => next(err))
 })

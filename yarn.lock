@@ -1167,10 +1167,10 @@ assert@^1.1.1:
   dependencies:
     util "0.10.3"
 
-asset-list-webpack-plugin@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/asset-list-webpack-plugin/-/asset-list-webpack-plugin-0.2.0.tgz#72dd78d710fe0cd2944c477bbc67161c3f112e0c"
-  integrity sha512-Ce7k+WDGr95EmEoRB1jKWJhP5R+Fk5No3cvuIZ2FR0pAtLPu0y0eAQtr9aRChOHeeZh6zQ2WGEO6ZIo7HZ3aPg==
+asset-list-webpack-plugin@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/asset-list-webpack-plugin/-/asset-list-webpack-plugin-0.4.0.tgz#620c8fd68ecb3c1b8bdf2a801ac94ab6facf18c0"
+  integrity sha512-itT1iTKtv7GQHNX8JKBEqoTIH2cZBVF1INU0dGvEIq7xV/VBbY9eF5gPEhAlQzFYH2dZGpC05QBSt6Al4WaxAg==
 
 assign-symbols@^1.0.0:
   version "1.0.0"
@@ -8671,6 +8671,11 @@ regenerator-runtime@^0.12.0:
   version "0.12.1"
   resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.12.1.tgz#fa1a71544764c036f8c49b13a08b2594c9f8a0de"
   integrity sha512-odxIc1/vDlo4iZcfXqRYFj0vpXFNoGdKMAUieAlFYO6m/nl5e9KR/beGf41z4a1FI+aQgtjhuaSlDxQ0hmkrHg==
+
+regenerator-runtime@^0.13.1:
+  version "0.13.1"
+  resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.13.1.tgz#522ea2aafd9200a00eee143dc14219a35a0f3991"
+  integrity sha512-5KzMIyPLvfdPmvsdlYsHqITrDfK9k7bmvf97HvHSN4810i254ponbxCQ1NukpRWlu6en2MBWzAlhDExEKISwAA==
 
 regenerator-transform@^0.13.3:
   version "0.13.3"

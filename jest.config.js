@@ -89,7 +89,19 @@ module.exports = {
   // preset: null,
 
   // Run tests from one or more projects
-  // projects: null,
+  projects: [
+    {
+      displayName: "back",
+      testEnvironment: "node",
+      testMatch: ["<rootDir>/src/back/**/*.test.js", "<rootDir>/src/back/**/*.test.jsx"]
+    },
+    {
+      displayName: "front",
+      snapshotSerializers: ["enzyme-to-json/serializer"],
+      testEnvironment: "jsdom",
+      testMatch: ["<rootDir>/src/front/**/*.test.js", "<rootDir>/src/front/**/*.test.jsx"]
+    }
+  ],
 
   // Use this configuration option to add custom reporters to Jest
   // reporters: undefined,
@@ -124,10 +136,10 @@ module.exports = {
   // setupTestFrameworkScriptFile: null,
 
   // A list of paths to snapshot serializer modules Jest should use for snapshot testing
-  snapshotSerializers: ["enzyme-to-json/serializer"],
+  // snapshotSerializers: [],
 
   // The test environment that will be used for testing
-  // testEnvironment: "node",
+  // testEnvironment: "jest-environment-jsdom",
 
   // Options that will be passed to the testEnvironment
   // testEnvironmentOptions: {},

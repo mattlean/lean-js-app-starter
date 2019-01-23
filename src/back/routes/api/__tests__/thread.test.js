@@ -14,8 +14,9 @@ afterAll(() => {
   db.disconnect()
 })
 
-describe('Thread routes', () => {
+describe('Thread endpoints', () => {
   const endpoint = '/api/thread'
+  const type = 'Thread'
   let thread
   const threadData = {
     subject: 'Test Thread',
@@ -25,23 +26,19 @@ describe('Thread routes', () => {
   const secondReplyData = { comment: 'Second Test Reply Comment' }
 
   it('should create a thread', () => {
-    expect.assertions(4)
-
     return request(app)
       .post(endpoint)
       .send(threadData)
       .then(res => {
-        expect(res.statusCode).toBe(200)
+        expect(res.statusCode).toBe(201)
         expect(res.body.subject).toBe(threadData.subject)
         expect(res.body.comment).toBe(threadData.comment)
-        expect(res.body.type).toBe('Thread')
+        expect(res.body.type).toBe(type)
         thread = res.body
       })
   })
 
   it('should list all threads', () => {
-    expect.assertions(5)
-
     return request(app)
       .get(endpoint)
       .then(res => {
@@ -49,43 +46,37 @@ describe('Thread routes', () => {
         expect(res.body).toBeInstanceOf(Array)
         expect(res.body[0].subject).toBe(threadData.subject)
         expect(res.body[0].comment).toBe(threadData.comment)
-        expect(res.body[0].type).toBe('Thread')
+        expect(res.body[0].type).toBe(type)
       })
   })
 
   it('should read specific thread', () => {
-    expect.assertions(4)
-
     return request(app)
       .get(`${endpoint}/${thread._id}`)
       .then(res => {
         expect(res.statusCode).toBe(200)
         expect(res.body.subject).toBe(threadData.subject)
         expect(res.body.comment).toBe(threadData.comment)
-        expect(res.body.type).toBe('Thread')
+        expect(res.body.type).toBe(type)
       })
   })
 
   it('should create first reply', () => {
-    expect.assertions(2)
-
     return request(app)
       .post(`${endpoint}/${thread._id}/reply`)
       .send(firstReplyData)
       .then(res => {
-        expect(res.statusCode).toBe(200)
+        expect(res.statusCode).toBe(201)
         expect(res.body.replies[0].comment).toBe(firstReplyData.comment)
       })
   })
 
   it('should create second reply and maintain first reply', () => {
-    expect.assertions(3)
-
     return request(app)
       .post(`${endpoint}/${thread._id}/reply`)
       .send(secondReplyData)
       .then(res => {
-        expect(res.statusCode).toBe(200)
+        expect(res.statusCode).toBe(201)
         expect(res.body.replies[0].comment).toBe(firstReplyData.comment)
         expect(res.body.replies[1].comment).toBe(secondReplyData.comment)
       })
