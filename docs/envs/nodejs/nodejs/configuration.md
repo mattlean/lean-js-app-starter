@@ -63,6 +63,15 @@ By default Flow throws an error when it finds `require()` statements that use so
 
 `testPathIgnorePatterns` will have Jest ignore `node_modules/` (which is ignored by default) as well as `src/config/test.js` and `src/util/test.js` because these files are not tests and by default Jest looks for anything named "test.js".
 
+## nodemon
+nodemon reruns Node.js applications when file changes are detected. For this project it is used to rerun package.json scripts to rebuild and rerun the application. The config file can be found in the project's root directory as [`nodemon.json`](../../../nodemon.json).
+
+## Watched Files
+All `.js` and `.json` files in `config/`, `src/`. Also watch `webpack.config.js`.
+
+## Ignored Files
+All `.test.js` files.
+
 ## package.json
 [`package.json`](../../../package.json) is the main file that tells npm and Yarn about the project. For more info on the project's [`package.json`](../../../package.json) scripts, read the ["Developing: package.json Scripts" documentation](developing.md#packagejson-scripts). For more info on configuring `package.json`, read the [npm "package.json" docs](https://docs.npmjs.com/files/package.json).
 
