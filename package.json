@@ -5,8 +5,8 @@
   "main": "src/back/main.js",
   "scripts": {
     "setup": "npm i && npm run flow-typed install",
-    "back:api:start:dev:watch": "nodemon --watch config/back --watch config/common --watch src --exec \"npm run back:build:dev && npm run back:start:dev\"",
-    "back:api:start:dev:watch:debug": "nodemon --watch config/back --watch config/common --watch src --exec \"npm run back:build:dev && npm run back:start:dev:debug\"",
+    "back:api:start:dev:watch": "nodemon --watch config/back --watch config/common --watch src/back --exec \"npm run back:build:dev && npm run back:start:dev\"",
+    "back:api:start:dev:watch:debug": "nodemon --watch config/back --watch config/common --watch src/back --exec \"npm run back:build:dev && npm run back:start:dev:debug\"",
     "back:build": "webpack --env production --config config/back/index.js",
     "back:build:debug": "node --inspect-brk node_modules/.bin/webpack --env production --config config/back/index.js",
     "back:build:dev": "webpack --env development --config config/back/index.js",
