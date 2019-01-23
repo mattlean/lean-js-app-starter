@@ -109,11 +109,11 @@ Load all JavaScript in `src/` and compile them with Babel using [Babel Loader](h
 [`config/development.js`](../../../config/development.js)
 ```javascript
 output: {
-  filename: 'server.js',
+  filename: 'app.js',
   path: `${PATHS.build}/development`
 },
 ```
-Output bundle at `build/development/` and name the bundled JavaScript `server.js`. More info in the [webpack "Output" docs](https://webpack.js.org/configuration/output).
+Output bundle at `build/development/` and name the bundled JavaScript `app.js`. More info in the [webpack "Output" docs](https://webpack.js.org/configuration/output).
 
 #### Delete old build
 [`config/development.js`](../../../config/development.js)
@@ -169,11 +169,11 @@ Load all JavaScript in `src/` and compile them with Babel using [Babel Loader](h
 [`config/production.js`](../../../config/production.js)
 ```javascript
 output: {
-  filename: 'server.js',
+  filename: 'app.js',
   path: `${PATHS.build}/production`
 },
 ```
-Output bundle at `build/production/` and name the bundled JavaScript `server.js`. More info in the [webpack "Output" docs](https://webpack.js.org/configuration/output).
+Output bundle at `build/production/` and name the bundled JavaScript `app.js`. More info in the [webpack "Output" docs](https://webpack.js.org/configuration/output).
 
 #### Delete old build
 [`config/production.js`](../../../config/production.js)
