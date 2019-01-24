@@ -26,7 +26,7 @@
     "flow": "flow",
     "flow-typed": "flow-typed",
     "lint": "npm run lint:js",
-    "lint:js": "eslint --cache --ext .js,.jsx src/",
+    "lint:js": "eslint --cache \"{config,src}/**/*.{js,jsx}\"",
     "lint:styles": "stylelint src/**/*.scss src/**/*.css",
     "main:build": "webpack --env production --config config/main/index.js",
     "main:build:debug": "node --inspect-brk node_modules/.bin/webpack --env production --config config/main/index.js",
