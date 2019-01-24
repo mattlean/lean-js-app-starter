@@ -1,5 +1,5 @@
 {
   "ext": "js,json,jsx",
   "ignore": ["*.test.js", "*.test.jsx"],
-  "watch": ["config", "webpack.config.js"]
+  "watch": ["config", "src/main", "webpack.config.js"]
 }
