@@ -67,7 +67,7 @@ By default Flow throws an error when it finds `require()` statements that use so
 [nodemon](https://nodemon.io) reruns Node.js applications when file changes are detected. For this project it is used to rerun package.json scripts to rebuild and rerun the application. The config file can be found in the project's root directory as [`nodemon.json`](../../../nodemon.json).
 
 ### Watched Files
-All `.js` and `.json` files in `config/`, `src/`. Also watch `webpack.config.js`.
+Watch `.js` and `.json` files, the `config/` and `src/` directories, and `webpack.config.js`.
 
 ### Ignored Files
 All `.test.js` files.

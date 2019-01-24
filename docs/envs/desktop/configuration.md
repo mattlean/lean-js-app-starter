@@ -95,6 +95,15 @@ moduleNameMapper: {
 
 `snapshotSeralizer` is set to [enzyme-to-json](https://github.com/adriantoine/enzyme-to-json) so Enzyme wrappers are converted to a format compatible with Jest snapshot tests.
 
+## nodemon
+[nodemon](https://nodemon.io) reruns Node.js applications when file changes are detected. For this project it is used to rerun package.json scripts to rebuild and rerun the application. The config file can be found in the project's root directory as [`nodemon.json`](../../../nodemon.json).
+
+### Watched Files
+Watch `.js`, `.json`, and `.jsx` files, the `config/` and `src/main/` directories, and `webpack.config.js`.
+
+### Ignored Files
+All `.test.js` and `.test.jsx` files.
+
 ## package.json
 [`package.json`](../../../package.json) is the main file that tells npm and Yarn about the project. For more info on the project's [`package.json`](../../../package.json) scripts, read the ["Developing: package.json Scripts" documentation](developing.md#packagejson-scripts). For more info on configuring `package.json`, read the [npm "package.json" docs](https://docs.npmjs.com/files/package.json).
 
