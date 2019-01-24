@@ -16,6 +16,8 @@ Application framework
 Library for prasing, validating, manipulating, and formatting dates
 * [**`mongoose`**](https://npmjs.com/package/mongoose)  
 MongoDB object modeling tool
+* [**`source-map-support`**](https://npmjs.com/package/source-map-support)  
+Enable source map support for stack traces in Node.js
 * [**`winston`**](https://npmjs.com/package/winston)  
 Logging library
 
@@ -54,8 +56,6 @@ Repository of third-party `flow-bin` library interface definitions
 JavaScript tester
 * [**`nodemon`**](https://npmjs.com/package/nodemon)  
 Restart Node.js applications when file changes are detected
-* [**`source-map-support`**](https://npmjs.com/package/source-map-support)  
-Enable source map support for stack traces in Node.js
 * [**`supertest`**](https://npmjs.com/package/supertest)  
 HTTP testing library
 * [**`uglifyjs-webpack-plugin`**](https://npmjs.com/package/uglifyjs-webpack-plugin)  
