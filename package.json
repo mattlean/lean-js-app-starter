@@ -136,7 +136,6 @@
     "purifycss-webpack": "^0.7.0",
     "react-test-renderer": "^16.6.3",
     "redux-mock-store": "^1.5.3",
-    "regenerator-runtime": "^0.13.1",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "stylelint": "^9.9.0",
