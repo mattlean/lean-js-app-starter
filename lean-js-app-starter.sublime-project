@@ -13,7 +13,8 @@
 				"package-lock.json",
 				"records.json",
 				"stats.*.json",
-				"yarn.lock"
+				"yarn.lock",
+				"yarn-error.log"
 			]
 		},
 	],
