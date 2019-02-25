@@ -10,6 +10,18 @@
     "type": "git",
     "url": "git+https://github.com/IsaacLean/lean-js-app-starter.git"
   },
+  "keywords": [
+    "lean-js-app-starter",
+    "lean-start",
+    "lean",
+    "javascript",
+    "starter",
+    "project",
+    "boilerplate",
+    "js",
+    "application",
+    "app"
+  ],
   "author": "Matthew Lean",
   "license": "MIT",
   "bugs": {
