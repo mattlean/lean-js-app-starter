@@ -1,5 +1,5 @@
 {
   "ext": "js,json,jsx",
   "ignore": ["*.test.js", "*.test.jsx"],
-  "watch": ["config", "src/back"]
+  "watch": ["config", "nodemon.json", "src/back"]
 }

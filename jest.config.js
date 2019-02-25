@@ -155,6 +155,7 @@ module.exports = {
 
   // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
   testPathIgnorePatterns: [
+    "/build/",
     "/node_modules/",
     "/src/back/config/test.js",
     "/src/back/util/test.js"
