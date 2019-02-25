@@ -1,5 +1,4 @@
 // @flow
-
 const mongoose = require('mongoose')
 
 const Reply = require('./reply')
