@@ -33,7 +33,7 @@ app.on('ready', () => {
   win.on('ready-to-show', () => win.show())
 })
 
-app.on('windows-all-closed', () => {
+app.on('window-all-closed', () => {
   if(process.platform !== 'darwin') app.quit()
 })
 
