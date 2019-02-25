@@ -1,4 +1,3 @@
-const glob = require('glob')
 const merge = require('webpack-merge')
 
 const parts = require('./parts')
