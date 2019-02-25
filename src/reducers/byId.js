@@ -1,10 +1,10 @@
 // @flow
 
-import type { Action, State, State_ById } from '../types'
+import type { Action, State_ById } from '../types'
 
 export const defaultState = {}
 
-const byId = (state: State = defaultState, action: Action): State => {
+const byId = (state: State_ById = defaultState, action: Action): State_ById => {
   if(action.response) {
     return {
       ...state,
