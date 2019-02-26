@@ -84,7 +84,7 @@ const renderFullPage = (html, preloadedState, title = '*chan') => {
             style = `<link href="/static/${currAsset.filename}" rel="stylesheet">`
           }
         }
-      } else if(main.type === 'js') {
+      } else if(frontAssets.main === 'js') {
         main = `<script type="text/javascript" src="/static/${frontAssets.main.filename}"></script>`
       }
     }
