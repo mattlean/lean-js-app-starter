@@ -64,7 +64,7 @@ By default Flow throws an error when it finds `require()` statements that use so
 ### Options
 `testEnvironment` is set to `node`.
 
-`testPathIgnorePatterns` will have Jest ignore `node_modules/` (which is ignored by default) and [`build/`](../../../build) as well as [`src/config/test.js`](../../../src/config/test.js) and [`src/util/test.js`](../../../src/util/test.js) because these files are not tests and by default Jest looks for anything named `test.js`.
+`testPathIgnorePatterns` will have Jest ignore the `node_modules/` (which is ignored by default) and [`build/`](../../../build) directories as well as [`src/config/test.js`](../../../src/config/test.js) and [`src/util/test.js`](../../../src/util/test.js) because these files are not tests and by default Jest looks for any filename that includes `test.js`.
 
 ## nodemon
 [nodemon](https://nodemon.io) reruns Node.js applications when file changes are detected. For this project it is used to rerun package.json scripts to rebuild and rerun the application. The config file can be found in the project's root directory as [`nodemon.json`](../../../nodemon.json). This file sets what nodemon will watch and ignore by default. These settings can be overridden by CLI options.
