@@ -47,7 +47,7 @@ These specific rules override any rules set by config extensions and will trigge
 * No semicolons
 
 ### Ignored Files
-`jest.config.js` is ignored as linting the Jest configuration is not necessary.
+[`jest.config.js`](../../../jest.config.js) is ignored as linting the Jest configuration is not necessary.
 
 ## Flow
 [Flow](https://flow.org) is a static type checker for JavaScript. The config file can be found in the project's root directory as [`.flowconfig`](../../../.flowconfig). For more info on configuring Flow, read the [Flow ".flowconfig" docs](https://flow.org/en/docs/config).

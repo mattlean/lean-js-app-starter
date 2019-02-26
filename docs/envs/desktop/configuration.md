@@ -62,7 +62,7 @@ These specific rules override any rules set by config extensions and will trigge
 The React and Flow versions match the versions used in the project, as specified by [eslint-plugin-react](https://github.com/yannickcr/eslint-plugin-react). These versions can be found in [`package.json`](../../../package.json).
 
 ### Ignored Files
-`jest.config.js` is ignored as linting the Jest configuration is not necessary.
+[`jest.config.js`](../../../jest.config.js) is ignored as linting the Jest configuration is not necessary.
 
 ## Flow
 [Flow](https://flow.org) is a static type checker for JavaScript. The config file can be found in the project's root directory as [`.flowconfig`](../../../.flowconfig). For more info on configuring Flow, read the [Flow ".flowconfig" docs](https://flow.org/en/docs/config).
