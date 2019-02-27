@@ -209,14 +209,14 @@ Load all Sass and compile them into CSS using [Sass Loader](https://github.com/w
 ```javascript
 parts.loadImgs(),
 ```
-Load image files with .gif, .jpg, .jpeg, or .png extensions and transform them into base64 URIs which are inlined into the JavaScript bundle using [url-loader](https://github.com/webpack-contrib/url-loader).
+Load image files with `.gif`, `.jpg`, `.jpeg`, or `.png` extensions and transform them into base64 URIs which are inlined into the JavaScript bundle using [url-loader](https://github.com/webpack-contrib/url-loader).
 
 #### Load fonts
 [`config/development.js`](../../../config/development.js)
 ```javascript
 parts.loadFonts(),
 ```
-Load font files with .eot, .tff, .woff, or .woff2 extensions and transform them into base64 URIs which are inlined into the JavaScript bundle using [url-loader](https://github.com/webpack-contrib/url-loader).
+Load font files with `.eot`, `.tff`, `.woff`, or `.woff2` extensions and transform them into base64 URIs which are inlined into the JavaScript bundle using [url-loader](https://github.com/webpack-contrib/url-loader).
 
 #### Generate source maps
 [`config/development.js`](../../../config/development.js)
@@ -238,7 +238,7 @@ Start building from `src/main.jsx`. More info can be found in the [webpack "Entr
 ```javascript
 resolve: { extensions: ['.js', '.jsx', '.json'] }
 ```
-Look for files with .js, .jsx, or .json extensions. More info can be found in the [webpack "Resolve" docs](https://webpack.js.org/configuration/resolve).
+Look for files with `.js`, `.jsx`, or `.json` extensions. More info can be found in the [webpack "Resolve" docs](https://webpack.js.org/configuration/resolve).
 
 #### Compile JavaScript
 [`webpack.config.js`](../../../webpack.config.js)
@@ -327,7 +327,7 @@ parts.loadImgs({
   type: 'file'
 }),
 ```
-Load image files with .gif, .jpg, .jpeg, or .png extensions and output them in `/assets/imgs/` with [file-loader](https://github.com/webpack-contrib/file-loader).
+Load image files with `.gif`, `.jpg`, `.jpeg`, or `.png` extensions and output them in `/assets/imgs/` with [file-loader](https://github.com/webpack-contrib/file-loader).
 
 #### Load fonts
 [`config/production.js`](../../../config/production.js)
@@ -339,7 +339,7 @@ parts.loadFonts({
   type: 'file'
 }),
 ```
-Load font files with .eot, .tff, .woff, or .woff2 extensions and output them in `/assets/imgs/` with [file-loader](https://github.com/webpack-contrib/file-loader).
+Load font files with `.eot`, `.tff`, `.woff`, or `.woff2` extensions and output them in `/assets/imgs/` with [file-loader](https://github.com/webpack-contrib/file-loader).
 
 #### Generate source maps
 [`config/production.js`](../../../config/production.js)
