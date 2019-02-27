@@ -4,6 +4,8 @@ Use the `build` [`package.json`](../../../package.json) script to create a build
 
 The `build:debug` [`package.json`](../../../package.json) script can be used to debug the webpack configuration with a [Node.js inspector client](https://nodejs.org/en/docs/guides/debugging-getting-started/#inspector-clients). The `build:stats` [`package.json`](../../../package.json) script generates a `stats.production.json` file in the project root directory which can be used with many analysis tools such as [analyse](https://github.com/webpack/analyse).
 
+The production build process generates `records.json` which is used to store module IDs across separate builds. This allows the generation of longer lasting filenames, makes sure that code split parts gain correct caching behavior, and that modules aren't reordered or moved to another chunk during the bundling process which results to less cache invalidations. **This file should checked into version control.**
+
 For more details on what the webpack build process is doing, read the ["Configuration: webpack" documentation](configuration.md#webpack).
 
 ## Development
