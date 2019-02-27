@@ -270,7 +270,7 @@ Start building from `src/renderer/main.jsx`. More info can be found in the [webp
 ```javascript
 resolve: { extensions: ['.js', '.jsx', '.json'] },
 ```
-Look for files with .js, .jsx, or .json extensions. More info can be found in the [webpack "Resolve" docs](https://webpack.js.org/configuration/resolve).
+Look for files with `.js`, `.jsx`, or `.json` extensions. More info can be found in the [webpack "Resolve" docs](https://webpack.js.org/configuration/resolve).
 
 ##### Target
 [`config/renderer/index.js`](../../../config/renderer/index.js)

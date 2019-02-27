@@ -145,7 +145,7 @@ Start building from `src/main.jsx`. More info can be found in the [webpack "Entr
 ```javascript
 resolve: { extensions: ['.js', '.jsx', '.json'] }
 ```
-Look for files with .js, .jsx, or .json extensions. More info can be found in the [webpack "Resolve" docs](https://webpack.js.org/configuration/resolve).
+Look for files with `.js`, `.jsx`, or `.json` extensions. More info can be found in the [webpack "Resolve" docs](https://webpack.js.org/configuration/resolve).
 
 #### Compile JavaScript
 [`webpack.config.js`](../../../webpack.config.js)

@@ -154,7 +154,7 @@ Start building from `src/main.js`. More info can be found in the [webpack "Entry
 ```javascript
 resolve: { extensions: ['.js', '.json'] },
 ```
-Look for files with .js or .json extensions. More info can be found in the [webpack "Resolve" docs](https://webpack.js.org/configuration/resolve).
+Look for files with `.js` or `.json` extensions. More info can be found in the [webpack "Resolve" docs](https://webpack.js.org/configuration/resolve).
 
 #### Target
 [`webpack.config.js`](../../../webpack.config.js)

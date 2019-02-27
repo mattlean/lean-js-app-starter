@@ -134,135 +134,150 @@ These specific rules override any rules set by config extensions and will trigge
 ## webpack
 [webpack](https://webpack.js.org) builds the project. The config files can be found in the [config/](../../../config) directory. For more info on configuring webpack, read the [webpack "Configuration" docs](https://webpack.js.org/configuration).
 
-### Development
-#### Entry
-[`webpack.config.js`](../../../webpack.config.js)
+### Backend
+#### Development
+##### Entry
+[`config/back/index.js`](../../../config/back/index.js)
 ```javascript
-entry: `${PATHS.src}/main.js`,
+entry: `${PATHS.back.src}/main.js`,
 ```
-Start building from `src/main.js`. More info can be found in the [webpack "Entry and Context" docs](https://webpack.js.org/configuration/entry-context).
+Start building from `src/back/main.js`. More info can be found in the [webpack "Entry and Context" docs](https://webpack.js.org/configuration/entry-context).
 
-#### Resolve
-[`webpack.config.js`](../../../webpack.config.js)
+##### Resolve
+[`config/back/index.js`](../../../config/back/index.js)
 ```javascript
-resolve: { extensions: ['.js', '.json'] },
+resolve: { extensions: ['.js', '.jsx', '.json'] },
 ```
-Look for files with .js or .json extensions. More info can be found in the [webpack "Resolve" docs](https://webpack.js.org/configuration/resolve).
+Look for files with `.js`, `.jsx` or `.json` extensions. More info can be found in the [webpack "Resolve" docs](https://webpack.js.org/configuration/resolve).
 
-#### Target
-[`webpack.config.js`](../../../webpack.config.js)
+##### Target
+[`config/back/index.js`](../../../config/back/index.js)
 ```javascript
 target: 'node'
 ```
 Sets target environment to Node.js. More info can be found in the [webpack "Target" docs](https://webpack.js.org/configuration/target).
 
-#### Externals
-[`webpack.config.js`](../../../webpack.config.js)
+##### Externals
+[`config/back/index.js`](../../../config/back/index.js)
 ```javascript
 parts.setExternals(),
 ```
 Exclude dependencies in webpack bundling process with webpack node modules externals. More info can be found in the [webpack "Externals" docs](https://webpack.js.org/configuration/externals) and the [webpack  node modules externals README](https://github.com/liady/webpack-node-externals/blob/master/README.md).
 
-#### Compile JavaScript
-[`webpack.config.js`](../../../webpack.config.js)
+##### Compile JavaScript
+[`config/back/index.js`](../../../config/back/index.js)
 ```javascript
-parts.loadJS({ include: PATHS.src })
+parts.loadJS({ include: PATHS.src }),
 ```
 Load all JavaScript in `src/` and compile them with Babel using [Babel Loader](https://github.com/babel/babel-loader).
 
-#### Output
-[`config/development.js`](../../../config/development.js)
+##### Set Free Variable
+[`config/back/index.js`](../../../config/back/index.js)
+```javascript
+parts.setFreeVariable('__isBrowser__', false)
+```
+Create `__isBrowser__` free variable which determines when Redux store is being created within the browser or Node.js environment.
+
+##### Output
+[`config/back/development.js`](../../../config/back/development.js)
 ```javascript
 output: {
   filename: 'app.js',
-  path: `${PATHS.build}/development`
+  path: `${PATHS.back.build}/development`
 },
 ```
-Output bundle at `build/development/` and name the bundled JavaScript `app.js`. More info in the [webpack "Output" docs](https://webpack.js.org/configuration/output).
+Output bundle at `build/back/development/` and name the bundled JavaScript `app.js`. More info in the [webpack "Output" docs](https://webpack.js.org/configuration/output).
 
-#### Delete old build
-[`config/development.js`](../../../config/development.js)
+##### Delete old build
+[`config/back/development.js`](../../../config/back/development.js)
 ```javascript
-parts.cleanPaths(['build/development']),
+parts.cleanPaths(['build/back/development']),
 ```
-Delete old development build at `build/development/` with [clean-webpack-plugin](https://github.com/johnagan/clean-webpack-plugin).
+Delete old development build at `build/back/development` with [clean-webpack-plugin](https://github.com/johnagan/clean-webpack-plugin).
 
-#### Generate source maps
-[`config/development.js`](../../../config/development.js)
+##### Generate source maps
+[`config/back/development.js`](../../../config/back/development.js)
 ```javascript
 parts.genSourceMaps({ type: 'cheap-module-eval-source-map' })
 ```
 Enable JavaScript source maps with `'cheap-module-eval-source-map'`. More info can be found in the [webpack "Devtool" docs](https://webpack.js.org/configuration/devtool).
 
-### Production
-#### Entry
-[`webpack.config.js`](../../../webpack.config.js)
+#### Production
+##### Entry
+[`config/back/index.js`](../../../config/back/index.js)
 ```javascript
-entry: `${PATHS.src}/main.js`,
+entry: `${PATHS.back.src}/main.js`,
 ```
-Start building from `src/main.js`. More info can be found in the [webpack "Entry and Context" docs](https://webpack.js.org/configuration/entry-context).
+Start building from `src/back/main.js`. More info can be found in the [webpack "Entry and Context" docs](https://webpack.js.org/configuration/entry-context).
 
-#### Resolve
-[`webpack.config.js`](../../../webpack.config.js)
+##### Resolve
+[`config/back/index.js`](../../../config/back/index.js)
 ```javascript
-resolve: { extensions: ['.js', '.json'] },
+resolve: { extensions: ['.js', '.jsx', '.json'] },
 ```
-Look for files with .js or .json extensions. More info can be found in the [webpack "Resolve" docs](https://webpack.js.org/configuration/resolve).
+Look for files with `.js`, `.jsx` or `.json` extensions. More info can be found in the [webpack "Resolve" docs](https://webpack.js.org/configuration/resolve).
 
-#### Target
-[`webpack.config.js`](../../../webpack.config.js)
+##### Target
+[`config/back/index.js`](../../../config/back/index.js)
 ```javascript
 target: 'node'
 ```
 Sets target environment to Node.js. More info can be found in the [webpack "Target" docs](https://webpack.js.org/configuration/target).
 
-#### Externals
-[`webpack.config.js`](../../../webpack.config.js)
+##### Externals
+[`config/back/index.js`](../../../config/back/index.js)
 ```javascript
 parts.setExternals(),
 ```
 Exclude dependencies in webpack bundling process with webpack node modules externals. More info can be found in the [webpack "Externals" docs](https://webpack.js.org/configuration/externals) and the [webpack  node modules externals README](https://github.com/liady/webpack-node-externals/blob/master/README.md).
 
-#### Compile JavaScript
-[`webpack.config.js`](../../../webpack.config.js)
+##### Compile JavaScript
+[`config/back/index.js`](../../../config/back/index.js)
 ```javascript
-parts.loadJS({ include: PATHS.src })
+parts.loadJS({ include: PATHS.src }),
 ```
 Load all JavaScript in `src/` and compile them with Babel using [Babel Loader](https://github.com/babel/babel-loader).
 
-#### Output
-[`config/production.js`](../../../config/production.js)
+##### Set Free Variable
+[`config/back/index.js`](../../../config/back/index.js)
+```javascript
+parts.setFreeVariable('__isBrowser__', false)
+```
+Create `__isBrowser__` free variable which determines when Redux store is being created within the browser or Node.js environment.
+
+##### Output
+[`config/back/production.js`](../../../config/back/production.js)
 ```javascript
 output: {
   filename: 'app.js',
-  path: `${PATHS.build}/production`
-},
+  path: `${PATHS.back.build}/production`
+}
 ```
-Output bundle at `build/production/` and name the bundled JavaScript `app.js`. More info in the [webpack "Output" docs](https://webpack.js.org/configuration/output).
+Output bundle at `build/back/production/` and name the bundled JavaScript `app.js`. More info in the [webpack "Output" docs](https://webpack.js.org/configuration/output).
 
-#### Delete old build
-[`config/production.js`](../../../config/production.js)
+##### Delete old build
+[`config/back/production.js`](../../../config/back/production.js)
 ```javascript
-parts.cleanPaths(['build/production']),
+parts.cleanPaths(['build/back/production']),
 ```
-Delete old development build at `build/production/` with [clean-webpack-plugin](https://github.com/johnagan/clean-webpack-plugin).
+Delete old development build at `build/back/production/` with [clean-webpack-plugin](https://github.com/johnagan/clean-webpack-plugin).
 
-#### Check types
-[`config/production.js`](../../../config/production.js)
+##### Check types
+[`config/back/production.js`](../../../config/back/production.js)
 ```javascript
 parts.checkTypes(),
 ```
 Check types in JavaScript with Flow using [flow-webpack-plugin](https://github.com/happylynx/flow-webpack-plugin).
 
-#### Minify JavaScript
-[`config/production.js`](../../../config/production.js)
+##### Minify JavaScript
+[`config/back/production.js`](../../../config/back/production.js)
 ```javascript
 parts.minJS(),
 ```
 Minify JavaScript with [UglifyJS](http://lisperator.net/uglifyjs) using the [UglifyJS Webpack Plugin](https://github.com/webpack-contrib/uglifyjs-webpack-plugin).
 
-#### Generate source maps
-[`config/production.js`](../../../config/production.js)
+##### Generate source maps
+[`config/back/production.js`](../../../config/back/production.js)
 ```javascript
 parts.genSourceMaps({ type: 'source-map' })
 ```
