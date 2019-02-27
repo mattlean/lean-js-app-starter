@@ -26,7 +26,7 @@
 By default [`.browserslist`](../../../.browerslist) is set to `defaults` which is the equivalent to `> 0.5%, last 2 versions, Firefox ESR, not dead`. It is highly recommended that you change this based on the browsers your users are using. If you use [Google Analytics](https://marketingplatform.google.com/about/analytics), you can generate usage stats from it and determine your config with [browserslist-ga](https://github.com/browserslist/browserslist-ga).
 
 ## ESLint
-[ESLint](https://eslint.org) helps identify potential problems and deviations from code style guidelines in your JavaScript. The config file can be found in the project's root directory as [`.eslintrc`](../../../.eslintrc.json). For more info on configuring ESLint, read the [ESLint "Configuring ESLint" docs](https://eslint.org/docs/user-guide/configuring).
+[ESLint](https://eslint.org) helps identify potential problems and deviations from code style guidelines in your JavaScript. The config file can be found in the project's root directory as [`.eslintrc`](../../../.eslintrc.json). The ignored file configuration can also be found in the root directory as [`.eslintignore`](../../../.eslintignore). For more info on configuring ESLint, read the [ESLint "Configuring ESLint" docs](https://eslint.org/docs/user-guide/configuring).
 
 ### Environments
 * Browser: Supports browser global variables
@@ -65,6 +65,9 @@ These specific rules override any rules set by config extensions and will trigge
 ### Settings
 The React and Flow versions match the versions used in the project, as specified by [eslint-plugin-react](https://github.com/yannickcr/eslint-plugin-react). These versions can be found in [`package.json`](../../../package.json).
 
+### Ignored Files
+[`jest.config.js`](../../../jest.config.js) is ignored as linting the Jest configuration is not necessary.
+
 ## Flow
 [Flow](https://flow.org) is a static type checker for JavaScript. The config file can be found in the project's root directory as [`.flowconfig`](../../../.flowconfig). For more info on configuring Flow, read the [Flow ".flowconfig" docs](https://flow.org/en/docs/config).
 
@@ -87,7 +90,7 @@ module.name_mapper.extension='scss' -> 'empty/object'
 ```
 
 ## Jest
-[Jest](https://jestjs.io) lets you build and run tests on your JavaScript. The config file can be found in the project's root directory as [`jest.config.js`](../../../.jest.config.js). For more info on configuring Jest, read the [Jest "Configuring Jest" docs](https://jestjs.io/docs/en/configuration.html).
+[Jest](https://jestjs.io) lets you build and run tests on your JavaScript. The config file can be found in the project's root directory as [`jest.config.js`](../../../jest.config.js). For more info on configuring Jest, read the [Jest "Configuring Jest" docs](https://jestjs.io/docs/en/configuration.html).
 
 ### Options
 `moduleNameMapper` is set to the following so snapshots can handle assets like images and fonts as well as styles in spapshot tests:
@@ -98,10 +101,21 @@ moduleNameMapper: {
 },
 ```
 
-`snapshotSeralizer` is set to [enzyme-to-json](https://github.com/adriantoine/enzyme-to-json) so Enzyme wrappers are converted to a format compatible with Jest snapshot tests.
+`snapshotSerializer` is set to [enzyme-to-json](https://github.com/adriantoine/enzyme-to-json) so Enzyme wrappers are converted to a format compatible with Jest snapshot tests.
+
+`testPathIgnorePatterns` will have Jest ignore the `node_modules/` (which is ignored by default) and `build/` directories.
+
+## nodemon
+[nodemon](https://nodemon.io) reruns Node.js applications when file changes are detected. For this project it is used to rerun package.json scripts to rebuild and rerun the application. The config file can be found in the project's root directory as [`nodemon.json`](../../../nodemon.json). This file sets what nodemon will watch and ignore by default. These settings can be overridden by CLI options.
+
+### Watched Files
+Watch `.js`, `.json`, and `.jsx` files, the [`config/`](../../../config) directory, [`nodemon.json`](../../../nodemon.json), and [`webpack.config.js`](../../../webpack.config.js).
+
+### Ignored Files
+All `.test.js` and `.test.jsx` files.
 
 ## package.json
-[`package.json`](../../../package.json) is the main file that tells npm and Yarn about the project. For more info on the project's [`package.json`](../../../package.json) scripts, read the ["Developing: package.json Scripts" documentation](developing.md#packagejson-scripts). For more info on configuring `package.json`, read the [npm "package.json" docs](https://docs.npmjs.com/files/package.json).
+[`package.json`](../../../package.json) is the main file that tells npm and Yarn about the project. For more info on the project's [`package.json`](../../../package.json) scripts, read the ["Developing: package.json Scripts" documentation](developing.md#packagejson-scripts). For more info on configuring [`package.json`](../../../package.json), read the [npm "package.json" docs](https://docs.npmjs.com/files/package.json).
 
 ## stylelint
 [stylelint](https://stylelint.io) helps identify potential problems and deviations from code style guidelines in your CSS and Sass. The config file can be found in the project's root directory as [`.stylelintrc`](../../../.stylelintrc). For more info on configuring stylelint, read the [stylelint "Configuration" docs](https://stylelint.io/user-guide/configuration).
@@ -131,7 +145,7 @@ Start building from `src/main.jsx`. More info can be found in the [webpack "Entr
 ```javascript
 resolve: { extensions: ['.js', '.jsx', '.json'] }
 ```
-Look for files with .js, .jsx, or .json extensions. More info can be found in the [webpack "Resolve" docs](https://webpack.js.org/configuration/resolve).
+Look for files with `.js`, `.jsx`, or `.json` extensions. More info can be found in the [webpack "Resolve" docs](https://webpack.js.org/configuration/resolve).
 
 #### Compile JavaScript
 [`webpack.config.js`](../../../webpack.config.js)
@@ -195,14 +209,14 @@ Load all Sass and compile them into CSS using [Sass Loader](https://github.com/w
 ```javascript
 parts.loadImgs(),
 ```
-Load image files with .gif, .jpg, .jpeg, or .png extensions and transform them into base64 URIs which are inlined into the JavaScript bundle using [url-loader](https://github.com/webpack-contrib/url-loader).
+Load image files with `.gif`, `.jpg`, `.jpeg`, or `.png` extensions and transform them into base64 URIs which are inlined into the JavaScript bundle using [url-loader](https://github.com/webpack-contrib/url-loader).
 
 #### Load fonts
 [`config/development.js`](../../../config/development.js)
 ```javascript
 parts.loadFonts(),
 ```
-Load font files with .eot, .tff, .woff, or .woff2 extensions and transform them into base64 URIs which are inlined into the JavaScript bundle using [url-loader](https://github.com/webpack-contrib/url-loader).
+Load font files with `.eot`, `.tff`, `.woff`, or `.woff2` extensions and transform them into base64 URIs which are inlined into the JavaScript bundle using [url-loader](https://github.com/webpack-contrib/url-loader).
 
 #### Generate source maps
 [`config/development.js`](../../../config/development.js)
@@ -224,7 +238,7 @@ Start building from `src/main.jsx`. More info can be found in the [webpack "Entr
 ```javascript
 resolve: { extensions: ['.js', '.jsx', '.json'] }
 ```
-Look for files with .js, .jsx, or .json extensions. More info can be found in the [webpack "Resolve" docs](https://webpack.js.org/configuration/resolve).
+Look for files with `.js`, `.jsx`, or `.json` extensions. More info can be found in the [webpack "Resolve" docs](https://webpack.js.org/configuration/resolve).
 
 #### Compile JavaScript
 [`webpack.config.js`](../../../webpack.config.js)
@@ -313,7 +327,7 @@ parts.loadImgs({
   type: 'file'
 }),
 ```
-Load image files with .gif, .jpg, .jpeg, or .png extensions and output them in `/assets/imgs/` with [file-loader](https://github.com/webpack-contrib/file-loader).
+Load image files with `.gif`, `.jpg`, `.jpeg`, or `.png` extensions and output them in `/assets/imgs/` with [file-loader](https://github.com/webpack-contrib/file-loader).
 
 #### Load fonts
 [`config/production.js`](../../../config/production.js)
@@ -325,7 +339,7 @@ parts.loadFonts({
   type: 'file'
 }),
 ```
-Load font files with .eot, .tff, .woff, or .woff2 extensions and output them in `/assets/imgs/` with [file-loader](https://github.com/webpack-contrib/file-loader).
+Load font files with `.eot`, `.tff`, `.woff`, or `.woff2` extensions and output them in `/assets/imgs/` with [file-loader](https://github.com/webpack-contrib/file-loader).
 
 #### Generate source maps
 [`config/production.js`](../../../config/production.js)

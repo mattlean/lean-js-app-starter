@@ -1,4 +1,4 @@
-# Node.js: Getting Started
+# Node.js + Server-Side Rendering: Getting Started
 ## 0. Prerequisites
 You must have [Node.js](https://nodejs.org), [MongoDB](https://mongodb.com), and [npm](https://npmjs.com) or [Yarn](https://yarnpkg.com).
 
@@ -9,7 +9,7 @@ You must have [Node.js](https://nodejs.org), [MongoDB](https://mongodb.com), and
 If you need a guide on installing MongoDB, read the [MongoDB Community Edition tutorials](https://docs.mongodb.com/manual/installation/#mongodb-community-edition).
 
 ## 1. Download
-Download and extract the latest `nodejs` release here: https://github.com/IsaacLean/lean-js-app-starter/releases
+Download and extract the latest `nodejs-ssr` release here: https://github.com/IsaacLean/lean-js-app-starter/releases
 
 ## 2. Setup
 Open a terminal, go to the project root directory, and then run one of the following [`package.json`](../../../../package.json) scripts to install dependencies and [Flow](https://flow.org) library interface definitions:

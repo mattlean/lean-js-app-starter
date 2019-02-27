@@ -46,3 +46,4 @@ These locations will be ignored in *Goto Anything* or *Find in Files*:
 * `records.json`
 * `stats.*.json`
 * `yarn.lock`
+* `yarn-error.log`
