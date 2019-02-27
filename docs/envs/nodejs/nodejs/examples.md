@@ -6,7 +6,7 @@ The backend REST API for an anonymous text board called *chan (pronounced star-c
 
 Follow these steps:
 1. Open a terminal and run [`mongod`](https://docs.mongodb.com/manual/reference/program/mongod).
-2. After `mongod` is running, open another terminal and run the backend API with the `start:dev:watch` [`package.json`](../../../package.json) script. The API should now be running at [localhost:9001](http://localhost:9001).
+2. After `mongod` is running, open another terminal and run the backend API with the `start:dev:watch` [`package.json`](../../../../package.json) script. The API should now be running at [localhost:9001](http://localhost:9001).
 3. Now you can interface with the API. We recommend using [Postman](https://getpostman.com) to do this. Details on how to import a collection and environment for this can be found in the ["Postman" documentation](../../../tools/postman.md).
 
 ### Endpoints
