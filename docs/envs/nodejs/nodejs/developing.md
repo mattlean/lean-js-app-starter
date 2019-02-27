@@ -89,8 +89,8 @@ Source maps are also generated, making debugging compiled code manageable. Just 
 * `start:debug`: Debug production build
 * `start:dev`: Run development build
 * `start:dev:debug`: Debug development build
-* `start:dev:watch`: Run development build with hot loading for app code updates and auto-reload for config updates
-* `start:dev:watch:debug`: Debug development build with hot loading for app code updates and auto-reload for config updates
+* `start:dev:watch`: Run development build with auto-reloading
+* `start:dev:watch:debug`: Debug development build with auto-reloading
 
 #### Type Checking
 * `flow`: Run Flow
