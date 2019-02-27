@@ -1,22 +1,22 @@
-# Node.js: Examples
+# Node.js + Server-Side Rendering: Examples
 **Before running these examples, you must first go through the steps in the ["Getting Started" documentation](getting_started.md).**
 
-## *chan API: Anonymous Text Board API
-The backend REST API for an anonymous text board called *chan (pronounced star-chan). Available by default with the `nodejs` release. Optionally connects with the *chan frontend app which is a [browser example](../../browser/examples.md).
+## *chan API: Anonymous Text Board API + Server-Side Rendering
+The backend for an anonymous text board called *chan (pronounced star-chan). Available by default with the `nodejs-ssr` release. 
 
 Follow these steps:
 1. Open a terminal and run [`mongod`](https://docs.mongodb.com/manual/reference/program/mongod).
-2. After `mongod` is running, open another terminal and run the backend API with the `start:dev:watch` [`package.json`](../../../package.json) script. The API should now be running at [localhost:9001](http://localhost:9001).
-3. Now you can interface with the API. We recommend using [Postman](https://getpostman.com) to do this. Details on how to import a collection and environment for this can be found in the ["Postman" documentation](../../../tools/postman.md).
+2. After `mongod` is running, open another terminal and run the backend API with the `back:ssr:start:dev:watch` [`package.json`](../../../package.json) script.
+3. Navigate to [localhost:9001](http://localhost:9001) in a browser. You can also interface directly with the API. We recommend using [Postman](https://getpostman.com) to do this. Details on how to import a collection and environment for this can be found in the ["Postman" documentation](../../../tools/postman.md).
 
 ### Endpoints
 All requests bodies must have a `Content-Type` of `application/json`.
 
-1. **`GET /thread`**  
+1. **`GET /api/thread`**  
    List all threads.
 
    **Example**
-   * Request: `GET /thread`
+   * Request: `GET /api/thread`
    * Response:  
      ```json
      [
@@ -52,11 +52,11 @@ All requests bodies must have a `Content-Type` of `application/json`.
        }
      ]
      ```
-2. **`GET /thread/:id`**  
+2. **`GET /api/thread/:id`**  
    Read a thread. `:id` must be a valid ID for existing thread.
 
    **Example**
-   * Request: `GET /thread/5c39e26e9e2a432a992d49fc`
+   * Request: `GET /api/thread/5c39e26e9e2a432a992d49fc`
    * Response:  
      ```json
      {
@@ -67,11 +67,11 @@ All requests bodies must have a `Content-Type` of `application/json`.
        "type": "Thread"
      }
      ```
-3. **`POST /thread`**  
+3. **`POST /api/thread`**  
    Create a thread. Request body requires a `comment` property.
 
    **Example**
-   * Request: `POST /thread`  
+   * Request: `POST /api/thread`  
      ```json
      {
        "subject": "Hello world!",
@@ -89,11 +89,11 @@ All requests bodies must have a `Content-Type` of `application/json`.
        "type": "Thread"
      }
      ```
-4. **`POST /thread/:id/reply`**  
+4. **`POST /api/thread/:id/reply`**  
    Create a reply. `:id` must be a valid ID for existing thread. Request body requires a `comment` property.
 
    **Example**
-   * Request: `POST /thread/5c39dff29e2a432a992d49fa/reply`  
+   * Request: `POST /api/thread/5c39dff29e2a432a992d49fa/reply`  
      ```json
      {
        "comment": "I'm the reply comment."
@@ -118,5 +118,5 @@ All requests bodies must have a `Content-Type` of `application/json`.
      }
      ```
 
-* Download: [Releases prefixed with `nodejs`](https://github.com/IsaacLean/lean-js-app-starter/releases)
-* Branch: https://github.com/IsaacLean/lean-js-app-starter/tree/nodejs
+* Download: [Releases prefixed with `nodejs-ssr`](https://github.com/IsaacLean/lean-js-app-starter/releases)
+* Branch: https://github.com/IsaacLean/lean-js-app-starter/tree/nodejs-ssr
