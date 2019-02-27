@@ -111,7 +111,7 @@ Mock store for testing `redux` asynchronous action creators and middleware
 * [**`sass-loader`**](https://npmjs.com/package/sass-loader)  
 `webpack` loader to compile `node-sass` into CSS
 * [**`style-loader`**](https://npmjs.com/package/style-loader)  
-`webpack` loader that adds CSS to the DOM by injecting a <style> tag
+`webpack` loader that adds CSS to the DOM by injecting a `<style>` tag
 * [**`stylelint`**](https://npmjs.com/package/stylelint)  
 Style linter
 * [**`stylelint-config-recommended`**](https://npmjs.com/package/stylelint-config-recommended)  
