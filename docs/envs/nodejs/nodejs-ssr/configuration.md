@@ -378,6 +378,13 @@ parts.loadImgs(),
 ```
 Load image files with `.gif`, `.jpg`, `.jpeg`, or `.png` extensions and transform them into base64 URIs which are inlined into the JavaScript bundle using [url-loader](https://github.com/webpack-contrib/url-loader).
 
+#### Load fonts
+[`config/front/development.js`](../../../config/front/development.js)
+```javascript
+parts.loadFonts(),
+```
+Load font files with `.eot`, `.tff`, `.woff`, or `.woff2` extensions and transform them into base64 URIs which are inlined into the JavaScript bundle using [url-loader](https://github.com/webpack-contrib/url-loader).
+
 ##### Generate source maps
 [`config/front/development.js`](../../../config/front/development.js)
 ```javascript
