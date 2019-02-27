@@ -4,6 +4,9 @@
   * `development`: Development builds generated here
   * `production`: Production builds generated here
 * [`config`](../../../config): webpack environment configuration
+  * [`common`](../../../config/common): General webpack configuration code
+  * [`main`](../../../config/main): webpack configuration for main process
+  * [`renderer`](../../../config/renderer): webpack configuration for renderer process
 * [`src`](../../../src): Application source code
   * [`__mocks__`](../../../src/__mocks__): Mock test files
   * [`main`](../../../src/main): Source code for main process
