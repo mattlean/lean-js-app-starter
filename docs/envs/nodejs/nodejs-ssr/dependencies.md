@@ -1,9 +1,23 @@
-# Desktop: Dependencies
-To check versions for dependencies, view [`package.json`](../../../package.json).
+# Node.js + Server-Side Rendering: Dependencies
+To check versions for dependencies, view [`package.json`](../../../../package.json).
 
 ## Production
+* [**`body-parser`**](https://npmjs.com/package/body-parser)  
+Body parsing middleware
+* [**`compression`**](https://npmjs.com/package/compression)  
+Compression middleware
 * [**`cross-fetch`**](https://npmjs.com/package/cross-fetch)  
 Universal fetch API for browsers and Node.js. Chosen over other solutions so fetch API dependency can be consistent across all environments.
+* [**`express`**](https://npmjs.com/package/express)  
+Application framework
+* [**`helmet`**](https://npmjs.com/package/helmet)  
+`express` middleware that improves security by setting various HTTP headers
+* [**`moment`**](https://npmjs.com/package/moment)  
+Library for prasing, validating, manipulating, and formatting dates
+* [**`mongoose`**](https://npmjs.com/package/mongoose)  
+MongoDB object modeling tool
+* [**`normalizr`**](https://npmjs.com/package/normalizr)  
+Normalize JSON API responses according to a schema
 * [**`prop-types`**](https://npmjs.com/package/prop-types)  
 Type checking for `react` props. Recommended for use when `flow-bin` isn't being used.
 * [**`react`**](https://npmjs.com/package/react)  
@@ -18,6 +32,12 @@ Update `react` components without refreshing the browser while maintaining state
 Routing library for `react`
 * [**`redux`**](https://npmjs.com/package/redux)  
 State management library
+* [**`redux-thunk`**](https://npmjs.com/package/redux-thunk)  
+Thunk middleware for Redux
+* [**`source-map-support`**](https://npmjs.com/package/source-map-support)  
+Enable source map support for stack traces in Node.js
+* [**`winston`**](https://npmjs.com/package/winston)  
+Logging library
 
 ## Development
 * [**`@babel/core`**](https://npmjs.com/package/@babel/core)  
@@ -30,6 +50,8 @@ JavaScript compiler
 [`@babel/core` preset for all `flow-bin` plugins](https://babeljs.io/docs/en/next/babel-preset-flow.html)
 * [**`@babel/preset-react`**](https://npmjs.com/package/@babel/preset-react)  
 [`@babel/core` preset for all `react` plugins](https://babeljs.io/docs/en/next/babel-preset-react.html)
+* [**`asset-list-webpack-plugin`**](https://npmjs.com/package/asset-list-webpack-plugin)  
+Output a list of generated assets for frontend to be referenced in backend bundling process for server-side rendering support
 * [**`autoprefixer`**](https://npmjs.com/package/autoprefixer)  
 `postcss` plugin that adds vendor prefixes to styles based on what you need for your target environments
 * [**`babel-core`**](https://npmjs.com/package/babel-core)  
@@ -48,14 +70,6 @@ Parser for `eslint` that enables linting of all `@babel/core` code, particularly
 Modular compression tool used with `optimize-css-assets-webpack-plugin` to minify styles
 * [**`deep-freeze`**](https://npmjs.com/package/deep-freeze)  
 Disable mutations on objects. Mainly used for testing `redux` reducers to ensure they are pure functions.
-* [**`devtron`**](https://npmjs.com/package/devtron)  
-DevTools extension to help inspect, monitor, and debug `electron` applications
-* [**`electron`**](https://npmjs.com/package/electron)  
-Framework that allows the development of cross-platform desktop applications using JavaScript, HTML, and CSS
-* [**`electron-builder`**](https://npmjs.com/package/electron-builder)  
-Package and build solution for `electron` applications
-* [**`electron-devtools-installer`**](https://npmjs.com/package/electron)  
-DevTools extension installer for `electron` applications
 * [**`enzyme`**](https://npmjs.com/package/enzyme)  
 Testing utility for `react` that makes it easier to assert, manipulate, and traverse your `react` components' output
 * [**`enzyme-adapter-react-16`**](https://npmjs.com/package/enzyme-adapter-react-16)  
@@ -116,6 +130,8 @@ Mock store for testing `redux` asynchronous action creators and middleware
 Style linter
 * [**`stylelint-config-recommended`**](https://npmjs.com/package/stylelint-config-recommended)  
 Recommended configuration for `stylelint`
+* [**`supertest`**](https://npmjs.com/package/supertest)  
+HTTP testing library
 * [**`uglifyjs-webpack-plugin`**](https://npmjs.com/package/uglifyjs-webpack-plugin)  
 Minify JavaScript
 * [**`url-loader`**](https://npmjs.com/package/url-loader)  
@@ -128,3 +144,5 @@ Module bundler
 `webpack` development server that supports live reloading
 * [**`webpack-merge`**](https://npmjs.com/package/webpack-merge)  
 Merge arrays and objects for `webpack` configuration
+* [**`webpack-node-externals`**](https://npmjs.com/package/webpack-node-externals)  
+Exclude dependencies in `webpack` bundling
