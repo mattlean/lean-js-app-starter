@@ -70,7 +70,7 @@ You can find the latest releases for these on the [releases page](https://github
 The Node.js example apps come with the base projects in the following branches:
 
 - [`nodejs`](https://github.com/IsaacLean/lean-js-app-starter/tree/nodejs): A REST API for an anonymous text board called *chan (pronounced star-chan). Optionally connects with the *chan frontend app on the [`starchan-frontend` branch](https://github.com/IsaacLean/lean-js-app-starter/tree/starchan-frontend).
-- [`nodejs-ssr`](https://github.com/IsaacLean/lean-js-app-starter/tree/starchan-ssr): A version of the *chan backend that supports server-side rendering of the frontend app.
+- [`nodejs-ssr`](https://github.com/IsaacLean/lean-js-app-starter/tree/nodejs-ssr): A version of the *chan backend that supports server-side rendering of the frontend app.
 
 [Click here for documentation on building Node.js apps.](docs/envs/nodejs/README.md)
 
