@@ -47,24 +47,30 @@ If you ever need to change the configuration for anything, you can easily do so.
 ## Get Started
 ### 🏄‍ Web Browser
 #### Download
-If you want to build an app for web browsers, start with the [latest `browser` release](https://github.com/IsaacLean/lean-web-app-starter/releases).
+If you want to build an app for web browsers, start with the [latest `browser` release](https://github.com/IsaacLean/lean-js-app-starter/releases).
 
 #### Examples
 You can find some example browser apps in the following branches:
 
-- [`todolist-browser`](https://github.com/IsaacLean/lean-web-app-starter/tree/todolist-browser): A todo list app. Connects with mock backend API.
-- [`starchan-frontend`](https://github.com/IsaacLean/lean-web-app-starter/tree/starchan-frontend): The frontend app for an anonymous text board called *chan (pronounced star-chan). Requires connection with the *chan backend API on the [`nodejs` branch](https://github.com/IsaacLean/lean-web-app-starter/tree/nodejs).
+- [`todolist-browser`](https://github.com/IsaacLean/lean-js-app-starter/tree/todolist-browser): A todo list app. Connects with mock backend API.
+- [`starchan-frontend`](https://github.com/IsaacLean/lean-js-app-starter/tree/starchan-frontend): The frontend app for an anonymous text board called *chan (pronounced star-chan). Requires connection with the *chan backend API on the [`nodejs` branch](https://github.com/IsaacLean/lean-js-app-starter/tree/nodejs).
 
 [Click here for documentation on building browser apps.](docs/envs/browser/README.md)
 
 ### 🌐 Node.js
 #### Downloads
-If you want to build an app for Node.js, start with the [latest `nodejs` release](https://github.com/IsaacLean/lean-web-app-starter/releases).
+If you want to build an app for Node.js, you have two options:
+
+- [`nodejs`](https://github.com/IsaacLean/lean-js-app-starter/tree/nodejs): An Express, MongoDB, and Mongoose starter project
+- [`nodejs-ssr`](https://github.com/IsaacLean/lean-js-app-starter/tree/nodejs-ssr): An Express, MongoDB, and Mongoose starter project that supports server-side rendering for React
+
+You can find the latest releases for these on the [releases page](https://github.com/IsaacLean/lean-js-app-starter/releases).
 
 #### Examples
-You can find an example Node.js app in the following branch:
+The Node.js example apps come with the base projects in the following branches:
 
-- [`nodejs`](https://github.com/IsaacLean/lean-web-app-starter/tree/nodejs): A REST API for an anonymous text board called *chan (pronounced star-chan). Optionally connects with the *chan frontend app on the [`starchan-frontend` branch](https://github.com/IsaacLean/lean-web-app-starter/tree/starchan-frontend).
+- [`nodejs`](https://github.com/IsaacLean/lean-js-app-starter/tree/nodejs): A REST API for an anonymous text board called *chan (pronounced star-chan). Optionally connects with the *chan frontend app on the [`starchan-frontend` branch](https://github.com/IsaacLean/lean-js-app-starter/tree/starchan-frontend).
+- [`nodejs-ssr`](https://github.com/IsaacLean/lean-js-app-starter/tree/nodejs-ssr): A version of the *chan backend that supports server-side rendering of the frontend app.
 
 [Click here for documentation on building Node.js apps.](docs/envs/nodejs/README.md)
 
@@ -75,7 +81,7 @@ If you want to build an app for desktop, start with the [latest `desktop` releas
 #### Examples
 You can find an example desktop app in the following branch:
 
-- [`todolist-desktop`](https://github.com/IsaacLean/lean-web-app-starter/tree/todolist-desktop): A todo list app ported from the browser targeted app on the [`todolist-browser` branch](https://github.com/IsaacLean/lean-web-app-starter/tree/todolist-browser).
+- [`todolist-desktop`](https://github.com/IsaacLean/lean-js-app-starter/tree/todolist-desktop): A todo list app ported from the browser targeted app on the [`todolist-browser` branch](https://github.com/IsaacLean/lean-js-app-starter/tree/todolist-browser).
 
 [Click here for documentation on building desktop apps.](docs/envs/desktop/README.md)
 
