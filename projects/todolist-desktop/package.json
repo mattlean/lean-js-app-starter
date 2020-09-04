@@ -133,7 +133,7 @@
     "jest": "^23.6.0",
     "jsdom": "^12.2.0",
     "mini-css-extract-plugin": "^0.4.5",
-    "node-sass": "^4.10.0",
+    "node-sass": "^4.13.1",
     "nodemon": "^1.18.7",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
     "postcss": "^7.0.6",
