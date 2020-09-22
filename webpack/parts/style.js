@@ -148,7 +148,10 @@ exports.injectStyles = ({
 };
 
 /**
- * Remove unused CSS
+ * Remove unused CSS with purgecss-webpack-plugin
+ *
+ * @param {Object} options purgecss-webpack-plugin options
+ * @return {Object} Plugin config for purgecss-webpack-plugin
  */
 exports.purgeCSS = (options) => ({
   plugins: [new PurgecssPlugin(options)],

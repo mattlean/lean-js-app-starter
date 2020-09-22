@@ -4,9 +4,6 @@
       "path": "."
     }
   ],
-  "settings": {
-    "editor.formatOnSave": true
-  },
   "extensions": {
     "recommendations": ["dbaeumer.vscode-eslint", "stylelint.vscode-stylelint"]
   }

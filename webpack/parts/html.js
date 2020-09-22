@@ -35,7 +35,10 @@ exports.loadHTMLAsString = ({ options, test } = {}) => {
 
 /**
  * Setup HTML with html-webpack-plugin
+ *
+ * @param {Object} options html-webpack-plugin options
+ * @return {Object} Plugin config for html-webpack-plugin
  */
 exports.setupHTML = (options) => ({
-  plugins: [new HtmlWebpackPlugin({ ...options })],
+  plugins: [new HtmlWebpackPlugin(options)],
 });
