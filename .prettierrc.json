@@ -1,0 +1,7 @@
+{
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true,
+  "importOrder": ["<THIRD_PARTY_MODULES>", "^[./]"],
+  "semi": false,
+  "singleQuote": true
+}

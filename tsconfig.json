@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "incremental": true,
+    "jsx": "react-jsxdev",
+    "module": "node16",
+    "noImplicitAny": true,
+    "outDir": "./build/development",
+    "resolveJsonModule": true,
+    "strictNullChecks": true,
+    "target": "es5"
+  },
+  "include": ["./src"]
+}
