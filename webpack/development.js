@@ -4,7 +4,6 @@
  */
 const { merge } = require('webpack-merge')
 const {
-  compileReact,
   genSourceMaps,
   setMode,
   setOutput,
@@ -17,8 +16,6 @@ module.exports = merge([
   setMode(mode),
 
   setOutput(mode),
-
-  compileReact(),
 
   genSourceMaps(mode),
 

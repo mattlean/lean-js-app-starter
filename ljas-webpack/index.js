@@ -21,12 +21,12 @@ const path = require('path')
  * - babel-loader@^8.2.5
  * - typescript@^4.8.2
  */
-exports.compileTS = (mode) => ({
+exports.compileTS = (include) => ({
   module: {
     rules: [
       {
         test: /(\.m?j|t)s$/,
-        include: path.resolve(__dirname, 'src'),
+        include,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
@@ -56,12 +56,12 @@ exports.compileTS = (mode) => ({
  * - babel-loader@^8.2.5
  * - typescript@^4.8.2
  */
-exports.compileReact = () => ({
+exports.compileReact = (include) => ({
   module: {
     rules: [
       {
         test: /(\.m?j|t)sx?$/,
-        include: path.resolve(__dirname, '../src'),
+        include,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
@@ -94,12 +94,12 @@ exports.compileReact = () => ({
  * - ts-loader@^9.3.1
  * - typescript@^4.8.2
  */
-exports.emitDeclarationFiles = () => ({
+exports.emitDeclarationFiles = (include) => ({
   module: {
     rules: [
       {
         test: /(\.m?j|t)s$/,
-        include: path.resolve(__dirname, 'src'),
+        include,
         exclude: /node_modules/,
         use: {
           loader: 'ts-loader',
