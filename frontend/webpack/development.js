@@ -11,14 +11,14 @@ const {
 } = require('ljas-webpack')
 const { merge } = require('webpack-merge')
 
-const mode = 'development'
+const MODE = 'development'
 
 module.exports = merge([
-  setMode(mode),
+  setMode(MODE),
 
-  setOutput(mode, path.resolve(__dirname, `../build/${mode}`)),
+  setOutput(MODE, path.resolve(__dirname, `../build/${MODE}`)),
 
-  genSourceMaps(mode),
+  genSourceMaps(MODE),
 
   setupDevServer('./build/development'),
 ])

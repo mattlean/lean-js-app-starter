@@ -29,17 +29,17 @@ exports.compileReact = (include) => ({
         include,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader",
+          loader: 'babel-loader',
           options: {
             presets: [
-              "@babel/preset-env",
+              '@babel/preset-env',
               [
-                "@babel/preset-react",
+                '@babel/preset-react',
                 {
-                  runtime: "automatic",
+                  runtime: 'automatic',
                 },
               ],
-              "@babel/preset-typescript",
+              '@babel/preset-typescript',
             ],
           },
         },
@@ -47,9 +47,9 @@ exports.compileReact = (include) => ({
     ],
   },
   resolve: {
-    extensions: [".js", ".jsx", ".json", ".ts", ".tsx", ".wasm"],
+    extensions: ['.js', '.jsx', '.json', '.ts', '.tsx', '.wasm'],
   },
-});
+})
 
 /**
  * Compile TypeScript files with Babel:
@@ -64,7 +64,7 @@ exports.compileReact = (include) => ({
  * - babel-loader@^8.2.5
  * - typescript@^4.8.3
  */
- exports.compileTS = (include) => ({
+exports.compileTS = (include) => ({
   module: {
     rules: [
       {
@@ -72,18 +72,18 @@ exports.compileReact = (include) => ({
         include,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader",
+          loader: 'babel-loader',
           options: {
-            presets: ["@babel/preset-env", "@babel/preset-typescript"],
+            presets: ['@babel/preset-env', '@babel/preset-typescript'],
           },
         },
       },
     ],
   },
   resolve: {
-    extensions: [".js", ".json", ".ts", ".wasm"],
+    extensions: ['.js', '.json', '.ts', '.wasm'],
   },
-});
+})
 
 /**
  * Emit TypeScript declaration files with ts-loader:
@@ -101,9 +101,9 @@ exports.emitDeclarationFiles = (include) => ({
         include,
         exclude: /node_modules/,
         use: {
-          loader: "ts-loader",
+          loader: 'ts-loader',
           options: {
-            configFile: "tsconfig.production.json",
+            configFile: 'tsconfig.production.json',
             transpileOnly: false,
           },
         },
@@ -111,21 +111,21 @@ exports.emitDeclarationFiles = (include) => ({
     ],
   },
   resolve: {
-    extensions: [".js", ".json", ".ts", ".tsx", ".wasm"],
+    extensions: ['.js', '.json', '.ts', '.tsx', '.wasm'],
   },
-});
+})
 
 /**
  * Run the develoment server with webpack-dev-server:
  * https://webpack.js.org/configuration/dev-server
  *
  * Peer dependency: webpack-dev-server@^4.11.0
- * 
+ *
  * @param {boolean|string|Object} static webpack-dev-server static option (https://webpack.js.org/configuration/dev-server/#devserverstatic)
  */
-exports.setupDevServer = (static) => ({
-  devServer: { static },
-});
+exports.setupDevServer = (staticOption) => ({
+  devServer: { static: staticOption },
+})
 
 /**
  * Generate source maps.
@@ -139,22 +139,22 @@ exports.setupDevServer = (static) => ({
  * @param {string} mode webpack mode (https://webpack.js.org/configuration/mode)
  */
 exports.genSourceMaps = (mode) => {
-  const config = {};
+  const config = {}
 
-  if (mode === "production") {
-    config.devtool = "source-map";
+  if (mode === 'production') {
+    config.devtool = 'source-map'
   } else {
-    if (mode !== "development") {
+    if (mode !== 'development') {
       console.warn(
-        "Encountered an unsupported mode. Falling back to development source maps."
-      );
+        'Encountered an unsupported mode. Falling back to development source maps.'
+      )
     }
 
-    config.devtool = "eval-cheap-module-source-map";
+    config.devtool = 'eval-cheap-module-source-map'
   }
 
-  return config;
-};
+  return config
+}
 
 /**
  * Set webpack's mode.
@@ -166,7 +166,7 @@ exports.genSourceMaps = (mode) => {
  */
 exports.setMode = (mode) => ({
   mode,
-});
+})
 
 /**
  * Configure webpack's output and target.
@@ -186,22 +186,22 @@ exports.setOutput = (mode, path, target) => {
       clean: true,
       path,
     },
-    target
+    target,
   }
 
-  if (mode === "production" && !target?.includes('node')) {
-    config.output.chunkFilename = "[name].[contenthash].js";
-    config.output.filename = "[name].[contenthash].js";
-    config.output.assetModuleFilename = "[name].[contenthash][ext][query]";
+  if (mode === 'production' && !target?.includes('node')) {
+    config.output.chunkFilename = '[name].[contenthash].js'
+    config.output.filename = '[name].[contenthash].js'
+    config.output.assetModuleFilename = '[name].[contenthash][ext][query]'
   } else {
-    if (mode !== "development") {
+    if (mode !== 'development') {
       console.warn(
-        "Encountered an unsupported mode. Falling back to development output settings."
-      );
+        'Encountered an unsupported mode. Falling back to development output settings.'
+      )
     }
 
-    config.output.filename = "script.js";
+    config.output.filename = 'script.js'
   }
 
-  return config;
-};
+  return config
+}

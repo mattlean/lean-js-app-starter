@@ -13,12 +13,12 @@ const {
 } = require('ljas-webpack')
 const { merge } = require('webpack-merge')
 
-const mode = 'production'
+const MODE = 'production'
 
 module.exports = merge([
-  setMode(mode),
+  setMode(MODE),
 
-  setOutput(mode, path.resolve(__dirname, `../build/${mode}`)),
+  setOutput(MODE, path.resolve(__dirname, `../build/${MODE}`)),
 
   lintTS('src'),
 
@@ -26,5 +26,5 @@ module.exports = merge([
 
   emitDeclarationFiles(path.resolve(__dirname, '../src')),
 
-  genSourceMaps(mode),
+  genSourceMaps(MODE),
 ])

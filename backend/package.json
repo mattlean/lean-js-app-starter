@@ -23,7 +23,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mattlean/lean-js-app-starter.git"
+    "url": "https://github.com/mattlean/lean-js-app-starter.git",
+    "directory": "backend"
   },
   "author": "Matthew Lean <matt@mattlean.com> (http://mattlean.com)",
   "license": "MIT",
