@@ -1,0 +1,36 @@
+{
+  "name": "lean-js-app-starter",
+  "version": "0.2.0",
+  "description": "Skip boilerplate setup and get straight to the code you care about for your next JavaScript application.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mattlean/lean-js-app-starter.git"
+  },
+  "author": "Matthew Lean <matt@mattlean.com> (http://mattlean.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mattlean/lean-js-app-starter/issues"
+  },
+  "homepage": "https://github.com/mattlean/lean-js-app-starter#readme",
+  "workspaces": [
+    "backend",
+    "frontend",
+    "ljas-webpack"
+  ],
+  "private": true,
+  "keywords": [
+    "lean-js-app-starter",
+    "lean",
+    "javascript",
+    "js",
+    "application",
+    "app",
+    "starter",
+    "project",
+    "boilerplate"
+  ]
+}
