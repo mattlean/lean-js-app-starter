@@ -1,4 +1,8 @@
-const readline = require('readline')
+import readline from 'readline'
+
+import sum from './sum'
+
+console.log(`2+2=${sum(2, 2)}`)
 
 const rl = readline.createInterface({
   input: process.stdin,
