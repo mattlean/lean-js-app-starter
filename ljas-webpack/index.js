@@ -200,7 +200,7 @@ exports.setOutput = (mode, path, target) => {
       )
     }
 
-    config.output.filename = 'script.js'
+    config.output.filename = '[name].js'
   }
 
   return config

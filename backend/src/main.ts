@@ -1,19 +1,7 @@
-import readline from 'readline'
+import app from './app'
 
-import sum from './sum'
+const PORT = 3000
 
-console.log(`2+2=${sum(2, 2)}`)
-
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout,
-})
-
-rl.question('What is your name? ', (name) => {
-  console.log(`Hello, ${name}!`)
-  rl.close()
-})
-
-rl.on('close', () => {
-  process.exit(0)
+app.listen(PORT, () => {
+  console.log(`Example app listening on port ${PORT}.`)
 })

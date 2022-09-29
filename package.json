@@ -7,7 +7,7 @@
     "format": "npm run format:check",
     "format:check": "prettier --check .",
     "format:write": "prettier --write .",
-    "lint": "eslint backend/src/** backend/webpack/** backend/webpack.config.js frontend/src/** frontend/webpack/** frontend/webpack.config.js",
+    "lint": "eslint backend/src/** backend/webpack/** backend/webpack.config.js frontend/src/** frontend/webpack/** frontend/webpack.config.js ljas-webpack/*.js",
     "lint:fix": "npm run lint -- --fix",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -23,11 +23,11 @@
   },
   "homepage": "https://github.com/mattlean/lean-js-app-starter#readme",
   "devDependencies": {
-    "eslint": "^8.23.1",
+    "eslint": "^8.24.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-config-standard": "^17.0.0",
     "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-n": "^15.2.5",
+    "eslint-plugin-n": "^15.3.0",
     "eslint-plugin-promise": "^6.0.1",
     "prettier": "2.7.1",
     "typescript": "^4.8.3"

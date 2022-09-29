@@ -15,7 +15,8 @@
     "lint": "eslint src/** webpack/** webpack.config.js",
     "lint:fix": "npm run lint -- --fix",
     "start": "nodemon --exec \"webpack serve --mode development\"",
-    "test": "jest"
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "repository": {
     "type": "git",
@@ -47,12 +48,12 @@
     "@typescript-eslint/eslint-plugin": "^5.37.0",
     "babel-jest": "^29.0.3",
     "babel-loader": "^8.2.5",
-    "eslint": "^8.23.1",
+    "eslint": "^8.24.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-config-standard": "^17.0.0",
     "eslint-config-standard-with-typescript": "^23.0.0",
     "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-n": "^15.2.5",
+    "eslint-plugin-n": "^15.3.0",
     "eslint-plugin-promise": "^6.0.1",
     "eslint-plugin-react": "^7.31.8",
     "eslint-webpack-plugin": "^3.2.0",
