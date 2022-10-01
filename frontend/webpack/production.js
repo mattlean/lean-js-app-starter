@@ -24,6 +24,7 @@ module.exports = merge([
     paths: glob.sync(path.join(__dirname, '../src/*.+(js|json|jsx|ts|tsx)'), {
       nodir: true,
     }),
+    safelist: ['body'],
   }),
 
   lintTS({ eslintPlugin: { files: 'src' }, supportReact: true }),

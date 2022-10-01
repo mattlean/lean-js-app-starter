@@ -21,7 +21,7 @@ const { REACT_EXTENSIONS, VANILLA_EXTENSIONS } = require('./consts')
  * - babel-loader@^8.2.5
  * - typescript@^4.8.3
  *
- * Additional peer dependency if supportReact flag is enabled: @babel/preset-react@^7.18.6
+ * Additional peer dependency if supportReact option is enabled: @babel/preset-react@^7.18.6
  *
  * @param {Object} [options] The options object that controls the output of this function.
  * @param {Object} [options.babelLoader] Options for babel-loader. This will override the default options set for babel-loader when defined. (https://webpack.js.org/loaders/babel-loader/#options)

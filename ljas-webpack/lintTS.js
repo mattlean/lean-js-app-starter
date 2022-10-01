@@ -9,6 +9,7 @@ const { REACT_EXTENSIONS, VANILLA_EXTENSIONS } = require('./consts')
  *
  * @param {Object} [options] The options object that controls the output of this function.
  * @param {Object} [options.esLintPlugin] Options for eslint-webpack-plugin. Note that when the extensions option is defined, it will override the default value set for it. (https://webpack.js.org/plugins/eslint-webpack-plugin/#options)
+ * @param {boolean} [options.supportReact] Enable React support. This will be overwritten if the eslint-webpack-plugin's extensions option is set.
  */
 module.exports = (options) => {
   const esLintPluginOptions = options?.esLintPlugin || {}
