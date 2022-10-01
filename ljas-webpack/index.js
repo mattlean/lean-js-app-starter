@@ -157,6 +157,19 @@ exports.genSourceMaps = (mode) => {
 }
 
 /**
+ * Inject CSS through a style element.
+ *
+ * Peer dependencies:
+ * - css-loader@^6.7.1
+ * - style-loader@^3.3.1
+ */
+exports.inlineCSS = () => ({
+  module: {
+    rules: [{ test: /\.css$/, use: ['style-loader', 'css-loader'] }],
+  },
+})
+
+/**
  * Set webpack's mode.
  *
  * For more information:

@@ -5,6 +5,7 @@
 const path = require('path')
 const {
   genSourceMaps,
+  inlineCSS,
   setMode,
   setOutput,
   setupDevServer,
@@ -17,6 +18,8 @@ module.exports = merge([
   setMode(MODE),
 
   setOutput(MODE, path.resolve(__dirname, `../build/${MODE}`)),
+
+  inlineCSS(),
 
   genSourceMaps(MODE),
 
