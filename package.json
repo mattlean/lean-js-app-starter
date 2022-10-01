@@ -2,7 +2,6 @@
   "name": "lean-js-app-starter",
   "version": "0.2.0",
   "description": "Skip boilerplate setup and get straight to the code you care about for your next JavaScript application.",
-  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

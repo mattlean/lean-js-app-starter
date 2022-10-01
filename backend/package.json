@@ -22,7 +22,7 @@
     "test": "jest",
     "test:watch": "npm test -- --watch",
     "typecheck": "tsc --noEmit",
-    "validate": "npm-run-all --parallel format:check lint build:production"
+    "validate": "npm-run-all --parallel typecheck lint format:check build:development"
   },
   "repository": {
     "type": "git",

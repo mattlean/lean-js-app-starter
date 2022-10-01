@@ -15,7 +15,7 @@ module.exports = merge([
 
   setOutput(MODE, path.resolve(__dirname, `../build/${MODE}`), 'node16.13'),
 
-  lintTS('src'),
+  lintTS({ eslintPlugin: { files: 'src' } }),
 
   checkTypes(),
 

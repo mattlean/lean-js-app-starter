@@ -3,7 +3,7 @@
  */
 const buildHTML = require('ljas-webpack/buildHTML')
 const path = require('path')
-const { compileReact } = require('ljas-webpack')
+const { compileTS } = require('ljas-webpack')
 const { merge } = require('webpack-merge')
 
 module.exports = merge([
@@ -11,7 +11,10 @@ module.exports = merge([
     entry: './src/main.tsx',
   },
 
-  buildHTML('Lean JavaScript Application Starter', 'src/index.html'),
+  buildHTML({
+    title: 'Lean JavaScript Application Starter',
+    template: 'src/index.html',
+  }),
 
-  compileReact(path.resolve(__dirname, '../src')),
+  compileTS({ include: path.resolve(__dirname, '../src'), supportReact: true }),
 ])

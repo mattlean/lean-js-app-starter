@@ -18,7 +18,7 @@ module.exports = merge([
 
   extractCSS(),
 
-  lintTS('src'),
+  lintTS({ eslintPlugin: { files: 'src' }, supportReact: true }),
 
   checkTypes(),
 

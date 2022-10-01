@@ -11,7 +11,7 @@ module.exports = merge([
     entry: './src/main.ts',
   },
 
-  compileTS(path.resolve(__dirname, '../src')),
+  compileTS({ include: path.resolve(__dirname, '../src') }),
 
   setupNodeExternals(),
 ])
