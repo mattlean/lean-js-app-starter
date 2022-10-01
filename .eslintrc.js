@@ -2,10 +2,11 @@ module.exports = {
   env: {
     es2021: true,
   },
-  extends: 'standard',
+  extends: ['standard', 'prettier'],
   overrides: [],
   parserOptions: {
     ecmaVersion: 'latest',
   },
   rules: {},
+  root: true,
 }

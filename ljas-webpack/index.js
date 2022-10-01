@@ -25,7 +25,7 @@ exports.compileReact = (include) => ({
   module: {
     rules: [
       {
-        test: /(\.m?j|t)sx?$/,
+        test: /(\.j|t)sx?$/,
         include,
         exclude: /node_modules/,
         use: {
@@ -47,7 +47,7 @@ exports.compileReact = (include) => ({
     ],
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.json', '.ts', '.tsx', '.wasm'],
+    extensions: ['.js', '.json', '.jsx', '.ts', '.tsx'],
   },
 })
 
@@ -68,7 +68,7 @@ exports.compileTS = (include) => ({
   module: {
     rules: [
       {
-        test: /(\.m?j|t)s$/,
+        test: /(\.j|t)s$/,
         include,
         exclude: /node_modules/,
         use: {
@@ -81,37 +81,7 @@ exports.compileTS = (include) => ({
     ],
   },
   resolve: {
-    extensions: ['.js', '.json', '.ts', '.wasm'],
-  },
-})
-
-/**
- * Emit TypeScript declaration files with ts-loader:
- * https://webpack.js.org/guides/typescript/#loader
- *
- * Peer dependencies:
- * - ts-loader@^9.3.1
- * - typescript@^4.8.3
- */
-exports.emitDeclarationFiles = (include) => ({
-  module: {
-    rules: [
-      {
-        test: /(\.m?j|t)s$/,
-        include,
-        exclude: /node_modules/,
-        use: {
-          loader: 'ts-loader',
-          options: {
-            configFile: 'tsconfig.production.json',
-            transpileOnly: false,
-          },
-        },
-      },
-    ],
-  },
-  resolve: {
-    extensions: ['.js', '.json', '.ts', '.tsx', '.wasm'],
+    extensions: ['.js', '.json', '.ts'],
   },
 })
 
@@ -207,7 +177,7 @@ exports.setOutput = (mode, path, target) => {
     config.output.filename = '[name].[contenthash].js'
     config.output.assetModuleFilename = '[name].[contenthash][ext][query]'
   } else {
-    if (mode !== 'development') {
+    if (mode !== 'production' && mode !== 'development') {
       console.warn(
         'Encountered an unsupported mode. Falling back to development output settings.'
       )

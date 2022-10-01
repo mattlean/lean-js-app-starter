@@ -2,7 +2,7 @@
   "name": "frontend",
   "version": "0.2.0",
   "description": "Starter JavaScript project to kickoff development for your next web, Node.js, or native desktop app.",
-  "main": "index.js",
+  "main": "src/main.tsx",
   "scripts": {
     "build": "npm run build:production",
     "build:dev": "npm run build:development",
@@ -12,11 +12,13 @@
     "format": "npm run format:check",
     "format:check": "prettier --check .",
     "format:write": "prettier --write .",
-    "lint": "eslint src/** webpack/** webpack.config.js",
+    "lint": "eslint \"src/**/*.+(js|json|jsx|ts|tsx)\" \"webpack/**/*.+(js|json|jsx|ts|tsx)\" webpack.config.js",
     "lint:fix": "npm run lint -- --fix",
     "start": "nodemon --exec \"webpack serve --mode development\"",
     "test": "jest",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "typecheck": "tsc --noEmit",
+    "validate": "npm run format:check && npm run lint && npm run build"
   },
   "repository": {
     "type": "git",

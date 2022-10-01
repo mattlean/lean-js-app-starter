@@ -1,7 +1,9 @@
 {
   "compilerOptions": {
     "allowJs": true,
+    "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
+    "incremental": true,
     "module": "node16",
     "noImplicitAny": true,
     "outDir": "./build/development",

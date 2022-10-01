@@ -4,11 +4,6 @@
   "description": "Skip boilerplate setup and get straight to the code you care about for your next JavaScript application.",
   "main": "index.js",
   "scripts": {
-    "format": "npm run format:check",
-    "format:check": "prettier --check .",
-    "format:write": "prettier --write .",
-    "lint": "eslint backend/src/** backend/webpack/** backend/webpack.config.js frontend/src/** frontend/webpack/** frontend/webpack.config.js ljas-webpack/*.js",
-    "lint:fix": "npm run lint -- --fix",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

@@ -2,7 +2,7 @@
   "name": "backend",
   "version": "0.2.0",
   "description": "Starter JavaScript project to kickoff development for your next web, Node.js, or native desktop app.",
-  "main": "index.js",
+  "main": "src/main.ts",
   "scripts": {
     "build": "npm run build:production",
     "build:dev": "npm run build:development",
@@ -12,7 +12,7 @@
     "format": "npm run format:check",
     "format:check": "prettier --check .",
     "format:write": "prettier --write .",
-    "lint": "eslint src/** webpack/** webpack.config.js",
+    "lint": "eslint \"src/**/*.+(js|json|ts)\" \"webpack/**/*.+(js|json|ts)\" webpack.config.js",
     "lint:fix": "npm run lint -- --fix",
     "start": "npm run start:dev",
     "start:dev": "npm run start:development",
@@ -20,7 +20,9 @@
     "start:prod": "npm run start:production",
     "start:production": "node build/production/main.js",
     "test": "jest",
-    "test:watch": "npm test -- --watch"
+    "test:watch": "npm test -- --watch",
+    "typecheck": "tsc --noEmit",
+    "validate": "npm run format:check && npm run lint && npm run build"
   },
   "repository": {
     "type": "git",
