@@ -3,7 +3,9 @@
  * production mode.
  */
 const checkTypes = require('ljas-webpack/checkTypes')
+const cleanCSS = require('ljas-webpack/cleanCSS')
 const extractCSS = require('ljas-webpack/extractCSS')
+const glob = require('glob')
 const lintTS = require('ljas-webpack/lintTS')
 const path = require('path')
 const { genSourceMaps, setMode, setOutput } = require('ljas-webpack')
@@ -17,6 +19,12 @@ module.exports = merge([
   setOutput(MODE, path.resolve(__dirname, `../build/${MODE}`)),
 
   extractCSS(),
+
+  cleanCSS({
+    paths: glob.sync(path.join(__dirname, '../src/*.+(js|json|jsx|ts|tsx)'), {
+      nodir: true,
+    }),
+  }),
 
   lintTS({ eslintPlugin: { files: 'src' }, supportReact: true }),
 

@@ -3,6 +3,10 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 /**
  * Extract CSS into separate .css files.
  *
+ * For more information:
+ * - https://webpack.js.org/loaders/css-loader
+ * - https://webpack.js.org/plugins/mini-css-extract-plugin
+ *
  * Peer dependencies:
  * - css-loader@^6.7.1
  * - mini-css-extract-plugin@^2.6.1
@@ -15,25 +19,23 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
  * @param {Object} [options.miniCssExtractPlugin] Plugin options for mini-css-extract-plugin. (https://webpack.js.org/plugins/mini-css-extract-plugin/#plugin-options)
  * @param {boolean} [options.sideEffects] webpack sideEffects rule. (https://webpack.js.org/configuration/module/#rulesideeffects)
  */
-module.exports = (options) => {
-  return {
-    module: {
-      rules: [
-        {
-          test: /\.css$/,
-          exclude: options?.exclude,
-          include: options?.include,
-          sideEffects: options?.sideEffects,
-          use: [
-            {
-              loader: MiniCssExtractPlugin.loader,
-              options: options?.miniCssExtractLoader,
-            },
-            { loader: 'css-loader', options: options?.cssLoader },
-          ],
-        },
-      ],
-    },
-    plugins: [new MiniCssExtractPlugin(options?.miniCssExtractPlugin)],
-  }
-}
+module.exports = (options) => ({
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        exclude: options?.exclude,
+        include: options?.include,
+        sideEffects: options?.sideEffects,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: options?.miniCssExtractLoader,
+          },
+          { loader: 'css-loader', options: options?.cssLoader },
+        ],
+      },
+    ],
+  },
+  plugins: [new MiniCssExtractPlugin(options?.miniCssExtractPlugin)],
+})

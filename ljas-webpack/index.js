@@ -9,7 +9,7 @@
 const { REACT_EXTENSIONS, VANILLA_EXTENSIONS } = require('./consts')
 
 /**
- * Compile TypeScript files with Babel:
+ * Compile TypeScript with Babel:
  * https://webpack.js.org/loaders/babel-loader
  *
  * Note that this does not perform type checking since that is handled by checkTypes().
@@ -117,6 +117,10 @@ exports.genSourceMaps = (mode) => {
 
 /**
  * Inject CSS through a style element.
+ *
+ * For more information:
+ * - https://webpack.js.org/loaders/css-loader
+ * - https://webpack.js.org/loaders/style-loader
  *
  * Peer dependencies:
  * - css-loader@^6.7.1

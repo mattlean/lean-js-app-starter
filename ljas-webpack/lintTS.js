@@ -2,7 +2,7 @@ const ESLintPlugin = require('eslint-webpack-plugin')
 const { REACT_EXTENSIONS, VANILLA_EXTENSIONS } = require('./consts')
 
 /**
- * Lint JavaScript code with ESLint:
+ * Lint TypeScript code with ESLint:
  * https://webpack.js.org/plugins/eslint-webpack-plugin
  *
  * Peer dependency: eslint-webpack-plugin@^3.2.0
