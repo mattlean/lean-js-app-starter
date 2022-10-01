@@ -19,7 +19,7 @@ module.exports = merge([
 
   setOutput(MODE, path.resolve(__dirname, `../build/${MODE}`)),
 
-  inlineCSS(),
+  inlineCSS({ include: path.resolve(__dirname, '../src') }),
 
   genSourceMaps(MODE),
 

@@ -18,7 +18,7 @@ module.exports = merge([
 
   setOutput(MODE, path.resolve(__dirname, `../build/${MODE}`)),
 
-  extractCSS(),
+  extractCSS({ include: path.resolve(__dirname, '../src') }),
 
   cleanCSS({
     paths: glob.sync(path.join(__dirname, '../src/*.+(js|json|jsx|ts|tsx)'), {
