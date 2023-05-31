@@ -46,6 +46,21 @@ exports.compileTS = (options) => {
         ],
         '@babel/preset-typescript',
       ],
+      env: {
+        development: {
+          presets: [
+            '@babel/preset-env',
+            [
+              '@babel/preset-react',
+              {
+                development: true,
+                runtime: 'automatic',
+              },
+            ],
+            '@babel/preset-typescript',
+          ],
+        },
+      },
     }
   } else {
     babelLoaderOptions = {
@@ -57,7 +72,7 @@ exports.compileTS = (options) => {
     module: {
       rules: [
         {
-          test: options?.supportReact ? /(\.j|t)sx?$/ : /(\.j|t)s$/,
+          test: options?.supportReact ? /\.[jt]sx?$/ : /\.[jt]s$/,
           exclude: options?.exclude || /node_modules/,
           include: options?.include,
           sideEffects: options?.sideEffects,

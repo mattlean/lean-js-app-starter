@@ -11,11 +11,12 @@ const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
  * @param {Object} [options] Options for fork-ts-checker-webpack-plugin. This will override the default options set for fork-ts-checker-webpack-plugin when defined. (https://github.com/TypeStrong/fork-ts-checker-webpack-plugin#options)
  */
 module.exports = (
-  options = {
-    typescript: {
-      mode: 'write-references',
-    },
-  }
+  options
+  // options = {
+  //   typescript: {
+  //     mode: 'write-references',
+  //   },
+  // }
 ) => ({
   plugins: [new ForkTsCheckerWebpackPlugin(options)],
 })
