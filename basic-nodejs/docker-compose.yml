@@ -1,0 +1,11 @@
+version: "3.8"
+services:
+  app:
+    build: .
+    image: "ljas-basic-nodejs"
+    container_name: "ljas-basic-nodejs"
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/code
+      - /code/node_modules
