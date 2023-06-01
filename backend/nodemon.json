@@ -1,4 +1,0 @@
-{
-  "watch": ["src/", "webpack.config.js", "webpack/"],
-  "ext": ".js,.json,.mjs,.ts"
-}
