@@ -34,6 +34,7 @@ docker compose up
 
 ## Technologies
 
+-   [Babel](https://babeljs.io): Compiler used to support for ECMAScript modules with Jest.
 -   [Docker](https://www.docker.com): Used as an optional development environment. This can be handy if you want more consistency across different machines with minimal setup.
 -   [ESLint](https://eslint.org): Linter to quickly find problems.
 -   [Git](https://git-scm.com): Version control system to track code changes.

@@ -1,8 +1,8 @@
 # Basic Node.js Starter Project (JavaScript)
 
-This is a starter for a React-based frontend project.
+This is a starter for a [React](https://react.dev) frontend project.
 
-Note that this uses JavaScript. If you want the TypeScript equivalent to this, use the [ljas-react-frontend-ts](../ljas-react-frontend-ts) project instead.
+Note that this uses JavaScript. If you want the TypeScript equivalent to this, use the [react-frontend-ts](../react-frontend-ts) project instead.
 
 ## Getting Started
 
@@ -20,6 +20,7 @@ docker compose up
 
 ## Technologies
 
+-   [Babel](https://babeljs.io): Compiler used with webpack to support React and produce cross-browser compatible code for the build.
 -   [Docker](https://www.docker.com): Used as an optional development environment. This can be handy if you want more consistency across different machines with minimal setup.
 -   [ESLint](https://eslint.org): Linter to quickly find problems.
 -   [Git](https://git-scm.com): Version control system to track code changes.
