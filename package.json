@@ -11,8 +11,9 @@
     "author": "Matthew Lean <matt@mattlean.com> (https://mattlean.com)",
     "license": "MIT",
     "workspaces": [
+        "basic-nodejs",
         "react-frontend",
-        "basic-nodejs"
+        "ljas-webpack"
     ],
     "devDependencies": {
         "eslint": "^8.41.0",

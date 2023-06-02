@@ -1,0 +1,18 @@
+{
+    "name": "ljas-webpack",
+    "version": "0.1.1-experimental.2",
+    "description": "webpack configuration parts for webpack config compositions",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "peerDependencies": {
+        "webpack": "^5.85.0"
+    },
+    "devDependencies": {
+        "eslint": "^8.41.0",
+        "eslint-config-prettier": "^8.8.0",
+        "prettier": "2.8.8"
+    }
+}
