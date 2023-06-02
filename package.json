@@ -1,9 +1,9 @@
 {
     "name": "lean-js-app-starter",
     "version": "0.2.0",
-    "description": "This repository offers a series of starter JavaScript projects that you can use to:",
+    "description": "",
     "scripts": {
-        "format": "npm run format",
+        "format": "npm run format:check",
         "format:check": "prettier --check .",
         "format:write": "prettier --write .",
         "lint": "eslint ."
@@ -11,7 +11,8 @@
     "author": "Matthew Lean <matt@mattlean.com> (https://mattlean.com)",
     "license": "MIT",
     "workspaces": [
-        "basic-nodejs"
+        "basic-nodejs",
+        "basic-frontend"
     ],
     "devDependencies": {
         "eslint": "^8.41.0",

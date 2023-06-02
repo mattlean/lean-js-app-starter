@@ -4,11 +4,11 @@ module.exports = {
         node: true,
     },
     extends: ['eslint:recommended', 'prettier'],
-    overrides: [],
     parserOptions: {
-        ecmaVersion: 'latest',
+        ecmaVersion: '2021',
         sourceType: 'module',
     },
     root: true,
     rules: {},
+    overrides: [],
 }

@@ -11,6 +11,21 @@ module.exports = {
     root: true,
     rules: {},
     overrides: [
+        /* Source */
+        {
+            env: {
+                browser: true,
+                es2021: true,
+            },
+            files: ['src/**/*.js'],
+            extends: [
+                'eslint:recommended',
+                'plugin:react/recommended',
+                'prettier',
+            ],
+            plugins: ['react'],
+        },
+
         /* Tests */
         {
             env: {
@@ -21,10 +36,11 @@ module.exports = {
             files: ['src/**/*.test.js'],
             extends: [
                 'eslint:recommended',
+                'plugin:react/recommended',
                 'plugin:jest/recommended',
                 'prettier',
             ],
-            plugins: ['jest'],
+            plugins: ['react', 'jest'],
         },
     ],
 }
