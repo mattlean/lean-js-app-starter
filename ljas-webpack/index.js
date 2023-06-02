@@ -47,7 +47,7 @@ exports.compileReact = (args = {}) => ({
 })
 
 /**
- * Run webpack-dev-server:
+ * Configure webpack-dev-server:
  * https://webpack.js.org/configuration/dev-server
  *
  * Tested with: webpack-dev-server@^4.15.0

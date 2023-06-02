@@ -1,7 +1,7 @@
-const path = require('path')
-const { merge } = require('webpack-merge')
-const { compileReact } = require('ljas-webpack')
 const buildHtml = require('ljas-webpack/buildHtml')
+const path = require('path')
+const { compileReact } = require('ljas-webpack')
+const { merge } = require('webpack-merge')
 
 module.exports = merge([
     {
