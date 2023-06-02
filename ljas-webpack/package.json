@@ -9,7 +9,17 @@
         "format:write": "prettier --write .",
         "lint": "eslint ."
     },
-    "author": "",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/mattlean/lean-js-app-starter.git",
+        "directory": "ljas-webpack"
+    },
+    "author": "Matthew Lean <matt@mattlean.com> (https://mattlean.com)",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/mattlean/lean-js-app-starter/issues"
+    },
+    "homepage": "https://github.com/mattlean/lean-js-app-starter/blob/master/ljas-webpack/README.md",
     "peerDependencies": {
         "webpack": "^5.85.0"
     },
@@ -17,5 +27,21 @@
         "eslint": "^8.41.0",
         "eslint-config-prettier": "^8.8.0",
         "prettier": "2.8.8"
-    }
+    },
+    "keywords": [
+        "ljas-webpack",
+        "lean-js-app-starter",
+        "ljas",
+        "lean",
+        "javascript",
+        "js",
+        "application",
+        "app",
+        "starter",
+        "webpack",
+        "configuration",
+        "config",
+        "parts",
+        "webpack-merge"
+    ]
 }

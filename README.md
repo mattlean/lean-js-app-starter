@@ -30,3 +30,7 @@ Then is some variance depending on what type of project you're working with:
 -   [Node.js](https://nodejs.org)
 -   [Express](https://expressjs.com)
 -   [PostgreSQL](https://www.postgresql.org)
+
+## License
+
+This project is [MIT licensed](https://choosealicense.com/licenses/mit).
