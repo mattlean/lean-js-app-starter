@@ -52,7 +52,7 @@ exports.compileReact = (args = {}) => ({
  *
  * Tested with: webpack-dev-server@^4.15.0
  *
- * @param {Object} [options] Options used to configure webpack-dev-server. (https://webpack.js.org/configuration/dev-server)
+ * @param {Object} [options] Options for webpack-dev-server. (https://webpack.js.org/configuration/dev-server)
  */
 exports.setupDevServer = (options) => ({
     devServer: {
