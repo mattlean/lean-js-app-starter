@@ -176,7 +176,12 @@ module.exports = {
     transform: {
         '\\.[jt]sx?$': [
             'babel-jest',
-            { configFile: './babel.test.config.json' },
+            {
+                presets: [
+                    '@babel/preset-env',
+                    ['@babel/preset-react', { runtime: 'automatic' }],
+                ],
+            },
         ],
     },
 
