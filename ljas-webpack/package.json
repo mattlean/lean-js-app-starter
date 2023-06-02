@@ -4,7 +4,10 @@
     "description": "webpack configuration parts for webpack config compositions",
     "main": "index.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "format": "npm run format:check",
+        "format:check": "prettier --check .",
+        "format:write": "prettier --write .",
+        "lint": "eslint ."
     },
     "author": "",
     "peerDependencies": {
