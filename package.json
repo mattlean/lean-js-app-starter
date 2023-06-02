@@ -1,14 +1,22 @@
 {
-  "name": "lean-js-app-starter",
-  "version": "0.2.0",
-  "description": "This repository offers a series of starter JavaScript projects that you can use to:",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Matthew Lean <matt@mattlean.com> (https://mattlean.com)",
-  "license": "MIT",
-  "workspaces": [
-    "basic-nodejs"
-  ],
-  "private": true
+    "name": "lean-js-app-starter",
+    "version": "0.2.0",
+    "description": "This repository offers a series of starter JavaScript projects that you can use to:",
+    "scripts": {
+        "format": "npm run format",
+        "format:check": "prettier --check .",
+        "format:write": "prettier --write .",
+        "lint": "eslint ."
+    },
+    "author": "Matthew Lean <matt@mattlean.com> (https://mattlean.com)",
+    "license": "MIT",
+    "workspaces": [
+        "basic-nodejs"
+    ],
+    "devDependencies": {
+        "eslint": "^8.41.0",
+        "eslint-config-prettier": "^8.8.0",
+        "prettier": "2.8.8"
+    },
+    "private": true
 }

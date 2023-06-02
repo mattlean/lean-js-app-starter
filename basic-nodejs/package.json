@@ -1,17 +1,25 @@
 {
-  "name": "ljas-basic-nodejs",
-  "version": "0.2.0",
-  "description": "",
-  "main": "src/main.js",
-  "scripts": {
-    "start": "node src/main.js",
-    "dev": "nodemon src/main.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "type": "module",
-  "author": "",
-  "private": true,
-  "devDependencies": {
-    "nodemon": "^2.0.22"
-  }
+    "name": "ljas-basic-nodejs",
+    "version": "0.2.0",
+    "description": "",
+    "main": "src/main.js",
+    "type": "module",
+    "scripts": {
+        "dev": "nodemon src/main.js",
+        "format": "npm run format",
+        "format:check": "prettier --check .",
+        "format:write": "prettier --write .",
+        "lint": "eslint .",
+        "start": "node src/main.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "devDependencies": {
+        "eslint": "^8.41.0",
+        "eslint-config-prettier": "^8.8.0",
+        "jest": "^29.5.0",
+        "nodemon": "^2.0.22",
+        "prettier": "2.8.8"
+    },
+    "private": true
 }
