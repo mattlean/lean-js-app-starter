@@ -9,6 +9,6 @@ module.exports = {
         ecmaVersion: 'latest',
         sourceType: 'module',
     },
-    rules: {},
     root: true,
+    rules: {},
 }

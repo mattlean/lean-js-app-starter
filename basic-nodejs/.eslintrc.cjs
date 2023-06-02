@@ -4,11 +4,26 @@ module.exports = {
         node: true,
     },
     extends: ['eslint:recommended', 'prettier'],
-    overrides: [],
+    overrides: [
+        {
+            env: {
+                es2021: true,
+                jest: true,
+                node: true,
+            },
+            files: ['src/**/*.test.js'],
+            extends: [
+                'eslint:recommended',
+                'plugin:jest/recommended',
+                'prettier',
+            ],
+            plugins: ['jest'],
+        },
+    ],
     parserOptions: {
         ecmaVersion: 'latest',
         sourceType: 'module',
     },
-    rules: {},
     root: true,
+    rules: {},
 }
