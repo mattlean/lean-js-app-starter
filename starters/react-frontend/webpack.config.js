@@ -1,22 +1,14 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const path = require('path')
 const { merge } = require('webpack-merge')
-const { compileReact } = require('ljas-webpack')
+const commonConfig = require('./webpack.common')
+const developmentConfig = require('./webpack.development')
 
-const config = merge([
-    {
-        entry: './src/main.js',
-
-        output: {
-            clean: true,
-            filename: 'app.js',
-            path: path.resolve(__dirname, 'build'),
-        },
-
-        plugins: [new HtmlWebpackPlugin({ title: 'LJAS: React Frontend' })],
-    },
-
-    compileReact({ include: path.resolve(__dirname, 'src') }),
-])
-
-module.exports = config
+module.exports = (env, { mode }) => {
+    switch (mode) {
+        case 'production':
+            return merge(commonConfig, developmentConfig, { mode })
+        case 'development':
+            return merge(commonConfig, developmentConfig, { mode })
+        default:
+            throw new Error(`Unknown mode encountered: ${mode}`)
+    }
+}

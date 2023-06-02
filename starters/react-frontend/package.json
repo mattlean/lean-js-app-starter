@@ -4,7 +4,8 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "build": "webpack",
+        "build": "webpack --mode production",
+        "dev": "webpack serve --mode development",
         "format": "npm run format:check",
         "format:check": "prettier --check .",
         "format:write": "prettier --write .",
@@ -37,6 +38,7 @@
         "react-test-renderer": "^18.2.0",
         "webpack": "^5.85.0",
         "webpack-cli": "^5.1.1",
+        "webpack-dev-server": "^4.15.0",
         "webpack-merge": "^5.9.0"
     },
     "private": true
