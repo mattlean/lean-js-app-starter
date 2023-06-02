@@ -5,7 +5,7 @@
     "main": "index.js",
     "scripts": {
         "build": "webpack --mode production",
-        "dev": "webpack serve --mode development",
+        "dev": "nodemon --exec \"webpack serve --mode development\"",
         "format": "npm run format:check",
         "format:check": "prettier --check .",
         "format:write": "prettier --write .",

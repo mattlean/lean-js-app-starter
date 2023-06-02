@@ -17,8 +17,9 @@
  * - babel-loader@^9.1.2
  *
  * @param {Object} [args={}] Arguments used to configure babel-loader.
+ * @param {string} [mode] The webpack mode configuration option. (https://webpack.js.org/configuration/mode)
  */
-exports.compileReact = (args = {}) => ({
+exports.compileReact = (args = {}, mode) => ({
     module: {
         rules: [
             {
@@ -33,8 +34,7 @@ exports.compileReact = (args = {}) => ({
                             [
                                 '@babel/preset-react',
                                 {
-                                    development:
-                                        process.env.BABEL_ENV === 'development',
+                                    development: mode === 'development',
                                     runtime: 'automatic',
                                 },
                             ],

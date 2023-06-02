@@ -1,14 +1,23 @@
 const { merge } = require('webpack-merge')
-const commonConfig = require('./webpack.common')
-const developmentConfig = require('./webpack.development')
+const buildCommonConfig = require('./webpack.common')
+const buildDevelopmentConfig = require('./webpack.development')
 
 module.exports = (env, { mode }) => {
-    switch (mode) {
-        case 'production':
-            return merge(commonConfig, developmentConfig, { mode })
+    const commonConfig = buildCommonConfig(mode)
+    const developmentConfig = buildDevelopmentConfig(mode)
 
-        case 'development':
-            return merge(commonConfig, developmentConfig, { mode })
+    switch (mode) {
+        case 'production': {
+            const config = merge(commonConfig, developmentConfig, { mode })
+            console.log('PROD CONFIG', config, JSON.stringify(config))
+            return config
+        }
+
+        case 'development': {
+            const config = merge(commonConfig, developmentConfig, { mode })
+            console.log('DEV CONFIG', config, JSON.stringify(config))
+            return config
+        }
 
         default:
             throw new Error(`Unknown mode encountered: ${mode}`)

@@ -4,14 +4,15 @@
     "description": "",
     "main": "src/main.js",
     "scripts": {
-        "dev": "nodemon src/main.js",
+        "dev": "nodemon --experimental-specifier-resolution=node src/main.js",
         "format": "npm run format:check",
         "format:check": "prettier --check .",
         "format:write": "prettier --write .",
         "lint": "eslint .",
-        "start": "node src/main.js",
+        "start": "node --experimental-specifier-resolution=node src/main.js",
         "test": "jest"
     },
+    "type": "module",
     "author": "",
     "devDependencies": {
         "@babel/cli": "^7.21.5",

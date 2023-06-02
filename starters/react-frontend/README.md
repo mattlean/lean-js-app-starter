@@ -8,6 +8,20 @@ Note that this uses JavaScript. If you want the TypeScript equivalent to this, u
 
 ### Standard Method
 
+The only prerequisite is that you must have [Node.js](https://nodejs.org) installed. This was tested on Node.js v18.16.0, but many other Node.js versions should still work.
+
+Once Node.js is installed, install the project dependencies with the following command:
+
+```
+npm install
+```
+
+Finally, you can start the development server with following command:
+
+```
+npm run dev
+```
+
 ### Docker Development Environment
 
 Alternatively, you can also run the Docker development environment which only requires an installation of [Docker](https://www.docker.com). This was tested on Docker Desktop 4.20.0, but many other Docker installations should work.
