@@ -2,7 +2,7 @@
 
 This is a starter for a React-based frontend project.
 
-Note that this uses JavaScript. If you want the TypeScript equivalent to this, use the [basic-frontend-ts](../basic-frontend-ts) project instead.
+Note that this uses JavaScript. If you want the TypeScript equivalent to this, use the [ljas-react-frontend-ts](../ljas-react-frontend-ts) project instead.
 
 ## Getting Started
 
@@ -22,6 +22,7 @@ docker compose up
 
 -   [Docker](https://www.docker.com): Used as an optional development environment. This can be handy if you want more consistency across different machines with minimal setup.
 -   [ESLint](https://eslint.org): Linter to quickly find problems.
+-   [Git](https://git-scm.com): Version control system to track code changes.
 -   [Jest](https://jestjs.io): Testing framework to ensure code correctness and coverage.
 -   [Prettier](https://prettier.io): Formatter to enforce code style.
 -   [webpack](https://webpack.js.org): Bundler used to build the app.
