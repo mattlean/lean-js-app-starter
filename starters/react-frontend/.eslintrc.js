@@ -1,4 +1,6 @@
-const RULES_REACT = { 'react/react-in-jsx-scope': 'off' }
+const RULES_REACT = {
+    'react/jsx-filename-extension': 'error',
+}
 
 module.exports = {
     env: {
@@ -12,6 +14,7 @@ module.exports = {
         sourceType: 'module',
     },
     root: true,
+    rules: {},
     overrides: [
         /* Source */
         {
@@ -19,10 +22,11 @@ module.exports = {
                 browser: true,
                 es2021: true,
             },
-            files: ['src/**/*.js'],
+            files: ['src/**/*.js?(x)'],
             extends: [
                 'eslint:recommended',
                 'plugin:react/recommended',
+                'plugin:react/jsx-runtime',
                 'prettier',
             ],
             plugins: ['react'],
@@ -36,10 +40,11 @@ module.exports = {
                 jest: true,
                 node: true,
             },
-            files: ['src/**/*.test.js'],
+            files: ['src/**/*.test.js?(x)'],
             extends: [
                 'eslint:recommended',
                 'plugin:react/recommended',
+                'plugin:react/jsx-runtime',
                 'plugin:jest/recommended',
                 'prettier',
             ],

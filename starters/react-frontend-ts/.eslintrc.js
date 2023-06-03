@@ -1,4 +1,6 @@
-const RULES_REACT = { 'react/react-in-jsx-scope': 'off' }
+const RULES_REACT = {
+    'react/jsx-filename-extension': 'error',
+}
 
 module.exports = {
     env: {
@@ -12,6 +14,7 @@ module.exports = {
         sourceType: 'module',
     },
     root: true,
+    rules: {},
     overrides: [
         /* Source */
         {
@@ -19,13 +22,16 @@ module.exports = {
                 browser: true,
                 es2021: true,
             },
-            files: ['src/**/*.js'],
+            files: ['src/**/*.[jt]s?(x)'],
             extends: [
                 'eslint:recommended',
                 'plugin:react/recommended',
+                'plugin:react/jsx-runtime',
+                'plugin:@typescript-eslint/recommended',
                 'prettier',
             ],
-            plugins: ['react'],
+            parser: '@typescript-eslint/parser',
+            plugins: ['react', '@typescript-eslint'],
             rules: RULES_REACT,
         },
 
@@ -36,14 +42,17 @@ module.exports = {
                 jest: true,
                 node: true,
             },
-            files: ['src/**/*.test.js'],
+            files: ['src/**/*.test.[j]s?(x)'],
             extends: [
                 'eslint:recommended',
                 'plugin:react/recommended',
+                'plugin:react/jsx-runtime',
+                'plugin:@typescript-eslint/recommended',
                 'plugin:jest/recommended',
                 'prettier',
             ],
-            plugins: ['react', 'jest'],
+            parser: '@typescript-eslint/parser',
+            plugins: ['react', '@typescript-eslint', 'jest'],
             rules: RULES_REACT,
         },
     ],

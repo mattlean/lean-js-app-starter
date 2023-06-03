@@ -23,7 +23,7 @@ exports.compileReact = (babelConfig, mode) => ({
     module: {
         rules: [
             {
-                test: babelConfig?.test ?? /\.js$/,
+                test: babelConfig?.test ?? /\.jsx?$/,
                 exclude: babelConfig?.exclude ?? /node_modules/,
                 include: babelConfig?.include,
                 use: {

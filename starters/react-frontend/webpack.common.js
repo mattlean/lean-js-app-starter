@@ -10,7 +10,7 @@ const { merge } = require('webpack-merge')
 module.exports = (mode) =>
     merge([
         {
-            entry: './src/main.js',
+            entry: './src/main.jsx',
 
             output: {
                 clean: true,

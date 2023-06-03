@@ -1,6 +1,8 @@
 # Basic Node.js Starter Project (JavaScript)
 
-This is a starter for a [Node.js](https://nodejs.org) project that provides a very lightweight, minimal configuration.
+This is a starter for a [Node.js](https://nodejs.org) project that provides a very lightweight, minimal configuration. This is great if you want to start any Node.js project from the ground-up as there are no dependencies.
+
+If you want to use Express, you may want to look at the [express-backend](../express-backend) starter project instead.
 
 Note that this uses JavaScript. If you want the TypeScript equivalent to this, use the [basic-nodejs-ts](../basic-nodejs-ts) project instead.
 
@@ -32,7 +34,7 @@ Then all you need to do is run the following command to start the development se
 docker compose up
 ```
 
-## Technologies
+## Technology Overview
 
 -   [Babel](https://babeljs.io): Compiler used to support for ECMAScript modules with Jest.
 -   [Docker](https://www.docker.com): Used as an optional development environment. This can be handy if you want more consistency across different machines with minimal setup.
@@ -41,3 +43,7 @@ docker compose up
 -   [Husky](https://typicode.github.io/husky) & [lint-staged](https://github.com/okonet/lint-staged): Pre-commit hooks to enforce code style and identify problems.
 -   [Jest](https://jestjs.io): Testing framework to ensure code correctness and coverage.
 -   [Prettier](https://prettier.io): Formatter to enforce code style.
+
+## Learn More
+
+To get a more in-depth idea about what building off of this starter project is like, please read the [Developer Experience Walkthrough](./dx-walkthrough.md).
