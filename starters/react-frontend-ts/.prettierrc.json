@@ -1,0 +1,7 @@
+{
+    "importOrder": ["<THIRD_PARTY_MODULES>", "^[./]"],
+    "importOrderSeparation": true,
+    "semi": false,
+    "singleQuote": true,
+    "tabWidth": 4
+}

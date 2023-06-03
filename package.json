@@ -20,7 +20,9 @@
     "homepage": "https://github.com/mattlean/lean-js-app-starter#readme",
     "workspaces": [
         "starters/basic-nodejs",
+        "starters/basic-nodejs-ts",
         "starters/react-frontend",
+        "starters/react-frontend-ts",
         "ljas-webpack"
     ],
     "devDependencies": {

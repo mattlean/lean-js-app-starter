@@ -7,7 +7,7 @@
  */
 
 /**
- * Compile with babel-loader:
+ * Compile React JavaScript code with babel-loader:
  * https://webpack.js.org/loaders/babel-loader
  *
  * Tested with:
@@ -16,10 +16,10 @@
  * - @babel/preset-react@^7.22.3
  * - babel-loader@^9.1.2
  *
- * @param {Object} [args={}] Arguments used to configure babel-loader.
+ * @param {Object} [args] Arguments used to configure babel-loader.
  * @param {string} [mode] The webpack mode configuration option. (https://webpack.js.org/configuration/mode)
  */
-exports.compileReact = (args = {}, mode) => ({
+exports.compileReact = (args, mode) => ({
     module: {
         rules: [
             {

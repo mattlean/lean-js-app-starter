@@ -1,0 +1,5 @@
+{
+    "ext": "js,json,ts",
+    "ignore": ["src/**/*.test.[jt]s"],
+    "watch": ["src/", "nodemon.json", "package.json", "webpack.config.cjs"]
+}

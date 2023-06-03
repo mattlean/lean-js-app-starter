@@ -1,1 +1,4 @@
-{ "watch": ["src/", "package.json"] }
+{
+    "ignore": ["src/**/*.test.js"],
+    "watch": ["src/", "package.json", "nodemon.json"]
+}

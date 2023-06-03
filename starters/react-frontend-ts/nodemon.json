@@ -1,4 +1,5 @@
 {
-    "ignore": ["src/**/*.test.js"],
+    "ext": "js,json,ts",
+    "ignore": ["src/**/*.test.[jt]s"],
     "watch": ["nodemon.json", "package.json", "webpack.*.js"]
 }
