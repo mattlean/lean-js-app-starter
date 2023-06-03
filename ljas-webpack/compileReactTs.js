@@ -1,29 +1,25 @@
-/**
- * ljas-webpack
- *
- * This build was tested with:
- * - webpack@^5.85.0
- * - webpack-cli@^5.1.1
- */
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
 
 /**
- * Compile React JavaScript code with babel-loader:
+ * Compile React TypeScript code with babel-loader:
  * https://webpack.js.org/loaders/babel-loader
  *
  * Tested with:
  * - @babel/core@^7.22.1
  * - @babel/preset-env@^7.22.4
  * - @babel/preset-react@^7.22.3
+ * - @babel/preset-typescript@^7.21.5
  * - babel-loader@^9.1.2
  *
  * @param {Object} [babelConfig]
+ * @param {Object} [forkTsCheckerOptions]
  * @param {string} [mode] The webpack mode configuration option. (https://webpack.js.org/configuration/mode)
  */
-exports.compileReact = (babelConfig, mode) => ({
+module.exports = (babelConfig, forkTsCheckerOptions, mode) => ({
     module: {
         rules: [
             {
-                test: babelConfig?.test ?? /\.js$/,
+                test: babelConfig?.test ?? /\.[jt]sx?$/,
                 exclude: babelConfig?.exclude ?? /node_modules/,
                 include: babelConfig?.include,
                 use: {
@@ -38,6 +34,7 @@ exports.compileReact = (babelConfig, mode) => ({
                                     runtime: 'automatic',
                                 },
                             ],
+                            '@babel/preset-typescript',
                         ],
                     },
                 },
@@ -45,21 +42,9 @@ exports.compileReact = (babelConfig, mode) => ({
         ],
     },
 
-    resolve: {
-        extensions: ['.js', '.jsx', '.json', '.wasm'],
-    },
-})
+    plugins: [new ForkTsCheckerWebpackPlugin(forkTsCheckerOptions)],
 
-/**
- * Configure webpack-dev-server:
- * https://webpack.js.org/configuration/dev-server
- *
- * Tested with: webpack-dev-server@^4.15.0
- *
- * @param {Object} [options] Options for webpack-dev-server. (https://webpack.js.org/configuration/dev-server)
- */
-exports.setupDevServer = (options) => ({
-    devServer: {
-        ...options,
+    resolve: {
+        extensions: ['.js', '.jsx', '.json', '.ts', '.tsx', '.wasm'],
     },
 })

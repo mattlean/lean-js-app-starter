@@ -11,7 +11,8 @@
         "format:write": "prettier --write .",
         "lint": "eslint .",
         "start": "http-server ./build",
-        "test": "jest"
+        "test": "jest",
+        "test:watch": "npm run test -- --watch"
     },
     "author": "",
     "dependencies": {

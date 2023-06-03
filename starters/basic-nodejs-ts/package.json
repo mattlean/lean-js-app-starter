@@ -11,7 +11,8 @@
         "format:write": "prettier --write .",
         "lint": "eslint --ext .cjs,.js,.ts .",
         "start": "node build/app.js",
-        "test": "jest"
+        "test": "jest",
+        "test:watch": "npm run test -- --watch"
     },
     "type": "module",
     "author": "",

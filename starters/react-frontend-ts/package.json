@@ -11,7 +11,8 @@
         "format:write": "prettier --write .",
         "lint": "eslint .",
         "start": "http-server ./build",
-        "test": "jest"
+        "test": "jest",
+        "test:watch": "npm run test -- --watch"
     },
     "author": "",
     "dependencies": {
@@ -26,6 +27,8 @@
         "@babel/preset-typescript": "^7.21.5",
         "@trivago/prettier-plugin-sort-imports": "^4.1.1",
         "@types/jest": "^29.5.2",
+        "@types/react": "^18.2.8",
+        "@types/react-dom": "^18.2.4",
         "@typescript-eslint/eslint-plugin": "^5.59.8",
         "@typescript-eslint/parser": "^5.59.8",
         "babel-loader": "^9.1.2",

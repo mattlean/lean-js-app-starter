@@ -1,6 +1,6 @@
 const buildHtml = require('ljas-webpack/buildHtml')
 const path = require('path')
-const { compileReact } = require('ljas-webpack')
+const compileReactTs = require('ljas-webpack/compileReactTs')
 const { merge } = require('webpack-merge')
 
 /**
@@ -10,7 +10,7 @@ const { merge } = require('webpack-merge')
 module.exports = (mode) =>
     merge([
         {
-            entry: './src/main.js',
+            entry: './src/main.tsx',
 
             output: {
                 clean: true,
@@ -19,7 +19,11 @@ module.exports = (mode) =>
             },
         },
 
-        compileReact({ include: path.resolve(__dirname, 'src') }, mode),
+        compileReactTs(
+            { include: path.resolve(__dirname, 'src') },
+            undefined,
+            mode
+        ),
 
         buildHtml({ title: 'ljas-react-frontend-ts' }),
     ])

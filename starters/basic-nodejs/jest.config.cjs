@@ -174,7 +174,7 @@ module.exports = {
 
     // A map from regular expressions to paths to transformers
     transform: {
-        '\\.[jt]sx?$': [
+        '\\.js$': [
             'babel-jest',
             {
                 presets: [
