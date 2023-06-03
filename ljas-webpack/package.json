@@ -7,8 +7,7 @@
         "format": "npm run format:check",
         "format:check": "prettier --check .",
         "format:write": "prettier --write .",
-        "lint": "eslint .",
-        "validate": "npm run format && npm run lint"
+        "lint": "eslint ."
     },
     "repository": {
         "type": "git",
@@ -29,6 +28,7 @@
         "eslint": "^8.41.0",
         "eslint-config-prettier": "^8.8.0",
         "husky": "^8.0.3",
+        "lint-staged": "^13.2.2",
         "prettier": "2.8.8"
     },
     "keywords": [

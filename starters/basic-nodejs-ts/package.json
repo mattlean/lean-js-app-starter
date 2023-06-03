@@ -14,8 +14,7 @@
         "lint:fix": "npm run lint -- --fix",
         "start": "node build/app.js",
         "test": "jest",
-        "test:watch": "npm run test -- --watch",
-        "validate": "npm run format && npm run check-types && npm run lint"
+        "test:watch": "npm run test -- --watch"
     },
     "type": "module",
     "author": "",
@@ -34,6 +33,7 @@
         "fork-ts-checker-webpack-plugin": "^8.0.0",
         "husky": "^8.0.3",
         "jest": "^29.5.0",
+        "lint-staged": "^13.2.2",
         "nodemon": "^2.0.22",
         "prettier": "2.8.8",
         "typescript": "^5.1.3",

@@ -34,9 +34,10 @@ docker compose up
 
 ## Technologies
 
--   [Babel](https://babeljs.io): Compiler used to support for ECMAScript modules with Jest.
+-   [Babel](https://babeljs.io): Compiler used with webpack to support TypeScript and ECMAScript modules with Jest.
 -   [Docker](https://www.docker.com): Used as an optional development environment. This can be handy if you want more consistency across different machines with minimal setup.
 -   [ESLint](https://eslint.org): Linter to quickly find code problems.
 -   [Git](https://git-scm.com): Version control system to track code changes.
 -   [Jest](https://jestjs.io): Testing framework to ensure code correctness and coverage.
 -   [Prettier](https://prettier.io): Formatter to enforce code style.
+-   [webpack](https://webpack.js.org): Bundler used to build the app.
