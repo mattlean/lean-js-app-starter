@@ -2,7 +2,7 @@
 
 This is a starter for a [React](https://react.dev) frontend project.
 
-Note that this uses JavaScript. If you want the TypeScript equivalent to this, use the [react-frontend-ts](../react-frontend-ts) project instead.
+Note that this uses TypeScript. If you want the JavaScript equivalent to this, use the [react-frontend](../react-frontend) project instead.
 
 ## Getting Started
 
@@ -32,7 +32,7 @@ Then all you need to do is run the following command to start the development se
 docker compose up
 ```
 
-## Technologies
+## Technology Overview
 
 -   [Babel](https://babeljs.io): Compiler used with webpack to support TypeScript and React while producing cross-browser compatible code for the build.
 -   [Docker](https://www.docker.com): Used as an optional development environment. This can be handy if you want more consistency across different machines with minimal setup.
@@ -42,3 +42,7 @@ docker compose up
 -   [Jest](https://jestjs.io): Testing framework to ensure code correctness and coverage.
 -   [Prettier](https://prettier.io): Formatter to enforce code style.
 -   [webpack](https://webpack.js.org): Bundler used to build the app.
+
+## Learn More
+
+To get a more in-depth idea about what building off of this starter project is like, please read the [Developer Experience Walkthrough](./dx-walkthrough.md).
