@@ -6,7 +6,9 @@
         "format": "npm run format:check",
         "format:check": "prettier --check .",
         "format:write": "prettier --write .",
-        "lint": "eslint ."
+        "lint": "eslint .",
+        "prepare": "husky install",
+        "validate": "npm run validate --workspaces"
     },
     "repository": {
         "type": "git",
@@ -29,6 +31,7 @@
         "@trivago/prettier-plugin-sort-imports": "^4.1.1",
         "eslint": "^8.41.0",
         "eslint-config-prettier": "^8.8.0",
+        "husky": "^8.0.3",
         "prettier": "2.8.8"
     },
     "private": true

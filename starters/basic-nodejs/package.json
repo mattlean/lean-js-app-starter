@@ -11,7 +11,8 @@
         "lint": "eslint --ext .cjs,.js .",
         "start": "node --experimental-specifier-resolution=node src/main.js",
         "test": "jest",
-        "test:watch": "npm run test -- --watch"
+        "test:watch": "npm run test -- --watch",
+        "validate": "npm run format && npm run lint"
     },
     "type": "module",
     "author": "",
@@ -23,6 +24,7 @@
         "eslint": "^8.41.0",
         "eslint-config-prettier": "^8.8.0",
         "eslint-plugin-jest": "^27.2.1",
+        "husky": "^8.0.3",
         "jest": "^29.5.0",
         "nodemon": "^2.0.22",
         "prettier": "2.8.8"

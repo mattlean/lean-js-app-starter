@@ -1,6 +1,7 @@
 {
     "compilerOptions": {
         "allowJs": true,
+        "noEmit": true,
         "jsx": "react-jsxdev"
     },
     "include": ["src/**/*"]
