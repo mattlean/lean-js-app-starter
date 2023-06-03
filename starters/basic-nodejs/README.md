@@ -38,5 +38,6 @@ docker compose up
 -   [Docker](https://www.docker.com): Used as an optional development environment. This can be handy if you want more consistency across different machines with minimal setup.
 -   [ESLint](https://eslint.org): Linter to quickly find code problems.
 -   [Git](https://git-scm.com): Version control system to track code changes.
+-   [Husky](https://typicode.github.io/husky) & [lint-staged](https://github.com/okonet/lint-staged): Pre-commit hooks to enforce code style and identify problems.
 -   [Jest](https://jestjs.io): Testing framework to ensure code correctness and coverage.
 -   [Prettier](https://prettier.io): Formatter to enforce code style.
