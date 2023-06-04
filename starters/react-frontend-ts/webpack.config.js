@@ -7,17 +7,11 @@ module.exports = (env, { mode }) => {
     const commonConfig = buildCommonConfig(mode)
 
     switch (mode) {
-        case 'production': {
-            const config = merge(commonConfig, productionConfig)
-            console.log('PROD CONFIG', config, JSON.stringify(config))
-            return config
-        }
+        case 'production':
+            return merge(commonConfig, productionConfig)
 
-        case 'development': {
-            const config = merge(commonConfig, developmentConfig)
-            console.log('DEV CONFIG', config, JSON.stringify(config))
-            return config
-        }
+        case 'development':
+            return merge(commonConfig, developmentConfig)
 
         default:
             throw new Error(`Unknown mode encountered: ${mode}`)

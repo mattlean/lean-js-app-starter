@@ -2,14 +2,18 @@
     "name": "ljas-basic-nodejs",
     "version": "0.2.0",
     "description": "",
-    "main": "src/main.js",
+    "main": "build/app.js",
     "scripts": {
-        "dev": "nodemon --experimental-specifier-resolution=node src/main.js",
+        "build": "webpack --mode development",
+        "dev": "nodemon --exec \"npm run build && npm start\"",
         "format": "npm run format:check",
         "format:check": "prettier --check .",
         "format:write": "prettier --write .",
         "lint": "eslint --ext .cjs,.js .",
-        "start": "node --experimental-specifier-resolution=node src/main.js",
+        "lint:fix": "npm run lint -- --fix",
+        "lint-staged": "lint-staged",
+        "prepare": "husky install && npm install",
+        "start": "node build/app.js",
         "test": "jest",
         "test:watch": "npm run test -- --watch"
     },
@@ -20,6 +24,7 @@
         "@babel/core": "^7.22.1",
         "@babel/preset-env": "^7.22.4",
         "@trivago/prettier-plugin-sort-imports": "^4.1.1",
+        "babel-loader": "^9.1.2",
         "eslint": "^8.41.0",
         "eslint-config-prettier": "^8.8.0",
         "eslint-plugin-jest": "^27.2.1",
@@ -27,7 +32,9 @@
         "jest": "^29.5.0",
         "lint-staged": "^13.2.2",
         "nodemon": "^2.0.22",
-        "prettier": "2.8.8"
+        "prettier": "2.8.8",
+        "webpack": "^5.85.0",
+        "webpack-cli": "^5.1.2"
     },
     "private": true
 }

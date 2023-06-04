@@ -11,6 +11,9 @@
         "format:check": "prettier --check .",
         "format:write": "prettier --write .",
         "lint": "eslint .",
+        "lint:fix": "npm run lint -- --fix",
+        "lint-staged": "lint-staged",
+        "prepare": "husky install && npm install",
         "start": "http-server ./build",
         "test": "jest",
         "test:watch": "npm run test -- --watch"

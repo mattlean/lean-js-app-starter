@@ -178,7 +178,7 @@ module.exports = {
             'babel-jest',
             {
                 presets: [
-                    ['@babel/preset-env', { targets: { node: 'current' } }],
+                    ['@babel/preset-env', { targets: { node: '18.16' } }],
                 ],
             },
         ],

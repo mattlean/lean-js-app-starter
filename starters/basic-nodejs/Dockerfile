@@ -4,6 +4,6 @@ WORKDIR /code
 
 COPY package.json .
 
-RUN npm install
+RUN npm install --ignore-scripts
 
 CMD ["npm", "run", "dev"]
