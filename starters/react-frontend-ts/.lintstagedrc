@@ -1,1 +1,1 @@
-{ "*": "prettier --ignore-unknown --write", "*.{cjs,js,jsx,ts,tsx}": "eslint" }
+{ "*": "prettier --ignore-unknown --write", "*.{js,jsx,ts,tsx}": "eslint" }
