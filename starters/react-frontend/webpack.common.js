@@ -19,7 +19,10 @@ module.exports = (mode) =>
             },
         },
 
-        compileReact({ include: path.resolve(__dirname, 'src') }, mode),
+        compileReact(
+            { rule: { include: path.resolve(__dirname, 'src') } },
+            mode
+        ),
 
         buildHtml({ title: 'ljas-react-frontend' }),
     ])

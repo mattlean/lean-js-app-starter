@@ -2,7 +2,7 @@ const { compileJs } = require('ljas-webpack')
 const path = require('path')
 const { merge } = require('webpack-merge')
 
-module.exports = merge([
+const config = merge([
     {
         entry: './src/main.js',
 
@@ -24,3 +24,7 @@ module.exports = merge([
         },
     }),
 ])
+
+console.log('DEBUG CONFIG', config, JSON.stringify(config))
+
+module.exports = config

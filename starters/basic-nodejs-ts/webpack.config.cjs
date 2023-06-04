@@ -2,7 +2,7 @@ const compileTs = require('ljas-webpack/compileTs')
 const path = require('path')
 const { merge } = require('webpack-merge')
 
-module.exports = merge([
+const config = merge([
     {
         entry: './src/main.ts',
 
@@ -15,5 +15,9 @@ module.exports = merge([
         target: 'node18.16',
     },
 
-    compileTs({ include: path.resolve(__dirname, 'src') }),
+    compileTs({ rule: { include: path.resolve(__dirname, 'src') } }),
 ])
+
+console.log('DEBUG CONFIG', config.module, JSON.stringify(config))
+
+module.exports = config

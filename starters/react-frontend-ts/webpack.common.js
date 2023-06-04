@@ -20,8 +20,7 @@ module.exports = (mode) =>
         },
 
         compileReactTs(
-            { include: path.resolve(__dirname, 'src') },
-            undefined,
+            { rule: { include: path.resolve(__dirname, 'src') } },
             mode
         ),
 
