@@ -16,12 +16,7 @@ const config = merge([
     },
 
     compileJs({
-        rule: {
-            include: path.resolve(__dirname, 'src'),
-            // This is needed to get around the explicit file extension requirement for imports when
-            // dealing with ECMAScript modules in Node.js.
-            resolve: { fullySpecified: false },
-        },
+        rule: { include: path.resolve(__dirname, 'src') },
     }),
 ])
 

@@ -9,7 +9,7 @@
         "lint": "eslint .",
         "lint:fix": "npm run lint -- --fix",
         "lint-staged": "lint-staged",
-        "prepare": "husky install && npm install"
+        "prepare": "husky install"
     },
     "repository": {
         "type": "git",
@@ -24,6 +24,7 @@
     "workspaces": [
         "starters/basic-nodejs",
         "starters/basic-nodejs-ts",
+        "starters/express-app-ts",
         "starters/react-frontend",
         "starters/react-frontend-ts",
         "ljas-webpack"

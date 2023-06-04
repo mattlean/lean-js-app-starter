@@ -13,7 +13,6 @@
         "lint": "eslint .",
         "lint:fix": "npm run lint -- --fix",
         "lint-staged": "lint-staged",
-        "prepare": "husky install && npm install",
         "start": "http-server ./build",
         "test": "jest",
         "test:watch": "npm run test -- --watch"
@@ -43,10 +42,8 @@
         "fork-ts-checker-webpack-plugin": "^8.0.0",
         "html-webpack-plugin": "^5.5.1",
         "http-server": "^14.1.1",
-        "husky": "^8.0.3",
         "jest": "^29.5.0",
         "jest-environment-jsdom": "^29.5.0",
-        "lint-staged": "^13.2.2",
         "nodemon": "^2.0.22",
         "prettier": "2.8.8",
         "react-test-renderer": "^18.2.0",

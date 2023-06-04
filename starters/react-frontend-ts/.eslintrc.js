@@ -1,5 +1,5 @@
 const RULES_REACT = {
-    'react/jsx-filename-extension': 'error',
+    'react/jsx-filename-extension': ['error', { extensions: ['.jsx', '.tsx'] }],
 }
 
 module.exports = {
@@ -42,7 +42,7 @@ module.exports = {
                 jest: true,
                 node: true,
             },
-            files: ['src/**/*.test.[j]s?(x)'],
+            files: ['src/**/*.test.[jt]s?(x)'],
             extends: [
                 'eslint:recommended',
                 'plugin:react/recommended',
