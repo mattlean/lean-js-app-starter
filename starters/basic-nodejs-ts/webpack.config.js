@@ -1,5 +1,6 @@
 const compileTs = require('ljas-webpack/compileTs')
 const path = require('path')
+const setupNodeExternals = require('ljas-webpack/setupNodeExternals')
 const { merge } = require('webpack-merge')
 
 const config = merge([
@@ -16,6 +17,11 @@ const config = merge([
     },
 
     compileTs({ rule: { include: path.resolve(__dirname, 'src') } }),
+
+    setupNodeExternals({
+        // TODO: remove this before going to prod
+        additionalModuleDirs: ['../../node_modules'],
+    }),
 ])
 
 console.log('DEBUG CONFIG', config.module, JSON.stringify(config))
