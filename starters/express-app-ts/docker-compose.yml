@@ -1,0 +1,34 @@
+version: '3.8'
+services:
+    db:
+        build:
+            dockerfile: db.Dockerfile
+        image: ljas-express-app-ts-db
+        container_name: ljas-express-app-ts-db
+        ports:
+            - '${PORT_DB}:${PORT_DB}'
+        restart: always
+        env_file: .env
+        healthcheck:
+            test:
+                [
+                    'CMD-SHELL',
+                    'pg_isready -d $${POSTGRES_DB} -U $${POSTGRES_USER}',
+                ]
+            interval: 10s
+            timeout: 5s
+            retries: 5
+    app:
+        build: .
+        image: ljas-express-app-ts
+        container_name: ljas-express-app-ts
+        depends_on:
+            db:
+                condition: service_healthy
+        restart: always
+        ports:
+            - '${PORT_APP}:${PORT_APP}'
+            - '${PORT_PRISMA_STUDIO}:${PORT_PRISMA_STUDIO}'
+        volumes:
+            - .:/code
+            - /code/node_modules

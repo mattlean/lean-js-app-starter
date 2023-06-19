@@ -1,0 +1,35 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  uuid      String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  username  String   @unique
+  password  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  notes Note[]
+}
+
+model Note {
+  id        Int      @id @default(autoincrement())
+  uuid      String   @unique @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  title     String?
+  content   String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  ownerUuid String? @db.Uuid
+  belongsTo User?   @relation(fields: [ownerUuid], references: [uuid])
+
+  @@unique([uuid, ownerUuid])
+}
