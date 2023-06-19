@@ -2,6 +2,7 @@
     "info": {
         "_postman_id": "c907d1a3-9b9b-4460-a56a-ef7dbdc29799",
         "name": "Note API",
+        "description": "A REST API for a notes app.",
         "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
         "_exporter_id": "405103"
     },
@@ -17,7 +18,8 @@
                     "host": ["localhost"],
                     "port": "3000",
                     "path": ["api", "v1", "me"]
-                }
+                },
+                "description": "Get the info for the logged in user."
             },
             "response": []
         },
@@ -41,7 +43,8 @@
                     "host": ["localhost"],
                     "port": "3000",
                     "path": ["api", "v1", "login"]
-                }
+                },
+                "description": "Login to the API and retrieve a JSON web token."
             },
             "response": [
                 {
@@ -93,7 +96,8 @@
                     "host": ["localhost"],
                     "port": "3000",
                     "path": ["api", "v1", "register"]
-                }
+                },
+                "description": "Create a new account for the API and retrieve a JSON web token."
             },
             "response": [
                 {
@@ -131,13 +135,13 @@
                 "method": "GET",
                 "header": [],
                 "url": {
-                    "raw": "http://localhost:3000/api/v1/note",
+                    "raw": "http://localhost:3000/api/v1/notes",
                     "protocol": "http",
                     "host": ["localhost"],
                     "port": "3000",
-                    "path": ["api", "v1", "note"]
+                    "path": ["api", "v1", "notes"]
                 },
-                "description": "List notes for the existing user."
+                "description": "List all owned notes."
             },
             "response": []
         },
@@ -156,12 +160,13 @@
                     }
                 },
                 "url": {
-                    "raw": "http://localhost:3000/api/v1/note",
+                    "raw": "http://localhost:3000/api/v1/notes",
                     "protocol": "http",
                     "host": ["localhost"],
                     "port": "3000",
-                    "path": ["api", "v1", "note"]
-                }
+                    "path": ["api", "v1", "notes"]
+                },
+                "description": "Create a new note."
             },
             "response": [
                 {
@@ -179,11 +184,11 @@
                             }
                         },
                         "url": {
-                            "raw": "http://localhost:3000/api/v1/note",
+                            "raw": "http://localhost:3000/api/v1/notes",
                             "protocol": "http",
                             "host": ["localhost"],
                             "port": "3000",
-                            "path": ["api", "v1", "note"]
+                            "path": ["api", "v1", "notes"]
                         }
                     },
                     "_postman_previewlanguage": null,
@@ -206,11 +211,11 @@
                             }
                         },
                         "url": {
-                            "raw": "http://localhost:3000/api/v1/note",
+                            "raw": "http://localhost:3000/api/v1/notes",
                             "protocol": "http",
                             "host": ["localhost"],
                             "port": "3000",
-                            "path": ["api", "v1", "note"]
+                            "path": ["api", "v1", "notes"]
                         }
                     },
                     "_postman_previewlanguage": null,
@@ -226,18 +231,19 @@
                 "method": "GET",
                 "header": [],
                 "url": {
-                    "raw": "http://localhost:3000/api/v1/note/:uuid",
+                    "raw": "http://localhost:3000/api/v1/notes/:uuid",
                     "protocol": "http",
                     "host": ["localhost"],
                     "port": "3000",
-                    "path": ["api", "v1", "note", ":uuid"],
+                    "path": ["api", "v1", "notes", ":uuid"],
                     "variable": [
                         {
                             "key": "uuid",
                             "value": ""
                         }
                     ]
-                }
+                },
+                "description": "Read an owned note."
             },
             "response": [
                 {
@@ -246,11 +252,11 @@
                         "method": "GET",
                         "header": [],
                         "url": {
-                            "raw": "http://localhost:3000/api/v1/note/:uuid",
+                            "raw": "http://localhost:3000/api/v1/notes/:uuid",
                             "protocol": "http",
                             "host": ["localhost"],
                             "port": "3000",
-                            "path": ["api", "v1", "note", ":uuid"],
+                            "path": ["api", "v1", "notes", ":uuid"],
                             "variable": [
                                 {
                                     "key": "uuid",
@@ -281,18 +287,19 @@
                     }
                 },
                 "url": {
-                    "raw": "http://localhost:3000/api/v1/note/:uuid",
+                    "raw": "http://localhost:3000/api/v1/notes/:uuid",
                     "protocol": "http",
                     "host": ["localhost"],
                     "port": "3000",
-                    "path": ["api", "v1", "note", ":uuid"],
+                    "path": ["api", "v1", "notes", ":uuid"],
                     "variable": [
                         {
                             "key": "uuid",
                             "value": ""
                         }
                     ]
-                }
+                },
+                "description": "Update an owned note."
             },
             "response": [
                 {
@@ -310,11 +317,11 @@
                             }
                         },
                         "url": {
-                            "raw": "http://localhost:3000/api/v1/note/:uuid",
+                            "raw": "http://localhost:3000/api/v1/notes/:uuid",
                             "protocol": "http",
                             "host": ["localhost"],
                             "port": "3000",
-                            "path": ["api", "v1", "note", ":uuid"],
+                            "path": ["api", "v1", "notes", ":uuid"],
                             "variable": [
                                 {
                                     "key": "uuid",
@@ -345,18 +352,19 @@
                     }
                 },
                 "url": {
-                    "raw": "http://localhost:3000/api/v1/note/:uuid",
+                    "raw": "http://localhost:3000/api/v1/notes/:uuid",
                     "protocol": "http",
                     "host": ["localhost"],
                     "port": "3000",
-                    "path": ["api", "v1", "note", ":uuid"],
+                    "path": ["api", "v1", "notes", ":uuid"],
                     "variable": [
                         {
                             "key": "uuid",
                             "value": null
                         }
                     ]
-                }
+                },
+                "description": "Patch an owned note."
             },
             "response": [
                 {
@@ -381,15 +389,15 @@
                             }
                         },
                         "url": {
-                            "raw": "http://localhost:3000/api/v1/note/:uuid",
+                            "raw": "http://localhost:3000/api/v1/notes/:uuid",
                             "protocol": "http",
                             "host": ["localhost"],
                             "port": "3000",
-                            "path": ["api", "v1", "note", ":uuid"],
+                            "path": ["api", "v1", "notes", ":uuid"],
                             "variable": [
                                 {
                                     "key": "uuid",
-                                    "value": "86d4fd4b-a16f-4363-9236-62b94fee0a3e"
+                                    "value": "87fb6614-7609-4ccb-997d-df7c0fbc6e67"
                                 }
                             ]
                         }
@@ -407,18 +415,19 @@
                 "method": "DELETE",
                 "header": [],
                 "url": {
-                    "raw": "http://localhost:3000/api/v1/note/:uuid",
+                    "raw": "http://localhost:3000/api/v1/notes/:uuid",
                     "protocol": "http",
                     "host": ["localhost"],
                     "port": "3000",
-                    "path": ["api", "v1", "note", ":uuid"],
+                    "path": ["api", "v1", "notes", ":uuid"],
                     "variable": [
                         {
                             "key": "uuid",
                             "value": ""
                         }
                     ]
-                }
+                },
+                "description": "Delete an owned note."
             },
             "response": [
                 {
@@ -427,11 +436,11 @@
                         "method": "DELETE",
                         "header": [],
                         "url": {
-                            "raw": "http://localhost:3000/api/v1/note/:uuid",
+                            "raw": "http://localhost:3000/api/v1/notes/:uuid",
                             "protocol": "http",
                             "host": ["localhost"],
                             "port": "3000",
-                            "path": ["api", "v1", "note", ":uuid"],
+                            "path": ["api", "v1", "notes", ":uuid"],
                             "variable": [
                                 {
                                     "key": "uuid",

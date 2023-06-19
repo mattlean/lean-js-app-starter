@@ -12,7 +12,7 @@ router.use('/login', loginHandler)
 
 router.use('/me', protectMiddleware, meHandler)
 
-router.use('/note', protectMiddleware, noteHandler)
+router.use('/notes', protectMiddleware, noteHandler)
 
 router.use('/register', registerHandler)
 
