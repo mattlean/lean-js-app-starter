@@ -4,7 +4,7 @@ module.exports = {
         node: true,
     },
     extends: ['eslint:recommended', 'prettier'],
-    ignorePatterns: ['build/'],
+    ignorePatterns: ['build/', 'coverage/'],
     parserOptions: {
         ecmaVersion: '2021',
         sourceType: 'module',

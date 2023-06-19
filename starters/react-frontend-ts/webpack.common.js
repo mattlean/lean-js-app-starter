@@ -10,7 +10,7 @@ const { merge } = require('webpack-merge')
 module.exports = (mode) =>
     merge([
         {
-            entry: './src/main.tsx',
+            entry: './src/index.tsx',
 
             output: {
                 clean: true,
@@ -20,7 +20,17 @@ module.exports = (mode) =>
         },
 
         compileReactTs(
-            { rule: { include: path.resolve(__dirname, 'src') } },
+            {
+                rule: {
+                    include: path.resolve(__dirname, 'src'),
+                    exclude: [
+                        /node_modules/,
+                        /__mocks__\/.*.(j|t)sx?$/,
+                        /__tests__\/.*.(j|t)sx?$/,
+                        /\.(spec|test)\.(j|t)sx?$/,
+                    ],
+                },
+            },
             mode
         ),
 

@@ -26,19 +26,6 @@ const config = merge([
                 /\.(spec|test)\.(j|t)s$/,
             ],
         },
-        // TODO: remove this for prod because it is autoamtically handled by newer ljas-webpack
-        forkTsChecker: {
-            typescript: {
-                configOverwrite: {
-                    exclude: [
-                        '**/__mocks__/**/*.ts',
-                        '**/__tests__/**/*.ts',
-                        '**/*.spec.ts',
-                        '**/*.test.ts',
-                    ],
-                },
-            },
-        },
     }),
 
     setupNodeExternals({

@@ -5,7 +5,7 @@ const { merge } = require('webpack-merge')
 
 const config = merge([
     {
-        entry: './src/main.ts',
+        entry: './src/index.ts',
 
         output: {
             clean: true,
@@ -16,7 +16,17 @@ const config = merge([
         target: 'node18.16',
     },
 
-    compileTs({ rule: { include: path.resolve(__dirname, 'src') } }),
+    compileTs({
+        rule: {
+            include: path.resolve(__dirname, 'src'),
+            exclude: [
+                /node_modules/,
+                /__mocks__\/.*.(j|t)s$/,
+                /__tests__\/.*.(j|t)s$/,
+                /\.(spec|test)\.(j|t)s$/,
+            ],
+        },
+    }),
 
     setupNodeExternals({
         // TODO: remove this before going to prod

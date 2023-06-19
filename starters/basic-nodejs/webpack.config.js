@@ -4,7 +4,7 @@ const { merge } = require('webpack-merge')
 
 const config = merge([
     {
-        entry: './src/main.js',
+        entry: './src/index.js',
 
         output: {
             clean: true,
@@ -16,7 +16,15 @@ const config = merge([
     },
 
     compileJs({
-        rule: { include: path.resolve(__dirname, 'src') },
+        rule: {
+            include: path.resolve(__dirname, 'src'),
+            exclude: [
+                /node_modules/,
+                /__mocks__\/.*.js$/,
+                /__tests__\/.*.js$/,
+                /\.(spec|test)\.js$/,
+            ],
+        },
     }),
 ])
 

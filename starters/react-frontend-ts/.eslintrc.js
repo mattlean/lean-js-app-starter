@@ -8,7 +8,7 @@ module.exports = {
         node: true,
     },
     extends: ['eslint:recommended', 'prettier'],
-    ignorePatterns: ['build/'],
+    ignorePatterns: ['build/', 'coverage/'],
     parserOptions: {
         ecmaVersion: '2021',
         sourceType: 'module',
@@ -42,7 +42,11 @@ module.exports = {
                 jest: true,
                 node: true,
             },
-            files: ['src/**/*.test.[jt]s?(x)'],
+            files: [
+                'src/**/__mocks__/**/*.[jt]s?(x)',
+                'src/**/__tests__/**/*.[jt]s?(x)',
+                'src/**/?(*.)+(spec|test).[jt]s?(x)',
+            ],
             extends: [
                 'eslint:recommended',
                 'plugin:react/recommended',
