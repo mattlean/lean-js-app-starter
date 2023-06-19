@@ -8,67 +8,18 @@
     },
     "item": [
         {
-            "name": "Me",
+            "name": "Ping",
             "request": {
                 "method": "GET",
                 "header": [],
                 "url": {
-                    "raw": "{{BASE_URL}}/api/v1/me",
+                    "raw": "{{BASE_URL}}/api/v1/ping",
                     "host": ["{{BASE_URL}}"],
-                    "path": ["api", "v1", "me"]
+                    "path": ["api", "v1", "ping"]
                 },
-                "description": "Get the info for the logged in user."
+                "description": "A public test route that will respond \"pong\" when requested."
             },
             "response": []
-        },
-        {
-            "name": "Login",
-            "request": {
-                "method": "POST",
-                "header": [],
-                "body": {
-                    "mode": "raw",
-                    "raw": "{}",
-                    "options": {
-                        "raw": {
-                            "language": "json"
-                        }
-                    }
-                },
-                "url": {
-                    "raw": "{{BASE_URL}}/api/v1/login",
-                    "host": ["{{BASE_URL}}"],
-                    "path": ["api", "v1", "login"]
-                },
-                "description": "Login to the API and retrieve a JSON web token."
-            },
-            "response": [
-                {
-                    "name": "Login as \"user\"",
-                    "originalRequest": {
-                        "method": "POST",
-                        "header": [],
-                        "body": {
-                            "mode": "raw",
-                            "raw": "{\n    \"username\": \"user\",\n    \"password\": \"password\"\n}",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
-                        },
-                        "url": {
-                            "raw": "{{BASE_URL}}/api/v1/login",
-                            "host": ["{{BASE_URL}}"],
-                            "path": ["api", "v1", "login"]
-                        }
-                    },
-                    "_postman_previewlanguage": null,
-                    "header": null,
-                    "cookie": [],
-                    "body": null
-                }
-            ]
         },
         {
             "name": "Register",
@@ -89,7 +40,7 @@
                     "host": ["{{BASE_URL}}"],
                     "path": ["api", "v1", "register"]
                 },
-                "description": "Create a new account for the API and retrieve a JSON web token."
+                "description": "Create a new account and retrieve a JSON web token."
             },
             "response": [
                 {
@@ -120,6 +71,69 @@
             ]
         },
         {
+            "name": "Login",
+            "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "{{BASE_URL}}/api/v1/login",
+                    "host": ["{{BASE_URL}}"],
+                    "path": ["api", "v1", "login"]
+                },
+                "description": "Login and retrieve a JSON web token."
+            },
+            "response": [
+                {
+                    "name": "Login as \"user\"",
+                    "originalRequest": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"username\": \"user\",\n    \"password\": \"password\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{BASE_URL}}/api/v1/login",
+                            "host": ["{{BASE_URL}}"],
+                            "path": ["api", "v1", "login"]
+                        }
+                    },
+                    "_postman_previewlanguage": null,
+                    "header": null,
+                    "cookie": [],
+                    "body": null
+                }
+            ]
+        },
+        {
+            "name": "Me",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{BASE_URL}}/api/v1/me",
+                    "host": ["{{BASE_URL}}"],
+                    "path": ["api", "v1", "me"]
+                },
+                "description": "A protected route that retrieves the logged in user's info."
+            },
+            "response": []
+        },
+        {
             "name": "List notes",
             "request": {
                 "method": "GET",
@@ -129,7 +143,7 @@
                     "host": ["{{BASE_URL}}"],
                     "path": ["api", "v1", "notes"]
                 },
-                "description": "List all owned notes."
+                "description": "A protected route that lists all owned notes."
             },
             "response": []
         },
@@ -152,7 +166,7 @@
                     "host": ["{{BASE_URL}}"],
                     "path": ["api", "v1", "notes"]
                 },
-                "description": "Create a new note."
+                "description": "A protected route that creates a new note under the logged in user's ownership."
             },
             "response": [
                 {
@@ -223,7 +237,7 @@
                         }
                     ]
                 },
-                "description": "Read an owned note."
+                "description": "A protected route that reads an owned note."
             },
             "response": [
                 {
@@ -275,7 +289,7 @@
                         }
                     ]
                 },
-                "description": "Update an owned note."
+                "description": "A protected route that updates an owned note."
             },
             "response": [
                 {
@@ -336,7 +350,7 @@
                         }
                     ]
                 },
-                "description": "Patch an owned note."
+                "description": "A protected route that patches an owned note."
             },
             "response": [
                 {
@@ -395,7 +409,7 @@
                         }
                     ]
                 },
-                "description": "Delete an owned note."
+                "description": "A protected route that deletes an owned note."
             },
             "response": [
                 {

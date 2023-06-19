@@ -15,9 +15,9 @@ if (process.env.NODE_ENV === 'development') {
     server.use(morgan('dev'))
 }
 
-server.get('/', (req, res) => {
-    res.json({ data: 'Hello, world!' })
-})
+server.get('/', (req, res) =>
+    res.send(`Notes API is live on port ${process.env.PORT_APP}`)
+)
 
 server.use('/api', apiHandler)
 
