@@ -1,7 +1,7 @@
 {
     "info": {
         "_postman_id": "c907d1a3-9b9b-4460-a56a-ef7dbdc29799",
-        "name": "Note API",
+        "name": "Notes API",
         "description": "A REST API for a notes app.",
         "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
         "_exporter_id": "405103"
@@ -13,10 +13,8 @@
                 "method": "GET",
                 "header": [],
                 "url": {
-                    "raw": "http://localhost:3000/api/v1/me",
-                    "protocol": "http",
-                    "host": ["localhost"],
-                    "port": "3000",
+                    "raw": "{{BASE_URL}}/api/v1/me",
+                    "host": ["{{BASE_URL}}"],
                     "path": ["api", "v1", "me"]
                 },
                 "description": "Get the info for the logged in user."
@@ -38,10 +36,8 @@
                     }
                 },
                 "url": {
-                    "raw": "http://localhost:3000/api/v1/login",
-                    "protocol": "http",
-                    "host": ["localhost"],
-                    "port": "3000",
+                    "raw": "{{BASE_URL}}/api/v1/login",
+                    "host": ["{{BASE_URL}}"],
                     "path": ["api", "v1", "login"]
                 },
                 "description": "Login to the API and retrieve a JSON web token."
@@ -62,10 +58,8 @@
                             }
                         },
                         "url": {
-                            "raw": "http://localhost:3000/api/v1/login",
-                            "protocol": "http",
-                            "host": ["localhost"],
-                            "port": "3000",
+                            "raw": "{{BASE_URL}}/api/v1/login",
+                            "host": ["{{BASE_URL}}"],
                             "path": ["api", "v1", "login"]
                         }
                     },
@@ -91,10 +85,8 @@
                     }
                 },
                 "url": {
-                    "raw": "http://localhost:3000/api/v1/register",
-                    "protocol": "http",
-                    "host": ["localhost"],
-                    "port": "3000",
+                    "raw": "{{BASE_URL}}/api/v1/register",
+                    "host": ["{{BASE_URL}}"],
                     "path": ["api", "v1", "register"]
                 },
                 "description": "Create a new account for the API and retrieve a JSON web token."
@@ -115,10 +107,8 @@
                             }
                         },
                         "url": {
-                            "raw": "http://localhost:3000/api/v1/register",
-                            "protocol": "http",
-                            "host": ["localhost"],
-                            "port": "3000",
+                            "raw": "{{BASE_URL}}/api/v1/register",
+                            "host": ["{{BASE_URL}}"],
                             "path": ["api", "v1", "register"]
                         }
                     },
@@ -135,10 +125,8 @@
                 "method": "GET",
                 "header": [],
                 "url": {
-                    "raw": "http://localhost:3000/api/v1/notes",
-                    "protocol": "http",
-                    "host": ["localhost"],
-                    "port": "3000",
+                    "raw": "{{BASE_URL}}/api/v1/notes",
+                    "host": ["{{BASE_URL}}"],
                     "path": ["api", "v1", "notes"]
                 },
                 "description": "List all owned notes."
@@ -160,10 +148,8 @@
                     }
                 },
                 "url": {
-                    "raw": "http://localhost:3000/api/v1/notes",
-                    "protocol": "http",
-                    "host": ["localhost"],
-                    "port": "3000",
+                    "raw": "{{BASE_URL}}/api/v1/notes",
+                    "host": ["{{BASE_URL}}"],
                     "path": ["api", "v1", "notes"]
                 },
                 "description": "Create a new note."
@@ -184,10 +170,8 @@
                             }
                         },
                         "url": {
-                            "raw": "http://localhost:3000/api/v1/notes",
-                            "protocol": "http",
-                            "host": ["localhost"],
-                            "port": "3000",
+                            "raw": "{{BASE_URL}}/api/v1/notes",
+                            "host": ["{{BASE_URL}}"],
                             "path": ["api", "v1", "notes"]
                         }
                     },
@@ -211,10 +195,8 @@
                             }
                         },
                         "url": {
-                            "raw": "http://localhost:3000/api/v1/notes",
-                            "protocol": "http",
-                            "host": ["localhost"],
-                            "port": "3000",
+                            "raw": "{{BASE_URL}}/api/v1/notes",
+                            "host": ["{{BASE_URL}}"],
                             "path": ["api", "v1", "notes"]
                         }
                     },
@@ -231,10 +213,8 @@
                 "method": "GET",
                 "header": [],
                 "url": {
-                    "raw": "http://localhost:3000/api/v1/notes/:uuid",
-                    "protocol": "http",
-                    "host": ["localhost"],
-                    "port": "3000",
+                    "raw": "{{BASE_URL}}/api/v1/notes/:uuid",
+                    "host": ["{{BASE_URL}}"],
                     "path": ["api", "v1", "notes", ":uuid"],
                     "variable": [
                         {
@@ -252,10 +232,8 @@
                         "method": "GET",
                         "header": [],
                         "url": {
-                            "raw": "http://localhost:3000/api/v1/notes/:uuid",
-                            "protocol": "http",
-                            "host": ["localhost"],
-                            "port": "3000",
+                            "raw": "{{BASE_URL}}/api/v1/notes/:uuid",
+                            "host": ["{{BASE_URL}}"],
                             "path": ["api", "v1", "notes", ":uuid"],
                             "variable": [
                                 {
@@ -287,10 +265,8 @@
                     }
                 },
                 "url": {
-                    "raw": "http://localhost:3000/api/v1/notes/:uuid",
-                    "protocol": "http",
-                    "host": ["localhost"],
-                    "port": "3000",
+                    "raw": "{{BASE_URL}}/api/v1/notes/:uuid",
+                    "host": ["{{BASE_URL}}"],
                     "path": ["api", "v1", "notes", ":uuid"],
                     "variable": [
                         {
@@ -317,10 +293,8 @@
                             }
                         },
                         "url": {
-                            "raw": "http://localhost:3000/api/v1/notes/:uuid",
-                            "protocol": "http",
-                            "host": ["localhost"],
-                            "port": "3000",
+                            "raw": "{{BASE_URL}}/api/v1/notes/:uuid",
+                            "host": ["{{BASE_URL}}"],
                             "path": ["api", "v1", "notes", ":uuid"],
                             "variable": [
                                 {
@@ -352,10 +326,8 @@
                     }
                 },
                 "url": {
-                    "raw": "http://localhost:3000/api/v1/notes/:uuid",
-                    "protocol": "http",
-                    "host": ["localhost"],
-                    "port": "3000",
+                    "raw": "{{BASE_URL}}/api/v1/notes/:uuid",
+                    "host": ["{{BASE_URL}}"],
                     "path": ["api", "v1", "notes", ":uuid"],
                     "variable": [
                         {
@@ -389,10 +361,8 @@
                             }
                         },
                         "url": {
-                            "raw": "http://localhost:3000/api/v1/notes/:uuid",
-                            "protocol": "http",
-                            "host": ["localhost"],
-                            "port": "3000",
+                            "raw": "{{BASE_URL}}/api/v1/notes/:uuid",
+                            "host": ["{{BASE_URL}}"],
                             "path": ["api", "v1", "notes", ":uuid"],
                             "variable": [
                                 {
@@ -415,10 +385,8 @@
                 "method": "DELETE",
                 "header": [],
                 "url": {
-                    "raw": "http://localhost:3000/api/v1/notes/:uuid",
-                    "protocol": "http",
-                    "host": ["localhost"],
-                    "port": "3000",
+                    "raw": "{{BASE_URL}}/api/v1/notes/:uuid",
+                    "host": ["{{BASE_URL}}"],
                     "path": ["api", "v1", "notes", ":uuid"],
                     "variable": [
                         {
@@ -436,10 +404,8 @@
                         "method": "DELETE",
                         "header": [],
                         "url": {
-                            "raw": "http://localhost:3000/api/v1/notes/:uuid",
-                            "protocol": "http",
-                            "host": ["localhost"],
-                            "port": "3000",
+                            "raw": "{{BASE_URL}}/api/v1/notes/:uuid",
+                            "host": ["{{BASE_URL}}"],
                             "path": ["api", "v1", "notes", ":uuid"],
                             "variable": [
                                 {
