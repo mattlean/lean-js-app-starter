@@ -37,7 +37,7 @@ Because Docker is limited to a subset of your host computer's resources, it is i
 
 **Dependencies can cause inconveniences if your editor is running natively.**  
 TODO:
-Editor extensions like ESLint depend on node_modules, but if you're running the services within containers, node_modules will be unaccessible on your editor running natively. To get around this you will need to have two different installations of node_modules (one in the container, and the other natively) or you will need to develop within the context of the container.
+Editor extensions like ESLint depend on `node_modules`, but if you're running the services within containers, `node_modules` will be unaccessible on your editor running natively. To get around this you will need to have two different installations of `node_modules` (one in the container, and the other natively) or you will need to develop within the context of the container.
 
 VS Code has the best documented way on how to do this, but this means that you will have to VS Code which is a problem if you prefer something else. Also, if the container crashes, the connected VS Code instance will crash as well which can be inconvenient.
 

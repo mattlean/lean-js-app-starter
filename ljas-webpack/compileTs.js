@@ -1,5 +1,6 @@
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
 const { compileJs } = require('./')
+const { FORK_TS_CHECKER_DEFAULT_OPTIONS } = require('./constants')
 
 /**
  * Compile TypeScript code with babel-loader:
@@ -16,7 +17,7 @@ const { compileJs } = require('./')
  * @param {Object} [options.babelLoader] babel-loader options. Setting this will override Babel preset options. (https://webpack.js.org/loaders/babel-loader/#options)
  * @param {Object} [options.babelPresetEnv] Babel's preset-env options. Will be overwritten by `options.babelLoader` if it is set. (https://babeljs.io/docs/babel-preset-env#options)
  * @param {Object} [options.babelPresetTypeScript] Babel's preset-typescript options. Will be overwritten by `options.babelLoader` if it is set. (https://babeljs.io/docs/babel-preset-env#options)
- * @param {Object} [options.forkTsChecker] Options for Fork TS Checker Webpack Plugin. Will be overwritten by `options.plugins` if it is set. (https://github.com/TypeStrong/fork-ts-checker-webpack-plugin#options)
+ * @param {Object} [options.forkTsChecker] Options for Fork TS Checker Webpack Plugin. By default it overrides TSConfig's exclude option to ignore tests. Will be overwritten by `options.plugins` if it is set. (https://github.com/TypeStrong/fork-ts-checker-webpack-plugin#options)
  * @param {Object} [options.plugins] webpack's plugins option. Setting this will override `options.forkTsChecker`. (https://webpack.js.org/configuration/plugins)
  * @param {Object} [options.resolve] webpack's resolve option. (https://webpack.js.org/configuration/resolve)
  * @param {Object} [options.rule] webpack rule. (https://webpack.js.org/configuration/module/#rule)
@@ -49,7 +50,9 @@ module.exports = (options) =>
             test: options?.rule?.test ?? /\.[jt]s$/,
         },
         plugins: options?.plugins ?? [
-            new ForkTsCheckerWebpackPlugin(options?.forkTsChecker),
+            new ForkTsCheckerWebpackPlugin(
+                options?.forkTsChecker ?? FORK_TS_CHECKER_DEFAULT_OPTIONS
+            ),
         ],
         resolve: {
             extensions: ['.js', '.json', '.ts', '.wasm'],

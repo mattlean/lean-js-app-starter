@@ -24,7 +24,7 @@
  * @param {RegExp} [options.rule.exclude=/node_modules/] Exclude option associated with the webpack rule. (https://webpack.js.org/configuration/module/#ruleexclude)
  * @param {RegExp} [options.rule.include] Include option associated with the webpack rule. It is recommended to set this to improve build performance. (https://webpack.js.org/configuration/module/#ruleinclude)
  * @param {Object} [options.rule.resolve] Resolve option associated with the webpack rule. (https://webpack.js.org/configuration/module/#ruleresolve)
- * @param {RegExp} [options.rule.test=/\.js?$/] Test option associated with the webpack rule. (https://webpack.js.org/configuration/module/#ruletest)
+ * @param {RegExp} [options.rule.test=/\.js$/] Test option associated with the webpack rule. (https://webpack.js.org/configuration/module/#ruletest)
  * @param {Object} [options.rule.use] webpack UseEntry associated with the webpack rule. Be careful, setting this will override most, if not all, default behavior provided by this function. (https://webpack.js.org/configuration/module/#useentry)
  * @return {Object} A webpack configuration object that sets up babel-loader.
  */
@@ -50,7 +50,7 @@ exports.compileJs = (options) => ({
                     },
                 },
                 ...options?.rule,
-                test: options?.rule?.test ?? /\.js?$/,
+                test: options?.rule?.test ?? /\.js$/,
                 exclude: options?.rule?.exclude ?? /node_modules/,
             },
         ],
