@@ -7,6 +7,21 @@
     },
     "item": [
         {
+            "name": "Me",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "http://localhost:3000/api/v1/me",
+                    "protocol": "http",
+                    "host": ["localhost"],
+                    "port": "3000",
+                    "path": ["api", "v1", "me"]
+                }
+            },
+            "response": []
+        },
+        {
             "name": "Login",
             "request": {
                 "method": "POST",
@@ -30,7 +45,7 @@
             },
             "response": [
                 {
-                    "name": "Login with \"user\"",
+                    "name": "Login as \"user\"",
                     "originalRequest": {
                         "method": "POST",
                         "header": [],
@@ -59,7 +74,7 @@
             ]
         },
         {
-            "name": "Sign-up",
+            "name": "Register",
             "request": {
                 "method": "POST",
                 "header": [],
@@ -73,16 +88,16 @@
                     }
                 },
                 "url": {
-                    "raw": "http://localhost:3000/api/v1/user",
+                    "raw": "http://localhost:3000/api/v1/register",
                     "protocol": "http",
                     "host": ["localhost"],
                     "port": "3000",
-                    "path": ["api", "v1", "user"]
+                    "path": ["api", "v1", "register"]
                 }
             },
             "response": [
                 {
-                    "name": "Sign-up as \"user\"",
+                    "name": "Register as \"user\"",
                     "originalRequest": {
                         "method": "POST",
                         "header": [],
@@ -96,11 +111,11 @@
                             }
                         },
                         "url": {
-                            "raw": "http://localhost:3000/api/v1/user",
+                            "raw": "http://localhost:3000/api/v1/register",
                             "protocol": "http",
                             "host": ["localhost"],
                             "port": "3000",
-                            "path": ["api", "v1", "user"]
+                            "path": ["api", "v1", "register"]
                         }
                     },
                     "_postman_previewlanguage": null,
@@ -183,7 +198,7 @@
                         "header": [],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"content\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel faucibus turpis. Donec ut leo in nunc mollis porttitor. Phasellus eget mauris id augue condimentum pretium id ac felis. Sed ac mi ut turpis fringilla porttitor in ac metus. In pulvinar tincidunt lacus, eget condimentum ex malesuada tempus. Pellentesque vitae augue neque. Aenean egestas diam sit amet orci tempor rhoncus. Praesent congue non ipsum sit amet pharetra. Sed fringilla diam tellus, gravida pharetra est faucibus et.\"\n}",
+                            "raw": "{\n    \"content\": \"Note with only content!\"\n}",
                             "options": {
                                 "raw": {
                                     "language": "json"
@@ -287,7 +302,7 @@
                         "header": [],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"title\": \"Updated title!\",\n    \"content\": \"Updated content!\"\n}",
+                            "raw": "{\n    \"title\": \"Updated Title\",\n    \"content\": \"Updated content!\"\n}",
                             "options": {
                                 "raw": {
                                     "language": "json"
@@ -304,6 +319,77 @@
                                 {
                                     "key": "uuid",
                                     "value": "87fb6614-7609-4ccb-997d-df7c0fbc6e67"
+                                }
+                            ]
+                        }
+                    },
+                    "_postman_previewlanguage": null,
+                    "header": null,
+                    "cookie": [],
+                    "body": null
+                }
+            ]
+        },
+        {
+            "name": "Patch note",
+            "request": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "http://localhost:3000/api/v1/note/:uuid",
+                    "protocol": "http",
+                    "host": ["localhost"],
+                    "port": "3000",
+                    "path": ["api", "v1", "note", ":uuid"],
+                    "variable": [
+                        {
+                            "key": "uuid",
+                            "value": null
+                        }
+                    ]
+                }
+            },
+            "response": [
+                {
+                    "name": "Patch note content with UUID",
+                    "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "name": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"content\": \"Patched content!\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "http://localhost:3000/api/v1/note/:uuid",
+                            "protocol": "http",
+                            "host": ["localhost"],
+                            "port": "3000",
+                            "path": ["api", "v1", "note", ":uuid"],
+                            "variable": [
+                                {
+                                    "key": "uuid",
+                                    "value": "86d4fd4b-a16f-4363-9236-62b94fee0a3e"
                                 }
                             ]
                         }

@@ -32,7 +32,7 @@ export const MOCK_NOTE_W_CONTENT: Note = {
     id: 3,
     uuid: '10d17a59-2635-449a-9156-b5d5db52c6aa',
     title: null,
-    content: 'Foobaz!',
+    content: 'Note with only content!',
     createdAt: new Date('2023-06-17T05:26:54.938Z'),
     updatedAt: new Date('2023-06-17T05:26:54.938Z'),
     ownerUuid: MOCK_USER.uuid,
@@ -41,7 +41,7 @@ export const MOCK_NOTE_W_CONTENT: Note = {
 export const MOCK_NOTE_W_TITLE: Note = {
     id: 2,
     uuid: '9d068e92-b576-49eb-a897-421ee5cca57c',
-    title: 'Foobar',
+    title: 'Note With Only Title',
     content: null,
     createdAt: new Date('2023-06-17T05:26:35.829Z'),
     updatedAt: new Date('2023-06-17T05:26:35.829Z'),
@@ -51,9 +51,8 @@ export const MOCK_NOTE_W_TITLE: Note = {
 export const MOCK_NOTE_W_TITLE_CONTENT: Note = {
     id: 4,
     uuid: '68da4a00-16cf-4df1-874a-b90cc0ed8121',
-    title: 'Lorem Ipsum',
-    content:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut consectetur suscipit elementum. Vivamus a est magna. Nulla in metus elementum, eleifend lectus et, consequat massa.',
+    title: 'Note With Title & Content',
+    content: 'Note with title and content!',
     createdAt: new Date('2023-06-17T06:25:33.165Z'),
     updatedAt: new Date('2023-06-17T06:25:33.165Z'),
     ownerUuid: MOCK_USER.uuid,

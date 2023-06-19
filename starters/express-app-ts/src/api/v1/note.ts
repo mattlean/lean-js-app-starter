@@ -164,6 +164,44 @@ router.put(
     (req, res) => res.json({ data: res.locals.data })
 )
 
+// Patch a note
+router.patch(
+    '/:uuid',
+    noteValidationChain(),
+    validateErrorMiddleware,
+    async (req, res, next) => {
+        try {
+            res.locals.note = await prisma.note.update({
+                where: {
+                    uuid_ownerUuid: {
+                        uuid: req.params.uuid,
+                        ownerUuid: req.user.uuid,
+                    },
+                },
+                data: {
+                    title: req.body.title,
+                    content: req.body.content,
+                },
+            })
+        } catch (err) {
+            if (
+                isPrismaKnownRequestError(err) &&
+                err.code === 'P2025' &&
+                typeof err.meta?.cause === 'string' &&
+                err.meta?.cause?.match(/record to update not found/i)
+            ) {
+                return next(new ServerError('notFound', undefined, err))
+            }
+
+            return next(err)
+        }
+
+        return next()
+    },
+    genNoteDataMiddleware,
+    (req, res) => res.json({ data: res.locals.data })
+)
+
 // Delete a note
 router.delete(
     '/:uuid',

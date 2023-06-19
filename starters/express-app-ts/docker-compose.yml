@@ -9,6 +9,8 @@ services:
             - '${PORT_DB}:${PORT_DB}'
         restart: always
         env_file: .env
+        volumes:
+            - notes-db-data:/var/lib/postgresql/data
         healthcheck:
             test:
                 [
@@ -32,3 +34,5 @@ services:
         volumes:
             - .:/code
             - /code/node_modules
+volumes:
+    notes-db-data:

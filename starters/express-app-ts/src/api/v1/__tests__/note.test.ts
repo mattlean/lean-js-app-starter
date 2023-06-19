@@ -253,8 +253,8 @@ describe('list notes endpoint', () => {
 })
 
 describe('update note endpoint', () => {
-    const NEW_TITLE = 'New Title'
-    const NEW_CONTENT = 'New content!'
+    const UPDATED_TITLE = 'Updated Title'
+    const UPDATED_CONTENT = 'Updated content!'
     const NEW_UPDATED_AT = new Date()
 
     it('returns note with updated title when authorized', async () => {
@@ -263,7 +263,7 @@ describe('update note endpoint', () => {
         )
         prismaMock.note.update.mockResolvedValue({
             ...MOCK_NOTE_W_TITLE_CONTENT,
-            title: NEW_TITLE,
+            title: UPDATED_TITLE,
             updatedAt: NEW_UPDATED_AT,
         })
 
@@ -272,13 +272,13 @@ describe('update note endpoint', () => {
         const res = await request(server)
             .put(`/api/v1/note/${MOCK_NOTE_W_TITLE_CONTENT.uuid}`)
             .send({
-                title: NEW_TITLE,
+                title: UPDATED_TITLE,
                 content: MOCK_NOTE_W_TITLE_CONTENT.content,
             })
 
         expect(res.status).toBe(200)
         expect(res.body.data.uuid).toBe(MOCK_NOTE_W_TITLE_CONTENT.uuid)
-        expect(res.body.data.title).toBe(NEW_TITLE)
+        expect(res.body.data.title).toBe(UPDATED_TITLE)
         expect(res.body.data.content).toBe(MOCK_NOTE_W_TITLE_CONTENT.content)
         expect(new Date(res.body.data.createdAt).getTime()).toBe(
             MOCK_NOTE_W_TITLE_CONTENT.createdAt.getTime()
@@ -294,7 +294,7 @@ describe('update note endpoint', () => {
         )
         prismaMock.note.update.mockResolvedValue({
             ...MOCK_NOTE_W_TITLE_CONTENT,
-            content: NEW_CONTENT,
+            content: UPDATED_CONTENT,
             updatedAt: NEW_UPDATED_AT,
         })
 
@@ -304,13 +304,13 @@ describe('update note endpoint', () => {
             .put(`/api/v1/note/${MOCK_NOTE_W_TITLE_CONTENT.uuid}`)
             .send({
                 title: MOCK_NOTE_W_TITLE_CONTENT.title,
-                content: NEW_CONTENT,
+                content: UPDATED_CONTENT,
             })
 
         expect(res.status).toBe(200)
         expect(res.body.data.uuid).toBe(MOCK_NOTE_W_TITLE_CONTENT.uuid)
         expect(res.body.data.title).toBe(MOCK_NOTE_W_TITLE_CONTENT.title)
-        expect(res.body.data.content).toBe(NEW_CONTENT)
+        expect(res.body.data.content).toBe(UPDATED_CONTENT)
         expect(new Date(res.body.data.createdAt).getTime()).toBe(
             MOCK_NOTE_W_TITLE_CONTENT.createdAt.getTime()
         )
@@ -325,8 +325,8 @@ describe('update note endpoint', () => {
         )
         prismaMock.note.update.mockResolvedValue({
             ...MOCK_NOTE_W_TITLE_CONTENT,
-            title: NEW_TITLE,
-            content: NEW_CONTENT,
+            title: UPDATED_TITLE,
+            content: UPDATED_CONTENT,
             updatedAt: NEW_UPDATED_AT,
         })
 
@@ -335,14 +335,14 @@ describe('update note endpoint', () => {
         const res = await request(server)
             .put(`/api/v1/note/${MOCK_NOTE_W_TITLE_CONTENT.uuid}`)
             .send({
-                title: NEW_TITLE,
-                content: NEW_CONTENT,
+                title: UPDATED_TITLE,
+                content: UPDATED_CONTENT,
             })
 
         expect(res.status).toBe(200)
         expect(res.body.data.uuid).toBe(MOCK_NOTE_W_TITLE_CONTENT.uuid)
-        expect(res.body.data.title).toBe(NEW_TITLE)
-        expect(res.body.data.content).toBe(NEW_CONTENT)
+        expect(res.body.data.title).toBe(UPDATED_TITLE)
+        expect(res.body.data.content).toBe(UPDATED_CONTENT)
         expect(new Date(res.body.data.createdAt).getTime()).toBe(
             MOCK_NOTE_W_TITLE_CONTENT.createdAt.getTime()
         )
@@ -358,7 +358,7 @@ describe('update note endpoint', () => {
         prismaMock.note.update.mockResolvedValue({
             ...MOCK_NOTE_W_TITLE_CONTENT,
             title: null,
-            content: NEW_CONTENT,
+            content: UPDATED_CONTENT,
             updatedAt: NEW_UPDATED_AT,
         })
 
@@ -366,12 +366,12 @@ describe('update note endpoint', () => {
 
         const res = await request(server)
             .put(`/api/v1/note/${MOCK_NOTE_W_TITLE_CONTENT.uuid}`)
-            .send({ content: NEW_CONTENT })
+            .send({ content: UPDATED_CONTENT })
 
         expect(res.status).toBe(200)
         expect(res.body.data.uuid).toBe(MOCK_NOTE_W_TITLE_CONTENT.uuid)
         expect(res.body.data.title).toBe(null)
-        expect(res.body.data.content).toBe(NEW_CONTENT)
+        expect(res.body.data.content).toBe(UPDATED_CONTENT)
         expect(new Date(res.body.data.createdAt).getTime()).toBe(
             MOCK_NOTE_W_TITLE_CONTENT.createdAt.getTime()
         )
@@ -386,7 +386,7 @@ describe('update note endpoint', () => {
         )
         prismaMock.note.update.mockResolvedValue({
             ...MOCK_NOTE_W_TITLE_CONTENT,
-            title: NEW_TITLE,
+            title: UPDATED_TITLE,
             content: null,
             updatedAt: NEW_UPDATED_AT,
         })
@@ -395,11 +395,11 @@ describe('update note endpoint', () => {
 
         const res = await request(server)
             .put(`/api/v1/note/${MOCK_NOTE_W_TITLE_CONTENT.uuid}`)
-            .send({ title: NEW_TITLE })
+            .send({ title: UPDATED_TITLE })
 
         expect(res.status).toBe(200)
         expect(res.body.data.uuid).toBe(MOCK_NOTE_W_TITLE_CONTENT.uuid)
-        expect(res.body.data.title).toBe(NEW_TITLE)
+        expect(res.body.data.title).toBe(UPDATED_TITLE)
         expect(res.body.data.content).toBe(null)
         expect(new Date(res.body.data.createdAt).getTime()).toBe(
             MOCK_NOTE_W_TITLE_CONTENT.createdAt.getTime()
@@ -409,7 +409,7 @@ describe('update note endpoint', () => {
         )
     })
 
-    it('returns note with null title & content when title & content are excluded when authorized', async () => {
+    it('returns note with null title & content when request payload is empty when authorized', async () => {
         protectMiddlewareMock.mockImplementation(
             genProtectMiddlewareAuthImpl(MOCK_REQ_USER)
         )
@@ -458,7 +458,7 @@ describe('update note endpoint', () => {
 
         const res = await request(server)
             .put(`/api/v1/note/${MOCK_NOTE_EMPTY.uuid}`)
-            .send({ content: NEW_CONTENT })
+            .send({ content: UPDATED_CONTENT })
 
         expect(res.status).toBe(404)
         expect(res.body.errors).toHaveLength(1)
@@ -471,6 +471,172 @@ describe('update note endpoint', () => {
         expect.assertions(3)
 
         const res = await request(server).put(
+            `/api/v1/note/${MOCK_NOTE_EMPTY.uuid}`
+        )
+
+        expect(res.status).toBe(401)
+        expect(res.body.errors).toHaveLength(1)
+        expect(res.body.errors[0]).toBe('Unauthorized')
+    })
+})
+
+describe('patch note endpoint', () => {
+    const PATCHED_TITLE = 'Patched Title'
+    const PATCHED_CONTENT = 'Patched content!'
+    const NEW_UPDATED_AT = new Date()
+
+    it('returns note with patched title when authorized', async () => {
+        protectMiddlewareMock.mockImplementation(
+            genProtectMiddlewareAuthImpl(MOCK_REQ_USER)
+        )
+        prismaMock.note.update.mockResolvedValue({
+            ...MOCK_NOTE_W_TITLE_CONTENT,
+            title: PATCHED_TITLE,
+            updatedAt: NEW_UPDATED_AT,
+        })
+
+        expect.assertions(6)
+
+        const res = await request(server)
+            .patch(`/api/v1/note/${MOCK_NOTE_W_TITLE_CONTENT.uuid}`)
+            .send({
+                title: PATCHED_TITLE,
+            })
+
+        expect(res.status).toBe(200)
+        expect(res.body.data.uuid).toBe(MOCK_NOTE_W_TITLE_CONTENT.uuid)
+        expect(res.body.data.title).toBe(PATCHED_TITLE)
+        expect(res.body.data.content).toBe(MOCK_NOTE_W_TITLE_CONTENT.content)
+        expect(new Date(res.body.data.createdAt).getTime()).toBe(
+            MOCK_NOTE_W_TITLE_CONTENT.createdAt.getTime()
+        )
+        expect(new Date(res.body.data.updatedAt).getTime()).toBe(
+            NEW_UPDATED_AT.getTime()
+        )
+    })
+
+    it('returns note with patched content when authorized', async () => {
+        protectMiddlewareMock.mockImplementation(
+            genProtectMiddlewareAuthImpl(MOCK_REQ_USER)
+        )
+        prismaMock.note.update.mockResolvedValue({
+            ...MOCK_NOTE_W_TITLE_CONTENT,
+            content: PATCHED_CONTENT,
+            updatedAt: NEW_UPDATED_AT,
+        })
+
+        expect.assertions(6)
+
+        const res = await request(server)
+            .patch(`/api/v1/note/${MOCK_NOTE_W_TITLE_CONTENT.uuid}`)
+            .send({
+                content: PATCHED_CONTENT,
+            })
+
+        expect(res.status).toBe(200)
+        expect(res.body.data.uuid).toBe(MOCK_NOTE_W_TITLE_CONTENT.uuid)
+        expect(res.body.data.title).toBe(MOCK_NOTE_W_TITLE_CONTENT.title)
+        expect(res.body.data.content).toBe(PATCHED_CONTENT)
+        expect(new Date(res.body.data.createdAt).getTime()).toBe(
+            MOCK_NOTE_W_TITLE_CONTENT.createdAt.getTime()
+        )
+        expect(new Date(res.body.data.updatedAt).getTime()).toBe(
+            NEW_UPDATED_AT.getTime()
+        )
+    })
+
+    it('returns note with patched title & content when authorized', async () => {
+        protectMiddlewareMock.mockImplementation(
+            genProtectMiddlewareAuthImpl(MOCK_REQ_USER)
+        )
+        prismaMock.note.update.mockResolvedValue({
+            ...MOCK_NOTE_W_TITLE_CONTENT,
+            title: PATCHED_TITLE,
+            content: PATCHED_CONTENT,
+            updatedAt: NEW_UPDATED_AT,
+        })
+
+        expect.assertions(6)
+
+        const res = await request(server)
+            .patch(`/api/v1/note/${MOCK_NOTE_W_TITLE_CONTENT.uuid}`)
+            .send({
+                title: PATCHED_TITLE,
+                content: PATCHED_CONTENT,
+            })
+
+        expect(res.status).toBe(200)
+        expect(res.body.data.uuid).toBe(MOCK_NOTE_W_TITLE_CONTENT.uuid)
+        expect(res.body.data.title).toBe(PATCHED_TITLE)
+        expect(res.body.data.content).toBe(PATCHED_CONTENT)
+        expect(new Date(res.body.data.createdAt).getTime()).toBe(
+            MOCK_NOTE_W_TITLE_CONTENT.createdAt.getTime()
+        )
+        expect(new Date(res.body.data.updatedAt).getTime()).toBe(
+            NEW_UPDATED_AT.getTime()
+        )
+    })
+
+    it('returns note with same title & content when request payload is empty when authorized', async () => {
+        protectMiddlewareMock.mockImplementation(
+            genProtectMiddlewareAuthImpl(MOCK_REQ_USER)
+        )
+        prismaMock.note.update.mockResolvedValue({
+            ...MOCK_NOTE_W_TITLE_CONTENT,
+            updatedAt: NEW_UPDATED_AT,
+        })
+
+        expect.assertions(6)
+
+        const res = await request(server).patch(
+            `/api/v1/note/${MOCK_NOTE_W_TITLE_CONTENT.uuid}`
+        )
+
+        expect(res.status).toBe(200)
+        expect(res.body.data.uuid).toBe(MOCK_NOTE_W_TITLE_CONTENT.uuid)
+        expect(res.body.data.title).toBe(MOCK_NOTE_W_TITLE_CONTENT.title)
+        expect(res.body.data.content).toBe(MOCK_NOTE_W_TITLE_CONTENT.content)
+        expect(new Date(res.body.data.createdAt).getTime()).toBe(
+            MOCK_NOTE_W_TITLE_CONTENT.createdAt.getTime()
+        )
+        expect(new Date(res.body.data.updatedAt).getTime()).toBe(
+            NEW_UPDATED_AT.getTime()
+        )
+    })
+
+    it('returns 404 when updating an inaccessible note when authorized', async () => {
+        protectMiddlewareMock.mockImplementation(
+            genProtectMiddlewareAuthImpl(MOCK_REQ_USER)
+        )
+        prismaMock.note.update.mockImplementation(() => {
+            const err = new Prisma.PrismaClientKnownRequestError(
+                '\nInvalid `prisma.note.update()` invocation:\n\n\nAn operation failed because it depends on one or more records that were required but not found. Record to update not found.',
+                {
+                    clientVersion: '4.15.0',
+                    code: 'P2025',
+                    meta: { cause: 'Record to update not found.' },
+                }
+            )
+            throw err
+        })
+
+        expect.assertions(3)
+
+        const res = await request(server)
+            .patch(`/api/v1/note/${MOCK_NOTE_EMPTY.uuid}`)
+            .send({ content: PATCHED_CONTENT })
+
+        expect(res.status).toBe(404)
+        expect(res.body.errors).toHaveLength(1)
+        expect(res.body.errors[0]).toBe('Not found')
+    })
+
+    it('returns 401 when unauthorized', async () => {
+        protectMiddlewareMock.mockImplementation(restoreProtectMiddlewareImpl)
+
+        expect.assertions(3)
+
+        const res = await request(server).patch(
             `/api/v1/note/${MOCK_NOTE_EMPTY.uuid}`
         )
 
