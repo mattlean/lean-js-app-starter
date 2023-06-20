@@ -1,4 +1,7 @@
 {
-    "recommendations": ["dbaeumer.vscode-eslint", "esbenp.prettier-vscode"],
-    "unwantedRecommendations": []
+    "recommendations": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "ms-azuretools.vscode-docker"
+    ]
 }

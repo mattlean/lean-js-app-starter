@@ -4,6 +4,5 @@
         "esbenp.prettier-vscode",
         "ms-azuretools.vscode-docker",
         "prisma.prisma"
-    ],
-    "unwantedRecommendations": []
+    ]
 }
