@@ -20,15 +20,13 @@ module.exports = {
     // collectCoverage: false,
 
     // An array of glob patterns indicating a set of files for which coverage information should be collected
-    // collectCoverageFrom: undefined,
+    collectCoverageFrom: ['src/**/*.[jt]s?(x)'],
 
     // The directory where Jest should output its coverage files
     // coverageDirectory: undefined,
 
     // An array of regexp pattern strings used to skip coverage collection
-    // coveragePathIgnorePatterns: [
-    //   "/node_modules/"
-    // ],
+    coveragePathIgnorePatterns: ['/node_modules/', '.d.ts$'],
 
     // Indicates which provider should be used to instrument code for coverage
     coverageProvider: 'v8',
@@ -91,7 +89,7 @@ module.exports = {
     // moduleNameMapper: {},
 
     // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
-    // modulePathIgnorePatterns: [],
+    modulePathIgnorePatterns: ['MOCK'],
 
     // Activates notifications for test results
     // notify: false,
