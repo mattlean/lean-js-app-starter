@@ -1,4 +1,4 @@
-const { compileJs } = require('ljas-webpack')
+const { compileJs, setupNodeExternals } = require('ljas-webpack')
 const path = require('path')
 const { merge } = require('webpack-merge')
 
@@ -25,6 +25,11 @@ const config = merge([
                 /\.(spec|test)\.js$/,
             ],
         },
+    }),
+
+    setupNodeExternals({
+        // TODO: remove this before going to prod
+        additionalModuleDirs: ['../../node_modules'],
     }),
 ])
 
