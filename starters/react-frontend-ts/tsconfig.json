@@ -1,8 +1,10 @@
 {
     "compilerOptions": {
         "allowJs": true,
+        "esModuleInterop": true,
         "noEmit": true,
-        "jsx": "react-jsxdev"
+        "jsx": "react-jsxdev",
+        "strictNullChecks": true
     },
     "include": ["src/**/*"]
 }
