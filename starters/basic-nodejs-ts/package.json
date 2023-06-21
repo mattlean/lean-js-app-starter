@@ -6,7 +6,7 @@
     "scripts": {
         "build": "webpack --mode development",
         "check-types": "tsc",
-        "dev": "nodemon --exec \"npm run build && npm start\"",
+        "dev": "concurrently --names \"📦 webpack,🌐 express\" \"npm run build -- --watch\" \"nodemon build/app.js\"",
         "format": "npm run format:check",
         "format:check": "prettier --check .",
         "format:write": "prettier --write .",
@@ -39,6 +39,7 @@
         "@types/jest": "^29.5.2",
         "@typescript-eslint/eslint-plugin": "^5.59.8",
         "@typescript-eslint/parser": "^5.59.8",
+        "concurrently": "^8.2.0",
         "eslint": "^8.41.0",
         "eslint-config-prettier": "^8.8.0",
         "eslint-plugin-jest": "^27.2.1",

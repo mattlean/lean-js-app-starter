@@ -1,8 +1,6 @@
 {
-    "ext": "js,json,ts",
-    "ignore": ["src/**/*.test.[jt]s"],
     "watch": [
-        "src/",
+        "build/",
         "nodemon.json",
         "package.json",
         "tsconfig.json",

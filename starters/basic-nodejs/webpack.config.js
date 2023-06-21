@@ -1,5 +1,6 @@
-const { compileJs, setupNodeExternals } = require('ljas-webpack')
+const { compileJs } = require('ljas-webpack')
 const path = require('path')
+const setupNodeExternals = require('ljas-webpack/setupNodeExternals')
 const { merge } = require('webpack-merge')
 
 const config = merge([
