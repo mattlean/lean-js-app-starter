@@ -13,10 +13,6 @@ else
     echo "${prefix} Package dependency installation completed!"
 fi
 
-echo "${prefix} Starting the database dev migrations..."
-npm run prisma migrate dev
-echo "${prefix} Database dev migrations completed!"
-
 if [ -f "./build/app.js" ]
 then
     echo "${prefix} The build already exists, so skip the initial build process."

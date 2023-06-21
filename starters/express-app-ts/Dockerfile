@@ -8,4 +8,4 @@ COPY package.json .
 
 RUN npm install
 
-CMD ["bash", "init.sh"]
+CMD bash init.sh && npm run dev
