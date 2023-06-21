@@ -5,9 +5,9 @@ services:
             dockerfile: db.Dockerfile
         image: ljas-express-app-ts-db
         container_name: ljas-express-app-ts-db
+        restart: always
         ports:
             - '${PORT_DB}:${PORT_DB}'
-        restart: always
         env_file: .env
         volumes:
             - notes-db-data:/var/lib/postgresql/data

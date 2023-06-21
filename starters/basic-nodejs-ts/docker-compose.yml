@@ -4,8 +4,9 @@ services:
         build: .
         image: 'ljas-basic-nodejs-ts'
         container_name: 'ljas-basic-nodejs-ts'
+        restart: always
         ports:
-            - '3000:3000'
+            - '${PORT}:${PORT}'
         volumes:
             - .:/code
             - /code/node_modules
