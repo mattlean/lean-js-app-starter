@@ -1,5 +1,5 @@
 {
-    "name": "ljas-express-app-ts",
+    "name": "ljas-notes-api",
     "version": "0.2.0",
     "description": "",
     "main": "build/app.js",
@@ -20,7 +20,7 @@
         "test:coverage": "npm run test -- --coverage",
         "test:watch": "npm run test -- --watch || npm run test -- --watchAll"
     },
-    "author": "",
+    "author": "Matthew Lean <matt@mattlean.com> (https://mattlean.com)",
     "dependencies": {
         "@babel/cli": "^7.21.5",
         "@babel/core": "^7.22.1",

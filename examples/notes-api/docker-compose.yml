@@ -3,8 +3,8 @@ services:
     db:
         build:
             dockerfile: db.Dockerfile
-        image: ljas-express-app-ts-db
-        container_name: ljas-express-app-ts-db
+        image: ljas-notes-api-db
+        container_name: ljas-notes-api-db
         restart: always
         ports:
             - '${PORT_DB}:${PORT_DB}'
@@ -22,8 +22,8 @@ services:
             retries: 5
     app:
         build: .
-        image: ljas-express-app-ts
-        container_name: ljas-express-app-ts
+        image: ljas-notes-api
+        container_name: ljas-notes-api
         depends_on:
             db:
                 condition: service_healthy
