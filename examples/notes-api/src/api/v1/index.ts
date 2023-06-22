@@ -8,7 +8,7 @@ import { registerHandler } from './register'
 
 const router = Router()
 
-router.use('/ping', (req, res) =>
+router.get('/ping', (req, res) =>
     res.setHeader('Content-Type', 'text/plain').send('pong')
 )
 

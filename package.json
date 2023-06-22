@@ -24,6 +24,7 @@
     "workspaces": [
         "starters/basic-nodejs",
         "starters/basic-nodejs-ts",
+        "starters/express-postgres-ts",
         "starters/react-frontend",
         "starters/react-frontend-ts",
         "examples/notes-api",

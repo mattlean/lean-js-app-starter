@@ -2,7 +2,7 @@
 
 This is a starter for a [Node.js](https://nodejs.org) project that provides a very lightweight, minimal configuration. This is great if you want to start any Node.js project from the ground-up as there are no dependencies.
 
-If you want to use Express, you may want to look at the [express-app](../express-app) starter project instead.
+If you want to use Express, you may want to look at the [express-postgres](../express-postgres) starter project instead.
 
 Note that this uses JavaScript. If you want the TypeScript equivalent to this, use the [basic-nodejs-ts](../basic-nodejs-ts) project instead.
 
