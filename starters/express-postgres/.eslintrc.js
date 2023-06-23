@@ -20,6 +20,7 @@ module.exports = {
                 node: true,
             },
             files: [
+                'prisma/singleton.js',
                 'src/**/__mocks__/**/*.js',
                 'src/**/__tests__/**/*.js',
                 'src/**/?(*.)+(spec|test).js',

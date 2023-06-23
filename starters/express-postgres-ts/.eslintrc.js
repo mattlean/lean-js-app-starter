@@ -32,6 +32,7 @@ module.exports = {
                 node: true,
             },
             files: [
+                'prisma/singleton.ts',
                 'src/**/__mocks__/**/*.[jt]s',
                 'src/**/__tests__/**/*.[jt]s',
                 'src/**/?(*.)+(spec|test).[jt]s',

@@ -1,6 +1,6 @@
 import bcrypt from 'bcrypt'
 
-export { prismaMock } from './singleton'
+export { prismaMock } from '../../../prisma/singleton'
 
 /**
  * Generate implementation for protectMiddleware that mocks authorization.

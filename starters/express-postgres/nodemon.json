@@ -1,9 +1,3 @@
 {
-    "watch": [
-        "build/",
-        "nodemon.json",
-        "package.json",
-        "tsconfig.json",
-        "webpack.config.js"
-    ]
+    "watch": ["build/", "nodemon.json", "package.json", "webpack.config.js"]
 }
