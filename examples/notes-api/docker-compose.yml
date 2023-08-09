@@ -10,7 +10,7 @@ services:
             - '${PORT_DB}:${PORT_DB}'
         env_file: .env
         volumes:
-            - notes-db-data:/var/lib/postgresql/data
+            - ljas-notes-db-data:/var/lib/postgresql/data
         healthcheck:
             test:
                 [
@@ -35,4 +35,4 @@ services:
             - .:/code
             - /code/node_modules
 volumes:
-    notes-db-data:
+    ljas-notes-db-data:

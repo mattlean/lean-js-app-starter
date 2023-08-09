@@ -1,0 +1,3 @@
+{
+    "watch": ["webpack/", "*.nodemon.json", "package.json", "tsconfig.json"]
+}

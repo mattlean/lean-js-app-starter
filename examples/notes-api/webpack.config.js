@@ -9,7 +9,7 @@ const config = merge([
 
         output: {
             clean: true,
-            filename: 'app.js',
+            filename: 'server.js',
             path: path.resolve(__dirname, 'build'),
         },
 

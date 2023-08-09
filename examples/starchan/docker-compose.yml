@@ -1,0 +1,27 @@
+version: '3.8'
+services:
+    db:
+        build:
+            dockerfile: db.Dockerfile
+        image: ljas-starchan-db
+        container_name: ljas-starchan-db
+        restart: always
+        ports:
+            - '${PORT_DB}:${PORT_DB}'
+        env_file: .env
+        volumes:
+            - ljas-starchan-db-data:/data/db
+    app:
+        build: .
+        image: ljas-starchan
+        container_name: ljas-starchan
+        restart: always
+        ports:
+            - '${PORT_EXPRESS}:${PORT_EXPRESS}'
+            - '${PORT_DEV_SERVER}:${PORT_DEV_SERVER}'
+            - '${PORT_PRISMA_STUDIO}:${PORT_PRISMA_STUDIO}'
+        volumes:
+            - .:/code
+            - /code/node_modules
+volumes:
+    ljas-starchan-db-data:

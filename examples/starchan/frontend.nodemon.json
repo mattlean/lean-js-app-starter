@@ -1,0 +1,9 @@
+{
+    "watch": [
+        "webpack/frontend.*.js",
+        "webpack/templateParams.js",
+        "frontend.nodemon.json",
+        "package.json",
+        "tsconfig.json"
+    ]
+}

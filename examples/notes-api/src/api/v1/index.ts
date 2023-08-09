@@ -3,7 +3,7 @@ import { Router } from 'express'
 import { protectMiddleware } from '../../core/auth'
 import { loginHandler } from './login'
 import { meHandler } from './me'
-import { noteHandler } from './note'
+import { noteHandler } from './notes'
 import { registerHandler } from './register'
 
 const router = Router()

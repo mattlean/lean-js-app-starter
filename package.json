@@ -29,8 +29,8 @@
         "starters/react-frontend",
         "starters/react-frontend-ts",
         "examples/notes-api",
-        "ljas-webpack",
-        "examples/starchan"
+        "examples/starchan",
+        "ljas-webpack"
     ],
     "devDependencies": {
         "@trivago/prettier-plugin-sort-imports": "^4.1.1",

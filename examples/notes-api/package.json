@@ -2,11 +2,11 @@
     "name": "ljas-notes-api",
     "version": "0.2.0",
     "description": "",
-    "main": "build/app.js",
+    "main": "build/server.js",
     "scripts": {
         "build": "webpack --mode development",
         "check-types": "tsc",
-        "dev": "concurrently --names \"📦 webpack,🌐 express\" \"npm run build -- --watch\" \"nodemon build/app.js\"",
+        "dev": "concurrently --names \"📦 webpack,🌐 express\" \"npm run build -- --watch\" \"nodemon --watch build build/server.js\"",
         "format": "npm run format:check",
         "format:check": "prettier --check .",
         "format:write": "prettier --write .",
@@ -15,7 +15,7 @@
         "lint-staged": "lint-staged",
         "prisma": "prisma",
         "prisma:studio": "npm run prisma studio -- --browser none",
-        "start": "node build/app.js",
+        "start": "node build/server.js",
         "test": "jest",
         "test:coverage": "npm run test -- --coverage",
         "test:watch": "npm run test -- --watch || npm run test -- --watchAll"

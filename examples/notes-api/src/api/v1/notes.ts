@@ -1,12 +1,12 @@
 import { Router } from 'express'
 import { body } from 'express-validator'
 
-import { prisma } from '../../core/db'
 import {
     isPrismaKnownRequestError,
     validateErrorMiddleware,
 } from '../../core/error'
 import { ServerError } from '../../core/error'
+import { prisma } from '../../core/prisma'
 
 const router = Router()
 
@@ -62,7 +62,7 @@ router.post(
         return next()
     },
     genNoteDataMiddleware,
-    (req, res) => res.json({ data: res.locals.data })
+    (req, res) => res.status(201).json({ data: res.locals.data })
 )
 
 // Read a note

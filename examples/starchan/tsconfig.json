@@ -1,0 +1,10 @@
+{
+    "compilerOptions": {
+        "allowJs": true,
+        "esModuleInterop": true,
+        "noEmit": true,
+        "jsx": "react-jsxdev",
+        "strictNullChecks": true
+    },
+    "include": ["src/**/*", "webpack/templateParams.js"]
+}

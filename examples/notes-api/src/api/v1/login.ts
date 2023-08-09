@@ -2,9 +2,9 @@ import { Router } from 'express'
 import { body } from 'express-validator'
 
 import { createJWT, verifyPassword } from '../../core/auth'
-import { prisma } from '../../core/db'
 import { ServerError } from '../../core/error'
 import { validateErrorMiddleware } from '../../core/error'
+import { prisma } from '../../core/prisma'
 
 const router = Router()
 

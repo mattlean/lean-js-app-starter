@@ -1,7 +1,7 @@
 import { Router } from 'express'
 
-import { prisma } from '../../core/db'
 import { ServerError } from '../../core/error'
+import { prisma } from '../../core/prisma'
 
 const router = Router()
 

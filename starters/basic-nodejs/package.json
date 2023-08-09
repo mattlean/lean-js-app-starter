@@ -5,7 +5,7 @@
     "main": "build/app.js",
     "scripts": {
         "build": "webpack --mode development",
-        "dev": "concurrently --names \"📦 webpack,🌐 express\" \"npm run build -- --watch\" \"nodemon build/app.js\"",
+        "dev": "concurrently --names \"📦 webpack,🌐 express\" \"npm run build -- --watch\" \"nodemon --watch build build/app.js\"",
         "format": "npm run format:check",
         "format:check": "prettier --check .",
         "format:write": "prettier --write .",

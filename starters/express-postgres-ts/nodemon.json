@@ -1,6 +1,5 @@
 {
     "watch": [
-        "build/",
         "nodemon.json",
         "package.json",
         "tsconfig.json",
