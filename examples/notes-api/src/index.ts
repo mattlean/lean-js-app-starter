@@ -1,6 +1,6 @@
 import 'dotenv/config'
 
-import { server } from './server'
+import app from './app'
 
 if (!process.env.PORT_APP) {
     throw new Error('🔴 App port was not set')
@@ -8,4 +8,4 @@ if (!process.env.PORT_APP) {
 
 const PORT = Number(process.env.PORT_APP)
 
-server.listen(PORT, () => console.log(`🟢 Server listening on port ${PORT}`))
+app.listen(PORT, () => console.log(`🟢 Server listening on port ${PORT}`))

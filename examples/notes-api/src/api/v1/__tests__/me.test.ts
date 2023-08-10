@@ -1,7 +1,7 @@
 import request from 'supertest'
 
+import app from '../../../app'
 import { protectMiddleware } from '../../../core/auth'
-import { server } from '../../../server'
 import {
     genProtectMiddlewareAuthImpl,
     prismaMock,
@@ -23,7 +23,7 @@ test('returns user when authorized', async () => {
 
     expect.assertions(3)
 
-    const res = await request(server).get('/api/v1/me')
+    const res = await request(app).get('/api/v1/me')
 
     expect(res.status).toBe(200)
     expect(res.body.data.uuid).toBe(MOCK_USER.uuid)
@@ -35,7 +35,7 @@ test('returns 401 when unauthorized', async () => {
 
     expect.assertions(3)
 
-    const res = await request(server).get('/api/v1/me')
+    const res = await request(app).get('/api/v1/me')
 
     expect(res.status).toBe(401)
     expect(res.body.errors).toHaveLength(1)

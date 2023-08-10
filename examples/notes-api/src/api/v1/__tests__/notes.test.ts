@@ -1,8 +1,8 @@
 import { Prisma } from '@prisma/client'
 import request from 'supertest'
 
+import app from '../../../app'
 import { protectMiddleware } from '../../../core/auth'
-import { server } from '../../../server'
 import {
     genProtectMiddlewareAuthImpl,
     prismaMock,
@@ -31,9 +31,9 @@ describe('create note endpoint', () => {
 
         expect.assertions(6)
 
-        const res = await request(server).post('/api/v1/notes')
+        const res = await request(app).post('/api/v1/notes')
 
-        expect(res.status).toBe(200)
+        expect(res.status).toBe(201)
         expect(res.body.data.uuid).toBe(MOCK_NOTE_EMPTY.uuid)
         expect(res.body.data.title).toBe(null)
         expect(res.body.data.content).toBe(null)
@@ -53,9 +53,9 @@ describe('create note endpoint', () => {
 
         expect.assertions(6)
 
-        const res = await request(server).post('/api/v1/notes')
+        const res = await request(app).post('/api/v1/notes')
 
-        expect(res.status).toBe(200)
+        expect(res.status).toBe(201)
         expect(res.body.data.uuid).toBe(MOCK_NOTE_W_TITLE.uuid)
         expect(res.body.data.title).toBe(MOCK_NOTE_W_TITLE.title)
         expect(res.body.data.content).toBe(MOCK_NOTE_W_TITLE.content)
@@ -75,9 +75,9 @@ describe('create note endpoint', () => {
 
         expect.assertions(6)
 
-        const res = await request(server).post('/api/v1/notes')
+        const res = await request(app).post('/api/v1/notes')
 
-        expect(res.status).toBe(200)
+        expect(res.status).toBe(201)
         expect(res.body.data.uuid).toBe(MOCK_NOTE_W_CONTENT.uuid)
         expect(res.body.data.title).toBe(MOCK_NOTE_W_CONTENT.title)
         expect(res.body.data.content).toBe(MOCK_NOTE_W_CONTENT.content)
@@ -97,9 +97,9 @@ describe('create note endpoint', () => {
 
         expect.assertions(6)
 
-        const res = await request(server).post('/api/v1/notes')
+        const res = await request(app).post('/api/v1/notes')
 
-        expect(res.status).toBe(200)
+        expect(res.status).toBe(201)
         expect(res.body.data.uuid).toBe(MOCK_NOTE_W_TITLE_CONTENT.uuid)
         expect(res.body.data.title).toBe(MOCK_NOTE_W_TITLE_CONTENT.title)
         expect(res.body.data.content).toBe(MOCK_NOTE_W_TITLE_CONTENT.content)
@@ -116,7 +116,7 @@ describe('create note endpoint', () => {
 
         expect.assertions(3)
 
-        const res = await request(server).post('/api/v1/notes')
+        const res = await request(app).post('/api/v1/notes')
 
         expect(res.status).toBe(401)
         expect(res.body.errors).toHaveLength(1)
@@ -133,7 +133,7 @@ describe('read note endpoint', () => {
 
         expect.assertions(6)
 
-        const res = await request(server).get(
+        const res = await request(app).get(
             `/api/v1/notes/${MOCK_NOTE_EMPTY.uuid}`
         )
 
@@ -166,7 +166,7 @@ describe('read note endpoint', () => {
 
         expect.assertions(3)
 
-        const res = await request(server).get(
+        const res = await request(app).get(
             `/api/v1/notes/${MOCK_NOTE_EMPTY.uuid}`
         )
 
@@ -180,7 +180,7 @@ describe('read note endpoint', () => {
 
         expect.assertions(3)
 
-        const res = await request(server).get(
+        const res = await request(app).get(
             `/api/v1/notes/${MOCK_NOTE_EMPTY.uuid}`
         )
 
@@ -205,7 +205,7 @@ describe('list notes endpoint', () => {
 
         expect.assertions(23)
 
-        const res = await request(server).get('/api/v1/notes')
+        const res = await request(app).get('/api/v1/notes')
 
         expect(res.status).toBe(200)
         expect(Array.isArray(res.body.data)).toBe(true)
@@ -232,7 +232,7 @@ describe('list notes endpoint', () => {
 
         expect.assertions(3)
 
-        const res = await request(server).get('/api/v1/notes')
+        const res = await request(app).get('/api/v1/notes')
 
         expect(res.status).toBe(200)
         expect(Array.isArray(res.body.data)).toBe(true)
@@ -244,7 +244,7 @@ describe('list notes endpoint', () => {
 
         expect.assertions(3)
 
-        const res = await request(server).get('/api/v1/notes')
+        const res = await request(app).get('/api/v1/notes')
 
         expect(res.status).toBe(401)
         expect(res.body.errors).toHaveLength(1)
@@ -269,7 +269,7 @@ describe('update note endpoint', () => {
 
         expect.assertions(6)
 
-        const res = await request(server)
+        const res = await request(app)
             .put(`/api/v1/notes/${MOCK_NOTE_W_TITLE_CONTENT.uuid}`)
             .send({
                 title: UPDATED_TITLE,
@@ -300,7 +300,7 @@ describe('update note endpoint', () => {
 
         expect.assertions(6)
 
-        const res = await request(server)
+        const res = await request(app)
             .put(`/api/v1/notes/${MOCK_NOTE_W_TITLE_CONTENT.uuid}`)
             .send({
                 title: MOCK_NOTE_W_TITLE_CONTENT.title,
@@ -332,7 +332,7 @@ describe('update note endpoint', () => {
 
         expect.assertions(6)
 
-        const res = await request(server)
+        const res = await request(app)
             .put(`/api/v1/notes/${MOCK_NOTE_W_TITLE_CONTENT.uuid}`)
             .send({
                 title: UPDATED_TITLE,
@@ -364,7 +364,7 @@ describe('update note endpoint', () => {
 
         expect.assertions(6)
 
-        const res = await request(server)
+        const res = await request(app)
             .put(`/api/v1/notes/${MOCK_NOTE_W_TITLE_CONTENT.uuid}`)
             .send({ content: UPDATED_CONTENT })
 
@@ -393,7 +393,7 @@ describe('update note endpoint', () => {
 
         expect.assertions(6)
 
-        const res = await request(server)
+        const res = await request(app)
             .put(`/api/v1/notes/${MOCK_NOTE_W_TITLE_CONTENT.uuid}`)
             .send({ title: UPDATED_TITLE })
 
@@ -422,7 +422,7 @@ describe('update note endpoint', () => {
 
         expect.assertions(6)
 
-        const res = await request(server).put(
+        const res = await request(app).put(
             `/api/v1/notes/${MOCK_NOTE_W_TITLE_CONTENT.uuid}`
         )
 
@@ -456,7 +456,7 @@ describe('update note endpoint', () => {
 
         expect.assertions(3)
 
-        const res = await request(server)
+        const res = await request(app)
             .put(`/api/v1/notes/${MOCK_NOTE_EMPTY.uuid}`)
             .send({ content: UPDATED_CONTENT })
 
@@ -470,7 +470,7 @@ describe('update note endpoint', () => {
 
         expect.assertions(3)
 
-        const res = await request(server).put(
+        const res = await request(app).put(
             `/api/v1/notes/${MOCK_NOTE_EMPTY.uuid}`
         )
 
@@ -497,7 +497,7 @@ describe('patch note endpoint', () => {
 
         expect.assertions(6)
 
-        const res = await request(server)
+        const res = await request(app)
             .patch(`/api/v1/notes/${MOCK_NOTE_W_TITLE_CONTENT.uuid}`)
             .send({
                 title: PATCHED_TITLE,
@@ -527,7 +527,7 @@ describe('patch note endpoint', () => {
 
         expect.assertions(6)
 
-        const res = await request(server)
+        const res = await request(app)
             .patch(`/api/v1/notes/${MOCK_NOTE_W_TITLE_CONTENT.uuid}`)
             .send({
                 content: PATCHED_CONTENT,
@@ -558,7 +558,7 @@ describe('patch note endpoint', () => {
 
         expect.assertions(6)
 
-        const res = await request(server)
+        const res = await request(app)
             .patch(`/api/v1/notes/${MOCK_NOTE_W_TITLE_CONTENT.uuid}`)
             .send({
                 title: PATCHED_TITLE,
@@ -588,7 +588,7 @@ describe('patch note endpoint', () => {
 
         expect.assertions(6)
 
-        const res = await request(server).patch(
+        const res = await request(app).patch(
             `/api/v1/notes/${MOCK_NOTE_W_TITLE_CONTENT.uuid}`
         )
 
@@ -622,7 +622,7 @@ describe('patch note endpoint', () => {
 
         expect.assertions(3)
 
-        const res = await request(server)
+        const res = await request(app)
             .patch(`/api/v1/notes/${MOCK_NOTE_EMPTY.uuid}`)
             .send({ content: PATCHED_CONTENT })
 
@@ -636,7 +636,7 @@ describe('patch note endpoint', () => {
 
         expect.assertions(3)
 
-        const res = await request(server).patch(
+        const res = await request(app).patch(
             `/api/v1/notes/${MOCK_NOTE_EMPTY.uuid}`
         )
 
@@ -655,7 +655,7 @@ describe('delete note endpoint', () => {
 
         expect.assertions(6)
 
-        const res = await request(server).delete(
+        const res = await request(app).delete(
             `/api/v1/notes/${MOCK_NOTE_EMPTY.uuid}`
         )
 
@@ -689,7 +689,7 @@ describe('delete note endpoint', () => {
 
         expect.assertions(3)
 
-        const res = await request(server).delete(
+        const res = await request(app).delete(
             `/api/v1/notes/${MOCK_NOTE_EMPTY.uuid}`
         )
 
@@ -703,7 +703,7 @@ describe('delete note endpoint', () => {
 
         expect.assertions(3)
 
-        const res = await request(server).delete(
+        const res = await request(app).delete(
             `/api/v1/notes/${MOCK_NOTE_EMPTY.uuid}`
         )
 

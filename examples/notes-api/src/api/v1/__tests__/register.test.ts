@@ -1,7 +1,7 @@
 import { Prisma } from '@prisma/client'
 import request from 'supertest'
 
-import { server } from '../../../server'
+import app from '../../../app'
 import { prismaMock } from '../../../util/test'
 import { MOCK_USER, MOCK_USER_PLAIN_TXT_PASS } from './MOCK_DATA'
 
@@ -10,7 +10,7 @@ test('returns JWT when proper request payload is sent', async () => {
 
     expect.assertions(3)
 
-    const res = await request(server).post('/api/v1/register').send({
+    const res = await request(app).post('/api/v1/register').send({
         username: MOCK_USER.username,
         password: MOCK_USER_PLAIN_TXT_PASS,
     })
@@ -23,7 +23,7 @@ test('returns JWT when proper request payload is sent', async () => {
 test('returns 400 when request payload is empty', async () => {
     expect.assertions(7)
 
-    const res = await request(server).post('/api/v1/register')
+    const res = await request(app).post('/api/v1/register')
 
     expect(res.status).toBe(400)
     expect(Array.isArray(res.body.errors)).toBe(true)
@@ -37,7 +37,7 @@ test('returns 400 when request payload is empty', async () => {
 test('returns 400 when request payload is missing password', async () => {
     expect.assertions(5)
 
-    const res = await request(server)
+    const res = await request(app)
         .post('/api/v1/register')
         .send({ username: MOCK_USER.username })
 
@@ -51,7 +51,7 @@ test('returns 400 when request payload is missing password', async () => {
 test('returns 400 when request payload is missing username', async () => {
     expect.assertions(5)
 
-    const res = await request(server)
+    const res = await request(app)
         .post('/api/v1/register')
         .send({ password: MOCK_USER_PLAIN_TXT_PASS })
 
@@ -65,7 +65,7 @@ test('returns 400 when request payload is missing username', async () => {
 test("returns 400 when request payload's username is not a string", async () => {
     expect.assertions(5)
 
-    const res = await request(server)
+    const res = await request(app)
         .post('/api/v1/register')
         .send({ username: 123, password: MOCK_USER_PLAIN_TXT_PASS })
 
@@ -95,14 +95,14 @@ test('returns 400 when username is already taken', async () => {
 
     expect.assertions(5)
 
-    const res1 = await request(server).post('/api/v1/register').send({
+    const res1 = await request(app).post('/api/v1/register').send({
         username: MOCK_USER.username,
         password: MOCK_USER_PLAIN_TXT_PASS,
     })
 
     expect(res1.status).toBe(200)
 
-    const res2 = await request(server).post('/api/v1/register').send({
+    const res2 = await request(app).post('/api/v1/register').send({
         username: MOCK_USER.username,
         password: MOCK_USER_PLAIN_TXT_PASS,
     })

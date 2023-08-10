@@ -1,7 +1,7 @@
 import { Prisma } from '@prisma/client'
 import request from 'supertest'
 
-import { server } from '../../../server'
+import app from '../../../app'
 import { prismaMock } from '../../../util/test'
 import { MOCK_USER, MOCK_USER_PLAIN_TXT_PASS } from './MOCK_DATA'
 
@@ -10,7 +10,7 @@ test('returns JWT when valid login is sent', async () => {
 
     expect.assertions(3)
 
-    const res = await request(server).post('/api/v1/login').send({
+    const res = await request(app).post('/api/v1/login').send({
         username: MOCK_USER.username,
         password: MOCK_USER_PLAIN_TXT_PASS,
     })
@@ -23,7 +23,7 @@ test('returns JWT when valid login is sent', async () => {
 test('returns 400 when request payload is empty', async () => {
     expect.assertions(7)
 
-    const res = await request(server).post('/api/v1/login')
+    const res = await request(app).post('/api/v1/login')
 
     expect(res.status).toBe(400)
     expect(Array.isArray(res.body.errors)).toBe(true)
@@ -37,7 +37,7 @@ test('returns 400 when request payload is empty', async () => {
 test('returns 400 when request payload is missing password', async () => {
     expect.assertions(5)
 
-    const res = await request(server)
+    const res = await request(app)
         .post('/api/v1/login')
         .send({ username: MOCK_USER.username })
 
@@ -51,7 +51,7 @@ test('returns 400 when request payload is missing password', async () => {
 test('returns 400 when request payload is missing username', async () => {
     expect.assertions(5)
 
-    const res = await request(server)
+    const res = await request(app)
         .post('/api/v1/login')
         .send({ password: MOCK_USER_PLAIN_TXT_PASS })
 
@@ -73,7 +73,7 @@ test('returns 401 when username does not exist', async () => {
 
     expect.assertions(4)
 
-    const res = await request(server).post('/api/v1/login').send({
+    const res = await request(app).post('/api/v1/login').send({
         username: 'invalidusername',
         password: 'invalidpassword',
     })
@@ -89,7 +89,7 @@ test('should return 401 when password is incorrect', async () => {
 
     expect.assertions(4)
 
-    const res = await request(server).post('/api/v1/login').send({
+    const res = await request(app).post('/api/v1/login').send({
         username: MOCK_USER.username,
         password: 'invalidpassword',
     })

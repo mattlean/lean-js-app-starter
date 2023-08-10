@@ -8,34 +8,34 @@ import { apiHandler } from './routes/api'
 
 // import { globalErrorHandler } from './core/error'
 
-const server = express()
+const app = express()
 
-server.set('view engine', 'ejs')
-server.set('views', [
+app.set('view engine', 'ejs')
+app.set('views', [
     // Use the generated views from the frontend build
     path.join(__dirname, '../../build/frontend/generated-views'),
     path.join(__dirname, 'views'),
 ])
 
-server.use(cors())
-server.use(express.json())
-server.use(express.urlencoded({ extended: true }))
+app.use(cors())
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
 
 // Serve the frontend build as static files
-server.use(
+app.use(
     '/static',
     express.static(path.join(__dirname, '../../build/frontend/public'))
 )
-server.use('/static', express.static(path.join(__dirname, 'public')))
+app.use('/static', express.static(path.join(__dirname, 'public')))
 
 if (process.env.NODE_ENV === 'development') {
-    server.use(morgan('dev'))
+    app.use(morgan('dev'))
 }
 
-server.use('/', pageHandler)
+app.use('/', pageHandler)
 
-server.use('/api', apiHandler)
+app.use('/api', apiHandler)
 
-// server.use(globalErrorHandler)
+// app.use(globalErrorHandler)
 
-export { server }
+export default app
