@@ -5,12 +5,13 @@
     "main": "build/backend/server.js",
     "scripts": {
         "back:build": "npm run backend:build",
-        "back:start": "npm run backend:start",
+        "back:build:watch": "npm run backend:build:watch",
         "backend:build": "webpack --config webpack/backend.config.js --mode development",
-        "backend:dev": "concurrently --names \"📦 webpack (back),🌐 express\" \"nodemon  --config backend.nodemon.json --exec 'npm run backend:build -- --watch'\" \"nodemon --watch build/backend build/backend/server.js\"",
+        "backend:build:watch": "nodemon  --config backend.nodemon.json --exec \"npm run backend:build -- --watch\"",
+        "backend:dev": "concurrently --names \"📦 webpack (back),🌐 express\" \"npm run backend:build:watch\" \"npm run start:debug\"",
         "build": "npm run frontend:build && npm run backend:build",
         "check-types": "tsc",
-        "dev": "concurrently --names \"📦 webpack (back),🌐 express,🎨 dev-server (front)\" \"nodemon  --config backend.nodemon.json --exec 'npm run backend:build -- --watch'\" \"nodemon --watch build/backend build/backend/server.js\" \"npm run frontend:dev\"",
+        "dev": "concurrently --names \"📦 webpack (back),🌐 express,🎨 dev-server (front)\" \"npm run backend:build:watch\" \"npm run start:debug\" \"npm run frontend:dev\"",
         "format": "npm run format:check",
         "format:check": "prettier --check .",
         "format:write": "prettier --write .",
@@ -22,7 +23,8 @@
         "lint:fix": "npm run lint -- --fix",
         "prisma": "prisma",
         "prisma:studio": "npm run prisma studio -- --browser none",
-        "start": "node build/backend/server.js"
+        "start": "node build/backend/server.js",
+        "start:debug": "nodemon --inspect=0.0.0.0:9229 --watch build/backend build/backend/server.js"
     },
     "author": "Matthew Lean <matt@mattlean.com> (https://mattlean.com)",
     "dependencies": {

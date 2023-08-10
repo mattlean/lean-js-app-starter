@@ -14,7 +14,7 @@ const config = (mode) =>
                 path: path.resolve(__dirname, '../build/backend'),
             },
 
-            target: 'node18.16',
+            devtool: 'eval-source-map',
 
             plugins: [
                 // Copy static files from public directory in src to build
@@ -41,6 +41,8 @@ const config = (mode) =>
                     },
                 }),
             ],
+
+            target: 'node18.16',
         },
 
         compileReactTs(

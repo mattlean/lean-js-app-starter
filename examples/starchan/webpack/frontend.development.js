@@ -16,6 +16,8 @@ module.exports = merge([
     {
         mode: 'development',
 
+        devtool: 'eval-source-map',
+
         plugins: [
             new webpack.EnvironmentPlugin({
                 DEV_SERVER: true,

@@ -3,8 +3,6 @@ const buildCommonConfig = require('./frontend.common')
 const developmentConfig = require('./frontend.development')
 const productionConfig = require('./frontend.production')
 
-console.log(' I GOT HERE YO !!! ')
-
 module.exports = (env, { mode }) => {
     const commonConfig = buildCommonConfig(mode)
 

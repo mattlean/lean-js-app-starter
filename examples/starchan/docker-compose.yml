@@ -20,6 +20,7 @@ services:
             - '${PORT_EXPRESS}:${PORT_EXPRESS}'
             - '${PORT_DEV_SERVER}:${PORT_DEV_SERVER}'
             - '${PORT_PRISMA_STUDIO}:${PORT_PRISMA_STUDIO}'
+            - '9229:9229' # Exposes server debugging. Also defined in the "start:debug" npm script.
         volumes:
             - .:/code
             - /code/node_modules
