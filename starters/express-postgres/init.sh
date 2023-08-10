@@ -17,7 +17,7 @@ echo "${prefix} Starting the database dev migrations..."
 npm run prisma migrate dev
 echo "${prefix} Database dev migrations completed!"
 
-if [ -f "./build/app.js" ]
+if [ -f "./build/server.js" ]
 then
     echo "${prefix} The build already exists, so skip the initial build process."
 else
