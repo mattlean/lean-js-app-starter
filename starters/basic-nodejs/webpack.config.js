@@ -13,6 +13,8 @@ const config = merge([
             path: path.resolve(__dirname, 'build'),
         },
 
+        devtool: 'eval-source-map',
+
         target: 'node18.16',
     },
 

@@ -6,7 +6,7 @@ services:
         container_name: 'ljas-basic-nodejs-ts'
         restart: always
         ports:
-            - '${PORT}:${PORT}'
+            - '9229:9229' # Exposes Node.js debugger. Also defined in the "start:debug" npm script.
         volumes:
             - .:/code
             - /code/node_modules

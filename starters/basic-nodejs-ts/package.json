@@ -5,8 +5,9 @@
     "main": "build/app.js",
     "scripts": {
         "build": "webpack --mode development",
+        "build:watch": "nodemon --exec \"npm run build -- --watch\"",
         "check-types": "tsc",
-        "dev": "concurrently --names \"📦 webpack,🌐 express\" \"npm run build -- --watch\" \"nodemon --watch build build/app.js\"",
+        "dev": "concurrently --names \"📦 webpack,🤖 app\" \"npm run build:watch\" \"npm run start:debug\"",
         "format": "npm run format:check",
         "format:check": "prettier --check .",
         "format:write": "prettier --write .",
@@ -14,6 +15,7 @@
         "lint:fix": "npm run lint -- --fix",
         "lint-staged": "lint-staged",
         "start": "node build/app.js",
+        "start:debug": "nodemon --inspect=0.0.0.0:9229 --watch build build/app.js",
         "test": "jest",
         "test:coverage": "npm run test -- --coverage",
         "test:watch": "npm run test -- --watch || npm run test -- --watchAll"
