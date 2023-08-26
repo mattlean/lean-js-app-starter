@@ -24,7 +24,10 @@
         "prisma": "prisma",
         "prisma:studio": "npm run prisma studio -- --browser none",
         "start": "node build/backend/server.js",
-        "start:debug": "nodemon --inspect=0.0.0.0:9229 --watch build/backend build/backend/server.js"
+        "start:debug": "nodemon --inspect=0.0.0.0:9229 --watch build/backend build/backend/server.js",
+        "test": "jest",
+        "test:coverage": "npm run test -- --coverage",
+        "test:watch": "npm run test -- --watch || npm run test -- --watchAll"
     },
     "author": "Matthew Lean <matt@mattlean.com> (https://mattlean.com)",
     "dependencies": {
@@ -49,7 +52,6 @@
         "filemanager-webpack-plugin": "^8.0.0",
         "fork-ts-checker-webpack-plugin": "^8.0.0",
         "html-webpack-plugin": "^5.5.1",
-        "install": "^0.13.0",
         "ljas-webpack": "^0.1.1-experimental.3",
         "morgan": "^1.10.0",
         "npm": "^9.8.1",

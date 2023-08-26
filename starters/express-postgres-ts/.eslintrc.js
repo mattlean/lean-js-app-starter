@@ -12,9 +12,9 @@ module.exports = {
     root: true,
     rules: {},
     overrides: [
-        /* Source */
+        /* Source & Prisma */
         {
-            files: ['src/**/*.[jt]s'],
+            files: ['+(src|prisma)/**/*.[jt]s'],
             extends: [
                 'eslint:recommended',
                 'plugin:@typescript-eslint/recommended',

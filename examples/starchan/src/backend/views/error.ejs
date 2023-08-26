@@ -6,7 +6,9 @@
         <meta name="viewport" content="width=device-width,initial-scale=1" />
     </head>
     <body>
-        <p>backend template</p>
-        <div id="root"><%- content %></div>
+        <h1><%= heading %></h1>
+        <% if (content) { %>
+        <p><%= content %></p>
+        <% } %>
     </body>
 </html>

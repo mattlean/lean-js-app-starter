@@ -2,7 +2,7 @@ import { Prisma } from '@prisma/client'
 import { NextFunction, Request, Response } from 'express'
 import { validationResult } from 'express-validator'
 
-import ServerError, { isServerError } from './ServerError'
+import ServerError, { isErrorPage, isServerError } from './ServerError'
 
 export { ServerError }
 
@@ -64,4 +64,61 @@ export const apiErrorHandler = (
     }
 
     return res.status(500).json({ errors: ['Internal server error'] })
+}
+
+/** Global error handler that takes care of all errors that might be encountered. */
+export const globalErrorHandler = (
+    err: Error | ServerError,
+    req: Request,
+    res: Response,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    next: NextFunction
+) => {
+    if (process.env.NODE_ENV !== 'test') {
+        console.error(err)
+    }
+
+    if (isServerError(err)) {
+        let heading
+        let content
+
+        if (err.errors.length === 1) {
+            if (typeof err.errors[0] === 'string') {
+                content = err.errors[0]
+            } else if (isErrorPage(err.errors[0])) {
+                heading = err.errors[0].heading
+                content = err.errors[0].content
+            } else {
+                content = err.errors[0].msg
+            }
+        }
+
+        if (!heading) {
+            if (err.type === 'auth') {
+                res.status(401)
+                heading = 'Unauthorized'
+            } else if (err.type === 'notFound') {
+                res.status(404)
+                heading = 'Not found'
+            } else if (err.type === 'validation') {
+                res.status(400)
+                heading = 'Invalid input'
+            } else if (err.type === 'misc') {
+                res.status(500)
+                heading = 'Internal server error'
+            }
+        }
+
+        return res.render('error', {
+            title: 'ljas-starchan',
+            heading,
+            content,
+        })
+    }
+
+    return res.status(500).render('error', {
+        title: 'ljas-starchan',
+        heading: 'Internal server error',
+        content: undefined,
+    })
 }

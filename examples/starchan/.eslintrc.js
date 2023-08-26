@@ -31,6 +31,18 @@ module.exports = {
             rules: RULES_REACT,
         },
 
+        /* Prisma */
+        {
+            files: ['prisma/**/*.[jt]s'],
+            extends: [
+                'eslint:recommended',
+                'plugin:@typescript-eslint/recommended',
+                'prettier',
+            ],
+            parser: '@typescript-eslint/parser',
+            plugins: ['@typescript-eslint'],
+        },
+
         /* Tests */
         {
             env: {

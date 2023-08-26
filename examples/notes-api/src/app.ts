@@ -3,7 +3,7 @@ import express from 'express'
 import morgan from 'morgan'
 
 import { apiHandler } from './api'
-import { globalErrorHandler } from './core/error'
+import { apiErrorHandler, createNotFoundErrorHandler } from './core/error'
 
 const app = express()
 
@@ -19,6 +19,8 @@ app.get('/', (req, res) => res.send('Notes API is live at: /api/v1'))
 
 app.use('/api', apiHandler)
 
-app.use(globalErrorHandler)
+app.all('*', createNotFoundErrorHandler(true))
+
+app.use(apiErrorHandler)
 
 export default app

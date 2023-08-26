@@ -36,6 +36,20 @@ const config = (mode) =>
                                         preserveTimestamps: true,
                                     },
                                 },
+                                {
+                                    source: path.resolve(
+                                        __dirname,
+                                        '../src/backend/views'
+                                    ),
+                                    destination: path.resolve(
+                                        __dirname,
+                                        '../build/backend/views'
+                                    ),
+                                    options: {
+                                        overwrite: true,
+                                        preserveTimestamps: true,
+                                    },
+                                },
                             ],
                         },
                     },
