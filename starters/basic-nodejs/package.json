@@ -5,6 +5,7 @@
     "main": "build/app.js",
     "scripts": {
         "build": "webpack --mode development",
+        "build:production": "webpack --mode production",
         "build:watch": "nodemon --exec \"npm run build -- --watch\"",
         "dev": "concurrently --names \"📦 webpack,🤖 app\" \"npm run build:watch\" \"npm run start:debug\"",
         "format": "npm run format:check",

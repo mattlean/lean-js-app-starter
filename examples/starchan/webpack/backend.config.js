@@ -4,7 +4,7 @@ const path = require('path')
 const setupNodeExternals = require('ljas-webpack/setupNodeExternals')
 const { merge } = require('webpack-merge')
 
-const config = (mode) =>
+const buildConfig = (mode) =>
     merge([
         {
             entry: './src/backend/index.ts',
@@ -80,10 +80,22 @@ const config = (mode) =>
         }),
     ])
 
-console.log(
-    'DEBUG CONFIG',
-    config('development'),
-    JSON.stringify(config('development'))
-)
+module.exports = (env, { mode }) => {
+    const config = buildConfig(mode)
 
-module.exports = config
+    switch (mode) {
+        case 'production': {
+            const configProd = merge(config, { devtool: 'source-map' })
+            console.log('DEBUG CONFIG', config, JSON.stringify(config))
+            return configProd
+        }
+
+        default: {
+            const configDev = merge(config, {
+                devtool: 'eval-source-map',
+            })
+            console.log('DEBUG CONFIG', configDev, JSON.stringify(configDev))
+            return configDev
+        }
+    }
+}

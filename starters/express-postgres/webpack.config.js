@@ -13,8 +13,6 @@ const config = merge([
             path: path.resolve(__dirname, 'build'),
         },
 
-        devtool: 'eval-source-map',
-
         target: 'node18.16',
     },
 
@@ -36,6 +34,22 @@ const config = merge([
     }),
 ])
 
-console.log('DEBUG CONFIG', config.module, JSON.stringify(config))
+module.exports = (env, { mode }) => {
+    switch (mode) {
+        case 'production': {
+            const configProd = merge(config, { devtool: 'source-map' })
+            console.log('DEBUG CONFIG', config, JSON.stringify(config))
+            return configProd
+        }
+
+        default: {
+            const configDev = merge(config, {
+                devtool: 'eval-source-map',
+            })
+            console.log('DEBUG CONFIG', configDev, JSON.stringify(configDev))
+            return configDev
+        }
+    }
+}
 
 module.exports = config
