@@ -33,6 +33,7 @@
         "webpack-merge": "^5.9.0"
     },
     "devDependencies": {
+        "@pmmmwh/react-refresh-webpack-plugin": "^0.5.11",
         "@trivago/prettier-plugin-sort-imports": "^4.1.1",
         "eslint": "^8.41.0",
         "eslint-config-prettier": "^8.8.0",
@@ -43,6 +44,7 @@
         "jest-environment-jsdom": "^29.5.0",
         "nodemon": "^2.0.22",
         "prettier": "2.8.8",
+        "react-refresh": "^0.14.0",
         "react-test-renderer": "^18.2.0",
         "webpack-dev-server": "^4.15.0"
     },

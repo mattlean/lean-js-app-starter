@@ -1,0 +1,12 @@
+version: '3.8'
+services:
+    app:
+        build: .
+        image: 'ljas-counter'
+        container_name: 'ljas-counter'
+        restart: always
+        ports:
+            - '${PORT}:${PORT}'
+        volumes:
+            - .:/code
+            - /code/node_modules

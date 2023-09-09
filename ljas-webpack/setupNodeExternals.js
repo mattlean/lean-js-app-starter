@@ -1,7 +1,7 @@
 const nodeExternals = require('webpack-node-externals')
 
 /**
- * Exclude node_modules from the build with Webpack node modules externals:
+ * Exclude node_modules from the build with webpack node modules externals:
  * https://github.com/liady/webpack-node-externals
  *
  * Tested with: webpack-node-externals@^3.0.0

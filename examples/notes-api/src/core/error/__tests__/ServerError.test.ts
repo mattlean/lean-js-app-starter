@@ -12,6 +12,12 @@ describe('ServerError', () => {
         expect(serverErr.message).toBe('Internal server error')
         expect(serverErr.devErrors).toBeUndefined()
         expect(serverErr.errors).toHaveLength(1)
+
+        expect(Array.isArray(serverErr.errors)).toBe(true)
+        if (!Array.isArray(serverErr.errors)) {
+            throw new Error('Expected errors for a ServerError to be an array.')
+        }
+
         expect(serverErr.errors[0]).toBe('Internal server error')
     })
 
@@ -22,7 +28,9 @@ describe('ServerError', () => {
 
         expect(Array.isArray(serverErr.devErrors)).toBe(true)
         if (!Array.isArray(serverErr.devErrors)) {
-            throw new Error('ServerError devErrors is not an array.')
+            throw new Error(
+                'Expected devErrors for a ServerError to be an array.'
+            )
         }
 
         expect(serverErr.devErrors[0]).toBe(err1)
@@ -78,6 +86,11 @@ describe('ServerError', () => {
     it('ServerError with inputErrs defined as an array will be directly assigned to the instance', () => {
         const serverErr = new ServerError(undefined, [FOO_TXT, BAR_TXT])
 
+        expect(Array.isArray(serverErr.errors)).toBe(true)
+        if (!Array.isArray(serverErr.errors)) {
+            throw new Error('Expected errors for a ServerError to be an array.')
+        }
+
         expect(typeof serverErr.errors[0]).toBe('string')
         expect(serverErr.errors[0]).toBe(FOO_TXT)
         expect(serverErr.errors[1]).toBe(BAR_TXT)
@@ -86,6 +99,11 @@ describe('ServerError', () => {
 
     it('ServerError with inputErrs defined as a string will set it as a string in errors', () => {
         const serverErr = new ServerError(undefined, FOO_TXT)
+
+        expect(Array.isArray(serverErr.errors)).toBe(true)
+        if (!Array.isArray(serverErr.errors)) {
+            throw new Error('Expected errors for a ServerError to be an array.')
+        }
 
         expect(serverErr.errors[0]).toBe(FOO_TXT)
         expect(serverErr.errors).toHaveLength(1)
@@ -96,6 +114,11 @@ describe('ServerError', () => {
             heading: FOO_TXT,
             content: BAR_TXT,
         })
+
+        expect(Array.isArray(serverErr.errors)).toBe(true)
+        if (!Array.isArray(serverErr.errors)) {
+            throw new Error('Expected errors for a ServerError to be an array.')
+        }
 
         expect(isErrorPage(serverErr.errors[0])).toBe(true)
         if (!isErrorPage(serverErr.errors[0])) {
@@ -113,6 +136,12 @@ describe('ServerError', () => {
         const serverErr = new ServerError('auth')
 
         expect(serverErr.message).toBe('Unauthorized')
+
+        expect(Array.isArray(serverErr.errors)).toBe(true)
+        if (!Array.isArray(serverErr.errors)) {
+            throw new Error('Expected errors for a ServerError to be an array.')
+        }
+
         expect(serverErr.errors[0]).toBe('Unauthorized')
     })
 
@@ -120,6 +149,12 @@ describe('ServerError', () => {
         const serverErr = new ServerError('notFound')
 
         expect(serverErr.message).toBe('Not found')
+
+        expect(Array.isArray(serverErr.errors)).toBe(true)
+        if (!Array.isArray(serverErr.errors)) {
+            throw new Error('Expected errors for a ServerError to be an array.')
+        }
+
         expect(serverErr.errors[0]).toBe('Not found')
     })
 
@@ -127,6 +162,12 @@ describe('ServerError', () => {
         const serverErr = new ServerError('validation')
 
         expect(serverErr.message).toBe('Invalid input')
+
+        expect(Array.isArray(serverErr.errors)).toBe(true)
+        if (!Array.isArray(serverErr.errors)) {
+            throw new Error('Expected errors for a ServerError to be an array.')
+        }
+
         expect(serverErr.errors[0]).toBe('Invalid input')
     })
 
@@ -134,6 +175,12 @@ describe('ServerError', () => {
         const serverErr = new ServerError('misc')
 
         expect(serverErr.message).toBe('Internal server error')
+
+        expect(Array.isArray(serverErr.errors)).toBe(true)
+        if (!Array.isArray(serverErr.errors)) {
+            throw new Error('Expected errors for a ServerError to be an array.')
+        }
+
         expect(serverErr.errors[0]).toBe('Internal server error')
     })
 })

@@ -69,6 +69,7 @@
         "webpack-node-externals": "^3.0.0"
     },
     "devDependencies": {
+        "@pmmmwh/react-refresh-webpack-plugin": "^0.5.11",
         "@trivago/prettier-plugin-sort-imports": "^4.1.1",
         "@types/jest": "^29.5.2",
         "@types/supertest": "^2.0.12",
@@ -83,6 +84,7 @@
         "jest-mock-extended": "^3.0.4",
         "nodemon": "^2.0.22",
         "prettier": "2.8.8",
+        "react-refresh": "^0.14.0",
         "supertest": "^6.3.3",
         "ts-jest": "^29.1.0",
         "webpack-dev-server": "^4.15.0"

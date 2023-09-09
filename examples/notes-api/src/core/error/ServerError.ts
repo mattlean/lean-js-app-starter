@@ -42,7 +42,7 @@ export default class ServerError extends Error {
     type: ServerErrorType
 
     /** User-facing error messages.  */
-    errors: ServerErrorErrors
+    errors?: ServerErrorErrors
 
     /** Errors intended for developers for debugging purposes. */
     devErrors?: ServerErrorDevErrors

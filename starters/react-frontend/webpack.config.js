@@ -1,11 +1,9 @@
 const { merge } = require('webpack-merge')
-const buildCommonConfig = require('./webpack.common')
+const commonConfig = require('./webpack.common')
 const developmentConfig = require('./webpack.development')
 const productionConfig = require('./webpack.production')
 
 module.exports = (env, { mode }) => {
-    const commonConfig = buildCommonConfig(mode)
-
     switch (mode) {
         case 'production': {
             const config = merge(commonConfig, productionConfig)

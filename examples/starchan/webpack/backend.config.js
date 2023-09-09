@@ -2,6 +2,7 @@ const compileReactTs = require('ljas-webpack/compileReactTs')
 const FileManagerPlugin = require('filemanager-webpack-plugin')
 const path = require('path')
 const setupNodeExternals = require('ljas-webpack/setupNodeExternals')
+const { buildSourceMaps } = require('ljas-webpack')
 const { merge } = require('webpack-merge')
 
 const buildConfig = (mode) =>
@@ -13,8 +14,6 @@ const buildConfig = (mode) =>
                 filename: 'server.js',
                 path: path.resolve(__dirname, '../build/backend'),
             },
-
-            devtool: 'eval-source-map',
 
             plugins: [
                 // Copy static files from public directory in src to build
@@ -85,15 +84,16 @@ module.exports = (env, { mode }) => {
 
     switch (mode) {
         case 'production': {
-            const configProd = merge(config, { devtool: 'source-map' })
+            const configProd = merge(config, buildSourceMaps('source-map'))
             console.log('DEBUG CONFIG', config, JSON.stringify(config))
             return configProd
         }
 
         default: {
-            const configDev = merge(config, {
-                devtool: 'eval-source-map',
-            })
+            const configDev = merge(
+                config,
+                buildSourceMaps('cheap-module-source-map')
+            )
             console.log('DEBUG CONFIG', configDev, JSON.stringify(configDev))
             return configDev
         }

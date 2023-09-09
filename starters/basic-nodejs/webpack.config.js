@@ -1,6 +1,6 @@
-const { compileJs } = require('ljas-webpack')
 const path = require('path')
 const setupNodeExternals = require('ljas-webpack/setupNodeExternals')
+const { buildSourceMaps, compileJs } = require('ljas-webpack')
 const { merge } = require('webpack-merge')
 
 const config = merge([
@@ -37,13 +37,16 @@ const config = merge([
 module.exports = (env, { mode }) => {
     switch (mode) {
         case 'production': {
-            const configProd = merge(config, { devtool: 'source-map' })
+            const configProd = merge(config, buildSourceMaps('source-map'))
             console.log('DEBUG CONFIG', config, JSON.stringify(config))
             return configProd
         }
 
         default: {
-            const configDev = merge(config, { devtool: 'eval-source-map' })
+            const configDev = merge(
+                config,
+                buildSourceMaps('cheap-module-source-map')
+            )
             console.log('DEBUG CONFIG', configDev, JSON.stringify(configDev))
             return configDev
         }

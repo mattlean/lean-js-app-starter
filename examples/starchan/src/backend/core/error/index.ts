@@ -82,14 +82,16 @@ export const globalErrorHandler = (
         let heading
         let content
 
-        if (err.errors.length === 1) {
-            if (typeof err.errors[0] === 'string') {
-                content = err.errors[0]
-            } else if (isErrorPage(err.errors[0])) {
-                heading = err.errors[0].heading
-                content = err.errors[0].content
-            } else {
-                content = err.errors[0].msg
+        if (err.errors) {
+            if (err.errors.length === 1) {
+                if (typeof err.errors[0] === 'string') {
+                    content = err.errors[0]
+                } else if (isErrorPage(err.errors[0])) {
+                    heading = err.errors[0].heading
+                    content = err.errors[0].content
+                } else {
+                    content = err.errors[0].msg
+                }
             }
         }
 

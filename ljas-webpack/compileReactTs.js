@@ -15,7 +15,9 @@ const { FORK_TS_CHECKER_DEFAULT_OPTIONS } = require('./constants')
  * - fork-ts-checker-webpack-plugin@^8.0.0
  *
  * @param {Object} [options] Options object that determines how babel-loader will be configured.
- * @param {Object} [options.babelLoader] babel-loader options. Setting this will override Babel preset options. (https://webpack.js.org/loaders/babel-loader/#options)
+ * @param {Object} [options.babelLoader] babel-loader options. Setting this will completely override the default Babel configuration. (https://webpack.js.org/loaders/babel-loader/#options)
+ * @param {Object} [options.babelLoaderPlugins] Babel plugins. (https://babeljs.io/docs/plugins)
+ * @param {Object} [options.babelLoaderPresets] Babel presets. Setting this will override the default Babel preset configuration. (https://babeljs.io/docs/presets)
  * @param {Object} [options.babelPresetEnv] Babel's preset-env options. Will be overwritten by `options.babelLoader` if it is set. (https://babeljs.io/docs/babel-preset-env#options)
  * @param {Object} [options.babelPresetReact] Babel's preset-react options. Will be overwritten by `options.babelLoader` if it is set. (https://babeljs.io/docs/babel-preset-react#options)
  * @param {Object} [options.babelPresetTypeScript] Babel's preset-typescript options. Will be overwritten by `options.babelLoader` if it is set. (https://babeljs.io/docs/babel-preset-env#options)
@@ -27,7 +29,7 @@ const { FORK_TS_CHECKER_DEFAULT_OPTIONS } = require('./constants')
  * @param {RegExp} [options.rule.include] Include option associated with the webpack rule. It is recommended to set this to improve build performance. (https://webpack.js.org/configuration/module/#ruleinclude)
  * @param {Object} [options.rule.resolve] Resolve option associated with the webpack rule. (https://webpack.js.org/configuration/module/#ruleresolve)
  * @param {RegExp} [options.rule.test=/\.[jt]sx?$/] Test option associated with the webpack rule. (https://webpack.js.org/configuration/module/#ruletest)
- * @param {Object} [options.rule.use] webpack UseEntry associated with the webpack rule. Be careful, setting this will override most, if not all, default behavior provided by this function. (https://webpack.js.org/configuration/module/#useentry)
+ * @param {Object} [options.rule.use] webpack UseEntry associated with the webpack rule. Setting this will override most of the default configuration. (https://webpack.js.org/configuration/module/#useentry)
  * @param {string} [mode] The webpack mode configuration option. Babel's preset-react will enable behavior specific to development when this is set to "development".  (https://webpack.js.org/configuration/mode)
  * @return {Object} A webpack configuration object that sets up babel-loader.
  */
@@ -38,7 +40,8 @@ module.exports = (options, mode) =>
                 use: {
                     loader: 'babel-loader',
                     options: options?.babelLoader ?? {
-                        presets: [
+                        plugins: options?.babelLoaderPlugins,
+                        presets: options?.babelLoaderPresets ?? [
                             [
                                 '@babel/preset-env',
                                 options?.babelPresetEnv ?? { modules: false },
@@ -52,7 +55,7 @@ module.exports = (options, mode) =>
                             ],
                             [
                                 '@babel/preset-typescript',
-                                options?.babelPresetTypeScript ?? undefined,
+                                options?.babelPresetTypeScript,
                             ],
                         ],
                     },

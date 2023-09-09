@@ -4,6 +4,7 @@
         "esModuleInterop": true,
         "noEmit": true,
         "jsx": "react-jsxdev",
+        "strict": true,
         "strictNullChecks": true
     },
     "include": ["src/**/*", "webpack/templateParams.js"]
