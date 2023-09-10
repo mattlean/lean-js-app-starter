@@ -4,7 +4,7 @@ import morgan from 'morgan'
 import path from 'path'
 
 import { createNotFoundErrorHandler, globalErrorHandler } from './core/error'
-import { pageHandler } from './routes'
+import { frontendHandler } from './routes'
 import { apiHandler } from './routes/api'
 
 const app = express()
@@ -33,7 +33,7 @@ if (process.env.NODE_ENV === 'development') {
     app.use(morgan('dev'))
 }
 
-app.use('/', pageHandler)
+app.use('/', frontendHandler)
 
 app.use('/api', apiHandler)
 

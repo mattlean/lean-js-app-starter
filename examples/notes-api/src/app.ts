@@ -1,11 +1,16 @@
 import cors from 'cors'
 import express from 'express'
 import morgan from 'morgan'
+import path from 'path'
 
-import { apiHandler } from './api'
-import { apiErrorHandler, createNotFoundErrorHandler } from './core/error'
+import { createNotFoundErrorHandler, globalErrorHandler } from './core/error'
+import { frontendHandler } from './routes'
+import { apiHandler } from './routes/api'
 
 const app = express()
+
+app.set('view engine', 'ejs')
+app.set('views', [path.join(__dirname, 'views')])
 
 app.use(cors())
 app.use(express.json())
@@ -15,12 +20,12 @@ if (process.env.NODE_ENV === 'development') {
     app.use(morgan('dev'))
 }
 
-app.get('/', (req, res) => res.send('Notes API is live at: /api/v1'))
+app.use('/', frontendHandler)
 
 app.use('/api', apiHandler)
 
-app.all('*', createNotFoundErrorHandler(true))
+app.all('*', createNotFoundErrorHandler())
 
-app.use(apiErrorHandler)
+app.use(globalErrorHandler)
 
 export default app

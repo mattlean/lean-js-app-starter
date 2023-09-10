@@ -73,6 +73,7 @@ export default class ServerError extends Error {
                 inputDevErrs.type === 'unknown_fields' ||
                 inputDevErrs.type === 'field'
             ) {
+                // Handle case where one ValidationError is encountered
                 this.devErrors = [inputDevErrs]
                 this.message = inputDevErrs.msg
             }

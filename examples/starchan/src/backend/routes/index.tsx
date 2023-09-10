@@ -19,4 +19,10 @@ router.get('/', (req, res) =>
     })
 )
 
-export { router as pageHandler }
+if (process.env.NODE_ENV !== 'production') {
+    router.get('/fail', () => {
+        throw new Error()
+    })
+}
+
+export { router as frontendHandler }

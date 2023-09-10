@@ -1,8 +1,11 @@
 const compileTs = require('ljas-webpack/compileTs')
+const CopyPlugin = require('copy-webpack-plugin')
 const path = require('path')
 const setupNodeExternals = require('ljas-webpack/setupNodeExternals')
 const { buildSourceMaps } = require('ljas-webpack')
 const { merge } = require('webpack-merge')
+
+const OUTPUT_PATH = path.resolve(__dirname, 'build')
 
 const config = merge([
     {
@@ -11,10 +14,22 @@ const config = merge([
         output: {
             clean: true,
             filename: 'server.js',
-            path: path.resolve(__dirname, 'build'),
+            path: OUTPUT_PATH,
         },
 
         target: 'node18.16',
+
+        plugins: [
+            // Copy static files from views directories in src to build
+            new CopyPlugin({
+                patterns: [
+                    {
+                        from: path.resolve(__dirname, 'src/views'),
+                        to: `${OUTPUT_PATH}/views`,
+                    },
+                ],
+            }),
+        ],
     },
 
     compileTs({

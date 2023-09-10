@@ -1,6 +1,6 @@
 import request from 'supertest'
 
-import app from '../../../app'
+import app from '../../../../app'
 
 test('returns "pong" when request is sent', async () => {
     expect.assertions(2)

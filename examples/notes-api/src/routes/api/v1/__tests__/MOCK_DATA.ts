@@ -1,6 +1,6 @@
 import { Note, User } from '@prisma/client'
 
-import { hashPasswordSync } from '../../../util/test'
+import { hashPasswordSync } from '../../../../util/test'
 
 export const MOCK_USER_PLAIN_TXT_PASS = 'password'
 

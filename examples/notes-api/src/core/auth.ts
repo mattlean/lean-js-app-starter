@@ -72,7 +72,10 @@ export const protectMiddleware = (
     try {
         user = verifyToken(token)
     } catch (err) {
-        throw new ServerError('auth', 'Invalid token', err)
+        if (err instanceof Error) {
+            throw new ServerError('auth', 'Invalid token', err)
+        }
+        throw err
     }
 
     req.user = user

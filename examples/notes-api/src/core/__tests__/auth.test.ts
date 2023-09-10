@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express'
 
-import { MOCK_USER } from '../../api/v1/__tests__/MOCK_DATA'
+import { MOCK_USER } from '../../routes/api/v1/__tests__/MOCK_DATA'
 import { createJWT, protectMiddleware, verifyToken } from '../auth'
 
 describe('JWT secret checks', () => {
@@ -26,7 +26,7 @@ describe('protectMiddleware', () => {
         delete process.env.JWT_SECRET
     })
 
-    it('should set user property on request object when token is valid', () => {
+    it('sets user property on request object when token is valid', () => {
         const token = createJWT(MOCK_USER)
         const decodedToken = verifyToken(token)
 
@@ -48,7 +48,7 @@ describe('protectMiddleware', () => {
         expect(mockReqUser.iat).toBe(decodedToken.iat)
     })
 
-    it('should throw error when bearer is missing', () => {
+    it('throws error when bearer is missing', () => {
         const mockReq: Partial<Request> = { headers: {} }
         const mockRes: Partial<Response> = {}
         const nextFn: NextFunction = jest.fn()
@@ -58,7 +58,7 @@ describe('protectMiddleware', () => {
         ).toThrow(/unauthorized/i)
     })
 
-    it('should throw error when authorization header does not have a token', () => {
+    it('throws error when authorization header does not have a token', () => {
         const mockReq: Partial<Request> = {
             headers: { authorization: 'invalidauthnheader' },
         }
@@ -70,7 +70,7 @@ describe('protectMiddleware', () => {
         ).toThrow(/unauthorized/i)
     })
 
-    it('should throw error when invalid token is encountered', () => {
+    it('throws error when invalid token is encountered', () => {
         const mockReq: Partial<Request> = {
             headers: { authorization: 'Bearer invalidtoken' },
         }

@@ -1,12 +1,12 @@
-import { Router } from 'express'
+import { NextFunction, Request, Response, Router } from 'express'
 import { body } from 'express-validator'
 
 import {
     isPrismaKnownRequestError,
     validateErrorMiddleware,
-} from '../../core/error'
-import { ServerError } from '../../core/error'
-import { prisma } from '../../core/prisma'
+} from '../../../core/error'
+import { ServerError } from '../../../core/error'
+import { prisma } from '../../../core/prisma'
 
 const router = Router()
 
@@ -18,7 +18,11 @@ const noteValidationChain = () => [
 /**
  * Express middleware that generates response data from a note or an array of notes.
  */
-const genNoteDataMiddleware = (req, res, next) => {
+const genNoteDataMiddleware = (
+    req: Request,
+    res: Response,
+    next: NextFunction
+) => {
     if (Array.isArray(res.locals.notes)) {
         res.locals.data = res.locals.notes.map((n) => {
             const d = { ...n }
@@ -47,7 +51,11 @@ router.post(
     '/',
     noteValidationChain(),
     validateErrorMiddleware,
-    async (req, res, next) => {
+    async (req: Request, res: Response, next: NextFunction) => {
+        if (!req.user) {
+            return next(new ServerError('auth'))
+        }
+
         try {
             res.locals.note = await prisma.note.create({
                 data: {
@@ -62,7 +70,8 @@ router.post(
         return next()
     },
     genNoteDataMiddleware,
-    (req, res) => res.status(201).json({ data: res.locals.data })
+    (req: Request, res: Response) =>
+        res.status(201).json({ data: res.locals.data })
 )
 
 // Read a note
@@ -84,13 +93,13 @@ router.get(
             })
         } catch (err) {
             if (
+                err instanceof Error &&
                 isPrismaKnownRequestError(err) &&
                 err.code === 'P2025' &&
                 err.message.match(/no note found/i)
             ) {
                 return next(new ServerError('notFound', undefined, err))
             }
-
             return next(err)
         }
 
@@ -131,7 +140,11 @@ router.put(
     '/:uuid',
     noteValidationChain(),
     validateErrorMiddleware,
-    async (req, res, next) => {
+    async (req: Request, res: Response, next: NextFunction) => {
+        if (!req.user) {
+            return next(new ServerError('auth'))
+        }
+
         try {
             res.locals.note = await prisma.note.update({
                 where: {
@@ -147,6 +160,7 @@ router.put(
             })
         } catch (err) {
             if (
+                err instanceof Error &&
                 isPrismaKnownRequestError(err) &&
                 err.code === 'P2025' &&
                 typeof err.meta?.cause === 'string' &&
@@ -154,14 +168,13 @@ router.put(
             ) {
                 return next(new ServerError('notFound', undefined, err))
             }
-
             return next(err)
         }
 
         return next()
     },
     genNoteDataMiddleware,
-    (req, res) => res.json({ data: res.locals.data })
+    (req: Request, res: Response) => res.json({ data: res.locals.data })
 )
 
 // Patch a note
@@ -169,7 +182,11 @@ router.patch(
     '/:uuid',
     noteValidationChain(),
     validateErrorMiddleware,
-    async (req, res, next) => {
+    async (req: Request, res: Response, next: NextFunction) => {
+        if (!req.user) {
+            return next(new ServerError('auth'))
+        }
+
         try {
             res.locals.note = await prisma.note.update({
                 where: {
@@ -185,6 +202,7 @@ router.patch(
             })
         } catch (err) {
             if (
+                err instanceof Error &&
                 isPrismaKnownRequestError(err) &&
                 err.code === 'P2025' &&
                 typeof err.meta?.cause === 'string' &&
@@ -192,14 +210,13 @@ router.patch(
             ) {
                 return next(new ServerError('notFound', undefined, err))
             }
-
             return next(err)
         }
 
         return next()
     },
     genNoteDataMiddleware,
-    (req, res) => res.json({ data: res.locals.data })
+    (req: Request, res: Response) => res.json({ data: res.locals.data })
 )
 
 // Delete a note
@@ -221,6 +238,7 @@ router.delete(
             })
         } catch (err) {
             if (
+                err instanceof Error &&
                 isPrismaKnownRequestError(err) &&
                 err.code === 'P2025' &&
                 typeof err.meta?.cause === 'string' &&
@@ -228,7 +246,6 @@ router.delete(
             ) {
                 return next(new ServerError('notFound', undefined, err))
             }
-
             return next(err)
         }
 

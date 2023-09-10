@@ -1,9 +1,11 @@
 const compileReactTs = require('ljas-webpack/compileReactTs')
-const FileManagerPlugin = require('filemanager-webpack-plugin')
+const CopyPlugin = require('copy-webpack-plugin')
 const path = require('path')
 const setupNodeExternals = require('ljas-webpack/setupNodeExternals')
 const { buildSourceMaps } = require('ljas-webpack')
 const { merge } = require('webpack-merge')
+
+const OUTPUT_PATH = path.resolve(__dirname, '../build/backend')
 
 const buildConfig = (mode) =>
     merge([
@@ -12,46 +14,28 @@ const buildConfig = (mode) =>
 
             output: {
                 filename: 'server.js',
-                path: path.resolve(__dirname, '../build/backend'),
+                path: OUTPUT_PATH,
             },
 
             plugins: [
-                // Copy static files from public directory in src to build
-                new FileManagerPlugin({
-                    events: {
-                        onEnd: {
-                            copy: [
-                                {
-                                    source: path.resolve(
-                                        __dirname,
-                                        '../src/backend/public'
-                                    ),
-                                    destination: path.resolve(
-                                        __dirname,
-                                        '../build/backend/public'
-                                    ),
-                                    options: {
-                                        overwrite: true,
-                                        preserveTimestamps: true,
-                                    },
-                                },
-                                {
-                                    source: path.resolve(
-                                        __dirname,
-                                        '../src/backend/views'
-                                    ),
-                                    destination: path.resolve(
-                                        __dirname,
-                                        '../build/backend/views'
-                                    ),
-                                    options: {
-                                        overwrite: true,
-                                        preserveTimestamps: true,
-                                    },
-                                },
-                            ],
+                // Copy static files from public & views directories in src to build
+                new CopyPlugin({
+                    patterns: [
+                        {
+                            from: path.resolve(
+                                __dirname,
+                                '../src/backend/public'
+                            ),
+                            to: `${OUTPUT_PATH}/public`,
                         },
-                    },
+                        {
+                            from: path.resolve(
+                                __dirname,
+                                '../src/backend/views'
+                            ),
+                            to: `${OUTPUT_PATH}/views`,
+                        },
+                    ],
                 }),
             ],
 

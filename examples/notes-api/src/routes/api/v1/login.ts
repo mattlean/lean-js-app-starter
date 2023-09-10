@@ -1,10 +1,10 @@
-import { Router } from 'express'
+import { NextFunction, Request, Response, Router } from 'express'
 import { body } from 'express-validator'
 
-import { createJWT, verifyPassword } from '../../core/auth'
-import { ServerError } from '../../core/error'
-import { validateErrorMiddleware } from '../../core/error'
-import { prisma } from '../../core/prisma'
+import { createJWT, verifyPassword } from '../../../core/auth'
+import { ServerError } from '../../../core/error'
+import { validateErrorMiddleware } from '../../../core/error'
+import { prisma } from '../../../core/prisma'
 
 const router = Router()
 
@@ -18,14 +18,17 @@ router.post(
     '/',
     loginValidationChain(),
     validateErrorMiddleware,
-    async (req, res, next) => {
+    async (req: Request, res: Response, next: NextFunction) => {
         let user
         try {
             user = await prisma.user.findUniqueOrThrow({
                 where: { username: req.body.username },
             })
         } catch (err) {
-            return next(new ServerError('auth', 'Invalid credentials', err))
+            if (err instanceof Error) {
+                return next(new ServerError('auth', 'Invalid credentials', err))
+            }
+            return next(err)
         }
 
         try {
@@ -38,7 +41,10 @@ router.post(
                 throw new Error('Invalid password encountered')
             }
         } catch (err) {
-            return next(new ServerError('auth', 'Invalid credentials', err))
+            if (err instanceof Error) {
+                return next(new ServerError('auth', 'Invalid credentials', err))
+            }
+            return next(err)
         }
 
         return res.json({ data: createJWT(user) })

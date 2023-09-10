@@ -1,10 +1,12 @@
+import { ValidationError } from 'express-validator'
+
 import ServerError, { isErrorPage, isServerError } from '../ServerError'
 
 const FOO_TXT = 'foo'
 const BAR_TXT = 'bar'
 
 describe('ServerError', () => {
-    it('new ServerError instantiated with no args has expected defaults', () => {
+    it('no args has expected defaults', () => {
         const serverErr = new ServerError()
 
         expect(serverErr.name).toBe('ServerError')
@@ -21,7 +23,7 @@ describe('ServerError', () => {
         expect(serverErr.errors[0]).toBe('Internal server error')
     })
 
-    it('ServerError with inputDevErrs defined as an array will be directly assigned to the instance', () => {
+    it('inputDevErrs defined as an array will be directly assigned to the instance', () => {
         const err1 = new Error()
         const err2 = new Error()
         const serverErr = new ServerError(undefined, undefined, [err1, err2])
@@ -38,7 +40,7 @@ describe('ServerError', () => {
         expect(serverErr.devErrors).toHaveLength(2)
     })
 
-    it('ServerError with inputDevErrs defined as a string will set it as the message and set it as an Error in devErrors', () => {
+    it('inputDevErrs defined as a string will set it as the message and set it as an Error in devErrors', () => {
         const serverErr = new ServerError(undefined, undefined, FOO_TXT)
 
         expect(Array.isArray(serverErr.devErrors)).toBe(true)
@@ -59,7 +61,7 @@ describe('ServerError', () => {
         expect(serverErr.devErrors[0].message).toBe(FOO_TXT)
     })
 
-    it('ServerError with inputDevErrs defined as an Error will set the message as the ServerError message and set it as an Error in devErrors', () => {
+    it('inputDevErrs defined as an Error will set the message as the ServerError message and set it as an Error in devErrors', () => {
         const err = new Error(FOO_TXT)
         const serverErr = new ServerError(undefined, undefined, err)
 
@@ -81,9 +83,30 @@ describe('ServerError', () => {
         expect(serverErr.devErrors[0]).toBe(err)
     })
 
-    // TODO: test express-validator errors
+    it('inputErrs defined as an express-validator ValidationError will set the msg as the ServerError message and set it as a ValidationError in devErrors', () => {
+        const MOCK_VALIDATION_ERR: ValidationError = {
+            type: 'field',
+            value: undefined,
+            msg: 'Invalid value',
+            path: 'password',
+            location: 'body',
+        }
+        const serverErr = new ServerError(
+            undefined,
+            undefined,
+            MOCK_VALIDATION_ERR
+        )
 
-    it('ServerError with inputErrs defined as an array will be directly assigned to the instance', () => {
+        expect(Array.isArray(serverErr.devErrors)).toBe(true)
+        if (!Array.isArray(serverErr.devErrors)) {
+            throw new Error('Expected errors for a ServerError to be an array.')
+        }
+
+        expect(serverErr.message).toBe(MOCK_VALIDATION_ERR.msg)
+        expect(serverErr.devErrors[0]).toBe(MOCK_VALIDATION_ERR)
+    })
+
+    it('inputErrs defined as an array will be directly assigned to the instance', () => {
         const serverErr = new ServerError(undefined, [FOO_TXT, BAR_TXT])
 
         expect(Array.isArray(serverErr.errors)).toBe(true)
@@ -97,7 +120,7 @@ describe('ServerError', () => {
         expect(serverErr.errors).toHaveLength(2)
     })
 
-    it('ServerError with inputErrs defined as a string will set it as a string in errors', () => {
+    it('inputErrs defined as a string will set it as a string in errors', () => {
         const serverErr = new ServerError(undefined, FOO_TXT)
 
         expect(Array.isArray(serverErr.errors)).toBe(true)
@@ -109,7 +132,7 @@ describe('ServerError', () => {
         expect(serverErr.errors).toHaveLength(1)
     })
 
-    it('ServerError with inputErrs defined as an ErrorPage will set it as an ErrorPage in errors', () => {
+    it('inputErrs defined as an ErrorPage will set it as an ErrorPage in errors', () => {
         const serverErr = new ServerError(undefined, {
             heading: FOO_TXT,
             content: BAR_TXT,
@@ -132,7 +155,7 @@ describe('ServerError', () => {
         expect(serverErr.errors).toHaveLength(1)
     })
 
-    it('ServerError with type "auth" defaults everything to "Unauthorized"', () => {
+    it('type "auth" defaults message and errors to "Unauthorized"', () => {
         const serverErr = new ServerError('auth')
 
         expect(serverErr.message).toBe('Unauthorized')
@@ -145,7 +168,7 @@ describe('ServerError', () => {
         expect(serverErr.errors[0]).toBe('Unauthorized')
     })
 
-    it('ServerError with type "notFound" defaults everything to "Not found"', () => {
+    it('type "notFound" defaults message and errors to "Not found"', () => {
         const serverErr = new ServerError('notFound')
 
         expect(serverErr.message).toBe('Not found')
@@ -158,7 +181,7 @@ describe('ServerError', () => {
         expect(serverErr.errors[0]).toBe('Not found')
     })
 
-    it('ServerError with type "validation" defaults everything to "Invalid input"', () => {
+    it('type "validation" defaults message and errors to "Invalid input"', () => {
         const serverErr = new ServerError('validation')
 
         expect(serverErr.message).toBe('Invalid input')
@@ -171,7 +194,7 @@ describe('ServerError', () => {
         expect(serverErr.errors[0]).toBe('Invalid input')
     })
 
-    it('ServerError with type "misc" defaults everything to "Internal server error"', () => {
+    it('type "misc" defaults message and errors to "Internal server error"', () => {
         const serverErr = new ServerError('misc')
 
         expect(serverErr.message).toBe('Internal server error')

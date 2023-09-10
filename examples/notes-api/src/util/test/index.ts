@@ -1,4 +1,5 @@
 import bcrypt from 'bcrypt'
+import { NextFunction, Request, Response } from 'express'
 
 export { prismaMock } from '../../../prisma/singleton'
 
@@ -8,7 +9,8 @@ export { prismaMock } from '../../../prisma/singleton'
  * @return Function that generates protectMiddleware function implementation
  */
 export const genProtectMiddlewareAuthImpl =
-    (reqUser: DecodedJWT) => (req, res, next) => {
+    (reqUser: DecodedJWT) =>
+    (req: Request, res: Response, next: NextFunction) => {
         req.user = reqUser
         return next()
     }
@@ -17,7 +19,11 @@ export const genProtectMiddlewareAuthImpl =
  * Restore original implementation for protectMiddleware.
  * @return protectMiddleware function implementation
  */
-export const restoreProtectMiddlewareImpl = (req, res, next) => {
+export const restoreProtectMiddlewareImpl = (
+    req: Request,
+    res: Response,
+    next: NextFunction
+) => {
     const { protectMiddleware } = jest.requireActual('../../core/auth')
     return protectMiddleware(req, res, next)
 }

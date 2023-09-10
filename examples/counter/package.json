@@ -32,7 +32,7 @@
         "bootstrap": "^5.3.1",
         "fork-ts-checker-webpack-plugin": "^8.0.0",
         "html-webpack-plugin": "^5.5.1",
-        "ljas-webpack": "^0.1.1-experimental.3",
+        "ljas-webpack": "^0.1.1-experimental.4",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "typescript": "^5.1.3",

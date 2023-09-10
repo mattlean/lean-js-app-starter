@@ -1,13 +1,13 @@
-import { Router } from 'express'
+import { NextFunction, Request, Response, Router } from 'express'
 import { body } from 'express-validator'
 
-import { createJWT, hashPassword } from '../../core/auth'
+import { createJWT, hashPassword } from '../../../core/auth'
 import {
     isPrismaKnownRequestError,
     validateErrorMiddleware,
-} from '../../core/error'
-import { ServerError } from '../../core/error'
-import { prisma } from '../../core/prisma'
+} from '../../../core/error'
+import { ServerError } from '../../../core/error'
+import { prisma } from '../../../core/prisma'
 
 const registerValidationChain = () => [
     body('username').isString(),
@@ -21,7 +21,7 @@ router.post(
     '/',
     registerValidationChain(),
     validateErrorMiddleware,
-    async (req, res, next) => {
+    async (req: Request, res: Response, next: NextFunction) => {
         let password
         try {
             password = await hashPassword(req.body.password)
@@ -39,15 +39,17 @@ router.post(
             })
         } catch (err) {
             if (
+                err instanceof Error &&
                 isPrismaKnownRequestError(err) &&
                 err.code === 'P2002' &&
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore
                 err.meta?.target?.[0] === 'username'
             ) {
                 return next(
                     new ServerError('validation', 'Username already taken', err)
                 )
             }
-
             return next(err)
         }
 

@@ -1,8 +1,8 @@
 import { Prisma } from '@prisma/client'
 import request from 'supertest'
 
-import app from '../../../app'
-import { prismaMock } from '../../../util/test'
+import app from '../../../../app'
+import { prismaMock } from '../../../../util/test'
 import { MOCK_USER, MOCK_USER_PLAIN_TXT_PASS } from './MOCK_DATA'
 
 test('returns JWT when valid login is sent', async () => {
@@ -84,7 +84,7 @@ test('returns 401 when username does not exist', async () => {
     expect(res.body.errors[0]).toBe('Invalid credentials')
 })
 
-test('should return 401 when password is incorrect', async () => {
+test('returns 401 when password is incorrect', async () => {
     prismaMock.user.findUniqueOrThrow.mockResolvedValue(MOCK_USER)
 
     expect.assertions(4)

@@ -1,13 +1,13 @@
 import { Prisma } from '@prisma/client'
 import request from 'supertest'
 
-import app from '../../../app'
-import { protectMiddleware } from '../../../core/auth'
+import app from '../../../../app'
+import { protectMiddleware } from '../../../../core/auth'
 import {
     genProtectMiddlewareAuthImpl,
     prismaMock,
     restoreProtectMiddlewareImpl,
-} from '../../../util/test'
+} from '../../../../util/test'
 import {
     MOCK_NOTE_EMPTY,
     MOCK_NOTE_W_CONTENT,
@@ -16,7 +16,7 @@ import {
     MOCK_REQ_USER,
 } from './MOCK_DATA'
 
-jest.mock('../../../core/auth')
+jest.mock('../../../../core/auth')
 
 const protectMiddlewareMock = jest.mocked(protectMiddleware)
 
