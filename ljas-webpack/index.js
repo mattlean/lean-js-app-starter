@@ -63,8 +63,8 @@ exports.compileJs = (options) => ({
                     },
                 },
                 ...options?.rule,
-                test: options?.rule?.test ?? /\.js$/,
                 exclude: options?.rule?.exclude ?? /node_modules/,
+                test: options?.rule?.test ?? /\.js$/,
             },
         ],
     },
@@ -128,6 +128,76 @@ exports.compileReact = (options, mode) =>
         resolve: {
             extensions: ['.js', '.jsx', '.json', '.wasm'],
             ...options?.resolve,
+        },
+    })
+
+/**
+ * Enable .css file imports and inject CSS into the DOM with css-loader and style-loader:
+ * - https://webpack.js.org/loaders/css-loader
+ * - https://webpack.js.org/loaders/style-loader
+ *
+ * Tested with:
+ * - css-loader@^6.8.1
+ * - style-loader@^3.3.3
+ *
+ * @param {Object} [options.cssLoader] css-loader options. (https://webpack.js.org/loaders/css-loader/#options)
+ * @param {Object} [options.rule] webpack rule. (https://webpack.js.org/configuration/module/#rule)
+ * @param {RegExp} [options.rule.exclude=/node_modules/] Exclude option associated with the webpack rule. (https://webpack.js.org/configuration/module/#ruleexclude)
+ * @param {RegExp} [options.rule.include] Include option associated with the webpack rule. It is recommended to set this to improve build performance. (https://webpack.js.org/configuration/module/#ruleinclude)
+ * @param {Object} [options.rule.resolve] Resolve option associated with the webpack rule. (https://webpack.js.org/configuration/module/#ruleresolve)
+ * @param {RegExp} [options.rule.test=/\.css$/] Test option associated with the webpack rule. (https://webpack.js.org/configuration/module/#ruletest)
+ * @param {Object} [options.rule.use] webpack UseEntry associated with the webpack rule. Setting this will override most of the default configuration. (https://webpack.js.org/configuration/module/#useentry)
+ * @param {Object} [options.styleLoader] style-loader options. (https://webpack.js.org/loaders/style-loader/#options)
+ * @return {Object} webpack configuration object that sets up css-loader and style-loader.
+ */
+exports.injectCss = (options) => ({
+    module: {
+        rules: [
+            {
+                use: [
+                    { loader: 'style-loader', options: options?.styleLoader },
+                    { loader: 'css-loader', options: options?.cssLoader },
+                ],
+                ...options?.rule,
+                exclude: options?.rule?.exclude ?? /node_modules/,
+                test: options?.rule?.test ?? /\.css$/,
+            },
+        ],
+    },
+})
+
+/**
+ * Enable .css, .sass, and .scss file imports and inject CSS into the DOM with css-loader, sass-loader, and style-loader:
+ * - https://webpack.js.org/loaders/css-loader
+ * - https://webpack.js.org/loaders/sass-loader
+ * - https://webpack.js.org/loaders/style-loader
+ *
+ * Tested with:
+ * - css-loader@^6.8.1
+ * - style-loader@^3.3.3
+ * - sass-loader@^13.3.2
+ *
+ * @param {Object} [options.cssLoader] css-loader options. (https://webpack.js.org/loaders/css-loader/#options)
+ * @param {Object} [options.rule] webpack rule. (https://webpack.js.org/configuration/module/#rule)
+ * @param {RegExp} [options.rule.exclude=/node_modules/] Exclude option associated with the webpack rule. (https://webpack.js.org/configuration/module/#ruleexclude)
+ * @param {RegExp} [options.rule.include] Include option associated with the webpack rule. It is recommended to set this to improve build performance. (https://webpack.js.org/configuration/module/#ruleinclude)
+ * @param {Object} [options.rule.resolve] Resolve option associated with the webpack rule. (https://webpack.js.org/configuration/module/#ruleresolve)
+ * @param {RegExp} [options.rule.test=/\.s[ac]ss$/i] Test option associated with the webpack rule. (https://webpack.js.org/configuration/module/#ruletest)
+ * @param {Object} [options.rule.use] webpack UseEntry associated with the webpack rule. Setting this will override most of the default configuration. (https://webpack.js.org/configuration/module/#useentry)
+ * @param {Object} [options.sassLoader] sass-loader options. (https://webpack.js.org/loaders/sass-loader/#options)
+ * @param {Object} [options.styleLoader] style-loader options. (https://webpack.js.org/loaders/style-loader/#options)
+ * @return {Object} webpack configuration object that sets up css-loader, sass-loader, and style-loader.
+ */
+exports.injectSass = (options) =>
+    this.injectCss({
+        rule: {
+            use: [
+                { loader: 'style-loader', options: options?.styleLoader },
+                { loader: 'css-loader', options: options?.cssLoader },
+                { loader: 'sass-loader', options: options?.sassLoader },
+            ],
+            ...options?.rule,
+            test: options?.rule?.test ?? /\.s[ac]ss$/i,
         },
     })
 

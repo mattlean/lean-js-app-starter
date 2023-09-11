@@ -1,7 +1,9 @@
 const compileReactTs = require('./compileReactTs')
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
-const { setupDevServer } = require('./')
+const { FORK_TS_CHECKER_DEFAULT_OPTIONS } = require('./constants')
 const { merge } = require('webpack-merge')
+const { setupDevServer } = require('./')
 
 /**
  * Setup webpack-dev-server and babel-loader to handle React JavaScript code and Fast Refresh:
@@ -25,7 +27,8 @@ const { merge } = require('webpack-merge')
  * @param {Object} [options.babelPresetEnv] Babel's preset-env options. Will be overwritten by `options.babelLoader` if it is set. (https://babeljs.io/docs/babel-preset-env#options)
  * @param {Object} [options.babelPresetReact] Babel's preset-react options. Will be overwritten by `options.babelLoader` if it is set. (https://babeljs.io/docs/babel-preset-react#options)
  * @param {Object} [options.devServer] Options for webpack-dev-server. (https://webpack.js.org/configuration/dev-server/#devserver)
- * @param {Object} [options.plugins] webpack's plugins option. (https://webpack.js.org/configuration/plugins)
+ * @param {Object} [options.forkTsChecker] Options for Fork TS Checker Webpack Plugin. By default it overrides TSConfig's exclude option to ignore tests. Will be overwritten by `options.plugins` if it is set. (https://github.com/TypeStrong/fork-ts-checker-webpack-plugin#options)
+ * @param {Object} [options.plugins] webpack's plugins option. Setting this will override `options.forkTsChecker` and `options.reactRefreshWebpackPlugin`. (https://webpack.js.org/configuration/plugins)
  * @param {Object} [options.reactRefreshWebpackPlugin] Options for React Refresh Webpack Plugin. (https://github.com/pmmmwh/react-refresh-webpack-plugin/blob/main/docs/API.md)
  * @param {Object} [options.resolve] webpack's resolve option. (https://webpack.js.org/configuration/resolve)
  * @param {Object} [options.rule] webpack rule. (https://webpack.js.org/configuration/module/#rule)
@@ -43,24 +46,25 @@ module.exports = (options, mode = 'development') => {
     delete o.reactRefreshWebpackPlugin
 
     return merge([
-        {
-            plugins: [
-                new ReactRefreshWebpackPlugin(
-                    options.reactRefreshWebpackPlugin
-                ),
-            ],
-        },
-
         compileReactTs(
             {
                 ...o,
                 babelLoaderPlugins: o.babelLoaderPlugins ?? [
                     require.resolve('react-refresh/babel'),
                 ],
+                plugins: o?.plugins ?? [
+                    new ReactRefreshWebpackPlugin(
+                        options?.reactRefreshWebpackPlugin
+                    ),
+                    new ForkTsCheckerWebpackPlugin(
+                        options?.forkTsChecker ??
+                            FORK_TS_CHECKER_DEFAULT_OPTIONS
+                    ),
+                ],
             },
             mode
         ),
 
-        setupDevServer({ ...options.devServer, hot: true }),
+        setupDevServer({ ...options?.devServer, hot: true }),
     ])
 }

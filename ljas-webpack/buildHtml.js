@@ -9,6 +9,4 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
  * @param {Object} [options] Options for HTML Webpack Plugin. (https://github.com/jantimon/html-webpack-plugin#options)
  * @return {Object} A webpack configuration object that sets up HTML Webpack Plugin.
  */
-module.exports = (options) => ({
-    plugins: [new HtmlWebpackPlugin(options)],
-})
+module.exports = (options) => ({ plugins: [new HtmlWebpackPlugin(options)] })

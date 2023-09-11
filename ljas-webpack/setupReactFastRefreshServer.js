@@ -42,24 +42,21 @@ module.exports = (options, mode = 'development') => {
     delete o.reactRefreshWebpackPlugin
 
     return merge([
-        {
-            plugins: [
-                new ReactRefreshWebpackPlugin(
-                    options.reactRefreshWebpackPlugin
-                ),
-            ],
-        },
-
         compileReact(
             {
                 ...o,
                 babelLoaderPlugins: o.babelLoaderPlugins ?? [
                     require.resolve('react-refresh/babel'),
                 ],
+                plugins: o?.plugins ?? [
+                    new ReactRefreshWebpackPlugin(
+                        options?.reactRefreshWebpackPlugin
+                    ),
+                ],
             },
             mode
         ),
 
-        setupDevServer({ ...options.devServer, hot: true }),
+        setupDevServer({ ...options?.devServer, hot: true }),
     ])
 }
