@@ -1,8 +1,8 @@
 const compileTs = require('ljas-webpack/compileTs')
-const path = require('path')
 const setupNodeExternals = require('ljas-webpack/setupNodeExternals')
 const { buildSourceMaps } = require('ljas-webpack')
 const { merge } = require('webpack-merge')
+const { PATH_BUILD, PATH_SRC } = require('./PATHS')
 
 const config = merge([
     {
@@ -11,7 +11,7 @@ const config = merge([
         output: {
             clean: true,
             filename: 'server.js',
-            path: path.resolve(__dirname, 'build'),
+            path: PATH_BUILD,
         },
 
         target: 'node18.16',
@@ -19,7 +19,7 @@ const config = merge([
 
     compileTs({
         rule: {
-            include: path.resolve(__dirname, 'src'),
+            include: PATH_SRC,
             exclude: [
                 /node_modules/,
                 /__mocks__\/.*.(j|t)s$/,

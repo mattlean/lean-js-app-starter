@@ -1,6 +1,6 @@
 const buildHtml = require('ljas-webpack/buildHtml')
-const path = require('path')
 const { merge } = require('webpack-merge')
+const { PATH_FRONTEND_BUILD } = require('../PATHS')
 
 const templateParams = require('./templateParams')
 
@@ -11,7 +11,7 @@ module.exports = merge([
         output: {
             clean: true,
             filename: 'app.js',
-            path: path.resolve(__dirname, '../build/frontend/public'),
+            path: `${PATH_FRONTEND_BUILD}/public`,
             publicPath: '/static',
         },
     },

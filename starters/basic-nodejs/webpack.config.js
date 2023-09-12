@@ -1,7 +1,7 @@
-const path = require('path')
 const setupNodeExternals = require('ljas-webpack/setupNodeExternals')
 const { buildSourceMaps, compileJs } = require('ljas-webpack')
 const { merge } = require('webpack-merge')
+const { PATH_BUILD, PATH_SRC } = require('./PATHS')
 
 const config = merge([
     {
@@ -10,7 +10,7 @@ const config = merge([
         output: {
             clean: true,
             filename: 'app.js',
-            path: path.resolve(__dirname, 'build'),
+            path: PATH_BUILD,
         },
 
         target: 'node18.16',
@@ -18,7 +18,7 @@ const config = merge([
 
     compileJs({
         rule: {
-            include: path.resolve(__dirname, 'src'),
+            include: PATH_SRC,
             exclude: [
                 /node_modules/,
                 /__mocks__\/.*.js$/,

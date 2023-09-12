@@ -1,11 +1,9 @@
 const compileTs = require('ljas-webpack/compileTs')
 const CopyPlugin = require('copy-webpack-plugin')
-const path = require('path')
 const setupNodeExternals = require('ljas-webpack/setupNodeExternals')
 const { buildSourceMaps } = require('ljas-webpack')
 const { merge } = require('webpack-merge')
-
-const OUTPUT_PATH = path.resolve(__dirname, 'build')
+const { PATH_BUILD, PATH_SRC } = require('./PATHS')
 
 const config = merge([
     {
@@ -14,7 +12,7 @@ const config = merge([
         output: {
             clean: true,
             filename: 'server.js',
-            path: OUTPUT_PATH,
+            path: PATH_BUILD,
         },
 
         target: 'node18.16',
@@ -24,8 +22,8 @@ const config = merge([
             new CopyPlugin({
                 patterns: [
                     {
-                        from: path.resolve(__dirname, 'src/views'),
-                        to: `${OUTPUT_PATH}/views`,
+                        from: `${PATH_SRC}/views`,
+                        to: `${PATH_BUILD}/views`,
                     },
                 ],
             }),
@@ -34,7 +32,7 @@ const config = merge([
 
     compileTs({
         rule: {
-            include: path.resolve(__dirname, 'src'),
+            include: PATH_SRC,
             exclude: [
                 /node_modules/,
                 /__mocks__\/.*.(j|t)s$/,

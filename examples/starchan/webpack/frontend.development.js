@@ -1,11 +1,11 @@
 require('dotenv').config()
 
 const buildHtml = require('ljas-webpack/buildHtml')
-const path = require('path')
 const setupReactFastRefreshServerTs = require('ljas-webpack/setupReactFastRefreshServerTs')
 const webpack = require('webpack')
 const { buildSourceMaps } = require('ljas-webpack')
 const { merge } = require('webpack-merge')
+const { PATH_FRONTEND_BUILD, PATH_FRONTEND_SRC } = require('../PATHS')
 
 const templateParams = require('./templateParams')
 
@@ -43,11 +43,11 @@ module.exports = merge([
             static: {
                 // Set webpack-dev-server's served directory to the /build/frontend
                 // otherwise by default it will serve output.publicPath (/build/frontend/static)
-                directory: path.join(__dirname, '../build/frontend'),
+                directory: PATH_FRONTEND_BUILD,
             },
         },
         rule: {
-            include: path.resolve(__dirname, '../src/frontend'),
+            include: PATH_FRONTEND_SRC,
             exclude: [
                 /node_modules/,
                 /__mocks__\/.*.(j|t)sx?$/,

@@ -59,9 +59,6 @@ module.exports = (options) =>
             ...options?.rule,
         },
         plugins: options?.plugins ?? [
-            new MiniCssExtractPlugin({
-                filename: 'style.css',
-                ...options?.miniCssExtractPlugin,
-            }),
+            new MiniCssExtractPlugin({ ...options?.miniCssExtractPlugin }),
         ],
     })

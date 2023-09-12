@@ -1,11 +1,9 @@
 const compileReactTs = require('ljas-webpack/compileReactTs')
 const CopyPlugin = require('copy-webpack-plugin')
-const path = require('path')
 const setupNodeExternals = require('ljas-webpack/setupNodeExternals')
 const { buildSourceMaps } = require('ljas-webpack')
 const { merge } = require('webpack-merge')
-
-const OUTPUT_PATH = path.resolve(__dirname, '../build/backend')
+const { PATH_BACKEND_BUILD, PATH_BACKEND_SRC, PATH_SRC } = require('../PATHS')
 
 const buildConfig = (mode) =>
     merge([
@@ -14,7 +12,7 @@ const buildConfig = (mode) =>
 
             output: {
                 filename: 'server.js',
-                path: OUTPUT_PATH,
+                path: PATH_BACKEND_BUILD,
             },
 
             plugins: [
@@ -22,18 +20,12 @@ const buildConfig = (mode) =>
                 new CopyPlugin({
                     patterns: [
                         {
-                            from: path.resolve(
-                                __dirname,
-                                '../src/backend/public'
-                            ),
-                            to: `${OUTPUT_PATH}/public`,
+                            from: `${PATH_BACKEND_SRC}/public`,
+                            to: `${PATH_BACKEND_BUILD}/public`,
                         },
                         {
-                            from: path.resolve(
-                                __dirname,
-                                '../src/backend/views'
-                            ),
-                            to: `${OUTPUT_PATH}/views`,
+                            from: `${PATH_BACKEND_SRC}/views`,
+                            to: `${PATH_BACKEND_BUILD}/views`,
                         },
                     ],
                 }),
@@ -45,7 +37,7 @@ const buildConfig = (mode) =>
         compileReactTs(
             {
                 rule: {
-                    include: path.resolve(__dirname, '../src'),
+                    include: PATH_SRC,
                     exclude: [
                         /node_modules/,
                         /__mocks__\/.*.(j|t)sx?$/,

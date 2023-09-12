@@ -1,19 +1,27 @@
-const path = require('path')
 const setupReactFastRefreshServerTs = require('ljas-webpack/setupReactFastRefreshServerTs')
 const { buildSourceMaps, injectSass } = require('ljas-webpack')
 const { merge } = require('webpack-merge')
+const { PATH_BUILD, PATH_SRC } = require('./PATHS')
 
 module.exports = merge([
-    { mode: 'development' },
+    {
+        mode: 'development',
+
+        output: {
+            clean: true,
+            filename: '[name].js',
+            path: PATH_BUILD,
+        },
+    },
 
     buildSourceMaps('cheap-module-source-map'),
 
-    injectSass({ rule: { include: path.resolve(__dirname, 'src') } }),
+    injectSass({ rule: { include: PATH_SRC } }),
 
     setupReactFastRefreshServerTs({
         devServer: { port: 8080 },
         rule: {
-            include: path.resolve(__dirname, 'src'),
+            include: PATH_SRC,
             exclude: [
                 /node_modules/,
                 /__mocks__\/.*.(j|t)sx?$/,

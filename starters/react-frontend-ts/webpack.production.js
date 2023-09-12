@@ -1,7 +1,7 @@
 const compileReactTs = require('ljas-webpack/compileReactTs')
-const path = require('path')
 const { buildSourceMaps } = require('ljas-webpack')
 const { merge } = require('webpack-merge')
+const { PATH_SRC } = require('./PATHS')
 
 module.exports = merge([
     { mode: 'production' },
@@ -11,7 +11,7 @@ module.exports = merge([
     compileReactTs(
         {
             rule: {
-                include: path.resolve(__dirname, 'src'),
+                include: PATH_SRC,
                 exclude: [
                     /node_modules/,
                     /__mocks__\/.*.(j|t)sx?$/,

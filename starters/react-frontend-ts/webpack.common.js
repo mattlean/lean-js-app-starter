@@ -1,6 +1,6 @@
 const buildHtml = require('ljas-webpack/buildHtml')
-const path = require('path')
 const { merge } = require('webpack-merge')
+const { PATH_BUILD } = require('./PATHS')
 
 module.exports = merge([
     {
@@ -9,7 +9,7 @@ module.exports = merge([
         output: {
             clean: true,
             filename: 'app.js',
-            path: path.resolve(__dirname, 'build'),
+            path: PATH_BUILD,
         },
     },
 
