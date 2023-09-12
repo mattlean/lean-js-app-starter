@@ -3,6 +3,7 @@
         "dbaeumer.vscode-eslint",
         "esbenp.prettier-vscode",
         "ms-azuretools.vscode-docker",
-        "prisma.prisma"
+        "prisma.prisma",
+        "stylelint.vscode-stylelint"
     ]
 }

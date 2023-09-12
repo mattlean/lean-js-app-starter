@@ -13,6 +13,8 @@
         "format:write": "prettier --write .",
         "lint": "eslint .",
         "lint:fix": "npm run lint -- --fix",
+        "lint:styles": "stylelint \"src/**/*.{css,sass,scss}\"",
+        "lint:styles:fix": "npm run lint:styles -- --fix",
         "lint-staged": "lint-staged",
         "start": "http-server ./build",
         "test": "jest",
@@ -69,6 +71,8 @@
         "react-refresh": "^0.14.0",
         "react-test-renderer": "^18.2.0",
         "style-loader": "^3.3.3",
+        "stylelint": "^15.10.3",
+        "stylelint-config-standard-scss": "^11.0.0",
         "ts-jest": "^29.1.0",
         "webpack-dev-server": "^4.15.0"
     },
