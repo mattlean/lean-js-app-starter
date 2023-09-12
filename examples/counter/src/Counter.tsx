@@ -11,22 +11,26 @@ export default function Counter() {
                 <div className="card-body d-flex flex-column align-items-center px-5">
                     <p className="lead">Count is currently...</p>
                     <p className="display-1">{count}</p>
-                    <div className="w-100">
+                    <div className="column-gap-3 d-flex w-100">
                         <button
                             type="button"
                             onClick={() => setCount(count - 1)}
                             className="btn btn-success w-50"
-                            style={{ height: 50 }}
                         >
-                            -
+                            <i
+                                className="bi bi-dash-circle"
+                                style={{ fontSize: '1.5rem' }}
+                            />
                         </button>
                         <button
                             type="button"
                             onClick={() => setCount(count + 1)}
                             className="btn btn-success w-50"
-                            style={{ height: 50 }}
                         >
-                            +
+                            <i
+                                className="bi bi-plus-circle-fill"
+                                style={{ fontSize: '1.5rem' }}
+                            />
                         </button>
                     </div>
                     <hr className="w-100" />

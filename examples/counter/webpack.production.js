@@ -1,8 +1,8 @@
 const buildPrefixedSass = require('ljas-webpack/buildPrefixedSass')
 const compileReactTs = require('ljas-webpack/compileReactTs')
-const glob = require('glob')
+// const glob = require('glob')
 const path = require('path')
-const removeUnusedCss = require('ljas-webpack/removeUnusedCss')
+// const removeUnusedCss = require('ljas-webpack/removeUnusedCss')
 const { buildSourceMaps } = require('ljas-webpack')
 const { merge } = require('webpack-merge')
 
@@ -30,8 +30,10 @@ module.exports = merge([
         'production'
     ),
 
-    removeUnusedCss({
-        paths: glob.sync(`${PATH_SRC}/**/*.[jt]s?(x)`, { nodir: true }),
-        safelist: ['foo'],
-    }),
+    // removeUnusedCss({
+    //     paths: glob.sync(`${PATH_SRC}/**/*.[jt]s?(x)`, { nodir: true }),
+    //     safelist: [
+    //         'body',
+    //     ],
+    // }),
 ])
