@@ -17,11 +17,8 @@ module.exports = merge([
     {
         mode: 'development',
 
-        plugins: [
-            new webpack.EnvironmentPlugin({
-                DEV_SERVER: true,
-            }),
-        ],
+        // TODO: check if this is still needed
+        plugins: [new webpack.EnvironmentPlugin({ DEV_SERVER: true })],
     },
 
     // Build HTML for webpack-dev-server

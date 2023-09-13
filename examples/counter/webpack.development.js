@@ -1,7 +1,13 @@
+require('dotenv').config()
+
 const setupReactFastRefreshServerTs = require('ljas-webpack/setupReactFastRefreshServerTs')
 const { buildSourceMaps, injectSass } = require('ljas-webpack')
 const { merge } = require('webpack-merge')
 const { PATH_BUILD, PATH_SRC } = require('./PATHS')
+
+if (!process.env.PORT) {
+    throw new Error('🔴 webpack-dev-server port was not set')
+}
 
 module.exports = merge([
     {
@@ -19,7 +25,7 @@ module.exports = merge([
     injectSass({ rule: { include: PATH_SRC } }),
 
     setupReactFastRefreshServerTs({
-        devServer: { port: 8080 },
+        devServer: { port: process.env.PORT },
         rule: {
             include: PATH_SRC,
             exclude: [
