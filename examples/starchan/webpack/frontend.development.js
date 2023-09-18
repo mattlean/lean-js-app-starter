@@ -10,9 +10,9 @@ const {
     loadImages,
 } = require('ljas-webpack')
 const { merge } = require('webpack-merge')
-const { PATH_FRONTEND_BUILD, PATH_FRONTEND_SRC } = require('../PATHS')
 
 const templateParams = require('./templateParams')
+const { PATH_FRONTEND_BUILD, PATH_FRONTEND_SRC } = require('../PATHS')
 
 if (!process.env.PORT_DEV_SERVER) {
     throw new Error('🔴 webpack-dev-server port was not set')
@@ -21,6 +21,13 @@ if (!process.env.PORT_DEV_SERVER) {
 module.exports = merge([
     {
         mode: 'development',
+
+        output: {
+            clean: true,
+            filename: '[name].js',
+            path: `${PATH_FRONTEND_BUILD}/public`,
+            publicPath: '/static',
+        },
 
         // TODO: check if this is still needed
         plugins: [new webpack.EnvironmentPlugin({ DEV_SERVER: true })],

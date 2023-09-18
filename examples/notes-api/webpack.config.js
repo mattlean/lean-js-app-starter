@@ -3,15 +3,16 @@ const CopyPlugin = require('copy-webpack-plugin')
 const setupNodeExternals = require('ljas-webpack/setupNodeExternals')
 const { buildSourceMaps } = require('ljas-webpack')
 const { merge } = require('webpack-merge')
+
 const { PATH_BUILD, PATH_SRC } = require('./PATHS')
 
 const config = merge([
     {
-        entry: './src/index.ts',
+        entry: { server: './src/index.ts' },
 
         output: {
             clean: true,
-            filename: 'server.js',
+            filename: '[name].js',
             path: PATH_BUILD,
         },
 

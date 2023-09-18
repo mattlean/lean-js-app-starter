@@ -3,15 +3,16 @@ const CopyPlugin = require('copy-webpack-plugin')
 const setupNodeExternals = require('ljas-webpack/setupNodeExternals')
 const { buildSourceMaps } = require('ljas-webpack')
 const { merge } = require('webpack-merge')
+
 const { PATH_BACKEND_BUILD, PATH_BACKEND_SRC, PATH_SRC } = require('../PATHS')
 
 const buildConfig = (mode) =>
     merge([
         {
-            entry: './src/backend/index.ts',
+            entry: { server: './src/backend/index.ts' },
 
             output: {
-                filename: 'server.js',
+                filename: '[name].js',
                 path: PATH_BACKEND_BUILD,
             },
 

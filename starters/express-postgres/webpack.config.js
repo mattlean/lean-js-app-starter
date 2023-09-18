@@ -5,11 +5,11 @@ const { PATH_BUILD, PATH_SRC } = require('./PATHS')
 
 const config = merge([
     {
-        entry: './src/index.js',
+        entry: { server: './src/index.js' },
 
         output: {
             clean: true,
-            filename: 'server.js',
+            filename: '[name].js',
             path: PATH_BUILD,
         },
 

@@ -8,14 +8,23 @@ const {
     loadImages,
 } = require('ljas-webpack')
 const { merge } = require('webpack-merge')
-const { PATH_SRC } = require('./PATHS')
+
+const { PATH_BUILD, PATH_SRC } = require('./PATHS')
 
 if (!process.env.PORT) {
     throw new Error('🔴 webpack-dev-server port was not set')
 }
 
 module.exports = merge([
-    { mode: 'development' },
+    {
+        mode: 'development',
+
+        output: {
+            clean: true,
+            filename: '[name].js',
+            path: PATH_BUILD,
+        },
+    },
 
     buildSourceMaps('cheap-module-source-map'),
 

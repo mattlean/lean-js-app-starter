@@ -3,6 +3,7 @@ require('dotenv').config()
 const setupReactFastRefreshServerTs = require('ljas-webpack/setupReactFastRefreshServerTs')
 const { buildSourceMaps, injectSass } = require('ljas-webpack')
 const { merge } = require('webpack-merge')
+
 const { PATH_BUILD, PATH_SRC } = require('./PATHS')
 
 if (!process.env.PORT) {

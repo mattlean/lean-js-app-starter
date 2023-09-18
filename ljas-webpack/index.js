@@ -175,8 +175,8 @@ exports.injectCss = (options) => ({
  *
  * Tested with:
  * - css-loader@^6.8.1
- * - style-loader@^3.3.3
  * - sass-loader@^13.3.2
+ * - style-loader@^3.3.3
  *
  * @param {Object} [options] Options object that determines how css-loader, sass-loader, and style-loader will be configured.
  * @param {Object} [options.cssLoader] css-loader options. (https://webpack.js.org/loaders/css-loader/#options)
