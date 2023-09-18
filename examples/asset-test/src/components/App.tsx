@@ -1,5 +1,6 @@
 import FontTest from './FontTest'
-import SVGLogo from './SVGTest'
+import PNGTest from './PNGTest'
+import SVGTest from './SVGTest'
 
 export default function App() {
     return (
@@ -10,7 +11,9 @@ export default function App() {
                 assets for the project.
             </p>
             <hr />
-            <SVGLogo />
+            <SVGTest />
+            <hr />
+            <PNGTest />
             <hr />
             <FontTest />
         </>

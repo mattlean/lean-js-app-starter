@@ -1,5 +1,6 @@
-@import url('./components/SVGTest');
 @import url('./components/FontTest');
+@import url('./components/PNGTest');
+@import url('./components/SVGTest');
 
 body {
     background: #23272f;

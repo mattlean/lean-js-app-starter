@@ -34,7 +34,7 @@ const { FORK_TS_CHECKER_DEFAULT_OPTIONS } = require('./constants')
  * @param {string} [mode] The webpack mode configuration option. Babel's preset-react will enable behavior specific to development when this is set to "development".  (https://webpack.js.org/configuration/mode)
  * @return {Object} A webpack configuration object that sets up babel-loader and Fork TS Checker Webpack Plugin.
  */
-module.exports = (options, mode) =>
+const compileReactTs = (options, mode) =>
     compileReact(
         {
             rule: {
@@ -76,3 +76,5 @@ module.exports = (options, mode) =>
         },
         mode
     )
+
+module.exports = compileReactTs

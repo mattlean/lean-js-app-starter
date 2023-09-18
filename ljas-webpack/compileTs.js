@@ -31,7 +31,7 @@ const { FORK_TS_CHECKER_DEFAULT_OPTIONS } = require('./constants')
  * @param {Object} [options.rule.use] webpack UseEntry associated with the webpack rule. Setting this will override most of the default configuration. (https://webpack.js.org/configuration/module/#useentry)
  * @return {Object} A webpack configuration object that sets up babel-loader and Fork TS Checker Webpack Plugin.
  */
-module.exports = (options) =>
+const compileTs = (options) =>
     compileJs({
         rule: {
             use: {
@@ -63,3 +63,5 @@ module.exports = (options) =>
             ...options?.resolve,
         },
     })
+
+module.exports = compileTs

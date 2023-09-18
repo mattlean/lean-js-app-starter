@@ -35,7 +35,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
  * @param {Object} [options.sassLoader] sass-loader options. (https://webpack.js.org/loaders/sass-loader/#options)
  * @return {Object} A webpack configuration object that sets up Autoprefixer, css-loader, mini-css-extract-plugin, postcss-loader, and sass-loader.
  */
-module.exports = (options) =>
+const buildPrefixedSass = (options) =>
     buildSass({
         rule: {
             use: [
@@ -62,3 +62,5 @@ module.exports = (options) =>
             new MiniCssExtractPlugin({ ...options?.miniCssExtractPlugin }),
         ],
     })
+
+module.exports = buildPrefixedSass

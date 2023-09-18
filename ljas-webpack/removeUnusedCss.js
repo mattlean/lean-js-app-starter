@@ -9,4 +9,8 @@ const { PurgeCSSPlugin } = require('purgecss-webpack-plugin')
  * @param {Object} [options] Options for purgecss-webpack-plugin. (https://purgecss.com/plugins/webpack.html#options)
  * @return {Object} A webpack configuration object that sets up purgecss-webpack-plugin.
  */
-module.exports = (options) => ({ plugins: [new PurgeCSSPlugin(options)] })
+const removeUnusedCss = (options) => ({
+    plugins: [new PurgeCSSPlugin(options)],
+})
+
+module.exports = removeUnusedCss

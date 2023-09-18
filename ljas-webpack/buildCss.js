@@ -22,7 +22,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
  * @param {Object} [options.rule.use] webpack UseEntry associated with the webpack rule. Setting this will override most of the default configuration. (https://webpack.js.org/configuration/module/#useentry)
  * @return {Object} webpack configuration object that sets up css-loader and mini-css-extract-plugin.
  */
-module.exports = (options) => ({
+const buildCss = (options) => ({
     module: {
         rules: [
             {
@@ -45,3 +45,5 @@ module.exports = (options) => ({
         new MiniCssExtractPlugin({ ...options?.miniCssExtractPlugin }),
     ],
 })
+
+module.exports = buildCss

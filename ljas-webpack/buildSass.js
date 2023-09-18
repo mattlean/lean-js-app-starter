@@ -27,7 +27,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
  * @param {Object} [options.sassLoader] sass-loader options. (https://webpack.js.org/loaders/sass-loader/#options)
  * @return {Object} webpack configuration object that sets up css-loader, mini-css-extract-plugin, and sass-loader.
  */
-module.exports = (options) =>
+const buildSass = (options) =>
     buildCss({
         rule: {
             use: [
@@ -45,3 +45,5 @@ module.exports = (options) =>
             new MiniCssExtractPlugin({ ...options?.miniCssExtractPlugin }),
         ],
     })
+
+module.exports = buildSass

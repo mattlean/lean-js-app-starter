@@ -32,6 +32,8 @@ module.exports = merge([
     loadFonts({
         rule: {
             generator: { filename: 'assets/[name][ext][query]' },
+            // Export the asset as a data URI if it's below the maxSize threshold,
+            // otherwise emit it as a separate file and export the URL
             parser: { dataUrlCondition: { maxSize: 50000 } },
             type: 'asset',
         },
@@ -41,6 +43,8 @@ module.exports = merge([
         rule: {
             generator: { filename: 'assets/[name][ext][query]' },
             parser: { dataUrlCondition: { maxSize: 15000 } },
+            // Export the asset as a data URI if it's below the maxSize threshold,
+            // otherwise emit it as a separate file and export the URL
             type: 'asset',
         },
     }),

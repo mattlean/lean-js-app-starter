@@ -42,7 +42,7 @@ const { setupDevServer } = require('./')
  * @param {string} [mode=development] The webpack mode configuration option. Babel's preset-react will enable behavior specific to development when this is set to "development".  (https://webpack.js.org/configuration/mode)
  * @return {Object} A webpack configuration object that sets up babel-loader, Fork TS Checker Webpack Plugin, React Refresh Webpack Plugin, and webpack-dev-server.
  */
-module.exports = (options, mode = 'development') => {
+const setupReactFastRefreshServerTs = (options, mode = 'development') => {
     const o = { ...options }
     delete o.devServer
     delete o.reactRefreshWebpackPlugin
@@ -70,3 +70,5 @@ module.exports = (options, mode = 'development') => {
         setupDevServer({ ...options?.devServer, hot: true }),
     ])
 }
+
+module.exports = setupReactFastRefreshServerTs

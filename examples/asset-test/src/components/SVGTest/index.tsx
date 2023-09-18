@@ -1,6 +1,6 @@
 import ReactLogo from './react-logo.svg'
 
-export default function SVGLogo() {
+export default function SVGTest() {
     return (
         <div>
             <h2>SVG Test</h2>

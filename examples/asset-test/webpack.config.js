@@ -13,12 +13,7 @@ module.exports = (env, { mode }) => {
 
         case 'development': {
             const config = merge(commonConfig, developmentConfig)
-            console.log(
-                'DEBUG CONFIG',
-                config,
-                JSON.stringify(config),
-                config.module.rules[1]
-            )
+            console.log('DEBUG CONFIG', config, JSON.stringify(config))
             return config
         }
 
