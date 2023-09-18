@@ -24,6 +24,8 @@
         "frontend:dev": "nodemon --config frontend.nodemon.json --exec \"webpack serve --config webpack/frontend.config.js --mode development\"",
         "lint": "eslint .",
         "lint:fix": "npm run lint -- --fix",
+        "lint:styles": "stylelint \"src/frontend/**/*.css\"",
+        "lint:styles:fix": "npm run lint:styles -- --fix",
         "prisma": "prisma",
         "prisma:studio": "npm run prisma studio -- --browser none",
         "start": "node build/backend/server.js",
@@ -89,6 +91,7 @@
         "react-refresh": "^0.14.0",
         "style-loader": "^3.3.3",
         "stylelint": "^15.10.3",
+        "stylelint-config-standard": "^34.0.0",
         "supertest": "^6.3.3",
         "ts-jest": "^29.1.0",
         "webpack-dev-server": "^4.15.0"

@@ -4,7 +4,8 @@
     "description": "",
     "main": "build/app.js",
     "scripts": {
-        "build": "webpack --mode production",
+        "build": "webpack --mode development",
+        "build:production": "webpack --mode production",
         "check-types": "tsc",
         "dev": "nodemon --exec \"webpack serve --mode development\"",
         "format": "npm run format:check",
@@ -12,6 +13,8 @@
         "format:write": "prettier --write .",
         "lint": "eslint .",
         "lint:fix": "npm run lint -- --fix",
+        "lint:styles": "stylelint \"src/**/*.css\"",
+        "lint:styles:fix": "npm run lint:styles -- --fix",
         "lint-staged": "lint-staged",
         "start": "http-server ./build",
         "test": "jest",
@@ -61,6 +64,7 @@
         "react-test-renderer": "^18.2.0",
         "style-loader": "^3.3.3",
         "stylelint": "^15.10.3",
+        "stylelint-config-standard": "^34.0.0",
         "ts-jest": "^29.1.0",
         "webpack-dev-server": "^4.15.0"
     },

@@ -1,0 +1,14 @@
+@import url('./components/SVGTest');
+@import url('./components/FontTest');
+
+body {
+    background: #23272f;
+    color: #fff;
+    font-family: Arial, sans-serif;
+}
+
+#root {
+    width: 960px;
+    margin: 0 auto;
+    text-align: center;
+}

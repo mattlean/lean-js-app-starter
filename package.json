@@ -28,6 +28,7 @@
         "starters/express-postgres-ts",
         "starters/react-frontend",
         "starters/react-frontend-ts",
+        "examples/asset-test",
         "examples/counter",
         "examples/notes-api",
         "examples/starchan",

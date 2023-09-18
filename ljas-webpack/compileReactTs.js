@@ -3,8 +3,9 @@ const { compileReact } = require('./')
 const { FORK_TS_CHECKER_DEFAULT_OPTIONS } = require('./constants')
 
 /**
- * Compile React TypeScript code with babel-loader:
- * https://webpack.js.org/loaders/babel-loader
+ * Compile React TypeScript code with babel-loader and type check with Fork TS Checker Webpack Plugin:
+ * - https://webpack.js.org/loaders/babel-loader
+ * - https://github.com/TypeStrong/fork-ts-checker-webpack-plugin
  *
  * Tested with:
  * - @babel/core@^7.22.1
@@ -14,7 +15,7 @@ const { FORK_TS_CHECKER_DEFAULT_OPTIONS } = require('./constants')
  * - babel-loader@^9.1.2
  * - fork-ts-checker-webpack-plugin@^8.0.0
  *
- * @param {Object} [options] Options object that determines how babel-loader will be configured.
+ * @param {Object} [options] Options object that determines how babel-loader and Fork TS Checker Webpack Plugin will be configured.
  * @param {Object} [options.babelLoader] babel-loader options. Setting this will completely override the default Babel configuration. (https://webpack.js.org/loaders/babel-loader/#options)
  * @param {Object} [options.babelLoaderPlugins] Babel plugins. (https://babeljs.io/docs/plugins)
  * @param {Object} [options.babelLoaderPresets] Babel presets. Setting this will override the default Babel preset configuration. (https://babeljs.io/docs/presets)
@@ -31,7 +32,7 @@ const { FORK_TS_CHECKER_DEFAULT_OPTIONS } = require('./constants')
  * @param {RegExp} [options.rule.test=/\.[jt]sx?$/] Test option associated with the webpack rule. (https://webpack.js.org/configuration/module/#ruletest)
  * @param {Object} [options.rule.use] webpack UseEntry associated with the webpack rule. Setting this will override most of the default configuration. (https://webpack.js.org/configuration/module/#useentry)
  * @param {string} [mode] The webpack mode configuration option. Babel's preset-react will enable behavior specific to development when this is set to "development".  (https://webpack.js.org/configuration/mode)
- * @return {Object} A webpack configuration object that sets up babel-loader.
+ * @return {Object} A webpack configuration object that sets up babel-loader and Fork TS Checker Webpack Plugin.
  */
 module.exports = (options, mode) =>
     compileReact(

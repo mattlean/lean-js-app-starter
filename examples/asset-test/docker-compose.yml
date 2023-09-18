@@ -1,0 +1,12 @@
+version: '3.8'
+services:
+    app:
+        build: .
+        image: 'ljas-asset-test'
+        container_name: 'ljas-asset-test'
+        restart: always
+        ports:
+            - '${PORT}:${PORT}'
+        volumes:
+            - .:/code
+            - /code/node_modules

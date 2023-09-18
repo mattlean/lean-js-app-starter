@@ -6,9 +6,11 @@ const { merge } = require('webpack-merge')
 const { setupDevServer } = require('./')
 
 /**
- * Setup webpack-dev-server and babel-loader to handle React JavaScript code and Fast Refresh:
+ * Setup webpack-dev-server and babel-loader to handle React JavaScript code.
+ * Also setup Fast Refresh with React Refresh Webpack Plugin and type check with Fork TS Checker Webpack Plugin:
  * - https://webpack.js.org/loaders/babel-loader
  * - https://webpack.js.org/configuration/dev-server
+ * - https://github.com/TypeStrong/fork-ts-checker-webpack-plugin
  * - https://github.com/pmmmwh/react-refresh-webpack-plugin
  *
  * Tested with:
@@ -20,7 +22,7 @@ const { setupDevServer } = require('./')
  * - react-refresh@^0.14.0
  * - webpack-dev-server@^4.15.0
  *
- * @param {Object} [options] Options object that determines how babel-loader will be configured.
+ * @param {Object} [options] Options object that determines how babel-loader, Fork TS Checker Webpack Plugin, React Refresh Webpack Plugin, and webpack-dev-server will be configured.
  * @param {Object} [options.babelLoader] babel-loader options. Setting this will completely override the default Babel configuration. (https://webpack.js.org/loaders/babel-loader/#options)
  * @param {Object} [options.babelLoaderPlugins] Babel plugins. (https://babeljs.io/docs/plugins)
  * @param {Object} [options.babelLoaderPresets] Babel presets. Setting this will override the default Babel preset configuration. (https://babeljs.io/docs/presets)
@@ -38,7 +40,7 @@ const { setupDevServer } = require('./')
  * @param {RegExp} [options.rule.test=/\.jsx?$/] Test option associated with the webpack rule. (https://webpack.js.org/configuration/module/#ruletest)
  * @param {Object} [options.rule.use] webpack UseEntry associated with the webpack rule. Setting this will override most of the default configuration. (https://webpack.js.org/configuration/module/#useentry)
  * @param {string} [mode=development] The webpack mode configuration option. Babel's preset-react will enable behavior specific to development when this is set to "development".  (https://webpack.js.org/configuration/mode)
- * @return {Object} A webpack configuration object that sets up babel-loader, webpack-dev-server, and React Refresh Webpack Plugin.
+ * @return {Object} A webpack configuration object that sets up babel-loader, Fork TS Checker Webpack Plugin, React Refresh Webpack Plugin, and webpack-dev-server.
  */
 module.exports = (options, mode = 'development') => {
     const o = { ...options }

@@ -3,9 +3,7 @@ const { merge } = require('webpack-merge')
 
 module.exports = merge([
     {
-        entry: {
-            app: './src/index.tsx',
-        },
+        entry: { app: './src/index.tsx' },
 
         module: {
             rules: [

@@ -140,6 +140,7 @@ exports.compileReact = (options, mode) =>
  * - css-loader@^6.8.1
  * - style-loader@^3.3.3
  *
+ * @param {Object} [options] Options object that determines how css-loader and style-loader will be configured.
  * @param {Object} [options.cssLoader] css-loader options. (https://webpack.js.org/loaders/css-loader/#options)
  * @param {Object} [options.rule] webpack rule. (https://webpack.js.org/configuration/module/#rule)
  * @param {RegExp} [options.rule.exclude=/node_modules/] Exclude option associated with the webpack rule. (https://webpack.js.org/configuration/module/#ruleexclude)
@@ -167,7 +168,7 @@ exports.injectCss = (options) => ({
 })
 
 /**
- * Enable .css, .sass, and .scss file imports and inject CSS into the DOM with css-loader, sass-loader, and style-loader:
+ * Enable .sass and .scss file imports and inject CSS into the DOM with css-loader, sass-loader, and style-loader:
  * - https://webpack.js.org/loaders/css-loader
  * - https://webpack.js.org/loaders/sass-loader
  * - https://webpack.js.org/loaders/style-loader
@@ -177,6 +178,7 @@ exports.injectCss = (options) => ({
  * - style-loader@^3.3.3
  * - sass-loader@^13.3.2
  *
+ * @param {Object} [options] Options object that determines how css-loader, sass-loader, and style-loader will be configured.
  * @param {Object} [options.cssLoader] css-loader options. (https://webpack.js.org/loaders/css-loader/#options)
  * @param {Object} [options.rule] webpack rule. (https://webpack.js.org/configuration/module/#rule)
  * @param {RegExp} [options.rule.exclude=/node_modules/] Exclude option associated with the webpack rule. (https://webpack.js.org/configuration/module/#ruleexclude)
@@ -200,6 +202,50 @@ exports.injectSass = (options) =>
             test: options?.rule?.test ?? /\.s[ac]ss$/i,
         },
     })
+
+/**
+ * Enable imports of font files (.eot, .otf, .ttf, .woff, .woff2) with an asset module:
+ * https://webpack.js.org/guides/asset-modules
+ *
+ * @param {Object} [options] Options object that determines how the asset module will be configured.
+ * @param {Object} [options.rule] webpack rule. (https://webpack.js.org/configuration/module/#rule)
+ * @param {RegExp} [options.rule.test=/\.(eot|otf|ttf|woff|woff2)$/i] Test option associated with the webpack rule. (https://webpack.js.org/configuration/module/#ruletest)
+ * @param {string} [options.rule.type=asset/resource] Option that determines the type of asset module to use. (https://webpack.js.org/configuration/module/#ruletype)
+ * @return webpack configuration object that sets up an asset module to support fonts.
+ */
+exports.loadFonts = (options) => ({
+    module: {
+        rules: [
+            {
+                test: /\.(eot|otf|ttf|woff|woff2)$/i,
+                type: 'asset/resource',
+                ...options?.rule,
+            },
+        ],
+    },
+})
+
+/**
+ * Enable imports of image files (.gif, .jpeg, .jpg, .png, .svg) with an asset module:
+ * https://webpack.js.org/guides/asset-modules
+ *
+ * @param {Object} [options] Options object that determines how the asset module will be configured.
+ * @param {Object} [options.rule] webpack rule. (https://webpack.js.org/configuration/module/#rule)
+ * @param {RegExp} [options.rule.test=/\.(gif|jpeg|jpg|png|svg)$/i] Test option associated with the webpack rule. (https://webpack.js.org/configuration/module/#ruletest)
+ * @param {string} [options.rule.type=asset/resource] Option that determines the type of asset module to use. (https://webpack.js.org/configuration/module/#ruletype)
+ * @return webpack configuration object that sets up an asset module to support images.
+ */
+exports.loadImages = (options) => ({
+    module: {
+        rules: [
+            {
+                test: /\.(gif|jpeg|jpg|png|svg)$/i,
+                type: 'asset/resource',
+                ...options?.rule,
+            },
+        ],
+    },
+})
 
 /**
  * Configure webpack-dev-server:

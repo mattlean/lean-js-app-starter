@@ -2,7 +2,7 @@ const buildSass = require('./buildSass')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 /**
- * Enable .css, .sass, and .scss file imports and build the CSS with css-loader and mini-css-extract-plugin.
+ * Enable .sass and .scss file imports and build the CSS with css-loader, mini-css-extract-plugin, and sass-loader.
  * Also add vendor prefixes to CSS with postcss-loader and Autoprefixer:
  * - https://github.com/postcss/autoprefixer
  * - https://webpack.js.org/loaders/css-loader
@@ -19,7 +19,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
  * - sass@~1.64.2
  * - sass-loader@^13.3.2
  *
- * @param {Object} [options] Options object that determines how css-loader, mini-css-extract-plugin, and postcss-loader will be configured.
+ * @param {Object} [options] Options object that determines how Autoprefixer, css-loader, mini-css-extract-plugin, postcss-loader, and sass-loader will be configured.
  * @param {Object} [options.autoprefixer] Options for Autoprefixer. (https://github.com/postcss/autoprefixer#options)
  * @param {Object} [options.cssLoader] css-loader options. (https://webpack.js.org/loaders/css-loader/#options)
  * @param {Object} [options.miniCssExtractPlugin] Options for mini-css-extract-plugin. (https://webpack.js.org/plugins/mini-css-extract-plugin/#plugin-options)
@@ -33,7 +33,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
  * @param {RegExp} [options.rule.test=/\.s[ac]ss$/i] Test option associated with the webpack rule. (https://webpack.js.org/configuration/module/#ruletest)
  * @param {Object} [options.rule.use] webpack UseEntry associated with the webpack rule. Setting this will override most of the default configuration. (https://webpack.js.org/configuration/module/#useentry)
  * @param {Object} [options.sassLoader] sass-loader options. (https://webpack.js.org/loaders/sass-loader/#options)
- * @return {Object} A webpack configuration object that sets up css-loader, mini-css-extract-plugin, postcss-loader, and sass-loader.
+ * @return {Object} A webpack configuration object that sets up Autoprefixer, css-loader, mini-css-extract-plugin, postcss-loader, and sass-loader.
  */
 module.exports = (options) =>
     buildSass({

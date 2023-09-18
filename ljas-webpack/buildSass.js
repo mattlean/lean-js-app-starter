@@ -2,7 +2,7 @@ const buildCss = require('./buildCss')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 /**
- * Enable .css, .sass, and .scss file imports and build the CSS with css-loader, mini-css-extract-plugin, and sass-loader:
+ * Enable .sass and .scss file imports and build the CSS with css-loader, mini-css-extract-plugin, and sass-loader:
  * - https://webpack.js.org/loaders/css-loader
  * - https://webpack.js.org/plugins/mini-css-extract-plugin
  * - https://webpack.js.org/loaders/sass-loader
@@ -13,7 +13,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
  * - sass@~1.64.2
  * - sass-loader@^13.3.2
  *
- * @param {Object} [options] Options object that determines how css-loader and mini-css-extract-plugin will be configured.
+ * @param {Object} [options] Options object that determines how css-loader, mini-css-extract-plugin, and sass-loader will be configured.
  * @param {Object} [options.cssLoader] css-loader options. (https://webpack.js.org/loaders/css-loader/#options)
  * @param {Object} [options.miniCssExtractPlugin] Options for mini-css-extract-plugin. (https://webpack.js.org/plugins/mini-css-extract-plugin/#plugin-options)
  * @param {Object} [options.miniCssExtractPluginLoader] mini-css-extract-plugin loader options. (https://webpack.js.org/plugins/mini-css-extract-plugin/#loader-options)
