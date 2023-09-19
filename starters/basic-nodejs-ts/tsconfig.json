@@ -3,6 +3,7 @@
         "allowJs": true,
         "esModuleInterop": true,
         "noEmit": true,
+        "strict": true,
         "strictNullChecks": true
     },
     "include": ["src/**/*"]

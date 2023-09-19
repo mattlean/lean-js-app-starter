@@ -4,3 +4,5 @@ node_modules/
 src/backend/public/generated-frontend-output/
 src/backend/views/generated-view-output/
 .env
+backend.stats.json
+frontend.stats.json

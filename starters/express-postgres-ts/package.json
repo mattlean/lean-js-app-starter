@@ -5,7 +5,10 @@
     "main": "build/server.js",
     "scripts": {
         "build": "webpack --mode development",
+        "build:debug": "node --inspect-brk webpack --mode development",
         "build:production": "webpack --mode production",
+        "build:production:debug": "node --inspect-brk webpack --mode production",
+        "build:stats": "npm run build:production -- --json > stats.json",
         "build:watch": "nodemon --exec \"npm run build -- --watch\"",
         "check-types": "tsc",
         "dev": "concurrently --names \"📦 webpack,🌐 express\" \"npm run build:watch\" \"nodemon --watch build npm run start:debug\"",

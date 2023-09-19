@@ -34,7 +34,7 @@ This is to remain consistent with the TypeScript projects where the language req
 
 We use Babel to compile TypeScript because we already use it to handle syntax transforms, browser polyfills, and React. To keep performance, we move type checking to a separate process using [Fork TS Checker Webpack Plugin](https://github.com/TypeStrong/fork-ts-checker-webpack-plugin).
 
-### Why do you still use webpack for JavaScript projects in Node.js?
+### Why do you still use webpack for Node.js projects?
 
 We do this to maintain consistency with all of the other projects, mainly with the Node.js projects using TypeScript, and we're avoiding some quirks Node.js has with ECMAScript modules and imports.
 
