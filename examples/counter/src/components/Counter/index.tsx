@@ -1,5 +1,7 @@
 import { useState } from 'react'
 
+import './index.scss'
+
 export default function Counter() {
     const [count, setCount] = useState(0)
     const [forceCountInput, setForceCountInput] = useState<number | ''>('')

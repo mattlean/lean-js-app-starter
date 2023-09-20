@@ -1,8 +1,7 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 
-import Counter from './Counter'
-import './index.scss'
+import Counter from './components/Counter'
 
 const rootEl = document.getElementById('root')
 

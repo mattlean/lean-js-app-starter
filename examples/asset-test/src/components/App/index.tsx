@@ -1,6 +1,7 @@
-import FontTest from './FontTest'
-import PNGTest from './PNGTest'
-import SVGTest from './SVGTest'
+import FontTest from '../FontTest'
+import PNGTest from '../PNGTest'
+import SVGTest from '../SVGTest'
+import './index.css'
 
 export default function App() {
     return (
