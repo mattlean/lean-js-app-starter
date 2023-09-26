@@ -2,7 +2,11 @@ import { Prisma } from '@prisma/client'
 import { NextFunction, Request, Response } from 'express'
 import { validationResult } from 'express-validator'
 
-import ServerError from './ServerError'
+import ServerError, {
+    genDefaultErrorMessage,
+    isErrorPage,
+    isServerError,
+} from './ServerError'
 import {
     apiErrorHandler,
     createNotFoundErrorHandler,
@@ -11,8 +15,11 @@ import {
 
 export {
     apiErrorHandler,
-    globalErrorHandler,
     createNotFoundErrorHandler,
+    genDefaultErrorMessage,
+    globalErrorHandler,
+    isErrorPage,
+    isServerError,
     ServerError,
 }
 
@@ -31,7 +38,7 @@ export const validateErrorMiddleware = (
     const errors = validationResult(req)
 
     if (!errors.isEmpty()) {
-        throw new ServerError('validation', errors.array())
+        throw new ServerError(400, errors.array())
     }
 
     return next()

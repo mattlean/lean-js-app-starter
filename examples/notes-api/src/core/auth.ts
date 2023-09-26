@@ -10,7 +10,7 @@ import { ServerError } from './error'
  */
 export const createJWT = (user: User) => {
     if (!process.env.JWT_SECRET) {
-        throw new ServerError('misc', undefined, 'JWT secret was not set')
+        throw new ServerError(500, undefined, 'JWT secret was not set')
     }
 
     return jwt.sign(
@@ -42,7 +42,7 @@ export const verifyPassword = (password: string, hash: string) =>
  */
 export const verifyToken = (token: string): DecodedJWT => {
     if (!process.env.JWT_SECRET) {
-        throw new ServerError('misc', undefined, 'JWT secret was not set')
+        throw new ServerError(500, undefined, 'JWT secret was not set')
     }
 
     return jwt.verify(token, process.env.JWT_SECRET) as DecodedJWT
@@ -59,13 +59,13 @@ export const protectMiddleware = (
     const bearer = req.headers.authorization
 
     if (!bearer) {
-        throw new ServerError('auth')
+        throw new ServerError(401)
     }
 
     const [, token] = bearer.split(' ')
 
     if (!token) {
-        throw new ServerError('auth', 'Invalid token')
+        throw new ServerError(401, 'Invalid token')
     }
 
     let user
@@ -73,7 +73,7 @@ export const protectMiddleware = (
         user = verifyToken(token)
     } catch (err) {
         if (err instanceof Error) {
-            throw new ServerError('auth', 'Invalid token', err)
+            throw new ServerError(401, 'Invalid token', err)
         }
         throw err
     }

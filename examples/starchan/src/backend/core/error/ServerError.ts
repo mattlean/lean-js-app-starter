@@ -1,8 +1,5 @@
 import { ValidationError } from 'express-validator'
 
-/** String that determines the type of ServerError. */
-export type ServerErrorType = 'auth' | 'misc' | 'notFound' | 'validation'
-
 /** Data for a user-facing error page. */
 export interface ErrorPage {
     heading?: string
@@ -14,6 +11,26 @@ export type ServerErrorErrors = (string | ErrorPage | ValidationError)[]
 
 /** Developer errors stored on the ServerError. */
 export type ServerErrorDevErrors = (string | Error | ValidationError)[]
+
+/**
+ * Generate default error message depending on the passed HTTP response status code.
+ * @param statusCode HTTP response status code
+ * @return Default error message
+ */
+export const genDefaultErrorMessage = (statusCode: number) => {
+    switch (statusCode) {
+        case 400:
+            return 'Bad request'
+        case 401:
+            return 'Unauthorized'
+        case 404:
+            return 'Not found'
+        case 500:
+            return 'Internal server error'
+        default:
+            return 'An error occurred'
+    }
+}
 
 /** Type guard for ErrorPage. */
 export const isErrorPage = (
@@ -38,8 +55,8 @@ export const isServerError = (err: ServerError | Error): err is ServerError =>
  * and organize which errors are displayed to users and which others are logged for developers.
  */
 export default class ServerError extends Error {
-    /** Type of ServerError. */
-    type: ServerErrorType
+    /** HTTP response status code. */
+    statusCode: number
 
     /** User-facing error messages.  */
     errors?: ServerErrorErrors
@@ -48,13 +65,13 @@ export default class ServerError extends Error {
     devErrors?: ServerErrorDevErrors
 
     constructor(
-        type: ServerErrorType = 'misc',
+        statusCode = 500,
         inputErrs?: string | ErrorPage | ValidationError | ServerErrorErrors,
         inputDevErrs?: string | Error | ValidationError | ServerErrorDevErrors
     ) {
         super()
         this.name = 'ServerError'
-        this.type = type
+        this.statusCode = statusCode
 
         if (Array.isArray(inputDevErrs)) {
             this.devErrors = inputDevErrs
@@ -85,38 +102,13 @@ export default class ServerError extends Error {
             this.errors = [inputErrs]
         }
 
-        if (this.type === 'auth') {
-            if (!this.message) {
-                this.message = 'Unauthorized'
-            }
+        const defaultErrorMessage = genDefaultErrorMessage(statusCode)
+        if (!this.message) {
+            this.message = defaultErrorMessage
+        }
 
-            if (!this.errors) {
-                this.errors = ['Unauthorized']
-            }
-        } else if (this.type === 'notFound') {
-            if (!this.message) {
-                this.message = 'Not found'
-            }
-
-            if (!this.errors) {
-                this.errors = ['Not found']
-            }
-        } else if (this.type === 'validation') {
-            if (!this.message) {
-                this.message = 'Invalid input'
-            }
-
-            if (!this.errors) {
-                this.errors = ['Invalid input']
-            }
-        } else {
-            if (!this.message) {
-                this.message = 'Internal server error'
-            }
-
-            if (!this.errors) {
-                this.errors = ['Internal server error']
-            }
+        if (!this.errors) {
+            this.errors = [defaultErrorMessage]
         }
     }
 }

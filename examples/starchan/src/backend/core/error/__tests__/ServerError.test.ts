@@ -1,6 +1,6 @@
 import { ValidationError } from 'express-validator'
 
-import ServerError, { isErrorPage, isServerError } from '../ServerError'
+import { ServerError, isErrorPage, isServerError } from '../'
 
 const FOO_TXT = 'foo'
 const BAR_TXT = 'bar'
@@ -10,7 +10,7 @@ describe('ServerError', () => {
         const serverErr = new ServerError()
 
         expect(serverErr.name).toBe('ServerError')
-        expect(serverErr.type).toBe('misc')
+        expect(serverErr.statusCode).toBe(500)
         expect(serverErr.message).toBe('Internal server error')
         expect(serverErr.devErrors).toBeUndefined()
         expect(serverErr.errors).toHaveLength(1)
@@ -155,8 +155,8 @@ describe('ServerError', () => {
         expect(serverErr.errors).toHaveLength(1)
     })
 
-    it('type "auth" defaults message and errors to "Unauthorized"', () => {
-        const serverErr = new ServerError('auth')
+    it('statusCode 401 defaults message and errors to "Unauthorized"', () => {
+        const serverErr = new ServerError(401)
 
         expect(serverErr.message).toBe('Unauthorized')
 
@@ -168,8 +168,8 @@ describe('ServerError', () => {
         expect(serverErr.errors[0]).toBe('Unauthorized')
     })
 
-    it('type "notFound" defaults message and errors to "Not found"', () => {
-        const serverErr = new ServerError('notFound')
+    it('statusCode 404 defaults message and errors to "Not found"', () => {
+        const serverErr = new ServerError(404)
 
         expect(serverErr.message).toBe('Not found')
 
@@ -181,21 +181,21 @@ describe('ServerError', () => {
         expect(serverErr.errors[0]).toBe('Not found')
     })
 
-    it('type "validation" defaults message and errors to "Invalid input"', () => {
-        const serverErr = new ServerError('validation')
+    it('statusCode 400 defaults message and errors to "Bad request"', () => {
+        const serverErr = new ServerError(400)
 
-        expect(serverErr.message).toBe('Invalid input')
+        expect(serverErr.message).toBe('Bad request')
 
         expect(Array.isArray(serverErr.errors)).toBe(true)
         if (!Array.isArray(serverErr.errors)) {
             throw new Error('Expected errors for a ServerError to be an array.')
         }
 
-        expect(serverErr.errors[0]).toBe('Invalid input')
+        expect(serverErr.errors[0]).toBe('Bad request')
     })
 
-    it('type "misc" defaults message and errors to "Internal server error"', () => {
-        const serverErr = new ServerError('misc')
+    it('statusCode 500 defaults message and errors to "Internal server error"', () => {
+        const serverErr = new ServerError(500)
 
         expect(serverErr.message).toBe('Internal server error')
 

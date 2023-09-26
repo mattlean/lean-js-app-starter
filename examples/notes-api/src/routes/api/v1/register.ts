@@ -116,9 +116,7 @@ router.post(
                 // @ts-ignore
                 err.meta?.target?.[0] === 'username'
             ) {
-                return next(
-                    new ServerError('validation', 'Username already taken', err)
-                )
+                return next(new ServerError(400, 'Username already taken', err))
             }
             return next(err)
         }

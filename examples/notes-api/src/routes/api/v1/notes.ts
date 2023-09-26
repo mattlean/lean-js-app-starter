@@ -100,7 +100,7 @@ router.post(
     validateErrorMiddleware,
     async (req: Request, res: Response, next: NextFunction) => {
         if (!req.user) {
-            return next(new ServerError('auth'))
+            return next(new ServerError(401))
         }
 
         try {
@@ -178,13 +178,13 @@ router.get(
     '/:noteUuid',
     async (req, res, next) => {
         if (!req.user) {
-            return next(new ServerError('auth'))
+            return next(new ServerError(401))
         }
 
         if (!isUuidv4(req.params.noteUuid)) {
             return next(
                 new ServerError(
-                    'notFound',
+                    404,
                     undefined,
                     'Route parameter is not a valid version 4 UUID.'
                 )
@@ -207,7 +207,7 @@ router.get(
                 err.code === 'P2025' &&
                 err.message.match(/no note found/i)
             ) {
-                return next(new ServerError('notFound', undefined, err))
+                return next(new ServerError(404, undefined, err))
             }
             return next(err)
         }
@@ -259,7 +259,7 @@ router.get(
     '/',
     async (req, res, next) => {
         if (!req.user) {
-            return next(new ServerError('auth'))
+            return next(new ServerError(401))
         }
 
         let notes
@@ -351,13 +351,13 @@ router.put(
     validateErrorMiddleware,
     async (req: Request, res: Response, next: NextFunction) => {
         if (!req.user) {
-            return next(new ServerError('auth'))
+            return next(new ServerError(401))
         }
 
         if (!isUuidv4(req.params.noteUuid)) {
             return next(
                 new ServerError(
-                    'notFound',
+                    404,
                     undefined,
                     'Route parameter is not a valid version 4 UUID.'
                 )
@@ -385,7 +385,7 @@ router.put(
                 typeof err.meta?.cause === 'string' &&
                 err.meta?.cause?.match(/record to update not found/i)
             ) {
-                return next(new ServerError('notFound', undefined, err))
+                return next(new ServerError(404, undefined, err))
             }
             return next(err)
         }
@@ -464,13 +464,13 @@ router.patch(
     validateErrorMiddleware,
     async (req: Request, res: Response, next: NextFunction) => {
         if (!req.user) {
-            return next(new ServerError('auth'))
+            return next(new ServerError(401))
         }
 
         if (!isUuidv4(req.params.noteUuid)) {
             return next(
                 new ServerError(
-                    'notFound',
+                    404,
                     undefined,
                     'Route parameter is not a valid version 4 UUID.'
                 )
@@ -498,7 +498,7 @@ router.patch(
                 typeof err.meta?.cause === 'string' &&
                 err.meta?.cause?.match(/record to update not found/i)
             ) {
-                return next(new ServerError('notFound', undefined, err))
+                return next(new ServerError(404, undefined, err))
             }
             return next(err)
         }
@@ -566,13 +566,13 @@ router.delete(
     '/:noteUuid',
     async (req, res, next) => {
         if (!req.user) {
-            return next(new ServerError('auth'))
+            return next(new ServerError(401))
         }
 
         if (!isUuidv4(req.params.noteUuid)) {
             return next(
                 new ServerError(
-                    'notFound',
+                    404,
                     undefined,
                     'Route parameter is not a valid version 4 UUID.'
                 )
@@ -596,7 +596,7 @@ router.delete(
                 typeof err.meta?.cause === 'string' &&
                 err.meta?.cause?.match(/record to delete does not exist/i)
             ) {
-                return next(new ServerError('notFound', undefined, err))
+                return next(new ServerError(404, undefined, err))
             }
             return next(err)
         }

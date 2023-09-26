@@ -1,14 +1,19 @@
 import { NextFunction, Request, Response } from 'express'
 
-import ServerError, { isErrorPage, isServerError } from './ServerError'
+import {
+    ServerError,
+    genDefaultErrorMessage,
+    isErrorPage,
+    isServerError,
+} from '.'
 
 /** Creates an error handler that takes care of all requests to undefined routes. */
 export const createNotFoundErrorHandler =
     (isApiNotFoundErrorHandler?: boolean) => (req: Request) => {
         const content = `${req.originalUrl} was not found.`
         const serverErr = isApiNotFoundErrorHandler
-            ? new ServerError('notFound', content)
-            : new ServerError('notFound', { content })
+            ? new ServerError(404, content)
+            : new ServerError(404, { content })
         throw serverErr
     }
 
@@ -25,17 +30,7 @@ export const apiErrorHandler = (
     }
 
     if (isServerError(err)) {
-        if (err.type === 'auth') {
-            res.status(401)
-        } else if (err.type === 'notFound') {
-            res.status(404)
-        } else if (err.type === 'validation') {
-            res.status(400)
-        } else if (err.type === 'misc') {
-            res.status(500)
-        }
-
-        return res.json({ errors: err.errors })
+        return res.status(err.statusCode).json({ errors: err.errors })
     }
 
     return res.status(500).json({ errors: ['Internal server error'] })
@@ -64,29 +59,20 @@ export const globalErrorHandler = (
                 } else if (isErrorPage(err.errors[0])) {
                     heading = err.errors[0].heading
                     content = err.errors[0].content
-                } else {
+                } else if (err.errors[0].msg) {
                     content = err.errors[0].msg
                 }
             }
         }
 
         if (!heading) {
-            if (err.type === 'auth') {
-                res.status(401)
-                heading = 'Unauthorized'
-            } else if (err.type === 'notFound') {
-                res.status(404)
-                heading = 'Not found'
-            } else if (err.type === 'validation') {
-                res.status(400)
-                heading = 'Invalid input'
-            } else if (err.type === 'misc') {
-                res.status(500)
-                heading = 'Internal server error'
+            heading = genDefaultErrorMessage(err.statusCode)
+            if (heading === content) {
+                content = undefined
             }
         }
 
-        return res.render('error', {
+        return res.status(err.statusCode).render('error', {
             title: 'ljas-starchan',
             heading,
             content,

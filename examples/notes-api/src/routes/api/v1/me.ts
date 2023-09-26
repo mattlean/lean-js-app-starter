@@ -14,7 +14,7 @@ const genUserDataMiddleware = async (
     next: NextFunction
 ) => {
     if (!req.user) {
-        return next(new ServerError('auth'))
+        return next(new ServerError(401))
     }
 
     let user
@@ -24,7 +24,7 @@ const genUserDataMiddleware = async (
         })
     } catch (err) {
         if (err instanceof Error) {
-            return next(new ServerError('auth', undefined, err))
+            return next(new ServerError(401, undefined, err))
         }
         return next(err)
     }

@@ -85,7 +85,7 @@ router.post(
             })
         } catch (err) {
             if (err instanceof Error) {
-                return next(new ServerError('auth', 'Invalid credentials', err))
+                return next(new ServerError(401, 'Invalid credentials', err))
             }
             return next(err)
         }
@@ -101,7 +101,7 @@ router.post(
             }
         } catch (err) {
             if (err instanceof Error) {
-                return next(new ServerError('auth', 'Invalid credentials', err))
+                return next(new ServerError(401, 'Invalid credentials', err))
             }
             return next(err)
         }

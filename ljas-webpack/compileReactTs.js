@@ -1,6 +1,6 @@
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
 const { compileReact } = require('./')
-const { FORK_TS_CHECKER_DEFAULT_OPTIONS } = require('./constants')
+const { FORK_TS_CHECKER_DEFAULT_REACT_OPTIONS } = require('./constants')
 
 /**
  * Compile React TypeScript code with babel-loader and type check with Fork TS Checker Webpack Plugin:
@@ -66,7 +66,8 @@ const compileReactTs = (options, mode) =>
             },
             plugins: options?.plugins ?? [
                 new ForkTsCheckerWebpackPlugin(
-                    options?.forkTsChecker ?? FORK_TS_CHECKER_DEFAULT_OPTIONS
+                    options?.forkTsChecker ??
+                        FORK_TS_CHECKER_DEFAULT_REACT_OPTIONS
                 ),
             ],
             resolve: {
