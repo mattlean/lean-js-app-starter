@@ -76,7 +76,7 @@ test("returns 400 when request payload's username is not a string", async () => 
     expect(res.body.errors[0].msg).toBe('Invalid value')
 })
 
-test('returns 400 when username is already taken', async () => {
+test('returns 409 when username is already taken', async () => {
     prismaMock.user.create
         .mockResolvedValueOnce(MOCK_USER)
         .mockImplementationOnce(() => {
@@ -107,7 +107,7 @@ test('returns 400 when username is already taken', async () => {
         password: MOCK_USER_PLAIN_TXT_PASS,
     })
 
-    expect(res2.status).toBe(400)
+    expect(res2.status).toBe(409)
     expect(Array.isArray(res2.body.errors)).toBe(true)
     expect(res2.body.errors).toHaveLength(1)
     expect(res2.body.errors[0]).toBe('Username already taken')

@@ -25,6 +25,8 @@ export const genDefaultErrorMessage = (statusCode: number) => {
             return 'Unauthorized'
         case 404:
             return 'Not found'
+        case 409:
+            return 'Conflict'
         case 500:
             return 'Internal server error'
         default:
