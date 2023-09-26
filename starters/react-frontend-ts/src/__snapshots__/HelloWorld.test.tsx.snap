@@ -2,6 +2,6 @@
 
 exports[`HelloWorld component matches snapshot 1`] = `
 <div>
-  Hello World
+  Hello World!
 </div>
 `;

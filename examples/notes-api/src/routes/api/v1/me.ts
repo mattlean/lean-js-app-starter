@@ -37,7 +37,38 @@ const genUserDataMiddleware = async (
     return next()
 }
 
-// Validate user credentials & create new session
+/**
+ * @openapi
+ * /api/v1/me:
+ *   get:
+ *     description: Get data for the current user.
+ *     summary: Get user data
+ *     responses:
+ *       200:
+ *         description: Get user data while authenticated
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: "#/components/schemas/User"
+ *       401:
+ *         description: Attempt to get user data while using an invalid JWT or no JWT
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 errors:
+ *                   $ref: "#/components/schemas/ErrorResponse"
+ *             examples:
+ *               'Guest access':
+ *                 value:
+ *                   errors: ["Unauthorized"]
+ *               'Invalid token':
+ *                 value:
+ *                   errors: ["Invalid token"]
+ *     tags:
+ *       - Authentication & Authorization
+ */
 router.get('/', genUserDataMiddleware, async (req, res) =>
     res.json({ data: res.locals.data })
 )

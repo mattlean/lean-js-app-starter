@@ -8,7 +8,7 @@ Install [Sass](https://github.com/sass/dart-sass) and [sass-loader](https://webp
 npm install sass@~1.64.2 sass-loader@^13.3.2
 ```
 
-Next you will need to replace the [ljas-webpack](https://npmjs.com/package/ljas-webpack) CSS parts in the frontend webpack configuration with the equivalent Sass parts.
+Next you will need to replace the CSS-related [ljas-webpack](https://npmjs.com/package/ljas-webpack) webpack config parts in the frontend webpack configuration with the equivalent Sass parts.
 
 So, for example, in a frontend webpack development config file, you'd replace `injectCss` with `injectSass`. Then in a frontend webpack production config file, you'd replace `buildPrefixedCss` with `buildPrefixedSass`.
 

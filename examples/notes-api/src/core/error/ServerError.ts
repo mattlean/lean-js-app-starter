@@ -1,7 +1,12 @@
 import { ValidationError } from 'express-validator'
 
 /** String that determines the type of ServerError. */
-export type ServerErrorType = 'auth' | 'misc' | 'notFound' | 'validation'
+export type ServerErrorType =
+    | 'auth'
+    | 'conflict'
+    | 'misc'
+    | 'notFound'
+    | 'validation'
 
 /** Data for a user-facing error page. */
 export interface ErrorPage {

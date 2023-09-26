@@ -13,7 +13,66 @@ const loginValidationChain = () => [
     body('password').isString(),
 ]
 
-// Validate user credentials & create new session
+/**
+ * @openapi
+ * /api/v1/login:
+ *   post:
+ *     description: Validate user credentials and create new a JSON web token.
+ *     summary: Login with an existing user
+ *     requestBody:
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               username:
+ *                 type: string
+ *                 default: user
+ *               password:
+ *                 type: string
+ *                 default: password
+ *             required:
+ *               - username
+ *               - password
+ *     responses:
+ *       200:
+ *         description: Login with valid user credentials
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 data:
+ *                   type: string
+ *                   example: JSON_WEB_TOKEN
+ *       400:
+ *         description: Perform a bad request
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 errors:
+ *                   $ref: "#/components/schemas/ErrorResponse"
+ *               example:
+ *                 errors:
+ *                   [
+ *                     {
+ *                       "type": "field",
+ *                       "msg": "Invalid value",
+ *                       "path": "username",
+ *                       "location": "body",
+ *                     },
+ *                     {
+ *                       "type": "field",
+ *                       "msg": "Invalid value",
+ *                       "path": "password",
+ *                       "location": "body",
+ *                     },
+ *                   ]
+ *     tags:
+ *       - Authentication & Authorization
+ */
 router.post(
     '/',
     loginValidationChain(),

@@ -3,6 +3,7 @@
         "allowJs": true,
         "esModuleInterop": true,
         "noEmit": true,
+        "resolveJsonModule": true,
         "strict": true,
         "strictNullChecks": true
     },

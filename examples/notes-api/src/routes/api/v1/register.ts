@@ -16,7 +16,77 @@ const registerValidationChain = () => [
 
 const router = Router()
 
-// Create a new user
+/**
+ * @openapi
+ * /api/v1/register:
+ *   post:
+ *     description: Create a new user and create a new JSON web token.
+ *     summary: Register a new user
+ *     requestBody:
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               username:
+ *                 type: string
+ *                 default: user
+ *               password:
+ *                 type: string
+ *                 default: password
+ *             required:
+ *               - username
+ *               - password
+ *     responses:
+ *       200:
+ *         description: Create a new account with valid user data
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 data:
+ *                   type: string
+ *                   example: JSON_WEB_TOKEN
+ *       400:
+ *         description: Perform a bad request
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 errors:
+ *                   $ref: "#/components/schemas/ErrorResponse"
+ *               example:
+ *                 errors:
+ *                   [
+ *                     {
+ *                       "type": "field",
+ *                       "msg": "Invalid value",
+ *                       "path": "username",
+ *                       "location": "body",
+ *                     },
+ *                     {
+ *                       "type": "field",
+ *                       "msg": "Invalid value",
+ *                       "path": "password",
+ *                       "location": "body",
+ *                     },
+ *                   ]
+ *       409:
+ *         description: Attempt to claim a username that is already taken
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 errors:
+ *                   $ref: "#/components/schemas/ErrorResponse"
+ *               example:
+ *                 errors: ["Username already taken"]
+ *     tags:
+ *       - Authentication & Authorization
+ */
 router.post(
     '/',
     registerValidationChain(),

@@ -7,6 +7,7 @@ import {
 } from '../../../core/error'
 import { ServerError } from '../../../core/error'
 import { prisma } from '../../../core/prisma'
+import { isUuidv4 } from '../../../util'
 
 const router = Router()
 
@@ -46,7 +47,53 @@ const genNoteDataMiddleware = (
     return next()
 }
 
-// Create a new note
+/**
+ * @openapi
+ * /api/v1/notes:
+ *   post:
+ *     description: Create a note for the user that is currently authenticated.
+ *     summary: Create a note
+ *     requestBody:
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               title:
+ *                 type: string
+ *                 default: I am the title for a new note!
+ *               content:
+ *                 type: string
+ *                 default: I am the content for a new note!
+ *     responses:
+ *       201:
+ *         description: Create a new note for the currently authenticated user
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 data:
+ *                   $ref: "#/components/schemas/Note"
+ *       401:
+ *         description: Attempt to create a new note while using an invalid JWT or no JWT
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 errors:
+ *                   $ref: "#/components/schemas/ErrorResponse"
+ *             examples:
+ *               "Guest access":
+ *                 value:
+ *                   errors: ["Unauthorized"]
+ *               "Invalid token":
+ *                 value:
+ *                   errors: ["Invalid token"]
+ *     tags:
+ *       - Notes
+ */
 router.post(
     '/',
     noteValidationChain(),
@@ -74,19 +121,81 @@ router.post(
         res.status(201).json({ data: res.locals.data })
 )
 
-// Read a note
+/**
+ * @openapi
+ * /api/v1/notes/{noteUuid}:
+ *   get:
+ *     description: Read a note owned by the user that is currently authenticated.
+ *     summary: Read a note
+ *     parameters:
+ *       - in: path
+ *         name: noteUuid
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: UUID associated with the user's note
+ *     responses:
+ *       200:
+ *         description: Get the currently authenticated user's note
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 data:
+ *                   $ref: "#/components/schemas/Note"
+ *       401:
+ *         description: Attempt to get a note while using an invalid JWT or no JWT
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 errors:
+ *                   $ref: "#/components/schemas/ErrorResponse"
+ *             examples:
+ *               "Guest access":
+ *                 value:
+ *                   errors: ["Unauthorized"]
+ *               "Invalid token":
+ *                 value:
+ *                   errors: ["Invalid token"]
+ *       404:
+ *         description: Read a note that cannot be found
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 errors:
+ *                   $ref: "#/components/schemas/ErrorResponse"
+ *             example:
+ *               errors: ["Not found"]
+ *     tags:
+ *       - Notes
+ */
 router.get(
-    '/:uuid',
+    '/:noteUuid',
     async (req, res, next) => {
         if (!req.user) {
             return next(new ServerError('auth'))
+        }
+
+        if (!isUuidv4(req.params.noteUuid)) {
+            return next(
+                new ServerError(
+                    'notFound',
+                    undefined,
+                    'Route parameter is not a valid version 4 UUID.'
+                )
+            )
         }
 
         try {
             res.locals.note = await prisma.note.findUniqueOrThrow({
                 where: {
                     uuid_ownerUuid: {
-                        uuid: req.params.uuid,
+                        uuid: req.params.noteUuid,
                         ownerUuid: req.user.uuid,
                     },
                 },
@@ -109,7 +218,43 @@ router.get(
     (req, res) => res.json({ data: res.locals.data })
 )
 
-// List notes
+/**
+ * @openapi
+ * /api/v1/notes:
+ *   get:
+ *     description: List notes owned by the user that is currently authenticated.
+ *     summary: List notes
+ *     responses:
+ *       200:
+ *         description: List the currently authenticated user's notes
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 data:
+ *                   type: array
+ *                   items:
+ *                     $ref: "#/components/schemas/Note"
+ *       401:
+ *         description: Attempt to list notes while using an invalid JWT or no JWT
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 errors:
+ *                   $ref: "#/components/schemas/ErrorResponse"
+ *             examples:
+ *               "Guest access":
+ *                 value:
+ *                   errors: ["Unauthorized"]
+ *               "Invalid token":
+ *                 value:
+ *                   errors: ["Invalid token"]
+ *     tags:
+ *       - Notes
+ */
 router.get(
     '/',
     async (req, res, next) => {
@@ -135,9 +280,73 @@ router.get(
     (req, res) => res.json({ data: res.locals.data })
 )
 
-// Update a note
+/**
+ * @openapi
+ * /api/v1/notes/{noteUuid}:
+ *   put:
+ *     description: Update a note owned by the user that is currently authenticated.
+ *     summary: Update a note
+ *     requestBody:
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               title:
+ *                 type: string
+ *                 example: Updated Note
+ *               content:
+ *                 type: string
+ *                 example: This note was updated with a PUT request.
+ *     parameters:
+ *       - in: path
+ *         name: noteUuid
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: UUID associated with the user's note
+ *     responses:
+ *       200:
+ *         description: Completely update the currently authenticated user's note
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 data:
+ *                   $ref: "#/components/schemas/Note"
+ *       401:
+ *         description: Attempt to update a note while using an invalid JWT or no JWT
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 errors:
+ *                   $ref: "#/components/schemas/ErrorResponse"
+ *             examples:
+ *               "Guest access":
+ *                 value:
+ *                   errors: ["Unauthorized"]
+ *               "Invalid token":
+ *                 value:
+ *                   errors: ["Invalid token"]
+ *       404:
+ *         description: Update a note that cannot be found
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 errors:
+ *                   $ref: "#/components/schemas/ErrorResponse"
+ *             example:
+ *               errors: ["Not found"]
+ *     tags:
+ *       - Notes
+ */
 router.put(
-    '/:uuid',
+    '/:noteUuid',
     noteValidationChain(),
     validateErrorMiddleware,
     async (req: Request, res: Response, next: NextFunction) => {
@@ -145,11 +354,21 @@ router.put(
             return next(new ServerError('auth'))
         }
 
+        if (!isUuidv4(req.params.noteUuid)) {
+            return next(
+                new ServerError(
+                    'notFound',
+                    undefined,
+                    'Route parameter is not a valid version 4 UUID.'
+                )
+            )
+        }
+
         try {
             res.locals.note = await prisma.note.update({
                 where: {
                     uuid_ownerUuid: {
-                        uuid: req.params.uuid,
+                        uuid: req.params.noteUuid,
                         ownerUuid: req.user.uuid,
                     },
                 },
@@ -177,9 +396,70 @@ router.put(
     (req: Request, res: Response) => res.json({ data: res.locals.data })
 )
 
-// Patch a note
+/**
+ * @openapi
+ * /api/v1/notes/{noteUuid}:
+ *   patch:
+ *     description: Patch a note owned by the user that is currently authenticated.
+ *     summary: Patch a note
+ *     requestBody:
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               content:
+ *                 type: string
+ *                 example: The content property of this note was updated with a PATCH request.
+ *     parameters:
+ *       - in: path
+ *         name: noteUuid
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: UUID associated with the user's note
+ *     responses:
+ *       200:
+ *         description: Update specific properties on the currently authenticated user's note
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 data:
+ *                   $ref: "#/components/schemas/Note"
+ *       401:
+ *         description: Attempt to patch a note while using an invalid JWT or no JWT
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 errors:
+ *                   $ref: "#/components/schemas/ErrorResponse"
+ *             examples:
+ *               "Guest access":
+ *                 value:
+ *                   errors: ["Unauthorized"]
+ *               "Invalid token":
+ *                 value:
+ *                   errors: ["Invalid token"]
+ *       404:
+ *         description: Patch a note that cannot be found
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 errors:
+ *                   $ref: "#/components/schemas/ErrorResponse"
+ *             example:
+ *               errors: ["Not found"]
+ *     tags:
+ *       - Notes
+ */
 router.patch(
-    '/:uuid',
+    '/:noteUuid',
     noteValidationChain(),
     validateErrorMiddleware,
     async (req: Request, res: Response, next: NextFunction) => {
@@ -187,11 +467,21 @@ router.patch(
             return next(new ServerError('auth'))
         }
 
+        if (!isUuidv4(req.params.noteUuid)) {
+            return next(
+                new ServerError(
+                    'notFound',
+                    undefined,
+                    'Route parameter is not a valid version 4 UUID.'
+                )
+            )
+        }
+
         try {
             res.locals.note = await prisma.note.update({
                 where: {
                     uuid_ownerUuid: {
-                        uuid: req.params.uuid,
+                        uuid: req.params.noteUuid,
                         ownerUuid: req.user.uuid,
                     },
                 },
@@ -219,19 +509,81 @@ router.patch(
     (req: Request, res: Response) => res.json({ data: res.locals.data })
 )
 
-// Delete a note
+/**
+ * @openapi
+ * /api/v1/notes/{noteUuid}:
+ *   delete:
+ *     description: Delete a note owned by the user that is currently authenticated.
+ *     summary: Delete a note
+ *     parameters:
+ *       - in: path
+ *         name: noteUuid
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: UUID associated with the user's note
+ *     responses:
+ *       200:
+ *         description: Delete the currently authenticated user's note
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 data:
+ *                   $ref: "#/components/schemas/Note"
+ *       401:
+ *         description: Attempt to delete a note while using an invalid JWT or no JWT
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 errors:
+ *                   $ref: "#/components/schemas/ErrorResponse"
+ *             examples:
+ *               "Guest access":
+ *                 value:
+ *                   errors: ["Unauthorized"]
+ *               "Invalid token":
+ *                 value:
+ *                   errors: ["Invalid token"]
+ *       404:
+ *         description: Delete a note that cannot be found
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 errors:
+ *                   $ref: "#/components/schemas/ErrorResponse"
+ *             example:
+ *               errors: ["Not found"]
+ *     tags:
+ *       - Notes
+ */
 router.delete(
-    '/:uuid',
+    '/:noteUuid',
     async (req, res, next) => {
         if (!req.user) {
             return next(new ServerError('auth'))
+        }
+
+        if (!isUuidv4(req.params.noteUuid)) {
+            return next(
+                new ServerError(
+                    'notFound',
+                    undefined,
+                    'Route parameter is not a valid version 4 UUID.'
+                )
+            )
         }
 
         try {
             res.locals.note = await prisma.note.delete({
                 where: {
                     uuid_ownerUuid: {
-                        uuid: req.params.uuid,
+                        uuid: req.params.noteUuid,
                         ownerUuid: req.user.uuid,
                     },
                 },
