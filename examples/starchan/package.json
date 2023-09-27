@@ -74,7 +74,7 @@
         "fork-ts-checker-webpack-plugin": "^8.0.0",
         "glob": "^10.3.4",
         "html-webpack-plugin": "^5.5.1",
-        "ljas-webpack": "^0.1.1-experimental.4",
+        "ljas-webpack": "^0.1.1-experimental.5",
         "mini-css-extract-plugin": "^2.7.6",
         "morgan": "^1.10.0",
         "npm": "^9.8.1",
