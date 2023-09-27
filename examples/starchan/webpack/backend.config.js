@@ -23,10 +23,12 @@ const buildConfig = (mode) =>
                         {
                             from: `${PATH_BACKEND_SRC}/public`,
                             to: `${PATH_BACKEND_BUILD}/public`,
+                            noErrorOnMissing: true,
                         },
                         {
                             from: `${PATH_BACKEND_SRC}/views`,
                             to: `${PATH_BACKEND_BUILD}/views`,
+                            noErrorOnMissing: true,
                         },
                     ],
                 }),

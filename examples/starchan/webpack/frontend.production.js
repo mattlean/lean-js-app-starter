@@ -38,11 +38,6 @@ module.exports = merge([
         miniCssExtractPlugin: { filename: '[name].[contenthash].css' },
     }),
 
-    buildPrefixedCss({
-        rule: { include: PATH_FRONTEND_SRC },
-        miniCssExtractPlugin: { filename: '[name].[contenthash].css' },
-    }),
-
     buildSourceMaps('source-map'),
 
     compileReactTs(

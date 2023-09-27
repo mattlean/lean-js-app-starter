@@ -10,7 +10,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
  * - https://webpack.js.org/loaders/postcss-loader
  *
  * Tested with:
- * - autoprefixer@^10.4.15
+ * - autoprefixer@^10.4.16
  * - css-loader@^6.8.1
  * - mini-css-extract-plugin@^2.7.6
  * - postcss@^8.4.29

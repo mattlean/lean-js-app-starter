@@ -1,14 +1,10 @@
 const buildHtml = require('ljas-webpack/buildHtml')
-const { injectCss } = require('ljas-webpack')
 const { merge } = require('webpack-merge')
 
 const templateParams = require('./templateParams')
-const { PATH_FRONTEND_SRC } = require('../PATHS')
 
 module.exports = merge([
     { entry: { app: './src/frontend/index.tsx' } },
-
-    injectCss({ rule: { include: PATH_FRONTEND_SRC } }),
 
     // Generate EJS templates with injected assets for Express views
     buildHtml({
