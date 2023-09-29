@@ -1,3 +1,12 @@
+import { useState } from 'react'
+
 export default function HelloWorld() {
-    return <div>Hello World!</div>
+    const [foo, setFoo] = useState(123)
+
+    return (
+        <div>
+            Hello World {foo}
+            <button onClick={() => setFoo(() => foo + 1)}>update foo</button>
+        </div>
+    )
 }

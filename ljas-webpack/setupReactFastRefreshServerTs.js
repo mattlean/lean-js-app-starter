@@ -1,7 +1,7 @@
 const compileReactTs = require('./compileReactTs')
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
-const { FORK_TS_CHECKER_DEFAULT_OPTIONS } = require('./constants')
+const { FORK_TS_CHECKER_DEFAULT_REACT_OPTIONS } = require('./constants')
 const { merge } = require('webpack-merge')
 const { setupDevServer } = require('./')
 
@@ -60,7 +60,7 @@ const setupReactFastRefreshServerTs = (options, mode = 'development') => {
                     ),
                     new ForkTsCheckerWebpackPlugin(
                         options?.forkTsChecker ??
-                            FORK_TS_CHECKER_DEFAULT_OPTIONS
+                            FORK_TS_CHECKER_DEFAULT_REACT_OPTIONS
                     ),
                 ],
             },

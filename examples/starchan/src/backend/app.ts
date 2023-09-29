@@ -9,13 +9,17 @@ import { apiHandler } from './routes/api'
 
 const BUNDLED_BACK_BUILD_PATH = path.resolve(__dirname)
 const BUNDLED_FRONT_BUILD_PATH = path.resolve(__dirname, '../frontend')
+const BUNDLED_GENERATED_VIEWS_BUILD_PATH = path.resolve(
+    __dirname,
+    '../generated-views'
+)
 
 const app = express()
 
 app.set('view engine', 'ejs')
 app.set('views', [
     // Use the generated views from the frontend build
-    `${BUNDLED_FRONT_BUILD_PATH}/generated-views`,
+    BUNDLED_GENERATED_VIEWS_BUILD_PATH,
     `${BUNDLED_BACK_BUILD_PATH}/views`,
 ])
 
@@ -23,8 +27,10 @@ app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
-// Serve the frontend build as static files
-app.use('/static', express.static(`${BUNDLED_FRONT_BUILD_PATH}/public`))
+app.use('/', frontendHandler)
+
+// Serve the frontend build directory as static files
+app.use('/', express.static(BUNDLED_FRONT_BUILD_PATH))
 
 // Serve the files in the public directory in backend src/ as static files
 app.use('/static', express.static(`${BUNDLED_BACK_BUILD_PATH}/public`))
@@ -32,8 +38,6 @@ app.use('/static', express.static(`${BUNDLED_BACK_BUILD_PATH}/public`))
 if (process.env.NODE_ENV === 'development') {
     app.use(morgan('dev'))
 }
-
-app.use('/', frontendHandler)
 
 app.use('/api', apiHandler)
 

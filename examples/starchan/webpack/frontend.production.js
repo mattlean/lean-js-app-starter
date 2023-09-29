@@ -16,8 +16,8 @@ module.exports = merge([
             chunkFilename: '[name].[contenthash].js',
             clean: true,
             filename: '[name].[contenthash].js',
-            path: `${PATH_FRONTEND_BUILD}/public`,
-            publicPath: '/static',
+            path: PATH_FRONTEND_BUILD,
+            publicPath: '/',
         },
 
         optimization: {

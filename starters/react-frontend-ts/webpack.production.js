@@ -3,7 +3,7 @@ const compileReactTs = require('ljas-webpack/compileReactTs')
 const { buildSourceMaps, loadFonts, loadImages } = require('ljas-webpack')
 const { merge } = require('webpack-merge')
 
-const { PATH_BUILD, PATH_SRC } = require('./PATHS')
+const { PATH_SRC } = require('./PATHS')
 
 module.exports = merge([
     {
@@ -14,7 +14,6 @@ module.exports = merge([
             chunkFilename: '[name].[contenthash].js',
             clean: true,
             filename: '[name].[contenthash].js',
-            path: `${PATH_BUILD}/public`,
         },
 
         optimization: {

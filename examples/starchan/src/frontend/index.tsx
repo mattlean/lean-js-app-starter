@@ -10,16 +10,20 @@ if (!rootEl) {
     throw new Error('HTML element with an ID of "root" was not found.')
 }
 
-if (process.env.NODE_ENV === 'development' && rootEl.childNodes.length > 0) {
-    hydrateRoot(
-        rootEl,
+if (
+    process.env.NODE_ENV === 'development' &&
+    window.DEV_SERVER &&
+    rootEl.childNodes.length === 0
+) {
+    const root = createRoot(rootEl)
+    root.render(
         <StrictMode>
             <HelloWorld />
         </StrictMode>
     )
 } else {
-    const root = createRoot(rootEl)
-    root.render(
+    hydrateRoot(
+        rootEl,
         <StrictMode>
             <HelloWorld />
         </StrictMode>
