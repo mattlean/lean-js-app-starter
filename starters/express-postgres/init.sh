@@ -13,9 +13,9 @@ else
     echo "${prefix} Package dependency installation completed!"
 fi
 
-echo "${prefix} Starting the database dev migrations..."
+echo "${prefix} Starting the database migrations..."
 npm run prisma migrate dev
-echo "${prefix} Database dev migrations completed!"
+echo "${prefix} Database migrations completed!"
 
 if [ -f "./build/server.js" ]
 then

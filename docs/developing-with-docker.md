@@ -31,7 +31,7 @@ As with most technologies, Docker unfortunately has some trade offs to think abo
 TODO:
 If an issue occurs with the dev environment, there's a good chance you may need to know your way around Docker to debug and fix the issue.
 
-**There is a slow down to development-related processes like compile times, linting, and type checking.**  
+**There can be a slow down to development-related processes like compile times, linting, and type checking.**  
 TODO:
 Because Docker is limited to a subset of your host computer's resources, it is inherently weaker in power which means processes like webpack, Babel, ESLint, TypeScript, and pretty much everything will run slower when compared to them running natively. This can vary depending on the performance of your computer, but some people really care to make sure their dev environment behaves as fast as possible whereas some people are willing to take the trade-off as the reduction in complexity around service and dependency maintenance is worth it.
 
@@ -39,7 +39,7 @@ Because Docker is limited to a subset of your host computer's resources, it is i
 TODO:
 Editor extensions like ESLint depend on `node_modules`, but if you're running the services within containers, `node_modules` will be unaccessible on your editor running natively. To get around this you will need to have two different installations of `node_modules` (one in the container, and the other natively) or you will need to develop within the context of the container.
 
-VS Code has the best documented way on how to do this, but this means that you will have to VS Code which is a problem if you prefer something else. Also, if the container crashes, the connected VS Code instance will crash as well which can be inconvenient.
+VS Code has the best documented way on how to do this, but this means that you will have to use VS Code which is a problem if you prefer something else. Also, if the container crashes, the connected VS Code instance will crash as well which can be inconvenient.
 
 **The environment is consistent across different computers until it isn't.**
 

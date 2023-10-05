@@ -11,6 +11,20 @@ services:
         env_file: .env
         volumes:
             - ljas-starchan-db-data:/data/db
+        healthcheck:
+            test:
+                [
+                    'CMD',
+                    'mongo',
+                    'admin',
+                    '--port',
+                    '${MONGO_REPLICA_PORT}',
+                    '--eval',
+                    "db.adminCommand('ping')",
+                ]
+            interval: 5s
+            timeout: 2s
+            retries: 20
     app:
         build: .
         image: ljas-starchan

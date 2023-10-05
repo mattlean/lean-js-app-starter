@@ -1,4 +1,4 @@
-# Adding Support for Sass
+# Adding support for Sass
 
 The frontend starter projects only support CSS by default since that is the fundamental stylesheet language, but it doesn't take much to setup Sass.
 
