@@ -8,51 +8,17 @@ import {
     prismaMock,
     restoreProtectMiddlewareImpl,
 } from '../../../../util/test'
-import { MOCK_REQ_USER, MOCK_USER } from './MOCK_DATA'
+import {
+    MOCK_NOTE_EMPTY,
+    MOCK_NOTE_W_CONTENT,
+    MOCK_NOTE_W_TITLE,
+    MOCK_NOTE_W_TITLE_CONTENT,
+    MOCK_REQ_USER,
+} from './MOCK_DATA'
 
 jest.mock('../../../../core/auth')
 
 const protectMiddlewareMock = jest.mocked(protectMiddleware)
-
-const MOCK_NOTE_EMPTY: Note = {
-    id: 1,
-    uuid: '23cbb84f-ab54-4293-98b1-e30f56d479f2',
-    title: null,
-    content: null,
-    createdAt: new Date('2023-06-17T06:25:33.165Z'),
-    updatedAt: new Date('2023-06-17T06:25:33.165Z'),
-    ownerUuid: MOCK_USER.uuid,
-}
-
-const MOCK_NOTE_W_TITLE: Note = {
-    id: 2,
-    uuid: '9d068e92-b576-49eb-a897-421ee5cca57c',
-    title: 'Note With Only Title',
-    content: null,
-    createdAt: new Date('2023-06-17T05:26:17.444Z'),
-    updatedAt: new Date('2023-06-17T05:26:17.444Z'),
-    ownerUuid: MOCK_USER.uuid,
-}
-
-const MOCK_NOTE_W_CONTENT: Note = {
-    id: 3,
-    uuid: '10d17a59-2635-449a-9156-b5d5db52c6aa',
-    title: null,
-    content: 'Note with only content!',
-    createdAt: new Date('2023-06-17T05:26:35.829Z'),
-    updatedAt: new Date('2023-06-17T05:26:35.829Z'),
-    ownerUuid: MOCK_USER.uuid,
-}
-
-const MOCK_NOTE_W_TITLE_CONTENT: Note = {
-    id: 4,
-    uuid: '68da4a00-16cf-4df1-874a-b90cc0ed8121',
-    title: 'Note With Title & Content',
-    content: 'Note with title and content!',
-    createdAt: new Date('2023-06-17T05:26:54.938Z'),
-    updatedAt: new Date('2023-06-17T05:26:54.938Z'),
-    ownerUuid: MOCK_USER.uuid,
-}
 
 describe('create note endpoint', () => {
     beforeEach(() => protectMiddlewareMock.mockReset())
@@ -165,72 +131,6 @@ describe('create note endpoint', () => {
     })
 })
 
-describe('read note endpoint', () => {
-    it('returns note when requesting an owned note', async () => {
-        protectMiddlewareMock.mockImplementation(
-            genProtectMiddlewareAuthImpl(MOCK_REQ_USER)
-        )
-        prismaMock.note.findUniqueOrThrow.mockResolvedValue(MOCK_NOTE_EMPTY)
-
-        expect.assertions(6)
-
-        const res = await request(app).get(
-            `/api/v1/notes/${MOCK_NOTE_EMPTY.uuid}`
-        )
-
-        expect(res.status).toBe(200)
-        expect(res.body.data.uuid).toBe(MOCK_NOTE_EMPTY.uuid)
-        expect(res.body.data.title).toBe(null)
-        expect(res.body.data.content).toBe(null)
-        expect(new Date(res.body.data.createdAt).getTime()).toBe(
-            MOCK_NOTE_EMPTY.createdAt.getTime()
-        )
-        expect(new Date(res.body.data.updatedAt).getTime()).toBe(
-            MOCK_NOTE_EMPTY.updatedAt.getTime()
-        )
-    })
-
-    it('returns 404 when requesting an inaccessible note', async () => {
-        protectMiddlewareMock.mockImplementation(
-            genProtectMiddlewareAuthImpl(MOCK_REQ_USER)
-        )
-        prismaMock.note.findUniqueOrThrow.mockImplementation(() => {
-            const err = new Prisma.PrismaClientKnownRequestError(
-                'No note found',
-                {
-                    clientVersion: '4.15.0',
-                    code: 'P2025',
-                }
-            )
-            throw err
-        })
-
-        expect.assertions(3)
-
-        const res = await request(app).get(
-            `/api/v1/notes/${MOCK_NOTE_EMPTY.uuid}`
-        )
-
-        expect(res.status).toBe(404)
-        expect(res.body.errors).toHaveLength(1)
-        expect(res.body.errors[0]).toBe('Not found')
-    })
-
-    it('returns 401 when unauthorized', async () => {
-        protectMiddlewareMock.mockImplementation(restoreProtectMiddlewareImpl)
-
-        expect.assertions(3)
-
-        const res = await request(app).get(
-            `/api/v1/notes/${MOCK_NOTE_EMPTY.uuid}`
-        )
-
-        expect(res.status).toBe(401)
-        expect(res.body.errors).toHaveLength(1)
-        expect(res.body.errors[0]).toBe('Unauthorized')
-    })
-})
-
 describe('list notes endpoint', () => {
     it('returns owned notes for authorized user', async () => {
         const MOCK_NOTE_LIST = [
@@ -286,6 +186,70 @@ describe('list notes endpoint', () => {
         expect.assertions(3)
 
         const res = await request(app).get('/api/v1/notes')
+
+        expect(res.status).toBe(401)
+        expect(res.body.errors).toHaveLength(1)
+        expect(res.body.errors[0]).toBe('Unauthorized')
+    })
+})
+
+describe('read note endpoint', () => {
+    it('returns note when requesting an owned note', async () => {
+        protectMiddlewareMock.mockImplementation(
+            genProtectMiddlewareAuthImpl(MOCK_REQ_USER)
+        )
+        prismaMock.note.findUniqueOrThrow.mockResolvedValue(MOCK_NOTE_EMPTY)
+
+        expect.assertions(6)
+
+        const res = await request(app).get(
+            `/api/v1/notes/${MOCK_NOTE_EMPTY.uuid}`
+        )
+
+        expect(res.status).toBe(200)
+        expect(res.body.data.uuid).toBe(MOCK_NOTE_EMPTY.uuid)
+        expect(res.body.data.title).toBe(null)
+        expect(res.body.data.content).toBe(null)
+        expect(new Date(res.body.data.createdAt).getTime()).toBe(
+            MOCK_NOTE_EMPTY.createdAt.getTime()
+        )
+        expect(new Date(res.body.data.updatedAt).getTime()).toBe(
+            MOCK_NOTE_EMPTY.updatedAt.getTime()
+        )
+    })
+
+    it('returns 404 when requesting an inaccessible note', async () => {
+        protectMiddlewareMock.mockImplementation(
+            genProtectMiddlewareAuthImpl(MOCK_REQ_USER)
+        )
+        prismaMock.note.findUniqueOrThrow.mockImplementation(() => {
+            const err = new Prisma.PrismaClientKnownRequestError(
+                'No note found',
+                {
+                    clientVersion: '4.15.0',
+                    code: 'P2025',
+                }
+            )
+            throw err
+        })
+
+        expect.assertions(3)
+
+        const res = await request(app).get('/api/v1/notes/123')
+
+        expect(res.status).toBe(404)
+        expect(res.body.errors).toHaveLength(1)
+        expect(res.body.errors[0]).toBe('Not found')
+    })
+
+    it('returns 401 when unauthorized', async () => {
+        protectMiddlewareMock.mockImplementation(restoreProtectMiddlewareImpl)
+
+        expect.assertions(3)
+
+        const res = await request(app).get(
+            `/api/v1/notes/${MOCK_NOTE_EMPTY.uuid}`
+        )
 
         expect(res.status).toBe(401)
         expect(res.body.errors).toHaveLength(1)
@@ -498,7 +462,7 @@ describe('update note endpoint', () => {
         expect.assertions(3)
 
         const res = await request(app)
-            .put(`/api/v1/notes/${MOCK_NOTE_EMPTY.uuid}`)
+            .put('/api/v1/notes/123')
             .send({ content: UPDATED_CONTENT })
 
         expect(res.status).toBe(404)
@@ -664,7 +628,7 @@ describe('patch note endpoint', () => {
         expect.assertions(3)
 
         const res = await request(app)
-            .patch(`/api/v1/notes/${MOCK_NOTE_EMPTY.uuid}`)
+            .patch('/api/v1/notes/123')
             .send({ content: PATCHED_CONTENT })
 
         expect(res.status).toBe(404)
@@ -730,9 +694,7 @@ describe('delete note endpoint', () => {
 
         expect.assertions(3)
 
-        const res = await request(app).delete(
-            `/api/v1/notes/${MOCK_NOTE_EMPTY.uuid}`
-        )
+        const res = await request(app).delete('/api/v1/notes/123')
 
         expect(res.status).toBe(404)
         expect(res.body.errors).toHaveLength(1)

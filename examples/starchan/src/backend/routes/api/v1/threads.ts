@@ -27,7 +27,6 @@ router.post(
     threadValidationChain(),
     validateErrorMiddleware,
     async (req: Request, res: Response, next: NextFunction) => {
-        return next(new ServerError(500))
         let data
         try {
             data = await prisma.thread.create({
@@ -51,54 +50,146 @@ router.post(
  *     description: List threads
  */
 router.get('/', async (req: Request, res: Response, next: NextFunction) => {
-    let data
+    let result
     try {
-        data = await prisma.thread.findMany()
+        result = await prisma.thread.findMany({
+            include: {
+                replies: {
+                    orderBy: { createdAt: 'asc' },
+                    take: -5,
+                },
+            },
+        })
     } catch (err) {
         return next(err)
     }
 
-    return res.json({ data })
+    return res.json({
+        data: result.map((t) => ({
+            ...t,
+            replies: Array.isArray(t.replies)
+                ? t.replies.map((r) => ({
+                      ...r,
+                      threadId: undefined,
+                  }))
+                : t.replies,
+        })),
+    })
 })
 
 /**
  * @openapi
- * /api/v1/threads/{id}:
+ * /api/v1/threads/{threadId}:
  *   get:
  *     description: Read a thread
  */
-router.get('/:id', async (req: Request, res: Response, next: NextFunction) => {
-    if (!isObjectIdOrHexString(req.params.id)) {
-        return next(
-            new ServerError(
-                404,
-                undefined,
-                'Route parameter is not a valid ObjectId.'
+router.get(
+    '/:threadId',
+    async (req: Request, res: Response, next: NextFunction) => {
+        if (!isObjectIdOrHexString(req.params.threadId)) {
+            return next(
+                new ServerError(
+                    404,
+                    undefined,
+                    'Route parameter is not a valid ObjectId.'
+                )
             )
-        )
-    }
-
-    let data
-    try {
-        data = await prisma.thread.findUniqueOrThrow({
-            where: { id: req.params.id },
-        })
-    } catch (err) {
-        if (
-            err instanceof Error &&
-            isPrismaKnownRequestError(err) &&
-            err.code === 'P2025' &&
-            err.message.match(/no thread found/i)
-        ) {
-            return next(new ServerError(404, undefined, err))
         }
-        return next(err)
+
+        let data
+        try {
+            data = await prisma.thread.findUniqueOrThrow({
+                where: { id: req.params.threadId },
+                include: {
+                    replies: {
+                        orderBy: { createdAt: 'asc' },
+                    },
+                },
+            })
+        } catch (err) {
+            if (
+                err instanceof Error &&
+                isPrismaKnownRequestError(err) &&
+                err.code === 'P2025' &&
+                err.message.match(/no thread found/i)
+            ) {
+                return next(new ServerError(404, undefined, err))
+            }
+            return next(err)
+        }
+
+        return res.json({ data })
     }
+)
 
-    return res.json({ data })
-})
+/**
+ * @openapi
+ * /api/v1/threads/{threadId}/reply:
+ *   get:
+ *     description: Create a reply to a thread
+ */
+router.post(
+    '/:threadId/reply',
+    async (req: Request, res: Response, next: NextFunction) => {
+        if (!isObjectIdOrHexString(req.params.threadId)) {
+            return next(
+                new ServerError(
+                    404,
+                    undefined,
+                    'Route parameter is not a valid ObjectId.'
+                )
+            )
+        }
 
-// Create a new reply in a thread
-router.post('/:uuid/reply', (req, res) => res.json({ data: {} }))
+        try {
+            await prisma.thread.findUniqueOrThrow({
+                where: { id: req.params.threadId },
+            })
+        } catch (err) {
+            if (
+                err instanceof Error &&
+                isPrismaKnownRequestError(err) &&
+                err.code === 'P2025' &&
+                err.message.match(/no thread found/i)
+            ) {
+                return next(new ServerError(404, undefined, err))
+            }
+            return next(err)
+        }
+
+        let result
+        try {
+            result = await prisma.reply.create({
+                data: {
+                    comment: req.body.comment,
+                    threadId: req.params.threadId,
+                },
+                include: {
+                    thread: {
+                        include: {
+                            replies: {
+                                orderBy: { createdAt: 'asc' },
+                            },
+                        },
+                    },
+                },
+            })
+        } catch (err) {
+            return next(err)
+        }
+
+        return res.status(201).json({
+            data: {
+                ...result.thread,
+                replies: Array.isArray(result.thread.replies)
+                    ? result.thread.replies.map((r) => ({
+                          ...r,
+                          threadId: undefined,
+                      }))
+                    : result.thread.replies,
+            },
+        })
+    }
+)
 
 export { router as threadHandler }
