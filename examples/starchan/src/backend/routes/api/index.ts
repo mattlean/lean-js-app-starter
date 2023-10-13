@@ -7,8 +7,10 @@ const router = Router()
 
 router.use('/v1', v1Handler)
 
+// Handle unknown paths with a not found error handler
 router.all('*', createNotFoundErrorHandler(true))
 
+// Catch all uncaught errors with an API error handler
 router.use(apiErrorHandler)
 
 export { router as apiHandler }

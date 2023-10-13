@@ -1,4 +1,4 @@
-import { Prisma } from '@prisma/client'
+import { Note, Prisma } from '@prisma/client'
 import request from 'supertest'
 
 import app from '../../../../app'
@@ -8,17 +8,51 @@ import {
     prismaMock,
     restoreProtectMiddlewareImpl,
 } from '../../../../util/test'
-import {
-    MOCK_NOTE_EMPTY,
-    MOCK_NOTE_W_CONTENT,
-    MOCK_NOTE_W_TITLE,
-    MOCK_NOTE_W_TITLE_CONTENT,
-    MOCK_REQ_USER,
-} from './MOCK_DATA'
+import { MOCK_REQ_USER, MOCK_USER } from './MOCK_DATA'
 
 jest.mock('../../../../core/auth')
 
 const protectMiddlewareMock = jest.mocked(protectMiddleware)
+
+const MOCK_NOTE_EMPTY: Note = {
+    id: 1,
+    uuid: '23cbb84f-ab54-4293-98b1-e30f56d479f2',
+    title: null,
+    content: null,
+    createdAt: new Date('2023-06-17T06:25:33.165Z'),
+    updatedAt: new Date('2023-06-17T06:25:33.165Z'),
+    ownerUuid: MOCK_USER.uuid,
+}
+
+const MOCK_NOTE_W_TITLE: Note = {
+    id: 2,
+    uuid: '9d068e92-b576-49eb-a897-421ee5cca57c',
+    title: 'Note With Only Title',
+    content: null,
+    createdAt: new Date('2023-06-17T05:26:17.444Z'),
+    updatedAt: new Date('2023-06-17T05:26:17.444Z'),
+    ownerUuid: MOCK_USER.uuid,
+}
+
+const MOCK_NOTE_W_CONTENT: Note = {
+    id: 3,
+    uuid: '10d17a59-2635-449a-9156-b5d5db52c6aa',
+    title: null,
+    content: 'Note with only content!',
+    createdAt: new Date('2023-06-17T05:26:35.829Z'),
+    updatedAt: new Date('2023-06-17T05:26:35.829Z'),
+    ownerUuid: MOCK_USER.uuid,
+}
+
+const MOCK_NOTE_W_TITLE_CONTENT: Note = {
+    id: 4,
+    uuid: '68da4a00-16cf-4df1-874a-b90cc0ed8121',
+    title: 'Note With Title & Content',
+    content: 'Note with title and content!',
+    createdAt: new Date('2023-06-17T05:26:54.938Z'),
+    updatedAt: new Date('2023-06-17T05:26:54.938Z'),
+    ownerUuid: MOCK_USER.uuid,
+}
 
 describe('create note endpoint', () => {
     beforeEach(() => protectMiddlewareMock.mockReset())
@@ -53,7 +87,9 @@ describe('create note endpoint', () => {
 
         expect.assertions(6)
 
-        const res = await request(app).post('/api/v1/notes')
+        const res = await request(app).post('/api/v1/notes').send({
+            title: MOCK_NOTE_W_TITLE.title,
+        })
 
         expect(res.status).toBe(201)
         expect(res.body.data.uuid).toBe(MOCK_NOTE_W_TITLE.uuid)
@@ -75,7 +111,9 @@ describe('create note endpoint', () => {
 
         expect.assertions(6)
 
-        const res = await request(app).post('/api/v1/notes')
+        const res = await request(app).post('/api/v1/notes').send({
+            content: MOCK_NOTE_W_CONTENT.content,
+        })
 
         expect(res.status).toBe(201)
         expect(res.body.data.uuid).toBe(MOCK_NOTE_W_CONTENT.uuid)
@@ -89,7 +127,7 @@ describe('create note endpoint', () => {
         )
     })
 
-    it('creates note with title & content when request payload only has title & content after being authorized', async () => {
+    it('creates note with title & content when request payload has title & content after being authorized', async () => {
         protectMiddlewareMock.mockImplementation(
             genProtectMiddlewareAuthImpl(MOCK_REQ_USER)
         )
@@ -97,7 +135,10 @@ describe('create note endpoint', () => {
 
         expect.assertions(6)
 
-        const res = await request(app).post('/api/v1/notes')
+        const res = await request(app).post('/api/v1/notes').send({
+            title: MOCK_NOTE_W_TITLE_CONTENT.title,
+            content: MOCK_NOTE_W_TITLE_CONTENT.content,
+        })
 
         expect(res.status).toBe(201)
         expect(res.body.data.uuid).toBe(MOCK_NOTE_W_TITLE_CONTENT.uuid)

@@ -7,25 +7,35 @@ import { createNotFoundErrorHandler, globalErrorHandler } from './core/error'
 import { frontendHandler } from './routes'
 import { apiHandler } from './routes/api'
 
+const BUNDLED_BUILD_PATH = path.resolve(__dirname)
+
 const app = express()
 
+// Setup EJS templates
 app.set('view engine', 'ejs')
-app.set('views', [path.resolve(__dirname, 'views')])
+app.set('views', [`${BUNDLED_BUILD_PATH}/views`])
 
-app.use(cors())
-app.use(express.json())
-app.use(express.urlencoded({ extended: true }))
+app.use(cors()) // Middleware that enables CORS
+app.use(express.json()) // Middleware that parses incoming requests with JSON payloads
+// app.use(express.urlencoded({ extended: true })) // TODO: might not need this
 
+// Enable HTTP request logger middleware when running in certain environments
 if (process.env.NODE_ENV === 'development') {
     app.use(morgan('dev'))
+} else if (process.env.NODE_ENV === 'production') {
+    app.use(morgan('common'))
 }
 
+// Mount router on / paths with handlers that respond with template renderings
 app.use('/', frontendHandler)
 
+// Mount router on /api paths with handlers that respond with JSON
 app.use('/api', apiHandler)
 
+// Handle unknown paths with a not found error handler
 app.all('*', createNotFoundErrorHandler())
 
+// Catch all uncaught errors with a global error handler
 app.use(globalErrorHandler)
 
 export default app

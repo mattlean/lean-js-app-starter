@@ -66,6 +66,7 @@ module.exports = merge([
                 // Write files to disk so they can be served by Express as static files
                 writeToDisk: true,
             },
+            historyApiFallback: true,
             port: process.env.PORT_DEV_SERVER,
         },
         rule: {

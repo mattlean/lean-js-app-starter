@@ -123,6 +123,66 @@ router.post(
 
 /**
  * @openapi
+ * /api/v1/notes:
+ *   get:
+ *     description: List notes owned by the user that is currently authenticated.
+ *     summary: List notes
+ *     responses:
+ *       200:
+ *         description: List the currently authenticated user's notes
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 data:
+ *                   type: array
+ *                   items:
+ *                     $ref: "#/components/schemas/Note"
+ *       401:
+ *         description: Attempt to list notes while using an invalid JWT or no JWT
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 errors:
+ *                   $ref: "#/components/schemas/ErrorResponse"
+ *             examples:
+ *               "Guest access":
+ *                 value:
+ *                   errors: ["Unauthorized"]
+ *               "Invalid token":
+ *                 value:
+ *                   errors: ["Invalid token"]
+ *     tags:
+ *       - Notes
+ */
+router.get(
+    '/',
+    async (req, res, next) => {
+        if (!req.user) {
+            return next(new ServerError(401))
+        }
+
+        try {
+            res.locals.notes = await prisma.note.findMany({
+                where: {
+                    ownerUuid: req.user.uuid,
+                },
+            })
+        } catch (err) {
+            return next(err)
+        }
+
+        return next()
+    },
+    genNoteDataMiddleware,
+    (req, res) => res.json({ data: res.locals.data })
+)
+
+/**
+ * @openapi
  * /api/v1/notes/{noteUuid}:
  *   get:
  *     description: Read a note owned by the user that is currently authenticated.
@@ -212,68 +272,6 @@ router.get(
             return next(err)
         }
 
-        return next()
-    },
-    genNoteDataMiddleware,
-    (req, res) => res.json({ data: res.locals.data })
-)
-
-/**
- * @openapi
- * /api/v1/notes:
- *   get:
- *     description: List notes owned by the user that is currently authenticated.
- *     summary: List notes
- *     responses:
- *       200:
- *         description: List the currently authenticated user's notes
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 data:
- *                   type: array
- *                   items:
- *                     $ref: "#/components/schemas/Note"
- *       401:
- *         description: Attempt to list notes while using an invalid JWT or no JWT
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 errors:
- *                   $ref: "#/components/schemas/ErrorResponse"
- *             examples:
- *               "Guest access":
- *                 value:
- *                   errors: ["Unauthorized"]
- *               "Invalid token":
- *                 value:
- *                   errors: ["Invalid token"]
- *     tags:
- *       - Notes
- */
-router.get(
-    '/',
-    async (req, res, next) => {
-        if (!req.user) {
-            return next(new ServerError(401))
-        }
-
-        let notes
-        try {
-            notes = await prisma.note.findMany({
-                where: {
-                    ownerUuid: req.user.uuid,
-                },
-            })
-        } catch (err) {
-            return next(err)
-        }
-
-        res.locals.notes = notes
         return next()
     },
     genNoteDataMiddleware,

@@ -17,7 +17,7 @@ export const createNotFoundErrorHandler =
         throw serverErr
     }
 
-/** API error handler that takes care of all errors and renders the response as JSON. */
+/** API error handler intended to handle all errors with a JSON response. */
 export const apiErrorHandler = (
     err: Error | ServerError,
     req: Request,
@@ -36,7 +36,10 @@ export const apiErrorHandler = (
     return res.status(500).json({ errors: ['Internal server error'] })
 }
 
-/** Global error handler that takes care of all errors that might be encountered. */
+/**
+ * Global error handler intended to handle all errors that might be encountered
+ * with a template rendering.
+ */
 export const globalErrorHandler = (
     err: Error | ServerError,
     req: Request,

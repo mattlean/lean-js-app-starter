@@ -34,7 +34,7 @@ export const genDefaultErrorMessage = (statusCode: number) => {
     }
 }
 
-/** Type guard for ErrorPage. */
+/** Type predicate for ErrorPage. */
 export const isErrorPage = (
     err: string | ErrorPage | ValidationError
 ): err is ErrorPage => {
@@ -47,7 +47,7 @@ export const isErrorPage = (
     return false
 }
 
-/** Type guard for ServerError. */
+/** Type predicate for ServerError. */
 export const isServerError = (err: ServerError | Error): err is ServerError =>
     err instanceof ServerError
 

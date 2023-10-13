@@ -23,7 +23,7 @@ export {
     ServerError,
 }
 
-/** Type guard for Prisma errors. */
+/** Type predicate for Prisma errors. */
 export const isPrismaKnownRequestError = (
     err: Prisma.PrismaClientKnownRequestError | Error
 ): err is Prisma.PrismaClientKnownRequestError =>

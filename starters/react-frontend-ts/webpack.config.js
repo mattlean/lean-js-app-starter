@@ -1,18 +1,19 @@
 const { merge } = require('webpack-merge')
+
 const commonConfig = require('./webpack.common')
-const developmentConfig = require('./webpack.development')
-const productionConfig = require('./webpack.production')
 
 module.exports = (env, { mode }) => {
     switch (mode) {
         case 'production': {
             const config = merge(commonConfig, productionConfig)
+            const productionConfig = require('./webpack.production')
             console.log('DEBUG CONFIG', config, JSON.stringify(config))
             return config
         }
 
         case 'development': {
             const config = merge(commonConfig, developmentConfig)
+            const developmentConfig = require('./webpack.development')
             console.log('DEBUG CONFIG', config, JSON.stringify(config))
             return config
         }

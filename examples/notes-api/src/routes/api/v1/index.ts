@@ -1,10 +1,6 @@
 import { Router } from 'express'
 
 import { protectMiddleware } from '../../../core/auth'
-import {
-    apiErrorHandler,
-    createNotFoundErrorHandler,
-} from '../../../core/error'
 import { docsHandler } from './docs'
 import { loginHandler } from './login'
 import { meHandler } from './me'
@@ -69,9 +65,5 @@ router.use('/login', loginHandler)
 router.use('/me', protectMiddleware, meHandler)
 
 router.use('/notes', protectMiddleware, noteHandler)
-
-router.all('*', createNotFoundErrorHandler(true))
-
-router.use(apiErrorHandler)
 
 export { router as v1Handler }

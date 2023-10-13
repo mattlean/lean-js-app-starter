@@ -30,7 +30,7 @@ declare module '*.svg' {
 
 declare global {
     interface Window {
-        DEV_SERVER?: boolean
+        __DEV_SERVER__?: boolean
     }
 }
 
