@@ -1,11 +1,14 @@
-import { Thread as ThreadType } from '@prisma/client'
+import moment from 'moment'
 import { Link } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
 
-import { useGetThreadsQuery } from '../api/apiSlice'
+import { ThreadWithReplies } from '../../common/types'
+import Reply from './Reply'
 
-interface Props {
-    data: ThreadType
+// import { useGetThreadsQuery } from '../api/apiSlice'
+
+export interface Props {
+    data: ThreadWithReplies
 }
 
 export default function Thread({ data }: Props) {
@@ -43,6 +46,10 @@ export default function Thread({ data }: Props) {
         //     replies = <ul>{replies}</ul>
         // }
 
+        const replies = data.replies?.map((reply) => (
+            <Reply key={reply.id} data={reply} />
+        ))
+
         let replyLink
         if (!threadId)
             replyLink = (
@@ -53,18 +60,17 @@ export default function Thread({ data }: Props) {
             )
 
         return (
-            <li className="thread">
+            <ul className="thread">
                 <header>
                     {subject}
                     <b className="name">Anonymous</b>{' '}
-                    {/* {moment(data.createdAt).format('MM/DD/YY(ddd)HH:DD:SS')} */}
-                    10/1/23
+                    {moment(data.createdAt).format('MM/DD/YY(ddd)HH:DD:SS')}
                     {` Id.${data.id}`}
                     {replyLink}
                 </header>
                 <pre className="comment">{data.comment}</pre>
-                {/* {replies} */}
-            </li>
+                {replies && replies?.length > 0 && <ul>{replies}</ul>}
+            </ul>
         )
     }
 

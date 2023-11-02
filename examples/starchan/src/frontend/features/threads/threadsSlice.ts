@@ -1,11 +1,11 @@
 import { Thread } from '@prisma/client'
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 
-export interface ThreadsState {
+export interface ThreadsReduxState {
     threads: Thread[]
 }
 
-const initialState: ThreadsState = { threads: [] }
+const initialState: ThreadsReduxState = { threads: [] }
 
 export const threadsSlice = createSlice({
     name: 'threads',

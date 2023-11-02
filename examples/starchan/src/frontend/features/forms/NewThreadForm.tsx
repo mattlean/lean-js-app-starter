@@ -14,19 +14,31 @@ export default function NewThreadForm() {
     const [show, setShow] = useState(false)
     const [errMsg, setErrMsg] = useState('')
 
-    const [createThread, { isLoading }] = useCreateThreadMutation()
+    const [createThread, { error, isLoading }] = useCreateThreadMutation()
+
+    if (error) {
+        throw new Error(
+            'An error occurred when attempting to create a new thread.'
+        )
+    }
 
     if (!show) {
         return (
             <>
                 <span className="center">
                     [
-                    <a href="#" onClick={() => setShow(true)}>
+                    <a
+                        href="#"
+                        onClick={(e) => {
+                            e.preventDefault()
+                            setShow(true)
+                        }}
+                    >
                         Start a New Thread
                     </a>
                     ]
                 </span>
-                <noscript>
+                {/* <noscript> // TODO: readd this if complete SSR gets working
                     <form
                         id="new-form"
                         action="/api/thread"
@@ -67,7 +79,7 @@ export default function NewThreadForm() {
                             </tbody>
                         </table>
                     </form>
-                </noscript>
+                </noscript> */}
             </>
         )
     }
@@ -77,9 +89,16 @@ export default function NewThreadForm() {
         setErrMsg('')
 
         try {
-            await createThread({ subject, comment }).unwrap()
+            await createThread({
+                subject: subject.trim() || undefined,
+                comment: comment.trim(),
+            }).unwrap()
         } catch (err) {
-            console.error('Failed to create thread:', err)
+            console.error(
+                'An error was encountered while creating the thread:',
+                err
+            )
+
             if (isFetchBaseQueryError(err) && isAPIErrorRes(err.data)) {
                 if (err.data.errors) {
                     if (typeof err.data.errors[0] === 'string') {
@@ -94,6 +113,10 @@ export default function NewThreadForm() {
                 setErrMsg(err.message)
             }
         }
+
+        setShow(false)
+        setSubject('')
+        setComment('')
     }
 
     return (

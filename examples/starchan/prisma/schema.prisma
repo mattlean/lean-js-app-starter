@@ -25,5 +25,5 @@ model Reply {
   createdAt DateTime @default(now())
 
   threadId String @db.ObjectId
-  thread   Thread @relation(fields: [threadId], references: [id])
+  thread   Thread @relation(fields: [threadId], references: [id], onDelete: Cascade)
 }

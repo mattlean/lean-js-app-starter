@@ -1,14 +1,14 @@
 import { PropsWithChildren } from 'react'
 import { Provider as ReduxProvider } from 'react-redux'
 
-// import ErrorPage from '../features/ErrorPage'
+// import ErrorMessage from '../features/ErrorMessage'
 import { store } from './store'
 
 // const router = createBrowserRouter([
 //     {
 //         path: '/',
 //         element: <Shell />,
-//         errorElement: <ErrorPage />,
+//         errorElement: <ErrorMessage />,
 //     },
 // ])
 

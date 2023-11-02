@@ -1,4 +1,6 @@
-import { Prisma, Reply, Thread } from '@prisma/client'
+import { Reply, Thread } from '@prisma/client'
+
+import { ThreadWithReplies } from '../../../../../frontend/common/types'
 
 export const MOCK_THREAD_W_COMMENT: Thread = {
     id: '65200adeed075a6920b9129a',
@@ -28,9 +30,7 @@ export const MOCK_THREAD_W_REPLY: Thread = {
     createdAt: new Date('2023-10-09T11:19:27.167Z'),
 }
 
-export const MOCK_THREAD_INCLUDES_REPLY: Prisma.ThreadGetPayload<{
-    include: { replies: true }
-}> = {
+export const MOCK_THREAD_INCLUDES_REPLY: ThreadWithReplies = {
     ...MOCK_THREAD_W_REPLY,
     replies: [MOCK_REPLY],
 }

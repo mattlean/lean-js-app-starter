@@ -19,9 +19,9 @@ Another benefit is that these services and dependencies will not conflict with o
 
 For example, maybe I could have one project that is stuck on an old version of Node.js and another one that uses that latest version of Node.js. Upgrading or downgrading the installation of Node.js on my machine would mean breaking one of the projects, not to mention the annoyance of having to do that every time I switch between them. I could rely on something like [Node Version Manager](https://github.com/nvm-sh/nvm) to gain the ability of having multiple Node.js versions on one computer, but then I need to set that up and always make sure my project is running on the right Node.js version when I start it. I might be willing to live with that, but what if I'm working with a service that doesn't have solution like Node Version Manager available for me?
 
-Docker completely avoids this issue because from my native machine's perspective, the only dependency that needs to be installed is Docker itself. I can completely forget about the million other services and dependencies like Node.js, PostgreSQL, React, or whatever. Now I can have one project rely on my global installation of Node.js and use the Docker dev environment for the other one, or maybe I could just have both projects use two separate dev environments, eliminating my computer's Node.js installation as a factor all together.
+Docker completely avoids this issue because from my native machine's perspective. The only dependency that needs to be installed is Docker itself. I can completely forget about the million other services and dependencies like Node.js, PostgreSQL, React, or whatever. Now I can have one project rely on my global installation of Node.js and use the Docker dev environment for the other one, or maybe I could just have both projects use two separate Docker dev environments, eliminating the need for my computer's Node.js installation all together.
 
-Once Docker is installed, all you need to do is run `docker compose up` to turn on the dev environment which will handle everything for you. When you're done working, simply run `docker compose down` to turn it all off.
+Once Docker is installed, all you need to do is run `docker compose up` to turn on the dev environment.
 
 ## Downsides
 
@@ -42,6 +42,22 @@ Editor extensions like ESLint depend on `node_modules`, but if you're running th
 VS Code has the best documented way on how to do this, but this means that you will have to use VS Code which is a problem if you prefer something else. Also, if the container crashes, the connected VS Code instance will crash as well which can be inconvenient.
 
 **The environment is consistent across different computers until it isn't.**
+
+### How do I stop the Docker dev environment?
+
+You can stop them with one of the following options:
+
+-   Input Ctrl+C in the terminal where the processes are running.
+-   Stopping the containers through Docker Desktop.
+-   Open another terminal, navigate to the project directory, and run `docker compose down`.
+
+### How do I access the logs from my Docker dev environment?
+
+If you used `docker compose up`, the terminal you ran the command in will display all of the logs output by the dev enivonrment.
+
+You can also view the logs through Docker Desktop.
+
+Alternatively, you can run the Docker dev environment in detached mode with `docker compose up -d` and then view the logs in Docker Desktop or through `docker logs CONTAINER_NAME -f` where `CONTAINER_NAME` is the container's name. Pressing Ctrl+C in the terminal running the `docker logs` command will not stop the dev environment which can be handy if you don't always want a terminal open just to keep the dev environment running.
 
 ## How to develop inside the container with Visual Studio Code.
 

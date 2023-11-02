@@ -1,29 +1,33 @@
 #!/bin/bash
 
-prefix="[🚀 init.sh]"
+PREFIX="[🚀 init.sh]"
 
-echo "${prefix} Beginning the initialization script..."
+echo "${PREFIX} Beginning the initialization script..."
 
 if [ -d "./node_modules" ]
 then
-    echo "${prefix} The node_modules directory already exists, so skip package dependency installation." 
+    echo "${PREFIX} The node_modules directory already exists, so skip package dependency installation." 
 else
-    echo "${prefix} Installing package dependencies..."
+    echo "${PREFIX} Installing package dependencies..."
     npm install
-    echo "${prefix} Package dependency installation completed!"
+    echo "${PREFIX} Package dependency installation completed!"
 fi
 
-echo "${prefix} Starting the database migrations..."
+echo "${PREFIX} Starting the database migrations..."
 npm run prisma migrate dev
-echo "${prefix} Database migrations completed!"
+echo "${PREFIX} Database migrations completed!"
+
+echo "${PREFIX} Generate the Prisma client..."
+npm run prisma generate
+echo "${PREFIX} Prisma client generation completed!"
 
 if [ -f "./build/server.js" ]
 then
-    echo "${prefix} The build already exists, so skip the initial build process."
+    echo "${PREFIX} The build already exists, so skip the initial build process."
 else
-    echo "${prefix} Starting the build process..."
+    echo "${PREFIX} Starting the build process..."
     npm run build
-    echo "${prefix} Build process completed!"
+    echo "${PREFIX} Build process completed!"
 fi
 
-echo "${prefix} Initialization script completed!"
+echo "${PREFIX} Initialization script completed!"

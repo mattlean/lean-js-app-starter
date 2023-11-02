@@ -1,11 +1,17 @@
+import { Reply } from '@prisma/client'
 import { Thread } from '@prisma/client'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
+import { ThreadWithReplies } from '../../common/types'
 import { APIRes } from './types'
 
 export interface ThreadInput {
-    subject?: string
-    comment: string
+    subject?: ThreadWithReplies['subject']
+    comment: ThreadWithReplies['comment']
+}
+
+export interface ReplyInput {
+    comment: Reply['comment']
 }
 
 const baseUrl =
@@ -19,7 +25,34 @@ export const apiSlice = createApi({
     baseQuery: fetchBaseQuery({ baseUrl }),
     tagTypes: ['Thread'],
     endpoints: (builder) => ({
-        createThread: builder.mutation({
+        createReply: builder.mutation<
+            APIRes<ThreadWithReplies>,
+            {
+                threadId: ThreadWithReplies['id'] | void
+                comment: ReplyInput['comment']
+            }
+        >({
+            query: ({
+                threadId,
+                ...newReply
+            }: {
+                threadId: ThreadWithReplies['id']
+                comment: ReplyInput['comment']
+            }) => {
+                if (!threadId) {
+                    throw new Error('No thread ID found.')
+                }
+
+                return {
+                    url: `/threads/${threadId}/reply`,
+                    method: 'POST',
+                    body: newReply,
+                }
+            },
+            invalidatesTags: ['Thread'],
+        }),
+
+        createThread: builder.mutation<APIRes<Thread>, ThreadInput>({
             query: (newThread: ThreadInput) => ({
                 url: '/threads',
                 method: 'POST',
@@ -28,11 +61,21 @@ export const apiSlice = createApi({
             invalidatesTags: ['Thread'],
         }),
 
-        getThread: builder.query({
-            query: (threadId) => `/threads/${threadId}`,
+        getThread: builder.query<
+            APIRes<ThreadWithReplies>,
+            ThreadWithReplies['id'] | void
+        >({
+            query: (threadId) => {
+                if (!threadId) {
+                    throw new Error('No thread ID found.')
+                }
+
+                return `/threads/${threadId}`
+            },
+            providesTags: ['Thread'],
         }),
 
-        getThreads: builder.query<APIRes<Thread>, void>({
+        getThreads: builder.query<APIRes<ThreadWithReplies[]>, void>({
             query: () => '/threads',
             providesTags: ['Thread'],
         }),
@@ -48,5 +91,6 @@ export const apiReducerPath = apiSlice.reducerPath
 export const {
     useGetThreadQuery,
     useGetThreadsQuery,
+    useCreateReplyMutation,
     useCreateThreadMutation,
 } = apiSlice

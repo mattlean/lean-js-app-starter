@@ -1,18 +1,12 @@
 # Frequently asked questions
 
-### How do I remove any mention of Lean JS App Starter from my project?
+### How do I remove all mentions of Lean JS App Starter from my project?
 
 Search the code for strings that are the title of the starter project name prefixed with `ljas-`. There shouldn't be many of them to replace.
 
 For example, if you're using the `react-frontend` project, you would search and replace for `ljas-react-frontend`. This would replace the `package.json` `name` field and the title option in the webpack configuration used as the contents of the `<title>` tag in the HTML template.
 
 Then the final thing you need to do is clear contents of the `README.md` file and you'll be good to go.
-
-### How do I stop the development process?
-
-If you're developing using the standard method, all you need to do is press Ctrl+C in the terminal window that's running the development process.
-
-If you're using the Docker development environment, you can also use Ctrl+C if the terminal window is available. If it's running in the background, you can navigate to the project directory in a new terminal and run the command `docker compose down` instead.
 
 ### Why are ECMAScript modules used for Node.js projects over CommonJS modules?
 
