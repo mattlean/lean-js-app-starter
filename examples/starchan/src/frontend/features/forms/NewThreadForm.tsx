@@ -1,4 +1,5 @@
 import { FormEvent, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import {
     isAPIErrorRes,
@@ -15,6 +16,7 @@ export default function NewThreadForm() {
     const [errMsg, setErrMsg] = useState('')
 
     const [createThread, { error, isLoading }] = useCreateThreadMutation()
+    const navigate = useNavigate()
 
     if (error) {
         throw new Error(
@@ -27,15 +29,9 @@ export default function NewThreadForm() {
             <>
                 <span className="center">
                     [
-                    <a
-                        href="#"
-                        onClick={(e) => {
-                            e.preventDefault()
-                            setShow(true)
-                        }}
-                    >
+                    <button onClick={() => setShow(true)}>
                         Start a New Thread
-                    </a>
+                    </button>
                     ]
                 </span>
                 {/* <noscript> // TODO: readd this if complete SSR gets working
@@ -88,8 +84,9 @@ export default function NewThreadForm() {
         e.preventDefault()
         setErrMsg('')
 
+        let res
         try {
-            await createThread({
+            res = await createThread({
                 subject: subject.trim() || undefined,
                 comment: comment.trim(),
             }).unwrap()
@@ -114,9 +111,11 @@ export default function NewThreadForm() {
             }
         }
 
-        setShow(false)
-        setSubject('')
-        setComment('')
+        if (!res?.data) {
+            throw new Error('Thread data could not be read.')
+        }
+
+        navigate(`/thread/${res.data.id}`)
     }
 
     return (

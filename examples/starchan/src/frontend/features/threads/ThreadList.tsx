@@ -1,12 +1,22 @@
 import { Fragment } from 'react'
+import { useParams } from 'react-router-dom'
 
 import Loading from '../Loading'
+import PageSelect from '../PageSelect'
 import { useGetThreadsQuery } from '../api/apiSlice'
 import NewThreadForm from '../forms/NewThreadForm'
 import Thread from './Thread'
 
 export default function ThreadList() {
-    const { data: res, error, isLoading } = useGetThreadsQuery()
+    const { page } = useParams()
+
+    const currPage = page ? parseInt(page) : 1
+
+    if (page !== undefined && (currPage === 1 || Number.isNaN(currPage))) {
+        throw new Error(`Error: No route matches URL "/${page}"`)
+    }
+
+    const { data: res, error, isLoading } = useGetThreadsQuery(currPage)
 
     if (isLoading) {
         return <Loading />
@@ -22,6 +32,8 @@ export default function ThreadList() {
         throw new Error('Thread list data could not be read.')
     }
 
+    const totalPages = res?.info?.totalPages || 1
+
     return (
         <>
             <NewThreadForm />
@@ -34,6 +46,7 @@ export default function ThreadList() {
                     </Fragment>
                 ))}
             </ul>
+            <PageSelect totalPages={totalPages} />
         </>
     )
 }

@@ -16,6 +16,12 @@ export default function NewReplyForm() {
     const { threadId } = useParams()
     const [createReply, { error, isLoading }] = useCreateReplyMutation()
 
+    if (error) {
+        throw new Error(
+            'An error occurred when attempting to create a new reply.'
+        )
+    }
+
     if (!show) {
         return (
             <>

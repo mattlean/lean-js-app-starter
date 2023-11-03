@@ -53,7 +53,7 @@ export const apiSlice = createApi({
         }),
 
         createThread: builder.mutation<APIRes<Thread>, ThreadInput>({
-            query: (newThread: ThreadInput) => ({
+            query: (newThread) => ({
                 url: '/threads',
                 method: 'POST',
                 body: newThread,
@@ -75,8 +75,12 @@ export const apiSlice = createApi({
             providesTags: ['Thread'],
         }),
 
-        getThreads: builder.query<APIRes<ThreadWithReplies[]>, void>({
-            query: () => '/threads',
+        getThreads: builder.query<APIRes<ThreadWithReplies[]>, number>({
+            query: (page) => ({
+                url: '/threads',
+                method: 'GET',
+                params: { page },
+            }),
             providesTags: ['Thread'],
         }),
     }),

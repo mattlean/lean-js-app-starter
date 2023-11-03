@@ -21,8 +21,6 @@ export default function Thread({ data }: Props) {
     // })
     const { threadId } = useParams()
 
-    console.log('thread', data)
-
     if (data) {
         let subject
         if (data.subject) {

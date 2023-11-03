@@ -157,7 +157,10 @@ router.get(
         // If page query string parameter is encountered,
         // pagination results are expected so set the skipAmt so the correct page can be arrived at.
         // Otherwise set the skipAmt to 0 so all threads will be sent.
-        if (typeof req.query.page === 'string') {
+        if (
+            typeof req.query.page === 'string' &&
+            req.query.page.trim() !== ''
+        ) {
             currPage = parseInt(req.query.page)
             skipAmt = currPage ? (currPage - 1) * PAGE_SIZE : 0
         } else {

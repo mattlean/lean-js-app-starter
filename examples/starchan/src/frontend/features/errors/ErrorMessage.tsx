@@ -28,7 +28,7 @@ export default function ErrorPage() {
                 </p>
             )}
             <p>
-                <Link to="/">Return to the home page?</Link>
+                <Link to="/">Return to the home page.</Link>
             </p>
         </div>
     )

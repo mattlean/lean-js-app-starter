@@ -47,9 +47,9 @@ const generateDevData = async (threadsNum = 200, outputJson = false) => {
     // Create replies for threads for every other thread
     // when they are arranged in insertion order
     for (let i = 0; i < threadsNum; i += 2) {
-        const repliesToCreate = Math.ceil(i / 2)
+        const repliesToCreate = Math.ceil(i / 4)
 
-        for (let j = 0; j < repliesToCreate; j += 1) {
+        for (let j = 0; j < repliesToCreate; ++j) {
             await prisma.reply.create({
                 data: {
                     comment: lipsum.generateSentences(1),

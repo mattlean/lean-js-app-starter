@@ -12,7 +12,13 @@ export const routes = (
             path="/"
             element={<ThreadList />}
             errorElement={<ErrorMessageContextual />}
-        />
+        >
+            <Route
+                path="/:page"
+                element={<ThreadList />}
+                errorElement={<ErrorMessageContextual />}
+            />
+        </Route>
         <Route
             path="thread/:threadId"
             element={<ThreadPage />}
