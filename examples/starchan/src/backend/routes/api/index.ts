@@ -1,6 +1,6 @@
 import { Router } from 'express'
 
-import { apiErrorHandler, createNotFoundErrorHandler } from '../../core/error'
+import { apiErrorHandler, createNotFoundErrorHandler } from '../../common/error'
 import { v1Handler } from './v1'
 
 const router = Router()

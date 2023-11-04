@@ -1,4 +1,4 @@
-import { Route } from 'react-router-dom'
+import { Route, createRoutesFromElements } from 'react-router-dom'
 
 import Shell from '../features/Shell'
 import ErrorMessage from '../features/errors/ErrorMessage'
@@ -6,7 +6,7 @@ import ErrorMessageContextual from '../features/errors/ErrorMessageContextual'
 import ThreadList from '../features/threads/ThreadList'
 import ThreadPage from '../features/threads/ThreadPage'
 
-export const routes = (
+export const jsxRoutes = (
     <Route path="/" element={<Shell />} errorElement={<ErrorMessage />}>
         <Route
             path="/"
@@ -26,3 +26,5 @@ export const routes = (
         />
     </Route>
 )
+
+export const objRoutes = createRoutesFromElements(jsxRoutes)

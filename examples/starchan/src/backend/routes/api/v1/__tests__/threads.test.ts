@@ -2,7 +2,7 @@ import { Prisma } from '@prisma/client'
 import request from 'supertest'
 
 import app from '../../../../app'
-import { prismaMock } from '../../../../util/test'
+import { prismaMock } from '../../../../common/util/test'
 import {
     MOCK_REPLY,
     MOCK_THREAD_INCLUDES_REPLY,

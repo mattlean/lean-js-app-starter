@@ -3,7 +3,7 @@ import express from 'express'
 import morgan from 'morgan'
 import path from 'path'
 
-import { createNotFoundErrorHandler, globalErrorHandler } from './core/error'
+import { createNotFoundErrorHandler, globalErrorHandler } from './common/error'
 import { frontendHandler } from './routes'
 import { apiHandler } from './routes/api'
 

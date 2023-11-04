@@ -1,6 +1,6 @@
 import { ValidationError } from 'express-validator'
 
-import { ServerError, isErrorPage, isServerError } from '../'
+import { ServerError, isErrorPage, isServerError } from '..'
 
 const FOO_TXT = 'foo'
 const BAR_TXT = 'bar'

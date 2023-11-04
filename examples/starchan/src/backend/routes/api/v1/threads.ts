@@ -1,14 +1,15 @@
 import { Prisma } from '@prisma/client'
 import { NextFunction, Request, Response, Router } from 'express'
-import { body, query } from 'express-validator'
+import { body } from 'express-validator'
 import { isObjectIdOrHexString } from 'mongoose'
 
 import {
     isPrismaKnownRequestError,
     validateErrorMiddleware,
-} from '../../../core/error'
-import { ServerError } from '../../../core/error'
-import { prisma } from '../../../core/prisma'
+} from '../../../common/error'
+import { ServerError } from '../../../common/error'
+import { prisma } from '../../../common/prisma'
+import { threadPageValidationChain } from '../../../common/validators'
 
 const MAX_THREADS = 200
 const PAGE_SIZE = 20
@@ -146,7 +147,7 @@ router.post(
  */
 router.get(
     '/',
-    query('page').isInt({ min: 1, max: 10 }).optional(),
+    threadPageValidationChain,
     validateErrorMiddleware,
     async (req: Request, res: Response, next: NextFunction) => {
         let currPage = null
