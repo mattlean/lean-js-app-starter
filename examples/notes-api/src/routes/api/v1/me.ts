@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response, Router } from 'express'
 
-import { ServerError } from '../../../core/error'
-import { prisma } from '../../../core/prisma'
+import { ServerError } from '../../../common/error'
+import { prisma } from '../../../common/prisma'
 
 const router = Router()
 

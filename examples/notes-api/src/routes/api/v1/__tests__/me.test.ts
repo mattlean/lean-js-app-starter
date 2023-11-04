@@ -1,15 +1,15 @@
 import request from 'supertest'
 
 import app from '../../../../app'
-import { protectMiddleware } from '../../../../core/auth'
+import { protectMiddleware } from '../../../../common/auth'
 import {
     genProtectMiddlewareAuthImpl,
     prismaMock,
     restoreProtectMiddlewareImpl,
-} from '../../../../util/test'
+} from '../../../../common/util/test'
 import { MOCK_REQ_USER, MOCK_USER } from './MOCK_DATA'
 
-jest.mock('../../../../core/auth')
+jest.mock('../../../../common/auth')
 
 const protectMiddlewareMock = jest.mocked(protectMiddleware)
 

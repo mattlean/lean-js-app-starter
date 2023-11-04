@@ -4,10 +4,10 @@ import { body } from 'express-validator'
 import {
     isPrismaKnownRequestError,
     validateErrorMiddleware,
-} from '../../../core/error'
-import { ServerError } from '../../../core/error'
-import { prisma } from '../../../core/prisma'
-import { isUuidv4 } from '../../../util'
+} from '../../../common/error'
+import { ServerError } from '../../../common/error'
+import { prisma } from '../../../common/prisma'
+import { isUuidv4 } from '../../../common/util'
 
 const router = Router()
 

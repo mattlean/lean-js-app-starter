@@ -1,13 +1,13 @@
 import { NextFunction, Request, Response, Router } from 'express'
 import { body } from 'express-validator'
 
-import { createJWT, hashPassword } from '../../../core/auth'
+import { createJWT, hashPassword } from '../../../common/auth'
 import {
     isPrismaKnownRequestError,
     validateErrorMiddleware,
-} from '../../../core/error'
-import { ServerError } from '../../../core/error'
-import { prisma } from '../../../core/prisma'
+} from '../../../common/error'
+import { ServerError } from '../../../common/error'
+import { prisma } from '../../../common/prisma'
 
 const registerValidationChain = () => [
     body('username').isString(),

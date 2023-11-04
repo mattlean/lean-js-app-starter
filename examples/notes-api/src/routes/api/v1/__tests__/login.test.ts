@@ -2,7 +2,7 @@ import { Prisma } from '@prisma/client'
 import request from 'supertest'
 
 import app from '../../../../app'
-import { prismaMock } from '../../../../util/test'
+import { prismaMock } from '../../../../common/util/test'
 import { MOCK_USER, MOCK_USER_PLAIN_TXT_PASS } from './MOCK_DATA'
 
 test('returns JWT when valid login is sent', async () => {

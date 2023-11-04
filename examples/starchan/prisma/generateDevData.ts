@@ -1,6 +1,6 @@
 import { LoremIpsum } from 'lorem-ipsum'
 
-import { prisma } from '../src/backend/core/prisma'
+import { prisma } from '../src/backend/common/prisma'
 
 /**
  * Generate threads with random content.

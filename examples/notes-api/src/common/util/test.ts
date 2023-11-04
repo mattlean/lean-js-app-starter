@@ -1,7 +1,7 @@
 import bcrypt from 'bcrypt'
 import { NextFunction, Request, Response } from 'express'
 
-export { prismaMock } from '../../prisma/singleton'
+export { prismaMock } from '../../../prisma/singleton'
 
 /**
  * Generate implementation for protectMiddleware that mocks authorization.
@@ -24,7 +24,7 @@ export const restoreProtectMiddlewareImpl = (
     res: Response,
     next: NextFunction
 ) => {
-    const { protectMiddleware } = jest.requireActual('../core/auth')
+    const { protectMiddleware } = jest.requireActual('../auth')
     return protectMiddleware(req, res, next)
 }
 

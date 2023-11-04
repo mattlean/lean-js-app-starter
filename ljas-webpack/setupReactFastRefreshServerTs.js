@@ -3,7 +3,7 @@ const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
 const { FORK_TS_CHECKER_DEFAULT_REACT_OPTIONS } = require('./constants')
 const { merge } = require('webpack-merge')
-const { setupDevServer } = require('./')
+const { setupDevServer } = require('.')
 
 /**
  * Setup webpack-dev-server and babel-loader to handle React JavaScript code.

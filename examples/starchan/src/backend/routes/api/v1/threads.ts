@@ -6,9 +6,9 @@ import { isObjectIdOrHexString } from 'mongoose'
 import {
     isPrismaKnownRequestError,
     validateErrorMiddleware,
-} from '../../../core/error'
-import { ServerError } from '../../../core/error'
-import { prisma } from '../../../core/prisma'
+} from '../../../common/error'
+import { ServerError } from '../../../common/error'
+import { prisma } from '../../../common/prisma'
 
 const MAX_THREADS = 200
 const PAGE_SIZE = 20

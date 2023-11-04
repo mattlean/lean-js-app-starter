@@ -1,5 +1,5 @@
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
-const { compileReact } = require('./')
+const { compileReact } = require('.')
 const { FORK_TS_CHECKER_DEFAULT_REACT_OPTIONS } = require('./constants')
 
 /**

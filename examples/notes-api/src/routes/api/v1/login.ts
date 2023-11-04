@@ -1,10 +1,10 @@
 import { NextFunction, Request, Response, Router } from 'express'
 import { body } from 'express-validator'
 
-import { createJWT, verifyPassword } from '../../../core/auth'
-import { ServerError } from '../../../core/error'
-import { validateErrorMiddleware } from '../../../core/error'
-import { prisma } from '../../../core/prisma'
+import { createJWT, verifyPassword } from '../../../common/auth'
+import { ServerError } from '../../../common/error'
+import { validateErrorMiddleware } from '../../../common/error'
+import { prisma } from '../../../common/prisma'
 
 const router = Router()
 

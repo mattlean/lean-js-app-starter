@@ -1,4 +1,4 @@
-import { ServerErrorErrors } from '../../../backend/core/error/ServerError'
+import { ServerErrorErrors } from '../../../backend/common/error/ServerError'
 
 export interface APIErrorRes {
     errors?: ServerErrorErrors

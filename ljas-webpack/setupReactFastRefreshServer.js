@@ -1,5 +1,5 @@
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
-const { compileReact, setupDevServer } = require('./')
+const { compileReact, setupDevServer } = require('.')
 const { merge } = require('webpack-merge')
 
 /**

@@ -1,6 +1,6 @@
 import { Router } from 'express'
 
-import { protectMiddleware } from '../../../core/auth'
+import { protectMiddleware } from '../../../common/auth'
 import { docsHandler } from './docs'
 import { loginHandler } from './login'
 import { meHandler } from './me'
