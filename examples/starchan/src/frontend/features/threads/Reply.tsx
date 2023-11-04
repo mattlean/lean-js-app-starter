@@ -15,6 +15,7 @@ export default function Reply({ data }: Props) {
     )
 
     useEffect(() => {
+        // Convert server-side UTC datetime to local time
         setLocalCreatedAt(
             moment(data.createdAt).format('MM/DD/YY(ddd)HH:DD:SS')
         )
@@ -27,6 +28,9 @@ export default function Reply({ data }: Props) {
                     {/* eslint-disable-next-line react/jsx-no-comment-textnodes */}
                     <b className="name">Anonymous</b> //{' '}
                     <time dateTime={serverCreatedAt.toISOString()}>
+                        {/* This will display the datetime in the server timezone on initial render so the hydration can match. */}
+                        {/* Afterwards, useEffect will run and convert the datetime to the user's local timezone. */}
+                        {/* This is not ideal UX, but it's ok for a small project like this one. */}
                         {localCreatedAt || serverCreatedAt.toUTCString()}
                     </time>
                     {' Id.'}
