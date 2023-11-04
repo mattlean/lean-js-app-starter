@@ -1,4 +1,5 @@
 import moment from 'moment'
+import { useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
 
@@ -19,6 +20,7 @@ export default function Thread({ data }: Props) {
     //     }),
     //     skip: true,
     // })
+    const [localCreatedAt, setLocalCreatedAt] = useState<string>('')
     const { threadId } = useParams()
 
     if (data) {
@@ -57,12 +59,25 @@ export default function Thread({ data }: Props) {
                 </>
             )
 
+        const serverCreatedAt = useMemo(
+            () => new Date(data.createdAt),
+            [data?.createdAt]
+        )
+
+        useEffect(() => {
+            setLocalCreatedAt(
+                moment(data.createdAt).format('MM/DD/YY(ddd)HH:DD:SS')
+            )
+        }, [data?.createdAt])
+
         return (
             <ul className="thread">
                 <header>
                     {subject}
                     <b className="name">Anonymous</b>{' '}
-                    {moment(data.createdAt).format('MM/DD/YY(ddd)HH:DD:SS')}
+                    <time dateTime={serverCreatedAt.toISOString()}>
+                        {localCreatedAt || serverCreatedAt.toUTCString()}
+                    </time>
                     {` Id.${data.id}`}
                     {replyLink}
                 </header>

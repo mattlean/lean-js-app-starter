@@ -1,10 +1,14 @@
 const buildHtml = require('ljas-webpack/buildHtml')
 const { merge } = require('webpack-merge')
+const { EnvironmentPlugin } = require('webpack')
 
 const templateParams = require('./templateParams')
 
 module.exports = merge([
-    { entry: { app: './src/frontend/index.tsx' } },
+    {
+        entry: { app: './src/frontend/index.tsx' },
+        plugins: [new EnvironmentPlugin({ __EXPRESS_SERVER__: '' })],
+    },
 
     // Generate EJS templates with injected assets for Express views
     buildHtml({

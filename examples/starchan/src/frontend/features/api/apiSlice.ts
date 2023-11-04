@@ -15,9 +15,10 @@ export interface ReplyInput {
 }
 
 const baseUrl =
-    typeof window !== 'undefined' && // This line is needed to work on backend
-    process.env.NODE_ENV === 'development' &&
-    window.__DEV_SERVER__
+    process.env.__EXPRESS_SERVER__ ||
+    (process.env.NODE_ENV === 'development' &&
+        typeof window === 'object' &&
+        window.__DEV_SERVER__)
         ? 'http://localhost:3000/api/v1'
         : '/api/v1'
 

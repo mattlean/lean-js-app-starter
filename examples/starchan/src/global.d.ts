@@ -1,3 +1,5 @@
+import { RootState } from './frontend/app/store'
+
 declare module '*.gif' {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const content: any
@@ -31,6 +33,7 @@ declare module '*.svg' {
 declare global {
     interface Window {
         __DEV_SERVER__?: boolean
+        __PRELOADED_STATE__?: RootState
     }
 }
 

@@ -10,8 +10,8 @@ import {
 import { ServerError } from '../../../core/error'
 import { prisma } from '../../../core/prisma'
 
-const PAGE_SIZE = 20
 const MAX_THREADS = 200
+const PAGE_SIZE = 20
 
 const router = Router()
 
