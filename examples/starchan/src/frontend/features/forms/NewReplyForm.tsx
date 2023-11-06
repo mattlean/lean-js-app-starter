@@ -7,6 +7,7 @@ import {
     isFieldValidationError,
 } from '../../common/util'
 import { useCreateReplyMutation } from '../api/apiSlice'
+import ReplyInputs from './ReplyInputs'
 
 export default function NewReplyForm() {
     const [comment, setComment] = useState('')
@@ -32,36 +33,15 @@ export default function NewReplyForm() {
                     </a>
                     ]
                 </span>
-                {/* <noscript> // TODO: readd this if complete SSR gets working
-                <form
-                    id="new-form"
-                    action={`/api/thread/${this.props.match.params.id}/reply`}
-                    method="post"
-                    className="center"
-                >
-                    <table>
-                        <tbody>
-                            <tr>
-                                <th>
-                                    <label htmlFor="comment">Comment</label>
-                                </th>
-                                <td>
-                                    <textarea
-                                        id="comment"
-                                        name="comment"
-                                        required
-                                    />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colSpan={2}>
-                                    <button type="submit">Post</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </form>
-            </noscript> */}
+                <noscript>
+                    <form
+                        action={`/api/v1/threads/${threadId}/reply`}
+                        method="post"
+                        className="center"
+                    >
+                        <ReplyInputs />
+                    </form>
+                </noscript>
             </>
         )
     }
@@ -97,37 +77,12 @@ export default function NewReplyForm() {
 
     return (
         <form id="new-form" className="center" onSubmit={handleSubmit}>
-            <table>
-                <tbody>
-                    <tr>
-                        <th>
-                            <label htmlFor="comment">Comment</label>
-                        </th>
-                        <td>
-                            <textarea
-                                id="comment"
-                                value={comment}
-                                onChange={(e) => setComment(e.target.value)}
-                                required
-                            />
-                        </td>
-                    </tr>
-                    {errMsg && (
-                        <tr>
-                            <td colSpan={2}>
-                                <b className="center">{errMsg}</b>
-                            </td>
-                        </tr>
-                    )}
-                    <tr>
-                        <td colSpan={2}>
-                            <button type="submit" disabled={isLoading}>
-                                Post
-                            </button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            <ReplyInputs
+                comment={comment}
+                errMsg={errMsg}
+                isLoading={isLoading}
+                onCommentChange={(e) => setComment(e.target.value)}
+            />
         </form>
     )
 }

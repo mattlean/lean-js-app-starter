@@ -22,7 +22,7 @@ const threadValidationChain = () => [
     body('subject')
         .isString()
         .trim()
-        .isLength({ min: 1, max: 191 })
+        .isLength({ max: 191 })
         .optional({ values: 'null' }),
     commentValidationChain(),
 ]
@@ -39,9 +39,9 @@ router.post(
     validateErrorMiddleware,
     async (req: Request, res: Response, next: NextFunction) => {
         // Create the new thread
-        let data
+        let threadData
         try {
-            data = await prisma.thread.create({
+            threadData = await prisma.thread.create({
                 data: {
                     subject: req.body.subject,
                     comment: req.body.comment,
@@ -52,19 +52,19 @@ router.post(
         }
 
         // Count the amount of threads
-        let threadCount
+        let countResult
         try {
-            threadCount = await prisma.thread.aggregate({ _count: true })
+            countResult = await prisma.thread.aggregate({ _count: true })
         } catch (err) {
             return next(err)
         }
 
         // Delete the least active thread if there are more than the max number of threads
-        if (threadCount._count > MAX_THREADS) {
-            let leastActiveThread
+        if (countResult._count > MAX_THREADS) {
+            let leastActiveThreadResult
             try {
                 // Query the Thread collection to find the thread with the oldest bump time
-                leastActiveThread = await prisma.thread.aggregateRaw({
+                leastActiveThreadResult = await prisma.thread.aggregateRaw({
                     pipeline: [
                         // Lookup all replies related to the thread
                         {
@@ -111,9 +111,9 @@ router.post(
             }
 
             if (
-                !Array.isArray(leastActiveThread) ||
-                leastActiveThread.length !== 1 ||
-                !leastActiveThread[0]
+                !Array.isArray(leastActiveThreadResult) ||
+                leastActiveThreadResult.length !== 1 ||
+                !leastActiveThreadResult[0]
             ) {
                 return next(
                     new ServerError(
@@ -127,14 +127,20 @@ router.post(
             // Delete the least active thread
             try {
                 await prisma.thread.delete({
-                    where: { id: leastActiveThread[0].id },
+                    where: { id: leastActiveThreadResult[0].id },
                 })
             } catch (err) {
                 return next(err)
             }
         }
 
-        return res.status(201).json({ data })
+        if (req.is('application/x-www-form-urlencoded')) {
+            // The request was submitted with a JavaScript-disabled user so
+            // redirect them to the server-side rendered thread page
+            return res.redirect(`/thread/${threadData.id}`)
+        }
+
+        return res.status(201).json({ data: threadData })
     }
 )
 
@@ -151,8 +157,8 @@ router.get(
     async (req: Request, res: Response, next: NextFunction) => {
         let currPage = null
         let skipAmt
-        let threadCount
-        let data: [] | Prisma.JsonObject
+        let countResult
+        let threadListData: [] | Prisma.JsonObject
 
         // If page query string parameter is encountered,
         // pagination results are expected so set the skipAmt so the correct page can be arrived at.
@@ -169,18 +175,18 @@ router.get(
 
         // Count the amount of the threads
         try {
-            threadCount = await prisma.thread.aggregate({ _count: true })
+            countResult = await prisma.thread.aggregate({ _count: true })
         } catch (err) {
             return next(err)
         }
 
-        if (threadCount._count === 0) {
+        if (countResult._count === 0) {
             // Because no threads exist, we can avoid an unnecessary DB query
-            data = []
+            threadListData = []
         } else {
             try {
                 // Query the Thread collection for the thread list data
-                data = await prisma.thread.aggregateRaw({
+                threadListData = await prisma.thread.aggregateRaw({
                     pipeline: [
                         // Lookup all replies related to the thread
                         {
@@ -261,7 +267,7 @@ router.get(
             }
         }
 
-        if (!Array.isArray(data)) {
+        if (!Array.isArray(threadListData)) {
             throw new ServerError(
                 500,
                 undefined,
@@ -270,11 +276,11 @@ router.get(
         }
 
         if (currPage) {
-            const totalPages = Math.ceil(threadCount._count / PAGE_SIZE)
+            const totalPages = Math.ceil(countResult._count / PAGE_SIZE)
 
             // Respond with paginated threads
             return res.json({
-                data,
+                data: threadListData,
                 info: {
                     totalPages,
                     hasNextPage: currPage < totalPages,
@@ -285,9 +291,9 @@ router.get(
 
         // Respond with all threads
         return res.json({
-            data,
+            data: threadListData,
             info: {
-                threadCount: threadCount._count,
+                threadCount: countResult._count,
             },
         })
     }
@@ -312,13 +318,18 @@ router.get(
             )
         }
 
-        let data
+        let threadData
         try {
-            data = await prisma.thread.findUniqueOrThrow({
+            threadData = await prisma.thread.findUniqueOrThrow({
                 where: { id: req.params.threadId },
                 include: {
                     replies: {
                         orderBy: { createdAt: 'asc' },
+                        select: {
+                            id: true,
+                            comment: true,
+                            createdAt: true,
+                        },
                     },
                 },
             })
@@ -334,7 +345,7 @@ router.get(
             return next(err)
         }
 
-        return res.json({ data })
+        return res.json({ data: threadData })
     }
 )
 
@@ -359,6 +370,7 @@ router.post(
             )
         }
 
+        // Confirm that the thread exists
         try {
             await prisma.thread.findUniqueOrThrow({
                 where: { id: req.params.threadId },
@@ -375,9 +387,10 @@ router.post(
             return next(err)
         }
 
-        let result
+        // Create the reply
+        let replyData
         try {
-            result = await prisma.reply.create({
+            replyData = await prisma.reply.create({
                 data: {
                     comment: req.body.comment,
                     threadId: req.params.threadId,
@@ -387,6 +400,11 @@ router.post(
                         include: {
                             replies: {
                                 orderBy: { createdAt: 'asc' },
+                                select: {
+                                    id: true,
+                                    comment: true,
+                                    createdAt: true,
+                                },
                             },
                         },
                     },
@@ -396,16 +414,14 @@ router.post(
             return next(err)
         }
 
+        if (req.is('application/x-www-form-urlencoded')) {
+            // The request was submitted with a JavaScript-disabled user so
+            // redirect them to the server-side rendered thread page
+            return res.redirect(`/thread/${replyData.thread.id}`)
+        }
+
         return res.status(201).json({
-            data: {
-                ...result.thread,
-                replies: Array.isArray(result.thread.replies)
-                    ? result.thread.replies.map((r) => ({
-                          ...r,
-                          threadId: undefined,
-                      }))
-                    : result.thread.replies,
-            },
+            data: replyData.thread,
         })
     }
 )

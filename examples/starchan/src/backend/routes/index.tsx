@@ -2,9 +2,11 @@ import { NextFunction, Request, Response, Router } from 'express'
 import { param } from 'express-validator'
 import { renderToString } from 'react-dom/server'
 import { Provider } from 'react-redux'
+import { Routes } from 'react-router-dom'
 import { StaticRouter } from 'react-router-dom/server'
 
 import App from '../../frontend/app/App'
+import { jsxRoutes } from '../../frontend/app/routes'
 import { objRoutes } from '../../frontend/app/routes'
 import { buildStore } from '../../frontend/common/redux'
 import { apiSlice } from '../../frontend/features/api/apiSlice'
@@ -97,9 +99,11 @@ const ssrMiddleware = async (
         title: 'ljas-starchan',
         content: renderToString(
             <Provider store={res.locals.store}>
-                <StaticRouter location={req.url}>
-                    <App />
-                </StaticRouter>
+                <App>
+                    <StaticRouter location={req.url}>
+                        <Routes>{jsxRoutes}</Routes>
+                    </StaticRouter>
+                </App>
             </Provider>
         ),
         preloadedState: JSON.stringify(res.locals.store.getState()).replace(

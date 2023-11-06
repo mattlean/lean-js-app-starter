@@ -8,6 +8,7 @@ import {
     isFieldValidationError,
 } from '../../common/util'
 import { useCreateThreadMutation } from '../api/apiSlice'
+import ThreadInputs from './ThreadInputs'
 
 export default function NewThreadForm() {
     const [subject, setSubject] = useState('')
@@ -34,48 +35,15 @@ export default function NewThreadForm() {
                     </button>
                     ]
                 </span>
-                {/* <noscript> // TODO: readd this if complete SSR gets working
+                <noscript>
                     <form
-                        id="new-form"
-                        action="/api/thread"
+                        action="/api/v1/threads"
                         method="post"
                         className="center"
                     >
-                        <table>
-                            <tbody>
-                                <tr>
-                                    <th>
-                                        <label htmlFor="subject">Subject</label>
-                                    </th>
-                                    <td>
-                                        <input
-                                            id="subject"
-                                            name="subject"
-                                            type="text"
-                                        />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>
-                                        <label htmlFor="comment">Comment</label>
-                                    </th>
-                                    <td>
-                                        <textarea
-                                            id="comment"
-                                            name="comment"
-                                            required
-                                        />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colSpan={2}>
-                                        <button type="submit">Post</button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <ThreadInputs />
                     </form>
-                </noscript> */}
+                </noscript>
             </>
         )
     }
@@ -119,51 +87,15 @@ export default function NewThreadForm() {
     }
 
     return (
-        <form id="new-form" className="center" onSubmit={handleSubmit}>
-            <table>
-                <tbody>
-                    <tr>
-                        <th>
-                            <label htmlFor="subject">Subject</label>
-                        </th>
-                        <td>
-                            <input
-                                id="subject"
-                                type="text"
-                                value={subject}
-                                onChange={(e) => setSubject(e.target.value)}
-                            />
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            <label htmlFor="comment">Comment</label>
-                        </th>
-                        <td>
-                            <textarea
-                                id="comment"
-                                value={comment}
-                                onChange={(e) => setComment(e.target.value)}
-                                required
-                            />
-                        </td>
-                    </tr>
-                    {errMsg && (
-                        <tr>
-                            <td colSpan={2} className="err-msg">
-                                {errMsg}
-                            </td>
-                        </tr>
-                    )}
-                    <tr>
-                        <td colSpan={2}>
-                            <button type="submit" disabled={isLoading}>
-                                Post
-                            </button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+        <form className="center" onSubmit={handleSubmit}>
+            <ThreadInputs
+                comment={comment}
+                errMsg={errMsg}
+                isLoading={isLoading}
+                subject={subject}
+                onCommentChange={(e) => setComment(e.target.value)}
+                onSubjectChange={(e) => setSubject(e.target.value)}
+            />
         </form>
     )
 }

@@ -26,7 +26,7 @@ app.set('views', [
 
 app.use(cors()) // Middleware that enables CORS
 app.use(express.json()) // Middleware that parses incoming requests with JSON payloads
-// app.use(express.urlencoded({ extended: true })) // TODO: might not need this
+app.use(express.urlencoded())
 
 // Enable HTTP request logger middleware when running in certain environments
 if (process.env.NODE_ENV === 'development') {

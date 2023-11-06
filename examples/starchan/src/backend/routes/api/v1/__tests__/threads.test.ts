@@ -1,4 +1,5 @@
 import { Prisma } from '@prisma/client'
+import { Types } from 'mongoose'
 import request from 'supertest'
 
 import app from '../../../../app'
@@ -14,6 +15,10 @@ import {
 describe('create thread endpoint', () => {
     it('creates thread with comment when request payload only has comment', async () => {
         prismaMock.thread.create.mockResolvedValue(MOCK_THREAD_W_COMMENT)
+        // Prisma typing is incorrect here
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        prismaMock.thread.aggregate.mockResolvedValue({ _count: 1 })
 
         expect.assertions(4)
 
@@ -33,6 +38,10 @@ describe('create thread endpoint', () => {
         prismaMock.thread.create.mockResolvedValue(
             MOCK_THREAD_W_SUBJECT_COMMENT
         )
+        // Prisma typing is incorrect here
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        prismaMock.thread.aggregate.mockResolvedValue({ _count: 1 })
 
         expect.assertions(5)
 
@@ -62,7 +71,15 @@ describe('list threads endpoint', () => {
             MOCK_THREAD_W_SUBJECT_COMMENT,
         ]
 
-        prismaMock.thread.findMany.mockResolvedValue(MOCK_THREAD_LIST)
+        prismaMock.thread.aggregate.mockResolvedValue({
+            // Prisma typing is incorrect here
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            _count: MOCK_THREAD_LIST.length,
+        })
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        prismaMock.thread.aggregateRaw.mockResolvedValue(MOCK_THREAD_LIST)
 
         expect.assertions(11)
 
@@ -126,7 +143,9 @@ describe('read thread endpoint', () => {
 
         expect.assertions(3)
 
-        const res = await request(app).get('/api/v1/threads/123')
+        const res = await request(app).get(
+            `/api/v1/threads/${new Types.ObjectId().toString()}`
+        )
 
         expect(res.status).toBe(404)
         expect(res.body.errors).toHaveLength(1)
@@ -180,7 +199,9 @@ describe('create reply endpoint', () => {
 
         expect.assertions(3)
 
-        const res = await request(app).post('/api/v1/threads/123/reply')
+        const res = await request(app)
+            .post(`/api/v1/threads/${new Types.ObjectId().toString()}/reply`)
+            .send({ comment: MOCK_THREAD_W_REPLY.comment })
 
         expect(res.status).toBe(404)
         expect(res.body.errors).toHaveLength(1)
