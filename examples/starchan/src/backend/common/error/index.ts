@@ -2,25 +2,23 @@ import { Prisma } from '@prisma/client'
 import { NextFunction, Request, Response } from 'express'
 import { validationResult } from 'express-validator'
 
-import ServerError, {
-    genDefaultErrorMessage,
-    isErrorPage,
-    isServerError,
-} from './ServerError'
+import ServerError, { isServerError } from './ServerError'
 import {
     apiErrorHandler,
     createNotFoundErrorHandler,
     globalErrorHandler,
+    ssrErrorHandler,
 } from './errorHandlers'
+import { isErrorPageData } from './errorPageData'
 
 export {
     apiErrorHandler,
     createNotFoundErrorHandler,
-    genDefaultErrorMessage,
     globalErrorHandler,
-    isErrorPage,
+    isErrorPageData,
     isServerError,
     ServerError,
+    ssrErrorHandler,
 }
 
 /** Type predicate for Prisma errors. */

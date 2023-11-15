@@ -1,11 +1,13 @@
 import { NextFunction, Request, Response } from 'express'
+import { renderToString } from 'react-dom/server'
 
-import {
-    ServerError,
-    genDefaultErrorMessage,
-    isErrorPageData,
-    isServerError,
-} from '.'
+import { ServerError, isErrorPageData, isServerError } from '.'
+import { genDefaultErrorMessage } from '../../../common/error'
+import { isAPIError } from '../../../frontend/common/APIError'
+import { buildStore } from '../../../frontend/common/redux'
+import { setErrors } from '../../../frontend/features/errors/errorsSlice'
+import ServerReactApp from '../../views/ServerReactApp'
+import { buildPreloadedState } from '../util'
 
 /** Creates an error handler that takes care of all requests to undefined routes. */
 export const createNotFoundErrorHandler =
@@ -34,6 +36,75 @@ export const apiErrorHandler = (
     }
 
     return res.status(500).json({ errors: ['Internal server error'] })
+}
+
+/**
+ * Global error handler intended to handle all errors that might be encountered
+ * with a server-side rendering of the React app.
+ */
+export const ssrErrorHandler = (
+    err: Error | ServerError,
+    req: Request,
+    res: Response,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    next: NextFunction
+) => {
+    const store = buildStore()
+    let statusCode
+
+    if (isServerError(err) || isAPIError(err)) {
+        statusCode = err.statusCode
+
+        let heading
+        let content
+
+        if (err.errors) {
+            if (err.errors.length === 1) {
+                if (typeof err.errors[0] === 'string') {
+                    // Error is a string
+                    content = err.errors[0]
+                } else if (isErrorPageData(err.errors[0])) {
+                    // Error is an error page
+                    heading = err.errors[0].heading
+                    content = err.errors[0].content
+                } else if (err.errors[0].msg) {
+                    // Error is an express-validator ValidationError
+                    content = err.errors[0].msg
+                }
+            }
+        }
+
+        if (!heading) {
+            heading = genDefaultErrorMessage(err.statusCode)
+            if (heading === content) {
+                content = undefined
+            }
+        }
+
+        store.dispatch(setErrors([{ heading, content }]))
+    } else {
+        statusCode = 500
+        store.dispatch(setErrors([{ heading: genDefaultErrorMessage(500) }]))
+    }
+
+    let serverSideRendering
+    try {
+        serverSideRendering = renderToString(
+            <ServerReactApp location={req.url} store={store} />
+        )
+    } catch (err) {
+        return next(err)
+    }
+
+    if (process.env.NODE_ENV !== 'test') {
+        console.error(err)
+    }
+
+    return res.status(statusCode).render('index', {
+        title: 'ljas-starchan',
+        content: serverSideRendering,
+        preloadedState: buildPreloadedState(store.getState()),
+    })
 }
 
 /**

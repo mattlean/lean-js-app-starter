@@ -1,5 +1,6 @@
 import { useParams } from 'react-router-dom'
 
+import APIError from '../../common/APIError'
 import { isFetchBaseQueryError } from '../../common/util'
 import Loading from '../Loading'
 import Nav from '../Nav'
@@ -18,7 +19,7 @@ export default function ThreadPage() {
 
     if (error) {
         if (isFetchBaseQueryError(error) && error.status === 404) {
-            throw new Error('Thread was not found.')
+            throw new APIError(404, 'Thread was not found.')
         }
 
         throw new Error(

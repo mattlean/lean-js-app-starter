@@ -1,49 +1,13 @@
 import { ValidationError } from 'express-validator'
 
-/** Data for a user-facing error page. */
-export interface ErrorPage {
-    heading?: string
-    content?: string
-}
+import { genDefaultErrorMessage } from '../../../common/error'
+import { ErrorPageData } from './errorPageData'
 
-/** User-facing errors stored on the ServerError.  */
-export type ServerErrorErrors = (string | ErrorPage | ValidationError)[]
+/** User-facing errors stored on the ServerError. */
+export type ServerErrorErrors = (string | ErrorPageData | ValidationError)[]
 
 /** Developer errors stored on the ServerError. */
 export type ServerErrorDevErrors = (string | Error | ValidationError)[]
-
-/**
- * Generate default error message depending on the passed HTTP response status code.
- * @param statusCode HTTP response status code
- * @return Default error message
- */
-export const genDefaultErrorMessage = (statusCode: number) => {
-    switch (statusCode) {
-        case 400:
-            return 'Bad request'
-        case 401:
-            return 'Unauthorized'
-        case 404:
-            return 'Not found'
-        case 500:
-            return 'Internal server error'
-        default:
-            return 'An error occurred'
-    }
-}
-
-/** Type predicate for ErrorPage. */
-export const isErrorPage = (
-    err: string | ErrorPage | ValidationError
-): err is ErrorPage => {
-    if (typeof err === 'object') {
-        return (
-            (err as ErrorPage).heading !== undefined ||
-            (err as ErrorPage).content !== undefined
-        )
-    }
-    return false
-}
 
 /** Type predicate for ServerError. */
 export const isServerError = (err: ServerError | Error): err is ServerError =>
@@ -66,7 +30,11 @@ export default class ServerError extends Error {
 
     constructor(
         statusCode = 500,
-        inputErrs?: string | ErrorPage | ValidationError | ServerErrorErrors,
+        inputErrs?:
+            | string
+            | ErrorPageData
+            | ValidationError
+            | ServerErrorErrors,
         inputDevErrs?: string | Error | ValidationError | ServerErrorDevErrors
     ) {
         super()
@@ -79,18 +47,15 @@ export default class ServerError extends Error {
             this.devErrors = [inputDevErrs]
 
             if (typeof inputDevErrs === 'string') {
+                // Encountered a string
                 this.devErrors = [new Error(inputDevErrs)]
                 this.message = inputDevErrs
             } else if (inputDevErrs instanceof Error) {
+                // Encountered an Error
                 this.devErrors = [inputDevErrs]
                 this.message = inputDevErrs.message
-            } else if (
-                inputDevErrs.type === 'alternative' ||
-                inputDevErrs.type === 'alternative_grouped' ||
-                inputDevErrs.type === 'unknown_fields' ||
-                inputDevErrs.type === 'field'
-            ) {
-                // Handle case where one ValidationError is encountered
+            } else if (inputDevErrs.msg) {
+                // Encountered an express-validator ValidationError
                 this.devErrors = [inputDevErrs]
                 this.message = inputDevErrs.msg
             }

@@ -1,29 +1,15 @@
 import { Route, createRoutesFromElements } from 'react-router-dom'
 
 import Shell from '../features/Shell'
-import ErrorMessage from '../features/errors/ErrorMessage'
-import ErrorMessageContextual from '../features/errors/ErrorMessageContextual'
 import ThreadList from '../features/threads/ThreadList'
 import ThreadPage from '../features/threads/ThreadPage'
 
 export const jsxRoutes = (
-    <Route path="/" element={<Shell />} errorElement={<ErrorMessage />}>
-        <Route
-            path="/"
-            element={<ThreadList />}
-            errorElement={<ErrorMessageContextual />}
-        >
-            <Route
-                path="/:page"
-                element={<ThreadList />}
-                errorElement={<ErrorMessageContextual />}
-            />
+    <Route path="/" element={<Shell />}>
+        <Route path="/" element={<ThreadList />}>
+            <Route path="/:page" element={<ThreadList />} />
         </Route>
-        <Route
-            path="thread/:threadId"
-            element={<ThreadPage />}
-            errorElement={<ErrorMessageContextual />}
-        />
+        <Route path="thread/:threadId" element={<ThreadPage />} />
     </Route>
 )
 

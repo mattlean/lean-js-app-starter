@@ -35,7 +35,7 @@ describe('API error handler', () => {
     })
 })
 
-describe('Global error handler', () => {
+describe('SSR error handler', () => {
     it('returns a 500 error when the fail route is requested', async () => {
         expect.assertions(2)
 
@@ -44,4 +44,6 @@ describe('Global error handler', () => {
         expect(res.status).toBe(500)
         expect(res.text).toMatchSnapshot()
     })
+
+    // TODO: mock ssrErrorHandler to throw so global error handler is run
 })

@@ -1,7 +1,6 @@
 import { Prisma } from '@prisma/client'
 import { NextFunction, Request, Response, Router } from 'express'
 import { body, query } from 'express-validator'
-import { isObjectIdOrHexString } from 'mongoose'
 
 import {
     isPrismaKnownRequestError,
@@ -9,6 +8,7 @@ import {
 } from '../../../common/error'
 import { ServerError } from '../../../common/error'
 import { prisma } from '../../../common/prisma'
+import { validateThreadObjectIdMiddleware } from '../../middlewares'
 
 const MAX_THREADS = 200
 const PAGE_SIZE = 20
@@ -307,17 +307,8 @@ router.get(
  */
 router.get(
     '/:threadId',
+    validateThreadObjectIdMiddleware,
     async (req: Request, res: Response, next: NextFunction) => {
-        if (!isObjectIdOrHexString(req.params.threadId)) {
-            return next(
-                new ServerError(
-                    404,
-                    undefined,
-                    'Route parameter is not a valid ObjectId.'
-                )
-            )
-        }
-
         let threadData
         try {
             threadData = await prisma.thread.findUniqueOrThrow({
@@ -340,7 +331,7 @@ router.get(
                 err.code === 'P2025' &&
                 err.message.match(/no thread found/i)
             ) {
-                return next(new ServerError(404, undefined, err))
+                return next(new ServerError(404, 'Thread was not found.', err))
             }
             return next(err)
         }
@@ -357,19 +348,10 @@ router.get(
  */
 router.post(
     '/:threadId/reply',
+    validateThreadObjectIdMiddleware,
     commentValidationChain(),
     validateErrorMiddleware,
     async (req: Request, res: Response, next: NextFunction) => {
-        if (!isObjectIdOrHexString(req.params.threadId)) {
-            return next(
-                new ServerError(
-                    404,
-                    undefined,
-                    'Route parameter is not a valid ObjectId.'
-                )
-            )
-        }
-
         // Confirm that the thread exists
         try {
             await prisma.thread.findUniqueOrThrow({

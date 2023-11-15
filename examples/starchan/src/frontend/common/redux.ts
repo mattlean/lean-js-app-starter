@@ -5,6 +5,7 @@ import {
     apiReducer,
     apiReducerPath,
 } from '../features/api/apiSlice'
+import { errorsReducer } from '../features/errors/errorsSlice'
 
 /**
  * Build the Redux store with preconfigured options.
@@ -17,6 +18,7 @@ export const buildStore = (
     configureStore({
         reducer: {
             [apiReducerPath]: apiReducer,
+            errors: errorsReducer,
         },
         middleware: (getDefaultMiddleware) =>
             getDefaultMiddleware().concat(apiMiddleware),

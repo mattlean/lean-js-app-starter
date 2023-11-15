@@ -1,13 +1,18 @@
 import { PropsWithChildren, StrictMode } from 'react'
-import { Routes } from 'react-router-dom'
+import { Provider } from 'react-redux'
 
-import { jsxRoutes } from './routes'
+import ErrorHandler from '../features/errors/ErrorHandler'
+import { Store } from './store'
 
-export default function App({ children }: PropsWithChildren) {
+export default function App({
+    children,
+    store,
+}: PropsWithChildren<{ store: Store }>) {
     return (
         <StrictMode>
-            {/* <Routes>{jsxRoutes}</Routes> */}
-            {children}
+            <Provider store={store}>
+                <ErrorHandler>{children}</ErrorHandler>
+            </Provider>
         </StrictMode>
     )
 }

@@ -5,7 +5,11 @@ const removeUnusedCss = require('ljas-webpack/removeUnusedCss')
 const { buildSourceMaps, loadFonts, loadImages } = require('ljas-webpack')
 const { merge } = require('webpack-merge')
 
-const { PATH_FRONTEND_BUILD, PATH_FRONTEND_SRC } = require('../PATHS')
+const {
+    PATH_FRONTEND_BUILD,
+    PATH_COMMON_SRC,
+    PATH_FRONTEND_SRC,
+} = require('../PATHS')
 
 module.exports = merge([
     {
@@ -43,7 +47,7 @@ module.exports = merge([
     compileReactTs(
         {
             rule: {
-                include: PATH_FRONTEND_SRC,
+                include: [PATH_COMMON_SRC, PATH_FRONTEND_SRC],
                 exclude: [
                     /node_modules/,
                     /__mocks__\/.*.(j|t)sx?$/,

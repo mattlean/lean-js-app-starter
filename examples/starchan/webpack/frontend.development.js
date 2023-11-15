@@ -1,17 +1,17 @@
 require('dotenv').config()
 
+const buildCss = require('ljas-webpack/buildCss')
 const buildHtml = require('ljas-webpack/buildHtml')
 const setupReactFastRefreshServerTs = require('ljas-webpack/setupReactFastRefreshServerTs')
-const {
-    buildSourceMaps,
-    injectCss,
-    loadFonts,
-    loadImages,
-} = require('ljas-webpack')
+const { buildSourceMaps, loadFonts, loadImages } = require('ljas-webpack')
 const { merge } = require('webpack-merge')
 
 const templateParams = require('./templateParams')
-const { PATH_FRONTEND_BUILD, PATH_FRONTEND_SRC } = require('../PATHS')
+const {
+    PATH_FRONTEND_BUILD,
+    PATH_COMMON_SRC,
+    PATH_FRONTEND_SRC,
+} = require('../PATHS')
 
 if (!process.env.PORT_DEV_SERVER) {
     throw new Error('🔴 webpack-dev-server port was not set')
@@ -29,6 +29,11 @@ module.exports = merge([
         },
     },
 
+    buildCss({
+        rule: { include: PATH_FRONTEND_SRC },
+        miniCssExtractPlugin: { filename: '[name].css' },
+    }),
+
     // Build HTML for webpack-dev-server
     buildHtml({
         filename: 'index.html',
@@ -37,8 +42,6 @@ module.exports = merge([
     }),
 
     buildSourceMaps('cheap-module-source-map'),
-
-    injectCss({ rule: { include: PATH_FRONTEND_SRC } }),
 
     loadFonts({
         rule: {
@@ -70,7 +73,7 @@ module.exports = merge([
             port: process.env.PORT_DEV_SERVER,
         },
         rule: {
-            include: PATH_FRONTEND_SRC,
+            include: [PATH_COMMON_SRC, PATH_FRONTEND_SRC],
             exclude: [
                 /node_modules/,
                 /__mocks__\/.*.(j|t)sx?$/,

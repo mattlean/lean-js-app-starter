@@ -26,9 +26,7 @@ exports[`Not found error handlers handles a non-API route with no handler using 
     </head>
     <body>
         <h1>Not found</h1>
-        
         <p>/definitely-not-found was not found.</p>
-        
     </body>
 </html>
 "

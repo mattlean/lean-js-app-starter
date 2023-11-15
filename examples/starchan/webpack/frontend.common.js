@@ -10,7 +10,7 @@ module.exports = merge([
         plugins: [new EnvironmentPlugin({ __EXPRESS_SERVER__: '' })],
     },
 
-    // Generate EJS templates with injected assets for Express views
+    // Build EJS templates with injected assets for Express views
     buildHtml({
         // TODO: remove the comments below
         filename: '../generated-views/index.ejs',

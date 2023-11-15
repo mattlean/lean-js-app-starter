@@ -1,6 +1,6 @@
 import { ValidationError } from 'express-validator'
 
-import { ServerError, isErrorPage, isServerError } from '..'
+import { ServerError, isErrorPageData, isServerError } from '..'
 
 const FOO_TXT = 'foo'
 const BAR_TXT = 'bar'
@@ -143,8 +143,8 @@ describe('ServerError', () => {
             throw new Error('Expected errors for a ServerError to be an array.')
         }
 
-        expect(isErrorPage(serverErr.errors[0])).toBe(true)
-        if (!isErrorPage(serverErr.errors[0])) {
+        expect(isErrorPageData(serverErr.errors[0])).toBe(true)
+        if (!isErrorPageData(serverErr.errors[0])) {
             throw new Error(
                 'Expected errors[0] for a ServerError to be an ErrorPage.'
             )
@@ -209,24 +209,26 @@ describe('ServerError', () => {
 })
 
 describe('ServerError utils', () => {
-    it('isErrorPage returns false when a string is checked', () => {
-        expect(isErrorPage('notanerrorpage')).toBe(false)
+    it('isErrorPageData returns false when a string is checked', () => {
+        expect(isErrorPageData('notanerrorpage')).toBe(false)
     })
 
-    it('isErrorPage returns false when an empty object is checked', () => {
-        expect(isErrorPage({})).toBe(false)
+    it('isErrorPageData returns false when an empty object is checked', () => {
+        expect(isErrorPageData({})).toBe(false)
     })
 
-    it('isErrorPage returns true when an ErrorPage with only a heading is checked', () => {
-        expect(isErrorPage({ heading: FOO_TXT })).toBe(true)
+    it('isErrorPageData returns true when an ErrorPage with only a heading is checked', () => {
+        expect(isErrorPageData({ heading: FOO_TXT })).toBe(true)
     })
 
-    it('isErrorPage returns true when an ErrorPage with only a content is checked', () => {
-        expect(isErrorPage({ content: BAR_TXT })).toBe(true)
+    it('isErrorPageData returns true when an ErrorPage with only a content is checked', () => {
+        expect(isErrorPageData({ content: BAR_TXT })).toBe(true)
     })
 
-    it('isErrorPage returns true when an ErrorPage with both a heading and content is checked', () => {
-        expect(isErrorPage({ heading: FOO_TXT, content: BAR_TXT })).toBe(true)
+    it('isErrorPageData returns true when an ErrorPage with both a heading and content is checked', () => {
+        expect(isErrorPageData({ heading: FOO_TXT, content: BAR_TXT })).toBe(
+            true
+        )
     })
 
     it('isServerError returns false when a normal Error is checked', () => {

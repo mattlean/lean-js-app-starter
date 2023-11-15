@@ -1,16 +1,14 @@
 import { NextFunction, Request, Response, Router } from 'express'
 import { param } from 'express-validator'
 import { renderToString } from 'react-dom/server'
-import { Provider } from 'react-redux'
-import { Routes } from 'react-router-dom'
-import { StaticRouter } from 'react-router-dom/server'
 
-import App from '../../frontend/app/App'
-import { jsxRoutes } from '../../frontend/app/routes'
 import { objRoutes } from '../../frontend/app/routes'
 import { buildStore } from '../../frontend/common/redux'
 import { apiSlice } from '../../frontend/features/api/apiSlice'
 import { ServerError, validateErrorMiddleware } from '../common/error'
+import { buildPreloadedState } from '../common/util'
+import ServerReactApp from '../views/ServerReactApp'
+import { validateThreadObjectIdMiddleware } from './middlewares'
 
 if (
     !objRoutes[0] ||
@@ -34,8 +32,70 @@ const reduxStoreMiddleware = async (
     next: NextFunction
 ) => {
     res.locals.store = buildStore()
+    return next()
+}
 
-    next()
+/**
+ * Express middleware that waits for all RTK queries to finish.
+ */
+const rtkQueryProcessMiddleware = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+) => {
+    if (!res.locals.store) {
+        return next(
+            new ServerError(
+                500,
+                undefined,
+                'The Redux store for the response was not found'
+            )
+        )
+    }
+
+    try {
+        await Promise.all(
+            res.locals.store.dispatch(apiSlice.util.getRunningQueriesThunk())
+        )
+    } catch (err) {
+        return next(err)
+    }
+
+    return next()
+}
+
+/**
+ * Express middleware that performs server-side rendering.
+ */
+const ssrMiddleware = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+) => {
+    if (!res.locals.store) {
+        return next(
+            new ServerError(
+                500,
+                undefined,
+                'The Redux store for the response was not found'
+            )
+        )
+    }
+
+    let serverSideRendering
+    try {
+        serverSideRendering = renderToString(
+            <ServerReactApp location={req.url} store={res.locals.store} />
+        )
+    } catch (err) {
+        return next(err)
+    }
+
+    return res.render('index', {
+        title: 'ljas-starchan',
+        content: serverSideRendering,
+        preloadedState: buildPreloadedState(res.locals.store.getState()),
+    })
 }
 
 /**
@@ -66,51 +126,7 @@ const threadListMiddleware = async (
         return next(err)
     }
 
-    next()
-}
-
-/**
- * Express middleware that waits for all RTK queries to finish and then performs server-side rendering.
- */
-const ssrMiddleware = async (
-    req: Request,
-    res: Response,
-    next: NextFunction
-) => {
-    if (!res.locals.store) {
-        return next(
-            new ServerError(
-                500,
-                undefined,
-                'The Redux store for the response was not found'
-            )
-        )
-    }
-
-    try {
-        await Promise.all(
-            res.locals.store.dispatch(apiSlice.util.getRunningQueriesThunk())
-        )
-    } catch (err) {
-        return next(err)
-    }
-
-    return res.render('index', {
-        title: 'ljas-starchan',
-        content: renderToString(
-            <Provider store={res.locals.store}>
-                <App>
-                    <StaticRouter location={req.url}>
-                        <Routes>{jsxRoutes}</Routes>
-                    </StaticRouter>
-                </App>
-            </Provider>
-        ),
-        preloadedState: JSON.stringify(res.locals.store.getState()).replace(
-            /</g,
-            '\\u003c'
-        ),
-    })
+    return next()
 }
 
 /**
@@ -121,6 +137,7 @@ router.get(
     objRoutes[0].children[0].path,
     reduxStoreMiddleware,
     threadListMiddleware,
+    rtkQueryProcessMiddleware,
     ssrMiddleware
 )
 
@@ -134,6 +151,7 @@ router.get(
     validateErrorMiddleware,
     reduxStoreMiddleware,
     threadListMiddleware,
+    rtkQueryProcessMiddleware,
     ssrMiddleware
 )
 
@@ -143,6 +161,7 @@ router.get(
  */
 router.get(
     `/${objRoutes[0].children[1].path}`,
+    validateThreadObjectIdMiddleware,
     reduxStoreMiddleware,
     async (req: Request, res: Response, next: NextFunction) => {
         if (!res.locals.store) {
@@ -163,8 +182,9 @@ router.get(
             return next(err)
         }
 
-        next()
+        return next()
     },
+    rtkQueryProcessMiddleware,
     ssrMiddleware
 )
 

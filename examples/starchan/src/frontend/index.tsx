@@ -1,13 +1,8 @@
 import { createRoot, hydrateRoot } from 'react-dom/client'
-import { Provider } from 'react-redux'
-import {
-    BrowserRouter,
-    RouterProvider,
-    createBrowserRouter,
-} from 'react-router-dom'
+import { BrowserRouter, Routes } from 'react-router-dom'
 
 import App from './app/App'
-import { objRoutes } from './app/routes'
+import { jsxRoutes } from './app/routes'
 import { store } from './app/store'
 import './index.css'
 
@@ -17,14 +12,12 @@ if (!rootEl) {
     throw new Error('HTML element with an ID of "root" was not found.')
 }
 
-const router = createBrowserRouter(objRoutes)
-
 const reactTree = (
-    <Provider store={store}>
-        <App>
-            <RouterProvider router={router} />
-        </App>
-    </Provider>
+    <App store={store}>
+        <BrowserRouter>
+            <Routes>{jsxRoutes}</Routes>
+        </BrowserRouter>
+    </App>
 )
 
 if (

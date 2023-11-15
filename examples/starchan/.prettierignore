@@ -1,2 +1,5 @@
 build/
 coverage/
+src/backend/views/error.ejs
+src/frontend/devServer.ejs
+src/frontend/index.ejs

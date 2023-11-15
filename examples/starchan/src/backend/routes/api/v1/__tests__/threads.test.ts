@@ -149,7 +149,7 @@ describe('read thread endpoint', () => {
 
         expect(res.status).toBe(404)
         expect(res.body.errors).toHaveLength(1)
-        expect(res.body.errors[0]).toBe('Not found')
+        expect(res.body.errors[0]).toBe('Thread was not found.')
     })
 })
 
