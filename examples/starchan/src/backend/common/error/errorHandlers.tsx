@@ -3,9 +3,9 @@ import { renderToString } from 'react-dom/server'
 
 import { ServerError, isErrorPageData, isServerError } from '.'
 import { genDefaultErrorMessage } from '../../../common/error'
-import { isAPIError } from '../../../frontend/common/APIError'
+import { isAPIError } from '../../../frontend/common/error'
 import { buildStore } from '../../../frontend/common/redux'
-import { setErrors } from '../../../frontend/features/errors/errorsSlice'
+import { setAppErrors } from '../../../frontend/features/errors/appErrorsSlice'
 import ServerReactApp from '../../views/ServerReactApp'
 import { buildPreloadedState } from '../util'
 
@@ -81,10 +81,10 @@ export const ssrErrorHandler = (
             }
         }
 
-        store.dispatch(setErrors([{ heading, content }]))
+        store.dispatch(setAppErrors([{ heading, content }]))
     } else {
         statusCode = 500
-        store.dispatch(setErrors([{ heading: genDefaultErrorMessage(500) }]))
+        store.dispatch(setAppErrors([{ heading: genDefaultErrorMessage(500) }]))
     }
 
     let serverSideRendering

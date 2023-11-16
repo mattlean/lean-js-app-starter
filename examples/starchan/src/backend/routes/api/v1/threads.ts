@@ -8,15 +8,16 @@ import {
 } from '../../../common/error'
 import { ServerError } from '../../../common/error'
 import { prisma } from '../../../common/prisma'
-import { validateThreadObjectIdMiddleware } from '../../middlewares'
+import { MAX_THREADS } from '../../constants'
+import {
+    commentValidationChain,
+    createThreadMiddleware,
+    validateThreadObjectIdMiddleware,
+} from '../../middlewares'
 
-const MAX_THREADS = 200
 const PAGE_SIZE = 20
 
 const router = Router()
-
-const commentValidationChain = () =>
-    body('comment').isString().trim().isLength({ min: 1, max: 2000 })
 
 const threadValidationChain = () => [
     body('subject')
@@ -37,111 +38,9 @@ router.post(
     '/',
     threadValidationChain(),
     validateErrorMiddleware,
-    async (req: Request, res: Response, next: NextFunction) => {
-        // Create the new thread
-        let threadData
-        try {
-            threadData = await prisma.thread.create({
-                data: {
-                    subject: req.body.subject,
-                    comment: req.body.comment,
-                },
-            })
-        } catch (err) {
-            return next(err)
-        }
-
-        // Count the amount of threads
-        let countResult
-        try {
-            countResult = await prisma.thread.aggregate({ _count: true })
-        } catch (err) {
-            return next(err)
-        }
-
-        // Delete the least active thread if there are more than the max number of threads
-        if (countResult._count > MAX_THREADS) {
-            let leastActiveThreadResult
-            try {
-                // Query the Thread collection to find the thread with the oldest bump time
-                leastActiveThreadResult = await prisma.thread.aggregateRaw({
-                    pipeline: [
-                        // Lookup all replies related to the thread
-                        {
-                            $lookup: {
-                                from: 'Reply',
-                                localField: '_id',
-                                foreignField: 'threadId',
-                                as: 'replies',
-                            },
-                        },
-
-                        // Get the latest reply createdAt and set that as the bumpTime.
-                        // If there is no reply, used the thread's createdAt instead.
-                        {
-                            $addFields: {
-                                bumpTime: {
-                                    $cond: {
-                                        if: { $size: '$replies' },
-                                        then: { $last: '$replies.createdAt' },
-                                        else: '$createdAt',
-                                    },
-                                },
-                            },
-                        },
-
-                        // Sort by bumpTime in ascending order
-                        { $sort: { bumpTime: 1 } },
-
-                        // Because the aggregation is sorted in ascending order,
-                        // the first document is the least active one
-                        { $limit: 1 },
-
-                        // Perform a projection and convert the ObjectId to a string
-                        {
-                            $project: {
-                                _id: 0,
-                                id: { $toString: '$_id' },
-                            },
-                        },
-                    ],
-                })
-            } catch (err) {
-                return next(err)
-            }
-
-            if (
-                !Array.isArray(leastActiveThreadResult) ||
-                leastActiveThreadResult.length !== 1 ||
-                !leastActiveThreadResult[0]
-            ) {
-                return next(
-                    new ServerError(
-                        500,
-                        undefined,
-                        'Encountered a problem reading the data from the least active thread query.'
-                    )
-                )
-            }
-
-            // Delete the least active thread
-            try {
-                await prisma.thread.delete({
-                    where: { id: leastActiveThreadResult[0].id },
-                })
-            } catch (err) {
-                return next(err)
-            }
-        }
-
-        if (req.is('application/x-www-form-urlencoded')) {
-            // The request was submitted with a JavaScript-disabled user so
-            // redirect them to the server-side rendered thread page
-            return res.redirect(`/thread/${threadData.id}`)
-        }
-
-        return res.status(201).json({ data: threadData })
-    }
+    createThreadMiddleware,
+    (req: Request, res: Response) =>
+        res.status(201).json({ data: res.locals.threadData })
 )
 
 /**
@@ -268,10 +167,12 @@ router.get(
         }
 
         if (!Array.isArray(threadListData)) {
-            throw new ServerError(
-                500,
-                undefined,
-                'Encountered a problem reading the data from the thread list query.'
+            return next(
+                new ServerError(
+                    500,
+                    undefined,
+                    'Encountered a problem reading the data from the thread list query.'
+                )
             )
         }
 
@@ -397,9 +298,9 @@ router.post(
         }
 
         if (req.is('application/x-www-form-urlencoded')) {
-            // The request was submitted with a JavaScript-disabled user so
+            // The request was submitted by a JavaScript-disabled user so
             // redirect them to the server-side rendered thread page
-            return res.redirect(`/thread/${replyData.thread.id}`)
+            return res.redirect(303, `/thread/${replyData.thread.id}`)
         }
 
         return res.status(201).json({

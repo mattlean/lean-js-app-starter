@@ -1,29 +1,25 @@
-import { FormEvent, useState } from 'react'
+import { FormEvent, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import {
-    isAPIErrorRes,
-    isErrorWithMessage,
-    isFetchBaseQueryError,
-    isFieldValidationError,
-} from '../../common/util'
+import { useAppDispatch } from '../../app/hooks'
+import { isAPIErrorRes, isFetchBaseQueryError } from '../../common/error'
 import { useCreateThreadMutation } from '../api/apiSlice'
+import { clearFormError, genFormError } from '../errors/formErrorSlice'
 import ThreadInputs from './ThreadInputs'
 
 export default function NewThreadForm() {
     const [subject, setSubject] = useState('')
     const [comment, setComment] = useState('')
     const [show, setShow] = useState(false)
-    const [errMsg, setErrMsg] = useState('')
 
-    const [createThread, { error, isLoading }] = useCreateThreadMutation()
+    const [createThread, { isLoading }] = useCreateThreadMutation()
     const navigate = useNavigate()
+    const dispatch = useAppDispatch()
 
-    if (error) {
-        throw new Error(
-            'An error occurred when attempting to create a new thread.'
-        )
-    }
+    useEffect(() => {
+        // Clear possible existing form errors when this first mounts
+        dispatch(clearFormError())
+    }, [])
 
     if (!show) {
         return (
@@ -36,11 +32,7 @@ export default function NewThreadForm() {
                     ]
                 </span>
                 <noscript>
-                    <form
-                        action="/api/v1/threads"
-                        method="post"
-                        className="center"
-                    >
+                    <form action="/" method="post" className="center">
                         <ThreadInputs />
                     </form>
                 </noscript>
@@ -50,7 +42,7 @@ export default function NewThreadForm() {
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        setErrMsg('')
+        dispatch(clearFormError())
 
         let res
         try {
@@ -65,18 +57,14 @@ export default function NewThreadForm() {
             )
 
             if (isFetchBaseQueryError(err) && isAPIErrorRes(err.data)) {
-                if (err.data.errors) {
-                    if (typeof err.data.errors[0] === 'string') {
-                        setErrMsg(err.data.errors[0])
-                    } else if (isFieldValidationError(err.data.errors[0])) {
-                        setErrMsg(
-                            `${err.data.errors[0].path} has ${err.data.errors[0].msg}`
-                        )
-                    }
+                if (err.status === 400 && err.data.errors) {
+                    return dispatch(genFormError(err.data.errors))
                 }
-            } else if (isErrorWithMessage(err)) {
-                setErrMsg(err.message)
             }
+
+            throw new Error(
+                'An error was encountered while creating the thread.'
+            )
         }
 
         if (!res?.data) {
@@ -90,7 +78,6 @@ export default function NewThreadForm() {
         <form className="center" onSubmit={handleSubmit}>
             <ThreadInputs
                 comment={comment}
-                errMsg={errMsg}
                 isLoading={isLoading}
                 subject={subject}
                 onCommentChange={(e) => setComment(e.target.value)}

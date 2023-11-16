@@ -1,4 +1,4 @@
-import { genDefaultErrorMessage } from '../../common/error'
+import { genDefaultErrorMessage } from '../../../common/error'
 
 /** User-facing errors stored on the APIError. */
 export type APIErrorErrors = string[]

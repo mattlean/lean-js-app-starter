@@ -1,4 +1,4 @@
-import { Note, Prisma } from '@prisma/client'
+import { Prisma } from '@prisma/client'
 import request from 'supertest'
 
 import app from '../../../../app'

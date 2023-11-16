@@ -47,7 +47,7 @@ export const isPrismaKnownRequestError = (
 ): err is Prisma.PrismaClientKnownRequestError =>
     err instanceof Prisma.PrismaClientKnownRequestError
 
-/** Handle validation errors encountered by express-validator.*/
+/** Handle validation errors encountered by express-validator. */
 export const validateErrorMiddleware = (
     req: Request,
     res: Response,

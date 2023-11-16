@@ -1,7 +1,131 @@
 import { NextFunction, Request, Response } from 'express'
+import { body } from 'express-validator'
 import { isObjectIdOrHexString } from 'mongoose'
 
 import { ServerError } from '../common/error'
+import { prisma } from '../common/prisma'
+import { MAX_THREADS } from './constants'
+
+/** express-validator validation chain for comments. */
+export const commentValidationChain = () =>
+    body('comment').isString().trim().isLength({ min: 1, max: 2000 })
+
+/** express-validator validation chain for threads. */
+export const threadValidationChain = () => [
+    body('subject')
+        .isString()
+        .trim()
+        .isLength({ max: 191 })
+        .optional({ values: 'null' }),
+    commentValidationChain(),
+]
+
+/**
+ * Express middleware that handles thread creation and thread deletion
+ * when max threads are reached.
+ */
+export const createThreadMiddleware = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+) => {
+    // Create the new thread
+    try {
+        res.locals.threadData = await prisma.thread.create({
+            data: {
+                subject: req.body.subject,
+                comment: req.body.comment,
+            },
+        })
+    } catch (err) {
+        return next(err)
+    }
+
+    // Count the amount of threads
+    let countResult
+    try {
+        countResult = await prisma.thread.aggregate({ _count: true })
+    } catch (err) {
+        return next(err)
+    }
+
+    // Delete the least active thread if there are more than the max number of threads
+    if (countResult._count > MAX_THREADS) {
+        let leastActiveThreadResult
+        try {
+            // Query the Thread collection to find the thread with the oldest bump time
+            leastActiveThreadResult = await prisma.thread.aggregateRaw({
+                pipeline: [
+                    // Lookup all replies related to the thread
+                    {
+                        $lookup: {
+                            from: 'Reply',
+                            localField: '_id',
+                            foreignField: 'threadId',
+                            as: 'replies',
+                        },
+                    },
+
+                    // Get the latest reply createdAt and set that as the bumpTime.
+                    // If there is no reply, used the thread's createdAt instead.
+                    {
+                        $addFields: {
+                            bumpTime: {
+                                $cond: {
+                                    if: { $size: '$replies' },
+                                    then: { $last: '$replies.createdAt' },
+                                    else: '$createdAt',
+                                },
+                            },
+                        },
+                    },
+
+                    // Sort by bumpTime in ascending order
+                    { $sort: { bumpTime: 1 } },
+
+                    // Because the aggregation is sorted in ascending order,
+                    // the first document is the least active one
+                    { $limit: 1 },
+
+                    // Perform a projection and convert the ObjectId to a string
+                    {
+                        $project: {
+                            _id: 0,
+                            id: { $toString: '$_id' },
+                        },
+                    },
+                ],
+            })
+        } catch (err) {
+            return next(err)
+        }
+
+        if (
+            !Array.isArray(leastActiveThreadResult) ||
+            leastActiveThreadResult.length !== 1 ||
+            !leastActiveThreadResult[0]
+        ) {
+            return next(
+                new ServerError(
+                    500,
+                    undefined,
+                    'Encountered a problem reading the data from the least active thread query.'
+                )
+            )
+        }
+
+        // Delete the least active thread
+        try {
+            await prisma.thread.delete({
+                where: { id: leastActiveThreadResult[0].id },
+            })
+        } catch (err) {
+            return next(err)
+        }
+
+        return next()
+    }
+}
 
 /**
  * Express middleware that validates the thread ID route parameter is an ObjectId.

@@ -1,8 +1,9 @@
 import { ChangeEventHandler } from 'react'
 
+import { useAppSelector } from '../../app/hooks'
+
 export interface Props {
     comment?: string
-    errMsg?: string
     isLoading?: boolean
     subject?: string
     onCommentChange?: ChangeEventHandler<HTMLTextAreaElement>
@@ -11,12 +12,13 @@ export interface Props {
 
 export default function ThreadInputs({
     comment,
-    errMsg,
     isLoading,
     subject,
     onCommentChange,
     onSubjectChange,
 }: Props) {
+    const formError = useAppSelector((state) => state.formError)
+
     return (
         <table>
             <tbody>
@@ -44,14 +46,13 @@ export default function ThreadInputs({
                             name="comment"
                             value={comment}
                             onChange={onCommentChange}
-                            required
                         />
                     </td>
                 </tr>
-                {errMsg && (
+                {formError && (
                     <tr>
                         <td colSpan={2} className="err-msg">
-                            {errMsg}
+                            {formError}
                         </td>
                     </tr>
                 )}

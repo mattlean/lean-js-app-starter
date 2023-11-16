@@ -1,14 +1,19 @@
 import { NextFunction, Request, Response, Router } from 'express'
-import { param } from 'express-validator'
+import { param, validationResult } from 'express-validator'
 import { renderToString } from 'react-dom/server'
 
 import { objRoutes } from '../../frontend/app/routes'
 import { buildStore } from '../../frontend/common/redux'
 import { apiSlice } from '../../frontend/features/api/apiSlice'
+import { genFormError } from '../../frontend/features/errors/formErrorSlice'
 import { ServerError, validateErrorMiddleware } from '../common/error'
 import { buildPreloadedState } from '../common/util'
 import ServerReactApp from '../views/ServerReactApp'
-import { validateThreadObjectIdMiddleware } from './middlewares'
+import {
+    createThreadMiddleware,
+    threadValidationChain,
+    validateThreadObjectIdMiddleware,
+} from './middlewares'
 
 if (
     !objRoutes[0] ||
@@ -142,6 +147,50 @@ router.get(
 )
 
 /**
+ * POST /
+ * Create a thread and redirect to the new thread's page.
+ * This usually executes when a user is browsing with JavaScript disabled.
+ */
+router.post(
+    '/',
+    threadValidationChain(),
+    (req: Request, res: Response, next: NextFunction) => {
+        const errors = validationResult(req)
+
+        if (!errors.isEmpty()) {
+            // Skip the remaining middleware functions and pass control to the form error route
+            res.locals.validationErrs = errors.array()
+            return next('route')
+        }
+
+        return next()
+    },
+    createThreadMiddleware,
+    // The request was submitted by a JavaScript-disabled user so
+    // redirect them to the server-side rendered thread page
+    (req: Request, res: Response) =>
+        res.redirect(303, `/thread/${res.locals.threadData.id}`)
+)
+
+/**
+ * POST /
+ * A specialized handler that server-side renders the thread list with a
+ * new thread form error when a validation error is encountered.
+ * This usually executes when a user is browsing with JavaScript disabled.
+ */
+router.post(
+    '/',
+    reduxStoreMiddleware,
+    threadListMiddleware,
+    rtkQueryProcessMiddleware,
+    (req: Request, res: Response, next: NextFunction) => {
+        res.locals.store.dispatch(genFormError(res.locals.validationErrs))
+        next()
+    },
+    ssrMiddleware
+)
+
+/**
  * GET /:page
  * Server-side render pages 2-10 of the thread list.
  */
@@ -187,6 +236,13 @@ router.get(
     rtkQueryProcessMiddleware,
     ssrMiddleware
 )
+
+/**
+ * POST /thread/:threadId
+ * Create a reply to a thread.
+ * This usually executes when a user is browsing with JavaScript disabled.
+ */
+// TODO:
 
 if (process.env.NODE_ENV !== 'production') {
     // Responds with a 500 error to test API error handling.

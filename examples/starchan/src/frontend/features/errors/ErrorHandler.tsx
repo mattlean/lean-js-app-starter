@@ -3,14 +3,14 @@ import { ErrorBoundary } from 'react-error-boundary'
 
 import { genDefaultErrorMessage } from '../../../common/error'
 import { useAppSelector } from '../../app/hooks'
-import { isAPIError } from '../../common/APIError'
+import { isAPIError } from '../../common/error'
 import ErrorPage from './ErrorPage'
 
 /**
- * Component that acts as an error boundary and a Redux error handler.
+ * Component that acts as an error boundary and a Redux app error handler.
  */
 export default function ErrorHandler({ children }: PropsWithChildren) {
-    const errors = useAppSelector((state) => state.errors)
+    const errors = useAppSelector((state) => state.appErrors)
 
     const content =
         errors && errors[0] && errors[0].heading ? (

@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom'
 
-import APIError from '../../common/APIError'
-import { isFetchBaseQueryError } from '../../common/util'
+import { isFetchBaseQueryError } from '../../common/error'
+import { APIError } from '../../common/error'
 import Loading from '../Loading'
 import Nav from '../Nav'
 import { useGetThreadQuery } from '../api/apiSlice'
