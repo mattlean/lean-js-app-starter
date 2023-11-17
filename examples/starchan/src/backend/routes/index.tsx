@@ -10,6 +10,8 @@ import { ServerError, validateErrorMiddleware } from '../common/error'
 import { buildPreloadedState } from '../common/util'
 import ServerReactApp from '../views/ServerReactApp'
 import {
+    commentValidationChain,
+    createReplyMiddleware,
     createThreadMiddleware,
     threadValidationChain,
     validateThreadObjectIdMiddleware,
@@ -29,9 +31,29 @@ if (
 const router = Router()
 
 /**
+ * Express middleware that checks for express-validator errors and branches
+ * to a fallback route if necessary.
+ */
+const branchFormErrorMiddleware = (
+    req: Request,
+    res: Response,
+    next: NextFunction
+) => {
+    const errors = validationResult(req)
+
+    if (!errors.isEmpty()) {
+        // Skip the remaining middleware functions and pass control to the form error route
+        res.locals.validationErrs = errors.array()
+        return next('route')
+    }
+
+    return next()
+}
+
+/**
  * Express middleware that creates the Redux store for the response.
  */
-const reduxStoreMiddleware = async (
+const buildReduxStoreMiddleware = async (
     req: Request,
     res: Response,
     next: NextFunction
@@ -41,9 +63,98 @@ const reduxStoreMiddleware = async (
 }
 
 /**
+ * Express middleware that creates a form error message in the Redux store.
+ */
+const preloadFormErrorMiddleware = (
+    req: Request,
+    res: Response,
+    next: NextFunction
+) => {
+    if (!res.locals.store) {
+        return next(
+            new ServerError(
+                500,
+                undefined,
+                'The Redux store for the response was not found'
+            )
+        )
+    }
+
+    if (res.locals.validationErrs) {
+        res.locals.store.dispatch(genFormError(res.locals.validationErrs))
+    } else {
+        console.error(
+            'Expected to encounter a validation errors. Server-side render will continue with a form error message.'
+        )
+    }
+
+    return next()
+}
+
+/**
+ * Express middleware that preloads the thread list data.
+ */
+const preloadThreadListMiddleware = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+) => {
+    if (!res.locals.store) {
+        return next(
+            new ServerError(
+                500,
+                undefined,
+                'The Redux store for the response was not found'
+            )
+        )
+    }
+
+    const page = parseInt(req.params.page) || 1
+
+    try {
+        await res.locals.store.dispatch(
+            apiSlice.endpoints.getThreads.initiate(page)
+        )
+    } catch (err) {
+        return next(err)
+    }
+
+    return next()
+}
+
+/**
+ * Express middleware that preloads the thread page data.
+ */
+const preloadThreadPageMiddleware = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+) => {
+    if (!res.locals.store) {
+        return next(
+            new ServerError(
+                500,
+                undefined,
+                'The Redux store for the response was not found'
+            )
+        )
+    }
+
+    try {
+        await res.locals.store.dispatch(
+            apiSlice.endpoints.getThread.initiate(req.params.threadId)
+        )
+    } catch (err) {
+        return next(err)
+    }
+
+    return next()
+}
+
+/**
  * Express middleware that waits for all RTK queries to finish.
  */
-const rtkQueryProcessMiddleware = async (
+const processRtkQueriesMiddleware = async (
     req: Request,
     res: Response,
     next: NextFunction
@@ -96,6 +207,12 @@ const ssrMiddleware = async (
         return next(err)
     }
 
+    if (res.locals.validationErrs) {
+        res.status(400)
+    } else if (req.method === 'POST') {
+        res.status(201)
+    }
+
     return res.render('index', {
         title: 'ljas-starchan',
         content: serverSideRendering,
@@ -104,45 +221,14 @@ const ssrMiddleware = async (
 }
 
 /**
- * Express middleware that pre-fetches the thread list data.
- */
-const threadListMiddleware = async (
-    req: Request,
-    res: Response,
-    next: NextFunction
-) => {
-    if (!res.locals.store) {
-        return next(
-            new ServerError(
-                500,
-                undefined,
-                'The Redux store for the response was not found'
-            )
-        )
-    }
-
-    const page = parseInt(req.params.page) || 1
-
-    try {
-        await res.locals.store.dispatch(
-            apiSlice.endpoints.getThreads.initiate(page)
-        )
-    } catch (err) {
-        return next(err)
-    }
-
-    return next()
-}
-
-/**
  * GET /
  * Server-side render the first page of the thread list.
  */
 router.get(
     objRoutes[0].children[0].path,
-    reduxStoreMiddleware,
-    threadListMiddleware,
-    rtkQueryProcessMiddleware,
+    buildReduxStoreMiddleware,
+    preloadThreadListMiddleware,
+    processRtkQueriesMiddleware,
     ssrMiddleware
 )
 
@@ -154,39 +240,32 @@ router.get(
 router.post(
     '/',
     threadValidationChain(),
-    (req: Request, res: Response, next: NextFunction) => {
-        const errors = validationResult(req)
-
-        if (!errors.isEmpty()) {
-            // Skip the remaining middleware functions and pass control to the form error route
-            res.locals.validationErrs = errors.array()
-            return next('route')
+    // If the following middleware encounters a validation error, the remaining
+    // middlewares are skipped and control is passed to the next route
+    branchFormErrorMiddleware,
+    createThreadMiddleware,
+    (req: Request, res: Response) => {
+        if (!res.locals.threadData) {
+            throw new ServerError(500, 'Thread data could not be read.')
         }
 
-        return next()
-    },
-    createThreadMiddleware,
-    // The request was submitted by a JavaScript-disabled user so
-    // redirect them to the server-side rendered thread page
-    (req: Request, res: Response) =>
-        res.redirect(303, `/thread/${res.locals.threadData.id}`)
+        return res.redirect(303, `/thread/${res.locals.threadData.id}`)
+    }
 )
 
 /**
  * POST /
- * A specialized handler that server-side renders the thread list with a
- * new thread form error when a validation error is encountered.
+ * A specialized route that only executes when validation errors are encountered
+ * during the thread creation process. This falls back the response to a server-side
+ * rendering of the thread list where its new thread form will display an error message.
  * This usually executes when a user is browsing with JavaScript disabled.
  */
 router.post(
     '/',
-    reduxStoreMiddleware,
-    threadListMiddleware,
-    rtkQueryProcessMiddleware,
-    (req: Request, res: Response, next: NextFunction) => {
-        res.locals.store.dispatch(genFormError(res.locals.validationErrs))
-        next()
-    },
+    buildReduxStoreMiddleware,
+    preloadThreadListMiddleware,
+    processRtkQueriesMiddleware,
+    preloadFormErrorMiddleware,
     ssrMiddleware
 )
 
@@ -198,9 +277,9 @@ router.get(
     `${objRoutes[0].children[0].children[0].path}(\\d+)`,
     param('page').isInt({ min: 1, max: 10 }).optional(),
     validateErrorMiddleware,
-    reduxStoreMiddleware,
-    threadListMiddleware,
-    rtkQueryProcessMiddleware,
+    buildReduxStoreMiddleware,
+    preloadThreadListMiddleware,
+    processRtkQueriesMiddleware,
     ssrMiddleware
 )
 
@@ -211,29 +290,9 @@ router.get(
 router.get(
     `/${objRoutes[0].children[1].path}`,
     validateThreadObjectIdMiddleware,
-    reduxStoreMiddleware,
-    async (req: Request, res: Response, next: NextFunction) => {
-        if (!res.locals.store) {
-            return next(
-                new ServerError(
-                    500,
-                    undefined,
-                    'The Redux store for the response was not found'
-                )
-            )
-        }
-
-        try {
-            await res.locals.store.dispatch(
-                apiSlice.endpoints.getThread.initiate(req.params.threadId)
-            )
-        } catch (err) {
-            return next(err)
-        }
-
-        return next()
-    },
-    rtkQueryProcessMiddleware,
+    buildReduxStoreMiddleware,
+    preloadThreadPageMiddleware,
+    processRtkQueriesMiddleware,
     ssrMiddleware
 )
 
@@ -242,7 +301,34 @@ router.get(
  * Create a reply to a thread.
  * This usually executes when a user is browsing with JavaScript disabled.
  */
-// TODO:
+router.post(
+    `/${objRoutes[0].children[1].path}`,
+    validateThreadObjectIdMiddleware,
+    buildReduxStoreMiddleware,
+    commentValidationChain(),
+    // If the following middleware encounters a validation error, the remaining
+    // middlewares are skipped and control is passed to the next route
+    branchFormErrorMiddleware,
+    createReplyMiddleware,
+    preloadThreadPageMiddleware,
+    processRtkQueriesMiddleware,
+    ssrMiddleware
+)
+
+/**
+ * POST /thread/:threadId
+ * A specialized route that only executes when validation errors are encountered
+ * during the reply creation process. This falls back the response to a server-side
+ * rendering of the thread page where its new reply form will display an error message.
+ * This usually executes when a user is browsing with JavaScript disabled.
+ */
+router.post(
+    `/${objRoutes[0].children[1].path}`,
+    preloadThreadPageMiddleware,
+    processRtkQueriesMiddleware,
+    preloadFormErrorMiddleware,
+    ssrMiddleware
+)
 
 if (process.env.NODE_ENV !== 'production') {
     // Responds with a 500 error to test API error handling.

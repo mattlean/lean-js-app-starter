@@ -1,18 +1,20 @@
 import { ChangeEventHandler } from 'react'
 
+import { useAppSelector } from '../../app/hooks'
+
 export interface Props {
     comment?: string
-    errMsg?: string
     isLoading?: boolean
     onCommentChange?: ChangeEventHandler<HTMLTextAreaElement>
 }
 
 export default function ReplyInputs({
     comment,
-    errMsg,
     isLoading,
     onCommentChange,
 }: Props) {
+    const formError = useAppSelector((state) => state.formError)
+
     return (
         <table>
             <tbody>
@@ -26,14 +28,13 @@ export default function ReplyInputs({
                             name="comment"
                             value={comment}
                             onChange={onCommentChange}
-                            required
                         />
                     </td>
                 </tr>
-                {errMsg && (
+                {formError && (
                     <tr>
                         <td colSpan={2}>
-                            <b className="center">{errMsg}</b>
+                            <b className="center">{formError}</b>
                         </td>
                     </tr>
                 )}

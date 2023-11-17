@@ -2,7 +2,7 @@ import { NextFunction, Request, Response } from 'express'
 import { body } from 'express-validator'
 import { isObjectIdOrHexString } from 'mongoose'
 
-import { ServerError } from '../common/error'
+import { ServerError, isPrismaKnownRequestError } from '../common/error'
 import { prisma } from '../common/prisma'
 import { MAX_THREADS } from './constants'
 
@@ -19,6 +19,60 @@ export const threadValidationChain = () => [
         .optional({ values: 'null' }),
     commentValidationChain(),
 ]
+
+/**
+ * Express middleware that handles reply creation.
+ */
+export const createReplyMiddleware = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+) => {
+    // Confirm that the thread exists
+    try {
+        await prisma.thread.findUniqueOrThrow({
+            where: { id: req.params.threadId },
+        })
+    } catch (err) {
+        if (
+            err instanceof Error &&
+            isPrismaKnownRequestError(err) &&
+            err.code === 'P2025' &&
+            err.message.match(/no thread found/i)
+        ) {
+            return next(new ServerError(404, undefined, err))
+        }
+        return next(err)
+    }
+
+    // Create the reply
+    try {
+        res.locals.replyData = await prisma.reply.create({
+            data: {
+                comment: req.body.comment,
+                threadId: req.params.threadId,
+            },
+            include: {
+                thread: {
+                    include: {
+                        replies: {
+                            orderBy: { createdAt: 'asc' },
+                            select: {
+                                id: true,
+                                comment: true,
+                                createdAt: true,
+                            },
+                        },
+                    },
+                },
+            },
+        })
+    } catch (err) {
+        return next(err)
+    }
+
+    return next()
+}
 
 /**
  * Express middleware that handles thread creation and thread deletion

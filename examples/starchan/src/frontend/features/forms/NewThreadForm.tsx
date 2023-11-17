@@ -51,13 +51,13 @@ export default function NewThreadForm() {
                 comment: comment.trim(),
             }).unwrap()
         } catch (err) {
-            console.error(
-                'An error was encountered while creating the thread:',
-                err
-            )
-
             if (isFetchBaseQueryError(err) && isAPIErrorRes(err.data)) {
                 if (err.status === 400 && err.data.errors) {
+                    console.error(
+                        'An error was encountered while creating the thread:',
+                        err
+                    )
+
                     return dispatch(genFormError(err.data.errors))
                 }
             }

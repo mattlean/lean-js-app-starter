@@ -11,6 +11,7 @@ import { prisma } from '../../../common/prisma'
 import { MAX_THREADS } from '../../constants'
 import {
     commentValidationChain,
+    createReplyMiddleware,
     createThreadMiddleware,
     validateThreadObjectIdMiddleware,
 } from '../../middlewares'
@@ -39,8 +40,13 @@ router.post(
     threadValidationChain(),
     validateErrorMiddleware,
     createThreadMiddleware,
-    (req: Request, res: Response) =>
-        res.status(201).json({ data: res.locals.threadData })
+    (req: Request, res: Response) => {
+        if (!res.locals.threadData) {
+            throw new ServerError(500, 'Thread data could not be read.')
+        }
+
+        return res.status(201).json({ data: res.locals.threadData })
+    }
 )
 
 /**
@@ -252,59 +258,14 @@ router.post(
     validateThreadObjectIdMiddleware,
     commentValidationChain(),
     validateErrorMiddleware,
-    async (req: Request, res: Response, next: NextFunction) => {
-        // Confirm that the thread exists
-        try {
-            await prisma.thread.findUniqueOrThrow({
-                where: { id: req.params.threadId },
-            })
-        } catch (err) {
-            if (
-                err instanceof Error &&
-                isPrismaKnownRequestError(err) &&
-                err.code === 'P2025' &&
-                err.message.match(/no thread found/i)
-            ) {
-                return next(new ServerError(404, undefined, err))
-            }
-            return next(err)
-        }
-
-        // Create the reply
-        let replyData
-        try {
-            replyData = await prisma.reply.create({
-                data: {
-                    comment: req.body.comment,
-                    threadId: req.params.threadId,
-                },
-                include: {
-                    thread: {
-                        include: {
-                            replies: {
-                                orderBy: { createdAt: 'asc' },
-                                select: {
-                                    id: true,
-                                    comment: true,
-                                    createdAt: true,
-                                },
-                            },
-                        },
-                    },
-                },
-            })
-        } catch (err) {
-            return next(err)
-        }
-
-        if (req.is('application/x-www-form-urlencoded')) {
-            // The request was submitted by a JavaScript-disabled user so
-            // redirect them to the server-side rendered thread page
-            return res.redirect(303, `/thread/${replyData.thread.id}`)
+    createReplyMiddleware,
+    (req: Request, res: Response) => {
+        if (!res.locals.replyData) {
+            throw new ServerError(500, 'Reply data could not be read.')
         }
 
         return res.status(201).json({
-            data: replyData.thread,
+            data: res.locals.replyData.thread,
         })
     }
 )

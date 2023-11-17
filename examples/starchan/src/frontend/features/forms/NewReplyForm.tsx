@@ -1,41 +1,35 @@
-import { FormEvent, useState } from 'react'
+import { FormEvent, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
-import {
-    isAPIErrorRes,
-    isFetchBaseQueryError,
-    isFieldValidationError,
-} from '../../common/error'
+import { useAppDispatch } from '../../app/hooks'
+import { isAPIErrorRes, isFetchBaseQueryError } from '../../common/error'
 import { useCreateReplyMutation } from '../api/apiSlice'
+import { clearFormError, genFormError } from '../errors/formErrorSlice'
 import ReplyInputs from './ReplyInputs'
 
 export default function NewReplyForm() {
     const [comment, setComment] = useState('')
     const [show, setShow] = useState(false)
-    const [errMsg, setErrMsg] = useState('')
 
     const { threadId } = useParams()
-    const [createReply, { error, isLoading }] = useCreateReplyMutation()
+    const [createReply, { isLoading }] = useCreateReplyMutation()
+    const dispatch = useAppDispatch()
 
-    if (error) {
-        throw new Error(
-            'An error occurred when attempting to create a new reply.'
-        )
-    }
+    useEffect(() => {
+        // Clear possible existing form errors when this first mounts
+        dispatch(clearFormError())
+    }, [])
 
     if (!show) {
         return (
             <>
                 <span className="center">
-                    [
-                    <a href="#" onClick={() => setShow(true)}>
-                        Post a Reply
-                    </a>
+                    [<button onClick={() => setShow(true)}>Post a Reply</button>
                     ]
                 </span>
                 <noscript>
                     <form
-                        action={`/api/v1/threads/${threadId}/reply`}
+                        action={`/thread/${threadId}`}
                         method="post"
                         className="center"
                     >
@@ -48,27 +42,30 @@ export default function NewReplyForm() {
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        setErrMsg('')
+        dispatch(clearFormError())
 
+        let res
         try {
-            await createReply({ threadId, comment }).unwrap()
+            res = await createReply({ threadId, comment }).unwrap()
         } catch (err) {
-            console.error(
-                'An error was encountered while creating the reply:',
-                err
-            )
-
             if (isFetchBaseQueryError(err) && isAPIErrorRes(err.data)) {
-                if (err.data.errors) {
-                    if (typeof err.data.errors[0] === 'string') {
-                        setErrMsg(err.data.errors[0])
-                    } else if (isFieldValidationError(err.data.errors[0])) {
-                        setErrMsg(
-                            `${err.data.errors[0].path} has ${err.data.errors[0].msg}`
-                        )
-                    }
+                if (err.status === 400 && err.data.errors) {
+                    console.error(
+                        'An error was encountered while creating the reply:',
+                        err
+                    )
+
+                    return dispatch(genFormError(err.data.errors))
                 }
             }
+
+            throw new Error(
+                'An error was encountered while creating the reply.'
+            )
+        }
+
+        if (!res?.data) {
+            throw new Error('Reply data could not be read.')
         }
 
         setShow(false)
@@ -79,143 +76,9 @@ export default function NewReplyForm() {
         <form id="new-form" className="center" onSubmit={handleSubmit}>
             <ReplyInputs
                 comment={comment}
-                errMsg={errMsg}
                 isLoading={isLoading}
                 onCommentChange={(e) => setComment(e.target.value)}
             />
         </form>
     )
 }
-
-// class NewReplyFormClass extends Component {
-//     handleChange = (e, state) => {
-//         this.setState({ [state]: e.currentTarget.value })
-//     }
-
-//     handleClick = (e) => {
-//         e.preventDefault()
-//         this.setState({ show: true })
-//     }
-
-//     handleSubmit = (e) => {
-//         e.preventDefault()
-//         if (this.props.createReply) {
-//             this.props
-//                 .createReply(this.props.match.params.id, {
-//                     comment: this.state.comment,
-//                 })
-//                 .then(() => {
-//                     this.reset()
-//                 })
-//                 .catch((err) => {
-//                     if (this.props.setErr) {
-//                         this.props.setErr('create', err)
-//                     }
-//                 })
-//         }
-//     }
-
-//     reset = () => {
-//         this.setState({
-//             comment: '',
-//             show: false,
-//         })
-//     }
-
-//     render() {
-//         if (this.state.show) {
-//             let err
-//             if (this.props.err) {
-//                 let statusTxt
-//                 if (this.props.err.res && this.props.err.res.status)
-//                     statusTxt = `${this.props.err.res.status} - `
-
-//                 err = (
-//                     <tr>
-//                         <td colSpan="2">
-//                             <b className="center">
-//                                 ERROR: {statusTxt}
-//                                 {this.props.err.message}
-//                             </b>
-//                         </td>
-//                     </tr>
-//                 )
-//             }
-
-//             return (
-//                 <form
-//                     id="new-form"
-//                     className="center"
-//                     onSubmit={this.handleSubmit}
-//                 >
-//                     <table>
-//                         <tbody>
-//                             <tr>
-//                                 <th>
-//                                     <label htmlFor="comment">Comment</label>
-//                                 </th>
-//                                 <td>
-//                                     <textarea
-//                                         id="comment"
-//                                         value={this.state.comment}
-//                                         onChange={(e) =>
-//                                             this.handleChange(e, 'comment')
-//                                         }
-//                                         required
-//                                     />
-//                                 </td>
-//                             </tr>
-//                             {err}
-//                             <tr>
-//                                 <td colSpan="2">
-//                                     <button type="submit">Post</button>
-//                                 </td>
-//                             </tr>
-//                         </tbody>
-//                     </table>
-//                 </form>
-//             )
-//         }
-//         return (
-//             <>
-//                 <span className="center">
-//                     [
-//                     <a href="#" onClick={this.handleClick}>
-//                         Post a Reply
-//                     </a>
-//                     ]
-//                 </span>
-//                 <noscript>
-//                     <form
-//                         id="new-form"
-//                         action={`/api/thread/${this.props.match.params.id}/reply`}
-//                         method="post"
-//                         className="center"
-//                     >
-//                         <table>
-//                             <tbody>
-//                                 <tr>
-//                                     <th>
-//                                         <label htmlFor="comment">Comment</label>
-//                                     </th>
-//                                     <td>
-//                                         <textarea
-//                                             id="comment"
-//                                             name="comment"
-//                                             required
-//                                         />
-//                                     </td>
-//                                 </tr>
-//                                 <tr>
-//                                     <td colSpan="2">
-//                                         <button type="submit">Post</button>
-//                                     </td>
-//                                 </tr>
-//                             </tbody>
-//                         </table>
-//                     </form>
-//                 </noscript>
-//             </>
-//         )
-//     }
-// }
