@@ -11,7 +11,7 @@ exports[`Not found error handlers handles a non-API route with no handler using 
     <body>
         <div id="root"><h1>Not found</h1><p><i>/definitely-not-found was not found.</i></p><p><a href="/">Return to the home page.</a></p></div>
         <script>
-            window.__PRELOADED_STATE__ = {"api":{"queries":{},"mutations":{},"provided":{},"subscriptions":{},"config":{"online":true,"focused":true,"middlewareRegistered":true,"refetchOnFocus":false,"refetchOnReconnect":false,"refetchOnMountOrArgChange":false,"keepUnusedDataFor":60,"reducerPath":"api"}},"errors":[{"heading":"Not found","content":"/definitely-not-found was not found."}]}
+            window.__PRELOADED_STATE__ = {"api":{"queries":{},"mutations":{},"provided":{},"subscriptions":{},"config":{"online":true,"focused":true,"middlewareRegistered":true,"refetchOnFocus":false,"refetchOnReconnect":false,"refetchOnMountOrArgChange":false,"keepUnusedDataFor":60,"reducerPath":"api"}},"appErrors":[{"heading":"Not found","content":"/definitely-not-found was not found."}],"formError":""}
         </script>
     </body>
 </html>
@@ -29,7 +29,7 @@ exports[`SSR error handler returns a 500 error when the fail route is requested 
     <body>
         <div id="root"><h1>Internal server error</h1><p><a href="/">Return to the home page.</a></p></div>
         <script>
-            window.__PRELOADED_STATE__ = {"api":{"queries":{},"mutations":{},"provided":{},"subscriptions":{},"config":{"online":true,"focused":true,"middlewareRegistered":true,"refetchOnFocus":false,"refetchOnReconnect":false,"refetchOnMountOrArgChange":false,"keepUnusedDataFor":60,"reducerPath":"api"}},"errors":[{"heading":"Internal server error"}]}
+            window.__PRELOADED_STATE__ = {"api":{"queries":{},"mutations":{},"provided":{},"subscriptions":{},"config":{"online":true,"focused":true,"middlewareRegistered":true,"refetchOnFocus":false,"refetchOnReconnect":false,"refetchOnMountOrArgChange":false,"keepUnusedDataFor":60,"reducerPath":"api"}},"appErrors":[{"heading":"Internal server error"}],"formError":""}
         </script>
     </body>
 </html>

@@ -1,4 +1,4 @@
-import { FormEvent, useEffect, useState } from 'react'
+import { FormEvent, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { useAppDispatch } from '../../app/hooks'
@@ -15,11 +15,6 @@ export default function NewThreadForm() {
     const [createThread, { isLoading }] = useCreateThreadMutation()
     const navigate = useNavigate()
     const dispatch = useAppDispatch()
-
-    useEffect(() => {
-        // Clear possible existing form errors when this first mounts
-        dispatch(clearFormError())
-    }, [])
 
     if (!show) {
         return (

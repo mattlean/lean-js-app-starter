@@ -11,6 +11,7 @@ import {
     MOCK_THREAD_W_REPLY,
     MOCK_THREAD_W_SUBJECT_COMMENT,
 } from './MOCK_DATA'
+import MOCK_FULL_THREAD_LIST from './MOCK_FULL_THREAD_LIST.json'
 
 describe('create thread endpoint', () => {
     it('creates thread with comment when request payload only has comment', async () => {
@@ -62,13 +63,47 @@ describe('create thread endpoint', () => {
             MOCK_THREAD_W_SUBJECT_COMMENT.createdAt.getTime()
         )
     })
+
+    it('deletes a thread when creating a thread while the threads list is full', async () => {
+        prismaMock.thread.create.mockResolvedValue(MOCK_THREAD_W_COMMENT)
+        prismaMock.thread.aggregate.mockResolvedValue({
+            // Prisma typing is incorrect here
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            _count: MOCK_FULL_THREAD_LIST.length + 1,
+        })
+        // Prisma typing is incorrect here
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        prismaMock.thread.aggregateRaw.mockResolvedValue([
+            MOCK_FULL_THREAD_LIST[0],
+        ])
+        prismaMock.thread.delete.mockResolvedValue({
+            ...MOCK_FULL_THREAD_LIST[0],
+            createdAt: new Date(MOCK_FULL_THREAD_LIST[0].createdAt),
+        })
+
+        expect.assertions(5)
+
+        const res = await request(app)
+            .post('/api/v1/threads')
+            .send({ comment: MOCK_THREAD_W_COMMENT.comment })
+
+        expect(res.status).toBe(201)
+        expect(res.body.data.id).toBe(MOCK_THREAD_W_COMMENT.id)
+        expect(res.body.data.comment).toBe(MOCK_THREAD_W_COMMENT.comment)
+        expect(new Date(res.body.data.createdAt).getTime()).toBe(
+            MOCK_THREAD_W_COMMENT.createdAt.getTime()
+        )
+        expect(prismaMock.thread.delete).toHaveBeenCalled()
+    })
 })
 
 describe('list threads endpoint', () => {
-    it('returns all threads', async () => {
+    it('returns all threads when no query string parameters are received', async () => {
         const MOCK_THREAD_LIST = [
-            MOCK_THREAD_W_COMMENT,
             MOCK_THREAD_W_SUBJECT_COMMENT,
+            MOCK_THREAD_W_COMMENT,
         ]
 
         prismaMock.thread.aggregate.mockResolvedValue({
@@ -81,7 +116,7 @@ describe('list threads endpoint', () => {
         // @ts-ignore
         prismaMock.thread.aggregateRaw.mockResolvedValue(MOCK_THREAD_LIST)
 
-        expect.assertions(11)
+        expect.assertions(12)
 
         const res = await request(app).get('/api/v1/threads')
 
@@ -97,9 +132,50 @@ describe('list threads endpoint', () => {
                 new Date(res.body.data[i].createdAt).getTime()
             )
         })
+
+        expect(res.body.info.threadCount).toBe(2)
     })
 
-    // TODO: test that each thread only show ups to 5 replies
+    it('returns a thread page when a page query string parameter is received', async () => {
+        prismaMock.thread.aggregate.mockResolvedValue({
+            // Prisma typing is incorrect here
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            _count: MOCK_FULL_THREAD_LIST.length,
+        })
+
+        // The ordering of the threads here may not match ordering in the
+        // live build. Due to the nature of mocking, replicating the exact
+        // order is unnecessary. We still test to make sure that the code
+        // flows correctly though.
+        prismaMock.thread.aggregateRaw.mockResolvedValue(
+            // Prisma typing is incorrect here
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            MOCK_FULL_THREAD_LIST.slice(0, 20)
+        )
+
+        expect.assertions(86)
+
+        const res = await request(app).get('/api/v1/threads?page=1')
+
+        expect(res.status).toBe(200)
+        expect(Array.isArray(res.body.data)).toBe(true)
+        expect(res.body.data).toHaveLength(20)
+
+        for (let i = 0; i < 20; ++i) {
+            const t = MOCK_FULL_THREAD_LIST[i]
+
+            expect(t.id).toBe(res.body.data[i].id)
+            expect(t.subject).toBe(res.body.data[i].subject)
+            expect(t.comment).toBe(res.body.data[i].comment)
+            expect(t.createdAt).toBe(res.body.data[i].createdAt)
+        }
+
+        expect(res.body.info.totalPages).toBe(10)
+        expect(res.body.info.hasNextPage).toBe(true)
+        expect(res.body.info.hasPreviousPage).toBe(false)
+    })
 })
 
 describe('read thread endpoint', () => {
@@ -126,8 +202,6 @@ describe('read thread endpoint', () => {
             new Date(res.body.data.createdAt).getTime()
         )
     })
-
-    // TODO: test that all replies are associated with the thread
 
     it('returns 404 when requesting a nonexistent thread', async () => {
         prismaMock.thread.findUniqueOrThrow.mockImplementation(() => {

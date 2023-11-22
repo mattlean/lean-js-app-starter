@@ -1,4 +1,4 @@
-import { FormEvent, useEffect, useState } from 'react'
+import { FormEvent, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
 import { useAppDispatch } from '../../app/hooks'
@@ -14,11 +14,6 @@ export default function NewReplyForm() {
     const { threadId } = useParams()
     const [createReply, { isLoading }] = useCreateReplyMutation()
     const dispatch = useAppDispatch()
-
-    useEffect(() => {
-        // Clear possible existing form errors when this first mounts
-        dispatch(clearFormError())
-    }, [])
 
     if (!show) {
         return (

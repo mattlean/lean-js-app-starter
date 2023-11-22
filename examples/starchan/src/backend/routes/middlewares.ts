@@ -176,9 +176,9 @@ export const createThreadMiddleware = async (
         } catch (err) {
             return next(err)
         }
-
-        return next()
     }
+
+    return next()
 }
 
 /**

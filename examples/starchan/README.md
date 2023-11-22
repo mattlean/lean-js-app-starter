@@ -7,3 +7,9 @@ It was originally built using [Python](https://python.org), [webapp2](https://cl
 ## Running Tests
 
 TODO: Note that in order to run tests on the backend, you will need to have a build on your machine as the server-side rendering relies on a view generated from the frontend build process in order to work.
+
+## Generating Development Data
+
+If don't want to manually create threads and replies to play around with, you can also use the `generateDevData.ts` script to generate it for you.
+
+You need to have the project's dependencies installed and the datbase running. Once those are available then you just need to run `npm run generate-dev-data`.
