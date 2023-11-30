@@ -176,6 +176,27 @@ describe('list threads endpoint', () => {
         expect(res.body.info.hasNextPage).toBe(true)
         expect(res.body.info.hasPreviousPage).toBe(false)
     })
+
+    it('avoids an unnecessary DB query when the list of threads is empty', async () => {
+        prismaMock.thread.aggregate.mockResolvedValue({
+            // Prisma typing is incorrect here
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            _count: 0,
+        })
+
+        expect.assertions(7)
+
+        const res = await request(app).get('/api/v1/threads?page=1')
+
+        expect(res.status).toBe(200)
+        expect(Array.isArray(res.body.data)).toBe(true)
+        expect(res.body.data).toHaveLength(0)
+        expect(prismaMock.thread.aggregateRaw).toHaveBeenCalledTimes(0)
+        expect(res.body.info.totalPages).toBe(0)
+        expect(res.body.info.hasNextPage).toBe(false)
+        expect(res.body.info.hasPreviousPage).toBe(false)
+    })
 })
 
 describe('read thread endpoint', () => {

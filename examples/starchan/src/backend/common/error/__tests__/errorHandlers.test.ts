@@ -1,5 +1,6 @@
 import request from 'supertest'
 
+import { ServerError } from '../'
 import app from '../../../app'
 import { ssrErrorHandlerTestInjection } from '../ssrErrorHandlerTestInjection'
 
@@ -56,13 +57,29 @@ describe('SSR error handler', () => {
 describe('Global error handler', () => {
     beforeEach(() => ssrErrorHandlerTestInjectionMock.mockReset())
 
-    it('returns a 500 error when the fail route is requested', async () => {
+    it('returns a 500 error when the SSR error handler throws an error', async () => {
         expect.assertions(2)
 
         ssrErrorHandlerTestInjectionMock.mockImplementation(() => {
             throw new Error(
-                'Trigger the global error handler from the SSR error handler'
+                'Trigger the global error handler from the SSR error handler with a regular Error'
             )
+        })
+
+        const res = await request(app).get('/fail')
+
+        expect(res.status).toBe(500)
+        expect(res.text).toMatchSnapshot()
+    })
+
+    it('returns a 500 error when the SSR error handler throws a ServerError', async () => {
+        expect.assertions(2)
+
+        ssrErrorHandlerTestInjectionMock.mockImplementation(() => {
+            throw new ServerError(500, {
+                content:
+                    'Trigger the global error handler from the SSR error handler with a ServerError',
+            })
         })
 
         const res = await request(app).get('/fail')
