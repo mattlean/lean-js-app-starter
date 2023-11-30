@@ -1,5 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Global error handler returns a 500 error when the fail route is requested 1`] = `
+"<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>ljas-starchan</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+    </head>
+    <body>
+        <h1>Internal server error</h1>
+        
+    </body>
+</html>
+"
+`;
+
 exports[`Not found error handlers handles a non-API route with no handler using the regular not found error handler 1`] = `
 "<!DOCTYPE html>
 <html>

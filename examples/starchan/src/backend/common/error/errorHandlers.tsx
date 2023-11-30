@@ -8,6 +8,7 @@ import { buildStore } from '../../../frontend/common/redux'
 import { setAppErrors } from '../../../frontend/features/errors/appErrorsSlice'
 import ServerReactApp from '../../views/ServerReactApp'
 import { buildPreloadedState } from '../util'
+import { ssrErrorHandlerTestInjection } from './ssrErrorHandlerTestInjection'
 
 /** Creates an error handler that takes care of all requests to undefined routes. */
 export const createNotFoundErrorHandler =
@@ -39,7 +40,7 @@ export const apiErrorHandler = (
 }
 
 /**
- * Global error handler intended to handle all errors that might be encountered
+ * SSR global error handler intended to handle all errors that might be encountered
  * with a server-side rendering of the React app.
  */
 export const ssrErrorHandler = (
@@ -49,6 +50,10 @@ export const ssrErrorHandler = (
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     next: NextFunction
 ) => {
+    if (process.env.NODE_ENV === 'test') {
+        ssrErrorHandlerTestInjection()
+    }
+
     const store = buildStore()
     let statusCode
 
