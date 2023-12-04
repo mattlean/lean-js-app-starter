@@ -2,11 +2,14 @@
     "compilerOptions": {
         "allowJs": true,
         "esModuleInterop": true,
+        "moduleResolution": "bundler",
         "noEmit": true,
         "jsx": "react-jsxdev",
         "resolveJsonModule": true,
         "strict": true,
-        "strictNullChecks": true
+        "strictNullChecks": true,
+        "target": "ES2015",
+        "types": ["@testing-library/jest-dom"]
     },
-    "include": ["src/**/*", "webpack/templateParams.js"]
+    "include": ["src/**/*", "webpack/templateParams.js", "jest-setup.ts"]
 }

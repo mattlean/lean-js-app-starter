@@ -1,3 +1,7 @@
 export default function Loading() {
-    return <i className="center">Loading...</i>
+    return (
+        <i className="center" data-testid="loading">
+            Loading...
+        </i>
+    )
 }
