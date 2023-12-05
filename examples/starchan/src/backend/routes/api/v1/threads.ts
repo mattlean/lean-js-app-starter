@@ -8,15 +8,13 @@ import {
 } from '../../../common/error'
 import { ServerError } from '../../../common/error'
 import { prisma } from '../../../common/prisma'
-import { MAX_THREADS } from '../../constants'
+import { MAX_THREADS, PAGE_SIZE } from '../../constants'
 import {
     commentValidationChain,
     createReplyMiddleware,
     createThreadMiddleware,
     validateThreadObjectIdMiddleware,
 } from '../../middlewares'
-
-const PAGE_SIZE = 20
 
 const router = Router()
 

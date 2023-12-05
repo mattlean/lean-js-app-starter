@@ -28,7 +28,6 @@ export default function ThreadInputs({
                     </th>
                     <td>
                         <input
-                            id="subject"
                             name="subject"
                             type="text"
                             value={subject}
@@ -42,7 +41,6 @@ export default function ThreadInputs({
                     </th>
                     <td>
                         <textarea
-                            id="comment"
                             name="comment"
                             value={comment}
                             onChange={onCommentChange}
@@ -51,8 +49,8 @@ export default function ThreadInputs({
                 </tr>
                 {formError && (
                     <tr>
-                        <td colSpan={2} className="err-msg">
-                            {formError}
+                        <td colSpan={2}>
+                            <b>{formError}</b>
                         </td>
                     </tr>
                 )}

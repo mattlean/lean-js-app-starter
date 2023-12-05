@@ -18,7 +18,9 @@ export default function Shell() {
     }, [location?.pathname])
     return (
         <>
-            <h1 className="center">*chan</h1>
+            <header>
+                <h1>*chan</h1>
+            </header>
             <Outlet />
         </>
     )

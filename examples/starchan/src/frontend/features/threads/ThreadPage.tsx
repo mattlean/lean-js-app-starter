@@ -3,10 +3,10 @@ import { useParams } from 'react-router-dom'
 import { isFetchBaseQueryError } from '../../common/error'
 import { APIError } from '../../common/error'
 import Loading from '../Loading'
-import Nav from '../Nav'
 import { useGetThreadQuery } from '../api/apiSlice'
 import NewReplyForm from '../forms/NewReplyForm'
 import Thread from './Thread'
+import ThreadPageNav from './ThreadPageNav'
 
 export default function ThreadPage() {
     const { threadId } = useParams()
@@ -33,11 +33,13 @@ export default function ThreadPage() {
 
     return (
         <>
-            <NewReplyForm />
-            <hr />
-            <Nav />
-            <Thread data={res.data} />
-            <Nav isBottom />
+            <main>
+                <NewReplyForm />
+                <hr />
+                <ThreadPageNav />
+                <Thread data={res.data} />
+                <ThreadPageNav isBottom />
+            </main>
         </>
     )
 }

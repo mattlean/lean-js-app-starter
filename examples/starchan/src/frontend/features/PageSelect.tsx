@@ -1,11 +1,13 @@
 import { Link } from 'react-router-dom'
 
+import { MAX_THREADS, PAGE_SIZE } from '../../backend/routes/constants'
+
 export interface Props {
     totalPages?: number
 }
 
 export default function PageSelect({ totalPages }: Props) {
-    const lastPage = totalPages || 1
+    const lastPage = Math.min(MAX_THREADS / PAGE_SIZE, totalPages || 1)
 
     const pages = []
     for (let i = 1; i <= lastPage; ++i) {
@@ -21,5 +23,9 @@ export default function PageSelect({ totalPages }: Props) {
         )
     }
 
-    return <ul>{pages}</ul>
+    return (
+        <nav>
+            <ol>{pages}</ol>
+        </nav>
+    )
 }

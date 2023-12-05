@@ -71,6 +71,5 @@ module.exports = merge([
         paths: glob.sync(`${PATH_FRONTEND_SRC}/**/*.[jt]s?(x)`, {
             nodir: true,
         }),
-        safelist: ['body'],
     }),
 ])

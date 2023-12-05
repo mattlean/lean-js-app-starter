@@ -24,7 +24,6 @@ export default function ReplyInputs({
                     </th>
                     <td>
                         <textarea
-                            id="comment"
                             name="comment"
                             value={comment}
                             onChange={onCommentChange}
@@ -34,7 +33,7 @@ export default function ReplyInputs({
                 {formError && (
                     <tr>
                         <td colSpan={2}>
-                            <b className="center">{formError}</b>
+                            <b>{formError}</b>
                         </td>
                     </tr>
                 )}

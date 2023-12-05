@@ -16,9 +16,14 @@ export default function ThreadList() {
         throw new Error(`Error: No route matches URL "/${page}"`)
     }
 
-    const { data: res, error, isLoading } = useGetThreadsQuery(currPage)
+    const {
+        data: res,
+        error,
+        isFetching,
+        isLoading,
+    } = useGetThreadsQuery(currPage)
 
-    if (isLoading) {
+    if (isLoading || isFetching) {
         return <Loading />
     }
 
@@ -32,21 +37,31 @@ export default function ThreadList() {
         throw new Error('Thread list data could not be read.')
     }
 
-    const totalPages = res?.info?.totalPages || 1
+    const content =
+        res.data.length > 0 ? (
+            <ul>
+                {res.data.map((thread, i) => (
+                    <li key={thread.id}>
+                        <Thread data={thread} />
+                        {res.data && i < res.data.length - 1 && <hr />}
+                    </li>
+                ))}
+            </ul>
+        ) : (
+            <p>
+                Currently no threads exist. Why don&#39;t you create the first
+                one?
+            </p>
+        )
 
     return (
         <>
-            <NewThreadForm />
-            <hr />
-            <ul id="threads">
-                {res.data.map((thread, i) => (
-                    <Fragment key={thread.id}>
-                        <Thread data={thread} />
-                        {res.data && i < res.data.length - 1 && <hr />}
-                    </Fragment>
-                ))}
-            </ul>
-            <PageSelect totalPages={totalPages} />
+            <main>
+                <NewThreadForm />
+                <hr />
+                {content}
+            </main>
+            <PageSelect totalPages={res?.info?.totalPages} />
         </>
     )
 }

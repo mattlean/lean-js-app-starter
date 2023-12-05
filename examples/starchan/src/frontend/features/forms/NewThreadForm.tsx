@@ -18,20 +18,18 @@ export default function NewThreadForm() {
 
     if (!show) {
         return (
-            <>
-                <span className="center">
-                    [
-                    <button onClick={() => setShow(true)}>
-                        Start a New Thread
-                    </button>
-                    ]
-                </span>
+            <section>
+                [
+                <button onClick={() => setShow(true)}>
+                    Start a New Thread
+                </button>
+                ]
                 <noscript>
-                    <form action="/" method="post" className="center">
+                    <form action="/" method="post">
                         <ThreadInputs />
                     </form>
                 </noscript>
-            </>
+            </section>
         )
     }
 
@@ -70,14 +68,16 @@ export default function NewThreadForm() {
     }
 
     return (
-        <form className="center" onSubmit={handleSubmit}>
-            <ThreadInputs
-                comment={comment}
-                isLoading={isLoading}
-                subject={subject}
-                onCommentChange={(e) => setComment(e.target.value)}
-                onSubjectChange={(e) => setSubject(e.target.value)}
-            />
-        </form>
+        <section>
+            <form onSubmit={handleSubmit}>
+                <ThreadInputs
+                    comment={comment}
+                    isLoading={isLoading}
+                    subject={subject}
+                    onCommentChange={(e) => setComment(e.target.value)}
+                    onSubjectChange={(e) => setSubject(e.target.value)}
+                />
+            </form>
+        </section>
     )
 }

@@ -17,21 +17,14 @@ export default function NewReplyForm() {
 
     if (!show) {
         return (
-            <>
-                <span className="center">
-                    [<button onClick={() => setShow(true)}>Post a Reply</button>
-                    ]
-                </span>
+            <section>
+                [<button onClick={() => setShow(true)}>Post a Reply</button>]
                 <noscript>
-                    <form
-                        action={`/thread/${threadId}`}
-                        method="post"
-                        className="center"
-                    >
+                    <form action={`/thread/${threadId}`} method="post">
                         <ReplyInputs />
                     </form>
                 </noscript>
-            </>
+            </section>
         )
     }
 
@@ -68,12 +61,14 @@ export default function NewReplyForm() {
     }
 
     return (
-        <form id="new-form" className="center" onSubmit={handleSubmit}>
-            <ReplyInputs
-                comment={comment}
-                isLoading={isLoading}
-                onCommentChange={(e) => setComment(e.target.value)}
-            />
-        </form>
+        <section>
+            <form onSubmit={handleSubmit}>
+                <ReplyInputs
+                    comment={comment}
+                    isLoading={isLoading}
+                    onCommentChange={(e) => setComment(e.target.value)}
+                />
+            </form>
+        </section>
     )
 }

@@ -49,10 +49,10 @@ export default function Thread({ data }: Props) {
     }, [data?.createdAt])
 
     return (
-        <ul className="thread">
+        <>
             <header>
                 {subject}
-                <b className="name">Anonymous</b>{' '}
+                <b>Anonymous</b>{' '}
                 <time dateTime={serverCreatedAt.toISOString()}>
                     {/* This will display the datetime in the server timezone on initial render so the hydration can match. */}
                     {/* Afterwards, useEffect will run and convert the datetime to the user's local timezone. */}
@@ -62,8 +62,8 @@ export default function Thread({ data }: Props) {
                 {` Id.${data.id}`}
                 {replyLink}
             </header>
-            <pre className="comment">{data.comment}</pre>
+            <pre>{data.comment}</pre>
             {replies && replies?.length > 0 && <ul>{replies}</ul>}
-        </ul>
+        </>
     )
 }

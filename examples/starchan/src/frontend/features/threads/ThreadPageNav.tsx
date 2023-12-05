@@ -4,7 +4,7 @@ export interface Props {
     isBottom?: boolean
 }
 
-export default function Nav({ isBottom }: Props) {
+export default function ThreadPageNav({ isBottom }: Props) {
     const jumpTo = isBottom ? (
         <a href="#top">Top</a>
     ) : (
