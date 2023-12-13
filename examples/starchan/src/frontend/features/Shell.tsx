@@ -19,8 +19,9 @@ export default function Shell() {
     return (
         <>
             <header>
-                <h1>*chan</h1>
+                <h1 className="title">*chan</h1>
             </header>
+            <hr />
             <Outlet />
         </>
     )
