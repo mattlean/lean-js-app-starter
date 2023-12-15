@@ -16,6 +16,7 @@ export interface ReplyInput {
 
 const baseUrl =
     process.env.__EXPRESS_SERVER__ ||
+    process.env.NODE_ENV === 'test' ||
     (process.env.NODE_ENV === 'development' &&
         typeof window === 'object' &&
         window.__DEV_SERVER__)

@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App component matches diff snapshot transitioning from loading render to complete render 1`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -5,9 +5,31 @@
+      >
+        *chan
+      </h1>
+    </header>
+    <hr />
+-   <i>
+-     Loading...
+-   </i>
++   <main>
++     <section>
++       [
++       <button>
++         Start a New Thread
++       </button>
++       ]
++       <noscript />
++     </section>
++     <hr />
++     <p>
++       Currently no threads exist. Why don't you create the first one?
++     </p>
++   </main>
++   <nav>
++     <ol>
++       <li>
++         <a
++           href="/"
++         >
++           1
++         </a>
++       </li>
++     </ol>
++   </nav>
+  </DocumentFragment>"
+`;
+
+exports[`App component matches snapshot for basic render 1`] = `
+<DocumentFragment>
+  <header>
+    <h1
+      class="title"
+    >
+      *chan
+    </h1>
+  </header>
+  <hr />
+  <i>
+    Loading...
+  </i>
+</DocumentFragment>
+`;

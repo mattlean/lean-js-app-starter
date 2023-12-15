@@ -64,7 +64,7 @@ describe('create thread endpoint', () => {
         )
     })
 
-    it('deletes a thread when creating a thread while the threads list is full', async () => {
+    it('deletes thread when creating a thread while the threads list is full', async () => {
         prismaMock.thread.create.mockResolvedValue(MOCK_THREAD_W_COMMENT)
         prismaMock.thread.aggregate.mockResolvedValue({
             // Prisma typing is incorrect here
@@ -136,7 +136,7 @@ describe('list threads endpoint', () => {
         expect(res.body.info.threadCount).toBe(2)
     })
 
-    it('returns a thread page when a page query string parameter is received', async () => {
+    it('returns thread page when a page query string parameter is received', async () => {
         prismaMock.thread.aggregate.mockResolvedValue({
             // Prisma typing is incorrect here
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -177,7 +177,7 @@ describe('list threads endpoint', () => {
         expect(res.body.info.hasPreviousPage).toBe(false)
     })
 
-    it('avoids an unnecessary DB query when the list of threads is empty', async () => {
+    it('avoids unnecessary DB query when the list of threads is empty', async () => {
         prismaMock.thread.aggregate.mockResolvedValue({
             // Prisma typing is incorrect here
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
