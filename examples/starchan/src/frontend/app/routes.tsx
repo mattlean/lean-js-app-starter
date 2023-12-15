@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { Route, createRoutesFromElements } from 'react-router-dom'
 
 import Shell from '../features/Shell'
@@ -6,22 +6,31 @@ import ThreadList from '../features/threads/ThreadList'
 import ThreadPage from '../features/threads/ThreadPage'
 
 function Ping() {
+    const [poopRes, setPoopRes] = useState<string | undefined>('Loading...')
     useEffect(() => {
-        fetch('/poop')
+        fetch('http://localhost:3000/poop')
             .then((res) => {
+                console.log('poop res', res)
                 if (res.ok) {
-                    return res.json()
+                    return res.text()
                 }
-                console.log('an err occurred', res)
             })
-            .then((result) => console.log(result))
+            .then((result) => {
+                console.log('poop result', result, typeof result)
+                setPoopRes(result)
+            })
             .catch((err) => {
                 console.log('an err occurred')
                 console.error(err)
             })
     }, [])
 
-    return <div>im ping</div>
+    return (
+        <div>
+            <p>im ping</p>
+            <p>{poopRes}</p>
+        </div>
+    )
 }
 
 export const jsxRoutes = (

@@ -1,7 +1,7 @@
 import { HttpResponse, http } from 'msw'
 
 export const handlers = [
-    http.get('/api/v1/threads', ({ request }) => {
+    http.get('http://localhost:3000/api/v1/threads', ({ request }) => {
         // Construct a URL instance out of the intercepted request.
         const url = new URL(request.url)
 
@@ -17,7 +17,7 @@ export const handlers = [
         })
     }),
 
-    http.get('/api/v1/threads/:threadId', ({ params }) => {
+    http.get('http://localhost:3000/api/v1/threads/:threadId', ({ params }) => {
         console.log(`Captured a GET for specific thread page`, params)
 
         return HttpResponse.json({
@@ -31,7 +31,8 @@ export const handlers = [
         })
     }),
 
-    http.get('/poop', () => {
+    http.get('http://localhost:3000/poop', () => {
+        console.log('poop handler fired')
         return HttpResponse.text('eyyo')
     }),
 ]

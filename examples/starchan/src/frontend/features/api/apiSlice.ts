@@ -16,7 +16,8 @@ export interface ReplyInput {
 
 const baseUrl =
     process.env.__EXPRESS_SERVER__ ||
-    (process.env.NODE_ENV === 'development' &&
+    ((process.env.NODE_ENV === 'development' ||
+        process.env.NODE_ENV === 'test') &&
         typeof window === 'object' &&
         window.__DEV_SERVER__)
         ? 'http://localhost:3000/api/v1'

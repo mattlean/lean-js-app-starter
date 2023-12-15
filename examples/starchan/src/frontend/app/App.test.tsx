@@ -23,7 +23,15 @@ test('App component matches the snapshot', async () => {
         <TestApp initialEntries={['/ping']} store={store} />
     )
 
-    await await waitForElementToBeRemoved(screen.getByText('Loading...'))
+    console.log('first form', asFragment())
+    screen.debug()
+
+    await waitForElementToBeRemoved(() => screen.getByText(/loading.../i))
+
+    // await screen.findByText(/eyyo/i)
+
+    console.log('second form yey', asFragment())
+    screen.debug()
 
     // expect(screen.getByTestId('loading')).toHaveTextContent('Loading...')
 
