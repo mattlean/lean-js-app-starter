@@ -11,9 +11,11 @@ export const handlers = [
 
         return HttpResponse.json({
             data: [],
-            hasNextPage: false,
-            hasPreviousPage: false,
-            totalPages: 0,
+            info: {
+                hasNextPage: false,
+                hasPreviousPage: false,
+                totalPages: 0,
+            },
         })
     }),
 

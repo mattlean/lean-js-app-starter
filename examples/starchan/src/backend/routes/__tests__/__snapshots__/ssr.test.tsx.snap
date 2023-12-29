@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`basic server-side rendering matches the snapshot 1`] = `
+exports[`matches snapshot for basic server-side rendering of thread list page 1`] = `
 <DocumentFragment>
   <header>
     <h1

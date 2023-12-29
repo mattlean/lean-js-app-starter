@@ -4,6 +4,7 @@ import request from 'supertest'
 
 import app from '../../../../app'
 import { prismaMock } from '../../../../common/util/test'
+import MOCK_FULL_THREAD_LIST from '../../../__tests__/MOCK_FULL_THREAD_LIST.json'
 import {
     MOCK_REPLY,
     MOCK_THREAD_INCLUDES_REPLY,
@@ -11,7 +12,6 @@ import {
     MOCK_THREAD_W_REPLY,
     MOCK_THREAD_W_SUBJECT_COMMENT,
 } from './MOCK_DATA'
-import MOCK_FULL_THREAD_LIST from './MOCK_FULL_THREAD_LIST.json'
 
 describe('create thread endpoint', () => {
     it('creates thread with comment when request payload only has comment', async () => {
