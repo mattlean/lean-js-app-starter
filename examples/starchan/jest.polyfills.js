@@ -1,3 +1,4 @@
+// Sourced from: https://mswjs.io/docs/faq/#requestresponsetextencoder-is-not-defined-jest
 /**
  * @note The block below contains polyfills for Node.js globals
  * required for Jest to function when running JSDOM tests.

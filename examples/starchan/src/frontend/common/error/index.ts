@@ -13,7 +13,7 @@ export function isAPIErrorRes(data: unknown): data is APIErrorRes {
 
 /**
  * Type predicate to narrow an unknown error to FetchBaseQueryError.
- * Taken from: https://redux-toolkit.js.org/rtk-query/usage-with-typescript#inline-error-handling-example
+ * Sourced from: https://redux-toolkit.js.org/rtk-query/usage-with-typescript#inline-error-handling-example
  */
 export function isFetchBaseQueryError(
     error: unknown

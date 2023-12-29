@@ -11,5 +11,5 @@
         "target": "es2015",
         "types": ["snapshot-diff"]
     },
-    "include": ["src/**/*", "webpack/templateParams.js"]
+    "include": ["src/**/*", "webpack/templateParams.js", "./jest.setup.ts"]
 }

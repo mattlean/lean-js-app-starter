@@ -10,7 +10,10 @@ export interface TestAppProps {
     store: Store
 }
 
-export const setupMsw = () => {
+/**
+ * Enable MSW to mock network requests with default settings.
+ */
+export const setupDefaultMsw = () => {
     // Enable API mocking before all the tests.
     beforeAll(() => server.listen())
 
@@ -23,6 +26,9 @@ export const setupMsw = () => {
     afterAll(() => server.close())
 }
 
+/**
+ * App component used for client-side testing.
+ */
 export function TestApp({ initialEntries, store }: TestAppProps) {
     return (
         <App store={store}>

@@ -4,7 +4,7 @@ FROM mongo:4.4.25
 RUN echo '\nexport PS1="\e[1;36m[🐳 db] \u@\h:\W#\e[0m "' >> /etc/bash.bashrc
 
 # The following sets up MongoDB as a replica set to enable transactions whoch are required by Prisma
-# Taken from: https://github.com/prisma/prisma/blob/main/docker/mongodb_replica/Dockerfile
+# Sourced from: https://github.com/prisma/prisma/blob/main/docker/mongodb_replica/Dockerfile
 
 # we take over the default & start mongo in replica set mode in a background task
 ENTRYPOINT mongod --port $MONGO_REPLICA_PORT --replSet rs0 --bind_ip 0.0.0.0 & MONGOD_PID=$!; \

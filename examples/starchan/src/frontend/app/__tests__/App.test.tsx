@@ -8,9 +8,9 @@ import {
 } from '@testing-library/react'
 
 import { buildStore } from '../../common/redux'
-import { TestApp, setupMsw } from '../../common/util/test'
+import { TestApp, setupDefaultMsw } from '../../common/util/test'
 
-setupMsw()
+setupDefaultMsw()
 
 test('App component matches snapshot for basic render', () => {
     const store = buildStore()
