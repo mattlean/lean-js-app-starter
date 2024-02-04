@@ -19,7 +19,7 @@ export default function Shell() {
     return (
         <>
             <header>
-                <h1 className="title">*chan</h1>
+                <h1 id="title">*chan</h1>
             </header>
             <hr />
             <Outlet />

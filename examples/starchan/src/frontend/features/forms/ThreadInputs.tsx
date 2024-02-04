@@ -20,7 +20,7 @@ export default function ThreadInputs({
     const formError = useAppSelector((state) => state.formError)
 
     return (
-        <table>
+        <table className="post-form__table">
             <tbody>
                 <tr>
                     <th>
@@ -49,13 +49,13 @@ export default function ThreadInputs({
                 </tr>
                 {formError && (
                     <tr>
-                        <td colSpan={2}>
-                            <b>{formError}</b>
+                        <td colSpan={2} className="post-form__err-msg">
+                            {formError}
                         </td>
                     </tr>
                 )}
                 <tr>
-                    <td colSpan={2}>
+                    <td colSpan={2} className="post-form__post-cell">
                         <button type="submit" disabled={isLoading}>
                             Post
                         </button>

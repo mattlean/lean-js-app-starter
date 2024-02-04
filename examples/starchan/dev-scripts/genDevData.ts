@@ -8,8 +8,8 @@ import { prisma } from '../src/backend/common/prisma'
  * @param {number} [threadsNum=200] Number of threads to generate.
  * @param {boolean} [outputJson] Output the generated data as JSON.
  */
-const generateDevData = async (threadsNum = 200, outputJson = false) => {
-    const PREFIX = '[🌱 generate-dev-data.ts]'
+const genDevData = async (threadsNum = 200, outputJson = false) => {
+    const PREFIX = '[🌱 genDevData.ts]'
 
     if (!outputJson) {
         console.log(`${PREFIX} Beginning the dev data generation script...`)
@@ -79,4 +79,4 @@ const generateDevData = async (threadsNum = 200, outputJson = false) => {
 }
 
 // Execute the dev data generation script
-generateDevData(200, process.argv[2] === '--outputJson')
+genDevData(200, process.argv[2] === '--outputJson')

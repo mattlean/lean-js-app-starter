@@ -1,4 +1,4 @@
-import { Fragment } from 'react'
+import { useState } from 'react'
 import { useParams } from 'react-router-dom'
 
 import Loading from '../Loading'
@@ -9,6 +9,7 @@ import Thread from './Thread'
 
 export default function ThreadList() {
     const { page } = useParams()
+    const [showForm, setShowForm] = useState(false)
 
     const currPage = page ? parseInt(page) : 1
 
@@ -39,7 +40,7 @@ export default function ThreadList() {
 
     const content =
         res.data.length > 0 ? (
-            <ul>
+            <ul className="thread-list">
                 {res.data.map((thread, i) => (
                     <li key={thread.id}>
                         <Thread data={thread} />
@@ -57,7 +58,7 @@ export default function ThreadList() {
     return (
         <>
             <main>
-                <NewThreadForm />
+                <NewThreadForm setShowForm={setShowForm} showForm={showForm} />
                 <hr />
                 {content}
             </main>

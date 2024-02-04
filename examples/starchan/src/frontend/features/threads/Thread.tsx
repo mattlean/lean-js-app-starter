@@ -3,7 +3,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
 
-import { ThreadWithReplies } from '../../common/types'
+import { ThreadWithReplies } from '../../../common/types'
 import Reply from './Reply'
 
 export interface Props {
@@ -50,9 +50,9 @@ export default function Thread({ data }: Props) {
 
     return (
         <>
-            <header>
+            <header id={data.id}>
                 {subject}
-                <b>Anonymous</b>{' '}
+                <span className="user">Anonymous</span>{' '}
                 <time dateTime={serverCreatedAt.toISOString()}>
                     {/* This will display the datetime in the server timezone on initial render so the hydration can match. */}
                     {/* Afterwards, useEffect will run and convert the datetime to the user's local timezone. */}
@@ -63,7 +63,9 @@ export default function Thread({ data }: Props) {
                 {replyLink}
             </header>
             <pre>{data.comment}</pre>
-            {replies && replies?.length > 0 && <ul>{replies}</ul>}
+            {replies && replies?.length > 0 && (
+                <ul className="reply-list">{replies}</ul>
+            )}
         </>
     )
 }

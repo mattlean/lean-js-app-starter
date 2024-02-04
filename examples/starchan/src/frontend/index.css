@@ -1,5 +1,116 @@
-.title {
+html {
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+body {
+    background-color: #eef2ff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+}
+
+pre {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+#title {
     font-family: Tahoma, sans-serif;
     font-size: 28px;
     text-align: center;
+}
+
+.post-form {
+    text-align: center;
+}
+
+.post-form__txt {
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.post-form__btn {
+    background: none;
+    border: none;
+    color: #34345c;
+    font-size: 22px;
+    font-weight: 700;
+    padding: 0;
+}
+
+.post-form__btn:hover {
+    color: #d00;
+    cursor: pointer;
+}
+
+.post-form__table {
+    margin: 0 auto;
+    text-align: left;
+}
+
+.post-form__table th {
+    background-color: #98e;
+    border: 1px solid #000;
+    padding: 0 5px;
+}
+
+.post-form__table td {
+    padding: 0;
+}
+
+.post-form__err-msg {
+    color: red;
+    font-weight: bold;
+}
+
+.post-form__post-cell {
+    text-align: right;
+}
+
+.post-form__table input,
+.post-form__table textarea {
+    width: 244px;
+}
+
+.thread-list {
+    list-style: none;
+    padding: 0;
+}
+
+.user {
+    color: #117743;
+    font-weight: 700;
+}
+
+.reply-list {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    padding-left: 0;
+}
+
+.reply {
+    display: flex;
+    margin: 4px 0;
+}
+
+.reply__marker {
+    color: #b7c5d9;
+    font-weight: normal;
+    margin: 0 2px;
+}
+
+.reply__content {
+    background-color: #d6daf0;
+    border-bottom: 1px solid #b7c5d9;
+    border-right: 1px solid #b7c5d9;
+    padding: 2px;
+}
+
+.reply__content pre {
+    margin: 1em 40px;
 }

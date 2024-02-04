@@ -137,6 +137,7 @@ router.get(
                         },
 
                         // Perform a projection and convert the id's ObjectId and datetimes to strings
+                        // and include the replyCount
                         {
                             $project: {
                                 _id: 0,
@@ -146,6 +147,7 @@ router.get(
                                 createdAt: {
                                     $dateToString: { date: '$createdAt' },
                                 },
+                                replyCount: { $size: '$replies' },
                                 replies: {
                                     $map: {
                                         input: '$replies',

@@ -31,9 +31,9 @@ module.exports = {
             rules: RULES_REACT,
         },
 
-        /* Prisma */
+        /* Prisma & Dev Scripts */
         {
-            files: ['prisma/**/*.[jt]s'],
+            files: ['prisma/**/*.[jt]s', 'dev-scripts/**/*.[jt]s'],
             extends: [
                 'eslint:recommended',
                 'plugin:@typescript-eslint/recommended',

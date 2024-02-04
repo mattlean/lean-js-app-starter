@@ -4,7 +4,7 @@ import request from 'supertest'
 
 import app from '../../../../app'
 import { prismaMock } from '../../../../common/util/test'
-import MOCK_FULL_THREAD_LIST from '../../../__tests__/MOCK_FULL_THREAD_LIST.json'
+import MOCK_THREAD_LIST_RES from '../../../__tests__/MOCK_THREAD_LIST_RES.json'
 import {
     MOCK_REPLY,
     MOCK_THREAD_INCLUDES_REPLY,
@@ -70,17 +70,17 @@ describe('create thread endpoint', () => {
             // Prisma typing is incorrect here
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore
-            _count: MOCK_FULL_THREAD_LIST.length + 1,
+            _count: MOCK_THREAD_LIST_RES.length + 1,
         })
         // Prisma typing is incorrect here
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         prismaMock.thread.aggregateRaw.mockResolvedValue([
-            MOCK_FULL_THREAD_LIST[0],
+            MOCK_THREAD_LIST_RES[0],
         ])
         prismaMock.thread.delete.mockResolvedValue({
-            ...MOCK_FULL_THREAD_LIST[0],
-            createdAt: new Date(MOCK_FULL_THREAD_LIST[0].createdAt),
+            ...MOCK_THREAD_LIST_RES[0],
+            createdAt: new Date(MOCK_THREAD_LIST_RES[0].createdAt),
         })
 
         expect.assertions(5)
@@ -141,7 +141,7 @@ describe('list threads endpoint', () => {
             // Prisma typing is incorrect here
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore
-            _count: MOCK_FULL_THREAD_LIST.length,
+            _count: MOCK_THREAD_LIST_RES.length,
         })
 
         // The ordering of the threads here may not match ordering in the
@@ -152,7 +152,7 @@ describe('list threads endpoint', () => {
             // Prisma typing is incorrect here
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore
-            MOCK_FULL_THREAD_LIST.slice(0, 20)
+            MOCK_THREAD_LIST_RES.slice(0, 20)
         )
 
         expect.assertions(86)
@@ -164,7 +164,7 @@ describe('list threads endpoint', () => {
         expect(res.body.data).toHaveLength(20)
 
         for (let i = 0; i < 20; ++i) {
-            const t = MOCK_FULL_THREAD_LIST[i]
+            const t = MOCK_THREAD_LIST_RES[i]
 
             expect(t.id).toBe(res.body.data[i].id)
             expect(t.subject).toBe(res.body.data[i].subject)

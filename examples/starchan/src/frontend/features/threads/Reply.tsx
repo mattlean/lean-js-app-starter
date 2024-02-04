@@ -22,20 +22,23 @@ export default function Reply({ data }: Props) {
     }, [data?.createdAt])
 
     return (
-        <li>
-            <header>
-                {/* eslint-disable-next-line react/jsx-no-comment-textnodes */}
-                <b>Anonymous</b> //{' '}
-                <time dateTime={serverCreatedAt.toISOString()}>
-                    {/* This will display the datetime in the server timezone on initial render so the hydration can match. */}
-                    {/* Afterwards, useEffect will run and convert the datetime to the user's local timezone. */}
-                    {/* This is not ideal UX, but it's ok for a small project like this one. */}
-                    {localCreatedAt || serverCreatedAt.toUTCString()}
-                </time>
-                {' Id.'}
-                {data.id}
-            </header>
-            <pre>{data.comment}</pre>
+        <li id={data.id} className="reply">
+            <span className="reply__marker">{'>>'}</span>
+            <section className="reply__content">
+                <header>
+                    {/* eslint-disable-next-line react/jsx-no-comment-textnodes */}
+                    <span className="user">Anonymous</span>{' '}
+                    <time dateTime={serverCreatedAt.toISOString()}>
+                        {/* This will display the datetime in the server timezone on initial render so the hydration can match. */}
+                        {/* Afterwards, useEffect will run and convert the datetime to the user's local timezone. */}
+                        {/* This is not ideal UX, but it's ok for a small project like this one. */}
+                        {localCreatedAt || serverCreatedAt.toUTCString()}
+                    </time>
+                    {' Id.'}
+                    {data.id}
+                </header>
+                <pre>{data.comment}</pre>
+            </section>
         </li>
     )
 }

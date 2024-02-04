@@ -2,7 +2,7 @@ import { Reply } from '@prisma/client'
 import { Thread } from '@prisma/client'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
-import { ThreadWithReplies } from '../../common/types'
+import { ThreadWithReplies } from '../../../common/types'
 import { APIRes } from './types'
 
 export interface ThreadInput {

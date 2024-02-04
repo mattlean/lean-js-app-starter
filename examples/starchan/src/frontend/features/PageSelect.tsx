@@ -15,7 +15,7 @@ export default function PageSelect({ totalPages }: Props) {
             <li key={i}>
                 <Link
                     to={i === 1 ? '/' : `/${i}`}
-                    onClick={() => scrollTo(0, 0)}
+                    onClick={() => window.scrollTo(0, 0)}
                 >
                     {i}
                 </Link>
