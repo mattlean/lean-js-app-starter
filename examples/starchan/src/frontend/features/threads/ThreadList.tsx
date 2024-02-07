@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom'
 import Loading from '../Loading'
 import PageSelect from '../PageSelect'
 import { useGetThreadsQuery } from '../api/apiSlice'
-import NewThreadForm from '../forms/NewThreadForm'
+import NewThreadForm from '../formInputs/NewThreadForm'
 import Thread from './Thread'
 
 export default function ThreadList() {

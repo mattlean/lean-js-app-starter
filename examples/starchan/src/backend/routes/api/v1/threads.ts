@@ -1,6 +1,6 @@
 import { Prisma } from '@prisma/client'
 import { NextFunction, Request, Response, Router } from 'express'
-import { body, query } from 'express-validator'
+import { query } from 'express-validator'
 
 import {
     isPrismaKnownRequestError,
@@ -13,19 +13,11 @@ import {
     commentValidationChain,
     createReplyMiddleware,
     createThreadMiddleware,
+    threadValidationChain,
     validateThreadObjectIdMiddleware,
 } from '../../middlewares'
 
 const router = Router()
-
-const threadValidationChain = () => [
-    body('subject')
-        .isString()
-        .trim()
-        .isLength({ max: 191 })
-        .optional({ values: 'null' }),
-    commentValidationChain(),
-]
 
 /**
  * @openapi

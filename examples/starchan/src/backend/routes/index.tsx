@@ -6,6 +6,10 @@ import { objRoutes } from '../../frontend/app/routes'
 import { buildStore } from '../../frontend/common/redux'
 import { apiSlice } from '../../frontend/features/api/apiSlice'
 import { genFormError } from '../../frontend/features/errors/formErrorSlice'
+import {
+    setComment,
+    setSubject,
+} from '../../frontend/features/formInputs/formInputsSlice'
 import { ServerError, validateErrorMiddleware } from '../common/error'
 import { buildPreloadedState } from '../common/util'
 import ServerReactApp from '../views/ServerReactApp'
@@ -82,9 +86,17 @@ const preloadFormErrorMiddleware = (
 
     if (res.locals.validationErrs) {
         res.locals.store.dispatch(genFormError(res.locals.validationErrs))
+
+        if (req.body.subject) {
+            res.locals.store.dispatch(setSubject(req.body.subject))
+        }
+
+        if (req.body.comment) {
+            res.locals.store.dispatch(setComment(req.body.comment))
+        }
     } else {
         console.error(
-            'Expected to encounter a validation errors. Server-side render will continue with a form error message.'
+            'Expected to encounter validation errors. Server-side render will continue without a form error message.'
         )
     }
 

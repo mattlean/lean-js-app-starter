@@ -1,19 +1,15 @@
-import { ChangeEventHandler } from 'react'
-
-import { useAppSelector } from '../../app/hooks'
+import { useAppDispatch, useAppSelector } from '../../app/hooks'
+import { setComment } from './formInputsSlice'
 
 export interface Props {
-    comment?: string
     isLoading?: boolean
-    onCommentChange?: ChangeEventHandler<HTMLTextAreaElement>
 }
 
-export default function ReplyInputs({
-    comment,
-    isLoading,
-    onCommentChange,
-}: Props) {
+export default function ReplyInputs({ isLoading }: Props) {
+    const comment = useAppSelector((state) => state.formInputs.comment)
     const formError = useAppSelector((state) => state.formError)
+
+    const dispatch = useAppDispatch()
 
     return (
         <table className="post-form__table">
@@ -26,7 +22,9 @@ export default function ReplyInputs({
                         <textarea
                             name="comment"
                             value={comment}
-                            onChange={onCommentChange}
+                            onChange={(e) =>
+                                dispatch(setComment(e.target.value))
+                            }
                         />
                     </td>
                 </tr>

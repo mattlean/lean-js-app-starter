@@ -4,7 +4,7 @@ import { isFetchBaseQueryError } from '../../common/error'
 import { APIError } from '../../common/error'
 import Loading from '../Loading'
 import { useGetThreadQuery } from '../api/apiSlice'
-import NewReplyForm from '../forms/NewReplyForm'
+import NewReplyForm from '../formInputs/NewReplyForm'
 import Thread from './Thread'
 import ThreadPageNav from './ThreadPageNav'
 

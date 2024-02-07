@@ -1,23 +1,16 @@
-import { ChangeEventHandler } from 'react'
-
-import { useAppSelector } from '../../app/hooks'
+import { useAppDispatch, useAppSelector } from '../../app/hooks'
+import { setComment, setSubject } from './formInputsSlice'
 
 export interface Props {
-    comment?: string
     isLoading?: boolean
-    subject?: string
-    onCommentChange?: ChangeEventHandler<HTMLTextAreaElement>
-    onSubjectChange?: ChangeEventHandler<HTMLInputElement>
 }
 
-export default function ThreadInputs({
-    comment,
-    isLoading,
-    subject,
-    onCommentChange,
-    onSubjectChange,
-}: Props) {
+export default function ThreadInputs({ isLoading }: Props) {
+    const subject = useAppSelector((state) => state.formInputs.subject)
+    const comment = useAppSelector((state) => state.formInputs.comment)
     const formError = useAppSelector((state) => state.formError)
+
+    const dispatch = useAppDispatch()
 
     return (
         <table className="post-form__table">
@@ -31,7 +24,9 @@ export default function ThreadInputs({
                             name="subject"
                             type="text"
                             value={subject}
-                            onChange={onSubjectChange}
+                            onChange={(e) =>
+                                dispatch(setSubject(e.target.value))
+                            }
                         />
                     </td>
                 </tr>
@@ -43,7 +38,9 @@ export default function ThreadInputs({
                         <textarea
                             name="comment"
                             value={comment}
-                            onChange={onCommentChange}
+                            onChange={(e) =>
+                                dispatch(setComment(e.target.value))
+                            }
                         />
                     </td>
                 </tr>

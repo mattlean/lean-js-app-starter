@@ -1,38 +1,44 @@
-import { FormEvent, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import React, { FormEvent } from 'react'
+import { useNavigate } from 'react-router-dom'
 
-import { useAppDispatch } from '../../app/hooks'
+import { useAppDispatch, useAppSelector } from '../../app/hooks'
 import { isAPIErrorRes, isFetchBaseQueryError } from '../../common/error'
-import { useCreateReplyMutation } from '../api/apiSlice'
+import { useCreateThreadMutation } from '../api/apiSlice'
 import { clearFormError, genFormError } from '../errors/formErrorSlice'
-import ReplyInputs from './ReplyInputs'
+import ThreadInputs from './ThreadInputs'
+import { setComment, setSubject } from './formInputsSlice'
 
-export default function NewReplyForm() {
-    const [comment, setComment] = useState('')
-    const [show, setShow] = useState(false)
+export interface Props {
+    setShowForm: React.Dispatch<React.SetStateAction<boolean>>
+    showForm: boolean
+}
 
-    const { threadId } = useParams()
-    const [createReply, { isLoading }] = useCreateReplyMutation()
+export default function NewThreadForm({ setShowForm, showForm }: Props) {
+    const subject = useAppSelector((state) => state.formInputs.subject)
+    const comment = useAppSelector((state) => state.formInputs.comment)
+
+    const [createThread, { isLoading }] = useCreateThreadMutation()
+    const navigate = useNavigate()
     const dispatch = useAppDispatch()
 
     let content
 
-    if (!show) {
+    if (!showForm) {
         content = (
             <>
                 <span className="post-form__txt">
                     [
                     <button
                         className="post-form__btn"
-                        onClick={() => setShow(true)}
+                        onClick={() => setShowForm(true)}
                     >
-                        Post a Reply
+                        Start a New Thread
                     </button>
                     ]
                 </span>
                 <noscript>
-                    <form action={`/thread/${threadId}`} method="post">
-                        <ReplyInputs />
+                    <form action="/" method="post">
+                        <ThreadInputs />
                     </form>
                 </noscript>
             </>
@@ -44,12 +50,15 @@ export default function NewReplyForm() {
 
             let res
             try {
-                res = await createReply({ threadId, comment }).unwrap()
+                res = await createThread({
+                    subject: subject || undefined,
+                    comment,
+                }).unwrap()
             } catch (err) {
                 if (isFetchBaseQueryError(err) && isAPIErrorRes(err.data)) {
                     if (err.status === 400 && err.data.errors) {
                         console.error(
-                            'An error was encountered while creating the reply:',
+                            'An error was encountered while creating the thread:',
                             err
                         )
 
@@ -58,25 +67,20 @@ export default function NewReplyForm() {
                 }
 
                 throw new Error(
-                    'An error was encountered while creating the reply.'
+                    'An error was encountered while creating the thread.'
                 )
             }
 
             if (!res?.data) {
-                throw new Error('Reply data could not be read.')
+                throw new Error('Thread data could not be read.')
             }
 
-            setShow(false)
-            setComment('')
+            navigate(`/thread/${res.data.id}`)
         }
 
         content = (
             <form onSubmit={handleSubmit}>
-                <ReplyInputs
-                    comment={comment}
-                    isLoading={isLoading}
-                    onCommentChange={(e) => setComment(e.target.value)}
-                />
+                <ThreadInputs isLoading={isLoading} />
             </form>
         )
     }
