@@ -41,6 +41,11 @@ afterAll(() => server.close())
 
 const MOCK_THREAD_LIST_RESULTS_P1 = MOCK_THREAD_LIST_RES.slice(0, 20)
 const MOCK_THREAD_LIST_RESULTS_P2 = MOCK_THREAD_LIST_RES.slice(20, 40)
+const MOCK_THREAD_LIST_INFO = {
+    hasNextPage: true,
+    hasPreviousPage: false,
+    totalPages: 3,
+}
 
 test('matches snapshot for basic server-side rendering of thread list page', async () => {
     expect.assertions(1)
@@ -71,6 +76,7 @@ test('hydrates empty thread list page', async () => {
     const res = await request(app).get('/')
 
     cleanupJsdom = globalJsdom(res.text, { runScripts: 'dangerously' })
+
     // When imported directly from Testing Library, screen cannot find
     // document.body from global-jsdom for some reason, so this is a workaround.
     const screen = getQueriesForElement(document.body, queries)
@@ -96,12 +102,12 @@ test('hydrates empty thread list page', async () => {
 })
 
 test('hydrates thread list page with one page', async () => {
-    const MOCK_THREAD_LIST = MOCK_THREAD_LIST_RES.slice(0, 5)
+    const MOCK_THREAD_LIST_RESULT = MOCK_THREAD_LIST_RES.slice(0, 5)
 
     server.use(
-        http.get('http://localhost:3000/api/v1/threads?page=1', () =>
+        http.get('http://localhost:3000/api/v1/threads', () =>
             HttpResponse.json({
-                data: MOCK_THREAD_LIST,
+                data: MOCK_THREAD_LIST_RESULT,
                 info: {
                     hasNextPage: false,
                     hasPreviousPage: false,
@@ -116,6 +122,7 @@ test('hydrates thread list page with one page', async () => {
     const res = await request(app).get('/')
 
     cleanupJsdom = globalJsdom(res.text, { runScripts: 'dangerously' })
+
     // When imported directly from Testing Library, screen cannot find
     // document.body from global-jsdom for some reason, so this is a workaround.
     const screen = getQueriesForElement(document.body, queries)
@@ -136,19 +143,15 @@ test('hydrates thread list page with one page', async () => {
     // Confirm that the current thread page only shows 5 threads
     expect(screen.getAllByRole('list')[0].children).toHaveLength(5)
     // Confirm that the page navigation only shows 1 page
-    expect(screen.getByRole('navigation').children[0].children).toHaveLength(1)
+    expect(screen.getByTestId('page-select').children).toHaveLength(1)
 })
 
 test('hydrates thread list page with multiple pages', async () => {
     server.use(
-        http.get('http://localhost:3000/api/v1/threads?page=1', () =>
+        http.get('http://localhost:3000/api/v1/threads', () =>
             HttpResponse.json({
                 data: MOCK_THREAD_LIST_RESULTS_P1,
-                info: {
-                    hasNextPage: true,
-                    hasPreviousPage: false,
-                    totalPages: 3,
-                },
+                info: MOCK_THREAD_LIST_INFO,
             })
         )
     )
@@ -158,6 +161,7 @@ test('hydrates thread list page with multiple pages', async () => {
     const res = await request(app).get('/')
 
     cleanupJsdom = globalJsdom(res.text, { runScripts: 'dangerously' })
+
     // When imported directly from Testing Library, screen cannot find
     // document.body from global-jsdom for some reason, so this is a workaround.
     const screen = getQueriesForElement(document.body, queries)
@@ -178,7 +182,7 @@ test('hydrates thread list page with multiple pages', async () => {
     // Confirm that the current thread page shows the maximum of 20 threads
     expect(screen.getAllByRole('list')[0].children).toHaveLength(20)
     // Confirm that the page navigation shows 3 pages
-    expect(screen.getByRole('navigation').children[0].children).toHaveLength(3)
+    expect(screen.getByTestId('page-select').children).toHaveLength(3)
 })
 
 test('thread list page navigates to different page when page select is used', async () => {
@@ -191,20 +195,12 @@ test('thread list page navigates to different page when page select is used', as
             if (page === '1') {
                 return HttpResponse.json({
                     data: MOCK_THREAD_LIST_RESULTS_P1,
-                    info: {
-                        hasNextPage: true,
-                        hasPreviousPage: false,
-                        totalPages: 3,
-                    },
+                    info: MOCK_THREAD_LIST_INFO,
                 })
             } else if (page === '2') {
                 return HttpResponse.json({
                     data: MOCK_THREAD_LIST_RESULTS_P2,
-                    info: {
-                        hasNextPage: true,
-                        hasPreviousPage: true,
-                        totalPages: 3,
-                    },
+                    info: MOCK_THREAD_LIST_INFO,
                 })
             }
 
@@ -217,7 +213,8 @@ test('thread list page navigates to different page when page select is used', as
     const res = await request(app).get('/')
 
     cleanupJsdom = globalJsdom(res.text, { runScripts: 'dangerously' })
-    window.scrollTo = jest.fn() // Mock scrollTo since global-jsdom does not implement it (TODO: test if regular jsdom does)
+    window.scrollTo = jest.fn() // Mock scrollTo since jsdom does not implement it
+
     // When imported directly from Testing Library, screen cannot find
     // document.body from global-jsdom for some reason, so this is a workaround.
     const screen = getQueriesForElement(document.body, queries)
@@ -238,20 +235,22 @@ test('thread list page navigates to different page when page select is used', as
     // TODO: remove this if unneeded
     // const mockedScrollTo = window.scrollTo as jest.Mock<void>
 
-    // Generated thread 1 is on page 1 so it should be visible
+    // First thread from page 1 should be visible, but first thread from page 2 shouldn't
     expect(
-        screen.getByText(/Generated thread 1 \(laboris\)/i)
+        screen.getByText(MOCK_THREAD_LIST_RESULTS_P1[0].subject)
     ).toBeInTheDocument()
     expect(
-        screen.queryByText(/Generated thread 21 \(ad\)/i)
+        screen.queryByText(MOCK_THREAD_LIST_RESULTS_P2[0].subject)
     ).not.toBeInTheDocument()
 
     await fireEvent.click(screen.getByRole('link', { name: '2' }))
     await waitForElementToBeRemoved(() => screen.getByText(/loading.../i))
 
-    // Generated thread 21 is on page 2 so it should be visible
+    // First thread from page 2 should be visible, but first thread from page 1 shouldn't
     expect(
-        screen.queryByText(/Generated thread 1 \(laboris\)/i)
+        screen.getByText(MOCK_THREAD_LIST_RESULTS_P2[0].subject)
+    ).toBeInTheDocument()
+    expect(
+        screen.queryByText(MOCK_THREAD_LIST_RESULTS_P1[0].subject)
     ).not.toBeInTheDocument()
-    expect(screen.getByText(/Generated thread 21 \(ad\)/i)).toBeInTheDocument()
 })

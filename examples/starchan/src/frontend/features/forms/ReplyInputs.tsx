@@ -16,7 +16,7 @@ export default function ReplyInputs({
     const formError = useAppSelector((state) => state.formError)
 
     return (
-        <table>
+        <table className="post-form__table">
             <tbody>
                 <tr>
                     <th>
@@ -32,13 +32,13 @@ export default function ReplyInputs({
                 </tr>
                 {formError && (
                     <tr>
-                        <td colSpan={2}>
+                        <td colSpan={2} className="post-form__err-msg">
                             <b>{formError}</b>
                         </td>
                     </tr>
                 )}
                 <tr>
-                    <td colSpan={2}>
+                    <td colSpan={2} className="post-form__post-cell">
                         <button type="submit" disabled={isLoading}>
                             Post
                         </button>

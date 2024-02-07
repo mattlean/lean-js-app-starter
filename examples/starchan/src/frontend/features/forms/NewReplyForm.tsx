@@ -15,53 +15,62 @@ export default function NewReplyForm() {
     const [createReply, { isLoading }] = useCreateReplyMutation()
     const dispatch = useAppDispatch()
 
+    let content
+
     if (!show) {
-        return (
-            <section>
-                [<button onClick={() => setShow(true)}>Post a Reply</button>]
+        content = (
+            <>
+                <span className="post-form__txt">
+                    [
+                    <button
+                        className="post-form__btn"
+                        onClick={() => setShow(true)}
+                    >
+                        Post a Reply
+                    </button>
+                    ]
+                </span>
                 <noscript>
                     <form action={`/thread/${threadId}`} method="post">
                         <ReplyInputs />
                     </form>
                 </noscript>
-            </section>
+            </>
         )
-    }
+    } else {
+        const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+            e.preventDefault()
+            dispatch(clearFormError())
 
-    const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-        e.preventDefault()
-        dispatch(clearFormError())
+            let res
+            try {
+                res = await createReply({ threadId, comment }).unwrap()
+            } catch (err) {
+                if (isFetchBaseQueryError(err) && isAPIErrorRes(err.data)) {
+                    if (err.status === 400 && err.data.errors) {
+                        console.error(
+                            'An error was encountered while creating the reply:',
+                            err
+                        )
 
-        let res
-        try {
-            res = await createReply({ threadId, comment }).unwrap()
-        } catch (err) {
-            if (isFetchBaseQueryError(err) && isAPIErrorRes(err.data)) {
-                if (err.status === 400 && err.data.errors) {
-                    console.error(
-                        'An error was encountered while creating the reply:',
-                        err
-                    )
-
-                    return dispatch(genFormError(err.data.errors))
+                        return dispatch(genFormError(err.data.errors))
+                    }
                 }
+
+                throw new Error(
+                    'An error was encountered while creating the reply.'
+                )
             }
 
-            throw new Error(
-                'An error was encountered while creating the reply.'
-            )
+            if (!res?.data) {
+                throw new Error('Reply data could not be read.')
+            }
+
+            setShow(false)
+            setComment('')
         }
 
-        if (!res?.data) {
-            throw new Error('Reply data could not be read.')
-        }
-
-        setShow(false)
-        setComment('')
-    }
-
-    return (
-        <section>
+        content = (
             <form onSubmit={handleSubmit}>
                 <ReplyInputs
                     comment={comment}
@@ -69,6 +78,8 @@ export default function NewReplyForm() {
                     onCommentChange={(e) => setComment(e.target.value)}
                 />
             </form>
-        </section>
-    )
+        )
+    }
+
+    return <section className="post-form">{content}</section>
 }

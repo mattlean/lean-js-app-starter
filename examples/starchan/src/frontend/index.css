@@ -1,4 +1,10 @@
-html {
+:root {
+    --blue-dark: #d6daf0;
+    --blue-light: #eef2ff;
+    --blue-shadow: #b7c5d9;
+    --link-color: #34345c;
+    --link-hover: #d00;
+
     box-sizing: border-box;
 }
 
@@ -6,6 +12,15 @@ html {
 *::before,
 *::after {
     box-sizing: inherit;
+}
+
+a {
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--link-hover);
 }
 
 body {
@@ -36,14 +51,14 @@ pre {
 .post-form__btn {
     background: none;
     border: none;
-    color: #34345c;
+    color: var(--link-color);
     font-size: 22px;
     font-weight: 700;
     padding: 0;
 }
 
 .post-form__btn:hover {
-    color: #d00;
+    color: var(--link-hover);
     cursor: pointer;
 }
 
@@ -63,7 +78,7 @@ pre {
 }
 
 .post-form__err-msg {
-    color: red;
+    color: #f00;
     font-weight: bold;
 }
 
@@ -99,18 +114,65 @@ pre {
 }
 
 .reply__marker {
-    color: #b7c5d9;
+    color: var(--blue-shadow);
     font-weight: normal;
     margin: 0 2px;
 }
 
 .reply__content {
-    background-color: #d6daf0;
-    border-bottom: 1px solid #b7c5d9;
-    border-right: 1px solid #b7c5d9;
+    background-color: var(--blue-dark);
+    border-bottom: 1px solid var(--blue-shadow);
+    border-right: 1px solid var(--blue-shadow);
     padding: 2px;
 }
 
 .reply__content pre {
     margin: 1em 40px;
+}
+
+.page-select {
+    background-color: var(--blue-dark);
+    border-bottom: 1px solid var(--blue-shadow);
+    border-right: 1px solid var(--blue-shadow);
+    display: inline-block;
+    margin: 0;
+    padding: 3px 7px;
+}
+
+.page-select__page {
+    display: inline-block;
+    margin-right: 1ch;
+}
+
+.page-select__page:last-child {
+    margin-right: 0;
+}
+
+.page-select__page--active > a {
+    font-weight: bold;
+}
+
+.footer {
+    font-size: 10px;
+    text-align: center;
+}
+
+.footer__links {
+    margin: 1em 0;
+    padding: 0;
+}
+
+.footer__links > li {
+    display: inline-block;
+    font-size: 10px;
+}
+
+.footer__links > li::before {
+    content: '\2022';
+    margin-left: 1ch;
+    margin-right: 1ch;
+}
+
+.footer__links > li:first-child::before {
+    content: none;
 }

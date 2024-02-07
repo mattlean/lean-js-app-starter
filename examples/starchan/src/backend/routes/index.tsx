@@ -254,7 +254,7 @@ router.post(
 )
 
 /**
- * POST /
+ * POST / (Error Handler)
  * A specialized route that only executes when validation errors are encountered
  * during the thread creation process. This falls back the response to a server-side
  * rendering of the thread list where its new thread form will display an error message.
@@ -316,7 +316,7 @@ router.post(
 )
 
 /**
- * POST /thread/:threadId
+ * POST /thread/:threadId (Error Handler)
  * A specialized route that only executes when validation errors are encountered
  * during the reply creation process. This falls back the response to a server-side
  * rendering of the thread page where its new reply form will display an error message.
