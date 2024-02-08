@@ -1,17 +1,15 @@
-import { Reply } from '@prisma/client'
-import { Thread } from '@prisma/client'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
-import { ThreadWithReplies } from '../../../common/types'
+import { ReplyResData, ThreadResData } from '../../common/types'
 import { APIRes } from './types'
 
 export interface ThreadInput {
-    subject?: ThreadWithReplies['subject']
-    comment: ThreadWithReplies['comment']
+    subject?: ThreadResData['subject']
+    comment: ThreadResData['comment']
 }
 
 export interface ReplyInput {
-    comment: Reply['comment']
+    comment: ReplyResData['comment']
 }
 
 const baseUrl =
@@ -28,9 +26,9 @@ export const apiSlice = createApi({
     tagTypes: ['Thread'],
     endpoints: (builder) => ({
         createReply: builder.mutation<
-            APIRes<ThreadWithReplies>,
+            APIRes<ThreadResData>,
             {
-                threadId: ThreadWithReplies['id'] | void
+                threadId: ThreadResData['id'] | void
                 comment: ReplyInput['comment']
             }
         >({
@@ -38,7 +36,7 @@ export const apiSlice = createApi({
                 threadId,
                 ...newReply
             }: {
-                threadId: ThreadWithReplies['id']
+                threadId: ThreadResData['id']
                 comment: ReplyInput['comment']
             }) => {
                 if (!threadId) {
@@ -54,7 +52,7 @@ export const apiSlice = createApi({
             invalidatesTags: ['Thread'],
         }),
 
-        createThread: builder.mutation<APIRes<Thread>, ThreadInput>({
+        createThread: builder.mutation<APIRes<ThreadResData>, ThreadInput>({
             query: (newThread) => ({
                 url: '/threads',
                 method: 'POST',
@@ -64,8 +62,8 @@ export const apiSlice = createApi({
         }),
 
         getThread: builder.query<
-            APIRes<ThreadWithReplies>,
-            ThreadWithReplies['id'] | void
+            APIRes<ThreadResData>,
+            ThreadResData['id'] | void
         >({
             query: (threadId) => {
                 if (!threadId) {
@@ -77,7 +75,7 @@ export const apiSlice = createApi({
             providesTags: ['Thread'],
         }),
 
-        getThreads: builder.query<APIRes<ThreadWithReplies[]>, number>({
+        getThreads: builder.query<APIRes<ThreadResData[]>, number>({
             query: (page) => ({
                 url: '/threads',
                 method: 'GET',

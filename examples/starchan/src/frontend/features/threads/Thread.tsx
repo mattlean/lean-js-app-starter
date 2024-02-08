@@ -3,11 +3,11 @@ import { useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
 
-import { ThreadWithReplies } from '../../../common/types'
+import { ThreadResData } from '../../common/types'
 import Reply from './Reply'
 
 export interface Props {
-    data: ThreadWithReplies
+    data: ThreadResData
 }
 
 export default function Thread({ data }: Props) {
@@ -42,13 +42,26 @@ export default function Thread({ data }: Props) {
     ))
 
     let replyLink
-    if (!threadId)
+    let omittedTxt
+    if (!threadId) {
         replyLink = (
             <>
                 {' '}
                 [<Link to={`/thread/${data.id}`}>Reply</Link>]
             </>
         )
+
+        if (data.replyCount && data.replyCount > 5) {
+            const omittedCount = data.replyCount - data.replies.length
+            omittedTxt = (
+                <p className="omitted-txt">
+                    {omittedCount} {omittedCount === 1 ? 'reply' : 'replies'}{' '}
+                    omitted. <Link to={`/thread/${data.id}`}>Click here</Link>{' '}
+                    to view.
+                </p>
+            )
+        }
+    }
 
     return (
         <>
@@ -68,6 +81,7 @@ export default function Thread({ data }: Props) {
                     {replyLink}
                 </header>
                 <pre>{data.comment}</pre>
+                {omittedTxt}
             </section>
             {replies && replies?.length > 0 && (
                 <ul className="reply-list">{replies}</ul>

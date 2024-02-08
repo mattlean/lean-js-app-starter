@@ -1,10 +1,11 @@
-import { Reply as ReplyType } from '@prisma/client'
 import moment from 'moment'
 import { useEffect, useMemo, useState } from 'react'
 import { Link, useLocation, useParams } from 'react-router-dom'
 
+import { ReplyResData } from '../../common/types'
+
 export interface Props {
-    data: ReplyType
+    data: ReplyResData
     threadId: string
 }
 

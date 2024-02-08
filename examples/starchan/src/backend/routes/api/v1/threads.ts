@@ -125,6 +125,7 @@ router.get(
                                 replies: {
                                     $slice: ['$replies', -5],
                                 },
+                                replyCount: { $size: '$replies' },
                             },
                         },
 
@@ -139,7 +140,6 @@ router.get(
                                 createdAt: {
                                     $dateToString: { date: '$createdAt' },
                                 },
-                                replyCount: { $size: '$replies' },
                                 replies: {
                                     $map: {
                                         input: '$replies',
@@ -155,6 +155,7 @@ router.get(
                                         },
                                     },
                                 },
+                                replyCount: 1,
                             },
                         },
                     ],

@@ -109,6 +109,11 @@ pre {
     color: #000;
 }
 
+.omitted-txt {
+    color: #707070;
+    margin-bottom: 0;
+}
+
 .reply-list {
     align-items: flex-start;
     display: flex;
