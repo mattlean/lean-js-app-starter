@@ -13,8 +13,11 @@ export default function ThreadPageNav({ isBottom }: Props) {
 
     return (
         <nav>
-            {isBottom && <hr />}[<Link to="/">Return</Link>] [{jumpTo}]
-            {!isBottom && <hr />}
+            {isBottom && <hr />}[
+            <Link to="/" onClick={() => scrollTo(0, 0)}>
+                Return
+            </Link>
+            ] [{jumpTo}]{!isBottom && <hr />}
         </nav>
     )
 }

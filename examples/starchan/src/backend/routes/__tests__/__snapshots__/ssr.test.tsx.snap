@@ -26,7 +26,7 @@ exports[`matches snapshot for basic server-side rendering of thread list page 1`
         ]
       </span>
       <noscript>
-        &lt;form action="/" method="post"&gt;&lt;table class="post-form__table"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;th&gt;&lt;label for="subject"&gt;Subject&lt;/label&gt;&lt;/th&gt;&lt;td&gt;&lt;input name="subject" type="text"/&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;th&gt;&lt;label for="comment"&gt;Comment&lt;/label&gt;&lt;/th&gt;&lt;td&gt;&lt;textarea name="comment"&gt;&lt;/textarea&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colSpan="2" class="post-form__post-cell"&gt;&lt;button type="submit"&gt;Post&lt;/button&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/form&gt;
+        &lt;form action="/" method="post"&gt;&lt;table class="post-form__table"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;th&gt;&lt;label for="subject"&gt;Subject&lt;/label&gt;&lt;/th&gt;&lt;td&gt;&lt;input id="subject" name="subject" type="text" value=""/&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;th&gt;&lt;label for="comment"&gt;Comment&lt;/label&gt;&lt;/th&gt;&lt;td&gt;&lt;textarea id="comment" name="comment"&gt;&lt;/textarea&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colSpan="2" class="post-form__post-cell"&gt;&lt;button type="submit"&gt;Post&lt;/button&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/form&gt;
       </noscript>
     </section>
     <hr />
@@ -54,6 +54,7 @@ exports[`matches snapshot for basic server-side rendering of thread list page 1`
   </nav>
   <footer
     class="footer"
+    id="bottom"
   >
     <p>
       *chan (pronounced as starchan) is a

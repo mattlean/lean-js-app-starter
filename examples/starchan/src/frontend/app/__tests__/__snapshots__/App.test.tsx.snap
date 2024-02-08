@@ -5,7 +5,7 @@ exports[`App component matches diff snapshot transitioning from loading render t
 - First value
 + Second value
 
-@@ -5,9 +5,31 @@
+@@ -5,13 +5,50 @@
       >
         *chan
       </h1>
@@ -15,12 +15,20 @@ exports[`App component matches diff snapshot transitioning from loading render t
 -     Loading...
 -   </i>
 +   <main>
-+     <section>
-+       [
-+       <button>
-+         Start a New Thread
-+       </button>
-+       ]
++     <section
++       class="post-form"
++     >
++       <span
++         class="post-form__txt"
++       >
++         [
++         <button
++           class="post-form__btn"
++         >
++           Start a New Thread
++         </button>
++         ]
++       </span>
 +       <noscript />
 +     </section>
 +     <hr />
@@ -29,24 +37,35 @@ exports[`App component matches diff snapshot transitioning from loading render t
 +     </p>
 +   </main>
 +   <nav>
-+     <ol>
-+       <li>
++     <ol
++       class="page-select"
++       data-testid="page-select"
++     >
++       <li
++         class="page-select__page page-select__page--active"
++       >
++         [
 +         <a
 +           href="/"
 +         >
 +           1
 +         </a>
++         ]
 +       </li>
 +     </ol>
 +   </nav>
-  </DocumentFragment>"
+    <footer
+      class="footer"
+      id="bottom"
+    >
+      <p>"
 `;
 
 exports[`App component matches snapshot for basic render 1`] = `
 <DocumentFragment>
   <header>
     <h1
-      class="title"
+      id="title"
     >
       *chan
     </h1>
@@ -55,5 +74,52 @@ exports[`App component matches snapshot for basic render 1`] = `
   <i>
     Loading...
   </i>
+  <footer
+    class="footer"
+    id="bottom"
+  >
+    <p>
+      *chan (pronounced as starchan) is a 
+      <a
+        href="https://en.wikipedia.org/wiki/Textboard"
+      >
+        textboard
+      </a>
+       that demonstrates one of 
+      <a
+        href="#"
+      >
+        Lean JS App Starter's full-stack project setups
+      </a>
+      . It showcases an Express server that acts as a REST API and a React server-side renderer. These work in tandem with a React frontend.
+    </p>
+    <nav>
+      <ul
+        class="footer__links"
+      >
+        <li>
+          <a
+            href="#"
+          >
+            About
+          </a>
+        </li>
+        <li>
+          <a
+            href="#"
+          >
+            *chan GitHub
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://github.com/mattlean/lean-js-app-starter"
+          >
+            Lean JavaScript Application Starter
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </footer>
 </DocumentFragment>
 `;

@@ -6,7 +6,6 @@ import { isAPIErrorRes, isFetchBaseQueryError } from '../../common/error'
 import { useCreateThreadMutation } from '../api/apiSlice'
 import { clearFormError, genFormError } from '../errors/formErrorSlice'
 import ThreadInputs from './ThreadInputs'
-import { setComment, setSubject } from './formInputsSlice'
 
 export interface Props {
     setShowForm: React.Dispatch<React.SetStateAction<boolean>>

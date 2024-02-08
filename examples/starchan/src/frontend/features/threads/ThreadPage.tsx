@@ -1,4 +1,5 @@
-import { useParams } from 'react-router-dom'
+import { useEffect } from 'react'
+import { useLocation, useParams } from 'react-router-dom'
 
 import { isFetchBaseQueryError } from '../../common/error'
 import { APIError } from '../../common/error'
@@ -10,8 +11,20 @@ import ThreadPageNav from './ThreadPageNav'
 
 export default function ThreadPage() {
     const { threadId } = useParams()
+    const { hash } = useLocation()
 
     const { data: res, error, isLoading } = useGetThreadQuery(threadId)
+
+    useEffect(() => {
+        const jumpToTargetId = hash?.slice(1)
+
+        if (res && res.data && res.data.id === jumpToTargetId) {
+            const jumpToTarget = document.getElementById(jumpToTargetId)
+            if (jumpToTarget) {
+                jumpToTarget.scrollIntoView()
+            }
+        }
+    }, [isLoading, hash]) // eslint-disable-line react-hooks/exhaustive-deps
 
     if (isLoading) {
         return <Loading />

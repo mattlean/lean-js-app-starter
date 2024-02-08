@@ -1,12 +1,12 @@
 import { FormEvent, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 
 import { useAppDispatch, useAppSelector } from '../../app/hooks'
 import { isAPIErrorRes, isFetchBaseQueryError } from '../../common/error'
 import { useCreateReplyMutation } from '../api/apiSlice'
 import { clearFormError, genFormError } from '../errors/formErrorSlice'
 import ReplyInputs from './ReplyInputs'
-import { setComment } from './formInputsSlice'
+import { clearForm } from './formInputsSlice'
 
 export default function NewReplyForm() {
     const comment = useAppSelector((state) => state.formInputs.comment)
@@ -14,6 +14,7 @@ export default function NewReplyForm() {
 
     const { threadId } = useParams()
     const [createReply, { isLoading }] = useCreateReplyMutation()
+    const navigate = useNavigate()
     const dispatch = useAppDispatch()
 
     let content
@@ -71,7 +72,12 @@ export default function NewReplyForm() {
             }
 
             setShow(false)
-            dispatch(setComment(''))
+            dispatch(clearForm())
+
+            const newReplyId = res.data.replies[res.data.replies.length - 1]?.id
+            if (newReplyId) {
+                navigate(`#${newReplyId}`)
+            }
         }
 
         content = (

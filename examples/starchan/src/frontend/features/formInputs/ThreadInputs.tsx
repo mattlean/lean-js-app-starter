@@ -21,6 +21,7 @@ export default function ThreadInputs({ isLoading }: Props) {
                     </th>
                     <td>
                         <input
+                            id="subject"
                             name="subject"
                             type="text"
                             value={subject}
@@ -36,6 +37,7 @@ export default function ThreadInputs({ isLoading }: Props) {
                     </th>
                     <td>
                         <textarea
+                            id="comment"
                             name="comment"
                             value={comment}
                             onChange={(e) =>

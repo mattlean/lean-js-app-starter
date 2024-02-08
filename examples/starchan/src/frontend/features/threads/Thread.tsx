@@ -11,8 +11,22 @@ export interface Props {
 }
 
 export default function Thread({ data }: Props) {
-    const [localCreatedAt, setLocalCreatedAt] = useState<string>('')
+    const [createdAt, setCreatedAt] = useState<string>(() =>
+        moment(data.createdAt).utc().format('MM/DD/YY(ddd)HH:mm:ss')
+    )
     const { threadId } = useParams()
+
+    const serverCreatedAt = useMemo(
+        () => new Date(data.createdAt),
+        [data?.createdAt]
+    )
+
+    useEffect(() => {
+        // This will display the datetime in the server timezone on initial render so the hydration can match.
+        // Afterwards, useEffect will run and convert the datetime to the user's local timezone.
+        // This is not ideal UX, but it's ok for a small project like this one.
+        setCreatedAt(moment(data.createdAt).format('MM/DD/YY(ddd)HH:mm:ss'))
+    }, [data?.createdAt])
 
     if (!data) {
         return null
@@ -24,7 +38,7 @@ export default function Thread({ data }: Props) {
     }
 
     const replies = data.replies?.map((reply) => (
-        <Reply key={reply.id} data={reply} />
+        <Reply key={reply.id} data={reply} threadId={data.id} />
     ))
 
     let replyLink
@@ -36,33 +50,25 @@ export default function Thread({ data }: Props) {
             </>
         )
 
-    const serverCreatedAt = useMemo(
-        () => new Date(data.createdAt),
-        [data?.createdAt]
-    )
-
-    useEffect(() => {
-        // Convert server-side UTC datetime to local time
-        setLocalCreatedAt(
-            moment(data.createdAt).format('MM/DD/YY(ddd)HH:DD:SS')
-        )
-    }, [data?.createdAt])
-
     return (
         <>
-            <header id={data.id}>
-                {subject}
-                <span className="user">Anonymous</span>{' '}
-                <time dateTime={serverCreatedAt.toISOString()}>
-                    {/* This will display the datetime in the server timezone on initial render so the hydration can match. */}
-                    {/* Afterwards, useEffect will run and convert the datetime to the user's local timezone. */}
-                    {/* This is not ideal UX, but it's ok for a small project like this one. */}
-                    {localCreatedAt || serverCreatedAt.toUTCString()}
-                </time>
-                {` Id.${data.id}`}
-                {replyLink}
-            </header>
-            <pre>{data.comment}</pre>
+            <section>
+                <header id={data.id}>
+                    {subject}
+                    <span className="user">Anonymous</span>{' '}
+                    <time dateTime={serverCreatedAt.toISOString()}>
+                        {createdAt}
+                    </time>{' '}
+                    <Link
+                        to={`/thread/${data.id}#${data.id}`}
+                        className="jump-to-link"
+                    >
+                        Id.{data.id}
+                    </Link>
+                    {replyLink}
+                </header>
+                <pre>{data.comment}</pre>
+            </section>
             {replies && replies?.length > 0 && (
                 <ul className="reply-list">{replies}</ul>
             )}

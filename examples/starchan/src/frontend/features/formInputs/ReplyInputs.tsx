@@ -20,6 +20,7 @@ export default function ReplyInputs({ isLoading }: Props) {
                     </th>
                     <td>
                         <textarea
+                            id="comment"
                             name="comment"
                             value={comment}
                             onChange={(e) =>

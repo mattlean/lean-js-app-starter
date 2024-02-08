@@ -13,6 +13,7 @@ import { buildStore } from '../../../frontend/common/redux'
 import { TestApp } from '../../../frontend/common/util/test'
 import { server } from '../../../frontend/msw/node'
 import app from '../../app'
+import { MOCK_THREAD_W_COMMENT } from './MOCK_DATA'
 import MOCK_THREAD_LIST_RES from './MOCK_THREAD_LIST_RES.json'
 
 let cleanupJsdom: { (): void }
@@ -243,6 +244,8 @@ test('thread list page navigates to different page when page select is used', as
         screen.queryByText(MOCK_THREAD_LIST_RESULTS_P2[0].subject)
     ).not.toBeInTheDocument()
 
+    // user-event currently has an issue running in the SSR environment,
+    // so fireEvent is used instead
     await fireEvent.click(screen.getByRole('link', { name: '2' }))
     await waitForElementToBeRemoved(() => screen.getByText(/loading.../i))
 
@@ -253,4 +256,53 @@ test('thread list page navigates to different page when page select is used', as
     expect(
         screen.queryByText(MOCK_THREAD_LIST_RESULTS_P1[0].subject)
     ).not.toBeInTheDocument()
+})
+
+test('creates new thread with comment when new thread form only has comment', async () => {
+    expect.assertions(2)
+
+    const res = await request(app).get('/')
+
+    cleanupJsdom = globalJsdom(res.text, { runScripts: 'dangerously' })
+
+    // When imported directly from Testing Library, screen cannot find
+    // document.body from global-jsdom for some reason, so this is a workaround.
+    const screen = getQueriesForElement(document.body, queries)
+
+    const rootEl = window.document.getElementById('root')
+
+    if (!rootEl) {
+        throw new Error('HTML element with an ID of "root" was not found.')
+    }
+
+    const store = buildStore(window.__PRELOADED_STATE__)
+
+    render(<TestApp initialEntries={['/']} store={store} />, {
+        container: rootEl,
+        hydrate: true,
+    })
+
+    // user-event currently has an issue running in the SSR environment,
+    // so fireEvent is used instead
+    await fireEvent.click(
+        screen.getByRole('button', { name: /start a new thread/i })
+    )
+
+    // Wait for the new thread form to appear
+    const inputComment = (await screen.findByLabelText(
+        'Comment'
+    )) as HTMLInputElement
+
+    fireEvent.change(inputComment, {
+        target: { value: MOCK_THREAD_W_COMMENT.comment },
+    })
+    await fireEvent.click(screen.getByRole('button', { name: /post/i }))
+
+    await screen.findByRole('button', { name: /post a reply/i })
+
+    // Confirm that the thread page has been navigated to
+    expect(
+        screen.getByText(`Id.${MOCK_THREAD_W_COMMENT.id}`)
+    ).toBeInTheDocument()
+    expect(screen.getByText(MOCK_THREAD_W_COMMENT.comment)).toBeInTheDocument()
 })
