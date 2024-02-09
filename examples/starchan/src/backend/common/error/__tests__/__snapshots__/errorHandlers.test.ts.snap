@@ -37,7 +37,7 @@ exports[`Not found error handlers handles a non-API route with no handler using 
 <html>
     <head>
         <meta charset="utf-8" />
-        <title>ljas-starchan</title>
+        <title>Error | ljas-starchan</title>
         <meta name="viewport" content="width=device-width,initial-scale=1" />
     <script defer src="/app.js"></script><link href="/app.css" rel="stylesheet"></head>
     <body>
@@ -55,7 +55,7 @@ exports[`SSR error handler returns a 500 error when the fail route is requested 
 <html>
     <head>
         <meta charset="utf-8" />
-        <title>ljas-starchan</title>
+        <title>Error | ljas-starchan</title>
         <meta name="viewport" content="width=device-width,initial-scale=1" />
     <script defer src="/app.js"></script><link href="/app.css" rel="stylesheet"></head>
     <body>
