@@ -106,7 +106,7 @@ export const ssrErrorHandler = (
     }
 
     return res.status(statusCode).render('index', {
-        title: 'ljas-starchan',
+        title: 'Error | ljas-starchan',
         content: serverSideRendering,
         preloadedState: buildPreloadedState(store.getState()),
     })

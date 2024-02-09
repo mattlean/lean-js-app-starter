@@ -1,9 +1,15 @@
+import { useEffect } from 'react'
+
 export interface Props {
     content?: string
     heading: string
 }
 
 export default function ErrorPage({ content, heading }: Props) {
+    useEffect(() => {
+        document.title = 'Error | ljas-starchan'
+    }, [])
+
     return (
         <>
             <h1>{heading}</h1>
