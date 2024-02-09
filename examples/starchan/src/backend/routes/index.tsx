@@ -121,11 +121,11 @@ const preloadThreadListMiddleware = async (
         )
     }
 
-    const page = parseInt(req.params.page) || 1
+    const currPage = parseInt(req.params.page) || 1
 
     try {
         await res.locals.store.dispatch(
-            apiSlice.endpoints.getThreads.initiate(page)
+            apiSlice.endpoints.getThreads.initiate(currPage)
         )
     } catch (err) {
         return next(err)
@@ -225,8 +225,12 @@ const ssrMiddleware = async (
         res.status(201)
     }
 
+    if (!res.locals.title) {
+        res.locals.title = 'ljas-starchan'
+    }
+
     return res.render('index', {
-        title: 'ljas-starchan',
+        title: res.locals.title,
         content: serverSideRendering,
         preloadedState: buildPreloadedState(res.locals.store.getState()),
     })
@@ -241,6 +245,29 @@ router.get(
     buildReduxStoreMiddleware,
     preloadThreadListMiddleware,
     processRtkQueriesMiddleware,
+    ssrMiddleware
+)
+
+/**
+ * GET /:page
+ * Server-side render pages 2-10 of the thread list.
+ */
+router.get(
+    `${objRoutes[0].children[0].children[0].path}(\\d+)`,
+    param('page').isInt({ min: 1, max: 10 }).optional(),
+    validateErrorMiddleware,
+    buildReduxStoreMiddleware,
+    preloadThreadListMiddleware,
+    processRtkQueriesMiddleware,
+    (req: Request, res: Response, next: NextFunction) => {
+        const currPage = parseInt(req.params.page) || 1
+
+        if (currPage !== 1) {
+            res.locals.title = `Thread List Page ${currPage} - ljas-starchan`
+        }
+
+        return next()
+    },
     ssrMiddleware
 )
 
@@ -282,20 +309,6 @@ router.post(
 )
 
 /**
- * GET /:page
- * Server-side render pages 2-10 of the thread list.
- */
-router.get(
-    `${objRoutes[0].children[0].children[0].path}(\\d+)`,
-    param('page').isInt({ min: 1, max: 10 }).optional(),
-    validateErrorMiddleware,
-    buildReduxStoreMiddleware,
-    preloadThreadListMiddleware,
-    processRtkQueriesMiddleware,
-    ssrMiddleware
-)
-
-/**
  * GET /thread/:threadId
  * Server-side render a thread page.
  */
@@ -305,6 +318,32 @@ router.get(
     buildReduxStoreMiddleware,
     preloadThreadPageMiddleware,
     processRtkQueriesMiddleware,
+    (req: Request, res: Response, next: NextFunction) => {
+        if (!res.locals.store) {
+            return next(
+                new ServerError(
+                    500,
+                    undefined,
+                    'The Redux store for the response was not found'
+                )
+            )
+        }
+
+        const thread =
+            res.locals.store.getState().api.queries[
+                `getThread("${req.params.threadId}")`
+            ].data.data
+
+        if (thread.subject) {
+            res.locals.title = `${thread.subject} - ljas-starchan`
+        } else if (thread.id) {
+            res.locals.title = `Thread ${thread.id} - ljas-starchan`
+        } else {
+            res.locals.title = 'Thread Page - ljas-starchan'
+        }
+
+        return next()
+    },
     ssrMiddleware
 )
 

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
 import Loading from '../Loading'
@@ -23,6 +23,14 @@ export default function ThreadList() {
         isFetching,
         isLoading,
     } = useGetThreadsQuery(currPage)
+
+    useEffect(() => {
+        if (currPage !== 1) {
+            document.title = `Thread List Page ${currPage} - ljas-starchan`
+        } else {
+            document.title = 'ljas-starchan'
+        }
+    }, [currPage])
 
     if (isLoading || isFetching) {
         return <Loading />
