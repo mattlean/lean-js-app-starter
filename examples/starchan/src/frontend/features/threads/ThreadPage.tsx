@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { useLocation, useParams } from 'react-router-dom'
 
+import { setThreadPageTitle } from '../../../common/docTitle'
 import { isFetchBaseQueryError } from '../../common/error'
 import { APIError } from '../../common/error'
 import Loading from '../Loading'
@@ -27,13 +28,7 @@ export default function ThreadPage() {
     }, [isLoading, hash]) // eslint-disable-line react-hooks/exhaustive-deps
 
     useEffect(() => {
-        if (res && res.data?.subject) {
-            document.title = `${res.data.subject} - ljas-starchan`
-        } else if (res && res.data?.id) {
-            document.title = `Thread ${res.data.id} - ljas-starchan`
-        } else {
-            document.title = 'Thread Page - ljas-starchan'
-        }
+        document.title = setThreadPageTitle(res)
     }, [res])
 
     if (isLoading) {

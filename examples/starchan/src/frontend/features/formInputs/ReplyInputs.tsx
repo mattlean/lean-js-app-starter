@@ -32,7 +32,7 @@ export default function ReplyInputs({ isLoading }: Props) {
                 {formError && (
                     <tr>
                         <td colSpan={2} className="post-form__err-msg">
-                            <b>{formError}</b>
+                            {formError}
                         </td>
                     </tr>
                 )}

@@ -2,6 +2,10 @@ import { NextFunction, Request, Response, Router } from 'express'
 import { param, validationResult } from 'express-validator'
 import { renderToString } from 'react-dom/server'
 
+import {
+    setThreadListPageTitle,
+    setThreadPageTitle,
+} from '../../common/docTitle'
 import { objRoutes } from '../../frontend/app/routes'
 import { buildStore } from '../../frontend/common/redux'
 import { apiSlice } from '../../frontend/features/api/apiSlice'
@@ -262,9 +266,7 @@ router.get(
     (req: Request, res: Response, next: NextFunction) => {
         const currPage = parseInt(req.params.page) || 1
 
-        if (currPage !== 1) {
-            res.locals.title = `Thread List Page ${currPage} - ljas-starchan`
-        }
+        res.locals.title = setThreadListPageTitle(currPage)
 
         return next()
     },
@@ -329,18 +331,11 @@ router.get(
             )
         }
 
-        const thread =
+        res.locals.title = setThreadPageTitle(
             res.locals.store.getState().api.queries[
                 `getThread("${req.params.threadId}")`
-            ].data.data
-
-        if (thread.subject) {
-            res.locals.title = `${thread.subject} - ljas-starchan`
-        } else if (thread.id) {
-            res.locals.title = `Thread ${thread.id} - ljas-starchan`
-        } else {
-            res.locals.title = 'Thread Page - ljas-starchan'
-        }
+            ].data
+        )
 
         return next()
     },

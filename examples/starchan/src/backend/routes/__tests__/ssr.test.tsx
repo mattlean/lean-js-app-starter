@@ -142,7 +142,7 @@ test('hydrates thread list page with one page', async () => {
     })
 
     // Confirm that the current thread page only shows 5 threads
-    expect(screen.getAllByRole('list')[0].children).toHaveLength(5)
+    expect(screen.getByTestId('thread-list').children).toHaveLength(5)
     // Confirm that the page navigation only shows 1 page
     expect(screen.getByTestId('page-select').children).toHaveLength(1)
 })
@@ -181,7 +181,7 @@ test('hydrates thread list page with multiple pages', async () => {
     })
 
     // Confirm that the current thread page shows the maximum of 20 threads
-    expect(screen.getAllByRole('list')[0].children).toHaveLength(20)
+    expect(screen.getByTestId('thread-list').children).toHaveLength(20)
     // Confirm that the page navigation shows 3 pages
     expect(screen.getByTestId('page-select').children).toHaveLength(3)
 })

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
+import { setThreadListPageTitle } from '../../../common/docTitle'
 import Loading from '../Loading'
 import PageSelect from '../PageSelect'
 import { useGetThreadsQuery } from '../api/apiSlice'
@@ -25,11 +26,7 @@ export default function ThreadList() {
     } = useGetThreadsQuery(currPage)
 
     useEffect(() => {
-        if (currPage !== 1) {
-            document.title = `Thread List Page ${currPage} - ljas-starchan`
-        } else {
-            document.title = 'ljas-starchan'
-        }
+        document.title = setThreadListPageTitle(currPage)
     }, [currPage])
 
     if (isLoading || isFetching) {
@@ -48,7 +45,7 @@ export default function ThreadList() {
 
     const content =
         res.data.length > 0 ? (
-            <ul className="thread-list">
+            <ul className="thread-list" data-testid="thread-list">
                 {res.data.map((thread, i) => (
                     <li key={thread.id}>
                         <Thread data={thread} />

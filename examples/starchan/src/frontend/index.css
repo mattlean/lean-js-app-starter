@@ -95,6 +95,10 @@ pre {
     width: 244px;
 }
 
+.loading {
+    font-style: italic;
+}
+
 .thread-list {
     list-style: none;
     padding: 0;

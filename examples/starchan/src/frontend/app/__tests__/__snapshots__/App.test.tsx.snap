@@ -5,15 +5,14 @@ exports[`App component matches diff snapshot transitioning from loading render t
 - First value
 + Second value
 
-@@ -5,13 +5,50 @@
+@@ -5,15 +5,50 @@
       >
         *chan
       </h1>
     </header>
     <hr />
--   <i>
--     Loading...
--   </i>
+-   <div
+-     class="loading"
 +   <main>
 +     <section
 +       class="post-form"
@@ -47,7 +46,9 @@ exports[`App component matches diff snapshot transitioning from loading render t
 +         [
 +         <a
 +           href="/"
-+         >
+          >
+-     Loading...
+-   </div>
 +           1
 +         </a>
 +         ]
@@ -71,9 +72,11 @@ exports[`App component matches snapshot for basic render 1`] = `
     </h1>
   </header>
   <hr />
-  <i>
+  <div
+    class="loading"
+  >
     Loading...
-  </i>
+  </div>
   <footer
     class="footer"
     id="bottom"
