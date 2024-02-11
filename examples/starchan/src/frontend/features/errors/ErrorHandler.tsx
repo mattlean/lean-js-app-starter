@@ -25,6 +25,8 @@ export default function ErrorHandler({ children }: PropsWithChildren) {
     return (
         <ErrorBoundary
             fallbackRender={({ error }) => {
+                console.error(error)
+
                 let heading
                 let content
 

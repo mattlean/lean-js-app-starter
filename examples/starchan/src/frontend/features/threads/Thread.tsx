@@ -14,7 +14,7 @@ export default function Thread({ data }: Props) {
     const [createdAt, setCreatedAt] = useState<string>(() =>
         moment(data.createdAt).utc().format('MM/DD/YY(ddd)HH:mm:ss')
     )
-    const { threadId } = useParams()
+    const { threadId: threadIdRouteParam } = useParams()
 
     const serverCreatedAt = useMemo(
         () => new Date(data.createdAt),
@@ -43,7 +43,7 @@ export default function Thread({ data }: Props) {
 
     let replyLink
     let omittedTxt
-    if (!threadId) {
+    if (!threadIdRouteParam) {
         replyLink = (
             <>
                 {' '}
@@ -51,7 +51,7 @@ export default function Thread({ data }: Props) {
             </>
         )
 
-        if (data.replyCount && data.replyCount > 5) {
+        if (data.replyCount && data.replyCount > 5 && data.replies) {
             const omittedCount = data.replyCount - data.replies.length
             omittedTxt = (
                 <p className="omitted-txt">
