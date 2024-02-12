@@ -3,7 +3,6 @@ import {
     getQueriesForElement,
     queries,
     render,
-    screen as rtlScreen,
     waitForElementToBeRemoved,
 } from '@testing-library/react'
 import globalJsdom from 'global-jsdom'

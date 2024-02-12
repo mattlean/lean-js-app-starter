@@ -7,7 +7,7 @@
         {
             "type": "node",
             "request": "attach",
-            "name": "Attach to Running Server",
+            "name": "Attach to Running App",
             "address": "localhost",
             "localRoot": "${workspaceFolder}",
             "port": 9229,
@@ -17,7 +17,7 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Start New Server",
+            "name": "Start New App",
             "program": "${workspaceFolder}/build/backend/server.js",
             "skipFiles": ["<node_internals>/**"]
         }

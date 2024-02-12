@@ -5,9 +5,9 @@
     "main": "build/app.js",
     "scripts": {
         "build": "webpack --mode development",
-        "build:debug": "node --inspect-brk webpack --mode development",
+        "build:debug": "node --inspect-brk=0.0.0.0:9231 node_modules/.bin/webpack --mode development",
         "build:production": "webpack --mode production",
-        "build:production:debug": "node --inspect-brk webpack --mode production",
+        "build:production:debug": "node --inspect-brk=0.0.0.0:9231 node_modules/.bin/webpack --mode production",
         "build:stats": "npm run build:production -- --json > stats.json",
         "build:watch": "nodemon --exec \"npm run build -- --watch\"",
         "dev": "concurrently --names \"📦 webpack,🤖 app\" \"npm run build:watch\" \"npm run start:debug\"",
@@ -21,6 +21,7 @@
         "start:debug": "nodemon --inspect=0.0.0.0:9229 --watch build build/app.js",
         "test": "jest",
         "test:coverage": "npm run test -- --coverage",
+        "test:debug": "node --inspect-brk=0.0.0.0:9230 node_modules/.bin/jest --runInBand",
         "test:watch": "npm run test -- --watch || npm run test -- --watchAll"
     },
     "author": "",

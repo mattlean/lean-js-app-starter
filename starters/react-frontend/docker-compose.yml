@@ -7,6 +7,8 @@ services:
         restart: always
         ports:
             - '${PORT}:${PORT}'
+            - '9230:9230' # Exposes Jest debugger. Also defined in the "test:debug" package.json script.
+            - '9231:9231' # Exposes webpack debugger. Also defined in the build debug package.json scripts.
         volumes:
             - .:/code
             - /code/node_modules

@@ -2,9 +2,11 @@
 
 Instead of running the projects natively on your computer, we've also provided a containerized development environment with [Docker](https://www.docker.com) that's available for you to use.
 
-Here are some things to consider if you're evaluating whether or not Docker dev environments are right for you:
+## Why should I use the Docker dev environment?
 
-## Benefits
+Here are some things to consider if you're evaluating whether or not the Docker dev environments are right for you:
+
+### Benefits
 
 There are some pretty significant upsides to using a Docker dev environment.
 
@@ -23,11 +25,11 @@ Docker completely avoids this issue because from my native machine's perspective
 
 Once Docker is installed, all you need to do is run `docker compose up` to turn on the dev environment.
 
-## Downsides
+### Downsides
 
-As with most technologies, Docker unfortunately has some trade offs to think about to.
+As with most technologies, Docker unfortunately has some trade offs to think about too.
 
-**You should learn another thing: Docker.**  
+**You should learn yet another thing: Docker.**  
 TODO:
 If an issue occurs with the dev environment, there's a good chance you may need to know your way around Docker to debug and fix the issue.
 
@@ -43,21 +45,7 @@ VS Code has the best documented way on how to do this, but this means that you w
 
 **The environment is consistent across different computers until it isn't.**
 
-### How do I stop the Docker dev environment?
-
-You can stop them with one of the following options:
-
--   Input Ctrl+C in the terminal where the processes are running.
--   Stopping the containers through Docker Desktop.
--   Open another terminal, navigate to the project directory, and run `docker compose down`.
-
-### How do I access the logs from my Docker dev environment?
-
-If you used `docker compose up`, the terminal you ran the command in will display all of the logs output by the dev enivonrment.
-
-You can also view the logs through Docker Desktop.
-
-Alternatively, you can run the Docker dev environment in detached mode with `docker compose up -d` and then view the logs in Docker Desktop or through `docker logs CONTAINER_NAME -f` where `CONTAINER_NAME` is the container's name. Pressing Ctrl+C in the terminal running the `docker logs` command will not stop the dev environment which can be handy if you don't always want a terminal open just to keep the dev environment running.
+TODO:
 
 ## How to develop inside the container with Visual Studio Code.
 
@@ -67,3 +55,55 @@ TODO:
 2. Make sure project containers are running.
 3. Use "Attach to running container..." and attach to the container you want.
 4. Once the attached VS Code instance is open, open `/code` folder in the explorer and run `cd /code` in the terminal.
+
+## FAQs
+
+Here are some other frequently asked questions for new Docker users.
+
+### How do I stop the Docker dev environment?
+
+You can stop them with one of the following options:
+
+-   Input Ctrl+C in the terminal where the processes are running.
+-   Stopping the containers through Docker Desktop.
+-   Open another terminal, navigate to the project directory, and run `docker compose down`.
+
+### How can I get information on my containers?
+
+You can run this command to see all currently running containers and information on them like container ID, what image they were build from, up-time, ports, etc:
+
+```
+docker ps
+```
+
+You can also view stopped containers by using the `--all` option like so:
+
+```
+docker ps -a
+```
+
+[For more information on `docker ps`, you can refer to its page in the Docker docs.](https://docs.docker.com/engine/reference/commandline/container_ls)
+
+Alternatively, you can view this information with Docker Desktop on the "Containers" tab.
+
+### How do I access the logs from a container?
+
+If you used `docker compose up`, the terminal you ran the command in will display all of the logs output by the dev environment.
+
+You can also view a container's logs through Docker Desktop by clicking on it in the "Containers" tab and then viewing its "Logs" tab.
+
+Alternatively, you can run the Docker dev environment in detached mode with `docker compose up -d` so you don't need to keep a terminal open while the containers are running. While this means that the logs will be hidden at first, you can still view them using `docker logs CONTAINER_NAME -f` or through Docker Desktop. You can close the logs by pressing Ctrl+C, and even though the logs will have closed, the containers running the dev environment will continue to work uninterrupted.
+
+### How can I run terminal commands inside the container?
+
+You can pass commands from your host computer to the container using `docker exec` commands, but we think it's easier to just gain full access to the container's Bash using this command:
+
+```
+docker exec -it CONTAINER_NAME bash
+```
+
+Now the container's Bash will open and any command you run will execute within the context of the container until you close the Bash with Ctrl+C. To clarify that this is the Bash within the container, you will see that the Bash prompt will include a 🐳 emoji.
+
+[For more information on `docker exec`, you can refer to its page in the Docker docs.](https://docs.docker.com/engine/reference/commandline/container_exec)
+
+Alternatively, you can also access the terminal from inside the container with Docker Desktop by accessing it through the "Containers" tab. Select the container you want to access and click on the "Terminal" tab where you'll be able to input whatever commands you want.
