@@ -1,8 +1,5 @@
 import { genDefaultErrorMessage } from '../../../common/error'
 
-/** User-facing errors stored on the APIError. */
-export type APIErrorErrors = string[]
-
 /** Developer errors stored on the APIError. */
 export type APIErrorDevErrors = (string | Error)[]
 
@@ -17,15 +14,15 @@ export default class APIError extends Error {
     /** HTTP response status code. */
     statusCode: number
 
-    /** User-facing error messages.  */
-    errors?: APIErrorErrors
+    /** User-facing error messages. */
+    errors?: string[]
 
     /** Errors intended for developers for debugging purposes. */
     devErrors?: APIErrorDevErrors
 
     constructor(
         statusCode = 500,
-        inputErrs?: string | APIErrorErrors,
+        inputErrs?: string | string[],
         inputDevErrs?: string | Error | APIErrorDevErrors
     ) {
         super()
@@ -55,12 +52,9 @@ export default class APIError extends Error {
         }
 
         const defaultErrorMessage = genDefaultErrorMessage(statusCode)
-        if (!this.message) {
-            this.message = defaultErrorMessage
-        }
-
-        if (!this.errors) {
+        if (!this.message && (!this.errors || this.errors.length === 0)) {
             this.errors = [defaultErrorMessage]
+            this.message = defaultErrorMessage
         }
     }
 }

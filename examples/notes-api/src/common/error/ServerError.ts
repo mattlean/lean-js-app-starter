@@ -22,7 +22,7 @@ export default class ServerError extends Error {
     /** HTTP response status code. */
     statusCode: number
 
-    /** User-facing error messages.  */
+    /** User-facing error messages. */
     errors?: ServerErrorErrors
 
     /** Errors intended for developers for debugging purposes. */

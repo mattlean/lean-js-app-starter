@@ -106,4 +106,4 @@ Now the container's Bash will open and any command you run will execute within t
 
 [For more information on `docker exec`, you can refer to its page in the Docker docs.](https://docs.docker.com/engine/reference/commandline/container_exec)
 
-Alternatively, you can also access the terminal from inside the container with Docker Desktop by accessing it through the "Containers" tab. Select the container you want to access and click on the "Terminal" tab where you'll be able to input whatever commands you want.
+Alternatively, you can also access the terminal from inside the container with Docker Desktop by going to the "Containers" tab, selecting the container you want to access, and clicking on the "Terminal" tab.

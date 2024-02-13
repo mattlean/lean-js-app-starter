@@ -22,7 +22,7 @@ export default class ServerError extends Error {
     /** HTTP response status code. */
     statusCode: number
 
-    /** User-facing error messages.  */
+    /** User-facing error messages. */
     errors?: ServerErrorErrors
 
     /** Errors intended for developers for debugging purposes. */
@@ -68,12 +68,9 @@ export default class ServerError extends Error {
         }
 
         const defaultErrorMessage = genDefaultErrorMessage(statusCode)
-        if (!this.message) {
-            this.message = defaultErrorMessage
-        }
-
-        if (!this.errors) {
+        if (!this.message && (!this.errors || this.errors.length === 0)) {
             this.errors = [defaultErrorMessage]
+            this.message = defaultErrorMessage
         }
     }
 }

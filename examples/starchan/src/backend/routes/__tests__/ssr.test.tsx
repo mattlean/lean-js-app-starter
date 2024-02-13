@@ -52,11 +52,6 @@ afterAll(() => server.close())
 
 const MOCK_THREAD_LIST_RESULTS_P1 = MOCK_THREAD_LIST_RES.slice(0, 20)
 const MOCK_THREAD_LIST_RESULTS_P2 = MOCK_THREAD_LIST_RES.slice(20, 40)
-const MOCK_THREAD_LIST_INFO = {
-    hasNextPage: true,
-    hasPreviousPage: false,
-    totalPages: 3,
-}
 
 test('matches snapshot for basic server-side rendering of thread list page', async () => {
     expect.assertions(1)
@@ -162,7 +157,11 @@ test('hydrates thread list page with multiple pages', async () => {
         http.get('http://localhost:3000/api/v1/threads', () =>
             HttpResponse.json({
                 data: MOCK_THREAD_LIST_RESULTS_P1,
-                info: MOCK_THREAD_LIST_INFO,
+                info: {
+                    hasNextPage: true,
+                    hasPreviousPage: false,
+                    totalPages: 3,
+                },
             })
         )
     )
@@ -206,12 +205,20 @@ test('thread list page navigates to different page when page select is used', as
             if (page === '1') {
                 return HttpResponse.json({
                     data: MOCK_THREAD_LIST_RESULTS_P1,
-                    info: MOCK_THREAD_LIST_INFO,
+                    info: {
+                        hasNextPage: true,
+                        hasPreviousPage: false,
+                        totalPages: 2,
+                    },
                 })
             } else if (page === '2') {
                 return HttpResponse.json({
                     data: MOCK_THREAD_LIST_RESULTS_P2,
-                    info: MOCK_THREAD_LIST_INFO,
+                    info: {
+                        hasNextPage: false,
+                        hasPreviousPage: true,
+                        totalPages: 2,
+                    },
                 })
             }
 
@@ -266,6 +273,108 @@ test('thread list page navigates to different page when page select is used', as
     expect(
         screen.queryByText(MOCK_THREAD_LIST_RESULTS_P1[0].subject)
     ).not.toBeInTheDocument()
+})
+
+test('thread list page does not show omitted reply count when the thread has less than 6 replies', async () => {
+    const MOCK_THREAD = MOCK_THREAD_LIST_RES.find((t) => t.replyCount < 6)
+
+    if (!MOCK_THREAD) {
+        throw new Error(
+            'No thread with less than 6 replies was found in mock data.'
+        )
+    }
+
+    server.use(
+        http.get('http://localhost:3000/api/v1/threads', () =>
+            HttpResponse.json({
+                data: [MOCK_THREAD],
+                info: {
+                    hasNextPage: false,
+                    hasPreviousPage: false,
+                    totalPages: 1,
+                },
+            })
+        )
+    )
+
+    expect.assertions(2)
+
+    const res = await request(app).get('/')
+
+    cleanupJsdom = globalJsdom(res.text, { runScripts: 'dangerously' })
+    window.scrollTo = jest.fn() // Mock scrollTo since jsdom does not implement it
+
+    // When imported directly from Testing Library, screen cannot find
+    // document.body from global-jsdom for some reason, so this is a workaround.
+    const screen = getQueriesForElement(document.body, queries)
+
+    const rootEl = window.document.getElementById('root')
+
+    if (!rootEl) {
+        throw new Error('HTML element with an ID of "root" was not found.')
+    }
+
+    const store = buildStore(window.__PRELOADED_STATE__)
+
+    render(<TestApp initialEntries={['/']} store={store} />, {
+        container: rootEl,
+        hydrate: true,
+    })
+
+    // Confirm that the thread exists without the omitted reply count text
+    expect(screen.queryByText(MOCK_THREAD.comment)).toBeInTheDocument()
+    expect(screen.queryByText(/omitted/i)).not.toBeInTheDocument()
+})
+
+test('thread list page does show omitted reply count when the thread has more than 5 replies', async () => {
+    const MOCK_THREAD = MOCK_THREAD_LIST_RES.find((t) => t.replyCount > 5)
+
+    if (!MOCK_THREAD) {
+        throw new Error(
+            'No thread with less than 6 replies was found in mock data.'
+        )
+    }
+
+    server.use(
+        http.get('http://localhost:3000/api/v1/threads', () =>
+            HttpResponse.json({
+                data: [MOCK_THREAD],
+                info: {
+                    hasNextPage: false,
+                    hasPreviousPage: false,
+                    totalPages: 1,
+                },
+            })
+        )
+    )
+
+    expect.assertions(2)
+
+    const res = await request(app).get('/')
+
+    cleanupJsdom = globalJsdom(res.text, { runScripts: 'dangerously' })
+    window.scrollTo = jest.fn() // Mock scrollTo since jsdom does not implement it
+
+    // When imported directly from Testing Library, screen cannot find
+    // document.body from global-jsdom for some reason, so this is a workaround.
+    const screen = getQueriesForElement(document.body, queries)
+
+    const rootEl = window.document.getElementById('root')
+
+    if (!rootEl) {
+        throw new Error('HTML element with an ID of "root" was not found.')
+    }
+
+    const store = buildStore(window.__PRELOADED_STATE__)
+
+    render(<TestApp initialEntries={['/']} store={store} />, {
+        container: rootEl,
+        hydrate: true,
+    })
+
+    // Confirm that the thread exists with the omitted reply count text
+    expect(screen.queryByText(MOCK_THREAD.comment)).toBeInTheDocument()
+    expect(screen.queryByText(/omitted/i)).toBeInTheDocument()
 })
 
 test('creates new thread with comment when new thread form only has comment', async () => {
