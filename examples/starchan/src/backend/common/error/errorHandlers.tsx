@@ -29,6 +29,7 @@ export const apiErrorHandler = (
     next: NextFunction
 ) => {
     if (process.env.NODE_ENV !== 'test') {
+        // Hide error messages from clogging the test outputs
         console.error(err)
     }
 
@@ -102,6 +103,7 @@ export const ssrErrorHandler = (
     }
 
     if (process.env.NODE_ENV !== 'test') {
+        // Hide error messages from clogging the test outputs
         console.error(err)
     }
 
@@ -124,6 +126,7 @@ export const globalErrorHandler = (
     next: NextFunction
 ) => {
     if (process.env.NODE_ENV !== 'test') {
+        // Hide error messages from clogging the test outputs
         console.error(err)
     }
 

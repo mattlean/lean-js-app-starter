@@ -68,9 +68,12 @@ export default class ServerError extends Error {
         }
 
         const defaultErrorMessage = genDefaultErrorMessage(statusCode)
-        if (!this.message && (!this.errors || this.errors.length === 0)) {
-            this.errors = [defaultErrorMessage]
+        if (!this.message) {
             this.message = defaultErrorMessage
+        }
+
+        if (!this.errors) {
+            this.errors = [defaultErrorMessage]
         }
     }
 }
