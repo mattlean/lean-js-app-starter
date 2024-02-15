@@ -377,7 +377,7 @@ router.post(
 )
 
 if (process.env.NODE_ENV !== 'production') {
-    // Responds with a 500 error to test API error handling.
+    // Responds with a 500 error to test server-side render error handling.
     // This is only available in non-production modes.
     router.get('/fail', () => {
         throw new Error()

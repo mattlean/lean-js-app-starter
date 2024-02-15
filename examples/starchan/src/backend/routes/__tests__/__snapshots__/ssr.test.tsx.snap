@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`matches snapshot for basic server-side rendering of thread list page 1`] = `
+exports[`thread list page matches snapshot for basic server-side rendering 1`] = `
 <DocumentFragment>
   <header>
     <h1
@@ -108,7 +108,7 @@ exports[`matches snapshot for basic server-side rendering of thread list page 1`
 </DocumentFragment>
 `;
 
-exports[`matches snapshot for basic server-side rendering of thread page 1`] = `
+exports[`thread page matches snapshot for basic server-side rendering 1`] = `
 <DocumentFragment>
   <header>
     <h1

@@ -25,7 +25,10 @@ export default function ErrorHandler({ children }: PropsWithChildren) {
     return (
         <ErrorBoundary
             fallbackRender={({ error }) => {
-                console.error(error)
+                if (process.env.NODE_ENV !== 'test') {
+                    // Hide error messages to prevent clogging of test output
+                    console.error(error)
+                }
 
                 let heading
                 let content
