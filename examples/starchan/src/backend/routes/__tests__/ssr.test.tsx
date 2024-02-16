@@ -7,10 +7,12 @@ import {
 } from '@testing-library/react'
 import globalJsdom from 'global-jsdom'
 import { HttpResponse, http } from 'msw'
+import { act } from 'react-dom/test-utils'
 import request from 'supertest'
 
 import { buildStore } from '../../../frontend/common/redux'
 import { TestApp } from '../../../frontend/common/util/test'
+import { setSubject } from '../../../frontend/features/formInputs/formInputsSlice'
 import { server } from '../../../frontend/msw/node'
 import app from '../../app'
 import { prismaMock } from '../../common/util/test'
@@ -109,6 +111,7 @@ describe('thread list page', () => {
             hydrate: true,
         })
 
+        // Confirm that the empty thread list message is present
         expect(
             screen.queryByText(
                 /Currently no threads exist. Why don't you create the first one?/i
@@ -301,7 +304,8 @@ describe('thread list page', () => {
 
         // user-event currently has an issue running in the SSR environment,
         // so fireEvent is used instead
-        await fireEvent.click(screen.getByRole('link', { name: '2' }))
+        fireEvent.click(screen.getByRole('link', { name: '2' }))
+
         await waitForElementToBeRemoved(() => screen.getByText(/loading.../i))
 
         // First thread from page 2 should be visible, but first thread from page 1 shouldn't
@@ -513,19 +517,17 @@ describe('thread list page', () => {
 
         // user-event currently has an issue running in the SSR environment,
         // so fireEvent is used instead
-        await fireEvent.click(
+        fireEvent.click(
             screen.getByRole('button', { name: /start a new thread/i })
         )
 
         // Wait for the new thread form to appear
-        const inputComment = (await screen.findByLabelText(
-            'Comment'
-        )) as HTMLInputElement
+        const inputComment = await screen.findByLabelText('Comment')
 
         fireEvent.change(inputComment, {
             target: { value: MOCK_THREAD_W_COMMENT.comment },
         })
-        await fireEvent.click(screen.getByRole('button', { name: /post/i }))
+        fireEvent.click(screen.getByRole('button', { name: /post/i }))
 
         // Wait for "Post a Reply" button to appear
         await screen.findByRole('button', { name: /post a reply/i })
@@ -579,14 +581,12 @@ describe('thread list page', () => {
 
         // user-event currently has an issue running in the SSR environment,
         // so fireEvent is used instead
-        await fireEvent.click(
+        fireEvent.click(
             screen.getByRole('button', { name: /start a new thread/i })
         )
 
         // Wait for the new thread form to appear
-        const inputSubject = (await screen.findByLabelText(
-            'Subject'
-        )) as HTMLInputElement
+        const inputSubject = await screen.findByLabelText('Subject')
 
         fireEvent.change(inputSubject, {
             target: { value: MOCK_THREAD_W_SUBJECT_COMMENT.subject },
@@ -594,7 +594,7 @@ describe('thread list page', () => {
         fireEvent.change(screen.getByLabelText('Comment'), {
             target: { value: MOCK_THREAD_W_SUBJECT_COMMENT.comment },
         })
-        await fireEvent.click(screen.getByRole('button', { name: /post/i }))
+        fireEvent.click(screen.getByRole('button', { name: /post/i }))
 
         // Wait for "Post a Reply" button to appear
         await screen.findByRole('button', { name: /post a reply/i })
@@ -664,6 +664,71 @@ describe('thread list page', () => {
         ).toBeInTheDocument()
     })
 
+    it('displays error message when there is an attempt to create a new thread without a comment', async () => {
+        server.use(
+            http.post('http://localhost:3000/api/v1/threads', () =>
+                HttpResponse.json(
+                    {
+                        errors: [
+                            {
+                                type: 'field',
+                                value: '',
+                                msg: 'Invalid value',
+                                path: 'comment',
+                                location: 'body',
+                            },
+                        ],
+                    },
+                    { status: 400 }
+                )
+            )
+        )
+
+        expect.assertions(1)
+
+        const res = await request(app).get('/')
+
+        cleanupJsdom = globalJsdom(res.text, { runScripts: 'dangerously' })
+
+        // When imported directly from Testing Library, screen cannot find
+        // document.body from global-jsdom for some reason, so this is a workaround.
+        const screen = getQueriesForElement(document.body, queries)
+
+        const rootEl = window.document.getElementById('root')
+
+        if (!rootEl) {
+            throw new Error('HTML element with an ID of "root" was not found.')
+        }
+
+        const store = buildStore(window.__PRELOADED_STATE__)
+
+        render(<TestApp initialEntries={['/']} store={store} />, {
+            container: rootEl,
+            hydrate: true,
+        })
+
+        // user-event currently has an issue running in the SSR environment,
+        // so fireEvent is used instead
+        fireEvent.click(
+            screen.getByRole('button', { name: /start a new thread/i })
+        )
+
+        // Wait for the new thread form to appear
+        await screen.findByLabelText('Comment')
+
+        fireEvent.click(screen.getByRole('button', { name: /post/i }))
+
+        // Wait for error to appear
+        await screen.findByText(/the following fields are invalid: comment/i)
+
+        // Confirm that the user is still on the thread list
+        expect(
+            screen.queryByText(
+                /currently no threads exist. why don't you create the first one?/i
+            )
+        ).toBeInTheDocument()
+    })
+
     it('displays error message when there is an attempt to create a new thread without a comment while JavaScript is disabled', async () => {
         expect.assertions(1)
 
@@ -684,6 +749,84 @@ describe('thread list page', () => {
         expect(store.getState().formError).toBe(
             'The following fields are invalid: comment'
         )
+    })
+
+    it('persists form values when there is an attempt to create a new thread without a comment', async () => {
+        server.use(
+            http.post('http://localhost:3000/api/v1/threads', () =>
+                HttpResponse.json(
+                    {
+                        errors: [
+                            {
+                                type: 'field',
+                                value: '',
+                                msg: 'Invalid value',
+                                path: 'comment',
+                                location: 'body',
+                            },
+                        ],
+                    },
+                    { status: 400 }
+                )
+            )
+        )
+
+        expect.assertions(1)
+
+        const res = await request(app).get('/')
+
+        cleanupJsdom = globalJsdom(res.text, { runScripts: 'dangerously' })
+
+        // When imported directly from Testing Library, screen cannot find
+        // document.body from global-jsdom for some reason, so this is a workaround.
+        const screen = getQueriesForElement(document.body, queries)
+
+        const rootEl = window.document.getElementById('root')
+
+        if (!rootEl) {
+            throw new Error('HTML element with an ID of "root" was not found.')
+        }
+
+        const store = buildStore(window.__PRELOADED_STATE__)
+
+        render(<TestApp initialEntries={['/']} store={store} />, {
+            container: rootEl,
+            hydrate: true,
+        })
+
+        // user-event currently has an issue running in the SSR environment,
+        // so fireEvent is used instead
+        fireEvent.click(
+            screen.getByRole('button', { name: /start a new thread/i })
+        )
+
+        // Wait for the new thread form to appear
+        let inputSubject = await screen.findByLabelText<HTMLInputElement>(
+            'Subject'
+        )
+
+        fireEvent.change(inputSubject, {
+            target: { value: MOCK_THREAD_W_SUBJECT_COMMENT.subject },
+        })
+        act(() => {
+            // Not super sure why this is needed, but I hypothesize that fireEvent
+            // doesn't trigger the input onChange handler so I have to dispatch
+            // setSubject here. Might be fixed with user-event, but due to the
+            // that cannot be used at the moment peculiarities of the SSR
+            // testing environment.
+            store.dispatch(
+                setSubject(MOCK_THREAD_W_SUBJECT_COMMENT.subject as string)
+            )
+        })
+        fireEvent.click(screen.getByRole('button', { name: /post/i }))
+
+        // Wait for error to appear
+        await screen.findByText(/the following fields are invalid: comment/i)
+
+        inputSubject = screen.getByLabelText<HTMLInputElement>('Subject')
+
+        // Expect subject input is persisted
+        expect(inputSubject).toHaveValue(MOCK_THREAD_W_SUBJECT_COMMENT.subject)
     })
 
     it('persists form values when there is an attempt to create a new thread without a comment while JavaScript is disabled', async () => {
@@ -740,6 +883,41 @@ describe('thread page', () => {
         )
 
         expect(asFragment()).toMatchSnapshot()
+    })
+
+    it('hydrates', async () => {
+        expect.assertions(2)
+
+        const currPath = `/thread/${MOCK_THREAD_W_COMMENT.id}`
+
+        const res = await request(app).get(currPath)
+
+        cleanupJsdom = globalJsdom(res.text, { runScripts: 'dangerously' })
+
+        // When imported directly from Testing Library, screen cannot find
+        // document.body from global-jsdom for some reason, so this is a workaround.
+        const screen = getQueriesForElement(document.body, queries)
+
+        const rootEl = window.document.getElementById('root')
+
+        if (!rootEl) {
+            throw new Error('HTML element with an ID of "root" was not found.')
+        }
+
+        const store = buildStore(window.__PRELOADED_STATE__)
+
+        render(<TestApp initialEntries={[currPath]} store={store} />, {
+            container: rootEl,
+            hydrate: true,
+        })
+
+        // Confirm the correct thread content is present
+        expect(
+            screen.getByText(`Id.${MOCK_THREAD_W_COMMENT.id}`)
+        ).toBeInTheDocument()
+        expect(
+            screen.getByText(MOCK_THREAD_W_COMMENT.comment)
+        ).toBeInTheDocument()
     })
 
     it('has the correct document title when the thread has no subject', async () => {
@@ -860,19 +1038,15 @@ describe('thread page', () => {
 
         // user-event currently has an issue running in the SSR environment,
         // so fireEvent is used instead
-        await fireEvent.click(
-            screen.getByRole('button', { name: /post a reply/i })
-        )
+        fireEvent.click(screen.getByRole('button', { name: /post a reply/i }))
 
         // Wait for the new thread form to appear
-        const inputComment = (await screen.findByLabelText(
-            'Comment'
-        )) as HTMLInputElement
+        const inputComment = await screen.findByLabelText('Comment')
 
         fireEvent.change(inputComment, {
             target: { value: MOCK_REPLY.comment },
         })
-        await fireEvent.click(screen.getByRole('button', { name: /post/i }))
+        fireEvent.click(screen.getByRole('button', { name: /post/i }))
 
         // Wait for "Post a Reply" button to reappear
         await screen.findByRole('button', { name: /post a reply/i })
@@ -924,6 +1098,74 @@ describe('thread page', () => {
         expect(screen.getByText(MOCK_REPLY.comment)).toBeInTheDocument()
     })
 
+    it('displays error message when there is an attempt to create a new reply without a comment', async () => {
+        server.use(
+            http.post(
+                'http://localhost:3000/api/v1/threads/:threadId/reply',
+                () =>
+                    HttpResponse.json(
+                        {
+                            errors: [
+                                {
+                                    type: 'field',
+                                    value: '',
+                                    msg: 'Invalid value',
+                                    path: 'comment',
+                                    location: 'body',
+                                },
+                            ],
+                        },
+                        { status: 400 }
+                    )
+            )
+        )
+
+        expect.assertions(2)
+
+        const currPath = `/thread/${MOCK_THREAD_W_COMMENT.id}`
+
+        const res = await request(app).get(currPath)
+
+        cleanupJsdom = globalJsdom(res.text, { runScripts: 'dangerously' })
+
+        // When imported directly from Testing Library, screen cannot find
+        // document.body from global-jsdom for some reason, so this is a workaround.
+        const screen = getQueriesForElement(document.body, queries)
+
+        const rootEl = window.document.getElementById('root')
+
+        if (!rootEl) {
+            throw new Error('HTML element with an ID of "root" was not found.')
+        }
+
+        const store = buildStore(window.__PRELOADED_STATE__)
+
+        render(<TestApp initialEntries={[currPath]} store={store} />, {
+            container: rootEl,
+            hydrate: true,
+        })
+
+        // user-event currently has an issue running in the SSR environment,
+        // so fireEvent is used instead
+        fireEvent.click(screen.getByRole('button', { name: /post a reply/i }))
+
+        // Wait for the new thread form to appear
+        await screen.findByLabelText('Comment')
+
+        fireEvent.click(screen.getByRole('button', { name: /post/i }))
+
+        // Wait for error to appear
+        await screen.findByText(/the following fields are invalid: comment/i)
+
+        // Confirm that the user is still on the thread page
+        expect(
+            screen.getByText(`Id.${MOCK_THREAD_W_COMMENT.id}`)
+        ).toBeInTheDocument()
+        expect(
+            screen.getByText(MOCK_THREAD_W_COMMENT.comment)
+        ).toBeInTheDocument()
+    })
+
     it('displays error message when there is an attempt to create a new reply without a comment while JavaScript is disabled', async () => {
         expect.assertions(1)
 
@@ -944,66 +1186,3 @@ describe('thread page', () => {
         )
     })
 })
-
-// describe('error page', () => {
-//     const currPath = '/definitely-not-found'
-
-//     it('matches snapshot for basic server-side rendering', async () => {
-//         expect.assertions(1)
-
-//         const res = await request(app).get(currPath)
-
-//         cleanupJsdom = globalJsdom(res.text, { runScripts: 'dangerously' })
-
-//         const rootEl = window.document.getElementById('root')
-
-//         if (!rootEl) {
-//             throw new Error('HTML element with an ID of "root" was not found.')
-//         }
-
-//         const store = buildStore(window.__PRELOADED_STATE__)
-
-//         const { asFragment } = render(
-//             <TestApp initialEntries={[currPath]} store={store} />,
-//             { container: rootEl, hydrate: true }
-//         )
-
-//         expect(asFragment()).toMatchSnapshot()
-//     })
-
-//     it('hydrates when 404 is encountered', async () => {
-//         expect.assertions(3)
-
-//         const res = await request(app).get(currPath)
-
-//         cleanupJsdom = globalJsdom(res.text, { runScripts: 'dangerously' })
-
-//         // When imported directly from Testing Library, screen cannot find
-//         // document.body from global-jsdom for some reason, so this is a workaround.
-//         const screen = getQueriesForElement(document.body, queries)
-
-//         const rootEl = window.document.getElementById('root')
-
-//         if (!rootEl) {
-//             throw new Error('HTML element with an ID of "root" was not found.')
-//         }
-
-//         const store = buildStore(window.__PRELOADED_STATE__)
-
-//         render(<TestApp initialEntries={[currPath]} store={store} />, {
-//             container: rootEl,
-//             hydrate: true,
-//         })
-
-//         // Expect ErrorPage component to render
-//         expect(
-//             screen.queryByRole('heading', { name: /not found/i })
-//         ).toBeInTheDocument()
-//         expect(
-//             screen.queryByText(/\/definitely-not-found was not found./i)
-//         ).toBeInTheDocument()
-//         expect(
-//             screen.queryByText(/return to the home page./i)
-//         ).toBeInTheDocument()
-//     })
-// })

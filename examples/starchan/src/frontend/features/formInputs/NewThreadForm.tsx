@@ -56,10 +56,13 @@ export default function NewThreadForm({ setShowForm, showForm }: Props) {
             } catch (err) {
                 if (isFetchBaseQueryError(err) && isAPIErrorRes(err.data)) {
                     if (err.status === 400 && err.data.errors) {
-                        console.error(
-                            'An error was encountered while creating the thread:',
-                            err
-                        )
+                        if (process.env.NODE_ENV !== 'test') {
+                            // Hide error messages to prevent clogging of test output
+                            console.error(
+                                'An error was encountered while creating the thread:',
+                                err
+                            )
+                        }
 
                         return dispatch(genFormError(err.data.errors))
                     }

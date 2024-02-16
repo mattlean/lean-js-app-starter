@@ -53,10 +53,13 @@ export default function NewReplyForm() {
             } catch (err) {
                 if (isFetchBaseQueryError(err) && isAPIErrorRes(err.data)) {
                     if (err.status === 400 && err.data.errors) {
-                        console.error(
-                            'An error was encountered while creating the reply:',
-                            err
-                        )
+                        if (process.env.NODE_ENV !== 'test') {
+                            // Hide error messages to prevent clogging of test output
+                            console.error(
+                                'An error was encountered while creating the reply:',
+                                err
+                            )
+                        }
 
                         return dispatch(genFormError(err.data.errors))
                     }
