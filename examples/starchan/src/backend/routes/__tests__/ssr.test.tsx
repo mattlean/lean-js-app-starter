@@ -10,19 +10,19 @@ import { HttpResponse, http } from 'msw'
 import { act } from 'react-dom/test-utils'
 import request from 'supertest'
 
-import { buildStore } from '../../../frontend/common/redux'
-import { TestApp } from '../../../frontend/common/util/test'
-import { setSubject } from '../../../frontend/features/formInputs/formInputsSlice'
-import { server } from '../../../frontend/msw/node'
-import app from '../../app'
-import { prismaMock } from '../../common/util/test'
 import {
     MOCK_REPLY,
     MOCK_THREAD_INCLUDES_REPLY,
     MOCK_THREAD_W_COMMENT,
     MOCK_THREAD_W_REPLY,
     MOCK_THREAD_W_SUBJECT_COMMENT,
-} from './MOCK_DATA'
+} from '../../../common/MOCK_DATA'
+import { server } from '../../../common/msw/node'
+import { TestApp } from '../../../common/util/test'
+import { buildStore } from '../../../frontend/common/redux'
+import { setSubject } from '../../../frontend/features/formInputs/formInputsSlice'
+import app from '../../app'
+import { prismaMock } from '../../common/util/test'
 import MOCK_THREAD_LIST_RES from './MOCK_THREAD_LIST_RES.json'
 
 let cleanupJsdom: { (): void }

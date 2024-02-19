@@ -9,8 +9,8 @@ import {
     globalErrorHandler,
     ssrErrorHandler,
 } from './common/error'
-import { frontendHandler } from './routes'
 import { apiHandler } from './routes/api'
+import { frontendHandler } from './routes/frontend'
 
 const BUNDLED_BACK_BUILD_PATH = path.resolve(__dirname)
 const BUNDLED_FRONT_BUILD_PATH = path.resolve(__dirname, '../frontend')

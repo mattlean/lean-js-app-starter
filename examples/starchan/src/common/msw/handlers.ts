@@ -1,9 +1,6 @@
 import { HttpResponse, http } from 'msw'
 
-import {
-    MOCK_THREAD_INCLUDES_REPLY,
-    MOCK_THREAD_W_COMMENT,
-} from '../../backend/routes/__tests__/MOCK_DATA'
+import { MOCK_THREAD_INCLUDES_REPLY, MOCK_THREAD_W_COMMENT } from '../MOCK_DATA'
 
 export const handlers = [
     http.get('http://localhost:3000/api/v1/threads', () =>

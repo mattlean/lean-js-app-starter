@@ -2,13 +2,13 @@ import { Prisma } from '@prisma/client'
 import { NextFunction, Request, Response, Router } from 'express'
 import { query } from 'express-validator'
 
+import { MAX_THREADS, PAGE_SIZE } from '../../../../common/constants'
 import {
     isPrismaKnownRequestError,
     validateErrorMiddleware,
 } from '../../../common/error'
 import { ServerError } from '../../../common/error'
 import { prisma } from '../../../common/prisma'
-import { MAX_THREADS, PAGE_SIZE } from '../../constants'
 import {
     commentValidationChain,
     createReplyMiddleware,

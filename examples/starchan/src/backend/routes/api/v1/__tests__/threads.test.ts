@@ -2,15 +2,15 @@ import { Prisma } from '@prisma/client'
 import { Types } from 'mongoose'
 import request from 'supertest'
 
-import app from '../../../../app'
-import { prismaMock } from '../../../../common/util/test'
 import {
     MOCK_REPLY,
     MOCK_THREAD_INCLUDES_REPLY,
     MOCK_THREAD_W_COMMENT,
     MOCK_THREAD_W_REPLY,
     MOCK_THREAD_W_SUBJECT_COMMENT,
-} from '../../../__tests__/MOCK_DATA'
+} from '../../../../../common/MOCK_DATA'
+import app from '../../../../app'
+import { prismaMock } from '../../../../common/util/test'
 import MOCK_THREAD_LIST_RES from '../../../__tests__/MOCK_THREAD_LIST_RES.json'
 
 describe('create thread endpoint', () => {

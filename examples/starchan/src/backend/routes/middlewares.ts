@@ -2,9 +2,9 @@ import { NextFunction, Request, Response } from 'express'
 import { body } from 'express-validator'
 import { isObjectIdOrHexString } from 'mongoose'
 
+import { MAX_THREADS } from '../../common/constants'
 import { ServerError, isPrismaKnownRequestError } from '../common/error'
 import { prisma } from '../common/prisma'
-import { MAX_THREADS } from './constants'
 
 /** express-validator validation chain for comments. */
 export const commentValidationChain = () =>

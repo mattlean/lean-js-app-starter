@@ -1,6 +1,6 @@
 import { Link, useParams } from 'react-router-dom'
 
-import { MAX_THREADS, PAGE_SIZE } from '../../backend/routes/constants'
+import { MAX_THREADS, PAGE_SIZE } from '../../common/constants'
 
 export interface Props {
     totalPages?: number

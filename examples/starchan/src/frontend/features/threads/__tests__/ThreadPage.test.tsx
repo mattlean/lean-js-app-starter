@@ -13,9 +13,9 @@ import { act } from 'react-dom/test-utils'
 import {
     MOCK_REPLY,
     MOCK_THREAD_INCLUDES_REPLY,
-} from '../../../../backend/routes/__tests__/MOCK_DATA'
+} from '../../../../common/MOCK_DATA'
+import { TestApp, setupDefaultMsw } from '../../../../common/util/test'
 import { buildStore } from '../../../common/redux'
-import { TestApp, setupDefaultMsw } from '../../../common/util/test'
 
 const server = setupDefaultMsw()
 

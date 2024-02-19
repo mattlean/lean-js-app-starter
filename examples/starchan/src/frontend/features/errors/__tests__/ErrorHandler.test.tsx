@@ -3,8 +3,8 @@
  */
 import { render, screen } from '@testing-library/react'
 
+import { TestApp } from '../../../../common/util/test'
 import { buildStore } from '../../../common/redux'
-import { TestApp } from '../../../common/util/test'
 
 beforeAll(() => {
     // Suppress console.error for this test as the Fail component is supposed to
