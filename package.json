@@ -9,7 +9,7 @@
         "lint": "eslint .",
         "lint:fix": "npm run lint -- --fix",
         "lint-staged": "lint-staged",
-        "prepare": "husky install"
+        "prepare": "node .husky/install.mjs"
     },
     "repository": {
         "type": "git",

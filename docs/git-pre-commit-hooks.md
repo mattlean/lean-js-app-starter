@@ -26,6 +26,8 @@ npm run prepare
 
 As Husky has already been configured in the `.husky` directory and lint-staged has already been configured in the `.lintstagedrc` file, pre-commit hooks should be working for you now!
 
+Note that while setting up Husky is great for your development environment, it may cause issues for other environments where you wouldn't want pre-commit hooks like a CI server or some Docker environments. [You can refer to Husky's "How To" documentation on potential solutions.](https://typicode.github.io/husky/how-to.html#ci-server-and-docker)
+
 ## How do I bypass lint-staged's pre-commit hooks?
 
 Simply pass in the `--no-verify` flag with your commit. So for example, in the terminal your command might look similar to:
