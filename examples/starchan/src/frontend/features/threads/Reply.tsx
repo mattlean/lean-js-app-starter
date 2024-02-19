@@ -37,7 +37,7 @@ export default function Reply({ data, threadId }: Props) {
             // This will apply the active modifier on the reply content on mount.
             // This is done to avoid hydration mismatches.
             if (data.id === jumpToTargetId) {
-                setClassName((s) => `${s} reply__content--active`)
+                setClassName(() => 'reply__content reply__content--active')
             } else {
                 setClassName(() => 'reply__content')
             }

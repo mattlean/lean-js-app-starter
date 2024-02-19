@@ -24,6 +24,8 @@ export const setupDefaultMsw = () => {
 
     // Finally, disable API mocking after the tests are done.
     afterAll(() => server.close())
+
+    return server
 }
 
 /**

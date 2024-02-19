@@ -267,7 +267,7 @@ describe('thread list page', () => {
             })
         )
 
-        expect.assertions(4)
+        expect.assertions(8)
 
         const res = await request(app).get('/')
 
@@ -302,6 +302,18 @@ describe('thread list page', () => {
             screen.queryByText(MOCK_THREAD_LIST_RESULTS_P2[0].subject)
         ).not.toBeInTheDocument()
 
+        // Expect page 1 to be active in page select and page 2 to be inactive
+        expect(
+            screen
+                .getByTestId('page-select')
+                .children[0].classList.contains('page-select__page--active')
+        ).toBe(true)
+        expect(
+            screen
+                .getByTestId('page-select')
+                .children[1].classList.contains('page-select__page--active')
+        ).toBe(false)
+
         // user-event currently has an issue running in the SSR environment,
         // so fireEvent is used instead
         fireEvent.click(screen.getByRole('link', { name: '2' }))
@@ -315,6 +327,18 @@ describe('thread list page', () => {
         expect(
             screen.queryByText(MOCK_THREAD_LIST_RESULTS_P1[0].subject)
         ).not.toBeInTheDocument()
+
+        // Expect page 2 to be active in page select and page 1 to be inactive
+        expect(
+            screen
+                .getByTestId('page-select')
+                .children[1].classList.contains('page-select__page--active')
+        ).toBe(true)
+        expect(
+            screen
+                .getByTestId('page-select')
+                .children[0].classList.contains('page-select__page--active')
+        ).toBe(false)
     })
 
     it('hydrates a page after the first page', async () => {
@@ -1050,6 +1074,9 @@ describe('thread page', () => {
 
         // Wait for "Post a Reply" button to reappear
         await screen.findByRole('button', { name: /post a reply/i })
+
+        // Wait for reply ID to appear
+        await screen.findByText(`Id.${MOCK_REPLY.id}`)
 
         // Confirm that the reply now exists on the thread page
         expect(screen.getByText(MOCK_REPLY.comment)).toBeInTheDocument()
