@@ -1,6 +1,5 @@
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
 const { compileJs } = require('.')
-const { FORK_TS_CHECKER_DEFAULT_OPTIONS } = require('./constants')
 
 /**
  * Compile TypeScript code with babel-loader and type check with Fork TS Checker Webpack Plugin:
@@ -54,9 +53,7 @@ const compileTs = (options) =>
             test: options?.rule?.test ?? /\.[jt]s$/,
         },
         plugins: options?.plugins ?? [
-            new ForkTsCheckerWebpackPlugin(
-                options?.forkTsChecker ?? FORK_TS_CHECKER_DEFAULT_OPTIONS
-            ),
+            new ForkTsCheckerWebpackPlugin(options?.forkTsChecker),
         ],
         resolve: {
             extensions: ['.js', '.json', '.ts', '.wasm'],
