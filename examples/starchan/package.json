@@ -80,7 +80,7 @@
         "fork-ts-checker-webpack-plugin": "^8.0.0",
         "glob": "^10.3.4",
         "html-webpack-plugin": "^5.5.1",
-        "ljas-webpack": "^0.1.1-experimental.5",
+        "ljas-webpack": "^0.1.1-experimental.6",
         "mini-css-extract-plugin": "^2.7.6",
         "moment": "^2.29.4",
         "mongoose": "^7.5.4",
