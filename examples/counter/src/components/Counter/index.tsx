@@ -22,7 +22,9 @@ export default function Counter() {
                             <i
                                 className="bi bi-dash-circle"
                                 style={{ fontSize: '1.5rem' }}
-                            />
+                            >
+                                <span className="sr-only">Decrement Count</span>
+                            </i>
                         </button>
                         <button
                             type="button"
@@ -32,7 +34,9 @@ export default function Counter() {
                             <i
                                 className="bi bi-plus-circle-fill"
                                 style={{ fontSize: '1.5rem' }}
-                            />
+                            >
+                                <span className="sr-only">Increment Count</span>
+                            </i>
                         </button>
                     </div>
                     <hr className="w-100" />

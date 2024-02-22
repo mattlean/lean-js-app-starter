@@ -1,95 +1,96 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Counter component matches snapshot 1`] = `
-<div
-  className="align-items-center container d-flex justify-content-center h-100"
->
+<DocumentFragment>
   <div
-    className="card"
+    class="align-items-center container d-flex justify-content-center h-100"
   >
     <div
-      className="card-header"
+      class="card"
     >
-      Counting App
-    </div>
-    <div
-      className="card-body d-flex flex-column align-items-center px-5"
-    >
-      <p
-        className="lead"
-      >
-        Count is currently...
-      </p>
-      <p
-        className="display-1"
-      >
-        0
-      </p>
       <div
-        className="column-gap-3 d-flex w-100"
+        class="card-header"
       >
-        <button
-          className="btn btn-success w-50"
-          onClick={[Function]}
-          type="button"
-        >
-          <i
-            className="bi bi-dash-circle"
-            style={
-              {
-                "fontSize": "1.5rem",
-              }
-            }
-          />
-        </button>
-        <button
-          className="btn btn-success w-50"
-          onClick={[Function]}
-          type="button"
-        >
-          <i
-            className="bi bi-plus-circle-fill"
-            style={
-              {
-                "fontSize": "1.5rem",
-              }
-            }
-          />
-        </button>
+        Counting App
       </div>
-      <hr
-        className="w-100"
-      />
       <div
-        className="input-group"
+        class="card-body d-flex flex-column align-items-center px-5"
       >
-        <input
-          className="form-control"
-          onChange={[Function]}
-          placeholder="Force count to be..."
-          type="number"
-          value=""
+        <p
+          class="lead"
+        >
+          Count is currently...
+        </p>
+        <p
+          class="display-1"
+        >
+          0
+        </p>
+        <div
+          class="column-gap-3 d-flex w-100"
+        >
+          <button
+            class="btn btn-success w-50"
+            type="button"
+          >
+            <i
+              class="bi bi-dash-circle"
+              style="font-size: 1.5rem;"
+            >
+              <span
+                class="sr-only"
+              >
+                Decrement Count
+              </span>
+            </i>
+          </button>
+          <button
+            class="btn btn-success w-50"
+            type="button"
+          >
+            <i
+              class="bi bi-plus-circle-fill"
+              style="font-size: 1.5rem;"
+            >
+              <span
+                class="sr-only"
+              >
+                Increment Count
+              </span>
+            </i>
+          </button>
+        </div>
+        <hr
+          class="w-100"
+        />
+        <div
+          class="input-group"
+        >
+          <input
+            class="form-control"
+            placeholder="Force count to be..."
+            type="number"
+            value=""
+          />
+          <button
+            class="btn btn-danger"
+            disabled=""
+            type="button"
+          >
+            Force!
+          </button>
+        </div>
+        <hr
+          class="w-100"
         />
         <button
-          className="btn btn-danger"
-          disabled={true}
-          onClick={[Function]}
+          class="btn btn-primary w-100"
           type="button"
         >
-          Force!
+          Reset
         </button>
       </div>
-      <hr
-        className="w-100"
-      />
-      <button
-        className="btn btn-primary w-100"
-        onClick={[Function]}
-        type="button"
-      >
-        Reset
-      </button>
     </div>
   </div>
-</div>
+</DocumentFragment>
 `;

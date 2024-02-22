@@ -5,3 +5,16 @@
     background-color: $gray-200;
     height: 100vh;
 }
+
+/**
+ * Hide text from sighted users. Allows text to still be read by screen readers
+ * and React Testing Library.
+ */
+.sr-only {
+    height: 1px;
+    left: -10000px;
+    overflow: hidden;
+    position: absolute;
+    top: auto;
+    width: 1px;
+}
