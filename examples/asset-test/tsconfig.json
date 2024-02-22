@@ -2,11 +2,13 @@
     "compilerOptions": {
         "allowJs": true,
         "esModuleInterop": true,
-        "noEmit": true,
         "jsx": "react-jsxdev",
+        "lib": ["dom", "ES2015"],
+        "noEmit": true,
         "resolveJsonModule": true,
         "strict": true,
-        "strictNullChecks": true
+        "strictNullChecks": true,
+        "types": ["snapshot-diff"]
     },
-    "include": ["src/**/*"]
+    "include": ["src/**/*", "./jest.setup.ts"]
 }
