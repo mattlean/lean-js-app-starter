@@ -53,7 +53,7 @@ module.exports = merge([
                     /__mocks__\/.*.(j|t)sx?$/,
                     /__tests__\/.*.(j|t)sx?$/,
                     /\.(spec|test)\.(j|t)sx?$/,
-                    'src/common/util/test.tsx',
+                    `${PATH_COMMON_SRC}/util/test.tsx`,
                 ],
             },
             forkTsChecker: {
