@@ -18,7 +18,7 @@
         "backend:build:watch": "nodemon  --config backend.nodemon.json --exec \"npm run backend:build -- --watch\"",
         "backend:dev": "concurrently --names \"📦 webpack (back),🌐 express\" \"npm run backend:build:watch\" \"npm run start:debug\"",
         "build": "npm run frontend:build && npm run backend:build",
-        "build:production": "npm run frontend:build && npm run backend:build:production",
+        "build:production": "npm run frontend:build:production && npm run backend:build:production",
         "check-types": "tsc",
         "dev": "concurrently --names \"📦 webpack (back),🌐 express,🎨 dev-server (front)\" \"npm run backend:build:watch\" \"npm run start:debug\" \"npm run frontend:dev\"",
         "format": "npm run format:check",
