@@ -46,6 +46,8 @@ const buildConfig = (mode) =>
                         /__mocks__\/.*.(j|t)sx?$/,
                         /__tests__\/.*.(j|t)sx?$/,
                         /\.(spec|test)\.(j|t)sx?$/,
+                        'src/backend/common/util/test.ts',
+                        'src/common/util/test.tsx',
                     ],
                 },
                 forkTsChecker: {
