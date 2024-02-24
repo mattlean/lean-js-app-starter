@@ -69,6 +69,7 @@ module.exports = merge([
                             'src/**/*.test.jsx',
                             'src/**/*.test.ts',
                             'src/**/*.test.tsx',
+                            'src/common/util/test.tsx',
                         ],
                     },
                 },

@@ -62,6 +62,8 @@ const buildConfig = (mode) =>
                                 'src/**/*.test.jsx',
                                 'src/**/*.test.ts',
                                 'src/**/*.test.tsx',
+                                'src/backend/common/util/test.ts',
+                                'src/common/util/test.tsx',
                             ],
                         },
                     },
