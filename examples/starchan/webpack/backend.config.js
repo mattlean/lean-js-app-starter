@@ -4,12 +4,7 @@ const setupNodeExternals = require('ljas-webpack/setupNodeExternals')
 const { buildSourceMaps } = require('ljas-webpack')
 const { merge } = require('webpack-merge')
 
-const {
-    PATH_BACKEND_BUILD,
-    PATH_BACKEND_SRC,
-    PATH_COMMON_SRC,
-    PATH_SRC,
-} = require('../PATHS')
+const { PATH_BACKEND_BUILD, PATH_BACKEND_SRC, PATH_SRC } = require('../PATHS')
 
 const buildConfig = (mode) =>
     merge([
@@ -51,13 +46,12 @@ const buildConfig = (mode) =>
                         /__mocks__\/.*.(j|t)sx?$/,
                         /__tests__\/.*.(j|t)sx?$/,
                         /\.(spec|test)\.(j|t)sx?$/,
-                        `${PATH_BACKEND_SRC}/common/util/test.ts`,
-                        `${PATH_COMMON_SRC}/util/test.tsx`,
                     ],
                 },
                 forkTsChecker: {
                     typescript: {
                         configOverwrite: {
+                            include: ['src/**/*'],
                             exclude: [
                                 'src/**/__mocks__',
                                 'src/**/__tests__',

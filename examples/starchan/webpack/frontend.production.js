@@ -53,12 +53,12 @@ module.exports = merge([
                     /__mocks__\/.*.(j|t)sx?$/,
                     /__tests__\/.*.(j|t)sx?$/,
                     /\.(spec|test)\.(j|t)sx?$/,
-                    `${PATH_COMMON_SRC}/util/test.tsx`,
                 ],
             },
             forkTsChecker: {
                 typescript: {
                     configOverwrite: {
+                        include: ['src/**/*'],
                         exclude: [
                             'src/**/__mocks__',
                             'src/**/__tests__',
@@ -70,6 +70,7 @@ module.exports = merge([
                             'src/**/*.test.jsx',
                             'src/**/*.test.ts',
                             'src/**/*.test.tsx',
+                            'src/backend/common/util/test.ts',
                             'src/common/util/test.tsx',
                         ],
                     },

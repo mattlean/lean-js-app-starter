@@ -6,7 +6,7 @@ const setupReactFastRefreshServerTs = require('ljas-webpack/setupReactFastRefres
 const { buildSourceMaps, loadFonts, loadImages } = require('ljas-webpack')
 const { merge } = require('webpack-merge')
 
-const templateParams = require('./templateParams')
+const templateParameters = require('./templateParameters')
 const {
     PATH_FRONTEND_BUILD,
     PATH_COMMON_SRC,
@@ -38,7 +38,7 @@ module.exports = merge([
     buildHtml({
         filename: 'index.html',
         template: 'src/frontend/devServer.ejs',
-        templateParameters: templateParams,
+        templateParameters,
     }),
 
     buildSourceMaps('cheap-module-source-map'),
@@ -80,6 +80,13 @@ module.exports = merge([
                 /__tests__\/.*.(j|t)sx?$/,
                 /\.(spec|test)\.(j|t)sx?$/,
             ],
+        },
+        forkTsChecker: {
+            typescript: {
+                configOverwrite: {
+                    include: ['src/**/*'],
+                },
+            },
         },
     }),
 ])

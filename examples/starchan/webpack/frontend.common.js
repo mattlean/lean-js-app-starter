@@ -2,7 +2,7 @@ const buildHtml = require('ljas-webpack/buildHtml')
 const { merge } = require('webpack-merge')
 const { EnvironmentPlugin } = require('webpack')
 
-const templateParams = require('./templateParams')
+const templateParameters = require('./templateParameters')
 
 module.exports = merge([
     {
@@ -17,6 +17,6 @@ module.exports = merge([
         // template: 'src/frontend/index.ejs?raw',
         template: '!!raw-loader!src/frontend/index.ejs',
         // template: 'src/frontend/index.ejs',
-        templateParameters: templateParams,
+        templateParameters,
     }),
 ])
