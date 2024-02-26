@@ -4,6 +4,7 @@ const setupNodeExternals = require('ljas-webpack/setupNodeExternals')
 const { buildSourceMaps } = require('ljas-webpack')
 const { merge } = require('webpack-merge')
 
+const configOverwrite = require('./tsconfigOverride')
 const { PATH_BACKEND_BUILD, PATH_BACKEND_SRC, PATH_SRC } = require('../PATHS')
 
 const buildConfig = (mode) =>
@@ -48,27 +49,7 @@ const buildConfig = (mode) =>
                         /\.(spec|test)\.(j|t)sx?$/,
                     ],
                 },
-                forkTsChecker: {
-                    typescript: {
-                        configOverwrite: {
-                            include: ['src/**/*'],
-                            exclude: [
-                                'src/**/__mocks__',
-                                'src/**/__tests__',
-                                'src/**/*.spec.js',
-                                'src/**/*.spec.jsx',
-                                'src/**/*.spec.ts',
-                                'src/**/*.spec.tsx',
-                                'src/**/*.test.js',
-                                'src/**/*.test.jsx',
-                                'src/**/*.test.ts',
-                                'src/**/*.test.tsx',
-                                'src/backend/common/util/test.ts',
-                                'src/common/util/test.tsx',
-                            ],
-                        },
-                    },
-                },
+                forkTsChecker: { typescript: { configOverwrite } },
             },
             mode
         ),

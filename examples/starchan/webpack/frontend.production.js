@@ -5,6 +5,7 @@ const removeUnusedCss = require('ljas-webpack/removeUnusedCss')
 const { buildSourceMaps, loadFonts, loadImages } = require('ljas-webpack')
 const { merge } = require('webpack-merge')
 
+const configOverwrite = require('./tsconfigOverride')
 const {
     PATH_FRONTEND_BUILD,
     PATH_COMMON_SRC,
@@ -55,27 +56,7 @@ module.exports = merge([
                     /\.(spec|test)\.(j|t)sx?$/,
                 ],
             },
-            forkTsChecker: {
-                typescript: {
-                    configOverwrite: {
-                        include: ['src/**/*'],
-                        exclude: [
-                            'src/**/__mocks__',
-                            'src/**/__tests__',
-                            'src/**/*.spec.js',
-                            'src/**/*.spec.jsx',
-                            'src/**/*.spec.ts',
-                            'src/**/*.spec.tsx',
-                            'src/**/*.test.js',
-                            'src/**/*.test.jsx',
-                            'src/**/*.test.ts',
-                            'src/**/*.test.tsx',
-                            'src/backend/common/util/test.ts',
-                            'src/common/util/test.tsx',
-                        ],
-                    },
-                },
-            },
+            forkTsChecker: { typescript: { configOverwrite } },
         },
         'production'
     ),
