@@ -1,5 +1,3 @@
-require('dotenv').config()
-
 const buildCss = require('ljas-webpack/buildCss')
 const buildHtml = require('ljas-webpack/buildHtml')
 const setupReactFastRefreshServerTs = require('ljas-webpack/setupReactFastRefreshServerTs')

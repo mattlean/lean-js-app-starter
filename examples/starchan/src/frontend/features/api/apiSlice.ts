@@ -12,14 +12,16 @@ export interface ReplyInput {
     comment: ReplyResData['comment']
 }
 
+const API_PATH = '/api/v1'
+
+if (!process.env.HOST_API) {
+    throw new Error('🔴 API host was not set')
+}
+
 const baseUrl =
-    process.env.__EXPRESS_SERVER__ ||
-    process.env.NODE_ENV === 'test' ||
-    (process.env.NODE_ENV === 'development' &&
-        typeof window === 'object' &&
-        window.__DEV_SERVER__)
-        ? 'http://localhost:3000/api/v1'
-        : '/api/v1'
+    process.env.HOST_API === '/'
+        ? API_PATH
+        : `${process.env.HOST_API}${API_PATH}`
 
 export const apiSlice = createApi({
     baseQuery: fetchBaseQuery({ baseUrl }),

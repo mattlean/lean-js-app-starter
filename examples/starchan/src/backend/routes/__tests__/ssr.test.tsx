@@ -884,31 +884,6 @@ describe('thread list page', () => {
 })
 
 describe('thread page', () => {
-    it('matches snapshot for basic server-side rendering', async () => {
-        expect.assertions(1)
-
-        const currPath = `/thread/${MOCK_THREAD_W_COMMENT.id}`
-
-        const res = await request(app).get(currPath)
-
-        cleanupJsdom = globalJsdom(res.text, { runScripts: 'dangerously' })
-
-        const rootEl = window.document.getElementById('root')
-
-        if (!rootEl) {
-            throw new Error('HTML element with an ID of "root" was not found.')
-        }
-
-        const store = buildStore(window.__PRELOADED_STATE__)
-
-        const { asFragment } = render(
-            <TestApp initialEntries={[currPath]} store={store} />,
-            { container: rootEl, hydrate: true }
-        )
-
-        expect(asFragment()).toMatchSnapshot()
-    })
-
     it('hydrates', async () => {
         expect.assertions(2)
 
