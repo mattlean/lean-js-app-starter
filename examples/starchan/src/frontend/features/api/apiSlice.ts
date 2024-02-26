@@ -18,10 +18,7 @@ if (!process.env.HOST_API) {
     throw new Error('🔴 API host was not set')
 }
 
-const baseUrl =
-    process.env.HOST_API === '/'
-        ? API_PATH
-        : `${process.env.HOST_API}${API_PATH}`
+const baseUrl = `${process.env.HOST_API}${API_PATH}`
 
 export const apiSlice = createApi({
     baseQuery: fetchBaseQuery({ baseUrl }),

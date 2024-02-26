@@ -15,7 +15,7 @@ module.exports = merge([
         entry: { app: './src/frontend/index.tsx' },
         plugins: [
             new EnvironmentPlugin({ __EXPRESS_SERVER__: '' }),
-            new EnvironmentPlugin({ API: process.env.HOST_API }),
+            new EnvironmentPlugin({ HOST_API: process.env.HOST_API }),
         ],
     },
 
