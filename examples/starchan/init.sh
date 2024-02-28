@@ -1,10 +1,10 @@
 #!/bin/bash
 
-# MongoDB Version
+# MongoDB SSR Version
 
 PREFIX="[🚀 init.sh]"
 
-echo "${PREFIX} Beginning the initialization script..."
+echo "${PREFIX} Starting the initialization script..."
 
 if [ -d "./node_modules" ]; then
     echo "${PREFIX} The node_modules directory already exists, so skip package dependency installation." 
@@ -18,7 +18,7 @@ echo "${PREFIX} Starting the database updates..."
 npm run prisma db push
 echo "${PREFIX} Database updates completed!"
 
-echo "${PREFIX} Generate the Prisma client..."
+echo "${PREFIX} Generating the Prisma client..."
 npm run prisma generate
 echo "${PREFIX} Prisma client generation completed!"
 

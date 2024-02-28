@@ -1,11 +1,12 @@
 #!/bin/bash
 
+# Basic Node.js Version
+
 PREFIX="[🚀 init.sh]"
 
 echo "${PREFIX} Beginning the initialization script..."
 
-if [ -d "./node_modules" ]
-then
+if [ -d "./node_modules" ]; then
     echo "${PREFIX} The node_modules directory already exists, so skip package dependency installation." 
 else
     echo "${PREFIX} Installing package dependencies..."
@@ -13,8 +14,7 @@ else
     echo "${PREFIX} Package dependency installation completed!"
 fi
 
-if [ -f "./build/app.js" ]
-then
+if [ -f "./build/app.js" ]; then
     echo "${PREFIX} The build already exists, so skip the initial build process."
 else
     echo "${PREFIX} Starting the build process..."
