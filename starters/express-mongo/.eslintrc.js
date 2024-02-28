@@ -12,18 +12,6 @@ module.exports = {
     root: true,
     rules: {},
     overrides: [
-        /* Source & Prisma */
-        {
-            files: ['+(src|prisma)/**/*.[jt]s'],
-            extends: [
-                'eslint:recommended',
-                'plugin:@typescript-eslint/recommended',
-                'prettier',
-            ],
-            parser: '@typescript-eslint/parser',
-            plugins: ['@typescript-eslint'],
-        },
-
         /* Tests */
         {
             env: {
@@ -32,18 +20,17 @@ module.exports = {
                 node: true,
             },
             files: [
-                'prisma/singleton.ts',
-                'src/**/__mocks__/**/*.[jt]s',
-                'src/**/__tests__/**/*.[jt]s',
-                'src/**/?(*.)+(spec|test).[jt]s',
+                'prisma/singleton.js',
+                'src/**/__mocks__/**/*.js',
+                'src/**/__tests__/**/*.js',
+                'src/**/?(*.)+(spec|test).js',
             ],
             extends: [
                 'eslint:recommended',
-                'plugin:@typescript-eslint/recommended',
                 'plugin:jest/recommended',
                 'prettier',
             ],
-            plugins: ['@typescript-eslint', 'jest'],
+            plugins: ['jest'],
         },
     ],
 }

@@ -20,13 +20,15 @@ module.exports = {
     // collectCoverage: false,
 
     // An array of glob patterns indicating a set of files for which coverage information should be collected
-    collectCoverageFrom: ['src/**/*.[jt]s'],
+    collectCoverageFrom: ['src/**/*.js'],
 
     // The directory where Jest should output its coverage files
     // coverageDirectory: undefined,
 
     // An array of regexp pattern strings used to skip coverage collection
-    coveragePathIgnorePatterns: ['/node_modules/', '.d.ts$'],
+    // coveragePathIgnorePatterns: [
+    //   "/node_modules/"
+    // ],
 
     // Indicates which provider should be used to instrument code for coverage
     coverageProvider: 'v8',
@@ -98,7 +100,7 @@ module.exports = {
     // notifyMode: "failure-change",
 
     // A preset that is used as a base for Jest's configuration
-    preset: 'ts-jest',
+    // preset: undefined,
 
     // Run tests from one or more projects
     // projects: undefined,
@@ -133,7 +135,7 @@ module.exports = {
     // setupFiles: [],
 
     // A list of paths to modules that run some code to configure or set up the testing framework before each test
-    setupFilesAfterEnv: ['<rootDir>/prisma/singleton.ts'],
+    // setupFilesAfterEnv: [],
 
     // The number of seconds after which a test is considered as slow and reported as such in the results.
     // slowTestThreshold: 5,
@@ -171,7 +173,16 @@ module.exports = {
     // testRunner: "jest-circus/runner",
 
     // A map from regular expressions to paths to transformers
-    // transform: undefined
+    transform: {
+        '\\.js$': [
+            'babel-jest',
+            {
+                presets: [
+                    ['@babel/preset-env', { targets: { node: '18.16' } }],
+                ],
+            },
+        ],
+    },
 
     // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
     // transformIgnorePatterns: [

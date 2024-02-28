@@ -1,5 +1,4 @@
 {
     "*": "prettier --ignore-unknown --write",
-    "*.{js,ts}": "eslint",
-    "*.ts": "bash -c tsc"
+    "*.js": "eslint"
 }
