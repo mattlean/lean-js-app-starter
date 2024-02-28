@@ -1,0 +1,41 @@
+version: '3.8'
+services:
+    db:
+        build:
+            dockerfile: db.Dockerfile
+        image: ljas-express-mongo-ts-db
+        container_name: ljas-express-mongo-ts-db
+        restart: always
+        ports:
+            - '${PORT_DB}:${PORT_DB}'
+        env_file: .env
+        volumes:
+            - notes-db-data:/var/lib/postgresql/data
+        healthcheck:
+            test:
+                [
+                    'CMD-SHELL',
+                    'pg_isready -d $${POSTGRES_DB} -U $${POSTGRES_USER}',
+                ]
+            interval: 10s
+            timeout: 5s
+            retries: 5
+    app:
+        build: .
+        image: ljas-express-mongo-ts
+        container_name: ljas-express-mongo-ts
+        depends_on:
+            db:
+                condition: service_healthy
+        restart: always
+        ports:
+            - '${PORT_APP}:${PORT_APP}'
+            - '${PORT_PRISMA_STUDIO}:${PORT_PRISMA_STUDIO}'
+            - '9229:9229' # Exposes Node.js debugger. Also defined in the "start:debug" package.json script.
+            - '9230:9230' # Exposes Jest debugger. Also defined in the "test:debug" package.json script.
+            - '9231:9231' # Exposes webpack debugger. Also defined in the build debug package.json scripts.
+        volumes:
+            - .:/code
+            - /code/node_modules
+volumes:
+    notes-db-data:
