@@ -32,7 +32,9 @@
         "examples/counter",
         "examples/notes-api",
         "examples/starchan",
-        "ljas-webpack"
+        "ljas-webpack",
+        "starters/express-mongo",
+        "starters/express-mongo-ts"
     ],
     "devDependencies": {
         "@trivago/prettier-plugin-sort-imports": "^4.1.1",
