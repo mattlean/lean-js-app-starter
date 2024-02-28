@@ -3,27 +3,32 @@ services:
     db:
         build:
             dockerfile: db.Dockerfile
-        image: ljas-express-postgres-ts-db
-        container_name: ljas-express-postgres-ts-db
+        image: ljas-express-mongo-db
+        container_name: ljas-express-mongo-db
         restart: always
         ports:
             - '${PORT_DB}:${PORT_DB}'
         env_file: .env
         volumes:
-            - ljas-express-postgres-ts-db-data:/var/lib/postgresql/data
+            - ljas-express-mongo-db-data:/data/db
         healthcheck:
             test:
                 [
-                    'CMD-SHELL',
-                    'pg_isready -d $${POSTGRES_DB} -U $${POSTGRES_USER}',
+                    'CMD',
+                    'mongo',
+                    'admin',
+                    '--port',
+                    '${MONGO_REPLICA_PORT}',
+                    '--eval',
+                    "db.adminCommand('ping')",
                 ]
-            interval: 10s
-            timeout: 5s
-            retries: 5
+            interval: 5s
+            timeout: 2s
+            retries: 20
     app:
         build: .
-        image: ljas-express-postgres-ts
-        container_name: ljas-express-postgres-ts
+        image: ljas-express-mongo
+        container_name: ljas-express-mongo
         depends_on:
             db:
                 condition: service_healthy
@@ -38,4 +43,4 @@ services:
             - .:/code
             - /code/node_modules
 volumes:
-    ljas-express-postgres-ts-db-data:
+    ljas-express-mongo-db-data:

@@ -10,16 +10,21 @@ services:
             - '${PORT_DB}:${PORT_DB}'
         env_file: .env
         volumes:
-            - notes-db-data:/var/lib/postgresql/data
+            - ljas-express-mongo-ts-db-data:/data/db
         healthcheck:
             test:
                 [
-                    'CMD-SHELL',
-                    'pg_isready -d $${POSTGRES_DB} -U $${POSTGRES_USER}',
+                    'CMD',
+                    'mongo',
+                    'admin',
+                    '--port',
+                    '${MONGO_REPLICA_PORT}',
+                    '--eval',
+                    "db.adminCommand('ping')",
                 ]
-            interval: 10s
-            timeout: 5s
-            retries: 5
+            interval: 5s
+            timeout: 2s
+            retries: 20
     app:
         build: .
         image: ljas-express-mongo-ts
@@ -38,4 +43,4 @@ services:
             - .:/code
             - /code/node_modules
 volumes:
-    notes-db-data:
+    ljas-express-mongo-ts-db-data:
