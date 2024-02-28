@@ -296,7 +296,7 @@ describe('thread list page', () => {
 
         // First thread from page 1 should be visible, but first thread from page 2 shouldn't
         expect(
-            screen.getByText(MOCK_THREAD_LIST_RESULTS_P1[0].subject)
+            screen.queryByText(MOCK_THREAD_LIST_RESULTS_P1[0].subject)
         ).toBeInTheDocument()
         expect(
             screen.queryByText(MOCK_THREAD_LIST_RESULTS_P2[0].subject)
@@ -318,11 +318,11 @@ describe('thread list page', () => {
         // so fireEvent is used instead
         fireEvent.click(screen.getByRole('link', { name: '2' }))
 
-        await waitForElementToBeRemoved(() => screen.getByText(/loading.../i))
+        await waitForElementToBeRemoved(() => screen.queryByText(/loading.../i))
 
         // First thread from page 2 should be visible, but first thread from page 1 shouldn't
         expect(
-            screen.getByText(MOCK_THREAD_LIST_RESULTS_P2[0].subject)
+            screen.queryByText(MOCK_THREAD_LIST_RESULTS_P2[0].subject)
         ).toBeInTheDocument()
         expect(
             screen.queryByText(MOCK_THREAD_LIST_RESULTS_P1[0].subject)
@@ -380,7 +380,7 @@ describe('thread list page', () => {
 
         // Expect page 2 to be visible
         expect(
-            screen.getByText(MOCK_THREAD_LIST_RESULTS_P2[0].subject)
+            screen.queryByText(MOCK_THREAD_LIST_RESULTS_P2[0].subject)
         ).toBeInTheDocument()
     })
 
@@ -558,10 +558,10 @@ describe('thread list page', () => {
 
         // Confirm that the thread page has been navigated to
         expect(
-            screen.getByText(`Id.${MOCK_THREAD_W_COMMENT.id}`)
+            screen.queryByText(`Id.${MOCK_THREAD_W_COMMENT.id}`)
         ).toBeInTheDocument()
         expect(
-            screen.getByText(MOCK_THREAD_W_COMMENT.comment)
+            screen.queryByText(MOCK_THREAD_W_COMMENT.comment)
         ).toBeInTheDocument()
     })
 
@@ -625,13 +625,13 @@ describe('thread list page', () => {
 
         // Confirm that the thread page has been navigated to
         expect(
-            screen.getByText(`Id.${MOCK_THREAD_W_SUBJECT_COMMENT.id}`)
+            screen.queryByText(`Id.${MOCK_THREAD_W_SUBJECT_COMMENT.id}`)
         ).toBeInTheDocument()
         expect(
-            screen.getByText(MOCK_THREAD_W_SUBJECT_COMMENT.subject as string)
+            screen.queryByText(MOCK_THREAD_W_SUBJECT_COMMENT.subject as string)
         ).toBeInTheDocument()
         expect(
-            screen.getByText(MOCK_THREAD_W_SUBJECT_COMMENT.comment)
+            screen.queryByText(MOCK_THREAD_W_SUBJECT_COMMENT.comment)
         ).toBeInTheDocument()
     })
 
@@ -681,10 +681,10 @@ describe('thread list page', () => {
 
         // Confirm that the thread page has been navigated to
         expect(
-            screen.getByText(`Id.${MOCK_THREAD_W_COMMENT.id}`)
+            screen.queryByText(`Id.${MOCK_THREAD_W_COMMENT.id}`)
         ).toBeInTheDocument()
         expect(
-            screen.getByText(MOCK_THREAD_W_COMMENT.comment)
+            screen.queryByText(MOCK_THREAD_W_COMMENT.comment)
         ).toBeInTheDocument()
     })
 
@@ -912,10 +912,10 @@ describe('thread page', () => {
 
         // Confirm the correct thread content is present
         expect(
-            screen.getByText(`Id.${MOCK_THREAD_W_COMMENT.id}`)
+            screen.queryByText(`Id.${MOCK_THREAD_W_COMMENT.id}`)
         ).toBeInTheDocument()
         expect(
-            screen.getByText(MOCK_THREAD_W_COMMENT.comment)
+            screen.queryByText(MOCK_THREAD_W_COMMENT.comment)
         ).toBeInTheDocument()
     })
 
@@ -1054,7 +1054,7 @@ describe('thread page', () => {
         await screen.findByText(`Id.${MOCK_REPLY.id}`)
 
         // Confirm that the reply now exists on the thread page
-        expect(screen.getByText(MOCK_REPLY.comment)).toBeInTheDocument()
+        expect(screen.queryByText(MOCK_REPLY.comment)).toBeInTheDocument()
     })
 
     it('creates new reply when new reply form has comment while JavaScript is disabled', async () => {
@@ -1097,7 +1097,7 @@ describe('thread page', () => {
         })
 
         // Confirm that the reply now exists on the thread page
-        expect(screen.getByText(MOCK_REPLY.comment)).toBeInTheDocument()
+        expect(screen.queryByText(MOCK_REPLY.comment)).toBeInTheDocument()
     })
 
     it('displays error message when there is an attempt to create a new reply without a comment', async () => {
@@ -1161,10 +1161,10 @@ describe('thread page', () => {
 
         // Confirm that the user is still on the thread page
         expect(
-            screen.getByText(`Id.${MOCK_THREAD_W_COMMENT.id}`)
+            screen.queryByText(`Id.${MOCK_THREAD_W_COMMENT.id}`)
         ).toBeInTheDocument()
         expect(
-            screen.getByText(MOCK_THREAD_W_COMMENT.comment)
+            screen.queryByText(MOCK_THREAD_W_COMMENT.comment)
         ).toBeInTheDocument()
     })
 

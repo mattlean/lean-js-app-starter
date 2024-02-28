@@ -10,5 +10,5 @@
         "strictNullChecks": true,
         "types": ["snapshot-diff"]
     },
-    "include": ["src/**/*", "./jest.setup.ts"]
+    "include": ["src/**/*", "jest.setup.ts"]
 }

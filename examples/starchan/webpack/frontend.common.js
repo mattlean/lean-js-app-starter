@@ -13,10 +13,7 @@ if (!process.env.HOST_API) {
 module.exports = merge([
     {
         entry: { app: './src/frontend/index.tsx' },
-        plugins: [
-            new EnvironmentPlugin({ __EXPRESS_SERVER__: '' }),
-            new EnvironmentPlugin({ HOST_API: process.env.HOST_API }),
-        ],
+        plugins: [new EnvironmentPlugin({ HOST_API: process.env.HOST_API })],
     },
 
     // Build EJS templates with injected assets for Express views

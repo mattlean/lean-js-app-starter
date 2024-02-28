@@ -48,22 +48,7 @@ module.exports = merge([
                 ],
             },
             forkTsChecker: {
-                typescript: {
-                    configOverwrite: {
-                        exclude: [
-                            'src/**/__mocks__',
-                            'src/**/__tests__',
-                            'src/**/*.spec.js',
-                            'src/**/*.spec.jsx',
-                            'src/**/*.spec.ts',
-                            'src/**/*.spec.tsx',
-                            'src/**/*.test.js',
-                            'src/**/*.test.jsx',
-                            'src/**/*.test.ts',
-                            'src/**/*.test.tsx',
-                        ],
-                    },
-                },
+                typescript: { configOverwrite: { include: ['src/**/*'] } },
             },
         },
         'production'

@@ -61,5 +61,8 @@ module.exports = merge([
                 /\.(spec|test)\.(j|t)sx?$/,
             ],
         },
+        forkTsChecker: {
+            typescript: { configOverwrite: { include: ['src/**/*'] } },
+        },
     }),
 ])
