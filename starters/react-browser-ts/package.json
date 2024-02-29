@@ -1,5 +1,5 @@
 {
-    "name": "ljas-react-frontend-ts",
+    "name": "ljas-react-browser-ts",
     "version": "0.2.0",
     "description": "",
     "main": "build/app.js",

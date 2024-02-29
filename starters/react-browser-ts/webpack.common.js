@@ -4,5 +4,5 @@ const { merge } = require('webpack-merge')
 module.exports = merge([
     { entry: { app: './src/index.tsx' } },
 
-    buildHtml({ title: 'ljas-react-frontend-ts' }),
+    buildHtml({ title: 'ljas-react-browser-ts' }),
 ])

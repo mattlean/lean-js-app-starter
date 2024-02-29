@@ -2,8 +2,8 @@ version: '3.8'
 services:
     app:
         build: .
-        image: 'ljas-react-frontend'
-        container_name: 'ljas-react-frontend'
+        image: 'ljas-react-browser-ts'
+        container_name: 'ljas-react-browser-ts'
         restart: always
         ports:
             - '${PORT}:${PORT}'

@@ -2,8 +2,6 @@
 
 This is a starter for a [React](https://react.dev) frontend project.
 
-Note that this uses TypeScript. If you want the JavaScript equivalent to this, use the [react-frontend](../react-frontend) project instead.
-
 ## Getting Started
 
 ### Standard Method
