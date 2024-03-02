@@ -9,7 +9,7 @@
         "strict": true,
         "strictNullChecks": true,
         "target": "es2015",
-        "types": ["node", "snapshot-diff"]
+        "types": ["snapshot-diff"]
     },
     "include": ["src/**/*", "jest.setup.ts"]
 }
