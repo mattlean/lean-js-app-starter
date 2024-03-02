@@ -14,7 +14,7 @@ const config = merge([
             path: PATH_BUILD,
         },
 
-        target: 'node18.16',
+        target: 'node',
     },
 
     compileTs({

@@ -71,7 +71,7 @@ describe('thread list page', () => {
 
         cleanupJsdom = globalJsdom(res.text, { runScripts: 'dangerously' })
 
-        const rootEl = window.document.getElementById('root')
+        const rootEl = document.getElementById('root')
 
         if (!rootEl) {
             throw new Error('HTML element with an ID of "root" was not found.')
@@ -98,7 +98,7 @@ describe('thread list page', () => {
         // document.body from global-jsdom for some reason, so this is a workaround.
         const screen = getQueriesForElement(document.body, queries)
 
-        const rootEl = window.document.getElementById('root')
+        const rootEl = document.getElementById('root')
 
         if (!rootEl) {
             throw new Error('HTML element with an ID of "root" was not found.')
@@ -145,7 +145,7 @@ describe('thread list page', () => {
         // document.body from global-jsdom for some reason, so this is a workaround.
         const screen = getQueriesForElement(document.body, queries)
 
-        const rootEl = window.document.getElementById('root')
+        const rootEl = document.getElementById('root')
 
         if (!rootEl) {
             throw new Error('HTML element with an ID of "root" was not found.')
@@ -174,9 +174,9 @@ describe('thread list page', () => {
         cleanupJsdom = globalJsdom(res.text, { runScripts: 'dangerously' })
 
         // Expect the correct title for the first page on the thread list in the SSR
-        expect(window.document.title).toBe(THREAD_PAGE_TITLE)
+        expect(document.title).toBe(THREAD_PAGE_TITLE)
 
-        const rootEl = window.document.getElementById('root')
+        const rootEl = document.getElementById('root')
 
         if (!rootEl) {
             throw new Error('HTML element with an ID of "root" was not found.')
@@ -190,7 +190,7 @@ describe('thread list page', () => {
         })
 
         // Expect that the correct title is maintained after hydration
-        expect(window.document.title).toBe(THREAD_PAGE_TITLE)
+        expect(document.title).toBe(THREAD_PAGE_TITLE)
     })
 
     it('hydrates when there are multiple pages', async () => {
@@ -217,7 +217,7 @@ describe('thread list page', () => {
         // document.body from global-jsdom for some reason, so this is a workaround.
         const screen = getQueriesForElement(document.body, queries)
 
-        const rootEl = window.document.getElementById('root')
+        const rootEl = document.getElementById('root')
 
         if (!rootEl) {
             throw new Error('HTML element with an ID of "root" was not found.')
@@ -278,7 +278,7 @@ describe('thread list page', () => {
         // document.body from global-jsdom for some reason, so this is a workaround.
         const screen = getQueriesForElement(document.body, queries)
 
-        const rootEl = window.document.getElementById('root')
+        const rootEl = document.getElementById('root')
 
         if (!rootEl) {
             throw new Error('HTML element with an ID of "root" was not found.')
@@ -365,7 +365,7 @@ describe('thread list page', () => {
         // document.body from global-jsdom for some reason, so this is a workaround.
         const screen = getQueriesForElement(document.body, queries)
 
-        const rootEl = window.document.getElementById('root')
+        const rootEl = document.getElementById('root')
 
         if (!rootEl) {
             throw new Error('HTML element with an ID of "root" was not found.')
@@ -394,9 +394,9 @@ describe('thread list page', () => {
         cleanupJsdom = globalJsdom(res.text, { runScripts: 'dangerously' })
 
         // Expect the correct title for the first page on the thread list in the SSR
-        expect(window.document.title).toBe(THREAD_LIST_TITLE)
+        expect(document.title).toBe(THREAD_LIST_TITLE)
 
-        const rootEl = window.document.getElementById('root')
+        const rootEl = document.getElementById('root')
 
         if (!rootEl) {
             throw new Error('HTML element with an ID of "root" was not found.')
@@ -410,7 +410,7 @@ describe('thread list page', () => {
         })
 
         // Expect that the correct title is maintained after hydration
-        expect(window.document.title).toBe(THREAD_LIST_TITLE)
+        expect(document.title).toBe(THREAD_LIST_TITLE)
     })
 
     it('does not show omitted reply count when the thread has less than 6 replies', async () => {
@@ -446,7 +446,7 @@ describe('thread list page', () => {
         // document.body from global-jsdom for some reason, so this is a workaround.
         const screen = getQueriesForElement(document.body, queries)
 
-        const rootEl = window.document.getElementById('root')
+        const rootEl = document.getElementById('root')
 
         if (!rootEl) {
             throw new Error('HTML element with an ID of "root" was not found.')
@@ -497,7 +497,7 @@ describe('thread list page', () => {
         // document.body from global-jsdom for some reason, so this is a workaround.
         const screen = getQueriesForElement(document.body, queries)
 
-        const rootEl = window.document.getElementById('root')
+        const rootEl = document.getElementById('root')
 
         if (!rootEl) {
             throw new Error('HTML element with an ID of "root" was not found.')
@@ -526,7 +526,7 @@ describe('thread list page', () => {
         // document.body from global-jsdom for some reason, so this is a workaround.
         const screen = getQueriesForElement(document.body, queries)
 
-        const rootEl = window.document.getElementById('root')
+        const rootEl = document.getElementById('root')
 
         if (!rootEl) {
             throw new Error('HTML element with an ID of "root" was not found.')
@@ -590,7 +590,7 @@ describe('thread list page', () => {
         // document.body from global-jsdom for some reason, so this is a workaround.
         const screen = getQueriesForElement(document.body, queries)
 
-        const rootEl = window.document.getElementById('root')
+        const rootEl = document.getElementById('root')
 
         if (!rootEl) {
             throw new Error('HTML element with an ID of "root" was not found.')
@@ -657,7 +657,7 @@ describe('thread list page', () => {
         // document.body from global-jsdom for some reason, so this is a workaround.
         const screen = getQueriesForElement(document.body, queries)
 
-        const rootEl = window.document.getElementById('root')
+        const rootEl = document.getElementById('root')
 
         if (!rootEl) {
             throw new Error('HTML element with an ID of "root" was not found.')
@@ -718,7 +718,7 @@ describe('thread list page', () => {
         // document.body from global-jsdom for some reason, so this is a workaround.
         const screen = getQueriesForElement(document.body, queries)
 
-        const rootEl = window.document.getElementById('root')
+        const rootEl = document.getElementById('root')
 
         if (!rootEl) {
             throw new Error('HTML element with an ID of "root" was not found.')
@@ -805,7 +805,7 @@ describe('thread list page', () => {
         // document.body from global-jsdom for some reason, so this is a workaround.
         const screen = getQueriesForElement(document.body, queries)
 
-        const rootEl = window.document.getElementById('root')
+        const rootEl = document.getElementById('root')
 
         if (!rootEl) {
             throw new Error('HTML element with an ID of "root" was not found.')
@@ -897,7 +897,7 @@ describe('thread page', () => {
         // document.body from global-jsdom for some reason, so this is a workaround.
         const screen = getQueriesForElement(document.body, queries)
 
-        const rootEl = window.document.getElementById('root')
+        const rootEl = document.getElementById('root')
 
         if (!rootEl) {
             throw new Error('HTML element with an ID of "root" was not found.')
@@ -931,9 +931,9 @@ describe('thread page', () => {
         cleanupJsdom = globalJsdom(res.text, { runScripts: 'dangerously' })
 
         // Expect the correct title for the first page on the thread list in the SSR
-        expect(window.document.title).toBe(THREAD_PAGE_TITLE)
+        expect(document.title).toBe(THREAD_PAGE_TITLE)
 
-        const rootEl = window.document.getElementById('root')
+        const rootEl = document.getElementById('root')
 
         if (!rootEl) {
             throw new Error('HTML element with an ID of "root" was not found.')
@@ -947,7 +947,7 @@ describe('thread page', () => {
         })
 
         // Expect that the correct title is maintained after hydration
-        expect(window.document.title).toBe(THREAD_PAGE_TITLE)
+        expect(document.title).toBe(THREAD_PAGE_TITLE)
     })
 
     it('has the correct document title when the thread has subject', async () => {
@@ -970,9 +970,9 @@ describe('thread page', () => {
         cleanupJsdom = globalJsdom(res.text, { runScripts: 'dangerously' })
 
         // Expect the correct title for the first page on the thread list in the SSR
-        expect(window.document.title).toBe(THREAD_PAGE_TITLE)
+        expect(document.title).toBe(THREAD_PAGE_TITLE)
 
-        const rootEl = window.document.getElementById('root')
+        const rootEl = document.getElementById('root')
 
         if (!rootEl) {
             throw new Error('HTML element with an ID of "root" was not found.')
@@ -986,7 +986,7 @@ describe('thread page', () => {
         })
 
         // Expect that the correct title is maintained after hydration
-        expect(window.document.title).toBe(THREAD_PAGE_TITLE)
+        expect(document.title).toBe(THREAD_PAGE_TITLE)
     })
 
     it('creates new reply with new reply form', async () => {
@@ -1022,7 +1022,7 @@ describe('thread page', () => {
         // document.body from global-jsdom for some reason, so this is a workaround.
         const screen = getQueriesForElement(document.body, queries)
 
-        const rootEl = window.document.getElementById('root')
+        const rootEl = document.getElementById('root')
 
         if (!rootEl) {
             throw new Error('HTML element with an ID of "root" was not found.')
@@ -1080,7 +1080,7 @@ describe('thread page', () => {
         // document.body from global-jsdom for some reason, so this is a workaround.
         const screen = getQueriesForElement(document.body, queries)
 
-        const rootEl = window.document.getElementById('root')
+        const rootEl = document.getElementById('root')
 
         if (!rootEl) {
             throw new Error('HTML element with an ID of "root" was not found.')
@@ -1134,7 +1134,7 @@ describe('thread page', () => {
         // document.body from global-jsdom for some reason, so this is a workaround.
         const screen = getQueriesForElement(document.body, queries)
 
-        const rootEl = window.document.getElementById('root')
+        const rootEl = document.getElementById('root')
 
         if (!rootEl) {
             throw new Error('HTML element with an ID of "root" was not found.')

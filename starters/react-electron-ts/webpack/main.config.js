@@ -2,24 +2,25 @@ const compileTs = require('ljas-webpack/compileTs')
 const setupNodeExternals = require('ljas-webpack/setupNodeExternals')
 const { buildSourceMaps } = require('ljas-webpack')
 const { merge } = require('webpack-merge')
-const { PATH_BUILD, PATH_SRC } = require('./PATHS')
+
+const { PATH_MAIN_BUILD, PATH_MAIN_SRC } = require('../PATHS')
 
 const config = merge([
     {
-        entry: { server: './src/index.ts' },
+        entry: { main: `${PATH_MAIN_SRC}/index.ts` },
 
         output: {
             clean: true,
             filename: '[name].js',
-            path: PATH_BUILD,
+            path: PATH_MAIN_BUILD,
         },
 
-        target: 'node',
+        target: 'electron-main',
     },
 
     compileTs({
         rule: {
-            include: PATH_SRC,
+            include: PATH_MAIN_SRC,
             exclude: [
                 /node_modules/,
                 /__mocks__\/.*.(j|t)s$/,
@@ -56,18 +57,11 @@ const config = merge([
 module.exports = (env, { mode }) => {
     switch (mode) {
         case 'production': {
-            const configProd = merge(config, buildSourceMaps('source-map'))
-            console.log('DEBUG CONFIG', config, JSON.stringify(config))
-            return configProd
+            return merge(config, buildSourceMaps('source-map'))
         }
 
         default: {
-            const configDev = merge(
-                config,
-                buildSourceMaps('cheap-module-source-map')
-            )
-            console.log('DEBUG CONFIG', configDev, JSON.stringify(configDev))
-            return configDev
+            return merge(config, buildSourceMaps('cheap-module-source-map'))
         }
     }
 }

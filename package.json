@@ -22,19 +22,20 @@
     },
     "homepage": "https://github.com/mattlean/lean-js-app-starter#readme",
     "workspaces": [
-        "starters/basic-nodejs",
-        "starters/basic-nodejs-ts",
-        "starters/express-postgres",
-        "starters/express-postgres-ts",
-        "starters/react-browser",
-        "starters/react-browser-ts",
         "examples/asset-test",
         "examples/counter",
         "examples/notes-api",
         "examples/starchan",
-        "ljas-webpack",
+        "starters/basic-nodejs",
+        "starters/basic-nodejs-ts",
         "starters/express-mongo",
-        "starters/express-mongo-ts"
+        "starters/express-mongo-ts",
+        "starters/express-postgres",
+        "starters/express-postgres-ts",
+        "starters/react-browser",
+        "starters/react-browser-ts",
+        "starters/react-electron-ts",
+        "ljas-webpack"
     ],
     "devDependencies": {
         "@trivago/prettier-plugin-sort-imports": "^4.1.1",

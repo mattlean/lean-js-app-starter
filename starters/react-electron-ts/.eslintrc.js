@@ -33,36 +33,30 @@ module.exports = {
     root: true,
     rules: {},
     overrides: [
-        /* Backend Source */
-        {
-            files: ['src/backend/**/*.[jt]s?(x)'],
-            ...CONFIG_REACT_TS,
-        },
-
-        /* Common Source */
+        /* Preload Source */
         {
             env: {
                 browser: true,
                 es2021: true,
                 node: true,
             },
-            files: ['src/common/**/*.[jt]s?(x)'],
+            files: ['src/preload/**/*.[jt]s?(x)'],
             ...CONFIG_REACT_TS,
         },
 
-        /* Frontend Source */
+        /* Renderer Source */
         {
             env: {
                 browser: true,
                 es2021: true,
             },
-            files: ['src/frontend/**/*.[jt]s?(x)'],
+            files: ['src/renderer/**/*.[jt]s?(x)'],
             ...CONFIG_REACT_TS,
         },
 
-        /* Prisma & Dev Scripts */
+        /* Main Source */
         {
-            files: ['dev-scripts/**/*.[jt]s', 'prisma/**/*.[jt]s'],
+            files: ['src/main/**/*.[jt]s'],
             extends: [
                 'eslint:recommended',
                 'plugin:@typescript-eslint/recommended',
@@ -80,7 +74,6 @@ module.exports = {
                 node: true,
             },
             files: [
-                'prisma/singleton.ts',
                 'src/**/__mocks__/**/*.[jt]s?(x)',
                 'src/**/__tests__/**/*.[jt]s?(x)',
                 'src/**/?(*.)+(spec|test).[jt]s?(x)',

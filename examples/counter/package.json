@@ -83,7 +83,7 @@
         "stylelint": "^15.10.3",
         "stylelint-config-standard-scss": "^11.0.0",
         "ts-jest": "^29.1.0",
-        "undici": "^6.0.1",
+        "undici": "^5.22.0",
         "webpack-dev-server": "^4.15.0"
     },
     "private": true

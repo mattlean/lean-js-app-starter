@@ -14,7 +14,7 @@ module.exports = {
     overrides: [
         /* Source & Prisma */
         {
-            files: ['+(src|prisma)/**/*.[jt]s'],
+            files: ['prisma/**/*.[jt]s', 'src/**/*.[jt]s'],
             extends: [
                 'eslint:recommended',
                 'plugin:@typescript-eslint/recommended',

@@ -1,25 +1,25 @@
 const compileTs = require('ljas-webpack/compileTs')
-const setupNodeExternals = require('ljas-webpack/setupNodeExternals')
 const { buildSourceMaps } = require('ljas-webpack')
 const { merge } = require('webpack-merge')
-const { PATH_BUILD, PATH_SRC } = require('./PATHS')
+
+const { PATH_PRELOAD_BUILD, PATH_PRELOAD_SRC } = require('../PATHS')
 
 const config = merge([
     {
-        entry: { server: './src/index.ts' },
+        entry: { preload: `${PATH_PRELOAD_SRC}/index.ts` },
 
         output: {
             clean: true,
             filename: '[name].js',
-            path: PATH_BUILD,
+            path: PATH_PRELOAD_BUILD,
         },
 
-        target: 'node',
+        target: 'electron-preload',
     },
 
     compileTs({
         rule: {
-            include: PATH_SRC,
+            include: PATH_PRELOAD_SRC,
             exclude: [
                 /node_modules/,
                 /__mocks__\/.*.(j|t)s$/,
@@ -46,28 +46,16 @@ const config = merge([
             },
         },
     }),
-
-    setupNodeExternals({
-        // TODO: remove this before going to prod
-        additionalModuleDirs: ['../../node_modules'],
-    }),
 ])
 
 module.exports = (env, { mode }) => {
     switch (mode) {
         case 'production': {
-            const configProd = merge(config, buildSourceMaps('source-map'))
-            console.log('DEBUG CONFIG', config, JSON.stringify(config))
-            return configProd
+            return merge(config, buildSourceMaps('source-map'))
         }
 
         default: {
-            const configDev = merge(
-                config,
-                buildSourceMaps('cheap-module-source-map')
-            )
-            console.log('DEBUG CONFIG', configDev, JSON.stringify(configDev))
-            return configDev
+            return merge(config, buildSourceMaps('cheap-module-source-map'))
         }
     }
 }

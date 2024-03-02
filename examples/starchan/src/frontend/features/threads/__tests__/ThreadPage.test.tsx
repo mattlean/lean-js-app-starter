@@ -47,7 +47,7 @@ test('thread page replies are all inactive when no fragment identifier is presen
 
     await waitForElementToBeRemoved(() => screen.getByText(/loading.../i))
 
-    const reply = window.document.getElementById(MOCK_REPLY.id)
+    const reply = document.getElementById(MOCK_REPLY.id)
 
     if (!reply) {
         throw new Error(
@@ -91,7 +91,7 @@ test('thread page reply is active its fragment identifier is present', async () 
 
     await waitForElementToBeRemoved(() => screen.getByText(/loading.../i))
 
-    const reply = window.document.getElementById(MOCK_REPLY.id)
+    const reply = document.getElementById(MOCK_REPLY.id)
 
     if (!reply) {
         throw new Error(

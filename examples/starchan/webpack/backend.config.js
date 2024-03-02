@@ -13,6 +13,7 @@ const buildConfig = (mode) =>
             entry: { server: './src/backend/index.ts' },
 
             output: {
+                clean: true,
                 filename: '[name].js',
                 path: PATH_BACKEND_BUILD,
             },
@@ -35,7 +36,7 @@ const buildConfig = (mode) =>
                 }),
             ],
 
-            target: 'node18.16',
+            target: 'node',
         },
 
         compileReactTs(
