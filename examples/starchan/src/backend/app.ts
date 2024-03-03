@@ -42,7 +42,24 @@ app.set('views', viewDirs)
 app.use(cors()) // Middleware that enables CORS
 app.use(express.json()) // Middleware that parses incoming requests with JSON payloads
 app.use(express.urlencoded({ extended: false })) // Middleware that parses incoming requests with urlencoded payloads
-app.use(helmet()) // Middleware that enhances security by setting HTTP response headers
+
+const helmetOptions: {
+    contentSecurityPolicy: {
+        directives: { [key: string]: Array<string> }
+    }
+} = {
+    contentSecurityPolicy: {
+        directives: {
+            'script-src': ["'self'", "'unsafe-inline'"],
+        },
+    },
+}
+if (process.env.NODE_ENV === 'development') {
+    helmetOptions.contentSecurityPolicy.directives['connect-src'] = [
+        'ws://localhost:8080',
+    ]
+}
+app.use(helmet(helmetOptions)) // Middleware that enhances security by setting HTTP response headers
 
 if (process.env.NODE_ENV === 'production') {
     app.use(compression()) // Middleware that compresses most response bodies

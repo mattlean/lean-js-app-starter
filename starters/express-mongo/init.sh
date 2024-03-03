@@ -6,7 +6,11 @@ PREFIX="[🚀 init.sh]"
 
 echo "${PREFIX} Starting the initialization script..."
 
-if [ -d "./node_modules" ]; then
+if [ "${NODE_ENV}" == "production" ]; then
+    echo "${PREFIX} Installing package dependencies..."
+    npm ci
+    echo "${PREFIX} Package dependency installation completed!"
+elif [ -d "./node_modules" ]; then
     echo "${PREFIX} The node_modules directory already exists, so skip package dependency installation." 
 else
     echo "${PREFIX} Installing package dependencies..."
@@ -26,14 +30,12 @@ if [ "${NODE_ENV}" == "production" ]; then
     echo "${PREFIX} Starting the production build process..."
     npm run build:production
     echo "${PREFIX} Build process completed!"
+elif [ -f "./build/server.js" ]; then
+    echo "${PREFIX} The development build already exists, so skip the initial build process."
 else
-    if [ -f "./build/server.js" ]; then
-        echo "${PREFIX} The development build already exists, so skip the initial build process."
-    else
-        echo "${PREFIX} Starting the development build process..."
-        npm run build
-        echo "${PREFIX} Build process completed!"
-    fi
+    echo "${PREFIX} Starting the development build process..."
+    npm run build
+    echo "${PREFIX} Build process completed!"
 fi
 
 echo "${PREFIX} Initialization script completed!"

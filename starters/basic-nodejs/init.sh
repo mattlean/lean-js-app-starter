@@ -6,10 +6,14 @@ PREFIX="[🚀 init.sh]"
 
 echo "${PREFIX} Beginning the initialization script..."
 
-if [ -d "./node_modules" ]; then
+if [ "${NODE_ENV}" == "production" ]; then
+    echo "${PREFIX} Installing production package dependencies..."
+    npm ci
+    echo "${PREFIX} Package dependency installation completed!"
+elif [ -d "./node_modules" ]; then
     echo "${PREFIX} The node_modules directory already exists, so skip package dependency installation." 
 else
-    echo "${PREFIX} Installing package dependencies..."
+    echo "${PREFIX} Installing all package dependencies..."
     npm install
     echo "${PREFIX} Package dependency installation completed!"
 fi
