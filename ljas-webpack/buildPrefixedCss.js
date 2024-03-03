@@ -6,12 +6,14 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
  * Also add vendor prefixes to CSS with postcss-loader and Autoprefixer:
  * - https://github.com/postcss/autoprefixer
  * - https://webpack.js.org/loaders/css-loader
+ * - https://webpack.js.org/plugins/css-minimizer-webpack-plugin
  * - https://webpack.js.org/plugins/mini-css-extract-plugin
  * - https://webpack.js.org/loaders/postcss-loader
  *
  * Tested with:
  * - autoprefixer@^10.4.16
  * - css-loader@^6.8.1
+ * - css-minimizer-webpack-plugin@^6.0.0
  * - mini-css-extract-plugin@^2.7.6
  * - postcss@^8.4.29
  * - postcss-loader@^7.3.3

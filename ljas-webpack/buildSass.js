@@ -4,11 +4,13 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 /**
  * Enable .sass and .scss file imports and build the CSS with css-loader, mini-css-extract-plugin, and sass-loader:
  * - https://webpack.js.org/loaders/css-loader
+ * - https://webpack.js.org/plugins/css-minimizer-webpack-plugin
  * - https://webpack.js.org/plugins/mini-css-extract-plugin
  * - https://webpack.js.org/loaders/sass-loader
  *
  * Tested with:
  * - css-loader@^6.8.1
+ * - css-minimizer-webpack-plugin@^6.0.0
  * - mini-css-extract-plugin@^2.7.6
  * - sass@~1.64.2
  * - sass-loader@^13.3.2

@@ -1,5 +1,7 @@
+import compression from 'compression'
 import cors from 'cors'
 import express from 'express'
+import helmet from 'helmet'
 import morgan from 'morgan'
 import path from 'path'
 
@@ -17,6 +19,11 @@ app.set('views', [`${BUNDLED_BUILD_PATH}/views`])
 
 app.use(cors()) // Middleware that enables CORS
 app.use(express.json()) // Middleware that parses incoming requests with JSON payloads
+app.use(helmet()) // Middleware that enhances security by setting HTTP response headers
+
+if (process.env.NODE_ENV === 'production') {
+    app.use(compression()) // Middleware that compresses most response bodies
+}
 
 // Enable HTTP request logger middleware when running in certain environments
 if (process.env.NODE_ENV === 'development') {

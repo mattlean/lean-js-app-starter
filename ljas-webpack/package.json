@@ -1,6 +1,6 @@
 {
     "name": "ljas-webpack",
-    "version": "0.1.1-experimental.6",
+    "version": "0.1.1-experimental.7",
     "description": "webpack configuration parts for webpack config compositions",
     "main": "index.js",
     "scripts": {

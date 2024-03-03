@@ -1,12 +1,15 @@
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 /**
  * Enable .css file imports and build the CSS with css-loader and mini-css-extract-plugin:
  * - https://webpack.js.org/loaders/css-loader
+ * - https://webpack.js.org/plugins/css-minimizer-webpack-plugin
  * - https://webpack.js.org/plugins/mini-css-extract-plugin
  *
  * Tested with:
  * - css-loader@^6.8.1
+ * - css-minimizer-webpack-plugin@^6.0.0
  * - mini-css-extract-plugin@^2.7.6
  *
  * @param {Object} [options] Options object that determines how css-loader and mini-css-extract-plugin will be configured.
@@ -44,6 +47,14 @@ const buildCss = (options) => ({
     plugins: options?.plugins ?? [
         new MiniCssExtractPlugin({ ...options?.miniCssExtractPlugin }),
     ],
+
+    optimization: {
+        minimizer: [
+            // For webpack@5 you can use the `...` syntax to extend existing minimizers (i.e. `terser-webpack-plugin`)
+            `...`,
+            new CssMinimizerPlugin(), // This only enables optimizations in production mode
+        ],
+    },
 })
 
 module.exports = buildCss
