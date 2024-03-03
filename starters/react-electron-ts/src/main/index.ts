@@ -1,3 +1,4 @@
+import 'dotenv/config'
 import { BrowserWindow, app } from 'electron'
 import path from 'path'
 
@@ -7,16 +8,22 @@ const createWindow = () => {
     const win = new BrowserWindow({
         width: 800,
         height: 600,
+        show: false,
         webPreferences: {
             preload: `${BUNDLED_PRELOAD_BUILD_PATH}/preload.js`,
         },
     })
 
-    win.loadFile('build/renderer/index.html')
-
-    if (process.env.NODE_ENV === 'development') {
-        win.webContents.openDevTools()
+    if (process.env.NODE_ENV === 'development' && process.env.HOST_DEV_SERVER) {
+        win.loadURL(process.env.HOST_DEV_SERVER)
+    } else {
+        win.loadFile('build/renderer/index.html')
     }
+
+    win.once('ready-to-show', () => {
+        win.show()
+        win.focus()
+    })
 }
 
 app.whenReady().then(() => {

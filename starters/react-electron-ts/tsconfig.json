@@ -8,7 +8,7 @@
         "resolveJsonModule": true,
         "strict": true,
         "strictNullChecks": true,
-        "types": ["snapshot-diff"]
+        "types": ["@types/node", "snapshot-diff"]
     },
     "include": ["src/**/*", "jest.setup.ts"]
 }

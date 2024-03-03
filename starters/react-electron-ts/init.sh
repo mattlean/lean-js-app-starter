@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Basic Node.js Version
+# Basic Electron Version
 
 PREFIX="[🚀 init.sh]"
 
@@ -23,8 +23,10 @@ if [ "${NODE_ENV}" == "production" ]; then
     npm run build:production
     echo "${PREFIX} Build process completed!"
 elif [[
-    (-d "./build" && ! -z "$(ls -A ./build)")
-    && (-f "./build/app.js")
+        (-d "./build/preload" && ! -z "$(ls -A ./build/preload)")
+        && (-d "./build/renderer" && ! -z "$(ls -A ./build/renderer)")
+        && (-d "./build/main" && ! -z "$(ls -A ./build/main)")
+        && (-f "./build/main/main.js")
 ]]; then
     echo "${PREFIX} The development build already exists, so skip the build process."
 else

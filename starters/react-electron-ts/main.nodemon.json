@@ -1,6 +1,5 @@
 {
     "watch": [
-        "build/preload/*.js",
         "webpack/main.*.js",
         "main.nodemon.json",
         "package.json",

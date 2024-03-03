@@ -18,10 +18,17 @@ else
     echo "${PREFIX} Package dependency installation completed!"
 fi
 
-if [ -f "./build/app.js" ]; then
-    echo "${PREFIX} The build already exists, so skip the initial build process."
+if [ "${NODE_ENV}" == "production" ]; then
+    echo "${PREFIX} Starting the production build process..."
+    npm run build:production
+    echo "${PREFIX} Build process completed!"
+elif [[
+    (-d "./build" && ! -z "$(ls -A ./build)")
+    && (-f "./build/app.js")
+]]; then
+    echo "${PREFIX} The development build already exists, so skip the build process."
 else
-    echo "${PREFIX} Starting the build process..."
+    echo "${PREFIX} Starting the development build process..."
     npm run build
     echo "${PREFIX} Build process completed!"
 fi

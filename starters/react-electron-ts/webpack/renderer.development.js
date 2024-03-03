@@ -11,7 +11,7 @@ const { merge } = require('webpack-merge')
 
 const { PATH_RENDERER_BUILD, PATH_RENDERER_SRC } = require('../PATHS')
 
-if (!process.env.PORT) {
+if (!process.env.PORT_DEV_SERVER) {
     throw new Error('🔴 webpack-dev-server port was not set')
 }
 
@@ -53,10 +53,9 @@ module.exports = merge([
     setupReactFastRefreshServerTs({
         devServer: {
             devMiddleware: {
-                // Write files to disk so they can be served by Electron's main process
                 writeToDisk: true,
             },
-            port: process.env.PORT,
+            port: process.env.PORT_DEV_SERVER,
         },
         rule: {
             include: PATH_RENDERER_SRC,

@@ -1,4 +1,5 @@
 const compileTs = require('ljas-webpack/compileTs')
+const setupNodeExternals = require('ljas-webpack/setupNodeExternals')
 const { buildSourceMaps } = require('ljas-webpack')
 const { merge } = require('webpack-merge')
 
@@ -46,6 +47,11 @@ const config = merge([
                 },
             },
         },
+    }),
+
+    setupNodeExternals({
+        // TODO: remove this before going to prod
+        additionalModuleDirs: ['../../node_modules'],
     }),
 ])
 

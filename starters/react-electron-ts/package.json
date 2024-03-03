@@ -4,6 +4,8 @@
     "description": "",
     "main": "build/main/main.js",
     "scripts": {
+        "build": "npm run preload:build && npm run renderer:build && npm run main:build",
+        "build:production": "npm run preload:build:production && npm run renderer:build:production && npm run main:build:production",
         "check-types": "tsc",
         "dev": "concurrently --names \"🛄 webpack (preload),🎨 renderer,📦 webpack (main),⚛️ electron\" \"npm run preload:build:watch\" \"npm run renderer:dev\" \"npm run main:build:watch\" \"npm run start:debug\"",
         "format": "npm run format:check",
@@ -33,7 +35,7 @@
         "renderer:build:stats": "npm run renderer:build:production -- --json > stats.json",
         "renderer:dev": "nodemon --config renderer.nodemon.json --exec \"webpack serve --config webpack/renderer.config.js --mode development\"",
         "start": "electron .",
-        "start:debug": "nodemon --inspect=0.0.0.0:9229 --watch build/main --exec \"npm start\"",
+        "start:debug": "nodemon --inspect=0.0.0.0:9229 --watch build/preload --watch build/main --exec \"npm start\"",
         "test": "jest",
         "test:coverage": "npm run test -- --coverage",
         "test:debug": "node --inspect-brk=0.0.0.0:9230 node_modules/.bin/jest --runInBand",
