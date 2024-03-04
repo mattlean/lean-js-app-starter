@@ -110,7 +110,7 @@
     "deep-freeze": "0.0.1",
     "devtron": "^1.4.0",
     "electron": "^3.0.10",
-    "electron-builder": "^20.38.0",
+    "electron-builder": "^24.13.3",
     "electron-devtools-installer": "^2.2.4",
     "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.7.0",
