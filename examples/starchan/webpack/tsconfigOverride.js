@@ -13,7 +13,6 @@
  * with the local development application.
  */
 module.exports = {
-    include: ['src/**/*'],
     exclude: [
         'src/**/__mocks__',
         'src/**/__tests__',

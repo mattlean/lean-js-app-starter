@@ -33,6 +33,18 @@ module.exports = {
     root: true,
     rules: {},
     overrides: [
+        /* Source */
+        {
+            files: ['src/**/*.[jt]s'],
+            extends: [
+                'eslint:recommended',
+                'plugin:@typescript-eslint/recommended',
+                'prettier',
+            ],
+            parser: '@typescript-eslint/parser',
+            plugins: ['@typescript-eslint'],
+        },
+
         /* Backend Source */
         {
             files: ['src/backend/**/*.[jt]s?(x)'],

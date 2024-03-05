@@ -54,7 +54,9 @@ module.exports = merge([
             },
             forkTsChecker: {
                 typescript: {
-                    configOverwrite: { include: ['src/renderer/**/*'] },
+                    configOverwrite: {
+                        include: ['src/renderer/**/*', 'src/global.d.ts'],
+                    },
                 },
             },
         },

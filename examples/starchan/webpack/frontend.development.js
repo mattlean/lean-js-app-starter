@@ -4,7 +4,7 @@ const setupReactFastRefreshServerTs = require('ljas-webpack/setupReactFastRefres
 const { buildSourceMaps, loadFonts, loadImages } = require('ljas-webpack')
 const { merge } = require('webpack-merge')
 
-const configOverwrite = require('./tsconfigOverride')
+const tsconfigOverride = require('./tsconfigOverride')
 const templateParameters = require('./templateParameters')
 const {
     PATH_FRONTEND_BUILD,
@@ -80,6 +80,15 @@ module.exports = merge([
                 /\.(spec|test)\.(j|t)sx?$/,
             ],
         },
-        forkTsChecker: { typescript: { configOverwrite } },
+        forkTsChecker: {
+            typescript: {
+                include: [
+                    'src/common/**/*',
+                    'src/frontend/**/*',
+                    'src/global.d.ts',
+                ],
+                ...tsconfigOverride,
+            },
+        },
     }),
 ])
