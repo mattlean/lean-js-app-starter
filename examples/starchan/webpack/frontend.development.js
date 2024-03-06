@@ -70,6 +70,7 @@ module.exports = merge([
             },
             historyApiFallback: true,
             port: process.env.PORT_DEV_SERVER,
+            watchFiles: ['src/frontend/**/*.ejs'],
         },
         rule: {
             include: [PATH_COMMON_SRC, PATH_FRONTEND_SRC],

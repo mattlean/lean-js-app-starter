@@ -82,6 +82,7 @@
         "@types/react-test-renderer": "^18.0.0",
         "@typescript-eslint/eslint-plugin": "^5.59.8",
         "@typescript-eslint/parser": "^5.59.8",
+        "electron-devtools-installer": "^3.2.0",
         "eslint": "^8.41.0",
         "eslint-config-prettier": "^9.1.0",
         "eslint-plugin-jest": "^27.2.1",

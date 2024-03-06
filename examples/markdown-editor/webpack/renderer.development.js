@@ -59,7 +59,9 @@ module.exports = merge([
             devMiddleware: {
                 writeToDisk: true,
             },
+            historyApiFallback: true,
             port: process.env.PORT_DEV_SERVER,
+            watchFiles: ['src/renderer/**/*.ejs'],
         },
         rule: {
             include: PATH_RENDERER_SRC,

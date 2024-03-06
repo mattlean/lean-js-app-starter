@@ -50,7 +50,11 @@ module.exports = merge([
     }),
 
     setupReactFastRefreshServerTs({
-        devServer: { port: process.env.PORT },
+        devServer: {
+            historyApiFallback: true,
+            port: process.env.PORT,
+            watchFiles: ['src/**/*.ejs'],
+        },
         rule: {
             include: PATH_SRC,
             exclude: [

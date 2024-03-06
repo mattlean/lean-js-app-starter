@@ -1,5 +1,8 @@
 import 'dotenv/config'
 import { BrowserWindow, app } from 'electron'
+import installExtension, {
+    REACT_DEVELOPER_TOOLS,
+} from 'electron-devtools-installer'
 import path from 'path'
 
 const BUNDLED_PRELOAD_BUILD_PATH = path.join(__dirname, '../preload')
@@ -27,6 +30,12 @@ const createWindow = () => {
 }
 
 app.whenReady().then(() => {
+    if (process.env.NODE_ENV === 'development') {
+        installExtension(REACT_DEVELOPER_TOOLS)
+            .then((name) => console.log(`Added Extension:  ${name}`))
+            .catch((err) => console.log('An error occurred: ', err))
+    }
+
     createWindow()
 
     app.on('activate', () => {
