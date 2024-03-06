@@ -84,7 +84,7 @@
         "glob": "^10.3.10",
         "helmet": "^7.1.0",
         "html-webpack-plugin": "^5.5.1",
-        "ljas-webpack": "^0.1.1-experimental.7",
+        "ljas-webpack": "^0.1.1-experimental.8",
         "mini-css-extract-plugin": "^2.7.6",
         "moment": "^2.29.4",
         "mongoose": "^7.5.4",

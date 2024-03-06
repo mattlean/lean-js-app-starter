@@ -60,7 +60,7 @@
         "electron": "^29.1.0",
         "fork-ts-checker-webpack-plugin": "^8.0.0",
         "html-webpack-plugin": "^5.5.1",
-        "ljas-webpack": "^0.1.1-experimental.7",
+        "ljas-webpack": "^0.1.1-experimental.8",
         "mini-css-extract-plugin": "^2.7.6",
         "postcss": "^8.4.29",
         "postcss-loader": "^7.3.3",
