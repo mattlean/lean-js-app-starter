@@ -18,7 +18,7 @@ const BUNDLED_BACK_BUILD_PATH = path.resolve(__dirname)
 const BUNDLED_FRONT_BUILD_PATH = path.resolve(__dirname, '../frontend')
 const BUNDLED_GENERATED_VIEWS_BUILD_PATH = path.resolve(
     __dirname,
-    '../generated-views'
+    '../generated-views',
 )
 
 const app = express()
@@ -34,7 +34,7 @@ if (process.env.NODE_ENV === 'test') {
     viewDirs.push(
         // Use the generated views from the frontend build
         BUNDLED_GENERATED_VIEWS_BUILD_PATH,
-        `${BUNDLED_BACK_BUILD_PATH}/views`
+        `${BUNDLED_BACK_BUILD_PATH}/views`,
     )
 }
 app.set('views', viewDirs)

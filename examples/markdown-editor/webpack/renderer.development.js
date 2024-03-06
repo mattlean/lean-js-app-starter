@@ -1,15 +1,12 @@
 require('dotenv').config()
 
+const tailwindcss = require('tailwindcss')
 const setupReactFastRefreshServerTs = require('ljas-webpack/setupReactFastRefreshServerTs')
-const {
-    buildSourceMaps,
-    injectCss,
-    loadFonts,
-    loadImages,
-} = require('ljas-webpack')
+const { buildSourceMaps, loadFonts, loadImages } = require('ljas-webpack')
 const { merge } = require('webpack-merge')
 
 const { PATH_RENDERER_BUILD, PATH_RENDERER_SRC } = require('../PATHS')
+const buildPrefixedCss = require('ljas-webpack/buildPrefixedCss')
 
 if (!process.env.PORT_DEV_SERVER) {
     throw new Error('🔴 webpack-dev-server port was not set')
@@ -28,7 +25,14 @@ module.exports = merge([
 
     buildSourceMaps('cheap-module-source-map'),
 
-    injectCss({ rule: { include: PATH_RENDERER_SRC } }),
+    buildPrefixedCss({
+        rule: { include: PATH_RENDERER_SRC },
+        postcssLoader: {
+            postcssOptions: {
+                plugins: [require('autoprefixer'), tailwindcss],
+            },
+        },
+    }),
 
     loadFonts({
         rule: {
