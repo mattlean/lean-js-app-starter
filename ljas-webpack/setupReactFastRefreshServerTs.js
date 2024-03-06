@@ -1,7 +1,8 @@
-const compileReactTs = require('./compileReactTs')
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
 const { merge } = require('webpack-merge')
+
+const compileReactTs = require('./compileReactTs')
 const { setupDevServer } = require('.')
 
 /**

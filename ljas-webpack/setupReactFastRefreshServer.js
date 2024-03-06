@@ -1,6 +1,7 @@
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
-const { compileReact, setupDevServer } = require('.')
 const { merge } = require('webpack-merge')
+
+const { compileReact, setupDevServer } = require('.')
 
 /**
  * Setup webpack-dev-server and babel-loader to handle React JavaScript code.

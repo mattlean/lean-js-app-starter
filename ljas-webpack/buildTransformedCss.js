@@ -1,9 +1,12 @@
-const buildCss = require('./buildCss')
+const autoprefixer = require('autoprefixer')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+
+const buildCss = require('./buildCss')
 
 /**
  * Enable .css file imports and build the CSS with css-loader and mini-css-extract-plugin.
- * Also add vendor prefixes to CSS with postcss-loader and Autoprefixer:
+ * Enable transformations with postcss-loader. By default, add vendor prefixes with Autoprefixer.
+ * When running in production, minify CSS with css-minimizer-webpack-plugin:
  * - https://github.com/postcss/autoprefixer
  * - https://webpack.js.org/loaders/css-loader
  * - https://webpack.js.org/plugins/css-minimizer-webpack-plugin
@@ -18,7 +21,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
  * - postcss@^8.4.29
  * - postcss-loader@^7.3.3
  *
- * @param {Object} [options] Options object that determines how Autoprefixer, css-loader, mini-css-extract-plugin, and postcss-loader will be configured.
+ * @param {Object} [options] Options object that determines how Autoprefixer, css-loader, css-minimizer-webpack-plugin, mini-css-extract-plugin, and postcss-loader will be configured.
  * @param {Object} [options.autoprefixer] Options for Autoprefixer. (https://github.com/postcss/autoprefixer#options)
  * @param {Object} [options.cssLoader] css-loader options. (https://webpack.js.org/loaders/css-loader/#options)
  * @param {Object} [options.miniCssExtractPlugin] Options for mini-css-extract-plugin. (https://webpack.js.org/plugins/mini-css-extract-plugin/#plugin-options)
@@ -31,9 +34,9 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
  * @param {Object} [options.rule.resolve] Resolve option associated with the webpack rule. (https://webpack.js.org/configuration/module/#ruleresolve)
  * @param {RegExp} [options.rule.test=/\.css$/] Test option associated with the webpack rule. (https://webpack.js.org/configuration/module/#ruletest)
  * @param {Object} [options.rule.use] webpack UseEntry associated with the webpack rule. Setting this will override most of the default configuration. (https://webpack.js.org/configuration/module/#useentry)
- * @return {Object} A webpack configuration object that sets up Autoprefixer, css-loader, mini-css-extract-plugin, and postcss-loader.
+ * @return {Object} A webpack configuration object that sets up Autoprefixer, css-loader, css-minimizer-webpack-plugin, mini-css-extract-plugin, and postcss-loader.
  */
-const buildPrefixedCss = (options) =>
+const buildTransformedCss = (options) =>
     buildCss({
         rule: {
             use: [
@@ -46,9 +49,7 @@ const buildPrefixedCss = (options) =>
                     loader: 'postcss-loader',
                     options: options?.postcssLoader ?? {
                         postcssOptions: {
-                            plugins: [
-                                require('autoprefixer')(options?.autoprefixer),
-                            ],
+                            plugins: [autoprefixer(options?.autoprefixer)],
                         },
                     },
                 },
@@ -60,4 +61,4 @@ const buildPrefixedCss = (options) =>
         ],
     })
 
-module.exports = buildPrefixedCss
+module.exports = buildTransformedCss
