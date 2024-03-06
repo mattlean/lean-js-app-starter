@@ -45,7 +45,7 @@ const router = Router()
 const branchFormErrorMiddleware = (
     req: Request,
     res: Response,
-    next: NextFunction
+    next: NextFunction,
 ) => {
     const errors = validationResult(req)
 
@@ -64,7 +64,7 @@ const branchFormErrorMiddleware = (
 const buildReduxStoreMiddleware = async (
     req: Request,
     res: Response,
-    next: NextFunction
+    next: NextFunction,
 ) => {
     res.locals.store = buildStore()
     return next()
@@ -76,15 +76,15 @@ const buildReduxStoreMiddleware = async (
 const preloadFormErrorMiddleware = (
     req: Request,
     res: Response,
-    next: NextFunction
+    next: NextFunction,
 ) => {
     if (!res.locals.store) {
         return next(
             new ServerError(
                 500,
                 undefined,
-                'The Redux store for the response was not found'
-            )
+                'The Redux store for the response was not found',
+            ),
         )
     }
 
@@ -100,7 +100,7 @@ const preloadFormErrorMiddleware = (
         }
     } else {
         console.error(
-            'Expected to encounter validation errors. Server-side render will continue without a form error message.'
+            'Expected to encounter validation errors. Server-side render will continue without a form error message.',
         )
     }
 
@@ -113,15 +113,15 @@ const preloadFormErrorMiddleware = (
 const preloadThreadListMiddleware = async (
     req: Request,
     res: Response,
-    next: NextFunction
+    next: NextFunction,
 ) => {
     if (!res.locals.store) {
         return next(
             new ServerError(
                 500,
                 undefined,
-                'The Redux store for the response was not found'
-            )
+                'The Redux store for the response was not found',
+            ),
         )
     }
 
@@ -129,7 +129,7 @@ const preloadThreadListMiddleware = async (
 
     try {
         await res.locals.store.dispatch(
-            apiSlice.endpoints.getThreads.initiate(currPage)
+            apiSlice.endpoints.getThreads.initiate(currPage),
         )
     } catch (err) {
         return next(err)
@@ -144,21 +144,21 @@ const preloadThreadListMiddleware = async (
 const preloadThreadPageMiddleware = async (
     req: Request,
     res: Response,
-    next: NextFunction
+    next: NextFunction,
 ) => {
     if (!res.locals.store) {
         return next(
             new ServerError(
                 500,
                 undefined,
-                'The Redux store for the response was not found'
-            )
+                'The Redux store for the response was not found',
+            ),
         )
     }
 
     try {
         await res.locals.store.dispatch(
-            apiSlice.endpoints.getThread.initiate(req.params.threadId)
+            apiSlice.endpoints.getThread.initiate(req.params.threadId),
         )
     } catch (err) {
         return next(err)
@@ -173,21 +173,21 @@ const preloadThreadPageMiddleware = async (
 const processRtkQueriesMiddleware = async (
     req: Request,
     res: Response,
-    next: NextFunction
+    next: NextFunction,
 ) => {
     if (!res.locals.store) {
         return next(
             new ServerError(
                 500,
                 undefined,
-                'The Redux store for the response was not found'
-            )
+                'The Redux store for the response was not found',
+            ),
         )
     }
 
     try {
         await Promise.all(
-            res.locals.store.dispatch(apiSlice.util.getRunningQueriesThunk())
+            res.locals.store.dispatch(apiSlice.util.getRunningQueriesThunk()),
         )
     } catch (err) {
         return next(err)
@@ -202,22 +202,22 @@ const processRtkQueriesMiddleware = async (
 const ssrMiddleware = async (
     req: Request,
     res: Response,
-    next: NextFunction
+    next: NextFunction,
 ) => {
     if (!res.locals.store) {
         return next(
             new ServerError(
                 500,
                 undefined,
-                'The Redux store for the response was not found'
-            )
+                'The Redux store for the response was not found',
+            ),
         )
     }
 
     let serverSideRendering
     try {
         serverSideRendering = renderToString(
-            <ServerReactApp location={req.url} store={res.locals.store} />
+            <ServerReactApp location={req.url} store={res.locals.store} />,
         )
     } catch (err) {
         return next(err)
@@ -249,7 +249,7 @@ router.get(
     buildReduxStoreMiddleware,
     preloadThreadListMiddleware,
     processRtkQueriesMiddleware,
-    ssrMiddleware
+    ssrMiddleware,
 )
 
 /**
@@ -270,7 +270,7 @@ router.get(
 
         return next()
     },
-    ssrMiddleware
+    ssrMiddleware,
 )
 
 /**
@@ -291,7 +291,7 @@ router.post(
         }
 
         return res.redirect(303, `/thread/${res.locals.threadData.id}`)
-    }
+    },
 )
 
 /**
@@ -307,7 +307,7 @@ router.post(
     preloadThreadListMiddleware,
     processRtkQueriesMiddleware,
     preloadFormErrorMiddleware,
-    ssrMiddleware
+    ssrMiddleware,
 )
 
 /**
@@ -326,20 +326,20 @@ router.get(
                 new ServerError(
                     500,
                     undefined,
-                    'The Redux store for the response was not found'
-                )
+                    'The Redux store for the response was not found',
+                ),
             )
         }
 
         res.locals.title = setThreadPageTitle(
             res.locals.store.getState().api.queries[
                 `getThread("${req.params.threadId}")`
-            ].data
+            ].data,
         )
 
         return next()
     },
-    ssrMiddleware
+    ssrMiddleware,
 )
 
 /**
@@ -358,7 +358,7 @@ router.post(
     createReplyMiddleware,
     preloadThreadPageMiddleware,
     processRtkQueriesMiddleware,
-    ssrMiddleware
+    ssrMiddleware,
 )
 
 /**
@@ -373,7 +373,7 @@ router.post(
     preloadThreadPageMiddleware,
     processRtkQueriesMiddleware,
     preloadFormErrorMiddleware,
-    ssrMiddleware
+    ssrMiddleware,
 )
 
 if (process.env.NODE_ENV !== 'production') {

@@ -36,7 +36,7 @@ router.post(
         }
 
         return res.status(201).json({ data: res.locals.threadData })
-    }
+    },
 )
 
 /**
@@ -170,8 +170,8 @@ router.get(
                 new ServerError(
                     500,
                     undefined,
-                    'Encountered a problem reading the data from the thread list query.'
-                )
+                    'Encountered a problem reading the data from the thread list query.',
+                ),
             )
         }
 
@@ -196,7 +196,7 @@ router.get(
                 threadCount: countResult._count,
             },
         })
-    }
+    },
 )
 
 /**
@@ -237,7 +237,7 @@ router.get(
         }
 
         return res.json({ data: threadData })
-    }
+    },
 )
 
 /**
@@ -260,7 +260,7 @@ router.post(
         return res.status(201).json({
             data: res.locals.replyData.thread,
         })
-    }
+    },
 )
 
 export { router as threadHandler }

@@ -35,7 +35,7 @@ const genDevData = async (threadsNum = 200, outputJson = false) => {
         const newThread = await prisma.thread.create({
             data: {
                 subject: `Generated thread ${count + 1} (${lipsum.generateWords(
-                    1
+                    1,
                 )})`,
                 comment: lipsum.generateSentences(3),
             },

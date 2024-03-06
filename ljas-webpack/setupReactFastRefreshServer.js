@@ -51,11 +51,11 @@ const setupReactFastRefreshServer = (options, mode = 'development') => {
                 ],
                 plugins: o?.plugins ?? [
                     new ReactRefreshWebpackPlugin(
-                        options?.reactRefreshWebpackPlugin
+                        options?.reactRefreshWebpackPlugin,
                     ),
                 ],
             },
-            mode
+            mode,
         ),
 
         setupDevServer({ ...options?.devServer, hot: true }),

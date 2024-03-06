@@ -15,7 +15,7 @@ export const createJWT = (user: User) => {
 
     return jwt.sign(
         { uuid: user.uuid, username: user.username },
-        process.env.JWT_SECRET
+        process.env.JWT_SECRET,
     )
 }
 
@@ -54,7 +54,7 @@ export const verifyToken = (token: string): DecodedJWT => {
 export const protectMiddleware = (
     req: Request,
     res: Response,
-    next: NextFunction
+    next: NextFunction,
 ) => {
     const bearer = req.headers.authorization
 

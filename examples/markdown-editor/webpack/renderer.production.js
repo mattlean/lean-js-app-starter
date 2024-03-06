@@ -60,7 +60,7 @@ module.exports = merge([
                 },
             },
         },
-        'production'
+        'production',
     ),
 
     loadFonts({

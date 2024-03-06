@@ -57,7 +57,7 @@ export default function NewReplyForm() {
                             // Hide error messages to prevent clogging of test output
                             console.error(
                                 'An error was encountered while creating the reply:',
-                                err
+                                err,
                             )
                         }
 
@@ -66,7 +66,7 @@ export default function NewReplyForm() {
                 }
 
                 throw new Error(
-                    'An error was encountered while creating the reply.'
+                    'An error was encountered while creating the reply.',
                 )
             }
 

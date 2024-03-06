@@ -10,7 +10,7 @@ window.addEventListener('DOMContentLoaded', () => {
         if (process.versions[dependency]) {
             replaceText(
                 `${dependency}-version`,
-                process.versions[dependency] as string
+                process.versions[dependency] as string,
             )
         }
     }

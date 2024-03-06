@@ -11,7 +11,7 @@ export interface Props {
 
 export default function Reply({ data, threadId }: Props) {
     const [createdAt, setCreatedAt] = useState<string>(() =>
-        moment(data.createdAt).utc().format('MM/DD/YY(ddd)HH:mm:ss')
+        moment(data.createdAt).utc().format('MM/DD/YY(ddd)HH:mm:ss'),
     )
     const [className, setClassName] = useState<string>('reply__content')
 
@@ -20,7 +20,7 @@ export default function Reply({ data, threadId }: Props) {
 
     const serverCreatedAt = useMemo(
         () => new Date(data.createdAt),
-        [data?.createdAt]
+        [data?.createdAt],
     )
 
     useEffect(() => {

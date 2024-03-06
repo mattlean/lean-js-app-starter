@@ -23,7 +23,7 @@ export {
 
 /** Type predicate for Prisma errors. */
 export const isPrismaKnownRequestError = (
-    err: Prisma.PrismaClientKnownRequestError | Error
+    err: Prisma.PrismaClientKnownRequestError | Error,
 ): err is Prisma.PrismaClientKnownRequestError =>
     err instanceof Prisma.PrismaClientKnownRequestError
 
@@ -33,7 +33,7 @@ export const isPrismaKnownRequestError = (
 export const validateErrorMiddleware = (
     req: Request,
     res: Response,
-    next: NextFunction
+    next: NextFunction,
 ) => {
     const errors = validationResult(req)
 

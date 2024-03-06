@@ -11,7 +11,7 @@ const router = Router()
 const genUserDataMiddleware = async (
     req: Request,
     res: Response,
-    next: NextFunction
+    next: NextFunction,
 ) => {
     if (!req.user) {
         return next(new ServerError(401))
@@ -70,7 +70,7 @@ const genUserDataMiddleware = async (
  *       - Authentication & Authorization
  */
 router.get('/', genUserDataMiddleware, async (req, res) =>
-    res.json({ data: res.locals.data })
+    res.json({ data: res.locals.data }),
 )
 
 export { router as meHandler }

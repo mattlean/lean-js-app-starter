@@ -15,7 +15,7 @@ import { formInputsReducer } from '../features/formInputs/formInputsSlice'
  * @return A new Redux store
  */
 export const buildStore = (
-    preloadedState?: any // eslint-disable-line @typescript-eslint/no-explicit-any
+    preloadedState?: any, // eslint-disable-line @typescript-eslint/no-explicit-any
 ) =>
     configureStore({
         reducer: {

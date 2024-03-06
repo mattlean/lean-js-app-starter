@@ -26,7 +26,7 @@ const router = Router()
  *       - Debug
  */
 router.get('/ping', (req, res) =>
-    res.setHeader('Content-Type', 'text/plain').send('pong')
+    res.setHeader('Content-Type', 'text/plain').send('pong'),
 )
 
 if (process.env.NODE_ENV !== 'production') {

@@ -12,13 +12,13 @@ export interface Props {
 
 export default function Thread({ data }: Props) {
     const [createdAt, setCreatedAt] = useState<string>(() =>
-        moment(data.createdAt).utc().format('MM/DD/YY(ddd)HH:mm:ss')
+        moment(data.createdAt).utc().format('MM/DD/YY(ddd)HH:mm:ss'),
     )
     const { threadId: threadIdRouteParam } = useParams()
 
     const serverCreatedAt = useMemo(
         () => new Date(data.createdAt),
-        [data?.createdAt]
+        [data?.createdAt],
     )
 
     useEffect(() => {

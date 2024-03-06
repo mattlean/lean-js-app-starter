@@ -78,7 +78,7 @@ module.exports = (env, { mode }) => {
         default: {
             const configDev = merge(
                 config,
-                buildSourceMaps('cheap-module-source-map')
+                buildSourceMaps('cheap-module-source-map'),
             )
             console.log('DEBUG CONFIG', configDev, JSON.stringify(configDev))
             return configDev

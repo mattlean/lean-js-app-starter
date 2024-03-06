@@ -22,7 +22,7 @@ export const genProtectMiddlewareAuthImpl =
 export const restoreProtectMiddlewareImpl = (
     req: Request,
     res: Response,
-    next: NextFunction
+    next: NextFunction,
 ) => {
     const { protectMiddleware } = jest.requireActual('../auth')
     return protectMiddleware(req, res, next)

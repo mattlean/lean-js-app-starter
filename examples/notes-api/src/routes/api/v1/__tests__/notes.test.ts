@@ -25,7 +25,7 @@ describe('create note endpoint', () => {
 
     it('creates an empty note when request payload is empty after being authorized', async () => {
         protectMiddlewareMock.mockImplementation(
-            genProtectMiddlewareAuthImpl(MOCK_REQ_USER)
+            genProtectMiddlewareAuthImpl(MOCK_REQ_USER),
         )
         prismaMock.note.create.mockResolvedValue(MOCK_NOTE_EMPTY)
 
@@ -38,16 +38,16 @@ describe('create note endpoint', () => {
         expect(res.body.data.title).toBe(null)
         expect(res.body.data.content).toBe(null)
         expect(new Date(res.body.data.createdAt).getTime()).toBe(
-            MOCK_NOTE_EMPTY.createdAt.getTime()
+            MOCK_NOTE_EMPTY.createdAt.getTime(),
         )
         expect(new Date(res.body.data.updatedAt).getTime()).toBe(
-            MOCK_NOTE_EMPTY.updatedAt.getTime()
+            MOCK_NOTE_EMPTY.updatedAt.getTime(),
         )
     })
 
     it('creates note with title when request payload only has title after being authorized', async () => {
         protectMiddlewareMock.mockImplementation(
-            genProtectMiddlewareAuthImpl(MOCK_REQ_USER)
+            genProtectMiddlewareAuthImpl(MOCK_REQ_USER),
         )
         prismaMock.note.create.mockResolvedValue(MOCK_NOTE_W_TITLE)
 
@@ -62,16 +62,16 @@ describe('create note endpoint', () => {
         expect(res.body.data.title).toBe(MOCK_NOTE_W_TITLE.title)
         expect(res.body.data.content).toBe(MOCK_NOTE_W_TITLE.content)
         expect(new Date(res.body.data.createdAt).getTime()).toBe(
-            MOCK_NOTE_W_TITLE.createdAt.getTime()
+            MOCK_NOTE_W_TITLE.createdAt.getTime(),
         )
         expect(new Date(res.body.data.updatedAt).getTime()).toBe(
-            MOCK_NOTE_W_TITLE.updatedAt.getTime()
+            MOCK_NOTE_W_TITLE.updatedAt.getTime(),
         )
     })
 
     it('creates note with content when request payload only has content after being authorized', async () => {
         protectMiddlewareMock.mockImplementation(
-            genProtectMiddlewareAuthImpl(MOCK_REQ_USER)
+            genProtectMiddlewareAuthImpl(MOCK_REQ_USER),
         )
         prismaMock.note.create.mockResolvedValue(MOCK_NOTE_W_CONTENT)
 
@@ -86,16 +86,16 @@ describe('create note endpoint', () => {
         expect(res.body.data.title).toBe(MOCK_NOTE_W_CONTENT.title)
         expect(res.body.data.content).toBe(MOCK_NOTE_W_CONTENT.content)
         expect(new Date(res.body.data.createdAt).getTime()).toBe(
-            MOCK_NOTE_W_CONTENT.createdAt.getTime()
+            MOCK_NOTE_W_CONTENT.createdAt.getTime(),
         )
         expect(new Date(res.body.data.updatedAt).getTime()).toBe(
-            MOCK_NOTE_W_CONTENT.updatedAt.getTime()
+            MOCK_NOTE_W_CONTENT.updatedAt.getTime(),
         )
     })
 
     it('creates note with title & content when request payload has title & content after being authorized', async () => {
         protectMiddlewareMock.mockImplementation(
-            genProtectMiddlewareAuthImpl(MOCK_REQ_USER)
+            genProtectMiddlewareAuthImpl(MOCK_REQ_USER),
         )
         prismaMock.note.create.mockResolvedValue(MOCK_NOTE_W_TITLE_CONTENT)
 
@@ -111,10 +111,10 @@ describe('create note endpoint', () => {
         expect(res.body.data.title).toBe(MOCK_NOTE_W_TITLE_CONTENT.title)
         expect(res.body.data.content).toBe(MOCK_NOTE_W_TITLE_CONTENT.content)
         expect(new Date(res.body.data.createdAt).getTime()).toBe(
-            MOCK_NOTE_W_TITLE_CONTENT.createdAt.getTime()
+            MOCK_NOTE_W_TITLE_CONTENT.createdAt.getTime(),
         )
         expect(new Date(res.body.data.updatedAt).getTime()).toBe(
-            MOCK_NOTE_W_TITLE_CONTENT.updatedAt.getTime()
+            MOCK_NOTE_W_TITLE_CONTENT.updatedAt.getTime(),
         )
     })
 
@@ -140,7 +140,7 @@ describe('list notes endpoint', () => {
             MOCK_NOTE_W_TITLE_CONTENT,
         ]
         protectMiddlewareMock.mockImplementation(
-            genProtectMiddlewareAuthImpl(MOCK_REQ_USER)
+            genProtectMiddlewareAuthImpl(MOCK_REQ_USER),
         )
         prismaMock.note.findMany.mockResolvedValue(MOCK_NOTE_LIST)
 
@@ -157,17 +157,17 @@ describe('list notes endpoint', () => {
             expect(n.title).toBe(res.body.data[i].title)
             expect(n.content).toBe(res.body.data[i].content)
             expect(n.createdAt.getTime()).toBe(
-                new Date(res.body.data[i].createdAt).getTime()
+                new Date(res.body.data[i].createdAt).getTime(),
             )
             expect(n.updatedAt.getTime()).toBe(
-                new Date(res.body.data[i].updatedAt).getTime()
+                new Date(res.body.data[i].updatedAt).getTime(),
             )
         })
     })
 
     it('returns empty list of notes for authorized user if they do not own any notes', async () => {
         protectMiddlewareMock.mockImplementation(
-            genProtectMiddlewareAuthImpl(MOCK_REQ_USER)
+            genProtectMiddlewareAuthImpl(MOCK_REQ_USER),
         )
         prismaMock.note.findMany.mockResolvedValue([])
 
@@ -196,14 +196,14 @@ describe('list notes endpoint', () => {
 describe('read note endpoint', () => {
     it('returns note when requesting an owned note', async () => {
         protectMiddlewareMock.mockImplementation(
-            genProtectMiddlewareAuthImpl(MOCK_REQ_USER)
+            genProtectMiddlewareAuthImpl(MOCK_REQ_USER),
         )
         prismaMock.note.findUniqueOrThrow.mockResolvedValue(MOCK_NOTE_EMPTY)
 
         expect.assertions(6)
 
         const res = await request(app).get(
-            `/api/v1/notes/${MOCK_NOTE_EMPTY.uuid}`
+            `/api/v1/notes/${MOCK_NOTE_EMPTY.uuid}`,
         )
 
         expect(res.status).toBe(200)
@@ -211,16 +211,16 @@ describe('read note endpoint', () => {
         expect(res.body.data.title).toBe(null)
         expect(res.body.data.content).toBe(null)
         expect(new Date(res.body.data.createdAt).getTime()).toBe(
-            MOCK_NOTE_EMPTY.createdAt.getTime()
+            MOCK_NOTE_EMPTY.createdAt.getTime(),
         )
         expect(new Date(res.body.data.updatedAt).getTime()).toBe(
-            MOCK_NOTE_EMPTY.updatedAt.getTime()
+            MOCK_NOTE_EMPTY.updatedAt.getTime(),
         )
     })
 
     it('returns 404 when requesting an inaccessible note', async () => {
         protectMiddlewareMock.mockImplementation(
-            genProtectMiddlewareAuthImpl(MOCK_REQ_USER)
+            genProtectMiddlewareAuthImpl(MOCK_REQ_USER),
         )
         prismaMock.note.findUniqueOrThrow.mockImplementation(() => {
             const err = new Prisma.PrismaClientKnownRequestError(
@@ -228,7 +228,7 @@ describe('read note endpoint', () => {
                 {
                     clientVersion: '4.15.0',
                     code: 'P2025',
-                }
+                },
             )
             throw err
         })
@@ -248,7 +248,7 @@ describe('read note endpoint', () => {
         expect.assertions(3)
 
         const res = await request(app).get(
-            `/api/v1/notes/${MOCK_NOTE_EMPTY.uuid}`
+            `/api/v1/notes/${MOCK_NOTE_EMPTY.uuid}`,
         )
 
         expect(res.status).toBe(401)
@@ -264,7 +264,7 @@ describe('update note endpoint', () => {
 
     it('returns note with updated title when authorized', async () => {
         protectMiddlewareMock.mockImplementation(
-            genProtectMiddlewareAuthImpl(MOCK_REQ_USER)
+            genProtectMiddlewareAuthImpl(MOCK_REQ_USER),
         )
         prismaMock.note.update.mockResolvedValue({
             ...MOCK_NOTE_W_TITLE_CONTENT,
@@ -286,16 +286,16 @@ describe('update note endpoint', () => {
         expect(res.body.data.title).toBe(UPDATED_TITLE)
         expect(res.body.data.content).toBe(MOCK_NOTE_W_TITLE_CONTENT.content)
         expect(new Date(res.body.data.createdAt).getTime()).toBe(
-            MOCK_NOTE_W_TITLE_CONTENT.createdAt.getTime()
+            MOCK_NOTE_W_TITLE_CONTENT.createdAt.getTime(),
         )
         expect(new Date(res.body.data.updatedAt).getTime()).toBe(
-            NEW_UPDATED_AT.getTime()
+            NEW_UPDATED_AT.getTime(),
         )
     })
 
     it('returns note with updated content when authorized', async () => {
         protectMiddlewareMock.mockImplementation(
-            genProtectMiddlewareAuthImpl(MOCK_REQ_USER)
+            genProtectMiddlewareAuthImpl(MOCK_REQ_USER),
         )
         prismaMock.note.update.mockResolvedValue({
             ...MOCK_NOTE_W_TITLE_CONTENT,
@@ -317,16 +317,16 @@ describe('update note endpoint', () => {
         expect(res.body.data.title).toBe(MOCK_NOTE_W_TITLE_CONTENT.title)
         expect(res.body.data.content).toBe(UPDATED_CONTENT)
         expect(new Date(res.body.data.createdAt).getTime()).toBe(
-            MOCK_NOTE_W_TITLE_CONTENT.createdAt.getTime()
+            MOCK_NOTE_W_TITLE_CONTENT.createdAt.getTime(),
         )
         expect(new Date(res.body.data.updatedAt).getTime()).toBe(
-            NEW_UPDATED_AT.getTime()
+            NEW_UPDATED_AT.getTime(),
         )
     })
 
     it('returns note with updated title & content when authorized', async () => {
         protectMiddlewareMock.mockImplementation(
-            genProtectMiddlewareAuthImpl(MOCK_REQ_USER)
+            genProtectMiddlewareAuthImpl(MOCK_REQ_USER),
         )
         prismaMock.note.update.mockResolvedValue({
             ...MOCK_NOTE_W_TITLE_CONTENT,
@@ -349,16 +349,16 @@ describe('update note endpoint', () => {
         expect(res.body.data.title).toBe(UPDATED_TITLE)
         expect(res.body.data.content).toBe(UPDATED_CONTENT)
         expect(new Date(res.body.data.createdAt).getTime()).toBe(
-            MOCK_NOTE_W_TITLE_CONTENT.createdAt.getTime()
+            MOCK_NOTE_W_TITLE_CONTENT.createdAt.getTime(),
         )
         expect(new Date(res.body.data.updatedAt).getTime()).toBe(
-            NEW_UPDATED_AT.getTime()
+            NEW_UPDATED_AT.getTime(),
         )
     })
 
     it('returns note with null title when title is excluded when authorized', async () => {
         protectMiddlewareMock.mockImplementation(
-            genProtectMiddlewareAuthImpl(MOCK_REQ_USER)
+            genProtectMiddlewareAuthImpl(MOCK_REQ_USER),
         )
         prismaMock.note.update.mockResolvedValue({
             ...MOCK_NOTE_W_TITLE_CONTENT,
@@ -378,16 +378,16 @@ describe('update note endpoint', () => {
         expect(res.body.data.title).toBe(null)
         expect(res.body.data.content).toBe(UPDATED_CONTENT)
         expect(new Date(res.body.data.createdAt).getTime()).toBe(
-            MOCK_NOTE_W_TITLE_CONTENT.createdAt.getTime()
+            MOCK_NOTE_W_TITLE_CONTENT.createdAt.getTime(),
         )
         expect(new Date(res.body.data.updatedAt).getTime()).toBe(
-            NEW_UPDATED_AT.getTime()
+            NEW_UPDATED_AT.getTime(),
         )
     })
 
     it('returns note with null content when content is excluded when authorized', async () => {
         protectMiddlewareMock.mockImplementation(
-            genProtectMiddlewareAuthImpl(MOCK_REQ_USER)
+            genProtectMiddlewareAuthImpl(MOCK_REQ_USER),
         )
         prismaMock.note.update.mockResolvedValue({
             ...MOCK_NOTE_W_TITLE_CONTENT,
@@ -407,16 +407,16 @@ describe('update note endpoint', () => {
         expect(res.body.data.title).toBe(UPDATED_TITLE)
         expect(res.body.data.content).toBe(null)
         expect(new Date(res.body.data.createdAt).getTime()).toBe(
-            MOCK_NOTE_W_TITLE_CONTENT.createdAt.getTime()
+            MOCK_NOTE_W_TITLE_CONTENT.createdAt.getTime(),
         )
         expect(new Date(res.body.data.updatedAt).getTime()).toBe(
-            NEW_UPDATED_AT.getTime()
+            NEW_UPDATED_AT.getTime(),
         )
     })
 
     it('returns note with null title & content when request payload is empty when authorized', async () => {
         protectMiddlewareMock.mockImplementation(
-            genProtectMiddlewareAuthImpl(MOCK_REQ_USER)
+            genProtectMiddlewareAuthImpl(MOCK_REQ_USER),
         )
         prismaMock.note.update.mockResolvedValue({
             ...MOCK_NOTE_W_TITLE_CONTENT,
@@ -428,7 +428,7 @@ describe('update note endpoint', () => {
         expect.assertions(6)
 
         const res = await request(app).put(
-            `/api/v1/notes/${MOCK_NOTE_W_TITLE_CONTENT.uuid}`
+            `/api/v1/notes/${MOCK_NOTE_W_TITLE_CONTENT.uuid}`,
         )
 
         expect(res.status).toBe(200)
@@ -436,16 +436,16 @@ describe('update note endpoint', () => {
         expect(res.body.data.title).toBe(null)
         expect(res.body.data.content).toBe(null)
         expect(new Date(res.body.data.createdAt).getTime()).toBe(
-            MOCK_NOTE_W_TITLE_CONTENT.createdAt.getTime()
+            MOCK_NOTE_W_TITLE_CONTENT.createdAt.getTime(),
         )
         expect(new Date(res.body.data.updatedAt).getTime()).toBe(
-            NEW_UPDATED_AT.getTime()
+            NEW_UPDATED_AT.getTime(),
         )
     })
 
     it('returns 404 when updating an inaccessible note when authorized', async () => {
         protectMiddlewareMock.mockImplementation(
-            genProtectMiddlewareAuthImpl(MOCK_REQ_USER)
+            genProtectMiddlewareAuthImpl(MOCK_REQ_USER),
         )
         prismaMock.note.update.mockImplementation(() => {
             const err = new Prisma.PrismaClientKnownRequestError(
@@ -454,7 +454,7 @@ describe('update note endpoint', () => {
                     clientVersion: '4.15.0',
                     code: 'P2025',
                     meta: { cause: 'Record to update not found.' },
-                }
+                },
             )
             throw err
         })
@@ -476,7 +476,7 @@ describe('update note endpoint', () => {
         expect.assertions(3)
 
         const res = await request(app).put(
-            `/api/v1/notes/${MOCK_NOTE_EMPTY.uuid}`
+            `/api/v1/notes/${MOCK_NOTE_EMPTY.uuid}`,
         )
 
         expect(res.status).toBe(401)
@@ -492,7 +492,7 @@ describe('patch note endpoint', () => {
 
     it('returns note with patched title when authorized', async () => {
         protectMiddlewareMock.mockImplementation(
-            genProtectMiddlewareAuthImpl(MOCK_REQ_USER)
+            genProtectMiddlewareAuthImpl(MOCK_REQ_USER),
         )
         prismaMock.note.update.mockResolvedValue({
             ...MOCK_NOTE_W_TITLE_CONTENT,
@@ -513,16 +513,16 @@ describe('patch note endpoint', () => {
         expect(res.body.data.title).toBe(PATCHED_TITLE)
         expect(res.body.data.content).toBe(MOCK_NOTE_W_TITLE_CONTENT.content)
         expect(new Date(res.body.data.createdAt).getTime()).toBe(
-            MOCK_NOTE_W_TITLE_CONTENT.createdAt.getTime()
+            MOCK_NOTE_W_TITLE_CONTENT.createdAt.getTime(),
         )
         expect(new Date(res.body.data.updatedAt).getTime()).toBe(
-            NEW_UPDATED_AT.getTime()
+            NEW_UPDATED_AT.getTime(),
         )
     })
 
     it('returns note with patched content when authorized', async () => {
         protectMiddlewareMock.mockImplementation(
-            genProtectMiddlewareAuthImpl(MOCK_REQ_USER)
+            genProtectMiddlewareAuthImpl(MOCK_REQ_USER),
         )
         prismaMock.note.update.mockResolvedValue({
             ...MOCK_NOTE_W_TITLE_CONTENT,
@@ -543,16 +543,16 @@ describe('patch note endpoint', () => {
         expect(res.body.data.title).toBe(MOCK_NOTE_W_TITLE_CONTENT.title)
         expect(res.body.data.content).toBe(PATCHED_CONTENT)
         expect(new Date(res.body.data.createdAt).getTime()).toBe(
-            MOCK_NOTE_W_TITLE_CONTENT.createdAt.getTime()
+            MOCK_NOTE_W_TITLE_CONTENT.createdAt.getTime(),
         )
         expect(new Date(res.body.data.updatedAt).getTime()).toBe(
-            NEW_UPDATED_AT.getTime()
+            NEW_UPDATED_AT.getTime(),
         )
     })
 
     it('returns note with patched title & content when authorized', async () => {
         protectMiddlewareMock.mockImplementation(
-            genProtectMiddlewareAuthImpl(MOCK_REQ_USER)
+            genProtectMiddlewareAuthImpl(MOCK_REQ_USER),
         )
         prismaMock.note.update.mockResolvedValue({
             ...MOCK_NOTE_W_TITLE_CONTENT,
@@ -575,16 +575,16 @@ describe('patch note endpoint', () => {
         expect(res.body.data.title).toBe(PATCHED_TITLE)
         expect(res.body.data.content).toBe(PATCHED_CONTENT)
         expect(new Date(res.body.data.createdAt).getTime()).toBe(
-            MOCK_NOTE_W_TITLE_CONTENT.createdAt.getTime()
+            MOCK_NOTE_W_TITLE_CONTENT.createdAt.getTime(),
         )
         expect(new Date(res.body.data.updatedAt).getTime()).toBe(
-            NEW_UPDATED_AT.getTime()
+            NEW_UPDATED_AT.getTime(),
         )
     })
 
     it('returns note with same title & content when request payload is empty when authorized', async () => {
         protectMiddlewareMock.mockImplementation(
-            genProtectMiddlewareAuthImpl(MOCK_REQ_USER)
+            genProtectMiddlewareAuthImpl(MOCK_REQ_USER),
         )
         prismaMock.note.update.mockResolvedValue({
             ...MOCK_NOTE_W_TITLE_CONTENT,
@@ -594,7 +594,7 @@ describe('patch note endpoint', () => {
         expect.assertions(6)
 
         const res = await request(app).patch(
-            `/api/v1/notes/${MOCK_NOTE_W_TITLE_CONTENT.uuid}`
+            `/api/v1/notes/${MOCK_NOTE_W_TITLE_CONTENT.uuid}`,
         )
 
         expect(res.status).toBe(200)
@@ -602,16 +602,16 @@ describe('patch note endpoint', () => {
         expect(res.body.data.title).toBe(MOCK_NOTE_W_TITLE_CONTENT.title)
         expect(res.body.data.content).toBe(MOCK_NOTE_W_TITLE_CONTENT.content)
         expect(new Date(res.body.data.createdAt).getTime()).toBe(
-            MOCK_NOTE_W_TITLE_CONTENT.createdAt.getTime()
+            MOCK_NOTE_W_TITLE_CONTENT.createdAt.getTime(),
         )
         expect(new Date(res.body.data.updatedAt).getTime()).toBe(
-            NEW_UPDATED_AT.getTime()
+            NEW_UPDATED_AT.getTime(),
         )
     })
 
     it('returns 404 when updating an inaccessible note when authorized', async () => {
         protectMiddlewareMock.mockImplementation(
-            genProtectMiddlewareAuthImpl(MOCK_REQ_USER)
+            genProtectMiddlewareAuthImpl(MOCK_REQ_USER),
         )
         prismaMock.note.update.mockImplementation(() => {
             const err = new Prisma.PrismaClientKnownRequestError(
@@ -620,7 +620,7 @@ describe('patch note endpoint', () => {
                     clientVersion: '4.15.0',
                     code: 'P2025',
                     meta: { cause: 'Record to update not found.' },
-                }
+                },
             )
             throw err
         })
@@ -642,7 +642,7 @@ describe('patch note endpoint', () => {
         expect.assertions(3)
 
         const res = await request(app).patch(
-            `/api/v1/notes/${MOCK_NOTE_EMPTY.uuid}`
+            `/api/v1/notes/${MOCK_NOTE_EMPTY.uuid}`,
         )
 
         expect(res.status).toBe(401)
@@ -654,14 +654,14 @@ describe('patch note endpoint', () => {
 describe('delete note endpoint', () => {
     it('returns note when deleting an owned note', async () => {
         protectMiddlewareMock.mockImplementation(
-            genProtectMiddlewareAuthImpl(MOCK_REQ_USER)
+            genProtectMiddlewareAuthImpl(MOCK_REQ_USER),
         )
         prismaMock.note.delete.mockResolvedValue(MOCK_NOTE_EMPTY)
 
         expect.assertions(6)
 
         const res = await request(app).delete(
-            `/api/v1/notes/${MOCK_NOTE_EMPTY.uuid}`
+            `/api/v1/notes/${MOCK_NOTE_EMPTY.uuid}`,
         )
 
         expect(res.status).toBe(200)
@@ -669,16 +669,16 @@ describe('delete note endpoint', () => {
         expect(res.body.data.title).toBe(MOCK_NOTE_EMPTY.title)
         expect(res.body.data.content).toBe(MOCK_NOTE_EMPTY.content)
         expect(new Date(res.body.data.createdAt).getTime()).toBe(
-            MOCK_NOTE_EMPTY.createdAt.getTime()
+            MOCK_NOTE_EMPTY.createdAt.getTime(),
         )
         expect(new Date(res.body.data.updatedAt).getTime()).toBe(
-            MOCK_NOTE_EMPTY.updatedAt.getTime()
+            MOCK_NOTE_EMPTY.updatedAt.getTime(),
         )
     })
 
     it('returns 404 when deleting an inaccessible note', async () => {
         protectMiddlewareMock.mockImplementation(
-            genProtectMiddlewareAuthImpl(MOCK_REQ_USER)
+            genProtectMiddlewareAuthImpl(MOCK_REQ_USER),
         )
         prismaMock.note.delete.mockImplementation(() => {
             const err = new Prisma.PrismaClientKnownRequestError(
@@ -687,7 +687,7 @@ describe('delete note endpoint', () => {
                     clientVersion: '4.15.0',
                     code: 'P2025',
                     meta: { cause: 'Record to delete does not exist.' },
-                }
+                },
             )
             throw err
         })
@@ -707,7 +707,7 @@ describe('delete note endpoint', () => {
         expect.assertions(3)
 
         const res = await request(app).delete(
-            `/api/v1/notes/${MOCK_NOTE_EMPTY.uuid}`
+            `/api/v1/notes/${MOCK_NOTE_EMPTY.uuid}`,
         )
 
         expect(res.status).toBe(401)

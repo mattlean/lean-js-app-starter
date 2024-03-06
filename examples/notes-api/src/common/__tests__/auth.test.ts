@@ -54,7 +54,7 @@ describe('protectMiddleware', () => {
         const nextFn: NextFunction = jest.fn()
 
         expect(() =>
-            protectMiddleware(mockReq as Request, mockRes as Response, nextFn)
+            protectMiddleware(mockReq as Request, mockRes as Response, nextFn),
         ).toThrow(/unauthorized/i)
     })
 
@@ -66,7 +66,7 @@ describe('protectMiddleware', () => {
         const nextFn: NextFunction = jest.fn()
 
         expect(() =>
-            protectMiddleware(mockReq as Request, mockRes as Response, nextFn)
+            protectMiddleware(mockReq as Request, mockRes as Response, nextFn),
         ).toThrow(/unauthorized/i)
     })
 
@@ -78,7 +78,7 @@ describe('protectMiddleware', () => {
         const nextFn: NextFunction = jest.fn()
 
         expect(() =>
-            protectMiddleware(mockReq as Request, mockRes as Response, nextFn)
+            protectMiddleware(mockReq as Request, mockRes as Response, nextFn),
         ).toThrow(/jwt malformed/i)
     })
 })

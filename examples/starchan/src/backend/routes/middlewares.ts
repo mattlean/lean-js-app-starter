@@ -26,7 +26,7 @@ export const threadValidationChain = () => [
 export const createReplyMiddleware = async (
     req: Request,
     res: Response,
-    next: NextFunction
+    next: NextFunction,
 ) => {
     // Confirm that the thread exists
     try {
@@ -81,7 +81,7 @@ export const createReplyMiddleware = async (
 export const createThreadMiddleware = async (
     req: Request,
     res: Response,
-    next: NextFunction
+    next: NextFunction,
 ) => {
     // Create the new thread
     try {
@@ -163,8 +163,8 @@ export const createThreadMiddleware = async (
                 new ServerError(
                     500,
                     undefined,
-                    'Encountered a problem reading the data from the least active thread query.'
-                )
+                    'Encountered a problem reading the data from the least active thread query.',
+                ),
             )
         }
 
@@ -187,15 +187,15 @@ export const createThreadMiddleware = async (
 export const validateThreadObjectIdMiddleware = (
     req: Request,
     res: Response,
-    next: NextFunction
+    next: NextFunction,
 ) => {
     if (!isObjectIdOrHexString(req.params.threadId)) {
         return next(
             new ServerError(
                 404,
                 'Thread was not found.',
-                'Route parameter is not a valid ObjectId.'
-            )
+                'Route parameter is not a valid ObjectId.',
+            ),
         )
     }
 

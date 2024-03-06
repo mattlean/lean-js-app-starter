@@ -78,7 +78,7 @@ test('Counter component resets count when reset button is clicked', async () => 
 
     // Click the + button 3x
     await user.tripleClick(
-        screen.getByRole('button', { name: /increment count/i })
+        screen.getByRole('button', { name: /increment count/i }),
     )
 
     // Expect counter to have been incremented to 3

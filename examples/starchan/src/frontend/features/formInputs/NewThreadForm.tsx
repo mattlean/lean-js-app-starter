@@ -60,7 +60,7 @@ export default function NewThreadForm({ setShowForm, showForm }: Props) {
                             // Hide error messages to prevent clogging of test output
                             console.error(
                                 'An error was encountered while creating the thread:',
-                                err
+                                err,
                             )
                         }
 
@@ -69,7 +69,7 @@ export default function NewThreadForm({ setShowForm, showForm }: Props) {
                 }
 
                 throw new Error(
-                    'An error was encountered while creating the thread.'
+                    'An error was encountered while creating the thread.',
                 )
             }
 

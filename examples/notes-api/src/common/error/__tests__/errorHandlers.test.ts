@@ -19,7 +19,7 @@ describe('Not found error handlers', () => {
 
         expect(res.status).toBe(404)
         expect(res.body.errors[0]).toBe(
-            '/api/v1/definitely-not-found was not found.'
+            '/api/v1/definitely-not-found was not found.',
         )
     })
 })

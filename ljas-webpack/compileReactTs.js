@@ -71,7 +71,7 @@ const compileReactTs = (options, mode) =>
                 ...options?.resolve,
             },
         },
-        mode
+        mode,
     )
 
 module.exports = compileReactTs

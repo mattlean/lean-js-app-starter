@@ -13,5 +13,5 @@ const root = createRoot(rootEl)
 root.render(
     <StrictMode>
         <Counter />
-    </StrictMode>
+    </StrictMode>,
 )

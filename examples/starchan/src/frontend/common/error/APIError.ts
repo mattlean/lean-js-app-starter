@@ -23,7 +23,7 @@ export default class APIError extends Error {
     constructor(
         statusCode = 500,
         inputErrs?: string | string[],
-        inputDevErrs?: string | Error | APIErrorDevErrors
+        inputDevErrs?: string | Error | APIErrorDevErrors,
     ) {
         super()
         this.name = 'APIError'

@@ -26,7 +26,7 @@ export const apiErrorHandler = (
     req: Request,
     res: Response,
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    next: NextFunction
+    next: NextFunction,
 ) => {
     if (process.env.NODE_ENV !== 'test') {
         // Hide error messages to prevent clogging of test output
@@ -49,7 +49,7 @@ export const ssrErrorHandler = (
     req: Request,
     res: Response,
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    next: NextFunction
+    next: NextFunction,
 ) => {
     if (process.env.NODE_ENV === 'test') {
         ssrErrorHandlerTestInjection()
@@ -96,7 +96,7 @@ export const ssrErrorHandler = (
     let serverSideRendering
     try {
         serverSideRendering = renderToString(
-            <ServerReactApp location={req.url} store={store} />
+            <ServerReactApp location={req.url} store={store} />,
         )
     } catch (err) {
         return next(err)
@@ -123,7 +123,7 @@ export const globalErrorHandler = (
     req: Request,
     res: Response,
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    next: NextFunction
+    next: NextFunction,
 ) => {
     if (process.env.NODE_ENV !== 'test') {
         // Hide error messages to prevent clogging of test output

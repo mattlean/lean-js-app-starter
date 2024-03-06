@@ -56,7 +56,7 @@ module.exports = merge([
                 typescript: { configOverwrite: { include: ['src/**/*'] } },
             },
         },
-        'production'
+        'production',
     ),
 
     loadFonts({

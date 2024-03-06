@@ -30,8 +30,8 @@ test('thread page replies are all inactive when no fragment identifier is presen
         http.get('http://localhost:3000/api/v1/threads/:threadId', () =>
             HttpResponse.json({
                 data: MOCK_THREAD_INCLUDES_REPLY,
-            })
-        )
+            }),
+        ),
     )
 
     expect.assertions(1)
@@ -42,7 +42,7 @@ test('thread page replies are all inactive when no fragment identifier is presen
         <TestApp
             initialEntries={[`/thread/${MOCK_THREAD_INCLUDES_REPLY.id}`]}
             store={store}
-        />
+        />,
     )
 
     await waitForElementToBeRemoved(() => screen.getByText(/loading.../i))
@@ -51,7 +51,7 @@ test('thread page replies are all inactive when no fragment identifier is presen
 
     if (!reply) {
         throw new Error(
-            `HTML element with an ID of "${MOCK_REPLY.id}" was not found.`
+            `HTML element with an ID of "${MOCK_REPLY.id}" was not found.`,
         )
     }
 
@@ -63,7 +63,7 @@ test('thread page replies are all inactive when no fragment identifier is presen
 
     // Expect reply to be inactive
     expect(replyContent.classList.contains('reply__content--active')).toBe(
-        false
+        false,
     )
 })
 
@@ -72,8 +72,8 @@ test('thread page reply is active its fragment identifier is present', async () 
         http.get('http://localhost:3000/api/v1/threads/:threadId', () =>
             HttpResponse.json({
                 data: MOCK_THREAD_INCLUDES_REPLY,
-            })
-        )
+            }),
+        ),
     )
 
     window.HTMLElement.prototype.scrollIntoView = jest.fn() // Mock scrollIntoView since jsdom does not implement it
@@ -86,7 +86,7 @@ test('thread page reply is active its fragment identifier is present', async () 
         <TestApp
             initialEntries={[`/thread/${MOCK_THREAD_INCLUDES_REPLY.id}`]}
             store={store}
-        />
+        />,
     )
 
     await waitForElementToBeRemoved(() => screen.getByText(/loading.../i))
@@ -95,7 +95,7 @@ test('thread page reply is active its fragment identifier is present', async () 
 
     if (!reply) {
         throw new Error(
-            `HTML element with an ID of "${MOCK_REPLY.id}" was not found.`
+            `HTML element with an ID of "${MOCK_REPLY.id}" was not found.`,
         )
     }
 
@@ -107,14 +107,14 @@ test('thread page reply is active its fragment identifier is present', async () 
 
     // Expect reply to be inactive at first
     expect(replyContent.classList.contains('reply__content--active')).toBe(
-        false
+        false,
     )
 
     // act is needed here so useEffect runs and calls setState to make reply
     // have active styling
     await act(async () => {
         await user.click(
-            screen.getByRole('link', { name: `Id.${MOCK_REPLY.id}` })
+            screen.getByRole('link', { name: `Id.${MOCK_REPLY.id}` }),
         )
     })
 

@@ -55,7 +55,7 @@ const setupReactFastRefreshServerTs = (options, mode = 'development') => {
                 ],
                 plugins: o?.plugins ?? [
                     new ReactRefreshWebpackPlugin(
-                        options?.reactRefreshWebpackPlugin
+                        options?.reactRefreshWebpackPlugin,
                     ),
                     new ForkTsCheckerWebpackPlugin(
                         options?.forkTsChecker ?? {
@@ -75,11 +75,11 @@ const setupReactFastRefreshServerTs = (options, mode = 'development') => {
                                     ],
                                 },
                             },
-                        }
+                        },
                     ),
                 ],
             },
-            mode
+            mode,
         ),
 
         setupDevServer({ ...options?.devServer, hot: true }),

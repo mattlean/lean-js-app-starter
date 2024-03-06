@@ -93,7 +93,7 @@ router.post(
         try {
             const isValidPassword = await verifyPassword(
                 req.body.password,
-                user.password
+                user.password,
             )
 
             if (!isValidPassword) {
@@ -107,7 +107,7 @@ router.post(
         }
 
         return res.json({ data: createJWT(user) })
-    }
+    },
 )
 
 export { router as loginHandler }

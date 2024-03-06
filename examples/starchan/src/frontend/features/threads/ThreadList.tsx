@@ -35,7 +35,7 @@ export default function ThreadList() {
 
     if (error) {
         throw new Error(
-            'An error occurred when attempting to download the thread list.'
+            'An error occurred when attempting to download the thread list.',
         )
     }
 

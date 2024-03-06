@@ -31,13 +31,13 @@ describe('create thread endpoint', () => {
         expect(res.body.data.id).toBe(MOCK_THREAD_W_COMMENT.id)
         expect(res.body.data.comment).toBe(MOCK_THREAD_W_COMMENT.comment)
         expect(new Date(res.body.data.createdAt).getTime()).toBe(
-            MOCK_THREAD_W_COMMENT.createdAt.getTime()
+            MOCK_THREAD_W_COMMENT.createdAt.getTime(),
         )
     })
 
     it('creates thread with subject & comment when request payload has subject & comment', async () => {
         prismaMock.thread.create.mockResolvedValue(
-            MOCK_THREAD_W_SUBJECT_COMMENT
+            MOCK_THREAD_W_SUBJECT_COMMENT,
         )
         // Prisma typing is incorrect here
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -54,13 +54,13 @@ describe('create thread endpoint', () => {
         expect(res.status).toBe(201)
         expect(res.body.data.id).toBe(MOCK_THREAD_W_SUBJECT_COMMENT.id)
         expect(res.body.data.subject).toBe(
-            MOCK_THREAD_W_SUBJECT_COMMENT.subject
+            MOCK_THREAD_W_SUBJECT_COMMENT.subject,
         )
         expect(res.body.data.comment).toBe(
-            MOCK_THREAD_W_SUBJECT_COMMENT.comment
+            MOCK_THREAD_W_SUBJECT_COMMENT.comment,
         )
         expect(new Date(res.body.data.createdAt).getTime()).toBe(
-            MOCK_THREAD_W_SUBJECT_COMMENT.createdAt.getTime()
+            MOCK_THREAD_W_SUBJECT_COMMENT.createdAt.getTime(),
         )
     })
 
@@ -93,7 +93,7 @@ describe('create thread endpoint', () => {
         expect(res.body.data.id).toBe(MOCK_THREAD_W_COMMENT.id)
         expect(res.body.data.comment).toBe(MOCK_THREAD_W_COMMENT.comment)
         expect(new Date(res.body.data.createdAt).getTime()).toBe(
-            MOCK_THREAD_W_COMMENT.createdAt.getTime()
+            MOCK_THREAD_W_COMMENT.createdAt.getTime(),
         )
         expect(prismaMock.thread.delete).toHaveBeenCalled()
     })
@@ -129,7 +129,7 @@ describe('list threads endpoint', () => {
             expect(t.subject).toBe(res.body.data[i].subject)
             expect(t.comment).toBe(res.body.data[i].comment)
             expect(t.createdAt.getTime()).toBe(
-                new Date(res.body.data[i].createdAt).getTime()
+                new Date(res.body.data[i].createdAt).getTime(),
             )
         })
 
@@ -152,7 +152,7 @@ describe('list threads endpoint', () => {
             // Prisma typing is incorrect here
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore
-            MOCK_THREAD_LIST_RES.slice(0, 20)
+            MOCK_THREAD_LIST_RES.slice(0, 20),
         )
 
         expect.assertions(86)
@@ -202,25 +202,25 @@ describe('list threads endpoint', () => {
 describe('read thread endpoint', () => {
     it('returns thread', async () => {
         prismaMock.thread.findUniqueOrThrow.mockResolvedValue(
-            MOCK_THREAD_W_SUBJECT_COMMENT
+            MOCK_THREAD_W_SUBJECT_COMMENT,
         )
 
         expect.assertions(5)
 
         const res = await request(app).get(
-            `/api/v1/threads/${MOCK_THREAD_W_SUBJECT_COMMENT.id}`
+            `/api/v1/threads/${MOCK_THREAD_W_SUBJECT_COMMENT.id}`,
         )
 
         expect(res.status).toBe(200)
         expect(MOCK_THREAD_W_SUBJECT_COMMENT.id).toBe(res.body.data.id)
         expect(MOCK_THREAD_W_SUBJECT_COMMENT.subject).toBe(
-            res.body.data.subject
+            res.body.data.subject,
         )
         expect(MOCK_THREAD_W_SUBJECT_COMMENT.comment).toBe(
-            res.body.data.comment
+            res.body.data.comment,
         )
         expect(MOCK_THREAD_W_SUBJECT_COMMENT.createdAt.getTime()).toBe(
-            new Date(res.body.data.createdAt).getTime()
+            new Date(res.body.data.createdAt).getTime(),
         )
     })
 
@@ -231,7 +231,7 @@ describe('read thread endpoint', () => {
                 {
                     clientVersion: '4.15.0',
                     code: 'P2025',
-                }
+                },
             )
             throw err
         })
@@ -239,7 +239,7 @@ describe('read thread endpoint', () => {
         expect.assertions(3)
 
         const res = await request(app).get(
-            `/api/v1/threads/${new Types.ObjectId().toString()}`
+            `/api/v1/threads/${new Types.ObjectId().toString()}`,
         )
 
         expect(res.status).toBe(404)
@@ -251,7 +251,7 @@ describe('read thread endpoint', () => {
 describe('create reply endpoint', () => {
     it('creates reply for thread', async () => {
         prismaMock.thread.findUniqueOrThrow.mockResolvedValue(
-            MOCK_THREAD_W_REPLY
+            MOCK_THREAD_W_REPLY,
         )
 
         const r = {
@@ -270,13 +270,13 @@ describe('create reply endpoint', () => {
         expect(res.body.data.id).toBe(MOCK_THREAD_INCLUDES_REPLY.id)
         expect(res.body.data.comment).toBe(MOCK_THREAD_INCLUDES_REPLY.comment)
         expect(new Date(res.body.data.createdAt).getTime()).toBe(
-            MOCK_THREAD_INCLUDES_REPLY.createdAt.getTime()
+            MOCK_THREAD_INCLUDES_REPLY.createdAt.getTime(),
         )
         expect(Array.isArray(res.body.data.replies)).toBe(true)
         expect(res.body.data.replies[0].id).toBe(MOCK_REPLY.id)
         expect(res.body.data.replies[0].comment).toBe(MOCK_REPLY.comment)
         expect(new Date(res.body.data.replies[0].createdAt).getTime()).toBe(
-            MOCK_REPLY.createdAt.getTime()
+            MOCK_REPLY.createdAt.getTime(),
         )
     })
 
@@ -287,7 +287,7 @@ describe('create reply endpoint', () => {
                 {
                     clientVersion: '4.15.0',
                     code: 'P2025',
-                }
+                },
             )
             throw err
         })

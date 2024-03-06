@@ -35,7 +35,7 @@ export default class ServerError extends Error {
             | ErrorPageData
             | ValidationError
             | ServerErrorErrors,
-        inputDevErrs?: string | Error | ValidationError | ServerErrorDevErrors
+        inputDevErrs?: string | Error | ValidationError | ServerErrorDevErrors,
     ) {
         super()
         this.name = 'ServerError'

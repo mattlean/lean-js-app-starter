@@ -31,7 +31,7 @@ export default function PageSelect({ totalPages }: Props) {
                     {i}
                 </Link>
                 ]
-            </li>
+            </li>,
         )
     }
 

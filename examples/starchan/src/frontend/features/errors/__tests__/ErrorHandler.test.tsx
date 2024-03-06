@@ -23,7 +23,7 @@ test('ErrorHandler falls back to ErrorPage when error is caught', () => {
 
     expect(screen.queryByText(/oops!/i)).toBeInTheDocument()
     expect(
-        screen.queryByText(/sorry, an unexpected error has occurred./i)
+        screen.queryByText(/sorry, an unexpected error has occurred./i),
     ).toBeInTheDocument()
     expect(screen.queryByText(/return to the home page./i)).toBeInTheDocument()
 })

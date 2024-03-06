@@ -122,7 +122,7 @@ router.post(
         }
 
         return res.json({ data: createJWT(user) })
-    }
+    },
 )
 
 export { router as registerHandler }

@@ -22,7 +22,7 @@ const noteValidationChain = () => [
 const genNoteDataMiddleware = (
     req: Request,
     res: Response,
-    next: NextFunction
+    next: NextFunction,
 ) => {
     if (Array.isArray(res.locals.notes)) {
         res.locals.data = res.locals.notes.map((n) => {
@@ -40,7 +40,7 @@ const genNoteDataMiddleware = (
             `"res.locals.notes" and "res.locals.note" were both invalid data types. "res.locals.notes" had a type of "${typeof res
                 .locals
                 .notes}" and "res.locals.note" had a type of "${typeof res
-                .locals.note}".`
+                .locals.note}".`,
         )
     }
 
@@ -118,7 +118,7 @@ router.post(
     },
     genNoteDataMiddleware,
     (req: Request, res: Response) =>
-        res.status(201).json({ data: res.locals.data })
+        res.status(201).json({ data: res.locals.data }),
 )
 
 /**
@@ -178,7 +178,7 @@ router.get(
         return next()
     },
     genNoteDataMiddleware,
-    (req, res) => res.json({ data: res.locals.data })
+    (req, res) => res.json({ data: res.locals.data }),
 )
 
 /**
@@ -246,8 +246,8 @@ router.get(
                 new ServerError(
                     404,
                     undefined,
-                    'Route parameter is not a valid version 4 UUID.'
-                )
+                    'Route parameter is not a valid version 4 UUID.',
+                ),
             )
         }
 
@@ -275,7 +275,7 @@ router.get(
         return next()
     },
     genNoteDataMiddleware,
-    (req, res) => res.json({ data: res.locals.data })
+    (req, res) => res.json({ data: res.locals.data }),
 )
 
 /**
@@ -357,8 +357,8 @@ router.put(
                 new ServerError(
                     404,
                     undefined,
-                    'Route parameter is not a valid version 4 UUID.'
-                )
+                    'Route parameter is not a valid version 4 UUID.',
+                ),
             )
         }
 
@@ -391,7 +391,7 @@ router.put(
         return next()
     },
     genNoteDataMiddleware,
-    (req: Request, res: Response) => res.json({ data: res.locals.data })
+    (req: Request, res: Response) => res.json({ data: res.locals.data }),
 )
 
 /**
@@ -470,8 +470,8 @@ router.patch(
                 new ServerError(
                     404,
                     undefined,
-                    'Route parameter is not a valid version 4 UUID.'
-                )
+                    'Route parameter is not a valid version 4 UUID.',
+                ),
             )
         }
 
@@ -504,7 +504,7 @@ router.patch(
         return next()
     },
     genNoteDataMiddleware,
-    (req: Request, res: Response) => res.json({ data: res.locals.data })
+    (req: Request, res: Response) => res.json({ data: res.locals.data }),
 )
 
 /**
@@ -572,8 +572,8 @@ router.delete(
                 new ServerError(
                     404,
                     undefined,
-                    'Route parameter is not a valid version 4 UUID.'
-                )
+                    'Route parameter is not a valid version 4 UUID.',
+                ),
             )
         }
 
@@ -602,7 +602,7 @@ router.delete(
         return next()
     },
     genNoteDataMiddleware,
-    (req, res) => res.json({ data: res.locals.data })
+    (req, res) => res.json({ data: res.locals.data }),
 )
 
 export { router as noteHandler }

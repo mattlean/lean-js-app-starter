@@ -41,7 +41,7 @@ export default function ThreadPage() {
         }
 
         throw new Error(
-            'An error occurred when attempting to download the thread.'
+            'An error occurred when attempting to download the thread.',
         )
     }
 

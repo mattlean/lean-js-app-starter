@@ -47,7 +47,7 @@ describe('APIError', () => {
         expect(apiErr.devErrors[0]).toBeInstanceOf(Error)
         if (!(apiErr.devErrors[0] instanceof Error)) {
             throw new Error(
-                'Expected devErrors[0] for a APIError to be an Error.'
+                'Expected devErrors[0] for a APIError to be an Error.',
             )
         }
 
@@ -67,7 +67,7 @@ describe('APIError', () => {
         expect(apiErr.devErrors[0]).toBeInstanceOf(Error)
         if (!(apiErr.devErrors[0] instanceof Error)) {
             throw new Error(
-                'Expected devErrors[0] for a APIError to be an Error.'
+                'Expected devErrors[0] for a APIError to be an Error.',
             )
         }
 

@@ -16,7 +16,7 @@ test('App component matches snapshot for basic render', () => {
     const store = buildStore()
 
     const { asFragment } = render(
-        <TestApp initialEntries={['/']} store={store} />
+        <TestApp initialEntries={['/']} store={store} />,
     )
 
     expect(asFragment()).toMatchSnapshot()
@@ -28,7 +28,7 @@ test('App component matches diff snapshot transitioning from loading render to c
     const store = buildStore()
 
     const { asFragment } = render(
-        <TestApp initialEntries={['/']} store={store} />
+        <TestApp initialEntries={['/']} store={store} />,
     )
 
     const loadingRender = asFragment()

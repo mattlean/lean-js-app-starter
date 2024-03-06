@@ -7,7 +7,7 @@ import { ssrErrorHandlerTestInjection } from '../ssrErrorHandlerTestInjection'
 jest.mock('../ssrErrorHandlerTestInjection')
 
 const ssrErrorHandlerTestInjectionMock = jest.mocked(
-    ssrErrorHandlerTestInjection
+    ssrErrorHandlerTestInjection,
 )
 
 describe('Not found error handlers', () => {
@@ -27,7 +27,7 @@ describe('Not found error handlers', () => {
 
         expect(res.status).toBe(404)
         expect(res.body.errors[0]).toBe(
-            '/api/v1/definitely-not-found was not found.'
+            '/api/v1/definitely-not-found was not found.',
         )
     })
 })
@@ -62,7 +62,7 @@ describe('Global error handler', () => {
 
         ssrErrorHandlerTestInjectionMock.mockImplementation(() => {
             throw new Error(
-                'Trigger the global error handler from the SSR error handler with a regular Error'
+                'Trigger the global error handler from the SSR error handler with a regular Error',
             )
         })
 

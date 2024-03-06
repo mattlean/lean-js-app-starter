@@ -8,7 +8,7 @@ export interface ErrorPageData {
 
 /** Type predicate for ErrorPageData. */
 export const isErrorPageData = (
-    err: string | ErrorPageData | ValidationError
+    err: string | ErrorPageData | ValidationError,
 ): err is ErrorPageData => {
     if (typeof err === 'object') {
         return (

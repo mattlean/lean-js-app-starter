@@ -50,7 +50,7 @@ beforeAll(() =>
 
             print.warning()
         },
-    })
+    }),
 )
 
 afterEach(() => {
@@ -81,7 +81,7 @@ describe('thread list page', () => {
 
         const { asFragment } = render(
             <TestApp initialEntries={['/']} store={store} />,
-            { container: rootEl, hydrate: true }
+            { container: rootEl, hydrate: true },
         )
 
         expect(asFragment()).toMatchSnapshot()
@@ -114,8 +114,8 @@ describe('thread list page', () => {
         // Confirm that the empty thread list message is present
         expect(
             screen.queryByText(
-                /Currently no threads exist. Why don't you create the first one?/i
-            )
+                /Currently no threads exist. Why don't you create the first one?/i,
+            ),
         ).toBeInTheDocument()
     })
 
@@ -131,8 +131,8 @@ describe('thread list page', () => {
                         hasPreviousPage: false,
                         totalPages: 1,
                     },
-                })
-            )
+                }),
+            ),
         )
 
         expect.assertions(2)
@@ -203,8 +203,8 @@ describe('thread list page', () => {
                         hasPreviousPage: false,
                         totalPages: 3,
                     },
-                })
-            )
+                }),
+            ),
         )
 
         expect.assertions(2)
@@ -264,7 +264,7 @@ describe('thread list page', () => {
                 }
 
                 throw new Error('Unsupported mocked page number was requested')
-            })
+            }),
         )
 
         expect.assertions(8)
@@ -296,22 +296,22 @@ describe('thread list page', () => {
 
         // First thread from page 1 should be visible, but first thread from page 2 shouldn't
         expect(
-            screen.queryByText(MOCK_THREAD_LIST_RESULTS_P1[0].subject)
+            screen.queryByText(MOCK_THREAD_LIST_RESULTS_P1[0].subject),
         ).toBeInTheDocument()
         expect(
-            screen.queryByText(MOCK_THREAD_LIST_RESULTS_P2[0].subject)
+            screen.queryByText(MOCK_THREAD_LIST_RESULTS_P2[0].subject),
         ).not.toBeInTheDocument()
 
         // Expect page 1 to be active in page select and page 2 to be inactive
         expect(
             screen
                 .getByTestId('page-select')
-                .children[0].classList.contains('page-select__page--active')
+                .children[0].classList.contains('page-select__page--active'),
         ).toBe(true)
         expect(
             screen
                 .getByTestId('page-select')
-                .children[1].classList.contains('page-select__page--active')
+                .children[1].classList.contains('page-select__page--active'),
         ).toBe(false)
 
         // user-event currently has an issue running in the SSR environment,
@@ -322,22 +322,22 @@ describe('thread list page', () => {
 
         // First thread from page 2 should be visible, but first thread from page 1 shouldn't
         expect(
-            screen.queryByText(MOCK_THREAD_LIST_RESULTS_P2[0].subject)
+            screen.queryByText(MOCK_THREAD_LIST_RESULTS_P2[0].subject),
         ).toBeInTheDocument()
         expect(
-            screen.queryByText(MOCK_THREAD_LIST_RESULTS_P1[0].subject)
+            screen.queryByText(MOCK_THREAD_LIST_RESULTS_P1[0].subject),
         ).not.toBeInTheDocument()
 
         // Expect page 2 to be active in page select and page 1 to be inactive
         expect(
             screen
                 .getByTestId('page-select')
-                .children[1].classList.contains('page-select__page--active')
+                .children[1].classList.contains('page-select__page--active'),
         ).toBe(true)
         expect(
             screen
                 .getByTestId('page-select')
-                .children[0].classList.contains('page-select__page--active')
+                .children[0].classList.contains('page-select__page--active'),
         ).toBe(false)
     })
 
@@ -351,8 +351,8 @@ describe('thread list page', () => {
                         hasPreviousPage: true,
                         totalPages: 2,
                     },
-                })
-            )
+                }),
+            ),
         )
 
         expect.assertions(1)
@@ -380,7 +380,7 @@ describe('thread list page', () => {
 
         // Expect page 2 to be visible
         expect(
-            screen.queryByText(MOCK_THREAD_LIST_RESULTS_P2[0].subject)
+            screen.queryByText(MOCK_THREAD_LIST_RESULTS_P2[0].subject),
         ).toBeInTheDocument()
     })
 
@@ -418,7 +418,7 @@ describe('thread list page', () => {
 
         if (!MOCK_THREAD) {
             throw new Error(
-                'No thread with less than 6 replies was found in mock data.'
+                'No thread with less than 6 replies was found in mock data.',
             )
         }
 
@@ -431,8 +431,8 @@ describe('thread list page', () => {
                         hasPreviousPage: false,
                         totalPages: 1,
                     },
-                })
-            )
+                }),
+            ),
         )
 
         expect.assertions(2)
@@ -469,7 +469,7 @@ describe('thread list page', () => {
 
         if (!MOCK_THREAD) {
             throw new Error(
-                'No thread with less than 6 replies was found in mock data.'
+                'No thread with less than 6 replies was found in mock data.',
             )
         }
 
@@ -482,8 +482,8 @@ describe('thread list page', () => {
                         hasPreviousPage: false,
                         totalPages: 1,
                     },
-                })
-            )
+                }),
+            ),
         )
 
         expect.assertions(2)
@@ -542,7 +542,7 @@ describe('thread list page', () => {
         // user-event currently has an issue running in the SSR environment,
         // so fireEvent is used instead
         fireEvent.click(
-            screen.getByRole('button', { name: /start a new thread/i })
+            screen.getByRole('button', { name: /start a new thread/i }),
         )
 
         // Wait for the new thread form to appear
@@ -558,10 +558,10 @@ describe('thread list page', () => {
 
         // Confirm that the thread page has been navigated to
         expect(
-            screen.queryByText(`Id.${MOCK_THREAD_W_COMMENT.id}`)
+            screen.queryByText(`Id.${MOCK_THREAD_W_COMMENT.id}`),
         ).toBeInTheDocument()
         expect(
-            screen.queryByText(MOCK_THREAD_W_COMMENT.comment)
+            screen.queryByText(MOCK_THREAD_W_COMMENT.comment),
         ).toBeInTheDocument()
     })
 
@@ -570,14 +570,14 @@ describe('thread list page', () => {
             http.post('http://localhost:3000/api/v1/threads', () =>
                 HttpResponse.json({
                     data: MOCK_THREAD_W_SUBJECT_COMMENT,
-                })
+                }),
             ),
 
             http.get('http://localhost:3000/api/v1/threads/:threadId', () =>
                 HttpResponse.json({
                     data: MOCK_THREAD_W_SUBJECT_COMMENT,
-                })
-            )
+                }),
+            ),
         )
 
         expect.assertions(3)
@@ -606,7 +606,7 @@ describe('thread list page', () => {
         // user-event currently has an issue running in the SSR environment,
         // so fireEvent is used instead
         fireEvent.click(
-            screen.getByRole('button', { name: /start a new thread/i })
+            screen.getByRole('button', { name: /start a new thread/i }),
         )
 
         // Wait for the new thread form to appear
@@ -625,13 +625,13 @@ describe('thread list page', () => {
 
         // Confirm that the thread page has been navigated to
         expect(
-            screen.queryByText(`Id.${MOCK_THREAD_W_SUBJECT_COMMENT.id}`)
+            screen.queryByText(`Id.${MOCK_THREAD_W_SUBJECT_COMMENT.id}`),
         ).toBeInTheDocument()
         expect(
-            screen.queryByText(MOCK_THREAD_W_SUBJECT_COMMENT.subject as string)
+            screen.queryByText(MOCK_THREAD_W_SUBJECT_COMMENT.subject as string),
         ).toBeInTheDocument()
         expect(
-            screen.queryByText(MOCK_THREAD_W_SUBJECT_COMMENT.comment)
+            screen.queryByText(MOCK_THREAD_W_SUBJECT_COMMENT.comment),
         ).toBeInTheDocument()
     })
 
@@ -676,15 +676,15 @@ describe('thread list page', () => {
             {
                 container: rootEl,
                 hydrate: true,
-            }
+            },
         )
 
         // Confirm that the thread page has been navigated to
         expect(
-            screen.queryByText(`Id.${MOCK_THREAD_W_COMMENT.id}`)
+            screen.queryByText(`Id.${MOCK_THREAD_W_COMMENT.id}`),
         ).toBeInTheDocument()
         expect(
-            screen.queryByText(MOCK_THREAD_W_COMMENT.comment)
+            screen.queryByText(MOCK_THREAD_W_COMMENT.comment),
         ).toBeInTheDocument()
     })
 
@@ -703,9 +703,9 @@ describe('thread list page', () => {
                             },
                         ],
                     },
-                    { status: 400 }
-                )
-            )
+                    { status: 400 },
+                ),
+            ),
         )
 
         expect.assertions(1)
@@ -734,7 +734,7 @@ describe('thread list page', () => {
         // user-event currently has an issue running in the SSR environment,
         // so fireEvent is used instead
         fireEvent.click(
-            screen.getByRole('button', { name: /start a new thread/i })
+            screen.getByRole('button', { name: /start a new thread/i }),
         )
 
         // Wait for the new thread form to appear
@@ -748,8 +748,8 @@ describe('thread list page', () => {
         // Confirm that the user is still on the thread list
         expect(
             screen.queryByText(
-                /currently no threads exist. why don't you create the first one?/i
-            )
+                /currently no threads exist. why don't you create the first one?/i,
+            ),
         ).toBeInTheDocument()
     })
 
@@ -771,7 +771,7 @@ describe('thread list page', () => {
 
         // Expect formError Redux state to have the correct error
         expect(store.getState().formError).toBe(
-            'The following fields are invalid: comment'
+            'The following fields are invalid: comment',
         )
     })
 
@@ -790,9 +790,9 @@ describe('thread list page', () => {
                             },
                         ],
                     },
-                    { status: 400 }
-                )
-            )
+                    { status: 400 },
+                ),
+            ),
         )
 
         expect.assertions(1)
@@ -821,13 +821,12 @@ describe('thread list page', () => {
         // user-event currently has an issue running in the SSR environment,
         // so fireEvent is used instead
         fireEvent.click(
-            screen.getByRole('button', { name: /start a new thread/i })
+            screen.getByRole('button', { name: /start a new thread/i }),
         )
 
         // Wait for the new thread form to appear
-        let inputSubject = await screen.findByLabelText<HTMLInputElement>(
-            'Subject'
-        )
+        let inputSubject =
+            await screen.findByLabelText<HTMLInputElement>('Subject')
 
         fireEvent.change(inputSubject, {
             target: { value: MOCK_THREAD_W_SUBJECT_COMMENT.subject },
@@ -839,7 +838,7 @@ describe('thread list page', () => {
             // that cannot be used at the moment peculiarities of the SSR
             // testing environment.
             store.dispatch(
-                setSubject(MOCK_THREAD_W_SUBJECT_COMMENT.subject as string)
+                setSubject(MOCK_THREAD_W_SUBJECT_COMMENT.subject as string),
             )
         })
         fireEvent.click(screen.getByRole('button', { name: /post/i }))
@@ -874,7 +873,7 @@ describe('thread list page', () => {
 
         // Expect formError Redux state to have the correct error
         expect(store.getState().formError).toBe(
-            'The following fields are invalid: comment'
+            'The following fields are invalid: comment',
         )
 
         // Expect server-side rendering to persist form inputs
@@ -912,10 +911,10 @@ describe('thread page', () => {
 
         // Confirm the correct thread content is present
         expect(
-            screen.queryByText(`Id.${MOCK_THREAD_W_COMMENT.id}`)
+            screen.queryByText(`Id.${MOCK_THREAD_W_COMMENT.id}`),
         ).toBeInTheDocument()
         expect(
-            screen.queryByText(MOCK_THREAD_W_COMMENT.comment)
+            screen.queryByText(MOCK_THREAD_W_COMMENT.comment),
         ).toBeInTheDocument()
     })
 
@@ -955,8 +954,8 @@ describe('thread page', () => {
             http.get('http://localhost:3000/api/v1/threads/:threadId', () =>
                 HttpResponse.json({
                     data: MOCK_THREAD_W_SUBJECT_COMMENT,
-                })
-            )
+                }),
+            ),
         )
 
         expect.assertions(2)
@@ -997,14 +996,14 @@ describe('thread page', () => {
                     HttpResponse.json({
                         data: MOCK_THREAD_W_REPLY,
                     }),
-                { once: true }
+                { once: true },
             ),
 
             http.get('http://localhost:3000/api/v1/threads/:threadId', () =>
                 HttpResponse.json({
                     data: MOCK_THREAD_INCLUDES_REPLY,
-                })
-            )
+                }),
+            ),
         )
 
         expect.assertions(1)
@@ -1062,8 +1061,8 @@ describe('thread page', () => {
             http.get('http://localhost:3000/api/v1/threads/:threadId', () =>
                 HttpResponse.json({
                     data: MOCK_THREAD_INCLUDES_REPLY,
-                })
-            )
+                }),
+            ),
         )
 
         expect.assertions(2)
@@ -1117,9 +1116,9 @@ describe('thread page', () => {
                                 },
                             ],
                         },
-                        { status: 400 }
-                    )
-            )
+                        { status: 400 },
+                    ),
+            ),
         )
 
         expect.assertions(2)
@@ -1161,10 +1160,10 @@ describe('thread page', () => {
 
         // Confirm that the user is still on the thread page
         expect(
-            screen.queryByText(`Id.${MOCK_THREAD_W_COMMENT.id}`)
+            screen.queryByText(`Id.${MOCK_THREAD_W_COMMENT.id}`),
         ).toBeInTheDocument()
         expect(
-            screen.queryByText(MOCK_THREAD_W_COMMENT.comment)
+            screen.queryByText(MOCK_THREAD_W_COMMENT.comment),
         ).toBeInTheDocument()
     })
 
@@ -1184,7 +1183,7 @@ describe('thread page', () => {
 
         // Make sure no validation errors were encountered on the server
         expect(store.getState().formError).toBe(
-            'The following fields are invalid: comment'
+            'The following fields are invalid: comment',
         )
     })
 })

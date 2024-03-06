@@ -17,7 +17,7 @@ beforeEach(() => protectMiddlewareMock.mockReset())
 
 test('returns user when authorized', async () => {
     protectMiddlewareMock.mockImplementation(
-        genProtectMiddlewareAuthImpl(MOCK_REQ_USER)
+        genProtectMiddlewareAuthImpl(MOCK_REQ_USER),
     )
     prismaMock.user.findUniqueOrThrow.mockResolvedValue(MOCK_USER)
 

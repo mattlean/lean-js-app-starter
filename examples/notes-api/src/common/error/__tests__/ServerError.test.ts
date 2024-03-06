@@ -31,7 +31,7 @@ describe('ServerError', () => {
         expect(Array.isArray(serverErr.devErrors)).toBe(true)
         if (!Array.isArray(serverErr.devErrors)) {
             throw new Error(
-                'Expected devErrors for a ServerError to be an array.'
+                'Expected devErrors for a ServerError to be an array.',
             )
         }
 
@@ -46,14 +46,14 @@ describe('ServerError', () => {
         expect(Array.isArray(serverErr.devErrors)).toBe(true)
         if (!Array.isArray(serverErr.devErrors)) {
             throw new Error(
-                'Expected devErrors for a ServerError to be an array.'
+                'Expected devErrors for a ServerError to be an array.',
             )
         }
 
         expect(serverErr.devErrors[0]).toBeInstanceOf(Error)
         if (!(serverErr.devErrors[0] instanceof Error)) {
             throw new Error(
-                'Expected devErrors[0] for a ServerError to be an Error.'
+                'Expected devErrors[0] for a ServerError to be an Error.',
             )
         }
 
@@ -68,14 +68,14 @@ describe('ServerError', () => {
         expect(Array.isArray(serverErr.devErrors)).toBe(true)
         if (!Array.isArray(serverErr.devErrors)) {
             throw new Error(
-                'Expected devErrors for a ServerError to be an array.'
+                'Expected devErrors for a ServerError to be an array.',
             )
         }
 
         expect(serverErr.devErrors[0]).toBeInstanceOf(Error)
         if (!(serverErr.devErrors[0] instanceof Error)) {
             throw new Error(
-                'Expected devErrors[0] for a ServerError to be an Error.'
+                'Expected devErrors[0] for a ServerError to be an Error.',
             )
         }
 
@@ -94,7 +94,7 @@ describe('ServerError', () => {
         const serverErr = new ServerError(
             undefined,
             undefined,
-            MOCK_VALIDATION_ERR
+            MOCK_VALIDATION_ERR,
         )
 
         expect(Array.isArray(serverErr.devErrors)).toBe(true)
@@ -146,7 +146,7 @@ describe('ServerError', () => {
         expect(isErrorPageData(serverErr.errors[0])).toBe(true)
         if (!isErrorPageData(serverErr.errors[0])) {
             throw new Error(
-                'Expected errors[0] for a ServerError to be an ErrorPageData.'
+                'Expected errors[0] for a ServerError to be an ErrorPageData.',
             )
         }
 
@@ -227,7 +227,7 @@ describe('ServerError utils', () => {
 
     it('isErrorPageData returns true when an ErrorPageData with both a heading and content is checked', () => {
         expect(isErrorPageData({ heading: FOO_TXT, content: BAR_TXT })).toBe(
-            true
+            true,
         )
     })
 

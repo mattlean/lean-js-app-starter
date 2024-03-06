@@ -23,7 +23,7 @@ export const apiErrorHandler = (
     req: Request,
     res: Response,
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    next: NextFunction
+    next: NextFunction,
 ) => {
     if (process.env.NODE_ENV !== 'test') {
         // Hide error messages from clogging the test outputs
@@ -46,7 +46,7 @@ export const globalErrorHandler = (
     req: Request,
     res: Response,
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    next: NextFunction
+    next: NextFunction,
 ) => {
     if (process.env.NODE_ENV !== 'test') {
         // Hide error messages from clogging the test outputs

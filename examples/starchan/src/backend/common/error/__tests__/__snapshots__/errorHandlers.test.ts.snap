@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Global error handler returns a 500 error when the SSR error handler throws a ServerError 1`] = `
-"<!DOCTYPE html>
+"<!doctype html>
 <html>
     <head>
         <meta charset="utf-8" />
@@ -17,7 +17,7 @@ exports[`Global error handler returns a 500 error when the SSR error handler thr
 `;
 
 exports[`Global error handler returns a 500 error when the SSR error handler throws an error 1`] = `
-"<!DOCTYPE html>
+"<!doctype html>
 <html>
     <head>
         <meta charset="utf-8" />

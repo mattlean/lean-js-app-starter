@@ -38,7 +38,7 @@ export const formErrorSlice = createSlice({
                     }
                 } else {
                     throw new Error(
-                        'Expected to encounter a field validation error.'
+                        'Expected to encounter a field validation error.',
                     )
                 }
             }

@@ -9,7 +9,7 @@ import { ThreadResData } from '../src/frontend/common/types'
 const genMockThreadListRes = async () => {
     const PREFIX = '[🏭 genMockThreadListRes.ts]'
     console.log(
-        `${PREFIX} Beginning the dev mock thread list response generation script...`
+        `${PREFIX} Beginning the dev mock thread list response generation script...`,
     )
 
     if (process.argv.length < 3) {
@@ -70,7 +70,7 @@ const genMockThreadListRes = async () => {
 
     console.log(`${PREFIX} Generated "${outputFileName}".`)
     console.log(
-        `${PREFIX} Dev mock thread list response generation script completed!`
+        `${PREFIX} Dev mock thread list response generation script completed!`,
     )
 }
 

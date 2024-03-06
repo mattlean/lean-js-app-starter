@@ -88,7 +88,7 @@ test('returns 409 when username is already taken', async () => {
                     meta: {
                         target: ['username'],
                     },
-                }
+                },
             )
             throw err
         })
