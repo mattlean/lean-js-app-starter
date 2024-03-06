@@ -1,7 +1,8 @@
 require('dotenv').config()
 
+const injectTransformedSass = require('ljas-webpack/injectTransformedSass')
 const setupReactFastRefreshServerTs = require('ljas-webpack/setupReactFastRefreshServerTs')
-const { buildSourceMaps, injectSass } = require('ljas-webpack')
+const { buildSourceMaps } = require('ljas-webpack')
 const { merge } = require('webpack-merge')
 
 const { PATH_BUILD, PATH_SRC } = require('./PATHS')
@@ -23,7 +24,7 @@ module.exports = merge([
 
     buildSourceMaps('cheap-module-source-map'),
 
-    injectSass({ rule: { include: PATH_SRC } }),
+    injectTransformedSass({ rule: { include: PATH_SRC } }),
 
     setupReactFastRefreshServerTs({
         devServer: {

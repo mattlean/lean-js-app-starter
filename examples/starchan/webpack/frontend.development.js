@@ -83,12 +83,14 @@ module.exports = merge([
         },
         forkTsChecker: {
             typescript: {
-                include: [
-                    'src/common/**/*',
-                    'src/frontend/**/*',
-                    'src/global.d.ts',
-                ],
-                ...tsconfigOverride,
+                configOverwrite: {
+                    include: [
+                        'src/common/**/*',
+                        'src/frontend/**/*',
+                        'src/global.d.ts',
+                    ],
+                    ...tsconfigOverride,
+                },
             },
         },
     }),
