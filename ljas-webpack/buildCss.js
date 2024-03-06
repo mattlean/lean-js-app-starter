@@ -15,8 +15,10 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
  *
  * @param {Object} [options] Options object that determines how css-loader, css-minimizer-webpack-plugin, and mini-css-extract-plugin will be configured.
  * @param {Object} [options.cssLoader] css-loader options. (https://webpack.js.org/loaders/css-loader/#options)
+ * @param {Object} [options.cssMinimizer] css-minimizer-webpack-plugin options. (https://webpack.js.org/plugins/css-minimizer-webpack-plugin/#options)
  * @param {Object} [options.miniCssExtractPlugin] Options for mini-css-extract-plugin. (https://webpack.js.org/plugins/mini-css-extract-plugin/#plugin-options)
  * @param {Object} [options.miniCssExtractPluginLoader] mini-css-extract-plugin loader options. (https://webpack.js.org/plugins/mini-css-extract-plugin/#loader-options)
+ * @param {Object} [options.minimizer] webpack optimization option's minimizer option. Setting this will override `options.cssMinimizer`. (https://webpack.js.org/configuration/optimization/#optimizationminimizer)
  * @param {Object} [options.plugins] webpack's plugins option. Setting this will override `options.miniCssExtractPlugin`. (https://webpack.js.org/configuration/plugins)
  * @param {Object} [options.rule] webpack rule. (https://webpack.js.org/configuration/module/#rule)
  * @param {RegExp} [options.rule.exclude=/node_modules/] Exclude option associated with the webpack rule. (https://webpack.js.org/configuration/module/#ruleexclude)
@@ -50,10 +52,10 @@ const buildCss = (options) => ({
     ],
 
     optimization: {
-        minimizer: [
+        minimizer: options?.minimizer ?? [
             // For webpack@5 you can use the `...` syntax to extend existing minimizers (i.e. `terser-webpack-plugin`)
             `...`,
-            new CssMinimizerPlugin(),
+            new CssMinimizerPlugin(options?.cssMinimizer),
         ],
     },
 })
