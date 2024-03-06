@@ -6,7 +6,7 @@ const { buildSourceMaps, loadFonts, loadImages } = require('ljas-webpack')
 const { merge } = require('webpack-merge')
 
 const { PATH_RENDERER_BUILD, PATH_RENDERER_SRC } = require('../PATHS')
-const buildPrefixedCss = require('ljas-webpack/buildPrefixedCss')
+const buildTransformedCss = require('ljas-webpack/buildTransformedCss')
 
 if (!process.env.PORT_DEV_SERVER) {
     throw new Error('🔴 webpack-dev-server port was not set')
@@ -25,7 +25,7 @@ module.exports = merge([
 
     buildSourceMaps('cheap-module-source-map'),
 
-    buildPrefixedCss({
+    buildTransformedCss({
         rule: { include: PATH_RENDERER_SRC },
         postcssLoader: {
             postcssOptions: {

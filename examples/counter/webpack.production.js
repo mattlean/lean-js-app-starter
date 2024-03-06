@@ -1,4 +1,4 @@
-const buildPrefixedSass = require('ljas-webpack/buildPrefixedSass')
+const buildTransformedSass = require('ljas-webpack/buildTransformedSass')
 const compileReactTs = require('ljas-webpack/compileReactTs')
 const { buildSourceMaps } = require('ljas-webpack')
 const { merge } = require('webpack-merge')
@@ -30,7 +30,7 @@ module.exports = merge([
         },
     },
 
-    buildPrefixedSass({
+    buildTransformedSass({
         rule: { include: PATH_SRC },
         miniCssExtractPlugin: { filename: '[name].[contenthash].css' },
     }),

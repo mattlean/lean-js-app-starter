@@ -1,4 +1,4 @@
-const buildPrefixedCss = require('ljas-webpack/buildPrefixedCss')
+const buildTransformedCss = require('ljas-webpack/buildTransformedCss')
 const compileReactTs = require('ljas-webpack/compileReactTs')
 const glob = require('glob')
 const removeUnusedCss = require('ljas-webpack/removeUnusedCss')
@@ -38,7 +38,7 @@ module.exports = merge([
         },
     },
 
-    buildPrefixedCss({
+    buildTransformedCss({
         rule: { include: PATH_FRONTEND_SRC },
         miniCssExtractPlugin: { filename: '[name].[contenthash].css' },
     }),
