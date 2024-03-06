@@ -1,8 +1,44 @@
 import 'dotenv/config'
-import { BrowserWindow, app } from 'electron'
+import { BrowserWindow, app, dialog, ipcMain } from 'electron'
+import installExtension, {
+    REACT_DEVELOPER_TOOLS,
+} from 'electron-devtools-installer'
+import { readFile } from 'node:fs/promises'
 import path from 'path'
 
 const BUNDLED_PRELOAD_BUILD_PATH = path.join(__dirname, '../preload')
+
+const openFile = async (browserWindow: BrowserWindow, filePath: string) => {
+    const content = await readFile(filePath, { encoding: 'utf-8' })
+
+    browserWindow.webContents.send('file-opened', content, filePath)
+}
+
+const showOpenDialog = async (browserWindow: BrowserWindow) => {
+    const result = await dialog.showOpenDialog(browserWindow, {
+        properties: ['openFile'],
+        filters: [{ name: 'Markdown File', extensions: ['md'] }],
+    })
+
+    if (result.canceled) {
+        return
+    }
+
+    const [filePath] = result.filePaths
+
+    openFile(browserWindow, filePath)
+}
+
+ipcMain.on('show-open-dialog', (event) => {
+    console.log('show-open-dialog heard')
+    const browserWindow = BrowserWindow.fromWebContents(event.sender)
+
+    if (!browserWindow) {
+        return
+    }
+
+    showOpenDialog(browserWindow)
+})
 
 const createWindow = () => {
     const win = new BrowserWindow({
@@ -24,9 +60,19 @@ const createWindow = () => {
         win.show()
         win.focus()
     })
+
+    if (process.env.NODE_ENV === 'development') {
+        win.webContents.openDevTools({ mode: 'detach' })
+    }
 }
 
 app.whenReady().then(() => {
+    if (process.env.NODE_ENV === 'development') {
+        installExtension(REACT_DEVELOPER_TOOLS)
+            .then((name) => console.log(`Added Extension:  ${name}`))
+            .catch((err) => console.log('An error occurred: ', err))
+    }
+
     createWindow()
 
     app.on('activate', () => {
