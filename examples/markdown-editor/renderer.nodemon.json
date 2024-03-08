@@ -3,6 +3,7 @@
         "webpack/renderer.*.js",
         "package.json",
         "renderer.nodemon.json",
+        "tailwind.config.js",
         "tsconfig.json"
     ]
 }
