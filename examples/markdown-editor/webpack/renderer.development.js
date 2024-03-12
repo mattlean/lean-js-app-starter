@@ -2,6 +2,7 @@ require('dotenv').config()
 
 const autoprefixer = require('autoprefixer')
 const tailwindcss = require('tailwindcss')
+const tailwindcssNesting = require('tailwindcss/nesting')
 const setupReactFastRefreshServerTs = require('ljas-webpack/setupReactFastRefreshServerTs')
 const { buildSourceMaps, loadFonts, loadImages } = require('ljas-webpack')
 const { merge } = require('webpack-merge')
@@ -31,7 +32,7 @@ module.exports = merge([
         rule: { include: PATH_RENDERER_SRC },
         postcssLoader: {
             postcssOptions: {
-                plugins: [autoprefixer, tailwindcss],
+                plugins: [autoprefixer, tailwindcssNesting, tailwindcss],
             },
         },
     }),

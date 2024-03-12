@@ -1,10 +1,4 @@
-import {
-    useCallback,
-    useEffect,
-    useLayoutEffect,
-    useRef,
-    useState,
-} from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import rehypeStringify from 'rehype-stringify'
 import remarkParse from 'remark-parse'
 import remarkRehype from 'remark-rehype'
@@ -12,21 +6,11 @@ import { unified } from 'unified'
 
 export interface Props {
     input: string
+    refPreview: React.RefObject<HTMLElement>
 }
 
-export default function Preview({ input }: Props) {
+export default function Preview({ input, refPreview }: Props) {
     const [output, setOutput] = useState('')
-    const refPreview = useRef<HTMLHeadingElement | null>(null)
-    const [styleOffset, setStyleOffset] = useState<
-        React.CSSProperties | undefined
-    >(undefined)
-
-    useLayoutEffect(() => {
-        if (refPreview.current) {
-            const { height } = refPreview.current.getBoundingClientRect()
-            setStyleOffset({ marginTop: height })
-        }
-    }, [])
 
     useEffect(() => {
         const parseMd = async () => {
@@ -50,17 +34,13 @@ export default function Preview({ input }: Props) {
     )
 
     return (
-        <div className="flex w-full flex-col overflow-scroll">
-            <h1
-                ref={refPreview}
-                className="fixed top-0 w-full border-b border-gray-500 bg-gray-900 px-3 py-1"
-            >
-                Preview
-            </h1>
+        <div className="flex w-full flex-1 flex-col">
+            <h1 className="border-b border-gray-500 px-3 py-1">Preview</h1>
             <article
+                ref={refPreview}
                 dangerouslySetInnerHTML={createMarkup()}
-                className="prose px-3 py-2 dark:prose-invert"
-                style={styleOffset}
+                className="prose flex-1 overflow-scroll bg-gray-900 px-3 py-2 dark:prose-invert"
+                style={{ textRendering: 'optimizeLegibility', fontSmooth: '' }}
             />
         </div>
     )

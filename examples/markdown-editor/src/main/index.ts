@@ -1,70 +1,13 @@
 import 'dotenv/config'
-import { BrowserWindow, app, dialog, ipcMain } from 'electron'
+import { BrowserWindow, app } from 'electron'
 import installExtension, {
     REACT_DEVELOPER_TOOLS,
 } from 'electron-devtools-installer'
-import { readFile } from 'node:fs/promises'
-import path from 'path'
 
-const BUNDLED_PRELOAD_BUILD_PATH = path.join(__dirname, '../preload')
+import { setupMenu } from './menu'
+import { createWindow } from './window'
 
-const openFile = async (browserWindow: BrowserWindow, filePath: string) => {
-    const content = await readFile(filePath, { encoding: 'utf-8' })
-
-    browserWindow.webContents.send('file-opened', content, filePath)
-}
-
-const showOpenDialog = async (browserWindow: BrowserWindow) => {
-    const result = await dialog.showOpenDialog(browserWindow, {
-        properties: ['openFile'],
-        filters: [{ name: 'Markdown File', extensions: ['md'] }],
-    })
-
-    if (result.canceled) {
-        return
-    }
-
-    const [filePath] = result.filePaths
-
-    openFile(browserWindow, filePath)
-}
-
-ipcMain.on('show-open-dialog', (event) => {
-    console.log('show-open-dialog heard')
-    const browserWindow = BrowserWindow.fromWebContents(event.sender)
-
-    if (!browserWindow) {
-        return
-    }
-
-    showOpenDialog(browserWindow)
-})
-
-const createWindow = () => {
-    const win = new BrowserWindow({
-        width: 800,
-        height: 600,
-        show: false,
-        webPreferences: {
-            preload: `${BUNDLED_PRELOAD_BUILD_PATH}/preload.js`,
-        },
-    })
-
-    if (process.env.NODE_ENV === 'development' && process.env.HOST_DEV_SERVER) {
-        win.loadURL(process.env.HOST_DEV_SERVER)
-    } else {
-        win.loadFile('build/renderer/index.html')
-    }
-
-    win.once('ready-to-show', () => {
-        win.show()
-        win.focus()
-    })
-
-    if (process.env.NODE_ENV === 'development') {
-        win.webContents.openDevTools({ mode: 'detach' })
-    }
-}
+setupMenu()
 
 app.whenReady().then(() => {
     if (process.env.NODE_ENV === 'development') {

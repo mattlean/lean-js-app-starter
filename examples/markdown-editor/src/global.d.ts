@@ -1,5 +1,9 @@
 declare interface Window {
     api: {
-        showOpenDialog: () => void
+        onReadFile: (
+            callback: (content?: string) => void,
+        ) => () => import('electron').IpcRenderer
+        showExportHtmlDialog: (html: string) => void
+        showOpenFileDialog: () => void
     }
 }

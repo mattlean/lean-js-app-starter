@@ -31,7 +31,6 @@ exports[`Counter component matches snapshot 1`] = `
         >
           <button
             class="btn btn-success w-50"
-            type="button"
           >
             <i
               class="bi bi-dash-circle"
@@ -46,7 +45,6 @@ exports[`Counter component matches snapshot 1`] = `
           </button>
           <button
             class="btn btn-success w-50"
-            type="button"
           >
             <i
               class="bi bi-plus-circle-fill"
@@ -75,7 +73,6 @@ exports[`Counter component matches snapshot 1`] = `
           <button
             class="btn btn-danger"
             disabled=""
-            type="button"
           >
             Force!
           </button>
@@ -85,7 +82,6 @@ exports[`Counter component matches snapshot 1`] = `
         />
         <button
           class="btn btn-primary w-100"
-          type="button"
         >
           Reset
         </button>

@@ -15,7 +15,6 @@ export default function Counter() {
                     <p className="display-1">{count}</p>
                     <div className="column-gap-3 d-flex w-100">
                         <button
-                            type="button"
                             onClick={() => setCount(count - 1)}
                             className="btn btn-success w-50"
                         >
@@ -27,7 +26,6 @@ export default function Counter() {
                             </i>
                         </button>
                         <button
-                            type="button"
                             onClick={() => setCount(count + 1)}
                             className="btn btn-success w-50"
                         >
@@ -51,7 +49,6 @@ export default function Counter() {
                             className="form-control"
                         />
                         <button
-                            type="button"
                             disabled={typeof forceCountInput !== 'number'}
                             onClick={() => {
                                 if (typeof forceCountInput === 'number') {
@@ -65,7 +62,6 @@ export default function Counter() {
                     </div>
                     <hr className="w-100" />
                     <button
-                        type="button"
                         onClick={() => setCount(0)}
                         className="btn btn-primary w-100"
                     >
