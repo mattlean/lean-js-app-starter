@@ -1,8 +1,11 @@
-import { BrowserWindow } from 'electron'
+import { BrowserWindow, app } from 'electron'
 import path from 'path'
 
 const BUNDLED_PRELOAD_BUILD_PATH = path.join(__dirname, '../preload')
 
+/**
+ * Create Electron BrowserWindow instance that renders the UI for the markdown editor.
+ */
 export const createWindow = () => {
     const win = new BrowserWindow({
         width: 1024,
@@ -20,6 +23,7 @@ export const createWindow = () => {
     }
 
     win.once('ready-to-show', () => {
+        win.setTitle(`untitled - ${app.name}`)
         win.show()
         win.focus()
     })

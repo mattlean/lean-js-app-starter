@@ -1,9 +1,21 @@
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 
 import ErrorMessageContext from '../ErrorMessageContext'
 
 export default function ErrorMessage() {
     const [errorMessage, setErrorMessage] = useContext(ErrorMessageContext)
+
+    useEffect(() => {
+        const removeMainErrorMessageListener = window.api.onMainErrorMessage(
+            (mainErrorMessage) => {
+                setErrorMessage(mainErrorMessage)
+            },
+        )
+
+        return () => {
+            removeMainErrorMessageListener()
+        }
+    }, [setErrorMessage])
 
     if (errorMessage) {
         return (

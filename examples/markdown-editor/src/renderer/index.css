@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 .btn {
-    @apply rounded-sm bg-blue-500 px-4 py-2;
+    @apply rounded-sm bg-blue-500 px-4 py-2 hover:bg-blue-700 disabled:bg-neutral-800 disabled:text-gray-300;
 
-    &:hover {
-        @apply bg-blue-700;
+    &:disabled {
+        @apply hover:cursor-not-allowed;
     }
 }
