@@ -5,7 +5,10 @@ const { PATH_RENDERER_SRC } = require('../PATHS')
 
 module.exports = merge([
     {
-        entry: { renderer: `${PATH_RENDERER_SRC}/index.tsx` },
+        entry: {
+            lightmode: `${PATH_RENDERER_SRC}/lightMode.ts`,
+            renderer: `${PATH_RENDERER_SRC}/index.tsx`,
+        },
     },
 
     buildHtml({

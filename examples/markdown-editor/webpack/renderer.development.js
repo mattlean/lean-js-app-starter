@@ -24,6 +24,10 @@ module.exports = merge([
             filename: '[name].js',
             path: PATH_RENDERER_BUILD,
         },
+
+        optimization: {
+            runtimeChunk: 'single',
+        },
     },
 
     buildSourceMaps('cheap-module-source-map'),

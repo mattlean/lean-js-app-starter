@@ -17,7 +17,7 @@ export default function App() {
     return (
         <ErrorBoundary fallback={<div>Something went wrong.</div>}>
             <ErrorMessageContext.Provider value={errorMessageReactState}>
-                <div className="flex h-screen w-screen flex-col bg-gray-950 text-white subpixel-antialiased">
+                <main className="flex h-screen w-screen flex-col bg-zinc-200 text-zinc-500 subpixel-antialiased dark:bg-gray-950 dark:text-white">
                     <TopBar
                         refPreview={refPreview}
                         filePath={filePath}
@@ -25,7 +25,7 @@ export default function App() {
                         input={input}
                         setHasChanges={setHasChanges}
                     />
-                    <div className="flex flex-1 flex-row overflow-hidden">
+                    <section className="flex flex-1 flex-row overflow-hidden">
                         <Editor
                             input={input}
                             setFilePath={setFilePath}
@@ -33,9 +33,9 @@ export default function App() {
                             setInput={setInput}
                         />
                         <Preview input={input} refPreview={refPreview} />
-                    </div>
+                    </section>
                     <ErrorMessage />
-                </div>
+                </main>
             </ErrorMessageContext.Provider>
         </ErrorBoundary>
     )

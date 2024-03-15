@@ -1,4 +1,4 @@
-import React, { FormEvent } from 'react'
+import { Dispatch, FormEvent, SetStateAction } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { useAppDispatch, useAppSelector } from '../../app/hooks'
@@ -8,7 +8,7 @@ import { clearFormError, genFormError } from '../errors/formErrorSlice'
 import ThreadInputs from './ThreadInputs'
 
 export interface Props {
-    setShowForm: React.Dispatch<React.SetStateAction<boolean>>
+    setShowForm: Dispatch<SetStateAction<boolean>>
     showForm: boolean
 }
 

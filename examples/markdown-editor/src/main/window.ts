@@ -16,11 +16,11 @@ export const createWindow = () => {
         },
     })
 
-    if (process.env.NODE_ENV === 'development' && process.env.HOST_DEV_SERVER) {
-        win.loadURL(process.env.HOST_DEV_SERVER)
-    } else {
-        win.loadFile('build/renderer/index.html')
-    }
+    // if (process.env.NODE_ENV === 'development' && process.env.HOST_DEV_SERVER) {
+    //     win.loadURL(process.env.HOST_DEV_SERVER)
+    // } else {
+    win.loadFile('build/renderer/index.html')
+    // }
 
     win.once('ready-to-show', () => {
         win.setTitle(`untitled - ${app.name}`)
