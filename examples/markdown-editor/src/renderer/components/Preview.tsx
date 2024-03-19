@@ -7,10 +7,11 @@ import { unified } from 'unified'
 
 export interface Props {
     input: string
+    isFocusMode: boolean
     refPreview: RefObject<HTMLElement>
 }
 
-export default function Preview({ input, refPreview }: Props) {
+export default function Preview({ input, isFocusMode, refPreview }: Props) {
     const [output, setOutput] = useState('')
 
     useEffect(() => {
@@ -37,9 +38,11 @@ export default function Preview({ input, refPreview }: Props) {
 
     return (
         <section className="flex w-1/2 flex-1 flex-col">
-            <h1 className="border-b border-zinc-300 px-3 py-1 dark:border-gray-700">
-                Preview
-            </h1>
+            {!isFocusMode && (
+                <h1 className="border-b border-zinc-300 px-3 py-1 dark:border-gray-700">
+                    Preview
+                </h1>
+            )}
             <article
                 ref={refPreview}
                 dangerouslySetInnerHTML={createMarkup()}

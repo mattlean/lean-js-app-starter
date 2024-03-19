@@ -2,9 +2,7 @@ import { BrowserWindow, app } from 'electron'
 import { basename } from 'path'
 
 interface MdFile {
-    /**
-     * The contents of the currently open markdown file.
-     */
+    /** The contents of the currently open markdown file. */
     markdown: string
 
     /**
@@ -14,21 +12,10 @@ interface MdFile {
     filePath?: string
 }
 
-/** currFile singleton that keeps track of the currently open markdown file and its contents. */
-let currFile: MdFile | null = null
-
 /**
- * Setup the currFile singleton.
- * @return currFile singleton
+ * currFile singleton that keeps track of the currently open markdown file and its contents.
  */
-export const setupCurrFile = () => {
-    currFile = {
-        markdown: '',
-        filePath: undefined,
-    }
-
-    return currFile
-}
+let currFile: MdFile | null = null
 
 /**
  * Get the current file path.
@@ -36,8 +23,10 @@ export const setupCurrFile = () => {
  * and get a new file path.
  * @param browserWin Electron BrowserWindow instance
  * @param showSaveDialog showSaveDialog function to open the save dialog
+ * @return A promise that will resolve to the current file path, or undefined if the
+ *     showSaveDialog function cancels or is never called
  */
-export const getCurrFilePath = (
+export const getCurrFilePath = async (
     browserWin?: BrowserWindow,
     showSaveDialog?: (browserWin: BrowserWindow) => Promise<string | undefined>,
 ) => {
@@ -68,6 +57,21 @@ export const isCurrFileChanged = (markdown: string) => {
 }
 
 /**
+ * Checks to see if there is a file currently open.
+ * @return True if there a file is currently open, false otherwise
+ */
+export const isFileOpen = () => {
+    if (!currFile) {
+        throw new Error('currFile singleton was not setup.')
+    }
+
+    if (currFile.filePath) {
+        return true
+    }
+    return false
+}
+
+/**
  * Set current file.
  * @param filePath File path for the current file
  * @param markdown Markdown of the current file
@@ -91,4 +95,17 @@ export const setCurrFile = (
         browserWin.setTitle(`${basename(filePath)} - ${app.name}`)
         browserWin.setRepresentedFilename(filePath)
     }
+}
+
+/**
+ * Setup the currFile singleton.
+ * @return currFile singleton
+ */
+export const setupCurrFile = () => {
+    currFile = {
+        markdown: '',
+        filePath: undefined,
+    }
+
+    return currFile
 }

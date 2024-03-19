@@ -1,13 +1,13 @@
 import {
     BrowserWindow,
     Menu,
-    MenuItem,
     MenuItemConstructorOptions,
     app,
     shell,
 } from 'electron'
 
 import { showOpenFileDialog } from './api'
+import { saveFileMain, toggleFocusMode } from './mse'
 import { createWindow } from './window'
 
 /**
@@ -23,6 +23,12 @@ export const setupMenu = () => {
         { role: 'zoomOut' },
         { type: 'separator' },
         { role: 'togglefullscreen' },
+        {
+            label: 'Toggle Focus Mode',
+            click: () => {
+                toggleFocusMode()
+            },
+        },
     ]
 
     if (process.env.NODE_ENV === 'development') {
@@ -45,6 +51,14 @@ export const setupMenu = () => {
                     },
                     accelerator: 'CmdOrCtrl+O',
                 },
+                {
+                    label: 'Save',
+                    click: () => {
+                        saveFileMain()
+                    },
+                    accelerator: 'CmdOrCtrl+S',
+                },
+                { label: 'Close Window', role: 'close' },
             ],
         },
         { label: 'Edit', role: 'editMenu' },

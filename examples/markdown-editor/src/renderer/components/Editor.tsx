@@ -2,6 +2,7 @@ import { Dispatch, SetStateAction, useEffect } from 'react'
 
 export interface Props {
     input: string
+    isFocusMode: boolean
     setFilePath: Dispatch<SetStateAction<string | undefined>>
     setHasChanges: Dispatch<SetStateAction<boolean>>
     setInput: Dispatch<SetStateAction<string>>
@@ -9,6 +10,7 @@ export interface Props {
 
 export default function Editor({
     input,
+    isFocusMode,
     setFilePath,
     setHasChanges,
     setInput,
@@ -33,9 +35,11 @@ export default function Editor({
 
     return (
         <form className="flex w-1/2 flex-1 flex-col border-r border-zinc-300 dark:border-gray-700">
-            <h1 className="border-b border-zinc-300 px-3 py-1 dark:border-gray-700">
-                Editor
-            </h1>
+            {!isFocusMode && (
+                <h1 className="border-b border-zinc-300 px-3 py-1 dark:border-gray-700">
+                    Editor
+                </h1>
+            )}
             <textarea
                 value={input}
                 autoFocus

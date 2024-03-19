@@ -8,7 +8,7 @@ export interface Props {
     hasChanges: boolean
     input: string
     refPreview: RefObject<HTMLElement>
-    setHasChanges: Dispatch<SetStateAction<boolean>>
+    setIsFocusMode: Dispatch<SetStateAction<boolean>>
 }
 
 export default function TopBar({
@@ -16,7 +16,7 @@ export default function TopBar({
     hasChanges,
     input,
     refPreview,
-    setHasChanges,
+    setIsFocusMode,
 }: Props) {
     const [, setErrorMessage] = useContext(ErrorMessageContext)
 
@@ -34,7 +34,6 @@ export default function TopBar({
                     className="btn"
                     onClick={() => {
                         window.api.saveFile(input)
-                        setHasChanges(false)
                     }}
                 >
                     Save File
@@ -65,7 +64,32 @@ export default function TopBar({
                     Show In Folder
                 </button>
             </section>
-            <section>
+            <section className="flex space-x-2">
+                <button
+                    className="btn flex space-x-2"
+                    onClick={() => setIsFocusMode(true)}
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth={1.5}
+                        stroke="currentColor"
+                        className="h-6 w-6"
+                    >
+                        <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z"
+                        />
+                        <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                        />
+                    </svg>
+                    <span>Focus Mode</span>
+                </button>
                 <LightModeBtn />
             </section>
         </nav>
