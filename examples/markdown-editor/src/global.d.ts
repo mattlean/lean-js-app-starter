@@ -7,7 +7,13 @@ declare interface Window {
         onMainErrorMessage: (
             callback: (errorMessage: string) => void,
         ) => () => import('electron').IpcRenderer
+        onMainHtmlExportDialog: (
+            callback: () => void,
+        ) => () => import('electron').IpcRenderer
         onMainSaveFile: (
+            callback: () => void,
+        ) => () => import('electron').IpcRenderer
+        onMainShowInFolder: (
             callback: () => void,
         ) => () => import('electron').IpcRenderer
         onReadFile: (

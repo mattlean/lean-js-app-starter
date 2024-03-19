@@ -1,9 +1,10 @@
-import { Dispatch, RefObject, SetStateAction, useContext } from 'react'
+import { Dispatch, RefObject, SetStateAction } from 'react'
 
-import ErrorMessageContext from '../ErrorMessageContext'
+import { ErrorMessageActions } from '../errorMessageReducer'
 import LightModeBtn from './LightModeBtn'
 
 export interface Props {
+    errorMessageDispatch: Dispatch<ErrorMessageActions>
     filePath?: string
     hasChanges: boolean
     input: string
@@ -12,14 +13,13 @@ export interface Props {
 }
 
 export default function TopBar({
+    errorMessageDispatch,
     filePath,
     hasChanges,
     input,
     refPreview,
     setIsFocusMode,
 }: Props) {
-    const [, setErrorMessage] = useContext(ErrorMessageContext)
-
     return (
         <nav className="flex w-full justify-between border-b border-zinc-300 px-3 py-2 dark:border-gray-700">
             <section className="space-x-2">
@@ -32,9 +32,7 @@ export default function TopBar({
                 <button
                     disabled={!hasChanges}
                     className="btn"
-                    onClick={() => {
-                        window.api.saveFile(input)
-                    }}
+                    onClick={() => window.api.saveFile(input)}
                 >
                     Save File
                 </button>
@@ -46,9 +44,10 @@ export default function TopBar({
                                 refPreview.current.innerHTML,
                             )
                         } else {
-                            setErrorMessage(
-                                'Preview element could not be found.',
-                            )
+                            errorMessageDispatch({
+                                type: 'set',
+                                payload: 'Preview element could not be found.',
+                            })
                         }
                     }}
                 >

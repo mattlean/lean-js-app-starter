@@ -18,7 +18,7 @@ export const saveFileMain = (browserWin?: BrowserWindow) => {
         return
     }
 
-    win.webContents.send('mainsavefile')
+    win.webContents.send('mainmarkdownsave')
 }
 
 /**
@@ -39,6 +39,35 @@ export const sendMainErrorMessage = (
     }
 
     win.webContents.send('mainerrormessage', err.message)
+}
+
+/**
+ * Tell the renderer process to send an API request to show the export HTML dialog.
+ * @param browserWin Electron BrowserWindow instance
+ */
+export const showExportHtmlDialogMain = (browserWin?: BrowserWindow) => {
+    const win = browserWin ?? BrowserWindow.getFocusedWindow()
+
+    if (!win) {
+        return
+    }
+
+    win.webContents.send('mainhtmlexportdialog')
+}
+
+/**
+ * Tell the renderer process to send an API request to open the folder the currently
+ * opened file is located in.
+ * @param browserWin Electron BrowserWindow instance
+ */
+export const showInFolderMain = (browserWin?: BrowserWindow) => {
+    const win = browserWin ?? BrowserWindow.getFocusedWindow()
+
+    if (!win) {
+        return
+    }
+
+    win.webContents.send('mainfolderopen')
 }
 
 /**

@@ -1,27 +1,33 @@
-import { useContext, useEffect } from 'react'
+import { Dispatch, useEffect } from 'react'
 
-import ErrorMessageContext from '../ErrorMessageContext'
+import { ErrorMessageActions } from '../errorMessageReducer'
 
-export default function ErrorMessage() {
-    const [errorMessage, setErrorMessage] = useContext(ErrorMessageContext)
+export interface Props {
+    errorMessage: string
+    errorMessageDispatch: Dispatch<ErrorMessageActions>
+}
 
+export default function ErrorMessage({
+    errorMessage,
+    errorMessageDispatch,
+}: Props) {
     useEffect(() => {
         const removeMainErrorMessageListener = window.api.onMainErrorMessage(
             (mainErrorMessage) => {
-                setErrorMessage(mainErrorMessage)
+                errorMessageDispatch({ type: 'set', payload: mainErrorMessage })
             },
         )
 
         return () => {
             removeMainErrorMessageListener()
         }
-    }, [setErrorMessage])
+    }, [errorMessageDispatch])
 
     if (errorMessage) {
         return (
             <div className="flex items-center justify-between bg-red-600 px-3 py-2 text-sm">
                 {errorMessage}{' '}
-                <button onClick={() => setErrorMessage('')}>
+                <button onClick={() => errorMessageDispatch({ type: 'reset' })}>
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"

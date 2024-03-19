@@ -7,7 +7,12 @@ import {
 } from 'electron'
 
 import { showOpenFileDialog } from './api'
-import { saveFileMain, toggleFocusMode } from './mse'
+import {
+    saveFileMain,
+    showExportHtmlDialogMain,
+    showInFolderMain,
+    toggleFocusMode,
+} from './mse'
 import { createWindow } from './window'
 
 /**
@@ -25,9 +30,7 @@ export const setupMenu = () => {
         { role: 'togglefullscreen' },
         {
             label: 'Toggle Focus Mode',
-            click: () => {
-                toggleFocusMode()
-            },
+            click: () => toggleFocusMode(),
         },
     ]
 
@@ -51,13 +54,23 @@ export const setupMenu = () => {
                     },
                     accelerator: 'CmdOrCtrl+O',
                 },
+                { type: 'separator' },
                 {
                     label: 'Save',
-                    click: () => {
-                        saveFileMain()
-                    },
+                    click: () => saveFileMain(),
                     accelerator: 'CmdOrCtrl+S',
                 },
+                { type: 'separator' },
+                {
+                    label: 'Export as HTML',
+                    click: () => showExportHtmlDialogMain(),
+                },
+                { type: 'separator' },
+                {
+                    label: 'Show In Folder',
+                    click: () => showInFolderMain(),
+                },
+                { type: 'separator' },
                 { label: 'Close Window', role: 'close' },
             ],
         },
@@ -69,11 +82,10 @@ export const setupMenu = () => {
             submenu: [
                 {
                     label: 'Lean JavaScript Application Starter',
-                    click: () => {
+                    click: () =>
                         shell.openExternal(
                             'http://github.com/mattlean/lean-js-app-starter',
-                        )
-                    },
+                        ),
                 },
             ],
         },

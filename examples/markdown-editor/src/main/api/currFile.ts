@@ -18,6 +18,16 @@ interface MdFile {
 let currFile: MdFile | null = null
 
 /**
+ * Setup the currFile singleton.
+ */
+export const setupCurrFile = () => {
+    currFile = {
+        markdown: '',
+        filePath: undefined,
+    }
+}
+
+/**
  * Get the current file path.
  * If no file path exists, optionally open the save dialog to save the current markdown in a file
  * and get a new file path.
@@ -58,7 +68,7 @@ export const isCurrFileChanged = (markdown: string) => {
 
 /**
  * Checks to see if there is a file currently open.
- * @return True if there a file is currently open, false otherwise
+ * @return The file path if there a file is currently open, false otherwise
  */
 export const isFileOpen = () => {
     if (!currFile) {
@@ -66,7 +76,7 @@ export const isFileOpen = () => {
     }
 
     if (currFile.filePath) {
-        return true
+        return currFile.filePath
     }
     return false
 }
@@ -95,17 +105,4 @@ export const setCurrFile = (
         browserWin.setTitle(`${basename(filePath)} - ${app.name}`)
         browserWin.setRepresentedFilename(filePath)
     }
-}
-
-/**
- * Setup the currFile singleton.
- * @return currFile singleton
- */
-export const setupCurrFile = () => {
-    currFile = {
-        markdown: '',
-        filePath: undefined,
-    }
-
-    return currFile
 }

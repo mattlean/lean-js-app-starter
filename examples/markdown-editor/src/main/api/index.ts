@@ -15,7 +15,7 @@ import {
     setupCurrFile,
 } from './currFile'
 
-const currFile = setupCurrFile()
+setupCurrFile()
 
 /**
  * Save the markdown.
@@ -131,7 +131,7 @@ export const showOpenFileDialog = async (browserWin?: BrowserWindow) => {
  * @param browserWin Electron BrowserWindow instance
  * @return The file path for the markdown file was saved, undefined otherwise
  */
-export const showSaveDialog = async (browserWin: BrowserWindow) => {
+const showSaveDialog = async (browserWin: BrowserWindow) => {
     const result = await dialog.showSaveDialog(browserWin, {
         title: 'Save Markdown',
         filters: [{ name: 'Markdown File', extensions: ['md'] }],
@@ -155,8 +155,9 @@ export const showSaveDialog = async (browserWin: BrowserWindow) => {
  * file is located in.
  */
 ipcMain.on('folderopen', async () => {
-    if (currFile.filePath) {
-        await shell.showItemInFolder(currFile.filePath)
+    const filePath = isFileOpen()
+    if (filePath) {
+        await shell.showItemInFolder(filePath)
     }
 })
 

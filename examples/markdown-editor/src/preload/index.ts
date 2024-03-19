@@ -16,6 +16,21 @@ contextBridge.exposeInMainWorld('api', {
     },
 
     /**
+     * Add a listener for the "focusmodetoggle" channel.
+     * @param callback Function to be called when a new message arrives on the "focusmodetoggle" channel
+     * @return A function that will remove the added listener for the "focusmodetoggle" channel when called
+     */
+    onFocusModeToggle: (callback: () => void) => {
+        const listener = () => {
+            callback()
+        }
+
+        ipcRenderer.on('focusmodetoggle', listener)
+
+        return () => ipcRenderer.removeListener('focusmodetoggle', listener)
+    },
+
+    /**
      * Add a listener for the "mainerrormessage" channel.
      * @param callback Function to be called when a new message arrives on the "mainerrormessage" channel
      * @return A function that will remove the added listener for the "mainerrormessage" channel when called
@@ -34,6 +49,22 @@ contextBridge.exposeInMainWorld('api', {
     },
 
     /**
+     * Add a listener for the "mainhtmlexportdialog" channel.
+     * @param callback Function to be called when a new message arrives on the "mainhtmlexportdialog" channel
+     * @return A function that will remove the added listener for the "mainhtmlexportdialog" channel when called
+     */
+    onMainHtmlExportDialog: (callback: () => void) => {
+        const listener = () => {
+            callback()
+        }
+
+        ipcRenderer.on('mainhtmlexportdialog', listener)
+
+        return () =>
+            ipcRenderer.removeListener('mainhtmlexportdialog', listener)
+    },
+
+    /**
      * Add a listener for the "mainsavefile" channel.
      * @param callback Function to be called when a new message arrives on the "mainsavefile" channel
      * @return A function that will remove the added listener for the "mainsavefile" channel when called
@@ -43,24 +74,24 @@ contextBridge.exposeInMainWorld('api', {
             callback()
         }
 
-        ipcRenderer.on('mainsavefile', listener)
+        ipcRenderer.on('mainmarkdownsave', listener)
 
-        return () => ipcRenderer.removeListener('mainsavefile', listener)
+        return () => ipcRenderer.removeListener('mainmarkdownsave', listener)
     },
 
     /**
-     * Add a listener for the "focusmodetoggle" channel.
-     * @param callback Function to be called when a new message arrives on the "focusmodetoggle" channel
-     * @return A function that will remove the added listener for the "focusmodetoggle" channel when called
+     * Add a listener for the "mainshowinfolder" channel.
+     * @param callback Function to be called when a new message arrives on the "mainshowinfolder" channel
+     * @return A function that will remove the added listener for the "mainshowinfolder" channel when called
      */
-    onFocusModeToggle: (callback: () => void) => {
+    onMainShowInFolder: (callback: () => void) => {
         const listener = () => {
             callback()
         }
 
-        ipcRenderer.on('focusmodetoggle', listener)
+        ipcRenderer.on('mainfolderopen', listener)
 
-        return () => ipcRenderer.removeListener('focusmodetoggle', listener)
+        return () => ipcRenderer.removeListener('mainfolderopen', listener)
     },
 
     /**
