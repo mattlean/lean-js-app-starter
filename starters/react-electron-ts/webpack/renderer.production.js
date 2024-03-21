@@ -3,7 +3,7 @@ const compileReactTs = require('ljas-webpack/compileReactTs')
 const { buildSourceMaps, loadFonts, loadImages } = require('ljas-webpack')
 const { merge } = require('webpack-merge')
 
-const { PATH_SRC } = require('../PATHS')
+const { PATH_COMMON_SRC, PATH_RENDERER_SRC } = require('../PATHS')
 
 module.exports = merge([
     {
@@ -30,12 +30,12 @@ module.exports = merge([
     },
 
     buildTransformedCss({
-        rule: { include: PATH_SRC },
+        rule: { include: PATH_RENDERER_SRC },
         miniCssExtractPlugin: { filename: '[name].[contenthash].css' },
     }),
 
     buildTransformedCss({
-        rule: { include: PATH_SRC },
+        rule: { include: PATH_RENDERER_SRC },
         miniCssExtractPlugin: { filename: '[name].[contenthash].css' },
     }),
 
@@ -44,7 +44,7 @@ module.exports = merge([
     compileReactTs(
         {
             rule: {
-                include: PATH_SRC,
+                include: [PATH_COMMON_SRC, PATH_RENDERER_SRC],
                 exclude: [
                     /node_modules/,
                     /__mocks__\/.*.(j|t)sx?$/,

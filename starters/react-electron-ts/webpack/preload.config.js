@@ -3,7 +3,11 @@ const setupNodeExternals = require('ljas-webpack/setupNodeExternals')
 const { buildSourceMaps } = require('ljas-webpack')
 const { merge } = require('webpack-merge')
 
-const { PATH_PRELOAD_BUILD, PATH_PRELOAD_SRC } = require('../PATHS')
+const {
+    PATH_COMMON_SRC,
+    PATH_PRELOAD_BUILD,
+    PATH_PRELOAD_SRC,
+} = require('../PATHS')
 
 const config = merge([
     {
@@ -20,7 +24,7 @@ const config = merge([
 
     compileTs({
         rule: {
-            include: PATH_PRELOAD_SRC,
+            include: [PATH_COMMON_SRC, PATH_PRELOAD_SRC],
             exclude: [
                 /node_modules/,
                 /__mocks__\/.*.(j|t)s$/,

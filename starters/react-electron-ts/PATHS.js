@@ -2,6 +2,7 @@ const path = require('path')
 
 module.exports = {
     PATH_BUILD: path.resolve(__dirname, 'build'),
+    PATH_COMMON_SRC: path.resolve(__dirname, 'src/common'),
     PATH_MAIN_BUILD: path.resolve(__dirname, 'build/main'),
     PATH_MAIN_SRC: path.resolve(__dirname, 'src/main'),
     PATH_PRELOAD_BUILD: path.resolve(__dirname, 'build/preload'),

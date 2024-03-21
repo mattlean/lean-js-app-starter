@@ -3,7 +3,7 @@ const setupNodeExternals = require('ljas-webpack/setupNodeExternals')
 const { buildSourceMaps } = require('ljas-webpack')
 const { merge } = require('webpack-merge')
 
-const { PATH_MAIN_BUILD, PATH_MAIN_SRC } = require('../PATHS')
+const { PATH_COMMON_SRC, PATH_MAIN_BUILD, PATH_MAIN_SRC } = require('../PATHS')
 
 const config = merge([
     {
@@ -20,7 +20,7 @@ const config = merge([
 
     compileTs({
         rule: {
-            include: PATH_MAIN_SRC,
+            include: [PATH_COMMON_SRC, PATH_MAIN_SRC],
             exclude: [
                 /node_modules/,
                 /__mocks__\/.*.(j|t)s$/,

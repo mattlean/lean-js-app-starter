@@ -9,7 +9,11 @@ const {
 } = require('ljas-webpack')
 const { merge } = require('webpack-merge')
 
-const { PATH_RENDERER_BUILD, PATH_RENDERER_SRC } = require('../PATHS')
+const {
+    PATH_COMMON_SRC,
+    PATH_RENDERER_BUILD,
+    PATH_RENDERER_SRC,
+} = require('../PATHS')
 
 if (!process.env.PORT_DEV_SERVER) {
     throw new Error('🔴 webpack-dev-server port was not set')
@@ -60,7 +64,7 @@ module.exports = merge([
             watchFiles: ['src/renderer/**/*.ejs'],
         },
         rule: {
-            include: PATH_RENDERER_SRC,
+            include: [PATH_COMMON_SRC, PATH_RENDERER_SRC],
             exclude: [
                 /node_modules/,
                 /__mocks__\/.*.(j|t)sx?$/,

@@ -7,7 +7,11 @@ const setupReactFastRefreshServerTs = require('ljas-webpack/setupReactFastRefres
 const { buildSourceMaps, loadFonts, loadImages } = require('ljas-webpack')
 const { merge } = require('webpack-merge')
 
-const { PATH_RENDERER_BUILD, PATH_RENDERER_SRC } = require('../PATHS')
+const {
+    PATH_COMMON_SRC,
+    PATH_RENDERER_BUILD,
+    PATH_RENDERER_SRC,
+} = require('../PATHS')
 
 const injectTransformedCss = require('ljas-webpack/injectTransformedCss')
 
@@ -71,7 +75,7 @@ module.exports = merge([
             watchFiles: ['src/renderer/**/*.ejs'],
         },
         rule: {
-            include: PATH_RENDERER_SRC,
+            include: [PATH_COMMON_SRC, PATH_RENDERER_SRC],
             exclude: [
                 /node_modules/,
                 /__mocks__\/.*.(j|t)sx?$/,
