@@ -6,36 +6,77 @@ import {
     shell,
 } from 'electron'
 
-import { showOpenFileDialog } from './api'
 import {
     saveFileMain,
     showExportHtmlDialogMain,
     showInFolderMain,
+    syncColorModeBtn,
     toggleFocusMode,
 } from './mse'
+// import setColorModeMenu from './setColorModeMenu'
+import showOpenFileDialog from './showOpenFileDialog'
 import { createWindow } from './window'
+
+console.log('huh')
 
 /**
  * Setup the menu.
  */
 export const setupMenu = () => {
     const viewSubmenu: MenuItemConstructorOptions[] = [
-        { role: 'reload' },
-        { role: 'forceReload' },
-        { type: 'separator' },
         { role: 'resetZoom' },
         { role: 'zoomIn' },
         { role: 'zoomOut' },
         { type: 'separator' },
         { role: 'togglefullscreen' },
+        { type: 'separator' },
         {
             label: 'Toggle Focus Mode',
             click: () => toggleFocusMode(),
         },
+        {
+            id: 'color-mode',
+            label: 'Color Mode',
+            submenu: [
+                {
+                    // id: 'auto',
+                    label: 'Use System Preference',
+                    checked: true,
+                    type: 'checkbox',
+                    // click: () => {
+                    //     // setColorModeMenu('auto')
+                    //     // syncColorModeBtn('auto')
+                    // },
+                },
+                {
+                    id: 'light',
+                    label: 'Light Mode',
+                    type: 'checkbox',
+                    // click: () => {
+                    //     // setColorModeMenu('light')
+                    //     // syncColorModeBtn('light')
+                    // },
+                },
+                {
+                    // id: 'dark',
+                    label: 'Dark Mode',
+                    type: 'checkbox',
+                    // click: () => {
+                    //     // setColorModeMenu('dark')
+                    //     // syncColorModeBtn('dark')
+                    // },
+                },
+            ],
+        },
     ]
 
     if (process.env.NODE_ENV === 'development') {
-        viewSubmenu.splice(2, 0, { role: 'toggleDevTools' })
+        viewSubmenu.unshift(
+            { role: 'reload' },
+            { role: 'forceReload' },
+            { role: 'toggleDevTools' },
+            { type: 'separator' },
+        )
     }
 
     const template: MenuItemConstructorOptions[] = [

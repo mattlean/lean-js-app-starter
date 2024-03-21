@@ -3,10 +3,12 @@
  * renderer process.
  */
 import { BrowserWindow, dialog, ipcMain, shell } from 'electron'
-import { readFile, writeFile } from 'node:fs/promises'
+import { writeFile } from 'node:fs/promises'
 
+// import { colorModes } from '../../common/types'
 import { sendMainErrorMessage } from '../mse'
-import { createWindow } from '../window'
+// import setColorModeMenu from '../setColorModeMenu'
+import showOpenFileDialog from '../showOpenFileDialog'
 import {
     getCurrFilePath,
     isCurrFileChanged,
@@ -27,7 +29,7 @@ setupCurrFile()
  * @param markdown Markdown with potential changes from the current file
  * @return A promise that will resolve to true if a save occured, false otherwise
  */
-export const saveFile = async (browserWin: BrowserWindow, markdown: string) => {
+const saveFile = async (browserWin: BrowserWindow, markdown: string) => {
     if (!markdown && !isFileOpen()) {
         return false
     }
@@ -43,6 +45,7 @@ export const saveFile = async (browserWin: BrowserWindow, markdown: string) => {
     } catch (err) {
         if (err instanceof Error) {
             sendMainErrorMessage(err, browserWin)
+            return false
         } else {
             throw err
         }
@@ -59,7 +62,7 @@ export const saveFile = async (browserWin: BrowserWindow, markdown: string) => {
  * @param browserWin Electron BrowserWindow instance
  * @param html HTML string produced by markdown
  */
-export const showExportHtmlDialog = async (
+const showExportHtmlDialog = async (
     browserWin: BrowserWindow,
     html: string,
 ) => {
@@ -83,47 +86,11 @@ export const showExportHtmlDialog = async (
     } catch (err) {
         if (err instanceof Error) {
             sendMainErrorMessage(err, browserWin)
+            return
         } else {
             throw err
         }
     }
-}
-
-/**
- * Show the open dialog and read the markdown file.
- * @param browserWin Electron BrowserWindow instance
- */
-export const showOpenFileDialog = async (browserWin?: BrowserWindow) => {
-    let win = browserWin ?? BrowserWindow.getFocusedWindow()
-    if (!win) {
-        win = createWindow()
-    }
-
-    const result = await dialog.showOpenDialog(win, {
-        title: 'Open Markdown',
-        properties: ['openFile'],
-        filters: [{ name: 'Markdown File', extensions: ['md'] }],
-    })
-
-    if (result.canceled) {
-        return
-    }
-
-    const [filePath] = result.filePaths
-
-    let markdown
-    try {
-        markdown = await readFile(filePath, { encoding: 'utf-8' })
-    } catch (err) {
-        if (err instanceof Error) {
-            sendMainErrorMessage(err, win)
-        } else {
-            throw err
-        }
-    }
-
-    setCurrFile(filePath, markdown as string, win)
-    return [filePath, markdown as string]
 }
 
 /**
@@ -149,6 +116,15 @@ const showSaveDialog = async (browserWin: BrowserWindow) => {
 
     return filePath
 }
+
+/**
+ * Listen for renderer process requests to sync the color mode menu items with the
+ * color mode button.
+ */
+// ipcMain.on('colormodebutton', (_, colorMode: colorModes) => {
+//     console.log('received ipcmain on?', colorMode)
+//     setColorModeMenu(colorMode)
+// })
 
 /**
  * Listen for renderer process requests to open the folder the currently opened
@@ -194,6 +170,7 @@ ipcMain.handle('markdownchange', (event, markdown) => {
  * Listen for renderer process requests to show the markdown file open dialog.
  */
 ipcMain.on('markdownopendialog', async (event) => {
+    console.log('event got here markdownopendialog')
     const browserWin = BrowserWindow.fromWebContents(event.sender)
 
     if (!browserWin) {

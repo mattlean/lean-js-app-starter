@@ -1,6 +1,9 @@
 declare interface Window {
     api: {
         checkForMarkdownChange: (markdown: string) => Promise<boolean>
+        // onColorModeMenu: (
+        //     callback: (colorMode: import('./common/types').colorModes) => void,
+        // ) => () => import('electron').IpcRenderer
         onFocusModeToggle: (
             callback: () => void,
         ) => () => import('electron').IpcRenderer
@@ -26,5 +29,8 @@ declare interface Window {
         showExportHtmlDialog: (html: string) => void
         showInFolder: () => void
         showOpenFileDialog: () => void
+        // syncColorModeMenu: (
+        //     colorMode: import('./common/types').colorModes,
+        // ) => void
     }
 }

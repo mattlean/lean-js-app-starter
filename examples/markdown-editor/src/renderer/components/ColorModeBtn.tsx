@@ -1,12 +1,15 @@
-import { ReactNode, useState } from 'react'
+import { ReactNode, useEffect, useState } from 'react'
 
-export default function LightModeBtn() {
+export default function ColorModeBtn() {
     const [mode, setMode] = useState(() => {
         if (localStorage.theme === 'light') {
+            // window.api.syncColorModeMenu('light')
             return 'light'
         } else if (localStorage.theme === 'dark') {
+            // window.api.syncColorModeMenu('dark')
             return 'dark'
         } else {
+            // window.api.syncColorModeMenu('auto')
             return 'auto'
         }
     })
@@ -43,6 +46,19 @@ export default function LightModeBtn() {
         text = 'Sys. Pref. Mode'
     }
 
+    // useEffect(() => {
+    //     const colorModeMenuListener = window.api.onColorModeMenu(
+    //         (colorMode) => {
+    //             console.log('triggered', colorMode)
+    //             setMode(colorMode)
+    //         },
+    //     )
+
+    //     return () => {
+    //         colorModeMenuListener()
+    //     }
+    // }, [])
+
     return (
         <button
             className="btn flex space-x-2"
@@ -50,10 +66,12 @@ export default function LightModeBtn() {
                 if (mode === 'light') {
                     localStorage.theme = 'dark'
                     setMode('dark')
+                    // window.api.syncColorModeMenu('dark')
                     document.documentElement.classList.add('dark')
                 } else if (mode === 'dark') {
                     localStorage.removeItem('theme')
                     setMode('auto')
+                    // window.api.syncColorModeMenu('auto')
 
                     if (
                         window.matchMedia('(prefers-color-scheme: dark)')
@@ -66,6 +84,7 @@ export default function LightModeBtn() {
                 } else {
                     localStorage.theme = 'light'
                     setMode('light')
+                    // window.api.syncColorModeMenu('light')
                     document.documentElement.classList.remove('dark')
                 }
             }}
