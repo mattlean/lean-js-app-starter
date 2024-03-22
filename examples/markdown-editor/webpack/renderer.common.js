@@ -6,7 +6,7 @@ const { PATH_RENDERER_SRC } = require('../PATHS')
 module.exports = merge([
     {
         entry: {
-            lightmode: `${PATH_RENDERER_SRC}/lightMode.ts`,
+            colormode: `${PATH_RENDERER_SRC}/colorMode.ts`,
             renderer: `${PATH_RENDERER_SRC}/index.tsx`,
         },
     },

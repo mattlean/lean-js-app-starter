@@ -12,10 +12,7 @@ import {
     isCurrFileChanged,
     isFileOpen,
     setCurrFile,
-    setupCurrFile,
 } from './currFile'
-
-setupCurrFile()
 
 /**
  * Save the markdown.

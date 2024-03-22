@@ -4,9 +4,11 @@ import installExtension, {
     REACT_DEVELOPER_TOOLS,
 } from 'electron-devtools-installer'
 
+import { setupCurrFile } from './api/currFile'
 import { setupMenu } from './menu'
 import { createWindow } from './window'
 
+setupCurrFile()
 setupMenu()
 
 app.whenReady().then(() => {

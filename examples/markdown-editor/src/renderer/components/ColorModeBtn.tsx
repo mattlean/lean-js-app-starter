@@ -1,7 +1,9 @@
 import { ReactNode, useState } from 'react'
 
-export default function LightModeBtn() {
-    const [mode, setMode] = useState(() => {
+import { colorModes } from '../../common/types'
+
+export default function ColorModeBtn() {
+    const [mode, setMode] = useState<colorModes>(() => {
         if (localStorage.theme === 'light') {
             return 'light'
         } else if (localStorage.theme === 'dark') {

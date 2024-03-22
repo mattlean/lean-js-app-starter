@@ -1,7 +1,7 @@
 import { Dispatch, RefObject, SetStateAction } from 'react'
 
 import { ErrorMessageActions } from '../errorMessageReducer'
-import LightModeBtn from './LightModeBtn'
+import ColorModeBtn from './ColorModeBtn'
 
 export interface Props {
     errorMessageDispatch: Dispatch<ErrorMessageActions>
@@ -89,7 +89,7 @@ export default function TopBar({
                     </svg>
                     <span>Focus Mode</span>
                 </button>
-                <LightModeBtn />
+                <ColorModeBtn />
             </section>
         </nav>
     )
