@@ -80,21 +80,6 @@ contextBridge.exposeInMainWorld('api', {
     },
 
     /**
-     * Add a listener for the "mainshowinfolder" channel.
-     * @param callback Function to be called when a new message arrives on the "mainshowinfolder" channel
-     * @return A function that will remove the added listener for the "mainshowinfolder" channel when called
-     */
-    onMainShowInFolder: (callback: () => void) => {
-        const listener = () => {
-            callback()
-        }
-
-        ipcRenderer.on('mainfolderopen', listener)
-
-        return () => ipcRenderer.removeListener('mainfolderopen', listener)
-    },
-
-    /**
      * Add a listener for the "markdownread" channel.
      * @param callback Function to be called when a new message arrives on the "markdownread" channel
      * @return A function that will remove the added listener for the "markdownread" channel when called

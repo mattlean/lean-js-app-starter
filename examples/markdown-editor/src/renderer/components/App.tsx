@@ -56,16 +56,6 @@ export default function App() {
     }, [input])
 
     useEffect(() => {
-        const mainShowInFolderListener = window.api.onMainShowInFolder(() =>
-            window.api.showInFolder(),
-        )
-
-        return () => {
-            mainShowInFolderListener()
-        }
-    }, [input])
-
-    useEffect(() => {
         const focusModeToggleListener = window.api.onFocusModeToggle(() =>
             setIsFocusMode((s) => !s),
         )

@@ -13,9 +13,6 @@ declare interface Window {
         onMainSaveFile: (
             callback: () => void,
         ) => () => import('electron').IpcRenderer
-        onMainShowInFolder: (
-            callback: () => void,
-        ) => () => import('electron').IpcRenderer
         onReadFile: (
             callback: (filePath: string, markdown: string) => void,
         ) => () => import('electron').IpcRenderer

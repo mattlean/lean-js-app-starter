@@ -1,18 +1,11 @@
-import {
-    BrowserWindow,
-    Menu,
-    MenuItemConstructorOptions,
-    app,
-    shell,
-} from 'electron'
+import { Menu, MenuItemConstructorOptions, app, shell } from 'electron'
 
-import { showOpenFileDialog } from './api'
 import {
     saveFileMain,
     showExportHtmlDialogMain,
-    showInFolderMain,
     toggleFocusMode,
-} from './mse'
+} from './interfaces/mse'
+import { showInFolder, showOpenFileDialog } from './open'
 import { createWindow } from './window'
 
 /**
@@ -44,8 +37,7 @@ export const setupMenu = () => {
             submenu: [
                 {
                     label: 'Open',
-                    click: () => {
-                        let browserWin = BrowserWindow.getFocusedWindow()
+                    click: (_, browserWin) => {
                         if (!browserWin) {
                             browserWin = createWindow()
                         }
@@ -68,7 +60,7 @@ export const setupMenu = () => {
                 { type: 'separator' },
                 {
                     label: 'Show In Folder',
-                    click: () => showInFolderMain(),
+                    click: () => showInFolder(),
                 },
                 { type: 'separator' },
                 { label: 'Close Window', role: 'close' },

@@ -4,14 +4,17 @@ import installExtension, {
     REACT_DEVELOPER_TOOLS,
 } from 'electron-devtools-installer'
 
-import { setupCurrFile } from './api/currFile'
+import { setupCurrFile } from './currFile'
+import { setupApi } from './interfaces/api'
 import { setupMenu } from './menu'
 import { createWindow } from './window'
 
 setupCurrFile()
-setupMenu()
 
 app.whenReady().then(() => {
+    setupMenu()
+    setupApi()
+
     if (process.env.NODE_ENV === 'development') {
         installExtension(REACT_DEVELOPER_TOOLS)
             .then((name) => console.log(`Added Extension:  ${name}`))

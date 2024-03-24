@@ -56,21 +56,6 @@ export const showExportHtmlDialogMain = (browserWin?: BrowserWindow) => {
 }
 
 /**
- * Tell the renderer process to send an API request to open the folder the currently
- * opened file is located in.
- * @param browserWin Electron BrowserWindow instance
- */
-export const showInFolderMain = (browserWin?: BrowserWindow) => {
-    const win = browserWin ?? BrowserWindow.getFocusedWindow()
-
-    if (!win) {
-        return
-    }
-
-    win.webContents.send('mainfolderopen')
-}
-
-/**
  * Tell the renderer process to toggle focus mode from the main process.
  * @param browserWin Electron BrowserWindow instance
  */
