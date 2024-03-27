@@ -1,5 +1,7 @@
 import { contextBridge, ipcRenderer } from 'electron'
 
+import { colorModes } from '../common/types'
+
 /**
  * Expose the API that the renderers will use to send requests to the main process.
  */
@@ -13,6 +15,24 @@ contextBridge.exposeInMainWorld('api', {
     checkForMarkdownChange: async (markdown: string) => {
         const result = await ipcRenderer.invoke('markdownchange', markdown)
         return result
+    },
+
+    /**
+     * Add a listener for the "colormodemenu" channel.
+     * @param callback Function to be called when a new message arrives on the "colormodemenu" channel
+     * @return A function that will remove the added listener for the "colormodemenu" channel when called
+     */
+    onColorModeMenu: (callback: (colorMode: colorModes) => void) => {
+        const listener = (
+            _: Electron.IpcRendererEvent,
+            colorMode: colorModes,
+        ) => {
+            callback(colorMode)
+        }
+
+        ipcRenderer.on('colormodemenu', listener)
+
+        return () => ipcRenderer.removeListener('colormodemenu', listener)
     },
 
     /**
@@ -145,5 +165,14 @@ contextBridge.exposeInMainWorld('api', {
      */
     showOpenFileDialog: () => {
         ipcRenderer.send('markdownopendialog')
+    },
+
+    /**
+     * Send a message to the main process on the "colormodebutton" channel.
+     * This allows the renderer to set the checked properties in the color mode submenu.
+     * @param colorMode Color mode type that determines which color mode to use
+     */
+    syncColorModeMenu: (colorMode: string) => {
+        ipcRenderer.send('colormodebutton', colorMode)
     },
 })

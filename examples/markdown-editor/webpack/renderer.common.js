@@ -7,7 +7,14 @@ module.exports = merge([
     {
         entry: {
             colormode: `${PATH_RENDERER_SRC}/colorMode.ts`,
-            renderer: `${PATH_RENDERER_SRC}/index.tsx`,
+            ['setup-colormode']: {
+                import: `${PATH_RENDERER_SRC}/setupColorMode.ts`,
+                dependOn: 'colormode',
+            },
+            renderer: {
+                import: `${PATH_RENDERER_SRC}/index.tsx`,
+                dependOn: 'colormode',
+            },
         },
     },
 

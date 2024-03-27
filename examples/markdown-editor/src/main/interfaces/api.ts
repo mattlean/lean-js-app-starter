@@ -4,7 +4,9 @@
  */
 import { BrowserWindow, ipcMain } from 'electron'
 
+import { colorModes } from '../../common/types'
 import { isCurrFileChanged } from '../currFile'
+import setColorModeMenu from '../menu'
 import { showInFolder, showOpenFileDialog } from '../open'
 import { showExportHtmlDialog } from '../save'
 import { saveFile } from '../save'
@@ -14,6 +16,14 @@ import { saveFile } from '../save'
  * the renderer process.
  */
 export const setupApi = () => {
+    /**
+     * Listen for renderer process requests to sync the color mode menu items with the
+     * color mode button.
+     */
+    ipcMain.on('colormodebutton', (_, colorMode: colorModes) => {
+        setColorModeMenu(colorMode)
+    })
+
     /**
      * Listen for renderer process requests to open the folder the currently opened
      * file is located in.

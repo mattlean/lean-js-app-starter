@@ -1,8 +1,11 @@
 import { Menu, MenuItemConstructorOptions, app, shell } from 'electron'
 
+import { colorModes } from '../common/types'
 import {
     saveFileMain,
+    sendMainErrorMessage,
     showExportHtmlDialogMain,
+    syncColorModeBtn,
     toggleFocusMode,
 } from './interfaces/mse'
 import { showInFolder, showOpenFileDialog } from './open'
@@ -13,22 +16,59 @@ import { createWindow } from './window'
  */
 export const setupMenu = () => {
     const viewSubmenu: MenuItemConstructorOptions[] = [
-        { role: 'reload' },
-        { role: 'forceReload' },
-        { type: 'separator' },
         { role: 'resetZoom' },
         { role: 'zoomIn' },
         { role: 'zoomOut' },
         { type: 'separator' },
         { role: 'togglefullscreen' },
+        { type: 'separator' },
         {
             label: 'Toggle Focus Mode',
             click: () => toggleFocusMode(),
         },
+        {
+            id: 'color-mode',
+            label: 'Color Mode',
+            submenu: [
+                {
+                    id: 'auto',
+                    label: 'Use System Preference',
+                    checked: true,
+                    type: 'checkbox',
+                    click: () => {
+                        setColorModeMenu('auto')
+                        syncColorModeBtn('auto')
+                    },
+                },
+                {
+                    id: 'light',
+                    label: 'Light Mode',
+                    type: 'checkbox',
+                    click: () => {
+                        setColorModeMenu('light')
+                        syncColorModeBtn('light')
+                    },
+                },
+                {
+                    id: 'dark',
+                    label: 'Dark Mode',
+                    type: 'checkbox',
+                    click: () => {
+                        setColorModeMenu('dark')
+                        syncColorModeBtn('dark')
+                    },
+                },
+            ],
+        },
     ]
 
     if (process.env.NODE_ENV === 'development') {
-        viewSubmenu.splice(2, 0, { role: 'toggleDevTools' })
+        viewSubmenu.unshift(
+            { role: 'reload' },
+            { role: 'forceReload' },
+            { role: 'toggleDevTools' },
+            { type: 'separator' },
+        )
     }
 
     const template: MenuItemConstructorOptions[] = [
@@ -89,3 +129,27 @@ export const setupMenu = () => {
     const menu = Menu.buildFromTemplate(template)
     Menu.setApplicationMenu(menu)
 }
+
+/**
+ * Set the color mode in the color mode menu.
+ * @param colorMode Color mode type that determines which color mode to use
+ */
+const setColorModeMenu = (colorMode: colorModes) => {
+    const colorModeMenuItem =
+        Menu.getApplicationMenu()?.getMenuItemById('color-mode')
+
+    if (!colorModeMenuItem || !colorModeMenuItem.submenu) {
+        sendMainErrorMessage(new Error('Color mode menu could not be found.'))
+        return
+    }
+
+    colorModeMenuItem.submenu.items.forEach((item) => {
+        if (colorMode === item.id) {
+            item.checked = true
+        } else {
+            item.checked = false
+        }
+    })
+}
+
+export default setColorModeMenu

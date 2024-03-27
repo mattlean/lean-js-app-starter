@@ -1,9 +1,10 @@
-import { ReactNode, useState } from 'react'
+import { ReactNode, useCallback, useEffect, useState } from 'react'
 
 import { colorModes } from '../../common/types'
+import { applyColorMode } from '../colorMode'
 
 export default function ColorModeBtn() {
-    const [mode, setMode] = useState<colorModes>(() => {
+    const [colorModeType, setColorModeType] = useState<colorModes>(() => {
         if (localStorage.theme === 'light') {
             return 'light'
         } else if (localStorage.theme === 'dark') {
@@ -13,10 +14,22 @@ export default function ColorModeBtn() {
         }
     })
 
+    const changeColorMode = useCallback(
+        (colorMode: colorModes, syncMenu = true) => {
+            setColorModeType(colorMode)
+            applyColorMode(colorMode)
+
+            if (syncMenu) {
+                window.api.syncColorModeMenu(colorMode)
+            }
+        },
+        [],
+    )
+
     let icon: ReactNode
     let text: string
 
-    if (mode === 'light') {
+    if (colorModeType === 'light') {
         icon = (
             <path
                 strokeLinecap="round"
@@ -25,7 +38,7 @@ export default function ColorModeBtn() {
             />
         )
         text = 'Light Mode'
-    } else if (mode === 'dark') {
+    } else if (colorModeType === 'dark') {
         icon = (
             <path
                 strokeLinecap="round"
@@ -45,30 +58,28 @@ export default function ColorModeBtn() {
         text = 'Sys. Pref. Mode'
     }
 
+    useEffect(() => {
+        const removeColorModeMenuListener = window.api.onColorModeMenu(
+            (colorMode) => {
+                changeColorMode(colorMode, false)
+            },
+        )
+
+        return () => {
+            removeColorModeMenuListener()
+        }
+    }, [changeColorMode])
+
     return (
         <button
             className="btn flex space-x-2"
             onClick={() => {
-                if (mode === 'light') {
-                    localStorage.theme = 'dark'
-                    setMode('dark')
-                    document.documentElement.classList.add('dark')
-                } else if (mode === 'dark') {
-                    localStorage.removeItem('theme')
-                    setMode('auto')
-
-                    if (
-                        window.matchMedia('(prefers-color-scheme: dark)')
-                            .matches
-                    ) {
-                        document.documentElement.classList.add('dark')
-                    } else {
-                        document.documentElement.classList.remove('dark')
-                    }
+                if (colorModeType === 'light') {
+                    changeColorMode('dark')
+                } else if (colorModeType === 'dark') {
+                    changeColorMode('auto')
                 } else {
-                    localStorage.theme = 'light'
-                    setMode('light')
-                    document.documentElement.classList.remove('dark')
+                    changeColorMode('light')
                 }
             }}
         >

@@ -20,48 +20,47 @@ export default function App() {
     const refPreview = useRef<HTMLElement>(null)
 
     useEffect(() => {
-        const mainSaveFileListener = window.api.onMainSaveFile(() =>
+        const removeMainSaveFileListener = window.api.onMainSaveFile(() =>
             window.api.saveFile(input),
         )
 
         return () => {
-            mainSaveFileListener()
+            removeMainSaveFileListener()
         }
     }, [input])
 
     useEffect(() => {
-        const saveFileSuccessListener = window.api.onSaveFileSuccess(() =>
+        const removeSaveFileSuccessListener = window.api.onSaveFileSuccess(() =>
             setHasChanges(false),
         )
 
         return () => {
-            saveFileSuccessListener()
+            removeSaveFileSuccessListener()
         }
     }, [])
 
     useEffect(() => {
-        const mainHtmlExportDialogListener = window.api.onMainHtmlExportDialog(
-            () => {
+        const removeMainHtmlExportDialogListener =
+            window.api.onMainHtmlExportDialog(() => {
                 if (refPreview.current) {
                     window.api.showExportHtmlDialog(
                         refPreview.current.innerHTML,
                     )
                 }
-            },
-        )
+            })
 
         return () => {
-            mainHtmlExportDialogListener()
+            removeMainHtmlExportDialogListener()
         }
     }, [input])
 
     useEffect(() => {
-        const focusModeToggleListener = window.api.onFocusModeToggle(() =>
+        const removeFocusModeToggleListener = window.api.onFocusModeToggle(() =>
             setIsFocusMode((s) => !s),
         )
 
         return () => {
-            focusModeToggleListener()
+            removeFocusModeToggleListener()
         }
     }, [setFilePath, setInput])
 

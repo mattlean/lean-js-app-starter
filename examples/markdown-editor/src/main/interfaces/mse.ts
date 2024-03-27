@@ -7,6 +7,8 @@
  */
 import { BrowserWindow } from 'electron'
 
+import { colorModes } from '../../common/types'
+
 /**
  * Tell the renderer process to send an API request to initiate the save process.
  * @param browserWin Electron BrowserWindow instance
@@ -67,4 +69,22 @@ export const toggleFocusMode = (browserWin?: BrowserWindow) => {
     }
 
     win.webContents.send('focusmodetoggle')
+}
+
+/**
+ * Tell the renderer process to sync the color mode button with the color mode menu.
+ * @param colorMode Color mode type that determines which color mode to use
+ * @param browserWin Electron BrowserWindow instance
+ */
+export const syncColorModeBtn = (
+    colorMode: colorModes,
+    browserWin?: BrowserWindow,
+) => {
+    const win = browserWin ?? BrowserWindow.getFocusedWindow()
+
+    if (!win) {
+        return
+    }
+
+    win.webContents.send('colormodemenu', colorMode)
 }
