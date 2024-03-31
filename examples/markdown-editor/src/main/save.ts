@@ -1,5 +1,6 @@
 import { BrowserWindow, dialog } from 'electron'
 import { writeFile } from 'node:fs/promises'
+import { basename } from 'path'
 
 import { getCurrFilePath, isFileOpen, setCurrFile } from './currFile'
 import { sendMainErrorMessage } from './interfaces/mse'
@@ -50,8 +51,17 @@ export const showExportHtmlDialog = async (
     browserWin: BrowserWindow,
     html: string,
 ) => {
+    const currFilePath = isFileOpen()
+
+    let defaultPath: string | undefined = undefined
+
+    if (currFilePath) {
+        defaultPath = basename(currFilePath, '.md')
+    }
+
     const result = await dialog.showSaveDialog(browserWin, {
         title: 'Export HTML',
+        defaultPath,
         filters: [{ name: 'HTML File', extensions: ['html', 'htm'] }],
     })
 
