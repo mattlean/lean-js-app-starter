@@ -1,6 +1,8 @@
 import { BrowserWindow, app } from 'electron'
 import path from 'path'
 
+import { resetCurrFile } from './currFile'
+
 const BUNDLED_PRELOAD_BUILD_PATH = path.join(__dirname, '../preload')
 
 /**
@@ -26,6 +28,10 @@ export const createWindow = () => {
         win.setTitle(`untitled - ${app.name}`)
         win.show()
         win.focus()
+    })
+
+    win.on('closed', () => {
+        resetCurrFile()
     })
 
     if (process.env.NODE_ENV === 'development') {

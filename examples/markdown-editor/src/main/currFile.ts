@@ -82,6 +82,18 @@ export const isFileOpen = () => {
 }
 
 /**
+ * Reset the current file.
+ */
+export const resetCurrFile = () => {
+    if (!currFile) {
+        throw new Error('currFile singleton was not setup.')
+    }
+
+    currFile.markdown = ''
+    currFile.filePath = undefined
+}
+
+/**
  * Set current file.
  * @param filePath File path for the current file
  * @param markdown Markdown of the current file
