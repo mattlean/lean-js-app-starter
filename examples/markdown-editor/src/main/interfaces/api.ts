@@ -2,7 +2,7 @@
  * The API is for receiving messages on the main process that originate from the
  * renderer process.
  */
-import { BrowserWindow, ipcMain } from 'electron'
+import { BrowserWindow, dialog, ipcMain } from 'electron'
 
 import { colorModes } from '../../common/types'
 import { isCurrFileChanged } from '../currFile'
@@ -25,6 +25,20 @@ export const setupApi = () => {
     })
 
     /**
+     * Listen for renderer process requests to check if there are unsaved markdown changes.
+     * This will synchronously result with true if there are unsaved changes, false otherwise.
+     */
+    ipcMain.on('unsavedmarkdowncheck', (e, markdown: string) => {
+        const browserWin = BrowserWindow.fromWebContents(e.sender)
+
+        if (!browserWin) {
+            return
+        }
+
+        e.returnValue = isCurrFileChanged(markdown)
+    })
+
+    /**
      * Listen for renderer process requests to open the folder the currently opened
      * file is located in.
      */
@@ -35,8 +49,8 @@ export const setupApi = () => {
     /**
      * Listen for renderer process requests to export an HTML file.
      */
-    ipcMain.on('htmlexportdialog', (event, html: string) => {
-        const browserWin = BrowserWindow.fromWebContents(event.sender)
+    ipcMain.on('htmlexportdialog', (e, html: string) => {
+        const browserWin = BrowserWindow.fromWebContents(e.sender)
 
         if (!browserWin) {
             return
@@ -47,9 +61,10 @@ export const setupApi = () => {
 
     /**
      * Check to see if the current markdown has unsaved changes.
+     * @return A promise that will resolve to true if there are unsaved changes, false otherwise
      */
-    ipcMain.handle('markdownchange', (event, markdown) => {
-        const browserWin = BrowserWindow.fromWebContents(event.sender)
+    ipcMain.handle('markdownchange', (e, markdown) => {
+        const browserWin = BrowserWindow.fromWebContents(e.sender)
 
         if (!browserWin) {
             return
@@ -64,8 +79,8 @@ export const setupApi = () => {
     /**
      * Listen for renderer process requests to show the markdown file open dialog.
      */
-    ipcMain.on('markdownopendialog', async (event) => {
-        const browserWin = BrowserWindow.fromWebContents(event.sender)
+    ipcMain.on('markdownopendialog', async (e) => {
+        const browserWin = BrowserWindow.fromWebContents(e.sender)
 
         if (!browserWin) {
             return
@@ -79,9 +94,11 @@ export const setupApi = () => {
 
     /**
      * Listen for renderer process requests to save a markdown file.
+     * @param markdown Markdown with potential changes from the current file
+     * @param exitOnSave Flag that causes the window to close upon successful save if true
      */
-    ipcMain.on('markdownsave', async (event, markdown) => {
-        const browserWin = BrowserWindow.fromWebContents(event.sender)
+    ipcMain.on('markdownsave', async (e, markdown, exitOnSave?: boolean) => {
+        const browserWin = BrowserWindow.fromWebContents(e.sender)
 
         if (!browserWin) {
             return
@@ -90,6 +107,24 @@ export const setupApi = () => {
         const result = await saveFile(browserWin, markdown)
         if (result) {
             browserWin.webContents.send('markdownsavesuccess')
+
+            if (exitOnSave) {
+                browserWin.close()
+            }
         }
+    })
+
+    /**
+     * Listen for renderer process requests to open the unsaved changes dialog.
+     * This will synchronously result with an Electron message box return value.
+     */
+    ipcMain.on('unsavedchangesdialog', async (e) => {
+        const result = await dialog.showMessageBox({
+            message: 'Do you want to save the changes you made?',
+            detail: `Your changes will be lost if you don't save them.`,
+            buttons: ['Save', `Don't Save`, 'Cancel'],
+        })
+
+        e.returnValue = result
     })
 }

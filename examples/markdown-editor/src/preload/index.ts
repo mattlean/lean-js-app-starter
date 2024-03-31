@@ -1,4 +1,4 @@
-import { contextBridge, ipcRenderer } from 'electron'
+import { MessageBoxReturnValue, contextBridge, ipcRenderer } from 'electron'
 
 import { colorModes } from '../common/types'
 
@@ -16,6 +16,16 @@ contextBridge.exposeInMainWorld('api', {
         const result = await ipcRenderer.invoke('markdownchange', markdown)
         return result
     },
+
+    /**
+     * Send a synchronous message to the main process on the "unsavedmarkdowncheck" channel.
+     * This allows the renderer to check if the editor has unsaved changes upon
+     * closing the window.
+     * @param markdown Markdown with potential changes from the current file
+     * @return True if there are unsaved changes, false otherwise
+     */
+    checkForUnsavedChanges: (markdown: string) =>
+        ipcRenderer.sendSync('unsavedmarkdowncheck', markdown),
 
     /**
      * Add a listener for the "colormodemenu" channel.
@@ -137,9 +147,10 @@ contextBridge.exposeInMainWorld('api', {
      * Send a message to the main process on the "markdownsave" channel.
      * This allows the renderer to a save markdown file through the main process.
      * @param markdown Markdown with potential changes from the current file
+     * @param exitOnSave Flag that causes the window to close upon successful save if true
      */
-    saveFile: (markdown: string) => {
-        ipcRenderer.send('markdownsave', markdown)
+    saveFile: (markdown: string, exitOnSave = false) => {
+        ipcRenderer.send('markdownsave', markdown, exitOnSave)
     },
 
     /**
@@ -166,6 +177,15 @@ contextBridge.exposeInMainWorld('api', {
     showOpenFileDialog: () => {
         ipcRenderer.send('markdownopendialog')
     },
+
+    /**
+     * Send a message to the main process on the "unsavedchangesdialog" channel and
+     * receive a response synchronously.
+     * This allows the renderer to show the unsaved changes dialog through the main process.
+     * @return An Electron message box return value
+     */
+    showUnsavedChangesDialog: (): MessageBoxReturnValue =>
+        ipcRenderer.sendSync('unsavedchangesdialog'),
 
     /**
      * Send a message to the main process on the "colormodebutton" channel.

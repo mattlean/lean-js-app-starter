@@ -6,12 +6,12 @@ import remarkRehype from 'remark-rehype'
 import { unified } from 'unified'
 
 export interface Props {
-    input: string
     isFocusMode: boolean
+    markdown: string
     refPreview: RefObject<HTMLElement>
 }
 
-export default function Preview({ input, isFocusMode, refPreview }: Props) {
+export default function Preview({ isFocusMode, markdown, refPreview }: Props) {
     const [output, setOutput] = useState('')
 
     useEffect(() => {
@@ -21,13 +21,13 @@ export default function Preview({ input, isFocusMode, refPreview }: Props) {
                 .use(remarkGfm)
                 .use(remarkRehype)
                 .use(rehypeStringify)
-                .process(input)
+                .process(markdown)
 
             setOutput(String(mdHtml))
         }
 
         parseMd()
-    }, [input])
+    }, [markdown])
 
     const createMarkup = useCallback(
         () => ({

@@ -11,7 +11,7 @@ export default function App() {
     const [hasChanges, setHasChanges] = useState(false)
     const [filePath, setFilePath] = useState<string | undefined>(undefined)
     const [isFocusMode, setIsFocusMode] = useState(false)
-    const [input, setInput] = useState('')
+    const [markdown, setMarkdown] = useState('')
     const [errorMessage, errorMessageDispatch] = useReducer(
         errorMessageReducer,
         INITIAL_STATE,
@@ -20,14 +20,35 @@ export default function App() {
     const refPreview = useRef<HTMLElement>(null)
 
     useEffect(() => {
+        window.onbeforeunload = (e) => {
+            const hasChangesMain = window.api.checkForUnsavedChanges(markdown)
+
+            if (hasChangesMain) {
+                const result = window.api.showUnsavedChangesDialog()
+
+                if (result.response === 0) {
+                    window.api.saveFile(markdown, true)
+                    e.returnValue = 'Saved unsaved changes dialog.'
+                } else if (result.response === 2) {
+                    e.returnValue = 'Cancelled unsaved changes dialog.'
+                }
+            }
+        }
+
+        return () => {
+            window.onbeforeunload = null
+        }
+    }, [hasChanges, markdown])
+
+    useEffect(() => {
         const removeMainSaveFileListener = window.api.onMainSaveFile(() =>
-            window.api.saveFile(input),
+            window.api.saveFile(markdown),
         )
 
         return () => {
             removeMainSaveFileListener()
         }
-    }, [input])
+    }, [markdown])
 
     useEffect(() => {
         const removeSaveFileSuccessListener = window.api.onSaveFileSuccess(() =>
@@ -52,7 +73,7 @@ export default function App() {
         return () => {
             removeMainHtmlExportDialogListener()
         }
-    }, [input])
+    }, [markdown])
 
     useEffect(() => {
         const removeFocusModeToggleListener = window.api.onFocusModeToggle(() =>
@@ -62,7 +83,7 @@ export default function App() {
         return () => {
             removeFocusModeToggleListener()
         }
-    }, [setFilePath, setInput])
+    }, [setFilePath, setMarkdown])
 
     return (
         <ErrorBoundary fallback={<div>Something went wrong.</div>}>
@@ -72,22 +93,22 @@ export default function App() {
                         errorMessageDispatch={errorMessageDispatch}
                         filePath={filePath}
                         hasChanges={hasChanges}
-                        input={input}
+                        markdown={markdown}
                         refPreview={refPreview}
                         setIsFocusMode={setIsFocusMode}
                     />
                 )}
                 <section className="flex flex-1 flex-row overflow-hidden">
                     <Editor
-                        input={input}
                         isFocusMode={isFocusMode}
+                        markdown={markdown}
                         setFilePath={setFilePath}
                         setHasChanges={setHasChanges}
-                        setInput={setInput}
+                        setMarkdown={setMarkdown}
                     />
                     <Preview
-                        input={input}
                         isFocusMode={isFocusMode}
+                        markdown={markdown}
                         refPreview={refPreview}
                     />
                 </section>

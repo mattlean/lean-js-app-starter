@@ -1,29 +1,29 @@
 import { Dispatch, SetStateAction, useEffect } from 'react'
 
 export interface Props {
-    input: string
     isFocusMode: boolean
+    markdown: string
     setFilePath: Dispatch<SetStateAction<string | undefined>>
     setHasChanges: Dispatch<SetStateAction<boolean>>
-    setInput: Dispatch<SetStateAction<string>>
+    setMarkdown: Dispatch<SetStateAction<string>>
 }
 
 export default function Editor({
-    input,
     isFocusMode,
+    markdown,
     setFilePath,
     setHasChanges,
-    setInput,
+    setMarkdown,
 }: Props) {
     useEffect(() => {
         const removeReadFileListener = window.api.onReadFile(
-            (filePath, markdown) => {
+            (filePath, fileMarkdown) => {
                 if (filePath) {
                     setFilePath(filePath)
                 }
 
-                if (markdown) {
-                    setInput(markdown)
+                if (fileMarkdown) {
+                    setMarkdown(fileMarkdown)
                 }
             },
         )
@@ -31,7 +31,7 @@ export default function Editor({
         return () => {
             removeReadFileListener()
         }
-    }, [setFilePath, setInput])
+    }, [setFilePath, setMarkdown])
 
     return (
         <form className="flex w-1/2 flex-1 flex-col border-r border-zinc-300 dark:border-gray-700">
@@ -41,11 +41,11 @@ export default function Editor({
                 </h1>
             )}
             <textarea
-                value={input}
+                value={markdown}
                 autoFocus
                 className="form-textarea flex-1 resize-none border-none bg-white font-mono text-xs text-black focus:ring-0 dark:bg-gray-900 dark:text-white "
                 onChange={async (e) => {
-                    setInput(e.target.value)
+                    setMarkdown(e.target.value)
 
                     const hasChanges = await window.api.checkForMarkdownChange(
                         e.target.value,

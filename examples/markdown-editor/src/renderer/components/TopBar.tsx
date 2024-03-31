@@ -7,7 +7,7 @@ export interface Props {
     errorMessageDispatch: Dispatch<ErrorMessageActions>
     filePath?: string
     hasChanges: boolean
-    input: string
+    markdown: string
     refPreview: RefObject<HTMLElement>
     setIsFocusMode: Dispatch<SetStateAction<boolean>>
 }
@@ -16,7 +16,7 @@ export default function TopBar({
     errorMessageDispatch,
     filePath,
     hasChanges,
-    input,
+    markdown,
     refPreview,
     setIsFocusMode,
 }: Props) {
@@ -32,7 +32,7 @@ export default function TopBar({
                 <button
                     disabled={!hasChanges}
                     className="btn"
-                    onClick={() => window.api.saveFile(input)}
+                    onClick={() => window.api.saveFile(markdown)}
                 >
                     Save File
                 </button>
