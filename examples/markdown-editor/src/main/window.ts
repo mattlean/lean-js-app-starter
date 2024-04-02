@@ -1,4 +1,4 @@
-import { BrowserWindow, app, nativeImage } from 'electron'
+import { BrowserWindow, app } from 'electron'
 import { shell } from 'electron'
 import path from 'path'
 
@@ -24,12 +24,7 @@ export const createWindow = () => {
         },
     })
 
-    // TODO: remove this
-    // if (process.env.NODE_ENV === 'development' && process.env.HOST_DEV_SERVER) {
-    //     win.loadURL(process.env.HOST_DEV_SERVER)
-    // } else {
     win.loadFile('build/renderer/index.html')
-    // }
 
     win.once('ready-to-show', () => {
         win.setTitle(`untitled - ${app.name}`)
