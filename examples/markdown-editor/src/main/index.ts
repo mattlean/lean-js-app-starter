@@ -16,7 +16,9 @@ app.whenReady().then(() => {
     setupApi()
 
     if (process.env.NODE_ENV === 'development') {
-        installExtension(REACT_DEVELOPER_TOOLS)
+        installExtension(REACT_DEVELOPER_TOOLS, {
+            loadExtensionOptions: { allowFileAccess: true },
+        })
             .then((name) => console.log(`Added Extension:  ${name}`))
             .catch((err) => console.log('An error occurred: ', err))
     }
