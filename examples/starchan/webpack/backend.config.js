@@ -19,7 +19,7 @@ const buildConfig = (mode) =>
             },
 
             plugins: [
-                // Copy public & views directories in src to build
+                // Copy static files from public & views directories to build
                 new CopyPlugin({
                     patterns: [
                         {

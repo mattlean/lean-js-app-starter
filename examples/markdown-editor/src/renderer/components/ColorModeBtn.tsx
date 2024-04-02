@@ -1,3 +1,4 @@
+// Icons sourced from: https://heroicons.com
 import { ReactNode, useCallback, useEffect, useState } from 'react'
 
 import { colorModes } from '../../common/types'

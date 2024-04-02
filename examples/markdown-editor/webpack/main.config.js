@@ -1,4 +1,5 @@
 const compileTs = require('ljas-webpack/compileTs')
+const CopyPlugin = require('copy-webpack-plugin')
 const setupNodeExternals = require('ljas-webpack/setupNodeExternals')
 const { buildSourceMaps } = require('ljas-webpack')
 const { merge } = require('webpack-merge')
@@ -14,6 +15,19 @@ const config = merge([
             filename: '[name].js',
             path: PATH_MAIN_BUILD,
         },
+
+        plugins: [
+            // Copy icon to build
+            new CopyPlugin({
+                patterns: [
+                    {
+                        from: `${PATH_MAIN_SRC}/icons/logo.png`,
+                        to: `${PATH_MAIN_BUILD}/logo.png`,
+                        noErrorOnMissing: true,
+                    },
+                ],
+            }),
+        ],
 
         target: 'electron-main',
     },

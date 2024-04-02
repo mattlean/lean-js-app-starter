@@ -1,4 +1,4 @@
-import { BrowserWindow, app } from 'electron'
+import { BrowserWindow, app, nativeImage } from 'electron'
 import { shell } from 'electron'
 import path from 'path'
 
@@ -10,6 +10,8 @@ const BUNDLED_PRELOAD_BUILD_PATH = path.join(__dirname, '../preload')
  * Create Electron BrowserWindow instance that renders the UI for the markdown editor.
  */
 export const createWindow = () => {
+    app.dock.setIcon(path.resolve(__dirname, 'logo.png'))
+
     const win = new BrowserWindow({
         width: 1024,
         height: 768,

@@ -19,7 +19,7 @@ const config = merge([
         target: 'node',
 
         plugins: [
-            // Copy static files from views directories in src to build
+            // Copy static files from views directories to build
             new CopyPlugin({
                 patterns: [
                     {
