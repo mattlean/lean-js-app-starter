@@ -8,24 +8,24 @@ import { colorModes } from '../common/types'
 contextBridge.exposeInMainWorld('api', {
     /**
      * Send a message to the main process on the "markdownchange" channel.
-     * This allows the renderer to know when the editor has unsaved changes through the main process.
-     * @param markdown Markdown with potential changes from the current file
-     * @return A promise that will resolve to true if there are unsaved changes, false otherwise
+     * This allows the renderer check if the current markdown source has unsaved changes
+     * through the main process.
+     * @param markdownSrc Markdown source with potential changes
+     * @return A promise that will resolve to true if there are unsaved changes or false otherwise
      */
-    checkForMarkdownChange: async (markdown: string) => {
-        const result = await ipcRenderer.invoke('markdownchange', markdown)
-        return result
-    },
+    checkForMarkdownChange: (markdownSrc: string) =>
+        ipcRenderer.invoke('markdownchange', markdownSrc),
 
     /**
-     * Send a synchronous message to the main process on the "unsavedmarkdowncheck" channel.
-     * This allows the renderer to check if the editor has unsaved changes upon
-     * closing the window.
-     * @param markdown Markdown with potential changes from the current file
-     * @return True if there are unsaved changes, false otherwise
+     * Send a message to the main process on the "unsavedmarkdowncheck" channel and
+     * receive a result synchronously.
+     * This allows the renderer to check if there are unsaved markdown source changes
+     * through the main process.
+     * @param markdownSrc Markdown source with potential changes
+     * @return True if there are unsaved changes or false otherwise
      */
-    checkForUnsavedChanges: (markdown: string) =>
-        ipcRenderer.sendSync('unsavedmarkdowncheck', markdown),
+    checkForUnsavedChanges: (markdownSrc: string) =>
+        ipcRenderer.sendSync('unsavedmarkdowncheck', markdownSrc),
 
     /**
      * Add a listener for the "colormodemenu" channel.
@@ -65,12 +65,12 @@ contextBridge.exposeInMainWorld('api', {
      * @param callback Function to be called when a new message arrives on the "mainerrormessage" channel
      * @return A function that will remove the added listener for the "mainerrormessage" channel when called
      */
-    onMainErrorMessage: (callback: (mainErrorMessage: string) => void) => {
+    onMainErrorMessage: (callback: (errorMessage: string) => void) => {
         const listener = (
             _: Electron.IpcRendererEvent,
-            mainErrorMessage: string,
+            errorMessage: string,
         ) => {
-            callback(mainErrorMessage)
+            callback(errorMessage)
         }
 
         ipcRenderer.on('mainerrormessage', listener)
@@ -125,22 +125,24 @@ contextBridge.exposeInMainWorld('api', {
     },
 
     /**
-     * Add a listener for the "markdownread" channel.
-     * @param callback Function to be called when a new message arrives on the "markdownread" channel
-     * @return A function that will remove the added listener for the "markdownread" channel when called
+     * Add a listener for the "markdownopensuccess" channel.
+     * @param callback Function to be called when a new message arrives on the "markdownopensuccess" channel
+     * @return A function that will remove the added listener for the "markdownopensuccess" channel when called
      */
-    onReadFile: (callback: (filePath: string, markdown: string) => void) => {
+    onOpenFileSuccess: (
+        callback: (filePath: string, markdownSaved: string) => void,
+    ) => {
         const listener = (
             _: Electron.IpcRendererEvent,
             filePath: string,
-            markdown: string,
+            markdownSaved: string,
         ) => {
-            callback(filePath, markdown)
+            callback(filePath, markdownSaved)
         }
 
-        ipcRenderer.on('markdownread', listener)
+        ipcRenderer.on('markdownopensuccess', listener)
 
-        return () => ipcRenderer.removeListener('markdownread', listener)
+        return () => ipcRenderer.removeListener('markdownopensuccess', listener)
     },
 
     /**
@@ -160,43 +162,47 @@ contextBridge.exposeInMainWorld('api', {
 
     /**
      * Send a message to the main process on the "markdownsave" channel.
-     * This allows the renderer to a save markdown file through the main process.
-     * @param markdown Markdown with potential changes from the current file
+     * This allows the renderer to save a markdown file through the main process.
+     * @param markdownSrc Markdown source to save
      * @param exitOnSave Flag that causes the window to close upon successful save if true
      */
-    saveFile: (markdown: string, exitOnSave = false) => {
-        ipcRenderer.send('markdownsave', markdown, exitOnSave)
+    saveFile: (markdownSrc: string, exitOnSave = false) => {
+        ipcRenderer.send('markdownsave', markdownSrc, exitOnSave)
+    },
+
+    /**
+     * Send a message to the main process on the "markdownopendialog" channel.
+     * This allows the renderer to show the markdown file open dialog through the
+     * main process.
+     * @param markdownSrc Markdown source with potential changes
+     */
+    showFileOpenDialog: (markdownSrc?: string) => {
+        ipcRenderer.send('markdownopendialog', markdownSrc)
     },
 
     /**
      * Send a message to the main process on the "htmlexportdialog" channel.
-     * This allows the renderer to show the export HTML dialog through the main process.
+     * This allows the renderer to show the HTML export dialog through the main process.
      * @param html HTML string produced by markdown
      */
-    showExportHtmlDialog: (html: string) => {
+    showHtmlExportDialog: (html: string) => {
         ipcRenderer.send('htmlexportdialog', html)
     },
 
     /**
      * Send a message to the main process on the "folderopen" channel.
-     * This allows the renderer to open the folder the file exists in through the main process.
+     * This allows the renderer to open the folder the currently opened file is located
+     * in through the main process.
      */
     showInFolder: () => {
         ipcRenderer.send('folderopen')
     },
 
     /**
-     * Send a message to the main process on the "markdownopendialog" channel.
-     * This allows the renderer to show the open file dialog through the main process.
-     */
-    showOpenFileDialog: (markdown?: string) => {
-        ipcRenderer.send('markdownopendialog', markdown)
-    },
-
-    /**
      * Send a message to the main process on the "unsavedchangesdialog" channel and
-     * receive a response synchronously.
-     * This allows the renderer to show the unsaved changes dialog through the main process.
+     * receive a result synchronously.
+     * This allows the renderer to open the unsaved changes dialog through the
+     * main process.
      * @return An Electron message box return value
      */
     showUnsavedChangesDialog: (): MessageBoxReturnValue =>
@@ -204,7 +210,8 @@ contextBridge.exposeInMainWorld('api', {
 
     /**
      * Send a message to the main process on the "colormodebutton" channel.
-     * This allows the renderer to set the checked properties in the color mode submenu.
+     * This allows the renderer to sync the color mode menu items with the color mode
+     * button through the main process.
      * @param colorMode Color mode type that determines which color mode to use
      */
     syncColorModeMenu: (colorMode: string) => {

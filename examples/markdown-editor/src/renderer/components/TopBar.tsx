@@ -12,6 +12,10 @@ export interface Props {
     setIsFocusMode: Dispatch<SetStateAction<boolean>>
 }
 
+/**
+ * React component that displays the top bar of the window that contains buttons
+ * that give the user access to various features.
+ */
 export default function TopBar({
     errorMessageDispatch,
     filePath,
@@ -25,7 +29,7 @@ export default function TopBar({
             <section className="space-x-2">
                 <button
                     className="btn"
-                    onClick={() => window.api.showOpenFileDialog(markdown)}
+                    onClick={() => window.api.showFileOpenDialog(markdown)}
                 >
                     Open File
                 </button>
@@ -40,7 +44,7 @@ export default function TopBar({
                     className="btn"
                     onClick={() => {
                         if (refPreview.current) {
-                            window.api.showExportHtmlDialog(
+                            window.api.showHtmlExportDialog(
                                 refPreview.current.innerHTML,
                             )
                         } else {

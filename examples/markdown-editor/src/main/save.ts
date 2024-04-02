@@ -7,16 +7,19 @@ import { sendMainErrorMessage } from './interfaces/mse'
 
 /**
  * Save the markdown.
- * If a markdown file is currently open, overwrite the current contents of it
- * with the new markdown.
+ * If a markdown file is currently open, overwrite its current contents with the
+ * markdown source.
  * Optionally, if there is no markdown file currently open, open the save dialog
  * so a new markdown file can be created.
  * @param browserWin Electron BrowserWindow instance
- * @param markdown Markdown with potential changes from the current file
- * @return A promise that will resolve to true if a save occured, false otherwise
+ * @param markdownSrc Markdown source to save
+ * @return A promise that will resolve to true if a save occured or false otherwise
  */
-export const saveFile = async (browserWin: BrowserWindow, markdown: string) => {
-    if (!markdown && !isFileOpen()) {
+export const saveFile = async (
+    browserWin: BrowserWindow,
+    markdownSrc: string,
+) => {
+    if (!markdownSrc && !isFileOpen()) {
         return false
     }
 
@@ -27,7 +30,7 @@ export const saveFile = async (browserWin: BrowserWindow, markdown: string) => {
     }
 
     try {
-        await writeFile(filePath, markdown, { encoding: 'utf-8' })
+        await writeFile(filePath, markdownSrc, { encoding: 'utf-8' })
     } catch (err) {
         if (err instanceof Error) {
             sendMainErrorMessage(err, browserWin)
@@ -36,18 +39,18 @@ export const saveFile = async (browserWin: BrowserWindow, markdown: string) => {
         }
     }
 
-    setCurrFile(filePath, markdown, browserWin)
+    setCurrFile(filePath, markdownSrc, browserWin)
     browserWin.setDocumentEdited(false)
 
     return true
 }
 
 /**
- * Show the save dialog and export the markdown as an HTML file.
+ * Show the HTML export dialog and create an HTML file from the markdown source.
  * @param browserWin Electron BrowserWindow instance
  * @param html HTML string produced by markdown
  */
-export const showExportHtmlDialog = async (
+export const showHtmlExportDialog = async (
     browserWin: BrowserWindow,
     html: string,
 ) => {
@@ -89,7 +92,8 @@ export const showExportHtmlDialog = async (
 /**
  * Show the save dialog and create a new markdown file.
  * @param browserWin Electron BrowserWindow instance
- * @return The file path for the markdown file was saved, undefined otherwise
+ * @return A promise that will resolve to the file path for the saved markdown file
+ *     or undefined otherwise
  */
 export const showSaveDialog = async (browserWin: BrowserWindow) => {
     const result = await dialog.showSaveDialog(browserWin, {

@@ -20,17 +20,6 @@ export default function App() {
     const refPreview = useRef<HTMLElement>(null)
 
     useEffect(() => {
-        const removeMainMarkdownOpenDialogListener =
-            window.api.onMainMarkdownOpenDialog(() =>
-                window.api.showOpenFileDialog(markdown),
-            )
-
-        return () => {
-            removeMainMarkdownOpenDialogListener()
-        }
-    }, [markdown])
-
-    useEffect(() => {
         window.onbeforeunload = (e) => {
             const hasChangesMain = window.api.checkForUnsavedChanges(markdown)
 
@@ -50,6 +39,31 @@ export default function App() {
             window.onbeforeunload = null
         }
     }, [hasChanges, markdown])
+
+    useEffect(() => {
+        const removeMainMarkdownOpenDialogListener =
+            window.api.onMainMarkdownOpenDialog(() =>
+                window.api.showFileOpenDialog(markdown),
+            )
+
+        return () => {
+            removeMainMarkdownOpenDialogListener()
+        }
+    }, [markdown])
+
+    useEffect(() => {
+        const removeOpenFileSuccessListener = window.api.onOpenFileSuccess(
+            (newFilePath, newMarkdown) => {
+                setFilePath(newFilePath)
+                setMarkdown(newMarkdown)
+                setHasChanges(false)
+            },
+        )
+
+        return () => {
+            removeOpenFileSuccessListener()
+        }
+    }, [setFilePath, setHasChanges, setMarkdown])
 
     useEffect(() => {
         const removeMainSaveFileListener = window.api.onMainSaveFile(() =>
@@ -75,7 +89,7 @@ export default function App() {
         const removeMainHtmlExportDialogListener =
             window.api.onMainHtmlExportDialog(() => {
                 if (refPreview.current) {
-                    window.api.showExportHtmlDialog(
+                    window.api.showHtmlExportDialog(
                         refPreview.current.innerHTML,
                     )
                 }
@@ -113,7 +127,6 @@ export default function App() {
                     <Editor
                         isFocusMode={isFocusMode}
                         markdown={markdown}
-                        setFilePath={setFilePath}
                         setHasChanges={setHasChanges}
                         setMarkdown={setMarkdown}
                     />

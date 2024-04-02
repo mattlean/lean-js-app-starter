@@ -3,6 +3,9 @@ import { ReactNode, useCallback, useEffect, useState } from 'react'
 import { colorModes } from '../../common/types'
 import { applyColorMode } from '../colorMode'
 
+/**
+ * React button component that controls the color mode.
+ */
 export default function ColorModeBtn() {
     const [colorModeType, setColorModeType] = useState<colorModes>(() => {
         if (localStorage.theme === 'light') {

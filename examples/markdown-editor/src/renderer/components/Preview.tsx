@@ -11,6 +11,10 @@ export interface Props {
     refPreview: RefObject<HTMLElement>
 }
 
+/**
+ * React component that converts the markdown from the editor to HTML and renders
+ * that to the user.
+ */
 export default function Preview({ isFocusMode, markdown, refPreview }: Props) {
     const [output, setOutput] = useState('')
 

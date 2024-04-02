@@ -3,7 +3,7 @@ import { colorModes } from '../common/types'
 /**
  * Change the color mode by applying new color mode styles and update the color mode
  * menu state to reflect the newly active color mode.
- * @param colorMode The color mode to change to
+ * @param colorMode Color mode type that determines which color mode to use
  */
 export const applyColorMode = (colorMode: colorModes) => {
     if (colorMode === 'light') {

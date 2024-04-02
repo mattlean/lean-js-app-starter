@@ -24,7 +24,7 @@ export const saveFileMain = (browserWin?: BrowserWindow) => {
 }
 
 /**
- * Send an error message from the main process to the renderer process.
+ * Send an error message to the renderer process.
  * @param err Error with message to display in the renderer process
  * @param browserWin Electron BrowserWindow instance
  */
@@ -44,24 +44,10 @@ export const sendMainErrorMessage = (
 }
 
 /**
- * Tell the renderer process to send an API request to show the export HTML dialog.
+ * Tell the renderer process to send an API request to initiate the file open process.
  * @param browserWin Electron BrowserWindow instance
  */
-export const showExportHtmlDialogMain = (browserWin?: BrowserWindow) => {
-    const win = browserWin ?? BrowserWindow.getFocusedWindow()
-
-    if (!win) {
-        return
-    }
-
-    win.webContents.send('mainhtmlexportdialog')
-}
-
-/**
- * Tell the renderer process to send an API request to show the open file dialog.
- * @param browserWin Electron BrowserWindow instance
- */
-export const showOpenFileDialogMain = (browserWin?: BrowserWindow) => {
+export const showFileOpenDialogMain = (browserWin?: BrowserWindow) => {
     const win = browserWin ?? BrowserWindow.getFocusedWindow()
 
     if (!win) {
@@ -72,21 +58,21 @@ export const showOpenFileDialogMain = (browserWin?: BrowserWindow) => {
 }
 
 /**
- * Tell the renderer process to toggle focus mode from the main process.
+ * Tell the renderer process to send an API request to initiate the HTML export process.
  * @param browserWin Electron BrowserWindow instance
  */
-export const toggleFocusMode = (browserWin?: BrowserWindow) => {
+export const showHtmlExportDialogMain = (browserWin?: BrowserWindow) => {
     const win = browserWin ?? BrowserWindow.getFocusedWindow()
 
     if (!win) {
         return
     }
 
-    win.webContents.send('focusmodetoggle')
+    win.webContents.send('mainhtmlexportdialog')
 }
 
 /**
- * Tell the renderer process to sync the color mode button with the color mode menu.
+ * Tell the renderer process to sync the color button with the color mode menu items.
  * @param colorMode Color mode type that determines which color mode to use
  * @param browserWin Electron BrowserWindow instance
  */
@@ -101,4 +87,18 @@ export const syncColorModeBtn = (
     }
 
     win.webContents.send('colormodemenu', colorMode)
+}
+
+/**
+ * Tell the renderer process to toggle the focus mode.
+ * @param browserWin Electron BrowserWindow instance
+ */
+export const toggleFocusMode = (browserWin?: BrowserWindow) => {
+    const win = browserWin ?? BrowserWindow.getFocusedWindow()
+
+    if (!win) {
+        return
+    }
+
+    win.webContents.send('focusmodetoggle')
 }

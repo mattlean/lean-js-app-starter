@@ -18,6 +18,7 @@ export const createWindow = () => {
         },
     })
 
+    // TODO: remove this
     // if (process.env.NODE_ENV === 'development' && process.env.HOST_DEV_SERVER) {
     //     win.loadURL(process.env.HOST_DEV_SERVER)
     // } else {

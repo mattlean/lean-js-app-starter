@@ -1,7 +1,7 @@
 declare interface Window {
     api: {
-        checkForMarkdownChange: (markdown: string) => Promise<boolean>
-        checkForUnsavedChanges: (markdown: string) => boolean
+        checkForMarkdownChange: (markdownSrc: string) => Promise<boolean>
+        checkForUnsavedChanges: (markdownSrc: string) => boolean
         onColorModeMenu: (
             callback: (colorMode: import('./common/types').colorModes) => void,
         ) => () => import('electron').IpcRenderer
@@ -20,17 +20,17 @@ declare interface Window {
         onMainSaveFile: (
             callback: () => void,
         ) => () => import('electron').IpcRenderer
-        onReadFile: (
-            callback: (filePath: string, markdown: string) => void,
+        onOpenFileSuccess: (
+            callback: (filePath: string, markdownSaved: string) => void,
         ) => () => import('electron').IpcRenderer
-        showUnsavedChangesDialog: () => import('electron').MessageBoxReturnValue
         onSaveFileSuccess: (
             callback: () => void,
         ) => () => import('electron').IpcRenderer
         saveFile: (markdown: string, exitOnSave?: boolean) => void
-        showExportHtmlDialog: (html: string) => void
+        showFileOpenDialog: (markdownSrc?: string) => void
+        showHtmlExportDialog: (html: string) => void
         showInFolder: () => void
-        showOpenFileDialog: (markdown?: string) => void
+        showUnsavedChangesDialog: () => import('electron').MessageBoxReturnValue
         syncColorModeMenu: (
             colorMode: import('./common/types').colorModes,
         ) => void

@@ -1,34 +1,21 @@
-import { Dispatch, SetStateAction, useEffect } from 'react'
+import { Dispatch, SetStateAction } from 'react'
 
 export interface Props {
     isFocusMode: boolean
     markdown: string
-    setFilePath: Dispatch<SetStateAction<string | undefined>>
     setHasChanges: Dispatch<SetStateAction<boolean>>
     setMarkdown: Dispatch<SetStateAction<string>>
 }
 
+/**
+ * React component responsible for the editor where the user edits their markdown.
+ */
 export default function Editor({
     isFocusMode,
     markdown,
-    setFilePath,
     setHasChanges,
     setMarkdown,
 }: Props) {
-    useEffect(() => {
-        const removeReadFileListener = window.api.onReadFile(
-            (filePath, fileMarkdown) => {
-                setFilePath(filePath)
-                setMarkdown(fileMarkdown)
-                setHasChanges(false)
-            },
-        )
-
-        return () => {
-            removeReadFileListener()
-        }
-    }, [setFilePath, setHasChanges, setMarkdown])
-
     return (
         <form className="flex w-1/2 flex-1 flex-col border-r border-zinc-300 dark:border-gray-700">
             {!isFocusMode && (

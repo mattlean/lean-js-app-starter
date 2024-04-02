@@ -7,8 +7,8 @@ import { BrowserWindow, dialog, ipcMain } from 'electron'
 import { colorModes } from '../../common/types'
 import { isCurrFileChanged, setCurrFile } from '../currFile'
 import setColorModeMenu from '../menu'
-import { showInFolder, showOpenFileDialog } from '../open'
-import { saveFile, showExportHtmlDialog } from '../save'
+import { showFileOpenDialog, showInFolder } from '../open'
+import { saveFile, showHtmlExportDialog } from '../save'
 
 /**
  * Setup the listeners on the main process so they can handle messages sent from
@@ -24,20 +24,6 @@ export const setupApi = () => {
     })
 
     /**
-     * Listen for renderer process requests to check if there are unsaved markdown changes.
-     * This will synchronously result with true if there are unsaved changes, false otherwise.
-     */
-    ipcMain.on('unsavedmarkdowncheck', (e, markdown: string) => {
-        const browserWin = BrowserWindow.fromWebContents(e.sender)
-
-        if (!browserWin) {
-            return
-        }
-
-        e.returnValue = isCurrFileChanged(markdown)
-    })
-
-    /**
      * Listen for renderer process requests to open the folder the currently opened
      * file is located in.
      */
@@ -46,7 +32,7 @@ export const setupApi = () => {
     })
 
     /**
-     * Listen for renderer process requests to export an HTML file.
+     * Listen for renderer process requests to show the HTML export dialog.
      */
     ipcMain.on('htmlexportdialog', (e, html: string) => {
         const browserWin = BrowserWindow.fromWebContents(e.sender)
@@ -55,12 +41,13 @@ export const setupApi = () => {
             return
         }
 
-        showExportHtmlDialog(browserWin, html)
+        showHtmlExportDialog(browserWin, html)
     })
 
     /**
-     * Check to see if the current markdown has unsaved changes.
-     * @return A promise that will resolve to true if there are unsaved changes, false otherwise
+     * Listen for renderer process requests to check if the current markdown source
+     * has unsaved changes.
+     * @return A promise that will resolve to true if there are unsaved changes or false otherwise
      */
     ipcMain.handle('markdownchange', (e, markdown: string) => {
         const browserWin = BrowserWindow.fromWebContents(e.sender)
@@ -85,7 +72,7 @@ export const setupApi = () => {
             return
         }
 
-        const openDialogResult = await showOpenFileDialog(browserWin)
+        const openDialogResult = await showFileOpenDialog(browserWin)
 
         if (openDialogResult) {
             if (markdown) {
@@ -116,7 +103,7 @@ export const setupApi = () => {
 
             setCurrFile(openDialogResult[0], openDialogResult[1], browserWin)
             browserWin.webContents.send(
-                'markdownread',
+                'markdownopensuccess',
                 openDialogResult[0],
                 openDialogResult[1],
             )
@@ -160,5 +147,19 @@ export const setupApi = () => {
         })
 
         e.returnValue = result
+    })
+
+    /**
+     * Listen for renderer process requests to check if there are unsaved markdown source changes.
+     * This will synchronously result with true if there are unsaved changes or false otherwise.
+     */
+    ipcMain.on('unsavedmarkdowncheck', (e, markdown: string) => {
+        const browserWin = BrowserWindow.fromWebContents(e.sender)
+
+        if (!browserWin) {
+            return
+        }
+
+        e.returnValue = isCurrFileChanged(markdown)
     })
 }

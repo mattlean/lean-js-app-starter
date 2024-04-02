@@ -7,6 +7,10 @@ export interface Props {
     errorMessageDispatch: Dispatch<ErrorMessageActions>
 }
 
+/**
+ * React component that displays error messages at the bottom of the window
+ * when necessary.
+ */
 export default function ErrorMessage({
     errorMessage,
     errorMessageDispatch,

@@ -11,6 +11,9 @@ export type ErrorMessageActions = ActionReset | ActionSet
 
 export const INITIAL_STATE = ''
 
+/**
+ * Reducer responsible for managing the state for error messages.
+ */
 export const errorMessageReducer = (_: string, action: ErrorMessageActions) => {
     switch (action.type) {
         case 'set':

@@ -1,16 +1,15 @@
 import { Menu, MenuItemConstructorOptions, app, shell } from 'electron'
 
 import { colorModes } from '../common/types'
-import { setCurrFile } from './currFile'
 import {
     saveFileMain,
     sendMainErrorMessage,
-    showExportHtmlDialogMain,
-    showOpenFileDialogMain,
+    showFileOpenDialogMain,
+    showHtmlExportDialogMain,
     syncColorModeBtn,
     toggleFocusMode,
 } from './interfaces/mse'
-import { showInFolder, showOpenFileDialog } from './open'
+import { showInFolder } from './open'
 import { createWindow } from './window'
 
 /**
@@ -84,7 +83,7 @@ export const setupMenu = () => {
                             browserWin = createWindow()
                         }
 
-                        showOpenFileDialogMain(browserWin)
+                        showFileOpenDialogMain(browserWin)
                     },
                     accelerator: 'CmdOrCtrl+O',
                 },
@@ -97,7 +96,7 @@ export const setupMenu = () => {
                 { type: 'separator' },
                 {
                     label: 'Export as HTML',
-                    click: () => showExportHtmlDialogMain(),
+                    click: () => showHtmlExportDialogMain(),
                 },
                 { type: 'separator' },
                 {

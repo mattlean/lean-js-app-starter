@@ -5,20 +5,12 @@ import { isFileOpen } from './currFile'
 import { sendMainErrorMessage } from './interfaces/mse'
 
 /**
- * Open the folder the currently opened file is located in.
- */
-export const showInFolder = async () => {
-    const filePath = isFileOpen()
-    if (filePath) {
-        await shell.showItemInFolder(filePath)
-    }
-}
-
-/**
- * Show the open dialog and read the selected markdown file.
+ * Show the open dialog and read contents of the selected markdown file.
  * @param browserWin Electron BrowserWindow instance
+ * @return The file path of the currently open markdown file, and the contents of the
+ *     currently open markdown file, or undefined if no file was opened
  */
-export const showOpenFileDialog = async (browserWin: BrowserWindow) => {
+export const showFileOpenDialog = async (browserWin: BrowserWindow) => {
     const result = await dialog.showOpenDialog(browserWin, {
         title: 'Open Markdown',
         properties: ['openFile'],
@@ -31,9 +23,9 @@ export const showOpenFileDialog = async (browserWin: BrowserWindow) => {
 
     const [filePath] = result.filePaths
 
-    let markdown
+    let markdownSaved
     try {
-        markdown = await readFile(filePath, { encoding: 'utf-8' })
+        markdownSaved = await readFile(filePath, { encoding: 'utf-8' })
     } catch (err) {
         if (err instanceof Error) {
             sendMainErrorMessage(err, browserWin)
@@ -42,5 +34,15 @@ export const showOpenFileDialog = async (browserWin: BrowserWindow) => {
         }
     }
 
-    return [filePath, markdown as string]
+    return [filePath, markdownSaved as string]
+}
+
+/**
+ * Open the folder the currently opened markdown file is located in.
+ */
+export const showInFolder = async () => {
+    const filePath = isFileOpen()
+    if (filePath) {
+        await shell.showItemInFolder(filePath)
+    }
 }

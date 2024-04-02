@@ -2,10 +2,11 @@ import { BrowserWindow, app } from 'electron'
 import { basename } from 'path'
 
 interface MdFile {
-    /** The contents of the currently open markdown file. */
-    markdown: string
+    /** Contents of the currently open markdown file. */
+    markdownSaved: string
 
     /**
+     * File path of the currently open markdown file.
      * The presence of filePath means that a file currently is open.
      * If it is undefined, then no file is currently open.
      */
@@ -22,15 +23,15 @@ let currFile: MdFile | null = null
  */
 export const setupCurrFile = () => {
     currFile = {
-        markdown: '',
+        markdownSaved: '',
         filePath: undefined,
     }
 }
 
 /**
  * Get the current file path.
- * If no file path exists, optionally open the save dialog to save the current markdown in a file
- * and get a new file path.
+ * If no file path exists, optionally open the save dialog to save the current markdown
+ * source in a file and get a new file path.
  * @param browserWin Electron BrowserWindow instance
  * @param showSaveDialog showSaveDialog function to open the save dialog
  * @return A promise that will resolve to the current file path, or undefined if the
@@ -55,20 +56,20 @@ export const getCurrFilePath = async (
 
 /**
  * Checks to see if there are unsaved changes for the current file.
- * @param markdown Markdown with potential changes from the current file
- * @return True if there are unsaved changes, false otherwise
+ * @param markdownSrc Markdown source with potential changes
+ * @return True if there are unsaved changes or false otherwise
  */
-export const isCurrFileChanged = (markdown: string) => {
+export const isCurrFileChanged = (markdownSrc: string) => {
     if (!currFile) {
         throw new Error('currFile singleton was not setup.')
     }
 
-    return currFile.markdown !== markdown
+    return currFile.markdownSaved !== markdownSrc
 }
 
 /**
  * Checks to see if there is a file currently open.
- * @return The file path if there a file is currently open, false otherwise
+ * @return The file path if there a file is currently open or false otherwise
  */
 export const isFileOpen = () => {
     if (!currFile) {
@@ -89,19 +90,19 @@ export const resetCurrFile = () => {
         throw new Error('currFile singleton was not setup.')
     }
 
-    currFile.markdown = ''
+    currFile.markdownSaved = ''
     currFile.filePath = undefined
 }
 
 /**
- * Set current file.
- * @param filePath File path for the current file
- * @param markdown Markdown of the current file
+ * Set the current open markdown file.
+ * @param filePath File path of the currently open markdown file
+ * @param markdownSaved Contents of the currently open markdown file
  * @param browserWin Electron BrowserWindow instance
  */
 export const setCurrFile = (
     filePath: string,
-    markdown: string,
+    markdownSaved: string,
     browserWin?: BrowserWindow,
 ) => {
     if (!currFile) {
@@ -109,7 +110,7 @@ export const setCurrFile = (
     }
 
     currFile.filePath = filePath
-    currFile.markdown = markdown
+    currFile.markdownSaved = markdownSaved
 
     app.addRecentDocument(filePath)
 
