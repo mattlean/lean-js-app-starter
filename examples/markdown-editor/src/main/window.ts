@@ -1,4 +1,5 @@
 import { BrowserWindow, app } from 'electron'
+import { shell } from 'electron'
 import path from 'path'
 
 import { resetCurrFile } from './currFile'
@@ -33,6 +34,11 @@ export const createWindow = () => {
 
     win.on('closed', () => {
         resetCurrFile()
+    })
+
+    win.webContents.setWindowOpenHandler(({ url }) => {
+        shell.openExternal(url)
+        return { action: 'deny' } // Prevent Electron from opening the URL
     })
 
     if (process.env.NODE_ENV === 'development') {

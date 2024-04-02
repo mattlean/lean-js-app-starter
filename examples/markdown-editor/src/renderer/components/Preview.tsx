@@ -1,4 +1,5 @@
 import { RefObject, useCallback, useEffect, useState } from 'react'
+import rehypeExternalLinks from 'rehype-external-links'
 import rehypeStringify from 'rehype-stringify'
 import remarkGfm from 'remark-gfm'
 import remarkParse from 'remark-parse'
@@ -24,6 +25,10 @@ export default function Preview({ isFocusMode, markdown, refPreview }: Props) {
                 .use(remarkParse)
                 .use(remarkGfm)
                 .use(remarkRehype)
+                .use(rehypeExternalLinks, {
+                    rel: 'noopener noreferrer',
+                    target: '_blank',
+                })
                 .use(rehypeStringify)
                 .process(markdown)
 
