@@ -2,10 +2,9 @@ import { MessageBoxReturnValue, contextBridge, ipcRenderer } from 'electron'
 
 import { colorModes } from '../common/types'
 
-/**
- * Expose the API that the renderers will use to send requests to the main process.
- */
-contextBridge.exposeInMainWorld('api', {
+export type PreloadApi = typeof API
+
+const API = {
     /**
      * Send a message to the main process on the "markdownchange" channel.
      * This allows the renderer check if the current markdown source has unsaved changes
@@ -217,4 +216,9 @@ contextBridge.exposeInMainWorld('api', {
     syncColorModeMenu: (colorMode: string) => {
         ipcRenderer.send('colormodebutton', colorMode)
     },
-})
+} as const
+
+/**
+ * Expose the API that the render process will use to send requests to the main process.
+ */
+contextBridge.exposeInMainWorld('api', API)

@@ -34,7 +34,7 @@ export const showFileOpenDialog = async (win: BrowserWindow) => {
         }
     }
 
-    return [filePath, markdownSaved as string]
+    return [filePath, markdownSaved as string] as const
 }
 
 /**
