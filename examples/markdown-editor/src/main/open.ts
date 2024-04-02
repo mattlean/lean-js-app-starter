@@ -1,7 +1,6 @@
 import { BrowserWindow, dialog, shell } from 'electron'
 import { readFile } from 'node:fs/promises'
 
-import { setCurrFile } from './currFile'
 import { isFileOpen } from './currFile'
 import { sendMainErrorMessage } from './interfaces/mse'
 
@@ -43,6 +42,5 @@ export const showOpenFileDialog = async (browserWin: BrowserWindow) => {
         }
     }
 
-    setCurrFile(filePath, markdown as string, browserWin)
     return [filePath, markdown as string]
 }

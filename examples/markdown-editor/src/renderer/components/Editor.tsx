@@ -18,20 +18,16 @@ export default function Editor({
     useEffect(() => {
         const removeReadFileListener = window.api.onReadFile(
             (filePath, fileMarkdown) => {
-                if (filePath) {
-                    setFilePath(filePath)
-                }
-
-                if (fileMarkdown) {
-                    setMarkdown(fileMarkdown)
-                }
+                setFilePath(filePath)
+                setMarkdown(fileMarkdown)
+                setHasChanges(false)
             },
         )
 
         return () => {
             removeReadFileListener()
         }
-    }, [setFilePath, setMarkdown])
+    }, [setFilePath, setHasChanges, setMarkdown])
 
     return (
         <form className="flex w-1/2 flex-1 flex-col border-r border-zinc-300 dark:border-gray-700">

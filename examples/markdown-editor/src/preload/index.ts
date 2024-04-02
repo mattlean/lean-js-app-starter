@@ -95,6 +95,21 @@ contextBridge.exposeInMainWorld('api', {
     },
 
     /**
+     * Add a listener for the "markdownopendialog" channel.
+     * @param callback Function to be called when a new message arrives on the "markdownopendialog" channel
+     * @return A function that will remove the added listener for the "markdownopendialog" channel when called
+     */
+    onMainMarkdownOpenDialog: (callback: () => void) => {
+        const listener = () => {
+            callback()
+        }
+
+        ipcRenderer.on('markdownopendialog', listener)
+
+        return () => ipcRenderer.removeListener('markdownopendialog', listener)
+    },
+
+    /**
      * Add a listener for the "mainsavefile" channel.
      * @param callback Function to be called when a new message arrives on the "mainsavefile" channel
      * @return A function that will remove the added listener for the "mainsavefile" channel when called
@@ -174,8 +189,8 @@ contextBridge.exposeInMainWorld('api', {
      * Send a message to the main process on the "markdownopendialog" channel.
      * This allows the renderer to show the open file dialog through the main process.
      */
-    showOpenFileDialog: () => {
-        ipcRenderer.send('markdownopendialog')
+    showOpenFileDialog: (markdown?: string) => {
+        ipcRenderer.send('markdownopendialog', markdown)
     },
 
     /**

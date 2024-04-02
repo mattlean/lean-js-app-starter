@@ -14,6 +14,9 @@ declare interface Window {
         onMainHtmlExportDialog: (
             callback: () => void,
         ) => () => import('electron').IpcRenderer
+        onMainMarkdownOpenDialog: (
+            callback: () => void,
+        ) => () => import('electron').IpcRenderer
         onMainSaveFile: (
             callback: () => void,
         ) => () => import('electron').IpcRenderer
@@ -27,7 +30,7 @@ declare interface Window {
         saveFile: (markdown: string, exitOnSave?: boolean) => void
         showExportHtmlDialog: (html: string) => void
         showInFolder: () => void
-        showOpenFileDialog: () => void
+        showOpenFileDialog: (markdown?: string) => void
         syncColorModeMenu: (
             colorMode: import('./common/types').colorModes,
         ) => void

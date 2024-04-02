@@ -25,7 +25,7 @@ export default function TopBar({
             <section className="space-x-2">
                 <button
                     className="btn"
-                    onClick={() => window.api.showOpenFileDialog()}
+                    onClick={() => window.api.showOpenFileDialog(markdown)}
                 >
                     Open File
                 </button>

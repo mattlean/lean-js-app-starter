@@ -5,11 +5,10 @@
 import { BrowserWindow, dialog, ipcMain } from 'electron'
 
 import { colorModes } from '../../common/types'
-import { isCurrFileChanged } from '../currFile'
+import { isCurrFileChanged, setCurrFile } from '../currFile'
 import setColorModeMenu from '../menu'
 import { showInFolder, showOpenFileDialog } from '../open'
-import { showExportHtmlDialog } from '../save'
-import { saveFile } from '../save'
+import { saveFile, showExportHtmlDialog } from '../save'
 
 /**
  * Setup the listeners on the main process so they can handle messages sent from
@@ -63,7 +62,7 @@ export const setupApi = () => {
      * Check to see if the current markdown has unsaved changes.
      * @return A promise that will resolve to true if there are unsaved changes, false otherwise
      */
-    ipcMain.handle('markdownchange', (e, markdown) => {
+    ipcMain.handle('markdownchange', (e, markdown: string) => {
         const browserWin = BrowserWindow.fromWebContents(e.sender)
 
         if (!browserWin) {
@@ -79,16 +78,48 @@ export const setupApi = () => {
     /**
      * Listen for renderer process requests to show the markdown file open dialog.
      */
-    ipcMain.on('markdownopendialog', async (e) => {
+    ipcMain.on('markdownopendialog', async (e, markdown?: string) => {
         const browserWin = BrowserWindow.fromWebContents(e.sender)
 
         if (!browserWin) {
             return
         }
 
-        const result = await showOpenFileDialog(browserWin)
-        if (result) {
-            browserWin.webContents.send('markdownread', result[0], result[1])
+        const openDialogResult = await showOpenFileDialog(browserWin)
+
+        if (openDialogResult) {
+            if (markdown) {
+                const hasChanges = isCurrFileChanged(markdown)
+
+                if (hasChanges) {
+                    const messageBoxResult = await dialog.showMessageBox({
+                        message:
+                            'Do you want to save the current changes you made?',
+                        detail: `Your changes will be lost if you don't save them before you open a new file.`,
+                        buttons: ['Save', `Don't Save`, 'Cancel'],
+                    })
+
+                    if (messageBoxResult.response === 0) {
+                        const saveFileResult = await saveFile(
+                            browserWin,
+                            markdown,
+                        )
+
+                        if (!saveFileResult) {
+                            return
+                        }
+                    } else if (messageBoxResult.response === 2) {
+                        return
+                    }
+                }
+            }
+
+            setCurrFile(openDialogResult[0], openDialogResult[1], browserWin)
+            browserWin.webContents.send(
+                'markdownread',
+                openDialogResult[0],
+                openDialogResult[1],
+            )
         }
     })
 
@@ -97,22 +128,25 @@ export const setupApi = () => {
      * @param markdown Markdown with potential changes from the current file
      * @param exitOnSave Flag that causes the window to close upon successful save if true
      */
-    ipcMain.on('markdownsave', async (e, markdown, exitOnSave?: boolean) => {
-        const browserWin = BrowserWindow.fromWebContents(e.sender)
+    ipcMain.on(
+        'markdownsave',
+        async (e, markdown: string, exitOnSave?: boolean) => {
+            const browserWin = BrowserWindow.fromWebContents(e.sender)
 
-        if (!browserWin) {
-            return
-        }
-
-        const result = await saveFile(browserWin, markdown)
-        if (result) {
-            browserWin.webContents.send('markdownsavesuccess')
-
-            if (exitOnSave) {
-                browserWin.close()
+            if (!browserWin) {
+                return
             }
-        }
-    })
+
+            const result = await saveFile(browserWin, markdown)
+            if (result) {
+                browserWin.webContents.send('markdownsavesuccess')
+
+                if (exitOnSave) {
+                    browserWin.close()
+                }
+            }
+        },
+    )
 
     /**
      * Listen for renderer process requests to open the unsaved changes dialog.

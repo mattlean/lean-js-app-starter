@@ -58,6 +58,20 @@ export const showExportHtmlDialogMain = (browserWin?: BrowserWindow) => {
 }
 
 /**
+ * Tell the renderer process to send an API request to show the open file dialog.
+ * @param browserWin Electron BrowserWindow instance
+ */
+export const showOpenFileDialogMain = (browserWin?: BrowserWindow) => {
+    const win = browserWin ?? BrowserWindow.getFocusedWindow()
+
+    if (!win) {
+        return
+    }
+
+    win.webContents.send('markdownopendialog')
+}
+
+/**
  * Tell the renderer process to toggle focus mode from the main process.
  * @param browserWin Electron BrowserWindow instance
  */

@@ -20,6 +20,17 @@ export default function App() {
     const refPreview = useRef<HTMLElement>(null)
 
     useEffect(() => {
+        const removeMainMarkdownOpenDialogListener =
+            window.api.onMainMarkdownOpenDialog(() =>
+                window.api.showOpenFileDialog(markdown),
+            )
+
+        return () => {
+            removeMainMarkdownOpenDialogListener()
+        }
+    }, [markdown])
+
+    useEffect(() => {
         window.onbeforeunload = (e) => {
             const hasChangesMain = window.api.checkForUnsavedChanges(markdown)
 
