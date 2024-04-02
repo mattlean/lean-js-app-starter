@@ -10,11 +10,14 @@ const BUNDLED_PRELOAD_BUILD_PATH = path.join(__dirname, '../preload')
  * Create Electron BrowserWindow instance that renders the UI for the markdown editor.
  */
 export const createWindow = () => {
-    app.dock.setIcon(path.resolve(__dirname, 'logo.png'))
+    if (process.platform === 'darwin') {
+        app.dock.setIcon(path.resolve(__dirname, 'logo.png'))
+    }
 
     const win = new BrowserWindow({
         width: 1024,
         height: 768,
+        icon: path.resolve(__dirname, 'logo.png'),
         show: false,
         webPreferences: {
             preload: `${BUNDLED_PRELOAD_BUILD_PATH}/preload.js`,
