@@ -6,12 +6,12 @@ import { sendMainErrorMessage } from './interfaces/mse'
 
 /**
  * Show the open dialog and read contents of the selected markdown file.
- * @param browserWin Electron BrowserWindow instance
+ * @param win Electron BrowserWindow instance
  * @return The file path of the currently open markdown file, and the contents of the
  *     currently open markdown file, or undefined if no file was opened
  */
-export const showFileOpenDialog = async (browserWin: BrowserWindow) => {
-    const result = await dialog.showOpenDialog(browserWin, {
+export const showFileOpenDialog = async (win: BrowserWindow) => {
+    const result = await dialog.showOpenDialog(win, {
         title: 'Open Markdown',
         properties: ['openFile'],
         filters: [{ name: 'Markdown File', extensions: ['md'] }],
@@ -28,7 +28,7 @@ export const showFileOpenDialog = async (browserWin: BrowserWindow) => {
         markdownSaved = await readFile(filePath, { encoding: 'utf-8' })
     } catch (err) {
         if (err instanceof Error) {
-            sendMainErrorMessage(err, browserWin)
+            sendMainErrorMessage(err, win)
         } else {
             throw err
         }

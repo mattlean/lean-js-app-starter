@@ -32,14 +32,14 @@ export const setupCurrFile = () => {
  * Get the current file path.
  * If no file path exists, optionally open the save dialog to save the current markdown
  * source in a file and get a new file path.
- * @param browserWin Electron BrowserWindow instance
+ * @param win Electron BrowserWindow instance
  * @param showSaveDialog showSaveDialog function to open the save dialog
  * @return A promise that will resolve to the current file path, or undefined if the
  *     showSaveDialog function cancels or is never called
  */
 export const getCurrFilePath = async (
-    browserWin?: BrowserWindow,
-    showSaveDialog?: (browserWin: BrowserWindow) => Promise<string | undefined>,
+    win?: BrowserWindow,
+    showSaveDialog?: (win: BrowserWindow) => Promise<string | undefined>,
 ) => {
     if (!currFile) {
         throw new Error('currFile singleton was not setup.')
@@ -49,8 +49,8 @@ export const getCurrFilePath = async (
         return currFile.filePath
     }
 
-    if (browserWin && showSaveDialog) {
-        return showSaveDialog(browserWin)
+    if (win && showSaveDialog) {
+        return showSaveDialog(win)
     }
 }
 
@@ -98,12 +98,12 @@ export const resetCurrFile = () => {
  * Set the current open markdown file.
  * @param filePath File path of the currently open markdown file
  * @param markdownSaved Contents of the currently open markdown file
- * @param browserWin Electron BrowserWindow instance
+ * @param win Electron BrowserWindow instance
  */
 export const setCurrFile = (
     filePath: string,
     markdownSaved: string,
-    browserWin?: BrowserWindow,
+    win?: BrowserWindow,
 ) => {
     if (!currFile) {
         throw new Error('currFile singleton was not setup.')
@@ -114,8 +114,8 @@ export const setCurrFile = (
 
     app.addRecentDocument(filePath)
 
-    if (browserWin) {
-        browserWin.setTitle(`${basename(filePath)} - ${app.name}`)
-        browserWin.setRepresentedFilename(filePath)
+    if (win) {
+        win.setTitle(`${basename(filePath)} - ${app.name}`)
+        win.setRepresentedFilename(filePath)
     }
 }

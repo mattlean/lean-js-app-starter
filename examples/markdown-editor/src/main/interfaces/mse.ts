@@ -11,94 +11,91 @@ import { colorModes } from '../../common/types'
 
 /**
  * Tell the renderer process to send an API request to initiate the save process.
- * @param browserWin Electron BrowserWindow instance
+ * @param win Electron BrowserWindow instance
  */
-export const saveFileMain = (browserWin?: BrowserWindow) => {
-    const win = browserWin ?? BrowserWindow.getFocusedWindow()
+export const saveFileMain = (win?: BrowserWindow) => {
+    const w = win ?? BrowserWindow.getFocusedWindow()
 
-    if (!win) {
+    if (!w) {
         return
     }
 
-    win.webContents.send('mainmarkdownsave')
+    w.webContents.send('mainmarkdownsave')
 }
 
 /**
  * Send an error message to the renderer process.
  * @param err Error with message to display in the renderer process
- * @param browserWin Electron BrowserWindow instance
+ * @param win Electron BrowserWindow instance
  */
-export const sendMainErrorMessage = (
-    err: Error,
-    browserWin?: BrowserWindow,
-) => {
+export const sendMainErrorMessage = (err: Error, win?: BrowserWindow) => {
     console.error(err)
 
-    const win = browserWin ?? BrowserWindow.getFocusedWindow()
+    const w = win ?? BrowserWindow.getFocusedWindow()
 
-    if (!win) {
+    if (!w) {
         return
     }
 
-    win.webContents.send('mainerrormessage', err.message)
+    w.webContents.send('mainerrormessage', err.message)
 }
 
 /**
  * Tell the renderer process to send an API request to initiate the file open process.
- * @param browserWin Electron BrowserWindow instance
+ * @param win Electron BrowserWindow instance
  */
-export const showFileOpenDialogMain = (browserWin?: BrowserWindow) => {
-    const win = browserWin ?? BrowserWindow.getFocusedWindow()
+export const showFileOpenDialogMain = (win?: BrowserWindow) => {
+    const w = win ?? BrowserWindow.getFocusedWindow()
 
-    if (!win) {
+    if (!w) {
         return
     }
 
-    win.webContents.send('markdownopendialog')
+    w.webContents.send('markdownopendialog')
 }
 
 /**
  * Tell the renderer process to send an API request to initiate the HTML export process.
- * @param browserWin Electron BrowserWindow instance
+ * @param win Electron BrowserWindow instance
  */
-export const showHtmlExportDialogMain = (browserWin?: BrowserWindow) => {
-    const win = browserWin ?? BrowserWindow.getFocusedWindow()
+export const showHtmlExportDialogMain = (win?: BrowserWindow) => {
+    const w = win ?? BrowserWindow.getFocusedWindow()
 
-    if (!win) {
+    if (!w) {
         return
     }
 
-    win.webContents.send('mainhtmlexportdialog')
+    w.webContents.send('mainhtmlexportdialog')
 }
 
 /**
  * Tell the renderer process to sync the color button with the color mode menu items.
  * @param colorMode Color mode type that determines which color mode to use
- * @param browserWin Electron BrowserWindow instance
+ * @param win Electron BrowserWindow instance
  */
 export const syncColorModeBtn = (
     colorMode: colorModes,
-    browserWin?: BrowserWindow,
+    win?: BrowserWindow,
 ) => {
-    const win = browserWin ?? BrowserWindow.getFocusedWindow()
+    const w = win ?? BrowserWindow.getFocusedWindow()
 
-    if (!win) {
+    if (!w) {
         return
     }
 
-    win.webContents.send('colormodemenu', colorMode)
+    w.webContents.send('colormodemenu', colorMode)
 }
 
 /**
  * Tell the renderer process to toggle the focus mode.
- * @param browserWin Electron BrowserWindow instance
+ * @param win Electron BrowserWindow instance
  */
-export const toggleFocusMode = (browserWin?: BrowserWindow) => {
-    const win = browserWin ?? BrowserWindow.getFocusedWindow()
+export const toggleFocusMode = (win?: BrowserWindow) => {
+    const w = win ?? BrowserWindow.getFocusedWindow()
 
-    if (!win) {
+    if (!w) {
         return
     }
 
-    win.webContents.send('focusmodetoggle')
+    w.webContents.send('focusmodetoggle')
 }

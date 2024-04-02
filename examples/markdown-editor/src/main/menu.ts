@@ -78,12 +78,12 @@ export const setupMenu = () => {
             submenu: [
                 {
                     label: 'Open',
-                    click: (_, browserWin) => {
-                        if (!browserWin) {
-                            browserWin = createWindow()
+                    click: (_, win) => {
+                        if (!win) {
+                            win = createWindow()
                         }
 
-                        showFileOpenDialogMain(browserWin)
+                        showFileOpenDialogMain(win)
                     },
                     accelerator: 'CmdOrCtrl+O',
                 },

@@ -35,13 +35,13 @@ export const setupApi = () => {
      * Listen for renderer process requests to show the HTML export dialog.
      */
     ipcMain.on('htmlexportdialog', (e, html: string) => {
-        const browserWin = BrowserWindow.fromWebContents(e.sender)
+        const win = BrowserWindow.fromWebContents(e.sender)
 
-        if (!browserWin) {
+        if (!win) {
             return
         }
 
-        showHtmlExportDialog(browserWin, html)
+        showHtmlExportDialog(win, html)
     })
 
     /**
@@ -50,14 +50,14 @@ export const setupApi = () => {
      * @return A promise that will resolve to true if there are unsaved changes or false otherwise
      */
     ipcMain.handle('markdownchange', (e, markdown: string) => {
-        const browserWin = BrowserWindow.fromWebContents(e.sender)
+        const win = BrowserWindow.fromWebContents(e.sender)
 
-        if (!browserWin) {
+        if (!win) {
             return
         }
 
         const hasChanges = isCurrFileChanged(markdown)
-        browserWin.setDocumentEdited(hasChanges)
+        win.setDocumentEdited(hasChanges)
 
         return hasChanges
     })
@@ -66,13 +66,13 @@ export const setupApi = () => {
      * Listen for renderer process requests to show the markdown file open dialog.
      */
     ipcMain.on('markdownopendialog', async (e, markdown?: string) => {
-        const browserWin = BrowserWindow.fromWebContents(e.sender)
+        const win = BrowserWindow.fromWebContents(e.sender)
 
-        if (!browserWin) {
+        if (!win) {
             return
         }
 
-        const openDialogResult = await showFileOpenDialog(browserWin)
+        const openDialogResult = await showFileOpenDialog(win)
 
         if (openDialogResult) {
             if (markdown) {
@@ -87,10 +87,7 @@ export const setupApi = () => {
                     })
 
                     if (messageBoxResult.response === 0) {
-                        const saveFileResult = await saveFile(
-                            browserWin,
-                            markdown,
-                        )
+                        const saveFileResult = await saveFile(win, markdown)
 
                         if (!saveFileResult) {
                             return
@@ -101,8 +98,8 @@ export const setupApi = () => {
                 }
             }
 
-            setCurrFile(openDialogResult[0], openDialogResult[1], browserWin)
-            browserWin.webContents.send(
+            setCurrFile(openDialogResult[0], openDialogResult[1], win)
+            win.webContents.send(
                 'markdownopensuccess',
                 openDialogResult[0],
                 openDialogResult[1],
@@ -118,18 +115,18 @@ export const setupApi = () => {
     ipcMain.on(
         'markdownsave',
         async (e, markdown: string, exitOnSave?: boolean) => {
-            const browserWin = BrowserWindow.fromWebContents(e.sender)
+            const win = BrowserWindow.fromWebContents(e.sender)
 
-            if (!browserWin) {
+            if (!win) {
                 return
             }
 
-            const result = await saveFile(browserWin, markdown)
+            const result = await saveFile(win, markdown)
             if (result) {
-                browserWin.webContents.send('markdownsavesuccess')
+                win.webContents.send('markdownsavesuccess')
 
                 if (exitOnSave) {
-                    browserWin.close()
+                    win.close()
                 }
             }
         },
@@ -154,9 +151,9 @@ export const setupApi = () => {
      * This will synchronously result with true if there are unsaved changes or false otherwise.
      */
     ipcMain.on('unsavedmarkdowncheck', (e, markdown: string) => {
-        const browserWin = BrowserWindow.fromWebContents(e.sender)
+        const win = BrowserWindow.fromWebContents(e.sender)
 
-        if (!browserWin) {
+        if (!win) {
             return
         }
 
