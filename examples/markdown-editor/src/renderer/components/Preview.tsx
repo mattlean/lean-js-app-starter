@@ -31,7 +31,6 @@ export default function Preview({ isFocusMode, markdown, refPreview }: Props) {
                 })
                 .use(rehypeStringify)
                 .process(markdown)
-
             setOutput(String(mdHtml))
         }
 

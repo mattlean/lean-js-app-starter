@@ -6,6 +6,7 @@ import installExtension, {
 import path from 'path'
 
 const BUNDLED_PRELOAD_BUILD_PATH = path.join(__dirname, '../preload')
+const BUNDLED_RENDERER_BUILD_PATH = path.join(__dirname, '../renderer')
 
 const createWindow = () => {
     const win = new BrowserWindow({
@@ -17,7 +18,7 @@ const createWindow = () => {
         },
     })
 
-    win.loadFile('build/renderer/index.html')
+    win.loadFile(`${BUNDLED_RENDERER_BUILD_PATH}/index.html`)
 
     win.once('ready-to-show', () => {
         win.show()

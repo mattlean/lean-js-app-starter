@@ -1,3 +1,7 @@
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
 build/
 coverage/
 node_modules/

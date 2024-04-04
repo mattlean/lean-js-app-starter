@@ -5,6 +5,7 @@ import path from 'path'
 import { resetCurrFile } from './currFile'
 
 const BUNDLED_PRELOAD_BUILD_PATH = path.join(__dirname, '../preload')
+const BUNDLED_RENDERER_BUILD_PATH = path.join(__dirname, '../renderer')
 
 /**
  * Create Electron BrowserWindow instance that renders the UI for the markdown editor.
@@ -24,7 +25,7 @@ export const createWindow = () => {
         },
     })
 
-    win.loadFile('build/renderer/index.html')
+    win.loadFile(`${BUNDLED_RENDERER_BUILD_PATH}/index.html`)
 
     win.once('ready-to-show', () => {
         win.setTitle(`untitled - ${app.name}`)
@@ -40,10 +41,6 @@ export const createWindow = () => {
         shell.openExternal(url)
         return { action: 'deny' } // Prevent Electron from opening the URL
     })
-
-    if (process.env.NODE_ENV === 'development') {
-        win.webContents.openDevTools({ mode: 'detach' })
-    }
 
     return win
 }
