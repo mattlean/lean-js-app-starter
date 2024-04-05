@@ -7,7 +7,7 @@ const nodeExternals = require('webpack-node-externals')
  * Tested with: webpack-node-externals@^3.0.0
  *
  * @param {Object} [options] Options for Webpack node modules externals. (https://github.com/liady/webpack-node-externals#configuration)
- * @return {Object} A webpack configuration object that sets up Webpack node modules externals.
+ * @returns {Object} A webpack configuration object that sets up Webpack node modules externals.
  */
 const setupNodeExternals = (options) => ({
     externalsPresets: { node: true },

@@ -10,7 +10,7 @@ const API = {
      * This allows the renderer to check if the current markdown source has unsaved changes
      * as the user types through the main process.
      * @param markdownSrc Markdown source with potential changes
-     * @return A promise that will resolve to true if there are unsaved changes or false otherwise
+     * @returns A promise that will resolve to true if there are unsaved changes or false otherwise
      */
     checkForMdChange: (markdownSrc: string): Promise<boolean> =>
         ipcRenderer.invoke('markdownchange', markdownSrc),
@@ -21,7 +21,7 @@ const API = {
      * This allows the renderer to check if the current markdown source has unsaved changes
      * when unloading the window through the main process.
      * @param markdownSrc Markdown source with potential changes
-     * @return True if there are unsaved changes or false otherwise
+     * @returns True if there are unsaved changes or false otherwise
      */
     checkForUnsavedChanges: (markdownSrc: string): boolean =>
         ipcRenderer.sendSync('unsavedmarkdowncheck', markdownSrc),
@@ -29,7 +29,7 @@ const API = {
     /**
      * Add a listener for the "colormodemenu" channel.
      * @param callback Function to be called when a new message arrives on the "colormodemenu" channel
-     * @return A function that will remove the added listener for the "colormodemenu" channel when called
+     * @returns A function that will remove the added listener for the "colormodemenu" channel when called
      */
     onColorModeMenu: (callback: (colorMode: colorModes) => void) => {
         const listener = (
@@ -47,7 +47,7 @@ const API = {
     /**
      * Add a listener for the "focusmodetoggle" channel.
      * @param callback Function to be called when a new message arrives on the "focusmodetoggle" channel
-     * @return A function that will remove the added listener for the "focusmodetoggle" channel when called
+     * @returns A function that will remove the added listener for the "focusmodetoggle" channel when called
      */
     onFocusModeToggle: (callback: () => void) => {
         const listener = () => {
@@ -62,7 +62,7 @@ const API = {
     /**
      * Add a listener for the "mainerrormessage" channel.
      * @param callback Function to be called when a new message arrives on the "mainerrormessage" channel
-     * @return A function that will remove the added listener for the "mainerrormessage" channel when called
+     * @returns A function that will remove the added listener for the "mainerrormessage" channel when called
      */
     onMainErrorMessage: (callback: (errorMessage: string) => void) => {
         const listener = (
@@ -80,7 +80,7 @@ const API = {
     /**
      * Add a listener for the "mainhtmlexportdialog" channel.
      * @param callback Function to be called when a new message arrives on the "mainhtmlexportdialog" channel
-     * @return A function that will remove the added listener for the "mainhtmlexportdialog" channel when called
+     * @returns A function that will remove the added listener for the "mainhtmlexportdialog" channel when called
      */
     onMainHtmlExportDialog: (callback: () => void) => {
         const listener = () => {
@@ -96,7 +96,7 @@ const API = {
     /**
      * Add a listener for the "markdownopendialog" channel.
      * @param callback Function to be called when a new message arrives on the "markdownopendialog" channel
-     * @return A function that will remove the added listener for the "markdownopendialog" channel when called
+     * @returns A function that will remove the added listener for the "markdownopendialog" channel when called
      */
     onMainMarkdownOpenDialog: (callback: () => void) => {
         const listener = () => {
@@ -111,7 +111,7 @@ const API = {
     /**
      * Add a listener for the "mainsavefile" channel.
      * @param callback Function to be called when a new message arrives on the "mainsavefile" channel
-     * @return A function that will remove the added listener for the "mainsavefile" channel when called
+     * @returns A function that will remove the added listener for the "mainsavefile" channel when called
      */
     onMainSaveFile: (callback: () => void) => {
         const listener = () => {
@@ -126,7 +126,7 @@ const API = {
     /**
      * Add a listener for the "markdownopensuccess" channel.
      * @param callback Function to be called when a new message arrives on the "markdownopensuccess" channel
-     * @return A function that will remove the added listener for the "markdownopensuccess" channel when called
+     * @returns A function that will remove the added listener for the "markdownopensuccess" channel when called
      */
     onOpenFileSuccess: (
         callback: (filePath: string, markdownSaved: string) => void,
@@ -147,7 +147,7 @@ const API = {
     /**
      * Add a listener for the "markdownsavesuccess" channel.
      * @param callback Function to be called when a new message arrives on the "markdownsavesuccess" channel
-     * @return A function that will remove the added listener for the "markdownsavesuccess" channel when called
+     * @returns A function that will remove the added listener for the "markdownsavesuccess" channel when called
      */
     onSaveFileSuccess: (callback: () => void) => {
         const listener = () => {
@@ -202,7 +202,7 @@ const API = {
      * receive a result synchronously.
      * This allows the renderer to open the unsaved changes dialog through the
      * main process.
-     * @return An Electron message box return value
+     * @returns An Electron message box return value
      */
     showUnsavedChangesDialog: (): MessageBoxReturnValue =>
         ipcRenderer.sendSync('unsavedchangesdialog'),

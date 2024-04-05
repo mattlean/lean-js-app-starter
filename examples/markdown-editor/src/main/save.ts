@@ -13,7 +13,7 @@ import { sendMainErrorMessage } from './interfaces/mse'
  * so a new markdown file can be created.
  * @param win Electron BrowserWindow instance
  * @param markdownSrc Markdown source to save
- * @return A promise that will resolve to true if a save occured or false otherwise
+ * @returns A promise that will resolve to true if a save occured or false otherwise
  */
 export const saveFile = async (win: BrowserWindow, markdownSrc: string) => {
     if (!markdownSrc && !isFileOpen()) {
@@ -89,7 +89,7 @@ export const showHtmlExportDialog = async (
 /**
  * Show the save dialog and create a new markdown file.
  * @param win Electron BrowserWindow instance
- * @return A promise that will resolve to the file path for the saved markdown file
+ * @returns A promise that will resolve to the file path for the saved markdown file
  *     or undefined otherwise
  */
 export const showSaveDialog = async (win: BrowserWindow) => {

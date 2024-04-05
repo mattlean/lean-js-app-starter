@@ -22,7 +22,7 @@ export const createJWT = (user: User) => {
 /**
  * Produce hash from plain text password.
  * @param password Plain text password to be encrypted
- * @return A promise that will resolve with the encrypted data salt or reject with an Error
+ * @returns A promise that will resolve with the encrypted data salt or reject with an Error
  */
 export const hashPassword = (password: string) => bcrypt.hash(password, 5)
 
@@ -30,7 +30,7 @@ export const hashPassword = (password: string) => bcrypt.hash(password, 5)
  * Verify plain text password against correct hashed password.
  * @param password Plain text password to be encrypted
  * @param hash Correct hashed password to be compared against
- * @return A promise that will resolve with the comparison result salt or reject with an Error
+ * @returns A promise that will resolve with the comparison result salt or reject with an Error
  */
 export const verifyPassword = (password: string, hash: string) =>
     bcrypt.compare(password, hash)
@@ -38,7 +38,7 @@ export const verifyPassword = (password: string, hash: string) =>
 /**
  * Verify JSON web token.
  * @param token JSON web token
- * @return Decoded JSON web token data
+ * @returns Decoded JSON web token data
  */
 export const verifyToken = (token: string): DecodedJWT => {
     if (!process.env.JWT_SECRET) {

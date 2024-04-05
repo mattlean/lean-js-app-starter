@@ -28,7 +28,7 @@ const { injectCss } = require('.')
  * @param {RegExp} [options.rule.test=/\.css$/] Test option associated with the webpack rule. (https://webpack.js.org/configuration/module/#ruletest)
  * @param {Object} [options.rule.use] webpack UseEntry associated with the webpack rule. Setting this will override most of the default configuration. (https://webpack.js.org/configuration/module/#useentry)
  * @param {Object} [options.styleLoader] style-loader options. (https://webpack.js.org/loaders/style-loader/#options)
- * @return {Object} webpack configuration object that sets up Autoprefixer, css-loader, postcss-loader, and style-loader.
+ * @returns {Object} webpack configuration object that sets up Autoprefixer, css-loader, postcss-loader, and style-loader.
  */
 const injectTransformedCss = (options) =>
     injectCss({

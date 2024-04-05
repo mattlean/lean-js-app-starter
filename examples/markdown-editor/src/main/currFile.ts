@@ -34,7 +34,7 @@ export const setupCurrFile = () => {
  * source in a file and get a new file path.
  * @param win Electron BrowserWindow instance
  * @param showSaveDialog showSaveDialog function to open the save dialog
- * @return A promise that will resolve to the current file path, or undefined if the
+ * @returns A promise that will resolve to the current file path, or undefined if the
  *     showSaveDialog function cancels or is never called
  */
 export const getCurrFilePath = async (
@@ -57,7 +57,7 @@ export const getCurrFilePath = async (
 /**
  * Checks to see if there are unsaved changes for the current file.
  * @param markdownSrc Markdown source with potential changes
- * @return True if there are unsaved changes or false otherwise
+ * @returns True if there are unsaved changes or false otherwise
  */
 export const isCurrFileChanged = (markdownSrc: string) => {
     if (!currFile) {
@@ -69,7 +69,7 @@ export const isCurrFileChanged = (markdownSrc: string) => {
 
 /**
  * Checks to see if there is a file currently open.
- * @return The file path if there a file is currently open or false otherwise
+ * @returns The file path if there a file is currently open or false otherwise
  */
 export const isFileOpen = () => {
     if (!currFile) {

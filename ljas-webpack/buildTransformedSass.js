@@ -41,7 +41,7 @@ const buildSass = require('./buildSass')
  * @param {RegExp} [options.rule.test=/\.s[ac]ss$/i] Test option associated with the webpack rule. (https://webpack.js.org/configuration/module/#ruletest)
  * @param {Object} [options.rule.use] webpack UseEntry associated with the webpack rule. Setting this will override most of the default configuration. (https://webpack.js.org/configuration/module/#useentry)
  * @param {Object} [options.sassLoader] sass-loader options. (https://webpack.js.org/loaders/sass-loader/#options)
- * @return {Object} A webpack configuration object that sets up Autoprefixer, css-loader, css-minimizer-webpack-plugin, mini-css-extract-plugin, postcss-loader, and sass-loader.
+ * @returns {Object} A webpack configuration object that sets up Autoprefixer, css-loader, css-minimizer-webpack-plugin, mini-css-extract-plugin, postcss-loader, and sass-loader.
  */
 const buildTransformedSass = (options) =>
     buildSass({

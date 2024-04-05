@@ -12,7 +12,7 @@ import { formInputsReducer } from '../features/formInputs/formInputsSlice'
 /**
  * Build the Redux store with preconfigured options.
  * @param preloadedState
- * @return A new Redux store
+ * @returns A new Redux store
  */
 export const buildStore = (
     preloadedState?: any, // eslint-disable-line @typescript-eslint/no-explicit-any

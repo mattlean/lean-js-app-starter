@@ -29,7 +29,7 @@ const { compileJs } = require('.')
  * @param {Object} [options.rule.resolve] Resolve option associated with the webpack rule. (https://webpack.js.org/configuration/module/#ruleresolve)
  * @param {RegExp} [options.rule.test=/\.[jt]s$/] Test option associated with the webpack rule. (https://webpack.js.org/configuration/module/#ruletest)
  * @param {Object} [options.rule.use] webpack UseEntry associated with the webpack rule. Setting this will override most of the default configuration. (https://webpack.js.org/configuration/module/#useentry)
- * @return {Object} A webpack configuration object that sets up babel-loader and Fork TS Checker Webpack Plugin.
+ * @returns {Object} A webpack configuration object that sets up babel-loader and Fork TS Checker Webpack Plugin.
  */
 const compileTs = (options) =>
     compileJs({

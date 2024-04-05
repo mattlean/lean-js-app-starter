@@ -11,7 +11,7 @@
  * https://webpack.js.org/configuration/devtool
  *
  * @param {string} [option] Option that chooses a style of source mapping. (https://webpack.js.org/configuration/devtool)
- * @return {Object} A webpack configuration object that sets up the webpack devtool option.
+ * @returns {Object} A webpack configuration object that sets up the webpack devtool option.
  */
 exports.buildSourceMaps = (option) => ({ devtool: option })
 
@@ -37,7 +37,7 @@ exports.buildSourceMaps = (option) => ({ devtool: option })
  * @param {Object} [options.rule.resolve] Resolve option associated with the webpack rule. (https://webpack.js.org/configuration/module/#ruleresolve)
  * @param {RegExp} [options.rule.test=/\.js$/] Test option associated with the webpack rule. (https://webpack.js.org/configuration/module/#ruletest)
  * @param {Object} [options.rule.use] webpack UseEntry associated with the webpack rule. Setting this will override most of the default configuration. (https://webpack.js.org/configuration/module/#useentry)
- * @return {Object} A webpack configuration object that sets up babel-loader.
+ * @returns {Object} A webpack configuration object that sets up babel-loader.
  */
 exports.compileJs = (options) => ({
     module: {
@@ -97,7 +97,7 @@ exports.compileJs = (options) => ({
  * @param {RegExp} [options.rule.test=/\.jsx?$/] Test option associated with the webpack rule. (https://webpack.js.org/configuration/module/#ruletest)
  * @param {Object} [options.rule.use] webpack UseEntry associated with the webpack rule. Setting this will override most of the default configuration. (https://webpack.js.org/configuration/module/#useentry)
  * @param {string} [mode] The webpack mode configuration option. Babel's preset-react will enable behavior specific to development when this is set to "development".  (https://webpack.js.org/configuration/mode)
- * @return {Object} A webpack configuration object that sets up babel-loader.
+ * @returns {Object} A webpack configuration object that sets up babel-loader.
  */
 exports.compileReact = (options, mode) =>
     this.compileJs({
@@ -149,7 +149,7 @@ exports.compileReact = (options, mode) =>
  * @param {RegExp} [options.rule.test=/\.css$/] Test option associated with the webpack rule. (https://webpack.js.org/configuration/module/#ruletest)
  * @param {Object} [options.rule.use] webpack UseEntry associated with the webpack rule. Setting this will override most of the default configuration. (https://webpack.js.org/configuration/module/#useentry)
  * @param {Object} [options.styleLoader] style-loader options. (https://webpack.js.org/loaders/style-loader/#options)
- * @return {Object} webpack configuration object that sets up css-loader and style-loader.
+ * @returns {Object} webpack configuration object that sets up css-loader and style-loader.
  */
 exports.injectCss = (options) => ({
     module: {
@@ -188,7 +188,7 @@ exports.injectCss = (options) => ({
  * @param {Object} [options.rule.use] webpack UseEntry associated with the webpack rule. Setting this will override most of the default configuration. (https://webpack.js.org/configuration/module/#useentry)
  * @param {Object} [options.sassLoader] sass-loader options. (https://webpack.js.org/loaders/sass-loader/#options)
  * @param {Object} [options.styleLoader] style-loader options. (https://webpack.js.org/loaders/style-loader/#options)
- * @return {Object} webpack configuration object that sets up css-loader, sass-loader, and style-loader.
+ * @returns {Object} webpack configuration object that sets up css-loader, sass-loader, and style-loader.
  */
 exports.injectSass = (options) =>
     this.injectCss({
@@ -211,7 +211,7 @@ exports.injectSass = (options) =>
  * @param {Object} [options.rule] webpack rule. (https://webpack.js.org/configuration/module/#rule)
  * @param {RegExp} [options.rule.test=/\.(eot|otf|ttf|woff|woff2)$/i] Test option associated with the webpack rule. (https://webpack.js.org/configuration/module/#ruletest)
  * @param {string} [options.rule.type=asset/resource] Option that determines the type of asset module to use. (https://webpack.js.org/configuration/module/#ruletype)
- * @return webpack configuration object that sets up an asset module to support fonts.
+ * @returns webpack configuration object that sets up an asset module to support fonts.
  */
 exports.loadFonts = (options) => ({
     module: {
@@ -233,7 +233,7 @@ exports.loadFonts = (options) => ({
  * @param {Object} [options.rule] webpack rule. (https://webpack.js.org/configuration/module/#rule)
  * @param {RegExp} [options.rule.test=/\.(gif|jpeg|jpg|png|svg)$/i] Test option associated with the webpack rule. (https://webpack.js.org/configuration/module/#ruletest)
  * @param {string} [options.rule.type=asset/resource] Option that determines the type of asset module to use. (https://webpack.js.org/configuration/module/#ruletype)
- * @return webpack configuration object that sets up an asset module to support images.
+ * @returns webpack configuration object that sets up an asset module to support images.
  */
 exports.loadImages = (options) => ({
     module: {
@@ -254,7 +254,7 @@ exports.loadImages = (options) => ({
  * Tested with: webpack-dev-server@^4.15.0
  *
  * @param {Object} [options] Options for webpack-dev-server. (https://webpack.js.org/configuration/dev-server/#devserver)
- * @return {Object} A webpack configuration object that sets up webpack-dev-server.
+ * @returns {Object} A webpack configuration object that sets up webpack-dev-server.
  */
 exports.setupDevServer = (options) => ({
     devServer: {

@@ -32,7 +32,7 @@ const buildCss = require('./buildCss')
  * @param {RegExp} [options.rule.test=/\.s[ac]ss$/i] Test option associated with the webpack rule. (https://webpack.js.org/configuration/module/#ruletest)
  * @param {Object} [options.rule.use] webpack UseEntry associated with the webpack rule. Setting this will override most of the default configuration. (https://webpack.js.org/configuration/module/#useentry)
  * @param {Object} [options.sassLoader] sass-loader options. (https://webpack.js.org/loaders/sass-loader/#options)
- * @return {Object} webpack configuration object that sets up css-loader, css-minimizer-webpack-plugin, mini-css-extract-plugin, and sass-loader.
+ * @returns {Object} webpack configuration object that sets up css-loader, css-minimizer-webpack-plugin, mini-css-extract-plugin, and sass-loader.
  */
 const buildSass = (options) =>
     buildCss({

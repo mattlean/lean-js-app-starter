@@ -47,7 +47,7 @@ export const setupApi = () => {
     /**
      * Listen for renderer process requests to check if the current markdown source
      * has unsaved changes as the user types.
-     * @return A promise that will resolve to true if there are unsaved changes or false otherwise
+     * @returns A promise that will resolve to true if there are unsaved changes or false otherwise
      */
     ipcMain.handle('markdownchange', (e, markdownSrc: string) => {
         const win = BrowserWindow.fromWebContents(e.sender)

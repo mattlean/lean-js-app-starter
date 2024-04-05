@@ -6,7 +6,7 @@ export { prismaMock } from '../../../prisma/singleton'
 /**
  * Generate implementation for protectMiddleware that mocks authorization.
  * @param reqUser User token data to set to req.user
- * @return Function that generates protectMiddleware function implementation
+ * @returns Function that generates protectMiddleware function implementation
  */
 export const genProtectMiddlewareAuthImpl =
     (reqUser: DecodedJWT) =>
@@ -17,7 +17,7 @@ export const genProtectMiddlewareAuthImpl =
 
 /**
  * Restore original implementation for protectMiddleware.
- * @return protectMiddleware function implementation
+ * @returns protectMiddleware function implementation
  */
 export const restoreProtectMiddlewareImpl = (
     req: Request,
@@ -31,7 +31,7 @@ export const restoreProtectMiddlewareImpl = (
 /**
  * Produce hash from plain text password synchronously.
  * @param password Plain text password to be encrypted
- * @return The encrypted data salt
+ * @returns The encrypted data salt
  */
 export const hashPasswordSync = (password: string) =>
     bcrypt.hashSync(password, 5)

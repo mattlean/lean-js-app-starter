@@ -32,7 +32,7 @@ const { compileReact } = require('.')
  * @param {RegExp} [options.rule.test=/\.[jt]sx?$/] Test option associated with the webpack rule. (https://webpack.js.org/configuration/module/#ruletest)
  * @param {Object} [options.rule.use] webpack UseEntry associated with the webpack rule. Setting this will override most of the default configuration. (https://webpack.js.org/configuration/module/#useentry)
  * @param {string} [mode] The webpack mode configuration option. Babel's preset-react will enable behavior specific to development when this is set to "development".  (https://webpack.js.org/configuration/mode)
- * @return {Object} A webpack configuration object that sets up babel-loader and Fork TS Checker Webpack Plugin.
+ * @returns {Object} A webpack configuration object that sets up babel-loader and Fork TS Checker Webpack Plugin.
  */
 const compileReactTs = (options, mode) =>
     compileReact(
