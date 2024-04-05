@@ -46,17 +46,17 @@ export const setupApi = () => {
 
     /**
      * Listen for renderer process requests to check if the current markdown source
-     * has unsaved changes.
+     * has unsaved changes as the user types.
      * @return A promise that will resolve to true if there are unsaved changes or false otherwise
      */
-    ipcMain.handle('markdownchange', (e, markdown: string) => {
+    ipcMain.handle('markdownchange', (e, markdownSrc: string) => {
         const win = BrowserWindow.fromWebContents(e.sender)
 
         if (!win) {
             return
         }
 
-        const hasChanges = isCurrFileChanged(markdown)
+        const hasChanges = isCurrFileChanged(markdownSrc)
         win.setDocumentEdited(hasChanges)
 
         return hasChanges
@@ -114,14 +114,14 @@ export const setupApi = () => {
      */
     ipcMain.on(
         'markdownsave',
-        async (e, markdown: string, exitOnSave?: boolean) => {
+        async (e, markdownSrc: string, exitOnSave?: boolean) => {
             const win = BrowserWindow.fromWebContents(e.sender)
 
             if (!win) {
                 return
             }
 
-            const result = await saveFile(win, markdown)
+            const result = await saveFile(win, markdownSrc)
             if (result) {
                 win.webContents.send('markdownsavesuccess')
 
@@ -150,13 +150,13 @@ export const setupApi = () => {
      * Listen for renderer process requests to check if there are unsaved markdown source changes.
      * This will synchronously result with true if there are unsaved changes or false otherwise.
      */
-    ipcMain.on('unsavedmarkdowncheck', (e, markdown: string) => {
+    ipcMain.on('unsavedmarkdowncheck', (e, markdownSrc: string) => {
         const win = BrowserWindow.fromWebContents(e.sender)
 
         if (!win) {
             return
         }
 
-        e.returnValue = isCurrFileChanged(markdown)
+        e.returnValue = isCurrFileChanged(markdownSrc)
     })
 }

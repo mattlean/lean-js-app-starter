@@ -30,7 +30,7 @@ export default function Editor({
                 onChange={async (e) => {
                     setMarkdown(e.target.value)
 
-                    const hasChanges = await window.api.checkForMarkdownChange(
+                    const hasChanges = await window.api.checkForMdChange(
                         e.target.value,
                     )
                     setHasChanges(hasChanges)

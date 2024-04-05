@@ -60,9 +60,9 @@ module.exports = merge([
                 typescript: {
                     configOverwrite: {
                         include: [
+                            'src/global.d.ts',
                             'src/common/**/*',
                             'src/frontend/**/*',
-                            'src/global.d.ts',
                         ],
                         ...tsconfigOverride,
                     },

@@ -7,23 +7,23 @@ export type PreloadApi = typeof API
 const API = {
     /**
      * Send a message to the main process on the "markdownchange" channel.
-     * This allows the renderer check if the current markdown source has unsaved changes
-     * through the main process.
+     * This allows the renderer to check if the current markdown source has unsaved changes
+     * as the user types through the main process.
      * @param markdownSrc Markdown source with potential changes
      * @return A promise that will resolve to true if there are unsaved changes or false otherwise
      */
-    checkForMarkdownChange: (markdownSrc: string) =>
+    checkForMdChange: (markdownSrc: string): Promise<boolean> =>
         ipcRenderer.invoke('markdownchange', markdownSrc),
 
     /**
      * Send a message to the main process on the "unsavedmarkdowncheck" channel and
      * receive a result synchronously.
-     * This allows the renderer to check if there are unsaved markdown source changes
-     * through the main process.
+     * This allows the renderer to check if the current markdown source has unsaved changes
+     * when unloading the window through the main process.
      * @param markdownSrc Markdown source with potential changes
      * @return True if there are unsaved changes or false otherwise
      */
-    checkForUnsavedChanges: (markdownSrc: string) =>
+    checkForUnsavedChanges: (markdownSrc: string): boolean =>
         ipcRenderer.sendSync('unsavedmarkdowncheck', markdownSrc),
 
     /**

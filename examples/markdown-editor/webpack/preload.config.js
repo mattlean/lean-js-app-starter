@@ -35,7 +35,7 @@ const config = merge([
         forkTsChecker: {
             typescript: {
                 configOverwrite: {
-                    include: ['src/preload/**/*', 'src/global.d.ts'],
+                    include: ['src/global.d.ts', 'src/preload/**/*'],
                     exclude: [
                         'src/**/__mocks__',
                         'src/**/__tests__',
