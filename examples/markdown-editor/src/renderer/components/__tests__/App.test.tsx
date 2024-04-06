@@ -42,7 +42,7 @@ beforeEach(() => {
 })
 
 /**
- * Setup user-event and render the component.
+ * Setup user-event and renders the component.
  */
 const setupTest = () => {
     const user = userEvent.setup()

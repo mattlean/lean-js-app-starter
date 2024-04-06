@@ -63,21 +63,43 @@ afterAll(() => server.close())
 const MOCK_THREAD_LIST_RESULTS_P1 = MOCK_THREAD_LIST_RES.slice(0, 20)
 const MOCK_THREAD_LIST_RESULTS_P2 = MOCK_THREAD_LIST_RES.slice(20, 40)
 
+/**
+ * Sets up the following:
+ * - global-jsdom cleanup function
+ * - Mocked functions for utilized window properties unsupported by jsdom
+ * - Redux store
+ * - screen
+ * @param resText text property from a Response instance
+ */
+const setupTest = (resText: string) => {
+    cleanupJsdom = globalJsdom(resText, { runScripts: 'dangerously' })
+
+    // Mock these functions since jsdom does not implement them
+    window.scrollTo = jest.fn()
+    window.HTMLElement.prototype.scrollIntoView = jest.fn()
+
+    const rootEl = document.getElementById('root')
+
+    if (!rootEl) {
+        throw new Error('HTML element with an ID of "root" was not found.')
+    }
+
+    // When imported directly from Testing Library, screen cannot find
+    // document.body from global-jsdom for some reason, so this is a workaround.
+    const screen = getQueriesForElement(document.body, queries)
+
+    const store = buildStore(window.__PRELOADED_STATE__)
+
+    return { rootEl, screen, store }
+}
+
 describe('thread list page', () => {
     it('matches snapshot for basic server-side rendering', async () => {
         expect.assertions(1)
 
         const res = await request(app).get('/')
 
-        cleanupJsdom = globalJsdom(res.text, { runScripts: 'dangerously' })
-
-        const rootEl = document.getElementById('root')
-
-        if (!rootEl) {
-            throw new Error('HTML element with an ID of "root" was not found.')
-        }
-
-        const store = buildStore(window.__PRELOADED_STATE__)
+        const { rootEl, store } = setupTest(res.text)
 
         const { asFragment } = render(
             <TestApp initialEntries={['/']} store={store} />,
@@ -92,19 +114,7 @@ describe('thread list page', () => {
 
         const res = await request(app).get('/')
 
-        cleanupJsdom = globalJsdom(res.text, { runScripts: 'dangerously' })
-
-        // When imported directly from Testing Library, screen cannot find
-        // document.body from global-jsdom for some reason, so this is a workaround.
-        const screen = getQueriesForElement(document.body, queries)
-
-        const rootEl = document.getElementById('root')
-
-        if (!rootEl) {
-            throw new Error('HTML element with an ID of "root" was not found.')
-        }
-
-        const store = buildStore(window.__PRELOADED_STATE__)
+        const { rootEl, screen, store } = setupTest(res.text)
 
         render(<TestApp initialEntries={['/']} store={store} />, {
             container: rootEl,
@@ -139,19 +149,7 @@ describe('thread list page', () => {
 
         const res = await request(app).get('/')
 
-        cleanupJsdom = globalJsdom(res.text, { runScripts: 'dangerously' })
-
-        // When imported directly from Testing Library, screen cannot find
-        // document.body from global-jsdom for some reason, so this is a workaround.
-        const screen = getQueriesForElement(document.body, queries)
-
-        const rootEl = document.getElementById('root')
-
-        if (!rootEl) {
-            throw new Error('HTML element with an ID of "root" was not found.')
-        }
-
-        const store = buildStore(window.__PRELOADED_STATE__)
+        const { rootEl, screen, store } = setupTest(res.text)
 
         render(<TestApp initialEntries={['/']} store={store} />, {
             container: rootEl,
@@ -171,18 +169,10 @@ describe('thread list page', () => {
 
         const res = await request(app).get('/')
 
-        cleanupJsdom = globalJsdom(res.text, { runScripts: 'dangerously' })
+        const { rootEl, store } = setupTest(res.text)
 
         // Expect the correct title for the first page on the thread list in the SSR
         expect(document.title).toBe(THREAD_PAGE_TITLE)
-
-        const rootEl = document.getElementById('root')
-
-        if (!rootEl) {
-            throw new Error('HTML element with an ID of "root" was not found.')
-        }
-
-        const store = buildStore(window.__PRELOADED_STATE__)
 
         render(<TestApp initialEntries={['/']} store={store} />, {
             container: rootEl,
@@ -211,19 +201,7 @@ describe('thread list page', () => {
 
         const res = await request(app).get('/')
 
-        cleanupJsdom = globalJsdom(res.text, { runScripts: 'dangerously' })
-
-        // When imported directly from Testing Library, screen cannot find
-        // document.body from global-jsdom for some reason, so this is a workaround.
-        const screen = getQueriesForElement(document.body, queries)
-
-        const rootEl = document.getElementById('root')
-
-        if (!rootEl) {
-            throw new Error('HTML element with an ID of "root" was not found.')
-        }
-
-        const store = buildStore(window.__PRELOADED_STATE__)
+        const { rootEl, screen, store } = setupTest(res.text)
 
         render(<TestApp initialEntries={['/']} store={store} />, {
             container: rootEl,
@@ -271,28 +249,12 @@ describe('thread list page', () => {
 
         const res = await request(app).get('/')
 
-        cleanupJsdom = globalJsdom(res.text, { runScripts: 'dangerously' })
-        window.scrollTo = jest.fn() // Mock scrollTo since jsdom does not implement it
-
-        // When imported directly from Testing Library, screen cannot find
-        // document.body from global-jsdom for some reason, so this is a workaround.
-        const screen = getQueriesForElement(document.body, queries)
-
-        const rootEl = document.getElementById('root')
-
-        if (!rootEl) {
-            throw new Error('HTML element with an ID of "root" was not found.')
-        }
-
-        const store = buildStore(window.__PRELOADED_STATE__)
+        const { rootEl, screen, store } = setupTest(res.text)
 
         render(<TestApp initialEntries={['/']} store={store} />, {
             container: rootEl,
             hydrate: true,
         })
-
-        // TODO: remove this if unneeded
-        // const mockedScrollTo = window.scrollTo as jest.Mock<void>
 
         // First thread from page 1 should be visible, but first thread from page 2 shouldn't
         expect(
@@ -359,19 +321,7 @@ describe('thread list page', () => {
 
         const res = await request(app).get('/2')
 
-        cleanupJsdom = globalJsdom(res.text, { runScripts: 'dangerously' })
-
-        // When imported directly from Testing Library, screen cannot find
-        // document.body from global-jsdom for some reason, so this is a workaround.
-        const screen = getQueriesForElement(document.body, queries)
-
-        const rootEl = document.getElementById('root')
-
-        if (!rootEl) {
-            throw new Error('HTML element with an ID of "root" was not found.')
-        }
-
-        const store = buildStore(window.__PRELOADED_STATE__)
+        const { rootEl, screen, store } = setupTest(res.text)
 
         render(<TestApp initialEntries={['/2']} store={store} />, {
             container: rootEl,
@@ -391,18 +341,10 @@ describe('thread list page', () => {
 
         const res = await request(app).get('/2')
 
-        cleanupJsdom = globalJsdom(res.text, { runScripts: 'dangerously' })
+        const { rootEl, store } = setupTest(res.text)
 
         // Expect the correct title for the first page on the thread list in the SSR
         expect(document.title).toBe(THREAD_LIST_TITLE)
-
-        const rootEl = document.getElementById('root')
-
-        if (!rootEl) {
-            throw new Error('HTML element with an ID of "root" was not found.')
-        }
-
-        const store = buildStore(window.__PRELOADED_STATE__)
 
         render(<TestApp initialEntries={['/2']} store={store} />, {
             container: rootEl,
@@ -439,20 +381,7 @@ describe('thread list page', () => {
 
         const res = await request(app).get('/')
 
-        cleanupJsdom = globalJsdom(res.text, { runScripts: 'dangerously' })
-        window.scrollTo = jest.fn() // Mock scrollTo since jsdom does not implement it
-
-        // When imported directly from Testing Library, screen cannot find
-        // document.body from global-jsdom for some reason, so this is a workaround.
-        const screen = getQueriesForElement(document.body, queries)
-
-        const rootEl = document.getElementById('root')
-
-        if (!rootEl) {
-            throw new Error('HTML element with an ID of "root" was not found.')
-        }
-
-        const store = buildStore(window.__PRELOADED_STATE__)
+        const { rootEl, screen, store } = setupTest(res.text)
 
         render(<TestApp initialEntries={['/']} store={store} />, {
             container: rootEl,
@@ -490,20 +419,7 @@ describe('thread list page', () => {
 
         const res = await request(app).get('/')
 
-        cleanupJsdom = globalJsdom(res.text, { runScripts: 'dangerously' })
-        window.scrollTo = jest.fn() // Mock scrollTo since jsdom does not implement it
-
-        // When imported directly from Testing Library, screen cannot find
-        // document.body from global-jsdom for some reason, so this is a workaround.
-        const screen = getQueriesForElement(document.body, queries)
-
-        const rootEl = document.getElementById('root')
-
-        if (!rootEl) {
-            throw new Error('HTML element with an ID of "root" was not found.')
-        }
-
-        const store = buildStore(window.__PRELOADED_STATE__)
+        const { rootEl, screen, store } = setupTest(res.text)
 
         render(<TestApp initialEntries={['/']} store={store} />, {
             container: rootEl,
@@ -520,19 +436,7 @@ describe('thread list page', () => {
 
         const res = await request(app).get('/')
 
-        cleanupJsdom = globalJsdom(res.text, { runScripts: 'dangerously' })
-
-        // When imported directly from Testing Library, screen cannot find
-        // document.body from global-jsdom for some reason, so this is a workaround.
-        const screen = getQueriesForElement(document.body, queries)
-
-        const rootEl = document.getElementById('root')
-
-        if (!rootEl) {
-            throw new Error('HTML element with an ID of "root" was not found.')
-        }
-
-        const store = buildStore(window.__PRELOADED_STATE__)
+        const { rootEl, screen, store } = setupTest(res.text)
 
         render(<TestApp initialEntries={['/']} store={store} />, {
             container: rootEl,
@@ -584,19 +488,7 @@ describe('thread list page', () => {
 
         const res = await request(app).get('/')
 
-        cleanupJsdom = globalJsdom(res.text, { runScripts: 'dangerously' })
-
-        // When imported directly from Testing Library, screen cannot find
-        // document.body from global-jsdom for some reason, so this is a workaround.
-        const screen = getQueriesForElement(document.body, queries)
-
-        const rootEl = document.getElementById('root')
-
-        if (!rootEl) {
-            throw new Error('HTML element with an ID of "root" was not found.')
-        }
-
-        const store = buildStore(window.__PRELOADED_STATE__)
+        const { rootEl, screen, store } = setupTest(res.text)
 
         render(<TestApp initialEntries={['/']} store={store} />, {
             container: rootEl,
@@ -651,19 +543,7 @@ describe('thread list page', () => {
             .send({ subject: '', comment: MOCK_THREAD_W_COMMENT.comment })
             .redirects(1)
 
-        cleanupJsdom = globalJsdom(res.text, { runScripts: 'dangerously' })
-
-        // When imported directly from Testing Library, screen cannot find
-        // document.body from global-jsdom for some reason, so this is a workaround.
-        const screen = getQueriesForElement(document.body, queries)
-
-        const rootEl = document.getElementById('root')
-
-        if (!rootEl) {
-            throw new Error('HTML element with an ID of "root" was not found.')
-        }
-
-        const store = buildStore(window.__PRELOADED_STATE__)
+        const { rootEl, screen, store } = setupTest(res.text)
 
         // Make sure no validation errors were encountered on the server
         expect(store.getState().formError).toBe('')
@@ -712,19 +592,7 @@ describe('thread list page', () => {
 
         const res = await request(app).get('/')
 
-        cleanupJsdom = globalJsdom(res.text, { runScripts: 'dangerously' })
-
-        // When imported directly from Testing Library, screen cannot find
-        // document.body from global-jsdom for some reason, so this is a workaround.
-        const screen = getQueriesForElement(document.body, queries)
-
-        const rootEl = document.getElementById('root')
-
-        if (!rootEl) {
-            throw new Error('HTML element with an ID of "root" was not found.')
-        }
-
-        const store = buildStore(window.__PRELOADED_STATE__)
+        const { rootEl, screen, store } = setupTest(res.text)
 
         render(<TestApp initialEntries={['/']} store={store} />, {
             container: rootEl,
@@ -765,9 +633,7 @@ describe('thread list page', () => {
         // Because this test simulates a case where the user is browsing with JS-disabled,
         // we do not need to render the frontend of the app as it will render an impossible case.
         // We only need the jsdom to get the preloaded state generated by the server.
-        cleanupJsdom = globalJsdom(res.text, { runScripts: 'dangerously' })
-
-        const store = buildStore(window.__PRELOADED_STATE__)
+        const { store } = setupTest(res.text)
 
         // Expect formError Redux state to have the correct error
         expect(store.getState().formError).toBe(
@@ -799,19 +665,7 @@ describe('thread list page', () => {
 
         const res = await request(app).get('/')
 
-        cleanupJsdom = globalJsdom(res.text, { runScripts: 'dangerously' })
-
-        // When imported directly from Testing Library, screen cannot find
-        // document.body from global-jsdom for some reason, so this is a workaround.
-        const screen = getQueriesForElement(document.body, queries)
-
-        const rootEl = document.getElementById('root')
-
-        if (!rootEl) {
-            throw new Error('HTML element with an ID of "root" was not found.')
-        }
-
-        const store = buildStore(window.__PRELOADED_STATE__)
+        const { rootEl, screen, store } = setupTest(res.text)
 
         render(<TestApp initialEntries={['/']} store={store} />, {
             container: rootEl,
@@ -867,9 +721,7 @@ describe('thread list page', () => {
         // Because this test simulates a case where the user is browsing with JS-disabled,
         // we do not need to render the frontend of the app as it will render an impossible case.
         // We only need the jsdom to get the preloaded state generated by the server.
-        cleanupJsdom = globalJsdom(res.text, { runScripts: 'dangerously' })
-
-        const store = buildStore(window.__PRELOADED_STATE__)
+        const { store } = setupTest(res.text)
 
         // Expect formError Redux state to have the correct error
         expect(store.getState().formError).toBe(
@@ -890,19 +742,7 @@ describe('thread page', () => {
 
         const res = await request(app).get(currPath)
 
-        cleanupJsdom = globalJsdom(res.text, { runScripts: 'dangerously' })
-
-        // When imported directly from Testing Library, screen cannot find
-        // document.body from global-jsdom for some reason, so this is a workaround.
-        const screen = getQueriesForElement(document.body, queries)
-
-        const rootEl = document.getElementById('root')
-
-        if (!rootEl) {
-            throw new Error('HTML element with an ID of "root" was not found.')
-        }
-
-        const store = buildStore(window.__PRELOADED_STATE__)
+        const { rootEl, screen, store } = setupTest(res.text)
 
         render(<TestApp initialEntries={[currPath]} store={store} />, {
             container: rootEl,
@@ -927,18 +767,10 @@ describe('thread page', () => {
 
         const res = await request(app).get(currPath)
 
-        cleanupJsdom = globalJsdom(res.text, { runScripts: 'dangerously' })
+        const { rootEl, store } = setupTest(res.text)
 
         // Expect the correct title for the first page on the thread list in the SSR
         expect(document.title).toBe(THREAD_PAGE_TITLE)
-
-        const rootEl = document.getElementById('root')
-
-        if (!rootEl) {
-            throw new Error('HTML element with an ID of "root" was not found.')
-        }
-
-        const store = buildStore(window.__PRELOADED_STATE__)
 
         render(<TestApp initialEntries={[currPath]} store={store} />, {
             container: rootEl,
@@ -966,18 +798,10 @@ describe('thread page', () => {
 
         const res = await request(app).get(currPath)
 
-        cleanupJsdom = globalJsdom(res.text, { runScripts: 'dangerously' })
+        const { rootEl, store } = setupTest(res.text)
 
         // Expect the correct title for the first page on the thread list in the SSR
         expect(document.title).toBe(THREAD_PAGE_TITLE)
-
-        const rootEl = document.getElementById('root')
-
-        if (!rootEl) {
-            throw new Error('HTML element with an ID of "root" was not found.')
-        }
-
-        const store = buildStore(window.__PRELOADED_STATE__)
 
         render(<TestApp initialEntries={[currPath]} store={store} />, {
             container: rootEl,
@@ -1014,20 +838,7 @@ describe('thread page', () => {
             .get(currPath)
             .send({ comment: MOCK_REPLY.comment })
 
-        cleanupJsdom = globalJsdom(res.text, { runScripts: 'dangerously' })
-        window.HTMLElement.prototype.scrollIntoView = jest.fn() // Mock scrollIntoView since jsdom does not implement it
-
-        // When imported directly from Testing Library, screen cannot find
-        // document.body from global-jsdom for some reason, so this is a workaround.
-        const screen = getQueriesForElement(document.body, queries)
-
-        const rootEl = document.getElementById('root')
-
-        if (!rootEl) {
-            throw new Error('HTML element with an ID of "root" was not found.')
-        }
-
-        const store = buildStore(window.__PRELOADED_STATE__)
+        const { rootEl, screen, store } = setupTest(res.text)
 
         render(<TestApp initialEntries={[currPath]} store={store} />, {
             container: rootEl,
@@ -1073,19 +884,7 @@ describe('thread page', () => {
             .post(currPath)
             .send({ comment: MOCK_REPLY.comment })
 
-        cleanupJsdom = globalJsdom(res.text, { runScripts: 'dangerously' })
-
-        // When imported directly from Testing Library, screen cannot find
-        // document.body from global-jsdom for some reason, so this is a workaround.
-        const screen = getQueriesForElement(document.body, queries)
-
-        const rootEl = document.getElementById('root')
-
-        if (!rootEl) {
-            throw new Error('HTML element with an ID of "root" was not found.')
-        }
-
-        const store = buildStore(window.__PRELOADED_STATE__)
+        const { rootEl, screen, store } = setupTest(res.text)
 
         // Make sure no validation errors were encountered on the server
         expect(store.getState().formError).toBe('')
@@ -1127,19 +926,7 @@ describe('thread page', () => {
 
         const res = await request(app).get(currPath)
 
-        cleanupJsdom = globalJsdom(res.text, { runScripts: 'dangerously' })
-
-        // When imported directly from Testing Library, screen cannot find
-        // document.body from global-jsdom for some reason, so this is a workaround.
-        const screen = getQueriesForElement(document.body, queries)
-
-        const rootEl = document.getElementById('root')
-
-        if (!rootEl) {
-            throw new Error('HTML element with an ID of "root" was not found.')
-        }
-
-        const store = buildStore(window.__PRELOADED_STATE__)
+        const { rootEl, screen, store } = setupTest(res.text)
 
         render(<TestApp initialEntries={[currPath]} store={store} />, {
             container: rootEl,
@@ -1177,9 +964,7 @@ describe('thread page', () => {
         // Because this test simulates a case where the user is browsing with JS-disabled,
         // we do not need to render the frontend of the app as it will render an impossible case.
         // We only need the jsdom to get the preloaded state generated by the server.
-        cleanupJsdom = globalJsdom(res.text, { runScripts: 'dangerously' })
-
-        const store = buildStore(window.__PRELOADED_STATE__)
+        const { store } = setupTest(res.text)
 
         // Make sure no validation errors were encountered on the server
         expect(store.getState().formError).toBe(
