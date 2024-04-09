@@ -16,7 +16,7 @@ export const applyColorMode = (colorMode: colorModes) => {
         document.documentElement.classList.add('dark')
     } else {
         localStorage.removeItem('theme')
-        window.api.syncColorModeMenu('auto')
+        window.api.syncColorModeMenu('sysPref')
 
         if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
             document.documentElement.classList.add('dark')
@@ -35,6 +35,6 @@ export const setupColorMode = () => {
     } else if (localStorage.theme === 'dark') {
         applyColorMode('dark')
     } else {
-        applyColorMode('auto')
+        applyColorMode('sysPref')
     }
 }

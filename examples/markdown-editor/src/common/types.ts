@@ -1,2 +1,2 @@
 /** All possible color mode options. */
-export type colorModes = 'auto' | 'dark' | 'light'
+export type colorModes = 'sysPref' | 'dark' | 'light'

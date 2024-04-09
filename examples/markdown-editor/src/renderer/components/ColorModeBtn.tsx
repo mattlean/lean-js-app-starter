@@ -14,7 +14,7 @@ export default function ColorModeBtn() {
         } else if (localStorage.theme === 'dark') {
             return 'dark'
         } else {
-            return 'auto'
+            return 'sysPref'
         }
     })
 
@@ -81,7 +81,7 @@ export default function ColorModeBtn() {
                 if (colorModeType === 'light') {
                     changeColorMode('dark')
                 } else if (colorModeType === 'dark') {
-                    changeColorMode('auto')
+                    changeColorMode('sysPref')
                 } else {
                     changeColorMode('light')
                 }

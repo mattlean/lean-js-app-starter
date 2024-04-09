@@ -26,6 +26,7 @@ afterEach(() => {
 
 /**
  * Setup user-event and render the component and set initial color mode if necessary.
+ * @param colorMode Color mode type that determines which color mode to use
  */
 const setupTest = (colorMode?: colorModes) => {
     if (colorMode === 'light') {

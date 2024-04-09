@@ -24,39 +24,40 @@ export const setupMenu = () => {
         { role: 'togglefullscreen' },
         { type: 'separator' },
         {
+            id: 'focus-mode',
             label: 'Toggle Focus Mode',
-            click: () => toggleFocusMode(),
+            click: (_, win) => toggleFocusMode(win),
         },
         {
             id: 'color-mode',
             label: 'Color Mode',
             submenu: [
                 {
-                    id: 'auto',
+                    id: 'sysPref',
                     label: 'Use System Preference',
                     checked: true,
                     type: 'checkbox',
-                    click: () => {
-                        setColorModeMenu('auto')
-                        syncColorModeBtn('auto')
+                    click: (_, win) => {
+                        setColorModeMenu('sysPref')
+                        syncColorModeBtn('sysPref', win)
                     },
                 },
                 {
                     id: 'light',
                     label: 'Light Mode',
                     type: 'checkbox',
-                    click: () => {
+                    click: (_, win) => {
                         setColorModeMenu('light')
-                        syncColorModeBtn('light')
+                        syncColorModeBtn('light', win)
                     },
                 },
                 {
                     id: 'dark',
                     label: 'Dark Mode',
                     type: 'checkbox',
-                    click: () => {
+                    click: (_, win) => {
                         setColorModeMenu('dark')
-                        syncColorModeBtn('dark')
+                        syncColorModeBtn('dark', win)
                     },
                 },
             ],
@@ -136,8 +137,14 @@ export const setupMenu = () => {
  * @param colorMode Color mode type that determines which color mode to use
  */
 const setColorModeMenu = (colorMode: colorModes) => {
-    const colorModeMenuItem =
-        Menu.getApplicationMenu()?.getMenuItemById('color-mode')
+    const appMenu = Menu.getApplicationMenu()
+
+    if (!appMenu) {
+        sendMainErrorMessage(new Error('Application menu could not be found.'))
+        return
+    }
+
+    const colorModeMenuItem = appMenu.getMenuItemById('color-mode')
 
     if (!colorModeMenuItem || !colorModeMenuItem.submenu) {
         sendMainErrorMessage(new Error('Color mode menu could not be found.'))

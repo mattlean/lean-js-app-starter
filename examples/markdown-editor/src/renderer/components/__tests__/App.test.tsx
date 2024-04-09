@@ -1,4 +1,4 @@
-import { getByText, render, screen, waitFor } from '@testing-library/react'
+import { queryByText, render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 import App from '../App'
@@ -61,19 +61,18 @@ test('Markdown in editor generates HTML in preview', async () => {
 
     const { user } = setupTest()
 
-    // Type markdown in the editor
-    await screen.findByRole('textbox')
-    await user.keyboard('# Hello World{Enter}Foobar!')
-
     const preview = screen.getByRole('article')
+
+    // Type markdown in the editor
+    await user.keyboard('# Hello World{Enter}Foobar!')
 
     // Expect the correct HTML to be generated in the preview
     await waitFor(() => {
         expect(
-            screen.getByRole('heading', { name: /hello world/i }),
+            screen.queryByRole('heading', { name: /hello world/i }),
         ).toBeInTheDocument()
     })
-    expect(getByText(preview, /foobar!/i)).toBeInTheDocument()
+    expect(queryByText(preview, /foobar!/i)).toBeInTheDocument()
 })
 
 test('Top bar hides when focus mode button is clicked', async () => {
@@ -82,15 +81,11 @@ test('Top bar hides when focus mode button is clicked', async () => {
     const { user } = setupTest()
 
     // Expect top bar to be visible
-    expect(
-        screen.getByRole('button', { name: 'Open File' }),
-    ).toBeInTheDocument()
+    expect(screen.queryByRole('navigation')).toBeInTheDocument()
 
     // Click the focus mode button
-    await user.click(screen.getByRole('button', { name: 'Focus Mode' }))
+    await user.click(screen.getByRole('button', { name: /focus mode/i }))
 
     // Expect top bar to be hidden
-    expect(
-        screen.queryByRole('button', { name: 'Open File' }),
-    ).not.toBeInTheDocument()
+    expect(screen.queryByRole('navigation')).not.toBeInTheDocument()
 })
