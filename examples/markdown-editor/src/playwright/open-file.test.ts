@@ -251,7 +251,7 @@ test('open different file while a file is currently open', async () => {
 
     // Expect the correct HTML to be generated in the preview
     await expect(
-        window.getByRole('heading', { name: /hello, world!/i }),
+        window.getByRole('heading', { name: /standard markdown test/i }),
     ).toBeVisible()
     await expect(article.getByText(/bar/i)).toBeVisible()
     await expect(article.getByText(/baz/i)).toBeVisible()

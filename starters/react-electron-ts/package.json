@@ -38,6 +38,7 @@
         "start:debug": "nodemon --inspect=0.0.0.0:9229 --watch build/preload --watch build/main --exec \"npm start\"",
         "test": "jest",
         "test:coverage": "npm run test -- --coverage",
+        "test:coverage:open": "open coverage/lcov-report/index.html",
         "test:debug": "node --inspect-brk=0.0.0.0:9230 node_modules/.bin/jest --runInBand",
         "test:e2e": "playwright test",
         "test:e2e:debug": "npm run test:e2e -- --debug",

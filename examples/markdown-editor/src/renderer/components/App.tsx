@@ -52,6 +52,17 @@ export default function App() {
     }, [markdown])
 
     useEffect(() => {
+        const removeMainMarkdownOpenRecentListener =
+            window.api.onMainMarkdownOpenRecent((recentFilePath) =>
+                window.api.openRecentFile(recentFilePath, markdown),
+            )
+
+        return () => {
+            removeMainMarkdownOpenRecentListener()
+        }
+    }, [markdown])
+
+    useEffect(() => {
         const removeOpenFileSuccessListener = window.api.onOpenFileSuccess(
             (newFilePath, newMarkdown) => {
                 setFilePath(newFilePath)

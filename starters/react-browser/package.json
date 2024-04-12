@@ -21,6 +21,7 @@
         "start": "http-server ./build",
         "test": "jest",
         "test:coverage": "npm run test -- --coverage",
+        "test:coverage:open": "open coverage/lcov-report/index.html",
         "test:debug": "node --inspect-brk=0.0.0.0:9230 node_modules/.bin/jest --runInBand",
         "test:watch": "npm run test -- --watch || npm run test -- --watchAll"
     },

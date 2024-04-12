@@ -13,9 +13,10 @@ import { showInFolder } from './open'
 import { createWindow } from './window'
 
 /**
- * Setup the menu.
+ * Build the menu template.
+ * @returns The Electron application menu
  */
-export const setupMenu = () => {
+export const buildMenuTemplate = () => {
     const viewSubmenu: MenuItemConstructorOptions[] = [
         { role: 'resetZoom' },
         { role: 'zoomIn' },
@@ -89,6 +90,13 @@ export const setupMenu = () => {
                     },
                     accelerator: 'CmdOrCtrl+O',
                 },
+                {
+                    label: 'Open Recent',
+                    role: 'recentDocuments',
+                    submenu: [
+                        { label: 'Clear Recent', role: 'clearRecentDocuments' },
+                    ],
+                },
                 { type: 'separator' },
                 {
                     label: 'Save',
@@ -130,8 +138,8 @@ export const setupMenu = () => {
     if (process.platform === 'darwin') {
         template.unshift({ label: app.name, role: 'appMenu' })
     }
-    const menu = Menu.buildFromTemplate(template)
-    Menu.setApplicationMenu(menu)
+
+    return Menu.buildFromTemplate(template)
 }
 
 /**
@@ -142,14 +150,14 @@ const setColorModeMenu = (colorMode: colorModes) => {
     const appMenu = Menu.getApplicationMenu()
 
     if (!appMenu) {
-        sendMainErrorMessage(new Error('Application menu could not be found.'))
+        sendMainErrorMessage('Application menu could not be found.')
         return
     }
 
     const colorModeMenuItem = appMenu.getMenuItemById('color-mode')
 
     if (!colorModeMenuItem || !colorModeMenuItem.submenu) {
-        sendMainErrorMessage(new Error('Color mode menu could not be found.'))
+        sendMainErrorMessage('Color mode menu could not be found.')
         return
     }
 

@@ -31,6 +31,7 @@ export const saveFile = async (win: BrowserWindow, markdownSrc: string) => {
     } catch (err) {
         if (err instanceof Error) {
             sendMainErrorMessage(err, win)
+            return
         } else {
             throw err
         }

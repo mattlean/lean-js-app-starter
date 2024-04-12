@@ -7,7 +7,7 @@ import { BrowserWindow, dialog, ipcMain } from 'electron'
 import { colorModes } from '../../common/types'
 import { isCurrFileChanged, setCurrFile } from '../currFile'
 import setColorModeMenu from '../menu'
-import { showFileOpenDialog, showInFolder } from '../open'
+import { openFile, showFileOpenDialog, showInFolder } from '../open'
 import { saveFile, showHtmlExportDialog } from '../save'
 
 /**
@@ -65,7 +65,7 @@ export const setupApi = () => {
     /**
      * Listen for renderer process requests to show the markdown file open dialog.
      */
-    ipcMain.on('markdownopendialog', async (e, markdown?: string) => {
+    ipcMain.on('markdownopendialog', async (e, markdownSrc?: string) => {
         const win = BrowserWindow.fromWebContents(e.sender)
 
         if (!win) {
@@ -75,8 +75,8 @@ export const setupApi = () => {
         const openDialogResult = await showFileOpenDialog(win)
 
         if (openDialogResult) {
-            if (markdown) {
-                const hasChanges = isCurrFileChanged(markdown)
+            if (typeof markdownSrc === 'string') {
+                const hasChanges = isCurrFileChanged(markdownSrc)
 
                 if (hasChanges) {
                     const messageBoxResult = await dialog.showMessageBox({
@@ -87,8 +87,7 @@ export const setupApi = () => {
                     })
 
                     if (messageBoxResult.response === 0) {
-                        const saveFileResult = await saveFile(win, markdown)
-
+                        const saveFileResult = await saveFile(win, markdownSrc)
                         if (!saveFileResult) {
                             return
                         }
@@ -106,6 +105,57 @@ export const setupApi = () => {
             )
         }
     })
+
+    /**
+     * Listen for renderer process requests to open a recently opened file.
+     */
+    ipcMain.on(
+        'markdownopenrecent',
+        async (e, recentFilePath: string, currMarkdownSrc?: string) => {
+            const win = BrowserWindow.fromWebContents(e.sender)
+
+            if (!win) {
+                return
+            }
+
+            const newMarkdownSrc = await openFile(win, recentFilePath)
+
+            if (
+                typeof newMarkdownSrc === 'string' &&
+                typeof currMarkdownSrc === 'string'
+            ) {
+                const hasChanges = isCurrFileChanged(currMarkdownSrc)
+
+                if (hasChanges) {
+                    const messageBoxResult = await dialog.showMessageBox({
+                        message:
+                            'Do you want to save the current changes you made?',
+                        detail: `Your changes will be lost if you don't save them before you open a new file.`,
+                        buttons: ['Save', `Don't Save`, 'Cancel'],
+                    })
+
+                    if (messageBoxResult.response === 0) {
+                        const saveFileResult = await saveFile(
+                            win,
+                            currMarkdownSrc,
+                        )
+                        if (!saveFileResult) {
+                            return
+                        }
+                    } else if (messageBoxResult.response === 2) {
+                        return
+                    }
+                }
+
+                setCurrFile(recentFilePath, newMarkdownSrc, win)
+                win.webContents.send(
+                    'markdownopensuccess',
+                    recentFilePath,
+                    newMarkdownSrc,
+                )
+            }
+        },
+    )
 
     /**
      * Listen for renderer process requests to save a markdown file.

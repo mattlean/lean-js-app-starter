@@ -5,6 +5,28 @@ import { isFileOpen } from './currFile'
 import { sendMainErrorMessage } from './interfaces/mse'
 
 /**
+ * Open a file and retrieve its contents.
+ * @param win BrowserWindow instance
+ * @param filePath The file path of the markdown file.
+ * @returns The contents of the markdown file.
+ */
+export const openFile = async (win: BrowserWindow, filePath: string) => {
+    let fileContent
+    try {
+        fileContent = await readFile(filePath, { encoding: 'utf-8' })
+    } catch (err) {
+        if (err instanceof Error) {
+            sendMainErrorMessage(err, win)
+            return
+        } else {
+            throw err
+        }
+    }
+
+    return fileContent
+}
+
+/**
  * Show the open dialog and read contents of the selected markdown file.
  * @param win BrowserWindow instance
  * @returns The file path of the currently open markdown file, and the contents of the
@@ -23,18 +45,11 @@ export const showFileOpenDialog = async (win: BrowserWindow) => {
 
     const [filePath] = result.filePaths
 
-    let markdownSaved
-    try {
-        markdownSaved = await readFile(filePath, { encoding: 'utf-8' })
-    } catch (err) {
-        if (err instanceof Error) {
-            sendMainErrorMessage(err, win)
-        } else {
-            throw err
-        }
-    }
+    const markdownSaved = await openFile(win, filePath)
 
-    return [filePath, markdownSaved as string] as const
+    if (typeof markdownSaved === 'string') {
+        return [filePath, markdownSaved] as const
+    }
 }
 
 /**

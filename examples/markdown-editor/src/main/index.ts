@@ -1,18 +1,18 @@
 import 'dotenv/config'
-import { BrowserWindow, app } from 'electron'
+import { BrowserWindow, Menu, app } from 'electron'
 import installExtension, {
     REACT_DEVELOPER_TOOLS,
 } from 'electron-devtools-installer'
 
 import { setupCurrFile } from './currFile'
 import { setupApi } from './interfaces/api'
-import { setupMenu } from './menu'
+import { buildMenuTemplate } from './menu'
 import { createWindow } from './window'
 
 setupCurrFile()
 
 app.whenReady().then(() => {
-    setupMenu()
+    Menu.setApplicationMenu(buildMenuTemplate())
     setupApi()
 
     if (process.env.NODE_ENV === 'development') {
@@ -32,6 +32,18 @@ app.whenReady().then(() => {
             createWindow()
         }
     })
+})
+
+app.on('open-file', (e, path) => {
+    e.preventDefault()
+
+    let win = BrowserWindow.getAllWindows()[0]
+
+    if (!win) {
+        win = createWindow()
+    }
+
+    win.webContents.send('mainmarkdownopenrecent', path)
 })
 
 // Quit when all windows are closed, except on macOS. There, it's common

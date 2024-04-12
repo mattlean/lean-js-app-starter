@@ -25,11 +25,18 @@ export const saveFileMain = (win?: BrowserWindow) => {
 
 /**
  * Send an error message to the renderer process.
- * @param err Error with message to display in the renderer process
+ * @param err Error message string or Error instance to display in the renderer process
  * @param win BrowserWindow instance
  */
-export const sendMainErrorMessage = (err: Error, win?: BrowserWindow) => {
-    console.error(err)
+export const sendMainErrorMessage = (
+    err: Error | string,
+    win?: BrowserWindow,
+) => {
+    const error = typeof err === 'string' ? new Error(err) : err
+
+    if (process.env.NODE_ENV === 'development') {
+        console.error(err)
+    }
 
     const w = win ?? BrowserWindow.getFocusedWindow()
 
@@ -37,7 +44,7 @@ export const sendMainErrorMessage = (err: Error, win?: BrowserWindow) => {
         return
     }
 
-    w.webContents.send('mainerrormessage', err.message)
+    w.webContents.send('mainerrormessage', error.message)
 }
 
 /**
@@ -51,7 +58,7 @@ export const showFileOpenDialogMain = (win?: BrowserWindow) => {
         return
     }
 
-    w.webContents.send('markdownopendialog')
+    w.webContents.send('mainmarkdownopendialog')
 }
 
 /**

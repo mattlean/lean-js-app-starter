@@ -94,18 +94,38 @@ const API = {
     },
 
     /**
-     * Add a listener for the "markdownopendialog" channel.
-     * @param callback Function to be called when a new message arrives on the "markdownopendialog" channel
-     * @returns A function that will remove the added listener for the "markdownopendialog" channel when called
+     * Add a listener for the "mainmarkdownopenrecent" channel.
+     * @param callback Function to be called when a new message arrives on the "mainmarkdownopendialog" channel
+     * @returns A function that will remove the added listener for the "mainmarkdownopendialog" channel when called
      */
     onMainMarkdownOpenDialog: (callback: () => void) => {
         const listener = () => {
             callback()
         }
 
-        ipcRenderer.on('markdownopendialog', listener)
+        ipcRenderer.on('mainmarkdownopendialog', listener)
 
-        return () => ipcRenderer.removeListener('markdownopendialog', listener)
+        return () =>
+            ipcRenderer.removeListener('mainmarkdownopendialog', listener)
+    },
+
+    /**
+     * Add a listener for the "mainmarkdownopenrecent" channel.
+     * @param callback Function to be called when a new message arrives on the "mainmarkdownopenrecent" channel
+     * @returns A function that will remove the added listener for the "mainmarkdownopenrecent" channel when called
+     */
+    onMainMarkdownOpenRecent: (callback: (recentFilePath: string) => void) => {
+        const listener = (
+            _: Electron.IpcRendererEvent,
+            recentFilePath: string,
+        ) => {
+            callback(recentFilePath)
+        }
+
+        ipcRenderer.on('mainmarkdownopenrecent', listener)
+
+        return () =>
+            ipcRenderer.removeListener('mainmarkdownopenrecent', listener)
     },
 
     /**
@@ -157,6 +177,15 @@ const API = {
         ipcRenderer.on('markdownsavesuccess', listener)
 
         return () => ipcRenderer.removeListener('markdownsavesuccess', listener)
+    },
+
+    /**
+     * Send a message to the main process on the "markdownopenrecent" channel.
+     * This allows the renderer to open a recently opened file through the main process.
+     * @param markdownSrc Markdown source with potential changes
+     */
+    openRecentFile: (recentFilePath: string, currMarkdownSrc?: string) => {
+        ipcRenderer.send('markdownopenrecent', recentFilePath, currMarkdownSrc)
     },
 
     /**
