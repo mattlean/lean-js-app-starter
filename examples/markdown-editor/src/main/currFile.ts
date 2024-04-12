@@ -32,7 +32,7 @@ export const setupCurrFile = () => {
  * Get the current file path.
  * If no file path exists, optionally open the save dialog to save the current markdown
  * source in a file and get a new file path.
- * @param win Electron BrowserWindow instance
+ * @param win BrowserWindow instance
  * @param showSaveDialog showSaveDialog function to open the save dialog
  * @returns A promise that will resolve to the current file path, or undefined if the
  *     showSaveDialog function cancels or is never called
@@ -98,7 +98,7 @@ export const resetCurrFile = () => {
  * Set the current open markdown file.
  * @param filePath File path of the currently open markdown file
  * @param markdownSaved Contents of the currently open markdown file
- * @param win Electron BrowserWindow instance
+ * @param win BrowserWindow instance
  */
 export const setCurrFile = (
     filePath: string,

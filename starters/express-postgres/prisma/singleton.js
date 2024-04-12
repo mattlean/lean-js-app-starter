@@ -9,6 +9,4 @@ jest.mock('../src/prisma', () => ({
 
 export const prismaMock = prisma
 
-beforeEach(() => {
-    mockReset(prismaMock)
-})
+beforeEach(() => mockReset(prismaMock))

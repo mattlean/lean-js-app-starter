@@ -11,7 +11,7 @@ import { sendMainErrorMessage } from './interfaces/mse'
  * markdown source.
  * Optionally, if there is no markdown file currently open, open the save dialog
  * so a new markdown file can be created.
- * @param win Electron BrowserWindow instance
+ * @param win BrowserWindow instance
  * @param markdownSrc Markdown source to save
  * @returns A promise that will resolve to true if a save occured or false otherwise
  */
@@ -44,7 +44,7 @@ export const saveFile = async (win: BrowserWindow, markdownSrc: string) => {
 
 /**
  * Show the HTML export dialog and create an HTML file from the markdown source.
- * @param win Electron BrowserWindow instance
+ * @param win BrowserWindow instance
  * @param html HTML string produced by markdown
  */
 export const showHtmlExportDialog = async (
@@ -88,7 +88,7 @@ export const showHtmlExportDialog = async (
 
 /**
  * Show the save dialog and create a new markdown file.
- * @param win Electron BrowserWindow instance
+ * @param win BrowserWindow instance
  * @returns A promise that will resolve to the file path for the saved markdown file
  *     or undefined otherwise
  */

@@ -26,7 +26,7 @@ export default function Preview({ isFocusMode, markdown, refPreview }: Props) {
                 .use(remarkGfm)
                 .use(remarkRehype)
                 .use(rehypeExternalLinks, {
-                    rel: 'noopener noreferrer',
+                    rel: ['noopener', 'noreferrer'],
                     target: '_blank',
                 })
                 .use(rehypeStringify)

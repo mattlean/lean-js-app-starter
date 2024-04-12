@@ -11,7 +11,7 @@ import { colorModes } from '../../common/types'
 
 /**
  * Tell the renderer process to send an API request to initiate the save process.
- * @param win Electron BrowserWindow instance
+ * @param win BrowserWindow instance
  */
 export const saveFileMain = (win?: BrowserWindow) => {
     const w = win ?? BrowserWindow.getFocusedWindow()
@@ -26,7 +26,7 @@ export const saveFileMain = (win?: BrowserWindow) => {
 /**
  * Send an error message to the renderer process.
  * @param err Error with message to display in the renderer process
- * @param win Electron BrowserWindow instance
+ * @param win BrowserWindow instance
  */
 export const sendMainErrorMessage = (err: Error, win?: BrowserWindow) => {
     console.error(err)
@@ -42,7 +42,7 @@ export const sendMainErrorMessage = (err: Error, win?: BrowserWindow) => {
 
 /**
  * Tell the renderer process to send an API request to initiate the file open process.
- * @param win Electron BrowserWindow instance
+ * @param win BrowserWindow instance
  */
 export const showFileOpenDialogMain = (win?: BrowserWindow) => {
     const w = win ?? BrowserWindow.getFocusedWindow()
@@ -56,7 +56,7 @@ export const showFileOpenDialogMain = (win?: BrowserWindow) => {
 
 /**
  * Tell the renderer process to send an API request to initiate the HTML export process.
- * @param win Electron BrowserWindow instance
+ * @param win BrowserWindow instance
  */
 export const showHtmlExportDialogMain = (win?: BrowserWindow) => {
     const w = win ?? BrowserWindow.getFocusedWindow()
@@ -71,7 +71,7 @@ export const showHtmlExportDialogMain = (win?: BrowserWindow) => {
 /**
  * Tell the renderer process to sync the color button with the color mode menu items.
  * @param colorMode Color mode type that determines which color mode to use
- * @param win Electron BrowserWindow instance
+ * @param win BrowserWindow instance
  */
 export const syncColorModeBtn = (
     colorMode: colorModes,
@@ -88,7 +88,7 @@ export const syncColorModeBtn = (
 
 /**
  * Tell the renderer process to toggle the focus mode.
- * @param win Electron BrowserWindow instance
+ * @param win BrowserWindow instance
  */
 export const toggleFocusMode = (win?: BrowserWindow) => {
     const w = win ?? BrowserWindow.getFocusedWindow()

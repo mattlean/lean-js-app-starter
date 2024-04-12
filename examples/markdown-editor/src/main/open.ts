@@ -6,7 +6,7 @@ import { sendMainErrorMessage } from './interfaces/mse'
 
 /**
  * Show the open dialog and read contents of the selected markdown file.
- * @param win Electron BrowserWindow instance
+ * @param win BrowserWindow instance
  * @returns The file path of the currently open markdown file, and the contents of the
  *     currently open markdown file, or undefined if no file was opened
  */

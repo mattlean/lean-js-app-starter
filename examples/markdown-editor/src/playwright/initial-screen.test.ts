@@ -1,6 +1,6 @@
 import { _electron as electron, expect, test } from '@playwright/test'
 
-test('App loads initial screen', async () => {
+test('app loads initial screen', async () => {
     const electronApp = await electron.launch({ args: ['.'] })
     const window = await electronApp.firstWindow()
 

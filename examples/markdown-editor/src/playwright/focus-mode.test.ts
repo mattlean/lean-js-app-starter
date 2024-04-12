@@ -25,7 +25,7 @@ const clickFocusModeMenuItem = (electronApp: ElectronApplication) =>
         focusModeMenuItem.click(undefined, BrowserWindow.getAllWindows()[0])
     })
 
-test('Focus mode activates when the menu option is clicked the first time', async () => {
+test('focus mode activates when the menu option is clicked the first time', async () => {
     const electronApp = await electron.launch({ args: ['.'] })
     const window = await electronApp.firstWindow()
 
@@ -35,7 +35,7 @@ test('Focus mode activates when the menu option is clicked the first time', asyn
     await clickFocusModeMenuItem(electronApp)
 
     // Expect top bar to be hidden
-    await expect(window.getByRole('navigation')).not.toBeVisible()
+    await expect(window.getByRole('navigation')).toBeHidden()
 
     // Perform visual comparison of focus mode
     await expect(window).toHaveScreenshot('focus-mode.png')
@@ -43,7 +43,7 @@ test('Focus mode activates when the menu option is clicked the first time', asyn
     await electronApp.close()
 })
 
-test('Focus mode reactivates when the menu option is clicked the second time', async () => {
+test('focus mode reactivates when the menu option is clicked the second time', async () => {
     const electronApp = await electron.launch({ args: ['.'] })
     const window = await electronApp.firstWindow()
 
@@ -53,7 +53,7 @@ test('Focus mode reactivates when the menu option is clicked the second time', a
     await clickFocusModeMenuItem(electronApp)
 
     // Expect top bar to be hidden
-    await expect(window.getByRole('navigation')).not.toBeVisible()
+    await expect(window.getByRole('navigation')).toBeHidden()
 
     await clickFocusModeMenuItem(electronApp)
 

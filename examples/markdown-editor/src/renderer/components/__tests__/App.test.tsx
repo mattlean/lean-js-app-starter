@@ -42,13 +42,13 @@ beforeEach(() => {
 })
 
 /**
- * Setup user-event and renders the component.
+ * Setup user-event and render the component.
  */
 const setupTest = () => {
     const user = userEvent.setup()
     const { asFragment } = render(<App />)
 
-    return { user, asFragment }
+    return { asFragment, user }
 }
 
 test('App component matches snapshot', () => {
@@ -56,7 +56,7 @@ test('App component matches snapshot', () => {
     expect(asFragment()).toMatchSnapshot()
 })
 
-test('Markdown in editor generates HTML in preview', async () => {
+test('markdown in editor generates HTML in preview', async () => {
     expect.assertions(2)
 
     const { user } = setupTest()
@@ -75,7 +75,7 @@ test('Markdown in editor generates HTML in preview', async () => {
     expect(queryByText(preview, /foobar!/i)).toBeInTheDocument()
 })
 
-test('Top bar hides when focus mode button is clicked', async () => {
+test('top bar hides when focus mode button is clicked', async () => {
     expect.assertions(2)
 
     const { user } = setupTest()

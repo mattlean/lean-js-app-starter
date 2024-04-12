@@ -10,7 +10,7 @@ import { colorModes } from '../common/types'
 /**
  * Get the color mode menu item.
  * @param electronApp Electron application representation
- * @return A promise that will resolve to the color mode menu item
+ * @returns A promise that will resolve to the color mode menu item
  */
 const getColorModeMenuItem = async (electronApp: ElectronApplication) =>
     electronApp.evaluate(({ Menu }) => {
@@ -51,12 +51,13 @@ const clickColorModeSubmenuItem = async (
         return appMenu.getMenuItemById('color-mode')
     }, colorMode)
 
-test('Color mode defaults to system preference mode', async () => {
+test('color mode defaults to system preference mode', async () => {
     const electronApp = await electron.launch({ args: ['.'] })
     const window = await electronApp.firstWindow()
 
     const colorModeMenuItem = await getColorModeMenuItem(electronApp)
 
+    // eslint-disable-next-line playwright/no-conditional-in-test
     if (!colorModeMenuItem || !colorModeMenuItem.submenu) {
         throw new Error('Color mode menu could not be found.')
     }
@@ -80,7 +81,7 @@ test('Color mode defaults to system preference mode', async () => {
     await electronApp.close()
 })
 
-test('Color mode is light when system preference mode is active and the OS is set to light', async () => {
+test('color mode is light when system preference mode is active and the OS is set to light', async () => {
     const electronApp = await electron.launch({
         args: ['.'],
         colorScheme: 'light',
@@ -89,6 +90,7 @@ test('Color mode is light when system preference mode is active and the OS is se
 
     const colorModeMenuItem = await getColorModeMenuItem(electronApp)
 
+    // eslint-disable-next-line playwright/no-conditional-in-test
     if (!colorModeMenuItem || !colorModeMenuItem.submenu) {
         throw new Error('Color mode menu could not be found.')
     }
@@ -110,7 +112,7 @@ test('Color mode is light when system preference mode is active and the OS is se
     await electronApp.close()
 })
 
-test('Color mode is dark when system preference mode is active and the OS is set to dark', async () => {
+test('color mode is dark when system preference mode is active and the OS is set to dark', async () => {
     const electronApp = await electron.launch({
         args: ['.'],
         colorScheme: 'dark',
@@ -119,6 +121,7 @@ test('Color mode is dark when system preference mode is active and the OS is set
 
     const colorModeMenuItem = await getColorModeMenuItem(electronApp)
 
+    // eslint-disable-next-line playwright/no-conditional-in-test
     if (!colorModeMenuItem || !colorModeMenuItem.submenu) {
         throw new Error('Color mode menu could not be found.')
     }
@@ -140,12 +143,13 @@ test('Color mode is dark when system preference mode is active and the OS is set
     await electronApp.close()
 })
 
-test('Active color mode submenu item switches to light mode when it is selected', async () => {
+test('active color mode submenu item switches to light mode when it is selected', async () => {
     const electronApp = await electron.launch({ args: ['.'] })
     const window = await electronApp.firstWindow()
 
     let colorModeMenuItem = await getColorModeMenuItem(electronApp)
 
+    // eslint-disable-next-line playwright/no-conditional-in-test
     if (!colorModeMenuItem || !colorModeMenuItem.submenu) {
         throw new Error('Color mode menu could not be found.')
     }
@@ -166,6 +170,7 @@ test('Active color mode submenu item switches to light mode when it is selected'
     // Click on the light mode menu item
     colorModeMenuItem = await clickColorModeSubmenuItem(electronApp, 'light')
 
+    // eslint-disable-next-line playwright/no-conditional-in-test
     if (!colorModeMenuItem || !colorModeMenuItem.submenu) {
         throw new Error('Color mode menu could not be found.')
     }
@@ -187,12 +192,13 @@ test('Active color mode submenu item switches to light mode when it is selected'
     await electronApp.close()
 })
 
-test('Active color mode submenu item switches to dark mode when it is selected', async () => {
+test('active color mode submenu item switches to dark mode when it is selected', async () => {
     const electronApp = await electron.launch({ args: ['.'] })
     const window = await electronApp.firstWindow()
 
     let colorModeMenuItem = await getColorModeMenuItem(electronApp)
 
+    // eslint-disable-next-line playwright/no-conditional-in-test
     if (!colorModeMenuItem || !colorModeMenuItem.submenu) {
         throw new Error('Color mode menu could not be found.')
     }
@@ -213,6 +219,7 @@ test('Active color mode submenu item switches to dark mode when it is selected',
     // Click on the dark mode menu item
     colorModeMenuItem = await clickColorModeSubmenuItem(electronApp, 'dark')
 
+    // eslint-disable-next-line playwright/no-conditional-in-test
     if (!colorModeMenuItem || !colorModeMenuItem.submenu) {
         throw new Error('Color mode menu could not be found.')
     }
@@ -234,12 +241,13 @@ test('Active color mode submenu item switches to dark mode when it is selected',
     await electronApp.close()
 })
 
-test('Active color mode submenu item switches to system preference mode when it is selected', async () => {
+test('active color mode submenu item switches to system preference mode when it is selected', async () => {
     const electronApp = await electron.launch({ args: ['.'] })
     const window = await electronApp.firstWindow()
 
     let colorModeMenuItem = await getColorModeMenuItem(electronApp)
 
+    // eslint-disable-next-line playwright/no-conditional-in-test
     if (!colorModeMenuItem || !colorModeMenuItem.submenu) {
         throw new Error('Color mode menu could not be found.')
     }
@@ -260,6 +268,7 @@ test('Active color mode submenu item switches to system preference mode when it 
     // Click on the dark mode menu item
     colorModeMenuItem = await clickColorModeSubmenuItem(electronApp, 'dark')
 
+    // eslint-disable-next-line playwright/no-conditional-in-test
     if (!colorModeMenuItem || !colorModeMenuItem.submenu) {
         throw new Error('Color mode menu could not be found.')
     }
@@ -278,11 +287,12 @@ test('Active color mode submenu item switches to system preference mode when it 
     // Click on the system preference mode menu item
     colorModeMenuItem = await clickColorModeSubmenuItem(electronApp, 'sysPref')
 
-    // Expect active color mode submenu item to return to system preference mode
+    // eslint-disable-next-line playwright/no-conditional-in-test
     if (!colorModeMenuItem || !colorModeMenuItem.submenu) {
         throw new Error('Color mode menu could not be found.')
     }
 
+    // Expect active color mode submenu item to return to system preference mode
     expect(colorModeMenuItem.submenu.items[0].label).toBe(
         'Use System Preference',
     )
@@ -298,12 +308,13 @@ test('Active color mode submenu item switches to system preference mode when it 
     await electronApp.close()
 })
 
-test('Active color mode submenu item is light mode when color mode button is set to light mode', async () => {
+test('active color mode submenu item is light mode when color mode button is set to light mode', async () => {
     const electronApp = await electron.launch({ args: ['.'] })
     const window = await electronApp.firstWindow()
 
     let colorModeMenuItem = await getColorModeMenuItem(electronApp)
 
+    // eslint-disable-next-line playwright/no-conditional-in-test
     if (!colorModeMenuItem || !colorModeMenuItem.submenu) {
         throw new Error('Color mode menu could not be found.')
     }
@@ -327,6 +338,7 @@ test('Active color mode submenu item is light mode when color mode button is set
 
     colorModeMenuItem = await getColorModeMenuItem(electronApp)
 
+    // eslint-disable-next-line playwright/no-conditional-in-test
     if (!colorModeMenuItem || !colorModeMenuItem.submenu) {
         throw new Error('Color mode menu could not be found.')
     }
@@ -345,12 +357,13 @@ test('Active color mode submenu item is light mode when color mode button is set
     await electronApp.close()
 })
 
-test('Active color mode submenu item is dark mode when color mode button is set to dark mode', async () => {
+test('active color mode submenu item is dark mode when color mode button is set to dark mode', async () => {
     const electronApp = await electron.launch({ args: ['.'] })
     const window = await electronApp.firstWindow()
 
     let colorModeMenuItem = await getColorModeMenuItem(electronApp)
 
+    // eslint-disable-next-line playwright/no-conditional-in-test
     if (!colorModeMenuItem || !colorModeMenuItem.submenu) {
         throw new Error('Color mode menu could not be found.')
     }
@@ -374,6 +387,7 @@ test('Active color mode submenu item is dark mode when color mode button is set 
 
     colorModeMenuItem = await getColorModeMenuItem(electronApp)
 
+    // eslint-disable-next-line playwright/no-conditional-in-test
     if (!colorModeMenuItem || !colorModeMenuItem.submenu) {
         throw new Error('Color mode menu could not be found.')
     }
@@ -392,12 +406,13 @@ test('Active color mode submenu item is dark mode when color mode button is set 
     await electronApp.close()
 })
 
-test('Active color mode submenu item is system preference mode when color mode button is set to system preference mode', async () => {
+test('active color mode submenu item is system preference mode when color mode button is set to system preference mode', async () => {
     const electronApp = await electron.launch({ args: ['.'] })
     const window = await electronApp.firstWindow()
 
     let colorModeMenuItem = await getColorModeMenuItem(electronApp)
 
+    // eslint-disable-next-line playwright/no-conditional-in-test
     if (!colorModeMenuItem || !colorModeMenuItem.submenu) {
         throw new Error('Color mode menu could not be found.')
     }
@@ -421,6 +436,7 @@ test('Active color mode submenu item is system preference mode when color mode b
 
     colorModeMenuItem = await getColorModeMenuItem(electronApp)
 
+    // eslint-disable-next-line playwright/no-conditional-in-test
     if (!colorModeMenuItem || !colorModeMenuItem.submenu) {
         throw new Error('Color mode menu could not be found.')
     }
@@ -440,6 +456,7 @@ test('Active color mode submenu item is system preference mode when color mode b
 
     colorModeMenuItem = await getColorModeMenuItem(electronApp)
 
+    // eslint-disable-next-line playwright/no-conditional-in-test
     if (!colorModeMenuItem || !colorModeMenuItem.submenu) {
         throw new Error('Color mode menu could not be found.')
     }

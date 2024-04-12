@@ -8,7 +8,7 @@ const BUNDLED_PRELOAD_BUILD_PATH = path.join(__dirname, '../preload')
 const BUNDLED_RENDERER_BUILD_PATH = path.join(__dirname, '../renderer')
 
 /**
- * Create Electron BrowserWindow instance that renders the UI for the markdown editor.
+ * Create BrowserWindow instance that renders the UI for the markdown editor.
  */
 export const createWindow = () => {
     if (process.platform === 'darwin') {

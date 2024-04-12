@@ -78,6 +78,7 @@ export const setupMenu = () => {
             label: 'File',
             submenu: [
                 {
+                    id: 'open',
                     label: 'Open',
                     click: (_, win) => {
                         if (!win) {
@@ -96,6 +97,7 @@ export const setupMenu = () => {
                 },
                 { type: 'separator' },
                 {
+                    id: 'html-export',
                     label: 'Export as HTML',
                     click: () => showHtmlExportDialogMain(),
                 },

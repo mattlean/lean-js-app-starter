@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ColorModeBtn matches snapshot 1`] = `
+exports[`ColorModeBtn component matches snapshot 1`] = `
 <DocumentFragment>
   <button
     class="btn flex space-x-2"

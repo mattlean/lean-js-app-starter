@@ -2,6 +2,8 @@ import { Dispatch, RefObject, SetStateAction } from 'react'
 
 import { ErrorMessageActions } from '../errorMessageReducer'
 import ColorModeBtn from './ColorModeBtn'
+import HtmlExportBtn from './HtmlExportBtn'
+import ShowInFolderBtn from './ShowInFolderBtn'
 
 export interface Props {
     errorMessageDispatch: Dispatch<ErrorMessageActions>
@@ -40,32 +42,11 @@ export default function TopBar({
                 >
                     Save File
                 </button>
-                <button
-                    className="btn"
-                    onClick={() => {
-                        if (refPreview.current) {
-                            window.api.showHtmlExportDialog(
-                                refPreview.current.innerHTML,
-                            )
-                        } else {
-                            errorMessageDispatch({
-                                type: 'set',
-                                payload: 'Preview element could not be found.',
-                            })
-                        }
-                    }}
-                >
-                    Export as HTML
-                </button>
-                <button
-                    disabled={!filePath}
-                    className="btn"
-                    onClick={() => {
-                        window.api.showInFolder()
-                    }}
-                >
-                    Show In Folder
-                </button>
+                <HtmlExportBtn
+                    errorMessageDispatch={errorMessageDispatch}
+                    refPreview={refPreview}
+                />
+                <ShowInFolderBtn filePath={filePath} />
             </section>
             <section className="flex space-x-2">
                 <button
