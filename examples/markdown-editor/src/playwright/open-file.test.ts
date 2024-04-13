@@ -11,13 +11,13 @@ import {
     MOCK_FOOBAR_FILE_CONTENT,
     MOCK_FOOBAR_FILE_PATH,
 } from '../common/MOCK_DATA'
-import { disableUnsavedChangesDialog } from './util'
+import { disableUnsavedChangesDialog, mockOpenFileSuccess } from './util'
 
 /**
- * Click the open file menu item.
+ * Click the open menu item.
  * @param electronApp Electron application representation
  */
-const clickOpenFileMenuItem = async (electronApp: ElectronApplication) =>
+const clickOpenMenuItem = async (electronApp: ElectronApplication) =>
     electronApp.evaluate(({ BrowserWindow, Menu }) => {
         const appMenu = Menu.getApplicationMenu()
 
@@ -25,45 +25,25 @@ const clickOpenFileMenuItem = async (electronApp: ElectronApplication) =>
             throw new Error('Application menu could not be found.')
         }
 
-        const openFileMenuItem = appMenu.getMenuItemById('open')
+        const openMenuItem = appMenu.getMenuItemById('open')
 
-        if (!openFileMenuItem) {
+        if (!openMenuItem) {
             throw new Error('Open file menu item could not be found.')
         }
 
-        openFileMenuItem.click(undefined, BrowserWindow.getAllWindows()[0])
+        openMenuItem.click(undefined, BrowserWindow.getAllWindows()[0])
     })
 
-test('show open file dialog from open file menu', async () => {
+test('show open file dialog from open menu item', async () => {
     const electronApp = await electron.launch({ args: ['.'] })
     const window = await electronApp.firstWindow()
 
     await disableUnsavedChangesDialog(electronApp)
 
-    // Mock open file dialog to successfully open file
-    await electronApp.evaluate(
-        (
-            { ipcMain, BrowserWindow },
-            { MOCK_FOOBAR_FILE_CONTENT, MOCK_FOOBAR_FILE_PATH },
-        ) => {
-            ipcMain.removeAllListeners('markdownopendialog')
-            ipcMain.once('markdownopendialog', async (e) => {
-                const win = BrowserWindow.fromWebContents(e.sender)
-
-                if (!win) {
-                    throw new Error(
-                        'BrowserWindow instance could not be found.',
-                    )
-                }
-
-                win.webContents.send(
-                    'markdownopensuccess',
-                    MOCK_FOOBAR_FILE_PATH,
-                    MOCK_FOOBAR_FILE_CONTENT,
-                )
-            })
-        },
-        { MOCK_FOOBAR_FILE_CONTENT, MOCK_FOOBAR_FILE_PATH },
+    await mockOpenFileSuccess(
+        electronApp,
+        MOCK_FOOBAR_FILE_PATH,
+        MOCK_FOOBAR_FILE_CONTENT,
     )
 
     const editor = window.getByRole('textbox')
@@ -73,10 +53,13 @@ test('show open file dialog from open file menu', async () => {
     await expect(editor).toHaveText('')
     await expect(article).toHaveText('')
 
-    await clickOpenFileMenuItem(electronApp)
+    await clickOpenMenuItem(electronApp)
 
     // Expect the editor to be populated with the file content
     await expect(editor).toHaveText(MOCK_FOOBAR_FILE_CONTENT)
+
+    // Expect the editor to be focused
+    await expect(editor).toBeFocused()
 
     // Expect the correct HTML to be generated in the preview
     await expect(
@@ -93,30 +76,10 @@ test('show open file dialog from open file button', async () => {
 
     await disableUnsavedChangesDialog(electronApp)
 
-    // Mock open file dialog to successfully open file
-    await electronApp.evaluate(
-        (
-            { ipcMain, BrowserWindow },
-            { MOCK_FOOBAR_FILE_CONTENT, MOCK_FOOBAR_FILE_PATH },
-        ) => {
-            ipcMain.removeAllListeners('markdownopendialog')
-            ipcMain.once('markdownopendialog', async (e) => {
-                const win = BrowserWindow.fromWebContents(e.sender)
-
-                if (!win) {
-                    throw new Error(
-                        'BrowserWindow instance could not be found.',
-                    )
-                }
-
-                win.webContents.send(
-                    'markdownopensuccess',
-                    MOCK_FOOBAR_FILE_PATH,
-                    MOCK_FOOBAR_FILE_CONTENT,
-                )
-            })
-        },
-        { MOCK_FOOBAR_FILE_CONTENT, MOCK_FOOBAR_FILE_PATH },
+    await mockOpenFileSuccess(
+        electronApp,
+        MOCK_FOOBAR_FILE_PATH,
+        MOCK_FOOBAR_FILE_CONTENT,
     )
 
     const editor = window.getByRole('textbox')
@@ -145,8 +108,6 @@ test('cancel open file dialog', async () => {
     const electronApp = await electron.launch({ args: ['.'] })
     const window = await electronApp.firstWindow()
 
-    await disableUnsavedChangesDialog(electronApp)
-
     // Mock open file dialog with cancel action
     await electronApp.evaluate(({ ipcMain }) => {
         ipcMain.removeAllListeners('markdownopendialog')
@@ -159,7 +120,7 @@ test('cancel open file dialog', async () => {
     await expect(editor).toHaveText('')
     await expect(article).toHaveText('')
 
-    await clickOpenFileMenuItem(electronApp)
+    await clickOpenMenuItem(electronApp)
 
     // Expect editor and preview to remain empty
     await expect(editor).toHaveText('')
@@ -175,29 +136,10 @@ test('open different file while a file is currently open', async () => {
     await disableUnsavedChangesDialog(electronApp)
 
     // Mock open file dialog to successfully open first file
-    await electronApp.evaluate(
-        (
-            { ipcMain, BrowserWindow },
-            { MOCK_FOOBAR_FILE_CONTENT, MOCK_FOOBAR_FILE_PATH },
-        ) => {
-            ipcMain.removeAllListeners('markdownopendialog')
-            ipcMain.once('markdownopendialog', async (e) => {
-                const win = BrowserWindow.fromWebContents(e.sender)
-
-                if (!win) {
-                    throw new Error(
-                        'BrowserWindow instance could not be found.',
-                    )
-                }
-
-                win.webContents.send(
-                    'markdownopensuccess',
-                    MOCK_FOOBAR_FILE_PATH,
-                    MOCK_FOOBAR_FILE_CONTENT,
-                )
-            })
-        },
-        { MOCK_FOOBAR_FILE_CONTENT, MOCK_FOOBAR_FILE_PATH },
+    await mockOpenFileSuccess(
+        electronApp,
+        MOCK_FOOBAR_FILE_PATH,
+        MOCK_FOOBAR_FILE_CONTENT,
     )
 
     const editor = window.getByRole('textbox')
@@ -207,7 +149,7 @@ test('open different file while a file is currently open', async () => {
     await expect(editor).toHaveText('')
     await expect(article).toHaveText('')
 
-    await clickOpenFileMenuItem(electronApp)
+    await clickOpenMenuItem(electronApp)
 
     // Expect the editor to be populated with the first file content
     await expect(editor).toHaveText(MOCK_FOOBAR_FILE_CONTENT)
@@ -219,32 +161,13 @@ test('open different file while a file is currently open', async () => {
     await expect(article.getByText(/foobar!/i)).toBeVisible()
 
     // Mock open file dialog to successfully open second file
-    await electronApp.evaluate(
-        (
-            { ipcMain, BrowserWindow },
-            { MOCK_BARBAZ_FILE_CONTENT, MOCK_BARBAZ_FILE_PATH },
-        ) => {
-            ipcMain.removeAllListeners('markdownopendialog')
-            ipcMain.once('markdownopendialog', async (e) => {
-                const win = BrowserWindow.fromWebContents(e.sender)
-
-                if (!win) {
-                    throw new Error(
-                        'BrowserWindow instance could not be found.',
-                    )
-                }
-
-                win.webContents.send(
-                    'markdownopensuccess',
-                    MOCK_BARBAZ_FILE_PATH,
-                    MOCK_BARBAZ_FILE_CONTENT,
-                )
-            })
-        },
-        { MOCK_BARBAZ_FILE_CONTENT, MOCK_BARBAZ_FILE_PATH },
+    await mockOpenFileSuccess(
+        electronApp,
+        MOCK_BARBAZ_FILE_PATH,
+        MOCK_BARBAZ_FILE_CONTENT,
     )
 
-    await clickOpenFileMenuItem(electronApp)
+    await clickOpenMenuItem(electronApp)
 
     // Expect the editor to be populated with the second file content
     await expect(editor).toHaveText(MOCK_BARBAZ_FILE_CONTENT)

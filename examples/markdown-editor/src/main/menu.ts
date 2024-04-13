@@ -80,7 +80,7 @@ export const buildMenuTemplate = () => {
             submenu: [
                 {
                     id: 'open',
-                    label: 'Open',
+                    label: 'Open...',
                     click: (_, win) => {
                         if (!win) {
                             win = createWindow()
@@ -99,8 +99,9 @@ export const buildMenuTemplate = () => {
                 },
                 { type: 'separator' },
                 {
+                    id: 'save',
                     label: 'Save',
-                    click: () => saveFileMain(),
+                    click: (_, win) => saveFileMain(win),
                     accelerator: 'CmdOrCtrl+S',
                 },
                 { type: 'separator' },
@@ -111,6 +112,7 @@ export const buildMenuTemplate = () => {
                 },
                 { type: 'separator' },
                 {
+                    id: 'show-in-folder',
                     label: 'Show In Folder',
                     click: () => showInFolder(),
                 },

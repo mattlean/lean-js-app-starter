@@ -47,7 +47,6 @@ export const setupApi = () => {
     /**
      * Listen for renderer process requests to check if the current markdown source
      * has unsaved changes as the user types.
-     * @returns A promise that will resolve to true if there are unsaved changes or false otherwise
      */
     ipcMain.handle('markdownchange', (e, markdownSrc: string) => {
         const win = BrowserWindow.fromWebContents(e.sender)
@@ -159,8 +158,6 @@ export const setupApi = () => {
 
     /**
      * Listen for renderer process requests to save a markdown file.
-     * @param markdown Markdown with potential changes from the current file
-     * @param exitOnSave Flag that causes the window to close upon successful save if true
      */
     ipcMain.on(
         'markdownsave',

@@ -63,20 +63,6 @@ export default function App() {
     }, [markdown])
 
     useEffect(() => {
-        const removeOpenFileSuccessListener = window.api.onOpenFileSuccess(
-            (newFilePath, newMarkdown) => {
-                setFilePath(newFilePath)
-                setMarkdown(newMarkdown)
-                setHasChanges(false)
-            },
-        )
-
-        return () => {
-            removeOpenFileSuccessListener()
-        }
-    }, [setFilePath, setHasChanges, setMarkdown])
-
-    useEffect(() => {
         const removeMainSaveFileListener = window.api.onMainSaveFile(() =>
             window.api.saveFile(markdown),
         )
@@ -138,6 +124,7 @@ export default function App() {
                     <Editor
                         isFocusMode={isFocusMode}
                         markdown={markdown}
+                        setFilePath={setFilePath}
                         setHasChanges={setHasChanges}
                         setMarkdown={setMarkdown}
                     />

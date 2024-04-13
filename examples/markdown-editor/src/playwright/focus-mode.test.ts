@@ -25,7 +25,7 @@ const clickFocusModeMenuItem = (electronApp: ElectronApplication) =>
         focusModeMenuItem.click(undefined, BrowserWindow.getAllWindows()[0])
     })
 
-test('focus mode activates when the menu option is clicked the first time', async () => {
+test('focus mode activates when the menu item is clicked the first time', async () => {
     const electronApp = await electron.launch({ args: ['.'] })
     const window = await electronApp.firstWindow()
 
@@ -43,7 +43,7 @@ test('focus mode activates when the menu option is clicked the first time', asyn
     await electronApp.close()
 })
 
-test('focus mode reactivates when the menu option is clicked the second time', async () => {
+test('focus mode reactivates when the menu item is clicked the second time', async () => {
     const electronApp = await electron.launch({ args: ['.'] })
     const window = await electronApp.firstWindow()
 

@@ -4,13 +4,45 @@ import {
     MOCK_FOOBAR_FILE_CONTENT,
     MOCK_FOOBAR_FILE_PATH,
 } from '../common/MOCK_DATA'
-import { disableUnsavedChangesDialog } from './util'
+import { disableUnsavedChangesDialog, mockOpenFileSuccess } from './util'
+
+test('start show in folder process from show in folder menu item', async () => {
+    const electronApp = await electron.launch({ args: ['.'] })
+    await electronApp.firstWindow()
+
+    // Mock show in folder process
+    await electronApp.evaluate(({ ipcMain }) => {
+        ipcMain.removeAllListeners('folderopen')
+    })
+
+    // Click the show in folder menu item
+    const showInFolderResult = await electronApp.evaluate(({ Menu }) => {
+        const appMenu = Menu.getApplicationMenu()
+
+        if (!appMenu) {
+            throw new Error('Application menu could not be found.')
+        }
+
+        const showInFolderMenuItem = appMenu.getMenuItemById('show-in-folder')
+
+        if (!showInFolderMenuItem) {
+            throw new Error('Open file menu item could not be found.')
+        }
+
+        showInFolderMenuItem.click()
+        return true
+    })
+
+    expect(showInFolderResult).toBe(true)
+
+    await electronApp.close()
+})
 
 test('show in folder button is disabled when no file is open', async () => {
     const electronApp = await electron.launch({ args: ['.'] })
     const window = await electronApp.firstWindow()
 
-    // Expect show in folder to default to disabled
+    // Expect show in folder button to default to disabled
     await expect(
         window.getByRole('button', {
             name: /show in folder/i,
@@ -26,48 +58,24 @@ test('show in folder button becomes enabled after file is opened', async () => {
 
     await disableUnsavedChangesDialog(electronApp)
 
-    // Mock open file dialog with successful file open
-    await electronApp.evaluate(
-        (
-            { ipcMain, BrowserWindow },
-            { MOCK_FOOBAR_FILE_CONTENT, MOCK_FOOBAR_FILE_PATH },
-        ) => {
-            ipcMain.removeAllListeners('markdownopendialog')
-            ipcMain.once('markdownopendialog', async (e) => {
-                const win = BrowserWindow.fromWebContents(e.sender)
-
-                if (!win) {
-                    throw new Error(
-                        'BrowserWindow instance could not be found.',
-                    )
-                }
-
-                win.webContents.send(
-                    'markdownopensuccess',
-                    MOCK_FOOBAR_FILE_PATH,
-                    MOCK_FOOBAR_FILE_CONTENT,
-                )
-            })
-        },
-        { MOCK_FOOBAR_FILE_CONTENT, MOCK_FOOBAR_FILE_PATH },
+    await mockOpenFileSuccess(
+        electronApp,
+        MOCK_FOOBAR_FILE_PATH,
+        MOCK_FOOBAR_FILE_CONTENT,
     )
 
-    // Expect show in folder to default to disabled
-    await expect(
-        window.getByRole('button', {
-            name: /show in folder/i,
-        }),
-    ).toBeDisabled()
+    const showInFolderBtn = window.getByRole('button', {
+        name: /show in folder/i,
+    })
+
+    // Expect show in folder button to default to disabled
+    await expect(showInFolderBtn).toBeDisabled()
 
     // Click open file button
     await window.getByRole('button', { name: /open file/i }).click()
 
-    // Expect show in folder to become enabled
-    await expect(
-        window.getByRole('button', {
-            name: /show in folder/i,
-        }),
-    ).toBeEnabled()
+    // Expect show in folder button to become enabled
+    await expect(showInFolderBtn).toBeEnabled()
 
     await electronApp.close()
 })

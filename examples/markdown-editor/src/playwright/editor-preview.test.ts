@@ -12,10 +12,14 @@ test('markdown in editor generates HTML in preview', async () => {
 
     await disableUnsavedChangesDialog(electronApp)
 
+    const editor = window.getByRole('textbox')
     const preview = window.getByRole('article')
 
+    // Expect the editor to start focused
+    await expect(editor).toBeFocused()
+
     // Type markdown in the editor
-    await window.getByRole('textbox').fill(MOCK_FOOBAR_FILE_CONTENT)
+    await editor.fill(MOCK_FOOBAR_FILE_CONTENT)
 
     // Expect the correct HTML to be generated in the preview
     await expect(
@@ -35,10 +39,14 @@ test('standard markdown in editor generates HTML in preview', async () => {
 
     await disableUnsavedChangesDialog(electronApp)
 
+    const editor = window.getByRole('textbox')
     const preview = window.getByRole('article')
 
+    // Expect the editor to start focused
+    await expect(editor).toBeFocused()
+
     // Type markdown in the editor
-    await window.getByRole('textbox').fill(MOCK_BARBAZ_FILE_CONTENT)
+    await editor.fill(MOCK_BARBAZ_FILE_CONTENT)
 
     // Expect the correct HTML to be generated in the preview
     await expect(preview.getByRole('strong')).toHaveCount(4)
@@ -61,7 +69,11 @@ test('extended markdown in editor generates HTML in preview', async () => {
 
     await disableUnsavedChangesDialog(electronApp)
 
+    const editor = window.getByRole('textbox')
     const preview = window.getByRole('article')
+
+    // Expect the editor to start focused
+    await expect(editor).toBeFocused()
 
     // Type markdown in the editor
     await window.getByRole('textbox').fill(`# Extended Markdown Test

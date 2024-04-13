@@ -44,3 +44,36 @@ export const getBrowserOs = async (page: Page) => {
 
     return null
 }
+
+/**
+ * Mock open file dialog to successfully open a file.
+ * @param electronApp Electron application representation
+ * @param filePath Mocked file path
+ * @param markdownSrc Mocked file content
+ */
+export const mockOpenFileSuccess = async (
+    electronApp: ElectronApplication,
+    filePath: string,
+    markdownSaved: string,
+) =>
+    await electronApp.evaluate(
+        ({ ipcMain, BrowserWindow }, { filePath, markdownSaved }) => {
+            ipcMain.removeAllListeners('markdownopendialog')
+            ipcMain.once('markdownopendialog', async (e) => {
+                const win = BrowserWindow.fromWebContents(e.sender)
+
+                if (!win) {
+                    throw new Error(
+                        'BrowserWindow instance could not be found.',
+                    )
+                }
+
+                win.webContents.send(
+                    'markdownopensuccess',
+                    filePath,
+                    markdownSaved,
+                )
+            })
+        },
+        { filePath, markdownSaved },
+    )

@@ -7,8 +7,8 @@ import { sendMainErrorMessage } from './interfaces/mse'
 /**
  * Open a file and retrieve its contents.
  * @param win BrowserWindow instance
- * @param filePath The file path of the markdown file.
- * @returns The contents of the markdown file.
+ * @param filePath The file path of the markdown file
+ * @returns The contents of the markdown file
  */
 export const openFile = async (win: BrowserWindow, filePath: string) => {
     let fileContent
