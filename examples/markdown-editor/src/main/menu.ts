@@ -108,7 +108,7 @@ export const buildMenuTemplate = () => {
                 {
                     id: 'html-export',
                     label: 'Export as HTML',
-                    click: () => showHtmlExportDialogMain(),
+                    click: (_, win) => showHtmlExportDialogMain(win),
                 },
                 { type: 'separator' },
                 {
