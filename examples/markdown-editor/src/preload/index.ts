@@ -1,14 +1,14 @@
-import { MessageBoxReturnValue, contextBridge, ipcRenderer } from 'electron'
+import { contextBridge, ipcRenderer } from 'electron'
 
-import { colorModes } from '../common/types'
+import { colorModes, exitTypes } from '../common/types'
 
 export type PreloadApi = typeof API
 
 const API = {
     /**
      * Send a message to the main process on the "markdownchange" channel.
-     * This allows the renderer to check if the current markdown source has unsaved changes
-     * as the user types through the main process.
+     * This allows the renderer process to check if the current markdown source has unsaved
+     * changes as the user types through the main process.
      * @param markdownSrc Markdown source with potential changes
      * @returns A promise that will resolve to true if there are unsaved changes or false otherwise
      */
@@ -16,15 +16,27 @@ const API = {
         ipcRenderer.invoke('markdownchange', markdownSrc),
 
     /**
-     * Send a message to the main process on the "unsavedmarkdowncheck" channel and
-     * receive a result synchronously.
-     * This allows the renderer to check if the current markdown source has unsaved changes
-     * when unloading the window through the main process.
-     * @param markdownSrc Markdown source with potential changes
-     * @returns True if there are unsaved changes or false otherwise
+     * Send a message to the main process on the "windowcloseend" channel.
+     * This allows the renderer process to close the window.
      */
-    checkForUnsavedChanges: (markdownSrc: string): boolean =>
-        ipcRenderer.sendSync('unsavedmarkdowncheck', markdownSrc),
+    closeWindowEnd: () => {
+        ipcRenderer.send('windowcloseend')
+    },
+
+    /**
+     * Add a listener for the "appquitstart" channel.
+     * @param callback Function to be called when a new message arrives on the "appquitstart" channel
+     * @returns A function that will remove the added listener for the "appquitstart" channel when called
+     */
+    onAppQuitStart: (callback: () => void) => {
+        const listener = () => {
+            callback()
+        }
+
+        ipcRenderer.on('appquitstart', listener)
+
+        return () => ipcRenderer.removeListener('appquitstart', listener)
+    },
 
     /**
      * Add a listener for the "colormodemenu" channel.
@@ -94,11 +106,11 @@ const API = {
     },
 
     /**
-     * Add a listener for the "mainmarkdownopenrecent" channel.
+     * Add a listener for the "mainmarkdownopendialog" channel.
      * @param callback Function to be called when a new message arrives on the "mainmarkdownopendialog" channel
      * @returns A function that will remove the added listener for the "mainmarkdownopendialog" channel when called
      */
-    onMainMarkdownOpenDialog: (callback: () => void) => {
+    onMainMdOpenDialog: (callback: () => void) => {
         const listener = () => {
             callback()
         }
@@ -114,7 +126,7 @@ const API = {
      * @param callback Function to be called when a new message arrives on the "mainmarkdownopenrecent" channel
      * @returns A function that will remove the added listener for the "mainmarkdownopenrecent" channel when called
      */
-    onMainMarkdownOpenRecent: (callback: (recentFilePath: string) => void) => {
+    onMainMdOpenRecent: (callback: (recentFilePath: string) => void) => {
         const listener = (
             _: Electron.IpcRendererEvent,
             recentFilePath: string,
@@ -133,9 +145,12 @@ const API = {
      * @param callback Function to be called when a new message arrives on the "mainsavefile" channel
      * @returns A function that will remove the added listener for the "mainsavefile" channel when called
      */
-    onMainSaveFile: (callback: () => void) => {
-        const listener = () => {
-            callback()
+    onMainMdSave: (callback: (exitType?: exitTypes) => void) => {
+        const listener = (
+            _: Electron.IpcRendererEvent,
+            exitType?: exitTypes,
+        ) => {
+            callback(exitType)
         }
 
         ipcRenderer.on('mainmarkdownsave', listener)
@@ -148,7 +163,7 @@ const API = {
      * @param callback Function to be called when a new message arrives on the "markdownopensuccess" channel
      * @returns A function that will remove the added listener for the "markdownopensuccess" channel when called
      */
-    onOpenFileSuccess: (
+    onMdOpenSuccess: (
         callback: (filePath: string, markdownSaved: string) => void,
     ) => {
         const listener = (
@@ -169,7 +184,7 @@ const API = {
      * @param callback Function to be called when a new message arrives on the "markdownsavesuccess" channel
      * @returns A function that will remove the added listener for the "markdownsavesuccess" channel when called
      */
-    onSaveFileSuccess: (callback: () => void) => {
+    onMdSaveSuccess: (callback: () => void) => {
         const listener = () => {
             callback()
         }
@@ -180,8 +195,23 @@ const API = {
     },
 
     /**
+     * Add a listener for the "windowclosestart" channel.
+     * @param callback Function to be called when a new message arrives on the "windowclosestart" channel
+     * @returns A function that will remove the added listener for the "windowclosestart" channel when called
+     */
+    onWindowCloseStart: (callback: () => void) => {
+        const listener = () => {
+            callback()
+        }
+
+        ipcRenderer.on('windowclosestart', listener)
+
+        return () => ipcRenderer.removeListener('windowclosestart', listener)
+    },
+
+    /**
      * Send a message to the main process on the "markdownopenrecent" channel.
-     * This allows the renderer to open a recently opened file through the main process.
+     * This allows the renderer process to open a recently opened file through the main process.
      * @param markdownSrc Markdown source with potential changes
      */
     openRecentFile: (recentFilePath: string, currMarkdownSrc?: string) => {
@@ -189,18 +219,26 @@ const API = {
     },
 
     /**
-     * Send a message to the main process on the "markdownsave" channel.
-     * This allows the renderer to save a markdown file through the main process.
-     * @param markdownSrc Markdown source to save
-     * @param exitOnSave Flag that causes the window to close upon successful save if true
+     * Send a message to the main process on the "appquitend" channel.
+     * This allows the renderer process to close the window.
      */
-    saveFile: (markdownSrc: string, exitOnSave = false) => {
-        ipcRenderer.send('markdownsave', markdownSrc, exitOnSave)
+    quitAppFinish: () => {
+        ipcRenderer.send('appquitend')
+    },
+
+    /**
+     * Send a message to the main process on the "markdownsave" channel.
+     * This allows the renderer process to save a markdown file through the main process.
+     * @param markdownSrc Markdown source to save
+     * @param exitType Determines what type of exit process to take if defined
+     */
+    saveFile: (markdownSrc: string, exitType?: exitTypes) => {
+        ipcRenderer.send('markdownsave', markdownSrc, exitType)
     },
 
     /**
      * Send a message to the main process on the "markdownopendialog" channel.
-     * This allows the renderer to show the markdown file open dialog through the
+     * This allows the renderer process to show the markdown file open dialog through the
      * main process.
      * @param markdownSrc Markdown source with potential changes
      */
@@ -210,7 +248,7 @@ const API = {
 
     /**
      * Send a message to the main process on the "htmlexportdialog" channel.
-     * This allows the renderer to show the HTML export dialog through the main process.
+     * This allows the renderer process to show the HTML export dialog through the main process.
      * @param html HTML string produced by markdown
      */
     showHtmlExportDialog: (html: string) => {
@@ -219,7 +257,7 @@ const API = {
 
     /**
      * Send a message to the main process on the "folderopen" channel.
-     * This allows the renderer to open the folder the currently opened file is located
+     * This allows the renderer process to open the folder the currently opened file is located
      * in through the main process.
      */
     showInFolder: () => {
@@ -227,18 +265,16 @@ const API = {
     },
 
     /**
-     * Send a message to the main process on the "unsavedchangesdialog" channel and
-     * receive a result synchronously.
-     * This allows the renderer to open the unsaved changes dialog through the
+     * Send a message to the main process on the "unsavedchangesdialog" channel.
+     * This allows the renderer process to open the unsaved changes dialog through the
      * main process.
-     * @returns An Electron message box return value
      */
-    showUnsavedChangesDialog: (): MessageBoxReturnValue =>
-        ipcRenderer.sendSync('unsavedchangesdialog'),
+    showUnsavedChangesDialog: (exitType: exitTypes) =>
+        ipcRenderer.send('unsavedchangesdialog', exitType),
 
     /**
      * Send a message to the main process on the "colormodebutton" channel.
-     * This allows the renderer to sync the color mode menu items with the color mode
+     * This allows the renderer process to sync the color mode menu items with the color mode
      * button through the main process.
      * @param colorMode Color mode type that determines which color mode to use
      */

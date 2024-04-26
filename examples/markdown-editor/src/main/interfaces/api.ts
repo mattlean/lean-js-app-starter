@@ -2,19 +2,37 @@
  * The API is for receiving messages on the main process that originate from the
  * renderer process.
  */
-import { BrowserWindow, dialog, ipcMain } from 'electron'
+import { BrowserWindow, app, dialog, ipcMain } from 'electron'
 
-import { colorModes } from '../../common/types'
+import { colorModes, exitTypes } from '../../common/types'
 import { isCurrFileChanged, setCurrFile } from '../currFile'
 import setColorModeMenu from '../menu'
 import { openFile, showFileOpenDialog, showInFolder } from '../open'
 import { saveFile, showHtmlExportDialog } from '../save'
+import { saveFileMain } from './mse'
 
 /**
  * Setup the listeners on the main process so they can handle messages sent from
  * the renderer process.
  */
 export const setupApi = () => {
+    /**
+     * Listen for renderer process requests to finish the app quitting process.
+     */
+    ipcMain.on('appquitend', (e) => {
+        const win = BrowserWindow.fromWebContents(e.sender)
+
+        if (win) {
+            // Remove close event listener so the window can be closed
+            win.removeAllListeners('close')
+            win.close()
+        }
+
+        // Remove before-quit event listener so the app can be quit
+        app.removeAllListeners('before-quit')
+        app.quit()
+    })
+
     /**
      * Listen for renderer process requests to sync the color mode menu items with the
      * color mode button.
@@ -161,7 +179,7 @@ export const setupApi = () => {
      */
     ipcMain.on(
         'markdownsave',
-        async (e, markdownSrc: string, exitOnSave?: boolean) => {
+        async (e, markdownSrc: string, exitType?: exitTypes) => {
             const win = BrowserWindow.fromWebContents(e.sender)
 
             if (!win) {
@@ -171,9 +189,12 @@ export const setupApi = () => {
             const result = await saveFile(win, markdownSrc)
             if (result) {
                 win.webContents.send('markdownsavesuccess')
+                win.removeAllListeners('close')
 
-                if (exitOnSave) {
-                    win.close()
+                if (exitType === 'quitApp') {
+                    ipcMain.emit('appquitend', e)
+                } else {
+                    ipcMain.emit('windowcloseend', e)
                 }
             }
         },
@@ -181,29 +202,43 @@ export const setupApi = () => {
 
     /**
      * Listen for renderer process requests to open the unsaved changes dialog.
-     * This will synchronously result with an Electron message box return value.
      */
-    ipcMain.on('unsavedchangesdialog', async (e) => {
-        const result = await dialog.showMessageBox({
-            message: 'Do you want to save the changes you made?',
-            detail: `Your changes will be lost if you don't save them.`,
-            buttons: ['Save', `Don't Save`, 'Cancel'],
-        })
-
-        e.returnValue = result
-    })
-
-    /**
-     * Listen for renderer process requests to check if there are unsaved markdown source changes.
-     * This will synchronously result with true if there are unsaved changes or false otherwise.
-     */
-    ipcMain.on('unsavedmarkdowncheck', (e, markdownSrc: string) => {
+    ipcMain.on('unsavedchangesdialog', async (e, exitType: exitTypes) => {
         const win = BrowserWindow.fromWebContents(e.sender)
 
         if (!win) {
             return
         }
 
-        e.returnValue = isCurrFileChanged(markdownSrc)
+        const { response } = await dialog.showMessageBox({
+            message: 'Do you want to save the changes you made?',
+            detail: `Your changes will be lost if you don't save them.`,
+            buttons: ['Save', `Don't Save`, 'Cancel'],
+        })
+
+        if (response === 0) {
+            saveFileMain(win, exitType)
+        } else if (response === 1) {
+            win.removeAllListeners('close')
+
+            if (exitType === 'quitApp') {
+                ipcMain.emit('appquitend', e)
+            } else {
+                ipcMain.emit('windowcloseend', e)
+            }
+        }
+    })
+
+    /**
+     * Listen for renderer process requests to finish the window closing process.
+     */
+    ipcMain.on('windowcloseend', (e) => {
+        const win = BrowserWindow.fromWebContents(e.sender)
+
+        if (win) {
+            // Remove close event listener so the window can be closed
+            win.removeAllListeners('close')
+            win.close()
+        }
     })
 }

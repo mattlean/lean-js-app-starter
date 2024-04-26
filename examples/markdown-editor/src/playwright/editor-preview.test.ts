@@ -4,13 +4,13 @@ import {
     MOCK_BARBAZ_FILE_CONTENT,
     MOCK_FOOBAR_FILE_CONTENT,
 } from '../common/MOCK_DATA'
-import { disableUnsavedChangesDialog } from './util'
+import { skipUnsavedChangesDialog } from './util'
 
 test('markdown in editor generates HTML in preview', async () => {
     const electronApp = await electron.launch({ args: ['.'] })
     const window = await electronApp.firstWindow()
 
-    await disableUnsavedChangesDialog(electronApp)
+    await skipUnsavedChangesDialog(electronApp)
 
     const editor = window.getByRole('textbox')
     const preview = window.getByRole('article')
@@ -37,7 +37,7 @@ test('standard markdown in editor generates HTML in preview', async () => {
     const electronApp = await electron.launch({ args: ['.'] })
     const window = await electronApp.firstWindow()
 
-    await disableUnsavedChangesDialog(electronApp)
+    await skipUnsavedChangesDialog(electronApp)
 
     const editor = window.getByRole('textbox')
     const preview = window.getByRole('article')
@@ -67,7 +67,7 @@ test('extended markdown in editor generates HTML in preview', async () => {
     const electronApp = await electron.launch({ args: ['.'] })
     const window = await electronApp.firstWindow()
 
-    await disableUnsavedChangesDialog(electronApp)
+    await skipUnsavedChangesDialog(electronApp)
 
     const editor = window.getByRole('textbox')
     const preview = window.getByRole('article')
@@ -76,7 +76,7 @@ test('extended markdown in editor generates HTML in preview', async () => {
     await expect(editor).toBeFocused()
 
     // Type markdown in the editor
-    await window.getByRole('textbox').fill(`# Extended Markdown Test
+    await editor.fill(`# Extended Markdown Test
 
 ## Autolink literals
 

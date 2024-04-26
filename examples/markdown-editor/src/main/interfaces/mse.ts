@@ -7,20 +7,49 @@
  */
 import { BrowserWindow } from 'electron'
 
-import { colorModes } from '../../common/types'
+import { colorModes, exitTypes } from '../../common/types'
 
 /**
- * Tell the renderer process to send an API request to initiate the save process.
+ * Tell the renderer process to start the window closing process.
  * @param win BrowserWindow instance
  */
-export const saveFileMain = (win?: BrowserWindow) => {
+export const closeWindowStart = (win?: BrowserWindow) => {
     const w = win ?? BrowserWindow.getFocusedWindow()
 
     if (!w) {
         return
     }
 
-    w.webContents.send('mainmarkdownsave')
+    w.webContents.send('windowclosestart')
+}
+
+/**
+ * Tell the renderer process to start the app quitting process.
+ * @param win BrowserWindow instance
+ */
+export const quitAppStart = (win?: BrowserWindow) => {
+    const w = win ?? BrowserWindow.getFocusedWindow()
+
+    if (!w) {
+        return
+    }
+
+    w.webContents.send('appquitstart')
+}
+
+/**
+ * Tell the renderer process to send an API request to initiate the save process.
+ * @param win BrowserWindow instance
+ * @param exitType Determines what type of exit process to take if defined
+ */
+export const saveFileMain = (win?: BrowserWindow, exitType?: exitTypes) => {
+    const w = win ?? BrowserWindow.getFocusedWindow()
+
+    if (!w) {
+        return
+    }
+
+    w.webContents.send('mainmarkdownsave', exitType)
 }
 
 /**

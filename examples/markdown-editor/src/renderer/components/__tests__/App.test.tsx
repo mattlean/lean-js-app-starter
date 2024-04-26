@@ -10,8 +10,9 @@ beforeEach(() => {
             // Markdown changes will always be boolean
             () => new Promise((resolve) => resolve(true)),
         ),
-        checkForUnsavedChanges: jest.fn(),
         /* eslint-disable @typescript-eslint/ban-ts-comment, @typescript-eslint/no-empty-function */
+        // @ts-ignore
+        onAppQuitStart: jest.fn(() => () => {}),
         // @ts-ignore
         onColorModeMenu: jest.fn(() => () => {}),
         // @ts-ignore
@@ -21,20 +22,18 @@ beforeEach(() => {
         // @ts-ignore
         onMainHtmlExportDialog: jest.fn(() => () => {}),
         // @ts-ignore
-        onMainMarkdownOpenDialog: jest.fn(() => () => {}),
+        onMainMdOpenDialog: jest.fn(() => () => {}),
         // @ts-ignore
-        onMainSaveFile: jest.fn(() => () => {}),
+        onMainMdOpenRecent: jest.fn(() => () => {}),
         // @ts-ignore
-        onOpenFileSuccess: jest.fn(() => () => {}),
+        onMainMdSave: jest.fn(() => () => {}),
         // @ts-ignore
-        onSaveFileSuccess: jest.fn(() => () => {}),
+        onMdOpenSuccess: jest.fn(() => () => {}),
+        // @ts-ignore
+        onMdSaveSuccess: jest.fn(() => () => {}),
+        // @ts-ignore
+        onWindowCloseStart: jest.fn(() => () => {}),
         /* eslint-enable @typescript-eslint/ban-ts-comment, @typescript-eslint/no-empty-function */
-        saveFile: jest.fn(),
-        showFileOpenDialog: jest.fn(),
-        showHtmlExportDialog: jest.fn(),
-        showInFolder: jest.fn(),
-        showUnsavedChangesDialog: jest.fn(),
-        syncColorModeMenu: jest.fn(),
     }
 
     // Allow onbeforeunload to be redefined so Jest doesn't throw errors

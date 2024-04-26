@@ -6,6 +6,7 @@ import installExtension, {
 
 import { setupCurrFile } from './currFile'
 import { setupApi } from './interfaces/api'
+import { quitAppStart } from './interfaces/mse'
 import { buildMenuTemplate } from './menu'
 import { createWindow } from './window'
 
@@ -44,6 +45,17 @@ app.on('open-file', (e, path) => {
     }
 
     win.webContents.send('mainmarkdownopenrecent', path)
+})
+
+app.on('before-quit', (e) => {
+    const win = BrowserWindow.getAllWindows()[0]
+
+    if (win) {
+        // Prevent window from closing and have renderer process determine if the unsaved
+        // changes dialog should appear or if the app should skip straight to quitting
+        e.preventDefault()
+        quitAppStart(win)
+    }
 })
 
 // Quit when all windows are closed, except on macOS. There, it's common

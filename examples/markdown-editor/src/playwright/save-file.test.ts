@@ -9,13 +9,13 @@ import {
     MOCK_FOOBAR_FILE_CONTENT,
     MOCK_FOOBAR_FILE_PATH,
 } from '../common/MOCK_DATA'
-import { disableUnsavedChangesDialog, mockOpenFileSuccess } from './util'
+import { mockOpenFileSuccess, skipUnsavedChangesDialog } from './util'
 
 /**
  * Click the save menu item.
  * @param electronApp Electron application representation
  */
-const clickSaveMenuItem = async (electronApp: ElectronApplication) =>
+const clickSaveMenuItem = (electronApp: ElectronApplication) =>
     electronApp.evaluate(({ BrowserWindow, Menu }) => {
         const appMenu = Menu.getApplicationMenu()
 
@@ -36,17 +36,17 @@ const clickSaveMenuItem = async (electronApp: ElectronApplication) =>
  * Mock successful save file process.
  * @param electronApp Electron application representation
  */
-const mockSaveFileSuccess = async (electronApp: ElectronApplication) =>
-    await electronApp.evaluate(({ ipcMain, BrowserWindow }) => {
+const mockSaveFileSuccess = (electronApp: ElectronApplication) =>
+    electronApp.evaluate(({ ipcMain, BrowserWindow }) => {
         ipcMain.removeAllListeners('markdownsave')
         ipcMain.once('markdownsave', async (e) => {
-            const win = BrowserWindow.fromWebContents(e.sender)
+            const browserWin = BrowserWindow.fromWebContents(e.sender)
 
-            if (!win) {
+            if (!browserWin) {
                 throw new Error('BrowserWindow instance could not be found.')
             }
 
-            win.webContents.send('markdownsavesuccess')
+            browserWin.webContents.send('markdownsavesuccess')
         })
     })
 
@@ -54,7 +54,7 @@ test('save new file from save menu item', async () => {
     const electronApp = await electron.launch({ args: ['.'] })
     const window = await electronApp.firstWindow()
 
-    await disableUnsavedChangesDialog(electronApp)
+    await skipUnsavedChangesDialog(electronApp)
 
     await mockSaveFileSuccess(electronApp)
 
@@ -83,7 +83,7 @@ test('save new file from save file button', async () => {
     const electronApp = await electron.launch({ args: ['.'] })
     const window = await electronApp.firstWindow()
 
-    await disableUnsavedChangesDialog(electronApp)
+    await skipUnsavedChangesDialog(electronApp)
 
     await mockSaveFileSuccess(electronApp)
 
@@ -113,7 +113,7 @@ test('save changes to an existing file', async () => {
     const electronApp = await electron.launch({ args: ['.'] })
     const window = await electronApp.firstWindow()
 
-    await disableUnsavedChangesDialog(electronApp)
+    await skipUnsavedChangesDialog(electronApp)
 
     await mockOpenFileSuccess(
         electronApp,
@@ -154,7 +154,7 @@ test('cancel save file dialog', async () => {
     const electronApp = await electron.launch({ args: ['.'] })
     const window = await electronApp.firstWindow()
 
-    await disableUnsavedChangesDialog(electronApp)
+    await skipUnsavedChangesDialog(electronApp)
 
     // Mock save file dialog with cancel action
     await electronApp.evaluate(({ ipcMain }) => {

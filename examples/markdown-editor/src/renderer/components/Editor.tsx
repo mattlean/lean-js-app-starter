@@ -21,7 +21,7 @@ export default function Editor({
     const textareaRef = useRef<HTMLTextAreaElement>(null)
 
     useEffect(() => {
-        const removeOpenFileSuccessListener = window.api.onOpenFileSuccess(
+        const removeOpenFileSuccessListener = window.api.onMdOpenSuccess(
             (newFilePath, newMarkdown) => {
                 setFilePath(newFilePath)
                 setMarkdown(newMarkdown)

@@ -3,6 +3,7 @@ import { shell } from 'electron'
 import path from 'path'
 
 import { resetCurrFile } from './currFile'
+import { closeWindowStart } from './interfaces/mse'
 
 const BUNDLED_PRELOAD_BUILD_PATH = path.join(__dirname, '../preload')
 const BUNDLED_RENDERER_BUILD_PATH = path.join(__dirname, '../renderer')
@@ -33,7 +34,15 @@ export const createWindow = () => {
         win.focus()
     })
 
+    win.on('close', (e) => {
+        // Prevent window from closing and have renderer process determine if the unsaved
+        // changes dialog should appear or if the window should skip straight to closing
+        e.preventDefault()
+        closeWindowStart(win)
+    })
+
     win.on('closed', () => {
+        // "Close" currently open file when window is closed
         resetCurrFile()
     })
 

@@ -11,7 +11,7 @@ import {
     MOCK_FOOBAR_FILE_CONTENT,
     MOCK_FOOBAR_FILE_PATH,
 } from '../common/MOCK_DATA'
-import { disableUnsavedChangesDialog, mockOpenFileSuccess } from './util'
+import { mockOpenFileSuccess, skipUnsavedChangesDialog } from './util'
 
 /**
  * Click the open menu item.
@@ -38,7 +38,7 @@ test('show open file dialog from open menu item', async () => {
     const electronApp = await electron.launch({ args: ['.'] })
     const window = await electronApp.firstWindow()
 
-    await disableUnsavedChangesDialog(electronApp)
+    await skipUnsavedChangesDialog(electronApp)
 
     await mockOpenFileSuccess(
         electronApp,
@@ -74,7 +74,7 @@ test('show open file dialog from open file button', async () => {
     const electronApp = await electron.launch({ args: ['.'] })
     const window = await electronApp.firstWindow()
 
-    await disableUnsavedChangesDialog(electronApp)
+    await skipUnsavedChangesDialog(electronApp)
 
     await mockOpenFileSuccess(
         electronApp,
@@ -133,7 +133,7 @@ test('open different file while a file is currently open', async () => {
     const electronApp = await electron.launch({ args: ['.'] })
     const window = await electronApp.firstWindow()
 
-    await disableUnsavedChangesDialog(electronApp)
+    await skipUnsavedChangesDialog(electronApp)
 
     // Mock open file dialog to successfully open first file
     await mockOpenFileSuccess(

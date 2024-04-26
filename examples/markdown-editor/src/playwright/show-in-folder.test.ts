@@ -4,16 +4,23 @@ import {
     MOCK_FOOBAR_FILE_CONTENT,
     MOCK_FOOBAR_FILE_PATH,
 } from '../common/MOCK_DATA'
-import { disableUnsavedChangesDialog, mockOpenFileSuccess } from './util'
+import { mockOpenFileSuccess, skipUnsavedChangesDialog } from './util'
 
 test('start show in folder process from show in folder menu item', async () => {
     const electronApp = await electron.launch({ args: ['.'] })
-    await electronApp.firstWindow()
+    const window = await electronApp.firstWindow()
 
     // Mock show in folder process
     await electronApp.evaluate(({ ipcMain }) => {
         ipcMain.removeAllListeners('folderopen')
     })
+
+    // Expect show in folder button to be visible once frontend has loaded
+    await expect(
+        window.getByRole('button', {
+            name: /show in folder/i,
+        }),
+    ).toBeDisabled()
 
     // Click the show in folder menu item
     const showInFolderResult = await electronApp.evaluate(({ Menu }) => {
@@ -56,7 +63,7 @@ test('show in folder button becomes enabled after file is opened', async () => {
     const electronApp = await electron.launch({ args: ['.'] })
     const window = await electronApp.firstWindow()
 
-    await disableUnsavedChangesDialog(electronApp)
+    await skipUnsavedChangesDialog(electronApp)
 
     await mockOpenFileSuccess(
         electronApp,

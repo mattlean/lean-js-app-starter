@@ -1,6 +1,7 @@
 import { useEffect, useReducer, useRef, useState } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 
+import { exitTypes } from '../../common/types'
 import { INITIAL_STATE, errorMessageReducer } from '../errorMessageReducer'
 import Editor from './Editor'
 import ErrorMessage from './ErrorMessage'
@@ -20,65 +21,73 @@ export default function App() {
     const refPreview = useRef<HTMLElement>(null)
 
     useEffect(() => {
-        window.onbeforeunload = (e) => {
-            const hasChangesMain = window.api.checkForUnsavedChanges(markdown)
-
-            if (hasChangesMain) {
-                const result = window.api.showUnsavedChangesDialog()
-
-                if (result.response === 0) {
-                    window.api.saveFile(markdown, true)
-                    e.returnValue = 'Saved unsaved changes dialog.'
-                } else if (result.response === 2) {
-                    e.returnValue = 'Cancelled unsaved changes dialog.'
+        const removeWindowCloseStartListener = window.api.onWindowCloseStart(
+            () => {
+                if (hasChanges) {
+                    window.api.showUnsavedChangesDialog('closeWin')
+                } else {
+                    window.api.closeWindowEnd()
                 }
-            }
-        }
-
-        return () => {
-            window.onbeforeunload = null
-        }
-    }, [hasChanges, markdown])
-
-    useEffect(() => {
-        const removeMainMarkdownOpenDialogListener =
-            window.api.onMainMarkdownOpenDialog(() =>
-                window.api.showFileOpenDialog(markdown),
-            )
-
-        return () => {
-            removeMainMarkdownOpenDialogListener()
-        }
-    }, [markdown])
-
-    useEffect(() => {
-        const removeMainMarkdownOpenRecentListener =
-            window.api.onMainMarkdownOpenRecent((recentFilePath) =>
-                window.api.openRecentFile(recentFilePath, markdown),
-            )
-
-        return () => {
-            removeMainMarkdownOpenRecentListener()
-        }
-    }, [markdown])
-
-    useEffect(() => {
-        const removeMainSaveFileListener = window.api.onMainSaveFile(() =>
-            window.api.saveFile(markdown),
+            },
         )
 
         return () => {
-            removeMainSaveFileListener()
+            removeWindowCloseStartListener()
+        }
+    }, [hasChanges])
+
+    useEffect(() => {
+        const removeAppQuitStartListener = window.api.onAppQuitStart(() => {
+            if (hasChanges) {
+                window.api.showUnsavedChangesDialog('quitApp')
+            } else {
+                window.api.quitAppFinish()
+            }
+        })
+
+        return () => {
+            removeAppQuitStartListener()
+        }
+    }, [hasChanges])
+
+    useEffect(() => {
+        const removeMainMdOpenDialogListener = window.api.onMainMdOpenDialog(
+            () => window.api.showFileOpenDialog(markdown),
+        )
+
+        return () => {
+            removeMainMdOpenDialogListener()
         }
     }, [markdown])
 
     useEffect(() => {
-        const removeSaveFileSuccessListener = window.api.onSaveFileSuccess(() =>
+        const removeMainMdOpenRecentListener = window.api.onMainMdOpenRecent(
+            (recentFilePath) =>
+                window.api.openRecentFile(recentFilePath, markdown),
+        )
+
+        return () => {
+            removeMainMdOpenRecentListener()
+        }
+    }, [markdown])
+
+    useEffect(() => {
+        const removeMainMdSaveListener = window.api.onMainMdSave(
+            (exitType?: exitTypes) => window.api.saveFile(markdown, exitType),
+        )
+
+        return () => {
+            removeMainMdSaveListener()
+        }
+    }, [markdown])
+
+    useEffect(() => {
+        const removeMdSaveSuccessListener = window.api.onMdSaveSuccess(() =>
             setHasChanges(false),
         )
 
         return () => {
-            removeSaveFileSuccessListener()
+            removeMdSaveSuccessListener()
         }
     }, [])
 
