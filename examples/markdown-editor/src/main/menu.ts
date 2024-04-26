@@ -90,13 +90,14 @@ export const buildMenuTemplate = () => {
                     },
                     accelerator: 'CmdOrCtrl+O',
                 },
-                {
-                    label: 'Open Recent',
-                    role: 'recentDocuments',
-                    submenu: [
-                        { label: 'Clear Recent', role: 'clearRecentDocuments' },
-                    ],
-                },
+                // TODO: Figure out why this doesn't work.
+                // {
+                //     label: 'Open Recent',
+                //     role: 'recentDocuments',
+                //     submenu: [
+                //         { label: 'Clear Recent', role: 'clearRecentDocuments' },
+                //     ],
+                // },
                 { type: 'separator' },
                 {
                     id: 'save',

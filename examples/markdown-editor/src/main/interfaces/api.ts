@@ -193,7 +193,7 @@ export const setupApi = () => {
 
                 if (exitType === 'quitApp') {
                     ipcMain.emit('appquitend', e)
-                } else {
+                } else if (exitType === 'closeWin') {
                     ipcMain.emit('windowcloseend', e)
                 }
             }
