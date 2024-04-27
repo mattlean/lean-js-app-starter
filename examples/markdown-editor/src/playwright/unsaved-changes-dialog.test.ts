@@ -36,7 +36,7 @@ const getBrowserWindow = (electronApp: ElectronApplication) =>
  *     or not the window is closed
  */
 const isWindowClosed = (electronApp: ElectronApplication) =>
-    electronApp.evaluateHandle(({ ipcMain }) => {
+    electronApp.evaluateHandle(({ app, ipcMain }) => {
         const handle = { isClosed: false }
 
         ipcMain.prependListener('appquitend', () => {
@@ -46,6 +46,11 @@ const isWindowClosed = (electronApp: ElectronApplication) =>
         ipcMain.prependListener('windowcloseend', () => {
             handle.isClosed = true
         })
+
+        // Remove all listeners for "window-all-closed" event to get tests working
+        // on Windows. Without this, the app will close before JSHandle values can
+        // be asserted on Windows, causing tests to fail.
+        app.removeAllListeners('window-all-closed')
 
         return handle
     })
@@ -66,8 +71,6 @@ const mockSaveFileCloseSuccess = (electronApp: ElectronApplication) =>
 
             if (exitType === 'closeWin') {
                 ipcMain.emit('windowcloseend', e)
-            } else if (exitType === 'quitApp') {
-                ipcMain.emit('appquitend', e)
             } else {
                 throw new Error(`Encountered unexpected exitType: ${exitType}`)
             }
