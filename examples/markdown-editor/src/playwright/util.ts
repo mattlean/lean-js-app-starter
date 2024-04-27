@@ -66,6 +66,16 @@ export const mockOpenFileSuccess = (
     )
 
 /**
+ * Reset the active color mode to system preference mode.
+ * @param page Playwright Page instnace
+ */
+export const resetColorMode = (page: Page) =>
+    page.evaluate(() => {
+        localStorage.removeItem('theme')
+        window.api.syncColorModeMenu('sysPref')
+    })
+
+/**
  * Disable unsaved changes dialog. Useful for exiting the test application instance without
  * interruption when a test ends.
  * @param electronApp Electron application representation

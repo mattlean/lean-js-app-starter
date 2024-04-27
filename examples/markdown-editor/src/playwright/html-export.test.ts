@@ -1,27 +1,16 @@
 import { _electron as electron, expect, test } from '@playwright/test'
 
-import { enableConsole } from './util'
-
 test('start html export process from html export menu item', async () => {
     const electronApp = await electron.launch({ args: ['.'] })
     const window = await electronApp.firstWindow()
-    enableConsole(electronApp)
 
     // Mock HTML export process and return handle to htmlExportDialogCalls
     const handle = await electronApp.evaluateHandle(async ({ ipcMain }) => {
         const result = { htmlExportDialogCalls: 0 }
-        console.log(
-            'htmlExportDialogCalls init: ',
-            result.htmlExportDialogCalls,
-        )
 
         ipcMain.removeAllListeners('htmlexportdialog')
         ipcMain.on('htmlexportdialog', () => {
             result.htmlExportDialogCalls += 1
-            console.log(
-                'htmlExportDialogCalls incremented: ',
-                result.htmlExportDialogCalls,
-            )
         })
 
         return result
@@ -54,7 +43,6 @@ test('start html export process from html export menu item', async () => {
         }
 
         htmlExportMenuItem.click(undefined, BrowserWindow.getAllWindows()[0])
-        console.log('html export menu item should have been clicked')
     })
 
     // Access handle's htmlExportDialogCalls property again to see if it has changed

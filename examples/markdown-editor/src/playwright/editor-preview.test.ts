@@ -4,12 +4,13 @@ import {
     MOCK_BARBAZ_FILE_CONTENT,
     MOCK_FOOBAR_FILE_CONTENT,
 } from '../common/MOCK_DATA'
-import { skipUnsavedChangesDialog } from './util'
+import { resetColorMode, skipUnsavedChangesDialog } from './util'
 
 test('markdown in editor generates HTML in preview', async () => {
     const electronApp = await electron.launch({ args: ['.'] })
     const window = await electronApp.firstWindow()
 
+    await resetColorMode(window)
     await skipUnsavedChangesDialog(electronApp)
 
     const editor = window.getByRole('textbox')
@@ -37,6 +38,7 @@ test('standard markdown in editor generates HTML in preview', async () => {
     const electronApp = await electron.launch({ args: ['.'] })
     const window = await electronApp.firstWindow()
 
+    await resetColorMode(window)
     await skipUnsavedChangesDialog(electronApp)
 
     const editor = window.getByRole('textbox')
@@ -67,6 +69,7 @@ test('extended markdown in editor generates HTML in preview', async () => {
     const electronApp = await electron.launch({ args: ['.'] })
     const window = await electronApp.firstWindow()
 
+    await resetColorMode(window)
     await skipUnsavedChangesDialog(electronApp)
 
     const editor = window.getByRole('textbox')

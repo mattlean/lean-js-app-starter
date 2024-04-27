@@ -1,22 +1,12 @@
 import {
     ElectronApplication,
-    Page,
     _electron as electron,
     expect,
     test,
 } from '@playwright/test'
 
 import { colorModes } from '../common/types'
-
-/**
- * Reset the active color mode.
- * @param page Playwright Page instnace
- */
-const resetColorMode = (page: Page) =>
-    page.evaluate(() => {
-        localStorage.removeItem('theme')
-        window.api.syncColorModeMenu('sysPref')
-    })
+import { resetColorMode } from './util'
 
 /**
  * Get the color mode menu item.
@@ -65,6 +55,7 @@ const clickColorModeSubmenuItem = (
 test('color mode defaults to system preference mode', async () => {
     const electronApp = await electron.launch({ args: ['.'] })
     const window = await electronApp.firstWindow()
+
     await resetColorMode(window)
 
     const colorModeMenuItem = await getColorModeMenuItem(electronApp)
@@ -100,6 +91,8 @@ test('color mode is light when system preference mode is active and the OS is se
     })
     const window = await electronApp.firstWindow()
 
+    await resetColorMode(window)
+
     const colorModeMenuItem = await getColorModeMenuItem(electronApp)
 
     // eslint-disable-next-line playwright/no-conditional-in-test
@@ -131,6 +124,8 @@ test('color mode is dark when system preference mode is active and the OS is set
     })
     const window = await electronApp.firstWindow()
 
+    await resetColorMode(window)
+
     const colorModeMenuItem = await getColorModeMenuItem(electronApp)
 
     // eslint-disable-next-line playwright/no-conditional-in-test
@@ -158,6 +153,7 @@ test('color mode is dark when system preference mode is active and the OS is set
 test('active color mode submenu item switches to light mode when it is selected', async () => {
     const electronApp = await electron.launch({ args: ['.'] })
     const window = await electronApp.firstWindow()
+
     await resetColorMode(window)
 
     let colorModeMenuItem = await getColorModeMenuItem(electronApp)
@@ -208,6 +204,7 @@ test('active color mode submenu item switches to light mode when it is selected'
 test('active color mode submenu item switches to dark mode when it is selected', async () => {
     const electronApp = await electron.launch({ args: ['.'] })
     const window = await electronApp.firstWindow()
+
     await resetColorMode(window)
 
     let colorModeMenuItem = await getColorModeMenuItem(electronApp)
@@ -258,6 +255,7 @@ test('active color mode submenu item switches to dark mode when it is selected',
 test('active color mode submenu item switches to system preference mode when it is selected', async () => {
     const electronApp = await electron.launch({ args: ['.'] })
     const window = await electronApp.firstWindow()
+
     await resetColorMode(window)
 
     let colorModeMenuItem = await getColorModeMenuItem(electronApp)
@@ -326,6 +324,7 @@ test('active color mode submenu item switches to system preference mode when it 
 test('active color mode submenu item is light mode when color mode button is set to light mode', async () => {
     const electronApp = await electron.launch({ args: ['.'] })
     const window = await electronApp.firstWindow()
+
     await resetColorMode(window)
 
     let colorModeMenuItem = await getColorModeMenuItem(electronApp)
@@ -376,6 +375,7 @@ test('active color mode submenu item is light mode when color mode button is set
 test('active color mode submenu item is dark mode when color mode button is set to dark mode', async () => {
     const electronApp = await electron.launch({ args: ['.'] })
     const window = await electronApp.firstWindow()
+
     await resetColorMode(window)
 
     let colorModeMenuItem = await getColorModeMenuItem(electronApp)
@@ -426,6 +426,7 @@ test('active color mode submenu item is dark mode when color mode button is set 
 test('active color mode submenu item is system preference mode when color mode button is set to system preference mode', async () => {
     const electronApp = await electron.launch({ args: ['.'] })
     const window = await electronApp.firstWindow()
+
     await resetColorMode(window)
 
     let colorModeMenuItem = await getColorModeMenuItem(electronApp)

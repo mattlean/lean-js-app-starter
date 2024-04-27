@@ -66,6 +66,8 @@ const mockSaveFileCloseSuccess = (electronApp: ElectronApplication) =>
 
             if (exitType === 'closeWin') {
                 ipcMain.emit('windowcloseend', e)
+            } else if (exitType === 'quitApp') {
+                ipcMain.emit('appquitend', e)
             } else {
                 throw new Error(`Encountered unexpected exitType: ${exitType}`)
             }
@@ -393,7 +395,7 @@ test('app remains open when unsaved changes dialog\'s "Cancel" option is selecte
     expect(markdownSaveCalls).toBe(0)
 
     // Expect window to remain open
-    await expect(isClosed).toBe(false)
+    expect(isClosed).toBe(false)
 
     await skipUnsavedChangesDialog(electronApp)
     await electronApp.close()
@@ -452,7 +454,7 @@ test('unsaved changes dialog does not appear when changes are not present in the
     expect(markdownSaveCalls).toBe(0)
 
     // Expect window to be closed after the save occurred
-    await expect(isClosed).toBe(true)
+    expect(isClosed).toBe(true)
 
     await electronApp.close()
 })

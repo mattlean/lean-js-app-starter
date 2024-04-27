@@ -5,6 +5,8 @@ import {
     test,
 } from '@playwright/test'
 
+import { resetColorMode } from './util'
+
 /**
  * Click the focus mode menu item.
  * @param electronApp Electron application representation
@@ -28,6 +30,8 @@ const clickFocusModeMenuItem = (electronApp: ElectronApplication) =>
 test('focus mode activates when the menu item is clicked the first time', async () => {
     const electronApp = await electron.launch({ args: ['.'] })
     const window = await electronApp.firstWindow()
+
+    await resetColorMode(window)
 
     // Expect top bar to be visible
     await expect(window.getByRole('navigation')).toBeVisible()
