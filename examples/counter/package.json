@@ -3,6 +3,8 @@
     "version": "0.2.0",
     "description": "",
     "main": "build/app.js",
+    "author": "Matthew Lean <matt@mattlean.com> (https://mattlean.com)",
+    "license": "MIT",
     "scripts": {
         "build": "webpack --mode development",
         "build:debug": "node --inspect-brk=0.0.0.0:9231 node_modules/.bin/webpack --mode development",
@@ -26,7 +28,6 @@
         "test:debug": "node --inspect-brk=0.0.0.0:9230 node_modules/.bin/jest --runInBand",
         "test:watch": "npm run test -- --watch || npm run test -- --watchAll"
     },
-    "author": "",
     "dependencies": {
         "@babel/cli": "^7.21.5",
         "@babel/core": "^7.22.1",

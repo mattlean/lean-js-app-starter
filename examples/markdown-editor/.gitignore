@@ -4,6 +4,7 @@
 /playwright/.cache/
 build/
 coverage/
+dist/
 node_modules/
 .env
 stats.json

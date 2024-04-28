@@ -3,6 +3,8 @@
     "version": "0.1.1-experimental.9",
     "description": "webpack configuration parts for webpack config compositions",
     "main": "index.js",
+    "author": "Matthew Lean <matt@mattlean.com> (https://mattlean.com)",
+    "license": "MIT",
     "scripts": {
         "format": "npm run format:check",
         "format:check": "prettier --check .",
@@ -15,8 +17,6 @@
         "url": "https://github.com/mattlean/lean-js-app-starter.git",
         "directory": "ljas-webpack"
     },
-    "author": "Matthew Lean <matt@mattlean.com> (https://mattlean.com)",
-    "license": "MIT",
     "bugs": {
         "url": "https://github.com/mattlean/lean-js-app-starter/issues"
     },

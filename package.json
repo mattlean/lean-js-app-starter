@@ -2,6 +2,8 @@
     "name": "lean-js-app-starter",
     "version": "0.2.0",
     "description": "",
+    "author": "Matthew Lean <matt@mattlean.com> (https://mattlean.com)",
+    "license": "MIT",
     "scripts": {
         "format": "npm run format:check",
         "format:check": "prettier --check .",
@@ -15,12 +17,18 @@
         "type": "git",
         "url": "git+https://github.com/mattlean/lean-js-app-starter.git"
     },
-    "author": "Matthew Lean <matt@mattlean.com> (https://mattlean.com)",
-    "license": "MIT",
     "bugs": {
         "url": "https://github.com/mattlean/lean-js-app-starter/issues"
     },
     "homepage": "https://github.com/mattlean/lean-js-app-starter#readme",
+    "devDependencies": {
+        "@trivago/prettier-plugin-sort-imports": "^4.3.0",
+        "eslint": "^8.41.0",
+        "eslint-config-prettier": "^9.1.0",
+        "husky": "^9.0.11",
+        "lint-staged": "^13.2.2",
+        "prettier": "3.2.5"
+    },
     "workspaces": [
         "examples/asset-test",
         "examples/counter",
@@ -38,13 +46,5 @@
         "starters/react-electron-ts",
         "ljas-webpack"
     ],
-    "devDependencies": {
-        "@trivago/prettier-plugin-sort-imports": "^4.3.0",
-        "eslint": "^8.41.0",
-        "eslint-config-prettier": "^9.1.0",
-        "husky": "^9.0.11",
-        "lint-staged": "^13.2.2",
-        "prettier": "3.2.5"
-    },
     "private": true
 }

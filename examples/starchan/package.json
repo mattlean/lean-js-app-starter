@@ -1,8 +1,10 @@
 {
     "name": "ljas-starchan",
     "version": "0.2.0",
-    "description": "",
+    "description": "An anonymous textboard powered by Express and React server-side rendering.",
     "main": "build/backend/server.js",
+    "author": "Matthew Lean <matt@mattlean.com> (https://mattlean.com)",
+    "license": "MIT",
     "scripts": {
         "back:build": "npm run backend:build",
         "back:build:debug": "npm run backend:build:debug",
@@ -54,7 +56,6 @@
         "test:watch": "npm run test -- --watch || npm run test -- --watchAll",
         "ts-node": "ts-node"
     },
-    "author": "Matthew Lean <matt@mattlean.com> (https://mattlean.com)",
     "dependencies": {
         "@babel/cli": "^7.21.5",
         "@babel/core": "^7.22.1",

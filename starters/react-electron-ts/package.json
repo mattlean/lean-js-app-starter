@@ -1,13 +1,20 @@
 {
     "name": "ljas-react-electron-ts",
+    "productName": "ljas-react-electron-ts",
     "version": "0.2.0",
-    "description": "",
+    "description": "A basic Electron app that displays \"Hello World!\"",
     "main": "build/main/main.js",
+    "build": {
+        "appId": "com.ljas.ljas-react-electron-ts",
+        "files": "build/**/*"
+    },
+    "author": "",
     "scripts": {
         "build": "npm run preload:build && npm run renderer:build && npm run main:build",
         "build:production": "npm run preload:build:production && npm run renderer:build:production && npm run main:build:production",
         "check-types": "tsc",
         "dev": "concurrently --names \"🛄 webpack (preload),🎨 renderer,📦 webpack (main),⚛️ electron\" \"npm run preload:build:watch\" \"npm run renderer:dev\" \"npm run main:build:watch\" \"npm run start:debug\"",
+        "dist": "electron-builder",
         "format": "npm run format:check",
         "format:check": "prettier --check .",
         "format:write": "prettier --write .",
@@ -22,6 +29,8 @@
         "main:build:production:debug": "node --inspect-brk=0.0.0.0:9231 node_modules/.bin/webpack --config webpack/main.config.js --mode production",
         "main:build:stats": "npm run main:build:production -- --json > main.stats.json",
         "main:build:watch": "nodemon  --config main.nodemon.json --exec \"npm run main:build -- --watch\"",
+        "pack": "npm run dist -- --dir",
+        "postinstall": "electron-builder install-app-deps",
         "preload:build": "webpack --config webpack/preload.config.js --mode development",
         "preload:build:debug": "node --inspect-brk=0.0.0.0:9231 node_modules/.bin/webpack --config webpack/preload.config.js --mode development",
         "preload:build:production": "webpack --config webpack/preload.config.js --mode production",
@@ -47,7 +56,6 @@
         "test:e2e:report": "playwright show-report",
         "test:watch": "npm run test -- --watch || npm run test -- --watchAll"
     },
-    "author": "",
     "dependencies": {
         "@babel/cli": "^7.21.5",
         "@babel/core": "^7.22.1",
@@ -63,7 +71,7 @@
         "css-loader": "^6.8.1",
         "css-minimizer-webpack-plugin": "^6.0.0",
         "dotenv": "^16.3.1",
-        "electron": "^29.1.0",
+        "electron-devtools-installer": "^3.2.0",
         "fork-ts-checker-webpack-plugin": "^8.0.0",
         "html-webpack-plugin": "^5.5.1",
         "ljas-webpack": "^0.1.1-experimental.9",
@@ -88,7 +96,8 @@
         "@types/react-test-renderer": "^18.0.0",
         "@typescript-eslint/eslint-plugin": "^5.59.8",
         "@typescript-eslint/parser": "^5.59.8",
-        "electron-devtools-installer": "^3.2.0",
+        "electron": "29.1.0",
+        "electron-builder": "^24.13.3",
         "eslint": "^8.41.0",
         "eslint-config-prettier": "^9.1.0",
         "eslint-plugin-jest": "^27.2.1",
