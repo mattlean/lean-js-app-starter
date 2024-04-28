@@ -34,11 +34,6 @@ module.exports = merge([
         miniCssExtractPlugin: { filename: '[name].[contenthash].css' },
     }),
 
-    buildTransformedCss({
-        rule: { include: PATH_RENDERER_SRC },
-        miniCssExtractPlugin: { filename: '[name].[contenthash].css' },
-    }),
-
     buildSourceMaps('source-map'),
 
     compileReactTs(
