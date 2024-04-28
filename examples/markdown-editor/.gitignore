@@ -8,3 +8,4 @@ dist/
 node_modules/
 .env
 stats.json
+!src/main/icons/build/
