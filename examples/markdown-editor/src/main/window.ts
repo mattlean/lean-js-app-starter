@@ -13,19 +13,20 @@ const BUNDLED_LOGO_PATH = path.resolve(__dirname, 'logo.png')
  * Create BrowserWindow instance that renders the UI for the markdown editor.
  */
 export const createWindow = () => {
-    // if (process.platform === 'darwin') {
-    //     app.dock.setIcon(BUNDLED_LOGO_PATH)
-    // }
-
     const win = new BrowserWindow({
         width: 1024,
         height: 768,
-        // icon: BUNDLED_LOGO_PATH,
         show: false,
         webPreferences: {
             preload: `${BUNDLED_PRELOAD_BUILD_PATH}/preload.js`,
         },
     })
+
+    if (process.platform === 'darwin') {
+        app.dock.setIcon(BUNDLED_LOGO_PATH)
+    } else {
+        win.setIcon(BUNDLED_LOGO_PATH)
+    }
 
     win.loadFile(`${BUNDLED_RENDERER_BUILD_PATH}/index.html`)
 
