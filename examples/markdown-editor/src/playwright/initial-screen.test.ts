@@ -1,9 +1,9 @@
-import { _electron as electron, expect, test } from '@playwright/test'
+import { expect, test } from '@playwright/test'
 
-import { resetColorMode } from './util'
+import { launchElectron, resetColorMode } from './util'
 
 test('app loads initial screen', async () => {
-    const electronApp = await electron.launch({ args: ['.'] })
+    const electronApp = await launchElectron()
     const window = await electronApp.firstWindow()
 
     await resetColorMode(window)

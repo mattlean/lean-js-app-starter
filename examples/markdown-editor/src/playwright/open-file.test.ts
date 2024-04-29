@@ -1,9 +1,4 @@
-import {
-    ElectronApplication,
-    _electron as electron,
-    expect,
-    test,
-} from '@playwright/test'
+import { ElectronApplication, expect, test } from '@playwright/test'
 
 import {
     MOCK_BARBAZ_FILE_CONTENT,
@@ -11,7 +6,11 @@ import {
     MOCK_FOOBAR_FILE_CONTENT,
     MOCK_FOOBAR_FILE_PATH,
 } from '../common/MOCK_DATA'
-import { mockOpenFileSuccess, skipUnsavedChangesDialog } from './util'
+import {
+    launchElectron,
+    mockOpenFileSuccess,
+    skipUnsavedChangesDialog,
+} from './util'
 
 /**
  * Click the open menu item.
@@ -35,7 +34,7 @@ const clickOpenMenuItem = async (electronApp: ElectronApplication) =>
     })
 
 test('show open file dialog from open menu item', async () => {
-    const electronApp = await electron.launch({ args: ['.'] })
+    const electronApp = await launchElectron()
     const window = await electronApp.firstWindow()
 
     await skipUnsavedChangesDialog(electronApp)
@@ -71,7 +70,7 @@ test('show open file dialog from open menu item', async () => {
 })
 
 test('show open file dialog from open file button', async () => {
-    const electronApp = await electron.launch({ args: ['.'] })
+    const electronApp = await launchElectron()
     const window = await electronApp.firstWindow()
 
     await skipUnsavedChangesDialog(electronApp)
@@ -105,7 +104,7 @@ test('show open file dialog from open file button', async () => {
 })
 
 test('cancel open file dialog', async () => {
-    const electronApp = await electron.launch({ args: ['.'] })
+    const electronApp = await launchElectron()
     const window = await electronApp.firstWindow()
 
     // Mock open file dialog with cancel action
@@ -130,7 +129,7 @@ test('cancel open file dialog', async () => {
 })
 
 test('open different file while a file is currently open', async () => {
-    const electronApp = await electron.launch({ args: ['.'] })
+    const electronApp = await launchElectron()
     const window = await electronApp.firstWindow()
 
     await skipUnsavedChangesDialog(electronApp)

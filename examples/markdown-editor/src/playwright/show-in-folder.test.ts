@@ -1,13 +1,17 @@
-import { _electron as electron, expect, test } from '@playwright/test'
+import { expect, test } from '@playwright/test'
 
 import {
     MOCK_FOOBAR_FILE_CONTENT,
     MOCK_FOOBAR_FILE_PATH,
 } from '../common/MOCK_DATA'
-import { mockOpenFileSuccess, skipUnsavedChangesDialog } from './util'
+import {
+    launchElectron,
+    mockOpenFileSuccess,
+    skipUnsavedChangesDialog,
+} from './util'
 
 test('start show in folder process from show in folder menu item', async () => {
-    const electronApp = await electron.launch({ args: ['.'] })
+    const electronApp = await launchElectron()
     const window = await electronApp.firstWindow()
 
     // Mock show in folder process
@@ -46,7 +50,7 @@ test('start show in folder process from show in folder menu item', async () => {
 })
 
 test('show in folder button is disabled when no file is open', async () => {
-    const electronApp = await electron.launch({ args: ['.'] })
+    const electronApp = await launchElectron()
     const window = await electronApp.firstWindow()
 
     // Expect show in folder button to default to disabled
@@ -60,7 +64,7 @@ test('show in folder button is disabled when no file is open', async () => {
 })
 
 test('show in folder button becomes enabled after file is opened', async () => {
-    const electronApp = await electron.launch({ args: ['.'] })
+    const electronApp = await launchElectron()
     const window = await electronApp.firstWindow()
 
     await skipUnsavedChangesDialog(electronApp)

@@ -1,16 +1,15 @@
-import {
-    ElectronApplication,
-    _electron as electron,
-    expect,
-    test,
-} from '@playwright/test'
+import { ElectronApplication, expect, test } from '@playwright/test'
 
 import {
     MOCK_FOOBAR_FILE_CONTENT,
     MOCK_FOOBAR_FILE_PATH,
 } from '../common/MOCK_DATA'
 import { exitTypes } from '../common/types'
-import { mockOpenFileSuccess, skipUnsavedChangesDialog } from './util'
+import {
+    launchElectron,
+    mockOpenFileSuccess,
+    skipUnsavedChangesDialog,
+} from './util'
 
 /**
  * Get the Electron BrowserWindow instance.
@@ -163,7 +162,7 @@ const mockUnsavedChangesDialogSave = (electronApp: ElectronApplication) =>
     })
 
 test('app saves a new file and then closes when unsaved changes dialog\'s "Save" option is selected', async () => {
-    const electronApp = await electron.launch({ args: ['.'] })
+    const electronApp = await launchElectron()
     const window = await electronApp.firstWindow()
 
     const unsavedChangesDialogCallsHandle =
@@ -221,7 +220,7 @@ test('app saves a new file and then closes when unsaved changes dialog\'s "Save"
 })
 
 test('app saves changes to an existing file and then closes when unsaved changes dialog\'s "Save" option is selected', async () => {
-    const electronApp = await electron.launch({ args: ['.'] })
+    const electronApp = await launchElectron()
     const window = await electronApp.firstWindow()
 
     await mockOpenFileSuccess(
@@ -288,7 +287,7 @@ test('app saves changes to an existing file and then closes when unsaved changes
 })
 
 test('app closes when unsaved changes dialog\'s "Don\'t Save" option is selected', async () => {
-    const electronApp = await electron.launch({ args: ['.'] })
+    const electronApp = await launchElectron()
     const window = await electronApp.firstWindow()
 
     const unsavedChangesDialogCallsHandle =
@@ -346,7 +345,7 @@ test('app closes when unsaved changes dialog\'s "Don\'t Save" option is selected
 })
 
 test('app remains open when unsaved changes dialog\'s "Cancel" option is selected', async () => {
-    const electronApp = await electron.launch({ args: ['.'] })
+    const electronApp = await launchElectron()
     const window = await electronApp.firstWindow()
 
     const unsavedChangesDialogCallsHandle =
@@ -405,7 +404,7 @@ test('app remains open when unsaved changes dialog\'s "Cancel" option is selecte
 })
 
 test('unsaved changes dialog does not appear when changes are not present in the editor', async () => {
-    const electronApp = await electron.launch({ args: ['.'] })
+    const electronApp = await launchElectron()
     const window = await electronApp.firstWindow()
 
     const unsavedChangesDialogCallsHandle =

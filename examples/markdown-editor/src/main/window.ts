@@ -31,7 +31,7 @@ export const createWindow = () => {
     win.loadFile(`${BUNDLED_RENDERER_BUILD_PATH}/index.html`)
 
     win.once('ready-to-show', () => {
-        win.setTitle(`untitled - ${app.name}`)
+        win.setTitle(genWinTitle('untitled'))
         win.show()
         win.focus()
     })
@@ -54,4 +54,19 @@ export const createWindow = () => {
     })
 
     return win
+}
+
+/**
+ * Generate a window title.
+ * @param text Text to start window title with
+ * @returns A window title with the standard text appended to it.
+ */
+export const genWinTitle = (text: string) => {
+    let title = `${text} - ${app.name}`
+
+    if (process.env.NODE_ENV === 'development') {
+        title += ' (DEVELOPMENT)'
+    }
+
+    return title
 }

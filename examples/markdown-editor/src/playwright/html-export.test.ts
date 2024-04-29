@@ -1,7 +1,9 @@
-import { _electron as electron, expect, test } from '@playwright/test'
+import { expect, test } from '@playwright/test'
+
+import { launchElectron } from './util'
 
 test('start html export process from html export menu item', async () => {
-    const electronApp = await electron.launch({ args: ['.'] })
+    const electronApp = await launchElectron()
     const window = await electronApp.firstWindow()
 
     // Mock HTML export process and return handle to htmlExportDialogCalls

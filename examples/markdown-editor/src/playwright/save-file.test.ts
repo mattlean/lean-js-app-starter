@@ -1,15 +1,14 @@
-import {
-    ElectronApplication,
-    _electron as electron,
-    expect,
-    test,
-} from '@playwright/test'
+import { ElectronApplication, expect, test } from '@playwright/test'
 
 import {
     MOCK_FOOBAR_FILE_CONTENT,
     MOCK_FOOBAR_FILE_PATH,
 } from '../common/MOCK_DATA'
-import { mockOpenFileSuccess, skipUnsavedChangesDialog } from './util'
+import {
+    launchElectron,
+    mockOpenFileSuccess,
+    skipUnsavedChangesDialog,
+} from './util'
 
 /**
  * Click the save menu item.
@@ -51,7 +50,7 @@ const mockSaveFileSuccess = (electronApp: ElectronApplication) =>
     })
 
 test('save new file from save menu item', async () => {
-    const electronApp = await electron.launch({ args: ['.'] })
+    const electronApp = await launchElectron()
     const window = await electronApp.firstWindow()
 
     await skipUnsavedChangesDialog(electronApp)
@@ -80,7 +79,7 @@ test('save new file from save menu item', async () => {
 })
 
 test('save new file from save file button', async () => {
-    const electronApp = await electron.launch({ args: ['.'] })
+    const electronApp = await launchElectron()
     const window = await electronApp.firstWindow()
 
     await skipUnsavedChangesDialog(electronApp)
@@ -110,7 +109,7 @@ test('save new file from save file button', async () => {
 })
 
 test('save changes to an existing file', async () => {
-    const electronApp = await electron.launch({ args: ['.'] })
+    const electronApp = await launchElectron()
     const window = await electronApp.firstWindow()
 
     await skipUnsavedChangesDialog(electronApp)
@@ -151,7 +150,7 @@ test('save changes to an existing file', async () => {
 })
 
 test('cancel save file dialog', async () => {
-    const electronApp = await electron.launch({ args: ['.'] })
+    const electronApp = await launchElectron()
     const window = await electronApp.firstWindow()
 
     await skipUnsavedChangesDialog(electronApp)

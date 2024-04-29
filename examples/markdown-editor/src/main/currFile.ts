@@ -1,6 +1,8 @@
 import { BrowserWindow, app } from 'electron'
 import { basename } from 'path'
 
+import { genWinTitle } from './window'
+
 interface MdFile {
     /** Contents of the currently open markdown file. */
     markdownSaved: string
@@ -115,7 +117,7 @@ export const setCurrFile = (
     app.addRecentDocument(filePath)
 
     if (win) {
-        win.setTitle(`${basename(filePath)} - ${app.name}`)
+        win.setTitle(genWinTitle(basename(filePath)))
         win.setRepresentedFilename(filePath)
     }
 }

@@ -1,13 +1,17 @@
-import { _electron as electron, expect, test } from '@playwright/test'
+import { expect, test } from '@playwright/test'
 
 import {
     MOCK_BARBAZ_FILE_CONTENT,
     MOCK_FOOBAR_FILE_CONTENT,
 } from '../common/MOCK_DATA'
-import { resetColorMode, skipUnsavedChangesDialog } from './util'
+import {
+    launchElectron,
+    resetColorMode,
+    skipUnsavedChangesDialog,
+} from './util'
 
 test('markdown in editor generates HTML in preview', async () => {
-    const electronApp = await electron.launch({ args: ['.'] })
+    const electronApp = await launchElectron()
     const window = await electronApp.firstWindow()
 
     await resetColorMode(window)
@@ -35,7 +39,7 @@ test('markdown in editor generates HTML in preview', async () => {
 })
 
 test('standard markdown in editor generates HTML in preview', async () => {
-    const electronApp = await electron.launch({ args: ['.'] })
+    const electronApp = await launchElectron()
     const window = await electronApp.firstWindow()
 
     await resetColorMode(window)
@@ -66,7 +70,7 @@ test('standard markdown in editor generates HTML in preview', async () => {
 })
 
 test('extended markdown in editor generates HTML in preview', async () => {
-    const electronApp = await electron.launch({ args: ['.'] })
+    const electronApp = await launchElectron()
     const window = await electronApp.firstWindow()
 
     await resetColorMode(window)

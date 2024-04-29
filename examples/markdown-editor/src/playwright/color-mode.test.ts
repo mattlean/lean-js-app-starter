@@ -1,12 +1,7 @@
-import {
-    ElectronApplication,
-    _electron as electron,
-    expect,
-    test,
-} from '@playwright/test'
+import { ElectronApplication, expect, test } from '@playwright/test'
 
 import { colorModes } from '../common/types'
-import { resetColorMode } from './util'
+import { launchElectron, resetColorMode } from './util'
 
 /**
  * Get the color mode menu item.
@@ -53,7 +48,7 @@ const clickColorModeSubmenuItem = (
     }, colorMode)
 
 test('color mode defaults to system preference mode', async () => {
-    const electronApp = await electron.launch({ args: ['.'] })
+    const electronApp = await launchElectron()
     const window = await electronApp.firstWindow()
 
     await resetColorMode(window)
@@ -85,10 +80,7 @@ test('color mode defaults to system preference mode', async () => {
 })
 
 test('color mode is light when system preference mode is active and the OS is set to light', async () => {
-    const electronApp = await electron.launch({
-        args: ['.'],
-        colorScheme: 'light',
-    })
+    const electronApp = await launchElectron({ colorScheme: 'light' })
     const window = await electronApp.firstWindow()
 
     await resetColorMode(window)
@@ -118,10 +110,7 @@ test('color mode is light when system preference mode is active and the OS is se
 })
 
 test('color mode is dark when system preference mode is active and the OS is set to dark', async () => {
-    const electronApp = await electron.launch({
-        args: ['.'],
-        colorScheme: 'dark',
-    })
+    const electronApp = await await launchElectron({ colorScheme: 'dark' })
     const window = await electronApp.firstWindow()
 
     await resetColorMode(window)
@@ -151,7 +140,7 @@ test('color mode is dark when system preference mode is active and the OS is set
 })
 
 test('active color mode submenu item switches to light mode when it is selected', async () => {
-    const electronApp = await electron.launch({ args: ['.'] })
+    const electronApp = await launchElectron()
     const window = await electronApp.firstWindow()
 
     await resetColorMode(window)
@@ -202,7 +191,7 @@ test('active color mode submenu item switches to light mode when it is selected'
 })
 
 test('active color mode submenu item switches to dark mode when it is selected', async () => {
-    const electronApp = await electron.launch({ args: ['.'] })
+    const electronApp = await launchElectron()
     const window = await electronApp.firstWindow()
 
     await resetColorMode(window)
@@ -253,7 +242,7 @@ test('active color mode submenu item switches to dark mode when it is selected',
 })
 
 test('active color mode submenu item switches to system preference mode when it is selected', async () => {
-    const electronApp = await electron.launch({ args: ['.'] })
+    const electronApp = await launchElectron()
     const window = await electronApp.firstWindow()
 
     await resetColorMode(window)
@@ -322,7 +311,7 @@ test('active color mode submenu item switches to system preference mode when it 
 })
 
 test('active color mode submenu item is light mode when color mode button is set to light mode', async () => {
-    const electronApp = await electron.launch({ args: ['.'] })
+    const electronApp = await launchElectron()
     const window = await electronApp.firstWindow()
 
     await resetColorMode(window)
@@ -373,7 +362,7 @@ test('active color mode submenu item is light mode when color mode button is set
 })
 
 test('active color mode submenu item is dark mode when color mode button is set to dark mode', async () => {
-    const electronApp = await electron.launch({ args: ['.'] })
+    const electronApp = await launchElectron()
     const window = await electronApp.firstWindow()
 
     await resetColorMode(window)
@@ -424,7 +413,7 @@ test('active color mode submenu item is dark mode when color mode button is set 
 })
 
 test('active color mode submenu item is system preference mode when color mode button is set to system preference mode', async () => {
-    const electronApp = await electron.launch({ args: ['.'] })
+    const electronApp = await launchElectron()
     const window = await electronApp.firstWindow()
 
     await resetColorMode(window)
