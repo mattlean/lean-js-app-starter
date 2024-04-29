@@ -9,7 +9,7 @@
         "build": "npm run preload:build && npm run renderer:build && npm run main:build",
         "build:production": "npm run preload:build:production && npm run renderer:build:production && npm run main:build:production",
         "check-types": "tsc",
-        "dev": "concurrently --names \"🛄 webpack (preload),🎨 renderer,📦 webpack (main),⚛️ electron\" \"npm run preload:build:watch\" \"npm run renderer:dev\" \"npm run main:build:watch\" \"npm run start:development:debug\"",
+        "dev": "concurrently --names \"🛄 webpack (preload),🎨 renderer,📦 webpack (main),⚛️ electron\" \"npm run preload:build:watch\" \"npm run renderer:dev\" \"npm run main:build:watch\" \"npm run start:debug\"",
         "dev:production": "nodemon --config production.nodemon.json --exec \"npm run build:production && npm run start:production:debug\"",
         "dist": "electron-builder -c.extraMetadata.main=build/production/main/main.js",
         "format": "npm run format:check",
