@@ -1,16 +1,8 @@
 {
     "name": "ljas-markdown-editor",
-    "productName": "ljas-markdown-editor",
     "version": "0.2.0",
     "description": "A markdown editor that runs as a desktop app.",
     "main": "build/development/main/main.js",
-    "build": {
-        "appId": "com.ljas.ljas-markdown-editor",
-        "files": "build/**/*",
-        "mac": {
-            "category": "public.app-category.productivity"
-        }
-    },
     "author": "Matthew Lean <matt@mattlean.com> (https://mattlean.com)",
     "license": "MIT",
     "scripts": {
@@ -19,7 +11,7 @@
         "check-types": "tsc",
         "dev": "concurrently --names \"🛄 webpack (preload),🎨 renderer,📦 webpack (main),⚛️ electron\" \"npm run preload:build:watch\" \"npm run renderer:dev\" \"npm run main:build:watch\" \"npm run start:development:debug\"",
         "dev:production": "nodemon --config production.nodemon.json --exec \"npm run build:production && npm run start:production:debug\"",
-        "dist": "electron-builder",
+        "dist": "electron-builder -c.extraMetadata.main=build/production/main/main.js",
         "format": "npm run format:check",
         "format:check": "prettier --check .",
         "format:write": "prettier --write .",
@@ -49,10 +41,8 @@
         "renderer:build:production:debug": "node --inspect-brk=0.0.0.0:9231 node_modules/.bin/webpack --config webpack/renderer.config.js --mode production",
         "renderer:build:stats": "npm run renderer:build:production -- --json > stats.renderer.json",
         "renderer:dev": "nodemon --config renderer.nodemon.json --exec \"webpack serve --config webpack/renderer.config.js --mode development\"",
-        "start": "npm run start:development",
-        "start:debug": "npm run start:development:debug",
-        "start:development": "electron .",
-        "start:development:debug": "nodemon --inspect=0.0.0.0:9229 --watch build/development/preload --watch build/development/main --exec \"npm run start:development\"",
+        "start": "electron .",
+        "start:debug": "nodemon --inspect=0.0.0.0:9229 --watch build/development/preload --watch build/development/main --exec \"npm run start\"",
         "start:production": "electron ./build/production/main/main.js",
         "start:production:debug": "nodemon --inspect=0.0.0.0:9229 --watch build/production/preload --watch build/production/main --exec \"npm run start:production\"",
         "test": "jest",
