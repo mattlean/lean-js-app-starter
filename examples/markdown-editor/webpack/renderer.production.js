@@ -1,9 +1,16 @@
+const autoprefixer = require('autoprefixer')
 const buildTransformedCss = require('ljas-webpack/buildTransformedCss')
 const compileReactTs = require('ljas-webpack/compileReactTs')
+const tailwindcss = require('tailwindcss')
+const tailwindcssNesting = require('tailwindcss/nesting')
 const { buildSourceMaps, loadFonts, loadImages } = require('ljas-webpack')
 const { merge } = require('webpack-merge')
 
-const { PATH_COMMON_SRC, PATH_RENDERER_SRC } = require('../PATHS')
+const {
+    PATH_COMMON_SRC,
+    PATH_RENDERER_BUILD_PROD,
+    PATH_RENDERER_SRC,
+} = require('../PATHS')
 
 module.exports = merge([
     {
@@ -12,8 +19,8 @@ module.exports = merge([
         output: {
             assetModuleFilename: '[name].[contenthash][ext][query]',
             chunkFilename: '[name].[contenthash].js',
-            clean: true,
             filename: '[name].[contenthash].js',
+            path: PATH_RENDERER_BUILD_PROD,
         },
 
         optimization: {
@@ -32,6 +39,11 @@ module.exports = merge([
     buildTransformedCss({
         rule: { include: PATH_RENDERER_SRC },
         miniCssExtractPlugin: { filename: '[name].[contenthash].css' },
+        postcssLoader: {
+            postcssOptions: {
+                plugins: [autoprefixer, tailwindcssNesting, tailwindcss],
+            },
+        },
     }),
 
     buildSourceMaps('source-map'),

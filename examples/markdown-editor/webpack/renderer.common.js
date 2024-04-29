@@ -16,6 +16,11 @@ module.exports = merge([
                 dependOn: 'colormode',
             },
         },
+
+        output: {
+            clean: true,
+            filename: '[name].js',
+        },
     },
 
     buildHtml({

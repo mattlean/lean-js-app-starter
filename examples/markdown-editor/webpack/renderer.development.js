@@ -9,7 +9,7 @@ const { merge } = require('webpack-merge')
 
 const {
     PATH_COMMON_SRC,
-    PATH_RENDERER_BUILD,
+    PATH_RENDERER_BUILD_DEV,
     PATH_RENDERER_SRC,
 } = require('../PATHS')
 
@@ -23,11 +23,7 @@ module.exports = merge([
     {
         mode: 'development',
 
-        output: {
-            clean: true,
-            filename: '[name].js',
-            path: PATH_RENDERER_BUILD,
-        },
+        output: { path: PATH_RENDERER_BUILD_DEV },
 
         optimization: {
             runtimeChunk: 'single',
