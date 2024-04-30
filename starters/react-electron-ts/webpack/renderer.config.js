@@ -5,13 +5,11 @@ const commonConfig = require('./renderer.common')
 module.exports = (env, { mode }) => {
     switch (mode) {
         case 'production': {
-            const productionConfig = require('./renderer.production')
-            return merge(commonConfig, productionConfig)
+            return merge(commonConfig, require('./renderer.production'))
         }
 
         case 'development': {
-            const developmentConfig = require('./renderer.development')
-            return merge(commonConfig, developmentConfig)
+            return merge(commonConfig, require('./renderer.development'))
         }
 
         default:

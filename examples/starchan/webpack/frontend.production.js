@@ -5,7 +5,7 @@ const removeUnusedCss = require('ljas-webpack/removeUnusedCss')
 const { buildSourceMaps, loadFonts, loadImages } = require('ljas-webpack')
 const { merge } = require('webpack-merge')
 
-const tsconfigOverride = require('./tsconfigOverride')
+const tsconfigBuildOverride = require('./tsconfigBuildOverride')
 const {
     PATH_FRONTEND_BUILD,
     PATH_COMMON_SRC,
@@ -60,11 +60,11 @@ module.exports = merge([
                 typescript: {
                     configOverwrite: {
                         include: [
-                            'src/global.d.ts',
                             'src/common/**/*',
                             'src/frontend/**/*',
+                            'src/global.d.ts',
                         ],
-                        ...tsconfigOverride,
+                        ...tsconfigBuildOverride,
                     },
                 },
             },

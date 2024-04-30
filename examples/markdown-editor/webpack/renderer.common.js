@@ -17,10 +17,7 @@ module.exports = merge([
             },
         },
 
-        output: {
-            clean: true,
-            filename: '[name].js',
-        },
+        output: { clean: true },
     },
 
     buildHtml({

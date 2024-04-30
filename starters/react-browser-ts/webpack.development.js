@@ -9,6 +9,7 @@ const {
 } = require('ljas-webpack')
 const { merge } = require('webpack-merge')
 
+const tsconfigBuildOverride = require('./tsconfigBuildOverride')
 const { PATH_BUILD, PATH_SRC } = require('./PATHS')
 
 if (!process.env.PORT) {
@@ -66,23 +67,7 @@ module.exports = merge([
             ],
         },
         forkTsChecker: {
-            typescript: {
-                configOverwrite: {
-                    include: ['src/**/*'],
-                    exclude: [
-                        'src/**/__mocks__',
-                        'src/**/__tests__',
-                        'src/**/*.spec.js',
-                        'src/**/*.spec.jsx',
-                        'src/**/*.spec.ts',
-                        'src/**/*.spec.tsx',
-                        'src/**/*.test.js',
-                        'src/**/*.test.jsx',
-                        'src/**/*.test.ts',
-                        'src/**/*.test.tsx',
-                    ],
-                },
-            },
+            typescript: { configOverwrite: tsconfigBuildOverride },
         },
     }),
 ])

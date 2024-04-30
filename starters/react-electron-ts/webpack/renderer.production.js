@@ -3,7 +3,12 @@ const compileReactTs = require('ljas-webpack/compileReactTs')
 const { buildSourceMaps, loadFonts, loadImages } = require('ljas-webpack')
 const { merge } = require('webpack-merge')
 
-const { PATH_COMMON_SRC, PATH_RENDERER_SRC } = require('../PATHS')
+const tsconfigBuildOverride = require('./tsconfigBuildOverride')
+const {
+    PATH_COMMON_SRC,
+    PATH_RENDERER_BUILD_PROD,
+    PATH_RENDERER_SRC,
+} = require('../PATHS')
 
 module.exports = merge([
     {
@@ -12,8 +17,8 @@ module.exports = merge([
         output: {
             assetModuleFilename: '[name].[contenthash][ext][query]',
             chunkFilename: '[name].[contenthash].js',
-            clean: true,
             filename: '[name].[contenthash].js',
+            path: PATH_RENDERER_BUILD_PROD,
         },
 
         optimization: {
@@ -51,18 +56,7 @@ module.exports = merge([
                 typescript: {
                     configOverwrite: {
                         include: ['src/global.d.ts', 'src/renderer/**/*'],
-                        exclude: [
-                            'src/**/__mocks__',
-                            'src/**/__tests__',
-                            'src/**/*.spec.js',
-                            'src/**/*.spec.jsx',
-                            'src/**/*.spec.ts',
-                            'src/**/*.spec.tsx',
-                            'src/**/*.test.js',
-                            'src/**/*.test.jsx',
-                            'src/**/*.test.ts',
-                            'src/**/*.test.tsx',
-                        ],
+                        ...tsconfigBuildOverride,
                     },
                 },
             },

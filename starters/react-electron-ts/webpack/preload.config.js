@@ -1,72 +1,18 @@
-const compileTs = require('ljas-webpack/compileTs')
-const setupNodeExternals = require('ljas-webpack/setupNodeExternals')
-const { buildSourceMaps } = require('ljas-webpack')
 const { merge } = require('webpack-merge')
 
-const {
-    PATH_COMMON_SRC,
-    PATH_PRELOAD_BUILD,
-    PATH_PRELOAD_SRC,
-} = require('../PATHS')
-
-const config = merge([
-    {
-        entry: { preload: `${PATH_PRELOAD_SRC}/index.ts` },
-
-        output: {
-            clean: true,
-            filename: '[name].js',
-            path: PATH_PRELOAD_BUILD,
-        },
-
-        target: 'electron-preload',
-    },
-
-    compileTs({
-        rule: {
-            include: [PATH_COMMON_SRC, PATH_PRELOAD_SRC],
-            exclude: [
-                /node_modules/,
-                /__mocks__\/.*.(j|t)s$/,
-                /__tests__\/.*.(j|t)s$/,
-                /\.(spec|test)\.(j|t)s$/,
-            ],
-        },
-        forkTsChecker: {
-            typescript: {
-                configOverwrite: {
-                    include: ['src/global.d.ts', 'src/preload/**/*'],
-                    exclude: [
-                        'src/**/__mocks__',
-                        'src/**/__tests__',
-                        'src/**/*.spec.js',
-                        'src/**/*.spec.jsx',
-                        'src/**/*.spec.ts',
-                        'src/**/*.spec.tsx',
-                        'src/**/*.test.js',
-                        'src/**/*.test.jsx',
-                        'src/**/*.test.ts',
-                        'src/**/*.test.tsx',
-                    ],
-                },
-            },
-        },
-    }),
-
-    setupNodeExternals({
-        // TODO: remove this before going to prod
-        additionalModuleDirs: ['../../node_modules'],
-    }),
-])
+const commonConfig = require('./preload.common')
 
 module.exports = (env, { mode }) => {
     switch (mode) {
         case 'production': {
-            return merge(config, buildSourceMaps('source-map'))
+            return merge(commonConfig, require('./preload.production'))
         }
 
-        default: {
-            return merge(config, buildSourceMaps('cheap-module-source-map'))
+        case 'development': {
+            return merge(commonConfig, require('./preload.development'))
         }
+
+        default:
+            throw new Error(`Unknown mode encountered: ${mode}`)
     }
 }

@@ -4,7 +4,7 @@ const setupNodeExternals = require('ljas-webpack/setupNodeExternals')
 const { buildSourceMaps } = require('ljas-webpack')
 const { merge } = require('webpack-merge')
 
-const tsconfigOverride = require('./tsconfigOverride')
+const tsconfigBuildOverride = require('./tsconfigBuildOverride')
 const { PATH_BACKEND_BUILD, PATH_BACKEND_SRC, PATH_SRC } = require('../PATHS')
 
 const buildConfig = (mode) =>
@@ -54,7 +54,7 @@ const buildConfig = (mode) =>
                     typescript: {
                         configOverwrite: {
                             include: ['src/**/*'],
-                            ...tsconfigOverride,
+                            ...tsconfigBuildOverride,
                         },
                     },
                 },
@@ -73,18 +73,11 @@ module.exports = (env, { mode }) => {
 
     switch (mode) {
         case 'production': {
-            const configProd = merge(config, buildSourceMaps('source-map'))
-            console.log('DEBUG CONFIG', config, JSON.stringify(config))
-            return configProd
+            return merge(config, buildSourceMaps('source-map'))
         }
 
         default: {
-            const configDev = merge(
-                config,
-                buildSourceMaps('cheap-module-source-map'),
-            )
-            console.log('DEBUG CONFIG', configDev, JSON.stringify(configDev))
-            return configDev
+            return merge(config, buildSourceMaps('cheap-module-source-map'))
         }
     }
 }

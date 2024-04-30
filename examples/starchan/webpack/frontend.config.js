@@ -5,17 +5,11 @@ const commonConfig = require('./frontend.common')
 module.exports = (env, { mode }) => {
     switch (mode) {
         case 'production': {
-            const productionConfig = require('./frontend.production')
-            const config = merge(commonConfig, productionConfig)
-            console.log('DEBUG CONFIG', config, JSON.stringify(config))
-            return config
+            return merge(commonConfig, require('./frontend.production'))
         }
 
         case 'development': {
-            const developmentConfig = require('./frontend.development')
-            const config = merge(commonConfig, developmentConfig)
-            console.log('DEBUG CONFIG', config, JSON.stringify(config))
-            return config
+            return merge(commonConfig, require('./frontend.development'))
         }
 
         default:

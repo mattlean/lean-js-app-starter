@@ -2,5 +2,5 @@ build/
 coverage/
 node_modules/
 .env
-backend.stats.json
-frontend.stats.json
+stats.backend.json
+stats.frontend.json

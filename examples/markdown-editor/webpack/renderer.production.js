@@ -6,6 +6,7 @@ const tailwindcssNesting = require('tailwindcss/nesting')
 const { buildSourceMaps, loadFonts, loadImages } = require('ljas-webpack')
 const { merge } = require('webpack-merge')
 
+const tsconfigBuildOverride = require('./tsconfigBuildOverride')
 const {
     PATH_COMMON_SRC,
     PATH_RENDERER_BUILD_PROD,
@@ -62,19 +63,8 @@ module.exports = merge([
             forkTsChecker: {
                 typescript: {
                     configOverwrite: {
-                        include: ['src/global.d.ts', 'src/renderer/**/*'],
-                        exclude: [
-                            'src/**/__mocks__',
-                            'src/**/__tests__',
-                            'src/**/*.spec.js',
-                            'src/**/*.spec.jsx',
-                            'src/**/*.spec.ts',
-                            'src/**/*.spec.tsx',
-                            'src/**/*.test.js',
-                            'src/**/*.test.jsx',
-                            'src/**/*.test.ts',
-                            'src/**/*.test.tsx',
-                        ],
+                        include: ['src/renderer/**/*', 'src/global.d.ts'],
+                        ...tsconfigBuildOverride,
                     },
                 },
             },

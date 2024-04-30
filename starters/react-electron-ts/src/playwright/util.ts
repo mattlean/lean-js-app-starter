@@ -1,4 +1,8 @@
-import { ElectronApplication, Page } from '@playwright/test'
+import {
+    ElectronApplication,
+    Page,
+    _electron as electron,
+} from '@playwright/test'
 
 /**
  * Display console API method calls from the Electron application in the Playwright console.
@@ -30,4 +34,27 @@ export const getBrowserOs = async (page: Page) => {
     }
 
     return null
+}
+
+/**
+ * Launch the Electron application with either the development or production build.
+ * @param arg Parameter object
+ * @param arg.buildType Determines if the development or the production build is used for testing
+ * @param arg.colorScheme Emulates 'prefers-colors-scheme' media feature, supported values are 'light', 'dark', 'no-preference'. See page.emulateMedia([options]) for more details. Passing null resets emulation to system defaults. Defaults to 'light'.
+ * @returns A promise that will resolve to an Electron application representation
+ */
+export const launchElectron = ({
+    buildType,
+    colorScheme,
+}: {
+    buildType?: 'development' | 'production'
+    colorScheme?: null | 'light' | 'dark' | 'no-preference'
+} = {}) => {
+    const arg =
+        buildType === 'production' ? './build/production/main/main.js' : '.'
+
+    return electron.launch({
+        args: [arg],
+        colorScheme,
+    })
 }

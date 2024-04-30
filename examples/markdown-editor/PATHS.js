@@ -1,9 +1,10 @@
 const path = require('path')
 
 module.exports = {
-    PATH_COMMON_SRC: path.resolve(__dirname, 'src/common'),
+    PATH_BUILD: path.resolve(__dirname, 'build'),
     PATH_BUILD_DEV: path.resolve(__dirname, 'build/development'),
     PATH_BUILD_PROD: path.resolve(__dirname, 'build/production'),
+    PATH_COMMON_SRC: path.resolve(__dirname, 'src/common'),
     PATH_MAIN_BUILD_DEV: path.resolve(__dirname, 'build/development/main'),
     PATH_MAIN_BUILD_PROD: path.resolve(__dirname, 'build/production/main'),
     PATH_MAIN_SRC: path.resolve(__dirname, 'src/main'),

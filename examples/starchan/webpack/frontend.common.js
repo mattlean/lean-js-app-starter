@@ -13,6 +13,7 @@ if (!process.env.HOST_API) {
 module.exports = merge([
     {
         entry: { app: './src/frontend/index.tsx' },
+
         plugins: [new EnvironmentPlugin({ HOST_API: process.env.HOST_API })],
     },
 
