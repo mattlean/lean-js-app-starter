@@ -10,7 +10,7 @@ const { PATH_BACKEND_BUILD, PATH_BACKEND_SRC, PATH_SRC } = require('../PATHS')
 const buildConfig = (mode) =>
     merge([
         {
-            entry: { server: './src/backend/index.ts' },
+            entry: { server: `${PATH_BACKEND_SRC}/index.ts` },
 
             output: {
                 clean: true,

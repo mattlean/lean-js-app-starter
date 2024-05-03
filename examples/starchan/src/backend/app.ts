@@ -56,6 +56,7 @@ const helmetOptions: {
 }
 if (process.env.NODE_ENV === 'development') {
     helmetOptions.contentSecurityPolicy.directives['connect-src'] = [
+        'http://localhost:3000',
         'ws://localhost:8080',
     ]
 }

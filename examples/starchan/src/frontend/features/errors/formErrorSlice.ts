@@ -1,4 +1,5 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
+import { FetchBaseQueryError } from '@reduxjs/toolkit/query'
 
 import { ServerErrorErrors } from '../../../backend/common/error/ServerError'
 import { isFieldValidationError } from '../../common/error'
@@ -48,6 +49,21 @@ export const formErrorSlice = createSlice({
     },
 })
 
-export const { clearFormError, genFormError } = formErrorSlice.actions
+/**
+ * Modified genFormError action creator that logs errors to the console.
+ */
+export const genFormError = (
+    serverErrs: ServerErrorErrors,
+    err?: Error | FetchBaseQueryError,
+) => {
+    if (process.env.NODE_ENV !== 'test' && err) {
+        // Hide error messages to prevent clogging of test output
+        console.error(err)
+    }
+
+    return formErrorSlice.actions.genFormError(serverErrs)
+}
+
+export const { clearFormError } = formErrorSlice.actions
 
 export const formErrorReducer = formErrorSlice.reducer

@@ -1,4 +1,5 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
+import { FetchBaseQueryError } from '@reduxjs/toolkit/query'
 
 import { ErrorPageData } from '../../../backend/common/error/errorPageData'
 
@@ -20,6 +21,19 @@ export const appErrorsSlice = createSlice({
     },
 })
 
-export const { setAppErrors } = appErrorsSlice.actions
+/**
+ * Modified setAppErrors action creator that logs errors to the console.
+ */
+export const setAppErrors = (
+    appErrs: AppErrorsState,
+    err?: Error | FetchBaseQueryError,
+) => {
+    if (process.env.NODE_ENV !== 'test' && err) {
+        // Hide error messages to prevent clogging of test output
+        console.error(err)
+    }
+
+    return appErrorsSlice.actions.setAppErrors(appErrs)
+}
 
 export const appErrorsReducer = appErrorsSlice.reducer

@@ -4,6 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from '../../app/hooks'
 import { isAPIErrorRes, isFetchBaseQueryError } from '../../common/error'
 import { useCreateReplyMutation } from '../api/apiSlice'
+import { setAppErrors } from '../errors/appErrorsSlice'
 import { clearFormError, genFormError } from '../errors/formErrorSlice'
 import ReplyInputs from './ReplyInputs'
 import { clearForm } from './formInputsSlice'
@@ -52,26 +53,36 @@ export default function NewReplyForm() {
                 }).unwrap()
             } catch (err) {
                 if (isFetchBaseQueryError(err) && isAPIErrorRes(err.data)) {
-                    if (err.status === 400 && err.data.errors) {
-                        if (process.env.NODE_ENV !== 'test') {
-                            // Hide error messages to prevent clogging of test output
-                            console.error(
-                                'An error was encountered while creating the reply:',
-                                err,
-                            )
-                        }
-
-                        return dispatch(genFormError(err.data.errors))
+                    if (err.status === 400 && err.data?.errors) {
+                        return dispatch(genFormError(err.data.errors, err))
                     }
                 }
 
-                throw new Error(
-                    'An error was encountered while creating the reply.',
+                return dispatch(
+                    setAppErrors(
+                        [
+                            {
+                                heading: 'Network Error',
+                                content:
+                                    'An error was encountered while creating the reply.',
+                            },
+                        ],
+                        err instanceof Error || isFetchBaseQueryError(err)
+                            ? err
+                            : undefined,
+                    ),
                 )
             }
 
             if (!res?.data) {
-                throw new Error('Reply data could not be read.')
+                return dispatch(
+                    setAppErrors([
+                        {
+                            heading: 'Data Read Error',
+                            content: 'Reply data could not be read.',
+                        },
+                    ]),
+                )
             }
 
             setShow(false)

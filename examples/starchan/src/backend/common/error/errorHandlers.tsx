@@ -87,10 +87,12 @@ export const ssrErrorHandler = (
             }
         }
 
-        store.dispatch(setAppErrors([{ heading, content }]))
+        store.dispatch(setAppErrors([{ heading, content }], err))
     } else {
         statusCode = 500
-        store.dispatch(setAppErrors([{ heading: genDefaultErrorMessage(500) }]))
+        store.dispatch(
+            setAppErrors([{ heading: genDefaultErrorMessage(500) }], err),
+        )
     }
 
     let serverSideRendering
@@ -100,11 +102,6 @@ export const ssrErrorHandler = (
         )
     } catch (err) {
         return next(err)
-    }
-
-    if (process.env.NODE_ENV !== 'test') {
-        // Hide error messages to prevent clogging of test output
-        console.error(err)
     }
 
     return res.status(statusCode).render('index', {

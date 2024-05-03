@@ -5,6 +5,7 @@ const { merge } = require('webpack-merge')
 const { EnvironmentPlugin } = require('webpack')
 
 const templateParameters = require('./templateParameters')
+const { PATH_FRONTEND_SRC } = require('../PATHS')
 
 if (!process.env.HOST_API) {
     throw new Error('🔴 API host was not set')
@@ -12,7 +13,7 @@ if (!process.env.HOST_API) {
 
 module.exports = merge([
     {
-        entry: { app: './src/frontend/index.tsx' },
+        entry: { app: `${PATH_FRONTEND_SRC}/index.tsx` },
 
         plugins: [new EnvironmentPlugin({ HOST_API: process.env.HOST_API })],
     },
