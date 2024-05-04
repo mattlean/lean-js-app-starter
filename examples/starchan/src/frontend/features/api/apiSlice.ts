@@ -14,11 +14,12 @@ export interface ReplyInput {
 
 const API_PATH = '/api/v1'
 
-if (!process.env.HOST_API) {
-    throw new Error('🔴 API host was not set')
+if ((process.env.E2E && !process.env.HOST_E2E) || !process.env.HOST) {
+    throw new Error('Host was not set')
 }
 
-const baseUrl = `${process.env.HOST_API}${API_PATH}`
+let baseUrl = process.env.E2E ? process.env.HOST_E2E : process.env.HOST
+baseUrl += API_PATH
 
 export const apiSlice = createApi({
     baseQuery: fetchBaseQuery({ baseUrl }),

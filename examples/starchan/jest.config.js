@@ -93,7 +93,7 @@ module.exports = {
     },
 
     // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
-    modulePathIgnorePatterns: ['MOCK', 'util/test'],
+    modulePathIgnorePatterns: ['MOCK', 'playwright', 'util/test'],
 
     // Activates notifications for test results
     // notify: false,

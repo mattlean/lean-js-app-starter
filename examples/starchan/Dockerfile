@@ -9,4 +9,8 @@ WORKDIR /code
 COPY package.json .
 RUN npm install
 
+# Install Playwright dependencies if SKIP_PLAYWRIGHT_DEPS build argument isn't set
+ARG SKIP_PLAYWRIGHT_DEPS=false
+RUN if [ "$SKIP_PLAYWRIGHT_DEPS" = "false" ] ; then npm run test:e2e:install ; fi
+
 CMD bash init.sh && npm run dev

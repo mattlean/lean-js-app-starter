@@ -7,5 +7,6 @@ module.exports = {
     PATH_COMMON_SRC: path.resolve(__dirname, 'src/common'),
     PATH_FRONTEND_BUILD: path.resolve(__dirname, 'build/frontend'),
     PATH_FRONTEND_SRC: path.resolve(__dirname, 'src/frontend'),
+    PATH_PLAYWRIGHT_SRC: path.resolve(__dirname, 'src/playwright'),
     PATH_SRC: path.resolve(__dirname, 'src'),
 }

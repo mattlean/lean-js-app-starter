@@ -1,7 +1,7 @@
-/test-results/
-/playwright-report/
 /blob-report/
+/playwright-report/
 /playwright/.cache/
+/test-results/
 build/
 coverage/
 dist/

@@ -84,7 +84,7 @@ module.exports = {
             plugins: ['@typescript-eslint'],
         },
 
-        /* Tests */
+        /* Jest */
         {
             env: {
                 es2021: true,
@@ -109,6 +109,21 @@ module.exports = {
             parser: '@typescript-eslint/parser',
             plugins: ['@typescript-eslint', 'jest'],
             rules: RULES_REACT,
+        },
+
+        /* Playwright */
+        {
+            env: {
+                es2021: true,
+                node: true,
+            },
+            files: 'src/playwright/**',
+            extends: [
+                'eslint:recommended',
+                'plugin:@typescript-eslint/recommended',
+                'plugin:playwright/recommended',
+                'prettier',
+            ],
         },
     ],
     settings: {

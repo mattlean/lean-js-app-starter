@@ -107,3 +107,23 @@ Now the container's Bash will open and any command you run will execute within t
 [For more information on `docker exec`, you can refer to its page in the Docker docs.](https://docs.docker.com/engine/reference/commandline/container_exec)
 
 Alternatively, you can also access the terminal from inside the container with Docker Desktop by going to the "Containers" tab, selecting the container you want to access, and clicking on the "Terminal" tab.
+
+### I'm using a project's dev environment that installs Playwright dependencies during the image building process. How do I skip that part?
+
+A `SKIP_PLAYWRIGHT_DEPS` build argument exists that, when to `true`, will skip the whole Playwright dependency installation step in the image building process.
+
+There are a couple of ways of setting up build arguments, but one way to do it is to run the following command:
+
+```
+docker compose build --build-arg SKIP_PLAYWRIGHT_DEPS=true
+```
+
+Then when you run `docker compose up`, Docker will skip the image building process and jump straight to building a new container. This container should behave as expected with the exception of Playwright which will not work.
+
+If you end up needing Playwright later, you can rerun the build process without any build arguments like so:
+
+```
+docker compose build
+```
+
+This is basically the same thing as setting `SKIP_PLAYWRIGHT_DEPS`to `false`, but it's unnecessary to explicitly do that since the `Dockerfile` does it for you.

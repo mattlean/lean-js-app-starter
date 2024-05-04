@@ -1,0 +1,53 @@
+version: '3.8'
+services:
+    db:
+        build:
+            dockerfile: db.Dockerfile
+        image: ljas-starchan-db-e2e
+        container_name: ljas-starchan-db-e2e
+        restart: always
+        ports:
+            - '${PORT_DB_E2E}:${PORT_DB_E2E}'
+        env_file: .env
+        environment:
+            - PORT_DB=${PORT_DB_E2E}
+            - MONGO_REPLICA_PORT=${PORT_DB_E2E}
+        # Uncomment volume lines to persist data
+        # volumes:
+        #     - ljas-starchan-db-data-e2e:/data/db
+        healthcheck:
+            test:
+                [
+                    'CMD',
+                    'mongo',
+                    'admin',
+                    '--port',
+                    '${PORT_DB_E2E}',
+                    '--eval',
+                    "db.adminCommand('ping')",
+                ]
+            interval: 5s
+            timeout: 2s
+            retries: 20
+    app:
+        build: .
+        image: ljas-starchan-e2e
+        container_name: ljas-starchan-e2e
+        restart: always
+        ports:
+            - '${PORT_EXPRESS_E2E}:${PORT_EXPRESS_E2E}'
+            - '${PORT_DEV_SERVER_E2E}:${PORT_DEV_SERVER_E2E}'
+            - '5655:5555' # Exposes Prisma Studio.
+            - '9329:9229' # Exposes Node.js debugger.
+            - '9330:9230' # Exposes Jest debugger.
+            - '9331:9231' # Exposes webpack debugger.
+            - '9423:9323' # Exposes Playwright report.
+        environment:
+            - DATABASE_URL=${DATABASE_URL_E2E}
+            - E2E=true
+        volumes:
+            - .:/code
+            - ljas-starchan-node_modules-e2e:/code/node_modules
+volumes:
+    # ljas-starchan-db-data-e2e:
+    ljas-starchan-node_modules-e2e:

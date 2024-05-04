@@ -53,7 +53,7 @@
         "test:e2e:debug": "npm run test:e2e -- --debug",
         "test:e2e:dev": "npm run test:e2e -- --ui",
         "test:e2e:install": "playwright install --with-deps",
-        "test:e2e:report": "playwright show-report",
+        "test:e2e:report": "playwright show-report --host 0.0.0.0 --port 9323",
         "test:watch": "npm run test -- --watch || npm run test -- --watchAll"
     },
     "dependencies": {

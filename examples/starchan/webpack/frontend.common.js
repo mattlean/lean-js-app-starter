@@ -7,15 +7,21 @@ const { EnvironmentPlugin } = require('webpack')
 const templateParameters = require('./templateParameters')
 const { PATH_FRONTEND_SRC } = require('../PATHS')
 
-if (!process.env.HOST_API) {
-    throw new Error('🔴 API host was not set')
+if ((process.env.E2E && !process.env.HOST_E2E) || !process.env.HOST) {
+    throw new Error('Host was not set')
 }
 
 module.exports = merge([
     {
         entry: { app: `${PATH_FRONTEND_SRC}/index.tsx` },
 
-        plugins: [new EnvironmentPlugin({ HOST_API: process.env.HOST_API })],
+        plugins: [
+            new EnvironmentPlugin({
+                E2E: process.env.E2E || false,
+                HOST: process.env.HOST,
+                HOST_E2E: process.env.HOST_E2E,
+            }),
+        ],
     },
 
     // Build EJS templates with injected assets for Express views

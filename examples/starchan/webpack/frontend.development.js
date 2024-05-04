@@ -12,8 +12,11 @@ const {
     PATH_FRONTEND_SRC,
 } = require('../PATHS')
 
-if (!process.env.PORT_DEV_SERVER) {
-    throw new Error('🔴 webpack-dev-server port was not set')
+if (
+    (process.env.E2E && !process.env.PORT_DEV_SERVER_E2E) ||
+    !process.env.PORT_DEV_SERVER
+) {
+    throw new Error('webpack-dev-server port was not set')
 }
 
 module.exports = merge([
@@ -69,7 +72,9 @@ module.exports = merge([
                 writeToDisk: true,
             },
             historyApiFallback: true,
-            port: process.env.PORT_DEV_SERVER,
+            port: process.env.E2E
+                ? process.env.PORT_DEV_SERVER_E2E
+                : process.env.PORT_DEV_SERVER,
             watchFiles: ['src/frontend/**/*.ejs'],
         },
         rule: {
