@@ -1,0 +1,60 @@
+const compileReactTs = require('ljas-webpack/compileReactTs')
+const CopyPlugin = require('copy-webpack-plugin')
+const { buildSourceMaps } = require('ljas-webpack')
+const { merge } = require('webpack-merge')
+
+const tsconfigBuildOverride = require('./tsconfigBuildOverride')
+const {
+    PATH_BACKEND_BUILD_DEV,
+    PATH_BACKEND_SRC,
+    PATH_SRC,
+} = require('../PATHS')
+
+module.exports = merge([
+    {
+        output: { path: PATH_BACKEND_BUILD_DEV },
+
+        plugins: [
+            // Copy static files from public & views directories to build
+            new CopyPlugin({
+                patterns: [
+                    {
+                        from: `${PATH_BACKEND_SRC}/public`,
+                        to: `${PATH_BACKEND_BUILD_DEV}/public`,
+                        noErrorOnMissing: true,
+                    },
+                    {
+                        from: `${PATH_BACKEND_SRC}/views`,
+                        to: `${PATH_BACKEND_BUILD_DEV}/views`,
+                        noErrorOnMissing: true,
+                    },
+                ],
+            }),
+        ],
+    },
+
+    buildSourceMaps('cheap-module-source-map'),
+
+    compileReactTs(
+        {
+            rule: {
+                include: PATH_SRC,
+                exclude: [
+                    /node_modules/,
+                    /__mocks__\/.*.(j|t)sx?$/,
+                    /__tests__\/.*.(j|t)sx?$/,
+                    /\.(spec|test)\.(j|t)sx?$/,
+                ],
+            },
+            forkTsChecker: {
+                typescript: {
+                    configOverwrite: {
+                        include: ['src/**/*'],
+                        ...tsconfigBuildOverride,
+                    },
+                },
+            },
+        },
+        'development',
+    ),
+])

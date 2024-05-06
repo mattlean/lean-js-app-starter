@@ -7,7 +7,7 @@ const { merge } = require('webpack-merge')
 
 const tsconfigBuildOverride = require('./tsconfigBuildOverride')
 const {
-    PATH_FRONTEND_BUILD,
+    PATH_FRONTEND_BUILD_PROD,
     PATH_COMMON_SRC,
     PATH_FRONTEND_SRC,
 } = require('../PATHS')
@@ -19,10 +19,8 @@ module.exports = merge([
         output: {
             assetModuleFilename: '[name].[contenthash][ext][query]',
             chunkFilename: '[name].[contenthash].js',
-            clean: true,
             filename: '[name].[contenthash].js',
-            path: PATH_FRONTEND_BUILD,
-            publicPath: '/',
+            path: PATH_FRONTEND_BUILD_PROD,
         },
 
         optimization: {

@@ -5,7 +5,11 @@ import helmet from 'helmet'
 import morgan from 'morgan'
 import path from 'path'
 
-import { PATH_BACKEND_SRC, PATH_BUILD, PATH_FRONTEND_BUILD } from '../../PATHS'
+import {
+    PATH_BACKEND_SRC,
+    PATH_BUILD_DEV,
+    PATH_FRONTEND_BUILD_DEV,
+} from '../../PATHS'
 import {
     createNotFoundErrorHandler,
     globalErrorHandler,
@@ -29,7 +33,10 @@ app.set('view engine', 'ejs')
 const viewDirs = []
 if (process.env.NODE_ENV === 'test') {
     // Use the generated views from the frontend build
-    viewDirs.push(`${PATH_BUILD}/generated-views`, `${PATH_BACKEND_SRC}/views`)
+    viewDirs.push(
+        `${PATH_BUILD_DEV}/generated-views`,
+        `${PATH_BACKEND_SRC}/views`,
+    )
 } else {
     viewDirs.push(
         // Use the generated views from the frontend build
@@ -85,7 +92,7 @@ app.use('/', frontendHandler)
 // Serve the frontend build directory and the backend public directory as static files
 let frontBuildPath
 if (process.env.NODE_ENV === 'test') {
-    frontBuildPath = PATH_FRONTEND_BUILD
+    frontBuildPath = PATH_FRONTEND_BUILD_DEV
 } else {
     frontBuildPath = BUNDLED_FRONT_BUILD_PATH
 }

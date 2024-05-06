@@ -108,22 +108,29 @@ Now the container's Bash will open and any command you run will execute within t
 
 Alternatively, you can also access the terminal from inside the container with Docker Desktop by going to the "Containers" tab, selecting the container you want to access, and clicking on the "Terminal" tab.
 
-### I'm using a project's dev environment that installs Playwright dependencies during the image building process. How do I skip that part?
+### I'm using a project's Docker dev environment, but Playwright won't work in the container. Why is that and how can I fix it?
 
-A `SKIP_PLAYWRIGHT_DEPS` build argument exists that, when to `true`, will skip the whole Playwright dependency installation step in the image building process.
+Projects involving Playwright are split into two different Docker setups by default:
+
+1. Dev environment: This Docker environment is meant for feature development and will run a development build. This environment will not have Playwright dependencies installed by default.
+2. E2E environment: This is a specialized Docker environment meant for end-to-end testing and will run a production build intended to run with Playwright.
+
+If Playwright isn't working in your container, you are probably trying to run Playwright in the dev environment container. We encourage you to use the E2E environment when working with Playwright because it runs a production build which will more accurately represent the experience your end-users will have.
+
+If you still want Playwright to run in the dev environment, you can get it working by using the `INSTALL_PLAYWRIGHT_DEPS` build argument that, when set to `true`, will perform the Playwright dependency installation step in the image building process.
 
 There are a couple of ways of setting up build arguments, but one way to do it is to run the following command:
 
 ```
-docker compose build --build-arg SKIP_PLAYWRIGHT_DEPS=true
+docker compose build --build-arg INSTALL_PLAYWRIGHT_DEPS=true
 ```
 
-Then when you run `docker compose up`, Docker will skip the image building process and jump straight to building a new container. This container should behave as expected with the exception of Playwright which will not work.
+After the image is built, subsequent runs of `docker compose up` will skip the image building process and jump straight to building a new container that will have Playwright setup within it.
 
-If you end up needing Playwright later, you can rerun the build process without any build arguments like so:
+If you end up wanting to get rid of Playwright, you can rerun the build process without any build arguments like so:
 
 ```
 docker compose build
 ```
 
-This is basically the same thing as setting `SKIP_PLAYWRIGHT_DEPS`to `false`, but it's unnecessary to explicitly do that since the `Dockerfile` does it for you.
+This is basically the same thing as setting `INSTALL_PLAYWRIGHT_DEPS` to `false`, but it's unnecessary to explicitly do that since the `Dockerfile` will do it for you by default.

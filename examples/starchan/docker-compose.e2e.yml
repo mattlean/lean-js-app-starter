@@ -1,4 +1,5 @@
 version: '3.8'
+name: ljas-starchan-e2e
 services:
     db:
         build:
@@ -30,7 +31,8 @@ services:
             timeout: 2s
             retries: 20
     app:
-        build: .
+        build:
+            dockerfile: e2e.Dockerfile
         image: ljas-starchan-e2e
         container_name: ljas-starchan-e2e
         restart: always

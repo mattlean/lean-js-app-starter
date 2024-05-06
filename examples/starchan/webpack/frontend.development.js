@@ -7,7 +7,7 @@ const { merge } = require('webpack-merge')
 const tsconfigBuildOverride = require('./tsconfigBuildOverride')
 const templateParameters = require('./templateParameters')
 const {
-    PATH_FRONTEND_BUILD,
+    PATH_FRONTEND_BUILD_DEV,
     PATH_COMMON_SRC,
     PATH_FRONTEND_SRC,
 } = require('../PATHS')
@@ -24,10 +24,8 @@ module.exports = merge([
         mode: 'development',
 
         output: {
-            clean: true,
             filename: '[name].js',
-            path: PATH_FRONTEND_BUILD,
-            publicPath: '/',
+            path: PATH_FRONTEND_BUILD_DEV,
         },
     },
 

@@ -18,7 +18,7 @@
             "type": "node",
             "request": "launch",
             "name": "Start New App",
-            "program": "${workspaceFolder}/build/backend/server.js",
+            "program": "${workspaceFolder}/build/development/backend/server.js",
             "skipFiles": ["<node_internals>/**"]
         }
     ]

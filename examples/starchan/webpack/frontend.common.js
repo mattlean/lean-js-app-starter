@@ -15,6 +15,11 @@ module.exports = merge([
     {
         entry: { app: `${PATH_FRONTEND_SRC}/index.tsx` },
 
+        output: {
+            clean: true,
+            publicPath: '/',
+        },
+
         plugins: [
             new EnvironmentPlugin({
                 E2E: process.env.E2E || false,
