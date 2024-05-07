@@ -25,7 +25,7 @@ module.exports = {
         node: true,
     },
     extends: ['eslint:recommended', 'prettier'],
-    ignorePatterns: ['build/', 'coverage/', 'dist/'],
+    ignorePatterns: ['build/', 'coverage/', 'dist/', 'playwright-report/'],
     parserOptions: {
         ecmaVersion: '2021',
         sourceType: 'module',

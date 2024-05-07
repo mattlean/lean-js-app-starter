@@ -1,11 +1,12 @@
 const setupNodeExternals = require('ljas-webpack/setupNodeExternals')
 const { buildSourceMaps, compileJs } = require('ljas-webpack')
 const { merge } = require('webpack-merge')
+
 const { PATH_BUILD, PATH_SRC } = require('./PATHS')
 
 const config = merge([
     {
-        entry: { server: './src/index.js' },
+        entry: { server: `${PATH_SRC}/index.js` },
 
         output: {
             clean: true,

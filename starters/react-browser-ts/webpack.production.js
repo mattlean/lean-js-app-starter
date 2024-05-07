@@ -13,7 +13,6 @@ module.exports = merge([
         output: {
             assetModuleFilename: '[name].[contenthash][ext][query]',
             chunkFilename: '[name].[contenthash].js',
-            clean: true,
             filename: '[name].[contenthash].js',
         },
 

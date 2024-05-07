@@ -21,7 +21,6 @@ module.exports = merge([
         mode: 'development',
 
         output: {
-            clean: true,
             filename: '[name].js',
             path: PATH_BUILD,
         },

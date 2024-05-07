@@ -5,7 +5,7 @@ const { PATH_BUILD, PATH_SRC } = require('./PATHS')
 
 const config = merge([
     {
-        entry: { server: './src/index.js' },
+        entry: { server: `${PATH_SRC}/index.js` },
 
         output: {
             clean: true,

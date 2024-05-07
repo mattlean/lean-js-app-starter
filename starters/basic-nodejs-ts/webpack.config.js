@@ -8,7 +8,7 @@ const { PATH_BUILD, PATH_SRC } = require('./PATHS')
 
 const config = merge([
     {
-        entry: { app: './src/index.ts' },
+        entry: { app: `${PATH_SRC}/index.ts` },
 
         output: {
             clean: true,
