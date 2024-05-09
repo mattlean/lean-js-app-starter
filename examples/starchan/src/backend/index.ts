@@ -4,7 +4,7 @@ import app from './app'
 
 if (
     (process.env.E2E && !process.env.PORT_DEV_SERVER_E2E) ||
-    !process.env.PORT_DEV_SERVER
+    !process.env.PORT_EXPRESS
 ) {
     throw new Error('🔴 Express port was not set')
 }
