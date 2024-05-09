@@ -24,6 +24,7 @@ module.exports = {
         'src/**/*.test.jsx',
         'src/**/*.test.ts',
         'src/**/*.test.tsx',
+        'src/playwright/**/*',
         'src/common/msw/**/*',
         'src/backend/common/util/test.ts',
         'src/common/util/test.tsx',
