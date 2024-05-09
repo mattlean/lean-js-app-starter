@@ -15,8 +15,8 @@
     "watch": [
         "src/",
         "webpack/",
-        "package.json",
         "nodemon.production.json",
+        "package.json",
         "tsconfig.json"
     ]
 }

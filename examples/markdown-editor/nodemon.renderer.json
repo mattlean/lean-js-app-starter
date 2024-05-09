@@ -1,8 +1,8 @@
 {
     "watch": [
         "webpack/renderer.*.js",
-        "package.json",
         "nodemon.renderer.json",
+        "package.json",
         "tailwind.config.js",
         "tsconfig.json"
     ]

@@ -24,7 +24,7 @@ module.exports = merge([
             new EnvironmentPlugin({
                 E2E: process.env.E2E || false,
                 HOST: process.env.HOST,
-                HOST_E2E: process.env.HOST_E2E,
+                HOST_E2E: process.env.HOST_E2E || '',
             }),
         ],
     },
