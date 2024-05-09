@@ -1,7 +1,7 @@
 {
     "watch": [
-        "webpack/main.*.js",
-        "main.nodemon.json",
+        "webpack/preload.*.js",
+        "nodemon.preload.json",
         "package.json",
         "tsconfig.json"
     ]

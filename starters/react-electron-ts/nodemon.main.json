@@ -1,8 +1,8 @@
 {
     "watch": [
-        "webpack/renderer.*.js",
+        "webpack/main.*.js",
+        "nodemon.main.json",
         "package.json",
-        "renderer.nodemon.json",
         "tsconfig.json"
     ]
 }

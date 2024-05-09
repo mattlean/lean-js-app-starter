@@ -2,7 +2,7 @@
     "watch": [
         "webpack/frontend.*.js",
         "webpack/templateParameters.js",
-        "frontend.nodemon.json",
+        "nodemon.frontend.json",
         "package.json",
         "tsconfig.json"
     ]
