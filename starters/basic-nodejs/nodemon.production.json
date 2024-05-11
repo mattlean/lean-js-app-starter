@@ -1,0 +1,9 @@
+{
+    "ignore": [
+        "src/**/__mocks__",
+        "src/**/__tests__",
+        "src/**/*.spec.js",
+        "src/**/*.test.js"
+    ],
+    "watch": ["src/", "webpack/", "nodemon.production.json", "package.json"]
+}

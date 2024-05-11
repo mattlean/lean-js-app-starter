@@ -12,7 +12,7 @@ module.exports = {
     root: true,
     rules: {},
     overrides: [
-        /* Tests */
+        /* Jest */
         {
             env: {
                 es2021: true,

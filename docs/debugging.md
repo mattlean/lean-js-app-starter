@@ -1,6 +1,6 @@
 # Debugging
 
-## Debugging Node.js applications with Visual Studio Code
+## Node.js applications with Visual Studio Code
 
 In Visual Studio Code, open the "Run and Debug" sidebar. Then select one of the following options in its configuration dropdown:
 
@@ -9,15 +9,19 @@ In Visual Studio Code, open the "Run and Debug" sidebar. Then select one of the 
 
 Finally, hit the green play button to start debugging.
 
-## Debugging frontend applications with Google Chrome
+## Frontend applications with Google Chrome
 
 Simply open up the app in Google Chrome and open up Chrome DevTools.
 
-## Debugging Jest tests with Google Chrome
+## Jest tests
 
 TODO:
 
-## Debugging webpack build process with Google Chrome
+## Playwright tests
+
+TODO:
+
+## webpack build process with Google Chrome
 
 First start [webpack](https://webpack.js.org) in debug mode using a build script package.json script like `npm run build:debug`. [Note that if you're using the Docker dev environment, you must run these commands from within the container for them to work](./developing-with-docker.md#how-can-i-run-terminal-commands-inside-the-container).
 

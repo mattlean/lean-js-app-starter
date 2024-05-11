@@ -1,4 +1,5 @@
 version: '3.8'
+name: ljas-basic-nodejs
 services:
     app:
         build: .
@@ -11,4 +12,6 @@ services:
             - '9231:9231' # Exposes webpack debugger. Also defined in the build debug package.json scripts.
         volumes:
             - .:/code
-            - /code/node_modules
+            - ljas-basic-nodejs-node_modules:/code/node_modules
+volumes:
+    ljas-basic-nodejs-node_modules:
