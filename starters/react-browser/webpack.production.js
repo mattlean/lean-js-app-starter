@@ -7,7 +7,7 @@ const {
 } = require('ljas-webpack')
 const { merge } = require('webpack-merge')
 
-const { PATH_SRC } = require('./PATHS')
+const { PATH_SRC, PATH_BUILD_PROD } = require('./PATHS')
 
 module.exports = merge([
     {
@@ -17,6 +17,7 @@ module.exports = merge([
             assetModuleFilename: '[name].[contenthash][ext][query]',
             chunkFilename: '[name].[contenthash].js',
             filename: '[name].[contenthash].js',
+            path: PATH_BUILD_PROD,
         },
 
         optimization: {

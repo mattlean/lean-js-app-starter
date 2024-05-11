@@ -36,7 +36,7 @@ module.exports = {
             rules: RULES_REACT,
         },
 
-        /* Tests */
+        /* Jest */
         {
             env: {
                 es2021: true,

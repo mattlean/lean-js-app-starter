@@ -3,8 +3,8 @@ name: ljas-basic-nodejs-ts
 services:
     app:
         build: .
-        image: 'ljas-basic-nodejs-ts'
-        container_name: 'ljas-basic-nodejs-ts'
+        image: ljas-basic-nodejs-ts
+        container_name: ljas-basic-nodejs-ts
         restart: always
         ports:
             - '9229:9229' # Exposes Node.js debugger. Also defined in the "start:debug" package.json script.
