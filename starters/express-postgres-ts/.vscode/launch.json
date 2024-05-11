@@ -17,7 +17,7 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Start New App",
+            "name": "Launch & Attach to App",
             "program": "${workspaceFolder}/build/server.js",
             "skipFiles": ["<node_internals>/**"]
         }
