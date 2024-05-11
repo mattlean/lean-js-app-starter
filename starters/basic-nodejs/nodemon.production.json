@@ -5,5 +5,5 @@
         "src/**/*.spec.js",
         "src/**/*.test.js"
     ],
-    "watch": ["src/", "webpack/", "nodemon.production.json", "package.json"]
+    "watch": ["src/", "nodemon.production.json", "package.json", "webpack.*.js"]
 }
