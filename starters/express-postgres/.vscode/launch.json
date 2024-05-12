@@ -16,10 +16,28 @@
         },
         {
             "type": "node",
+            "request": "attach",
+            "name": "Attach to Running Jest",
+            "port": 9230
+        },
+        {
+            "type": "node",
             "request": "launch",
             "name": "Launch & Attach to App",
-            "program": "${workspaceFolder}/build/server.js",
+            "program": "${workspaceFolder}/build/development/server.js",
             "skipFiles": ["<node_internals>/**"]
+        },
+        {
+            "name": "Launch & Attach to Jest",
+            "type": "node",
+            "request": "launch",
+            "runtimeArgs": [
+                "--inspect-brk=0.0.0.0:9230",
+                "${workspaceRoot}/node_modules/.bin/jest",
+                "--runInBand"
+            ],
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen"
         }
     ]
 }

@@ -24,7 +24,7 @@
             "type": "node",
             "request": "launch",
             "name": "Launch & Attach to App",
-            "program": "${workspaceFolder}/build/app.js",
+            "program": "${workspaceFolder}/build/development/app.js",
             "skipFiles": ["<node_internals>/**"]
         },
         {
