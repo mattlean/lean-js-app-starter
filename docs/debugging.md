@@ -6,7 +6,7 @@ In Visual Studio Code, open the "Run and Debug" sidebar. Then select one of the 
 
 ### 1. Attach to Running App
 
-Use this option if you already have the Node.js app running in debug mode. You can start the Node.js app in debug mode using the `start:debug` `package.json` script. The Docker dev environment already uses this `package.json` script by default.
+Use this option if you already have the Node.js app running in debug mode. You can start the Node.js app in debug mode using the `start:debug` `package.json` script. The Docker dev environment already uses this `package.json` script by default, so use this option if you're using it.
 
 ### 2. Launch & Attach to App
 

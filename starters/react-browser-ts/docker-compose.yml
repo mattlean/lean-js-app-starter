@@ -1,9 +1,10 @@
 version: '3.8'
+name: ljas-react-browser-ts
 services:
     app:
         build: .
-        image: 'ljas-react-browser-ts'
-        container_name: 'ljas-react-browser-ts'
+        image: ljas-react-browser-ts
+        container_name: ljas-react-browser-ts
         restart: always
         ports:
             - '${PORT}:${PORT}'
@@ -11,4 +12,6 @@ services:
             - '9231:9231' # Exposes webpack debugger. Also defined in the build debug package.json scripts.
         volumes:
             - .:/code
-            - /code/node_modules
+            - ljas-react-browser-ts-node_modules:/code/node_modules
+volumes:
+    ljas-react-browser-ts-node_modules:

@@ -7,7 +7,7 @@ const {
 } = require('ljas-webpack')
 const { merge } = require('webpack-merge')
 
-const { PATH_SRC, PATH_BUILD_PROD } = require('./PATHS')
+const { PATH_BUILD_PROD, PATH_SRC } = require('./PATHS')
 
 module.exports = merge([
     {

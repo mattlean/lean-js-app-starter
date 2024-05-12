@@ -10,7 +10,7 @@ const {
 const { merge } = require('webpack-merge')
 
 const tsconfigBuildOverride = require('./tsconfigBuildOverride')
-const { PATH_BUILD, PATH_SRC } = require('./PATHS')
+const { PATH_BUILD_DEV, PATH_SRC } = require('./PATHS')
 
 if (!process.env.PORT) {
     throw new Error('🔴 webpack-dev-server port was not set')
@@ -22,7 +22,7 @@ module.exports = merge([
 
         output: {
             filename: '[name].js',
-            path: PATH_BUILD,
+            path: PATH_BUILD_DEV,
         },
     },
 

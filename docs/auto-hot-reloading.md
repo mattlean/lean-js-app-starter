@@ -2,11 +2,13 @@
 
 Lean JS App Starter uses two different processes that respond to changes made to your codebase and show your app's changes as quickly as possible in the development environment:
 
-## 1. webpack watch mode
+## 1. webpack
 
-[webpack watch mode](https://webpack.js.org/configuration/watch) watches the app's source code (i.e. all the code in the `src/` directory) and restarts the build process if any code changes are encountered. It is used for some `build:watch` and `dev` `package.json` scripts depending on if the script is related to a Node.js or browser context (e.g., `npm run backend:build:watch`, `npm run frontend:dev`, `npm run main:build:watch`, `npm run renderer:dev`).
+We utilize [webpack](https://webpack.js.org)'s [watch mode](https://webpack.js.org/configuration/watch) for [Node.js](https://nodejs.org)-based source code and [webpack-dev-server](https://webpack.js.org/configuration/dev-server) for browser-based source code to watch the `src/` directory and create new builds if any changes occur there.
 
-Note that webpack watch mode alone only generates a new build and will not restart the app process. This means that, for most processes except for those that involve hot reloading, changes may not be reflected in a running app until you shut down the current one and start a completely new process. That responsibility is given to nodemon which restarts the app after webpack finishes generating a new build.
+webpack watch mode and webpack-dev-server is used for some `build:watch` and `dev` `package.json` scripts (e.g., `npm run backend:build:watch`, `npm run frontend:dev`, `npm run main:build:watch`, `npm run renderer:dev`).
+
+Note that webpack alone only generates a new build and will not restart the app process. This means that, for most build processes except for those involving hot reloading, changes may not be reflected in a running app until you shut down the current one and start a completely new process. That responsibility is given to nodemon which restarts the app after webpack finishes generating a new build.
 
 So one (not recommended) way to get auto reloading working (i.e. automatically generating a new build and restarting the app when changes occur) is to run a command similar to the following:
 
@@ -14,7 +16,7 @@ So one (not recommended) way to get auto reloading working (i.e. automatically g
 npm run build:watch && npm run start:debug
 ```
 
-In this case, `npm run build:watch` runs webpack watch mode to generate a new build, and `npm run start:debug` runs nodemon which will run the app process and completely restart it when a new build is generated.
+In this case, `npm run build:watch` runs webpack to generate a new build, and `npm run start:debug` runs nodemon which will run the app process and completely restart it when a new build is generated.
 
 The recommend method is the `dev` `package.json` script that essentially does all of this for you except in [a better way with concurrently](https://github.com/open-cli-tools/concurrently):
 
@@ -41,9 +43,9 @@ These nodemon config files are responsible for restarting the webpack build proc
 -   `nodemon.preload.json`
 -   `nodemon.renderer.json`
 
-This type of nodemon config file works in tandem with webpack watch mode, so nodemon isn't actually responsible for watching for changes in the app's source code (i.e. all the code in the `src/` directory). That's webpack watch mode's job.
+This type of nodemon config file works in tandem with webpack, so nodemon isn't actually responsible for watching for changes in the app's source code (i.e. all the code in the `src/` directory). That's webpack's job.
 
-Instead, nodemon watches files outside of webpack watch mode's jurisdiction like `package.json`, nodemon config files, and webpack config files (i.e. anything outside of the `src/` directory) that should still affect the build in some way.
+Instead, nodemon watches files outside of webpack's jurisdiction like `package.json`, nodemon config files, and webpack config files (i.e. anything outside of the `src/` directory) that should still affect the build in some way.
 
 ### b) Application Auto Reload
 
