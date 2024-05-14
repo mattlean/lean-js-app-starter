@@ -1,8 +1,4 @@
 {
-    "watch": [
-        "nodemon.json",
-        "package.json",
-        "tsconfig.json",
-        "webpack.config.js"
-    ]
+    "ignore": ["webpack.production.js"],
+    "watch": ["nodemon.json", "package.json", "tsconfig.json", "webpack.*.js"]
 }
