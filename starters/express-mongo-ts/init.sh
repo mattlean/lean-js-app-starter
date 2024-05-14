@@ -31,8 +31,8 @@ if [ "${NODE_ENV}" == "production" ]; then
     npm run build:production
     echo "${PREFIX} Build process completed!"
 elif [[
-    (-d "./build" && ! -z "$(ls -A ./build)")
-    && (-f "./build/server.js")
+    (-d "./build/development" && ! -z "$(ls -A ./build/development)")
+    && (-f "./build/development/server.js")
 ]]; then
     echo "${PREFIX} The development build already exists, so skip the build process."
 else
