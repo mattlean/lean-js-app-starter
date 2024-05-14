@@ -26,7 +26,7 @@ elif [[
         (-d "./build/development/preload" && ! -z "$(ls -A ./build/development/preload)")
         && (-d "./build/development/renderer" && ! -z "$(ls -A ./build/development/renderer)")
         && (-d "./build/development/main" && ! -z "$(ls -A ./build/development/main)")
-        && (-f "./build/development/main/main.js")
+        && (-f "./build/development/main/main.js") && (-f "./build/development/preload/preload.js")
 ]]; then
     echo "${PREFIX} The development build already exists, so skip the build process."
 else

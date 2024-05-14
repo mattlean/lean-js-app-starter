@@ -11,6 +11,15 @@
             "port": 9230
         },
         {
+            "type": "node",
+            "request": "attach",
+            "name": "Attach to Running Main Process",
+            "address": "localhost",
+            "localRoot": "${workspaceFolder}",
+            "port": 9229,
+            "skipFiles": ["<node_internals>/**"]
+        },
+        {
             "name": "Launch & Attach to Jest",
             "type": "node",
             "request": "launch",
@@ -21,6 +30,18 @@
             ],
             "console": "integratedTerminal",
             "internalConsoleOptions": "neverOpen"
+        },
+        {
+            "name": "Launch & Attach to Main Process",
+            "type": "node",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/electron",
+            "windows": {
+                "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/electron.cmd"
+            },
+            "args": ["."],
+            "outputCapture": "std"
         }
     ]
 }

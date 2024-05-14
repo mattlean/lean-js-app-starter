@@ -17,7 +17,7 @@
         "backend:build:production": "webpack --config webpack/backend.config.js --mode production",
         "backend:build:production:debug": "node --inspect-brk=0.0.0.0:9231 node_modules/.bin/webpack --config webpack/backend.config.js --mode production",
         "backend:build:stats": "npm run backend:build:production -- --json > stats.backend.json",
-        "backend:build:watch": "nodemon  --config nodemon.backend.json --exec \"npm run backend:build -- --watch\"",
+        "backend:build:watch": "nodemon --config nodemon.backend.json --exec \"npm run backend:build -- --watch\"",
         "backend:dev": "concurrently --names \"📦 webpack (back),🌐 express\" \"npm run backend:build:watch\" \"npm run start:debug\"",
         "build": "npm run frontend:build && npm run backend:build",
         "build:production": "npm run frontend:build:production && npm run backend:build:production",

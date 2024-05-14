@@ -11,7 +11,7 @@
         "build:production:debug": "node --inspect-brk=0.0.0.0:9231 node_modules/.bin/webpack --mode production",
         "build:stats": "npm run build:production -- --json > stats.json",
         "check-types": "tsc",
-        "dev": "nodemon --exec \"npm run start\"",
+        "dev": "nodemon --exec \"npm start\"",
         "dev:production": "nodemon --config nodemon.production.json --exec \"npm run build:production && npm run start:production\"",
         "format": "npm run format:check",
         "format:check": "prettier --check .",

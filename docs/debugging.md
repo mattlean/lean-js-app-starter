@@ -1,18 +1,22 @@
 # Debugging
 
-## Node.js applications with Visual Studio Code
+## Node.js applications & Electron main processes with Visual Studio Code
 
-In Visual Studio Code, open the "Run and Debug" sidebar. Then select one of the following options in its configuration dropdown:
+In Visual Studio Code, open the "Run and Debug" sidebar. Then use one of the following options in its configuration dropdown:
 
-### 1. Attach to Running App
+### 1. Attach to Running App or Attach to Running Main Process
 
-Use this option if you already have the Node.js app running in debug mode. You can start the Node.js app in debug mode using the `start:debug` `package.json` script. The Docker dev environment already uses this `package.json` script by default, so use this option if you're using it.
+Select this option if you already have the Node.js app or main process running in debug mode and hit the green play button to start debugging.
 
-### 2. Launch & Attach to App
+You can run debug mode using the `start:debug` `package.json` script. You can alternatively use `dev` `package.json` script as well since under-the-hood it just reuses the `start:debug` script.
 
-Use this option if the Node.js app is not currently running. It will start the app in debug mode. Note that this does require a build of the Node.js app to already exist, so if one isn't already available you will need to run the build process first before using this option.
+Note that for Node.js apps, the Docker dev environment already runs the app in debug mode by default. Therefore once the container is running you can skip straight to using this option in the dropdown.
 
-Finally, hit the green play button to start debugging.
+### 2. Launch & Attach to App or Launch & Attach to Main Process
+
+Select this option if the Node.js app or main process is not currently running and hit the green play button to start debugging. This will start the app in debug mode.
+
+Note that this does require a build to already exist, so if one isn't already available you will need to run the build process first before using this option.
 
 ## Frontend applications with Google Chrome
 
