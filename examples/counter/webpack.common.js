@@ -1,7 +1,7 @@
 const buildHtml = require('ljas-webpack/buildHtml')
 const { merge } = require('webpack-merge')
 
-const { PATH_SRC } = require('../PATHS')
+const { PATH_SRC } = require('./PATHS')
 
 module.exports = merge([
     {

@@ -24,7 +24,7 @@ module.exports = {
             plugins: ['@typescript-eslint'],
         },
 
-        /* Tests */
+        /* Jest */
         {
             env: {
                 es2021: true,
