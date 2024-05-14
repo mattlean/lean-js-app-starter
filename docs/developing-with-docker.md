@@ -2,7 +2,7 @@
 
 Instead of running the projects natively on your computer, we've also provided a containerized development environment with [Docker](https://www.docker.com) that's available for you to use.
 
-## Why should I use the Docker dev environment?
+## What things should I consider when deciding whether to use the Docker development environment?
 
 Here are some things to consider if you're evaluating whether or not the Docker dev environments are right for you:
 
@@ -27,7 +27,7 @@ Once Docker is installed, all you need to do is run `docker compose up` to turn 
 
 ### Downsides
 
-As with most technologies, Docker unfortunately has some trade offs to think about too.
+As with most technologies, Docker unfortunately has some trade-offs that are also important to understand.
 
 **You should learn yet another thing: Docker.**  
 TODO:
@@ -41,7 +41,7 @@ Because Docker is limited to a subset of your host computer's resources, it is i
 TODO:
 Editor extensions like ESLint depend on `node_modules`, but if you're running the services within containers, `node_modules` will be unaccessible on your editor running natively. To get around this you will need to have two different installations of `node_modules` (one in the container, and the other natively) or you will need to develop within the context of the container.
 
-VS Code has the best documented way on how to do this, but this means that you will have to use VS Code which is a problem if you prefer something else. Also, if the container crashes, the connected VS Code instance will crash as well which can be inconvenient.
+VS Code has the best documented way on how to develop inside a container, but this means that you will have to use VS Code which is a problem if you prefer something else. Also, if the container crashes, the connected VS Code instance will crash as well which can be inconvenient.
 
 **The environment is consistent across different computers until it isn't.**
 
@@ -134,3 +134,11 @@ docker compose build
 ```
 
 This is basically the same thing as setting `INSTALL_PLAYWRIGHT_DEPS` to `false`, but it's unnecessary to explicitly do that since the `Dockerfile` will do it for you by default.
+
+## How do I reduce the space Docker requires?
+
+TODO:
+
+-   docker image prune
+-   docker builder prune
+-   docker system prune

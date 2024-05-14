@@ -1,4 +1,3 @@
 {
-    "ignore": ["webpack.production.js"],
     "watch": ["build/development/", "nodemon.development.json"]
 }
