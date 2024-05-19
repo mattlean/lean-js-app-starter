@@ -38,24 +38,36 @@ export const getBrowserOs = async (page: Page) => {
 
 /**
  * Launch the Electron application with either the development or production build.
+ * By default the PLAYWRIGHT_BUILD_TYPE environment variable will determine which build will be used,
+ * but you can override this through some of the available parameters.
  * @param arg Parameter object
- * @param arg.buildType Determines if the development or the production build is used for testing
- * @param arg.colorScheme Emulates 'prefers-colors-scheme' media feature, supported values are 'light', 'dark', 'no-preference'. See page.emulateMedia([options]) for more details. Passing null resets emulation to system defaults. Defaults to 'light'.
+ * @param arg.buildPath Manually set the build path. Overrides buildType parameter and PLAYWRIGHT_BUILD_TYPE environment variable.
+ * @param arg.buildType Determines if the development or the production build is used for testing. Overrides PLAYWRIGHT_BUILD_TYPE environment variable.
+ * @param arg.launchOptions Options to pass to Electron.launch method
  * @returns A promise that will resolve to an Electron application representation
  */
 export const launchElectron = ({
+    buildPath,
     buildType,
-    colorScheme,
+    launchOptions,
 }: {
+    buildPath?: string
     buildType?: 'development' | 'production'
-    colorScheme?: null | 'light' | 'dark' | 'no-preference'
+    launchOptions?: Parameters<typeof electron.launch>[0]
 } = {}) => {
-    const arg =
-        buildType === 'production' ? './build/production/main/main.js' : '.'
+    let arg = '.'
+    if (buildPath) {
+        arg = buildPath
+    } else if (
+        buildType === 'production' ||
+        process.env.PLAYWRIGHT_BUILD_TYPE === 'production'
+    ) {
+        arg = './build/production/main/main.js'
+    }
 
     return electron.launch({
         args: [arg],
-        colorScheme,
+        ...launchOptions,
     })
 }
 

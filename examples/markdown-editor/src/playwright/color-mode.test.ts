@@ -80,7 +80,9 @@ test('color mode defaults to system preference mode', async () => {
 })
 
 test('color mode is light when system preference mode is active and the OS is set to light', async () => {
-    const electronApp = await launchElectron({ colorScheme: 'light' })
+    const electronApp = await launchElectron({
+        launchOptions: { colorScheme: 'light' },
+    })
     const window = await electronApp.firstWindow()
 
     await resetColorMode(window)
@@ -110,7 +112,9 @@ test('color mode is light when system preference mode is active and the OS is se
 })
 
 test('color mode is dark when system preference mode is active and the OS is set to dark', async () => {
-    const electronApp = await await launchElectron({ colorScheme: 'dark' })
+    const electronApp = await launchElectron({
+        launchOptions: { colorScheme: 'dark' },
+    })
     const window = await electronApp.firstWindow()
 
     await resetColorMode(window)

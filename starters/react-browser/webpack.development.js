@@ -11,7 +11,7 @@ const { merge } = require('webpack-merge')
 
 const { PATH_BUILD_DEV, PATH_SRC } = require('./PATHS')
 
-if (!process.env.PORT) {
+if (!process.env.PORT_WEBPACK_DEV_SERVER) {
     throw new Error('🔴 webpack-dev-server port was not set')
 }
 
@@ -52,7 +52,7 @@ module.exports = merge([
     setupReactFastRefreshServer({
         devServer: {
             historyApiFallback: true,
-            port: process.env.PORT,
+            port: process.env.PORT_WEBPACK_DEV_SERVER,
             watchFiles: ['src/**/*.ejs'],
         },
         rule: {

@@ -8,15 +8,16 @@ services:
         container_name: ljas-express-postgres-db
         restart: always
         ports:
-            - '${PORT_DB}:${PORT_DB}'
+            - '${POSTGRES_PORT}:${POSTGRES_PORT}'
         env_file: .env
+        command: '-p ${POSTGRES_PORT}'
         volumes:
             - ljas-express-postgres-db-data:/var/lib/postgresql/data
         healthcheck:
             test:
                 [
                     'CMD-SHELL',
-                    'pg_isready -d $${POSTGRES_DB} -U $${POSTGRES_USER}',
+                    'pg_isready -d $${POSTGRES_DB} -U $${POSTGRES_USER} -p ${POSTGRES_PORT}',
                 ]
             interval: 10s
             timeout: 5s

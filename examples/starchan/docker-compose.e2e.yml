@@ -13,7 +13,7 @@ services:
         environment:
             - PORT_DB=${PORT_DB_E2E}
             - MONGO_REPLICA_PORT=${PORT_DB_E2E}
-        # Uncomment volume lines to persist data
+        # Uncomment all related lines to persist database data
         # volumes:
         #     - ljas-starchan-db-data-e2e:/data/db
         healthcheck:

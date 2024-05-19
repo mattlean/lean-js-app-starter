@@ -1,4 +1,5 @@
-import { defineConfig, devices } from '@playwright/test'
+// @ts-check
+const { defineConfig, devices } = require('@playwright/test')
 
 /**
  * Read environment variables from file.
@@ -7,9 +8,9 @@ import { defineConfig, devices } from '@playwright/test'
 require('dotenv').config()
 
 /**
- * See https://playwright.dev/docs/test-configuration.
+ * @see https://playwright.dev/docs/test-configuration
  */
-export default defineConfig({
+module.exports = defineConfig({
     testDir: './src/playwright',
     /* Run tests in files in parallel */
     fullyParallel: true,
@@ -37,15 +38,15 @@ export default defineConfig({
             use: { ...devices['Desktop Chrome'] },
         },
 
-        // {
-        //   name: 'firefox',
-        //   use: { ...devices['Desktop Firefox'] },
-        // },
+        {
+            name: 'firefox',
+            use: { ...devices['Desktop Firefox'] },
+        },
 
-        // {
-        //   name: 'webkit',
-        //   use: { ...devices['Desktop Safari'] },
-        // },
+        {
+            name: 'webkit',
+            use: { ...devices['Desktop Safari'] },
+        },
 
         /* Test against mobile viewports. */
         // {

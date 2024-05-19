@@ -113,17 +113,15 @@ module.exports = {
 
         /* Playwright */
         {
-            env: {
-                es2021: true,
-                node: true,
-            },
-            files: 'src/playwright/**',
+            files: 'src/playwright/**/*.[jt]s',
             extends: [
                 'eslint:recommended',
                 'plugin:@typescript-eslint/recommended',
                 'plugin:playwright/recommended',
                 'prettier',
             ],
+            parser: '@typescript-eslint/parser',
+            plugins: ['@typescript-eslint'],
         },
     ],
     settings: {

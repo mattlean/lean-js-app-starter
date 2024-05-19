@@ -59,6 +59,16 @@ module.exports = {
             plugins: ['jest'],
             rules: RULES_REACT,
         },
+
+        /* Playwright */
+        {
+            files: 'src/playwright/**/*.js',
+            extends: [
+                'eslint:recommended',
+                'plugin:playwright/recommended',
+                'prettier',
+            ],
+        },
     ],
     settings: {
         react: {

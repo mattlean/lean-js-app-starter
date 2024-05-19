@@ -64,6 +64,19 @@ module.exports = {
             plugins: ['@typescript-eslint', 'jest'],
             rules: RULES_REACT,
         },
+
+        /* Playwright */
+        {
+            files: 'src/playwright/**/*.[jt]s',
+            extends: [
+                'eslint:recommended',
+                'plugin:@typescript-eslint/recommended',
+                'plugin:playwright/recommended',
+                'prettier',
+            ],
+            parser: '@typescript-eslint/parser',
+            plugins: ['@typescript-eslint'],
+        },
     ],
     settings: {
         react: {

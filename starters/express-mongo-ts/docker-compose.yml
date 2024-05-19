@@ -8,7 +8,7 @@ services:
         container_name: ljas-express-mongo-ts-db
         restart: always
         ports:
-            - '${PORT_DB}:${PORT_DB}'
+            - '${MONGO_REPLICA_PORT}:${MONGO_REPLICA_PORT}'
         env_file: .env
         volumes:
             - ljas-express-mongo-ts-db-data:/data/db

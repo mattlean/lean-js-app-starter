@@ -15,7 +15,7 @@ const {
     PATH_RENDERER_SRC,
 } = require('../PATHS')
 
-if (!process.env.PORT_DEV_SERVER) {
+if (!process.env.PORT_WEBPACK_DEV_SERVER) {
     throw new Error('🔴 webpack-dev-server port was not set')
 }
 
@@ -68,7 +68,7 @@ module.exports = merge([
         devServer: {
             devMiddleware: { writeToDisk: true },
             historyApiFallback: true,
-            port: process.env.PORT_DEV_SERVER,
+            port: process.env.PORT_WEBPACK_DEV_SERVER,
             watchFiles: ['src/renderer/**/*.ejs'],
         },
         rule: {

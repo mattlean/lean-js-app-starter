@@ -1,5 +1,3 @@
-import { Page } from '@playwright/test'
-
 /**
  * Load the frontend application with either the development or end-to-end host.
  * By default the HOST environment variable will be used. If the E2E environment variable is true, then the HOST_E2E environment variable will be used instead.
@@ -11,18 +9,7 @@ import { Page } from '@playwright/test'
  * @param arg.url Manually set the URL. Overrides all behaviors caused by environment variables.
  * @returns A promise that will resolve to the main resource response
  */
-export const loadApp = (
-    page: Page,
-    {
-        gotoOptions,
-        serverType,
-        url,
-    }: {
-        gotoOptions?: Parameters<typeof page.goto>[1]
-        serverType?: 'development' | 'e2e'
-        url?: string
-    } = {},
-) => {
+export const loadApp = (page, { gotoOptions, serverType, url } = {}) => {
     let u = process.env.E2E ? process.env.HOST_E2E : process.env.HOST
     if (url) {
         u = url

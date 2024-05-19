@@ -9,4 +9,8 @@ WORKDIR /code
 COPY package.json .
 RUN npm install
 
+# Install Playwright dependencies if INSTALL_PLAYWRIGHT_DEPS build argument is true
+ARG INSTALL_PLAYWRIGHT_DEPS=false
+RUN if [ "$INSTALL_PLAYWRIGHT_DEPS" = "true" ] ; then npm run test:e2e:install ; fi
+
 CMD ["npm", "run", "dev"]
