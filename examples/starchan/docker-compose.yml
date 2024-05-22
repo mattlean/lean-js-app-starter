@@ -40,7 +40,7 @@ services:
             - '9229:9229' # Exposes Node.js debugger. Also defined in the "start:debug" package.json script.
             - '9230:9230' # Exposes Jest debugger. Also defined in the "test:debug" package.json script.
             - '9231:9231' # Exposes webpack debugger. Also defined in the build debug package.json scripts.
-            - '9323:9323' # Exposes Playwright report. Also defined in the "test:e2e:report" package.json script.
+            - '9323:9323' # Exposes Playwright report. Also defined in the "test:e2e:report" package.json script and Playwright config.
         volumes:
             - .:/code
             - ljas-starchan-node_modules:/code/node_modules

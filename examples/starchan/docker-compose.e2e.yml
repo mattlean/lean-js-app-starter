@@ -43,7 +43,7 @@ services:
             - '9329:9229' # Exposes Node.js debugger.
             - '9330:9230' # Exposes Jest debugger.
             - '9331:9231' # Exposes webpack debugger.
-            - '9423:9323' # Exposes Playwright report.
+            - '9423:9323' # Exposes Playwright report. Also defined in the "test:e2e:report" package.json script and Playwright config.
         environment:
             - DATABASE_URL=${DATABASE_URL_E2E}
             - E2E=true

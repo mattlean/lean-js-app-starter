@@ -11,8 +11,9 @@ services:
             - '${PORT_WEBPACK_DEV_SERVER_E2E}:${PORT_WEBPACK_DEV_SERVER_E2E}'
             - '9330:9230' # Exposes Jest debugger. Also defined in the "test:debug" package.json script.
             - '9331:9231' # Exposes webpack debugger. Also defined in the build debug package.json scripts.
-            - '9423:9323' # Exposes Playwright report. Also defined in the "test:e2e:report" package.json script.
+            - '9423:9323' # Exposes Playwright report. Also defined in the "test:e2e:report" package.json script and Playwright config.
         environment:
+            - E2E=true
             - PORT=${PORT_WEBPACK_DEV_SERVER_E2E} # Specify port for http-server to listen on
         volumes:
             - .:/code
