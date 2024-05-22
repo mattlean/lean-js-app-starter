@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Basic Electron Version
+# Electron Version
 
 PREFIX="[🚀 init.sh]"
 

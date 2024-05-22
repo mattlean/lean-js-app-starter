@@ -43,6 +43,7 @@
         "starters/express-postgres-ts",
         "starters/react-browser",
         "starters/react-browser-ts",
+        "starters/react-electron",
         "starters/react-electron-ts",
         "ljas-webpack"
     ],
