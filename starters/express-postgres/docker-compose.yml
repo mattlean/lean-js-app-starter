@@ -31,7 +31,7 @@ services:
                 condition: service_healthy
         restart: always
         ports:
-            - '${PORT_APP}:${PORT_APP}'
+            - '${PORT_EXPRESS}:${PORT_EXPRESS}'
             - '${PORT_PRISMA_STUDIO}:${PORT_PRISMA_STUDIO}'
             - '9229:9229' # Exposes Node.js debugger. Also defined in the "start:debug" package.json script.
             - '9230:9230' # Exposes Jest debugger. Also defined in the "test:debug" package.json script.

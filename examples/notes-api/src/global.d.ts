@@ -9,7 +9,7 @@ declare global {
     namespace NodeJS {
         interface ProcessEnv {
             JWT_SECRET?: string
-            PORT_APP?: string
+            PORT_EXPRESS?: string
         }
     }
     namespace Express {
