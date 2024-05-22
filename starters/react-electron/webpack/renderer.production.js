@@ -1,6 +1,10 @@
 const buildTransformedCss = require('ljas-webpack/buildTransformedCss')
-const compileReact = require('ljas-webpack/compileReact')
-const { buildSourceMaps, loadFonts, loadImages } = require('ljas-webpack')
+const {
+    buildSourceMaps,
+    compileReact,
+    loadFonts,
+    loadImages,
+} = require('ljas-webpack')
 const { merge } = require('webpack-merge')
 
 const {
