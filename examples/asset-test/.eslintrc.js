@@ -11,7 +11,7 @@ module.exports = {
         node: true,
     },
     extends: ['eslint:recommended', 'prettier'],
-    ignorePatterns: ['build/', 'coverage/'],
+    ignorePatterns: ['build/', 'coverage/', 'playwright-report/'],
     parserOptions: {
         ecmaVersion: '2021',
         sourceType: 'module',
@@ -63,6 +63,19 @@ module.exports = {
             parser: '@typescript-eslint/parser',
             plugins: ['@typescript-eslint', 'jest'],
             rules: RULES_REACT,
+        },
+
+        /* Playwright */
+        {
+            files: 'src/playwright/**/*.[jt]s',
+            extends: [
+                'eslint:recommended',
+                'plugin:@typescript-eslint/recommended',
+                'plugin:playwright/recommended',
+                'prettier',
+            ],
+            parser: '@typescript-eslint/parser',
+            plugins: ['@typescript-eslint'],
         },
     ],
     settings: {

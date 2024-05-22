@@ -7,7 +7,7 @@ services:
         container_name: ljas-asset-test
         restart: always
         ports:
-            - '${PORT}:${PORT}'
+            - '${PORT_WEBPACK_DEV_SERVER}:${PORT_WEBPACK_DEV_SERVER}'
             - '9230:9230' # Exposes Jest debugger. Also defined in the "test:debug" package.json script.
             - '9231:9231' # Exposes webpack debugger. Also defined in the build debug package.json scripts.
         volumes:

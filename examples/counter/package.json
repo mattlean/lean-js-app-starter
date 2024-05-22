@@ -28,6 +28,11 @@
         "test:coverage": "npm run test -- --coverage",
         "test:coverage:open": "open coverage/lcov-report/index.html",
         "test:debug": "node --inspect-brk=0.0.0.0:9230 node_modules/.bin/jest --runInBand",
+        "test:e2e": "playwright test",
+        "test:e2e:debug": "npm run test:e2e -- --debug",
+        "test:e2e:dev": "npm run test:e2e -- --ui",
+        "test:e2e:install": "playwright install --with-deps",
+        "test:e2e:report": "playwright show-report --host 0.0.0.0 --port 9323",
         "test:watch": "npm run test -- --watch || npm run test -- --watchAll"
     },
     "dependencies": {
@@ -61,18 +66,21 @@
         "webpack-merge": "^5.9.0"
     },
     "devDependencies": {
+        "@playwright/test": "^1.44.0",
         "@pmmmwh/react-refresh-webpack-plugin": "^0.5.11",
         "@testing-library/jest-dom": "^6.4.2",
         "@testing-library/react": "^14.2.1",
         "@testing-library/user-event": "^14.5.2",
         "@trivago/prettier-plugin-sort-imports": "^4.3.0",
         "@types/jest": "^29.5.2",
+        "@types/node": "^20.12.12",
         "@types/react-test-renderer": "^18.0.0",
         "@typescript-eslint/eslint-plugin": "^5.59.8",
         "@typescript-eslint/parser": "^5.59.8",
         "eslint": "^8.41.0",
         "eslint-config-prettier": "^9.1.0",
         "eslint-plugin-jest": "^27.2.1",
+        "eslint-plugin-playwright": "^1.6.1",
         "eslint-plugin-react": "^7.32.2",
         "eslint-plugin-react-hooks": "^4.6.0",
         "http-server": "^14.1.1",

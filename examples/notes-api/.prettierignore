@@ -1,3 +1,1 @@
-build/
-coverage/
 src/views/error.ejs
