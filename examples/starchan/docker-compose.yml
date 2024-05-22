@@ -8,10 +8,8 @@ services:
         container_name: ljas-starchan-db
         restart: always
         ports:
-            - '${PORT_DB}:${PORT_DB}'
+            - '${MONGO_REPLICA_PORT}:${MONGO_REPLICA_PORT}'
         env_file: .env
-        environment:
-            - MONGO_REPLICA_PORT=${PORT_DB}
         volumes:
             - ljas-starchan-db-data:/data/db
         healthcheck:
@@ -21,7 +19,7 @@ services:
                     'mongo',
                     'admin',
                     '--port',
-                    '${PORT_DB}',
+                    '${MONGO_REPLICA_PORT}',
                     '--eval',
                     "db.adminCommand('ping')",
                 ]
@@ -35,7 +33,7 @@ services:
         restart: always
         ports:
             - '${PORT_EXPRESS}:${PORT_EXPRESS}'
-            - '${PORT_DEV_SERVER}:${PORT_DEV_SERVER}'
+            - '${PORT_WEBPACK_DEV_SERVER}:${PORT_WEBPACK_DEV_SERVER}'
             - '5555:5555' # Exposes Prisma Studio. Also defined in the "prisma:studio" package.json script.
             - '9229:9229' # Exposes Node.js debugger. Also defined in the "start:debug" package.json script.
             - '9230:9230' # Exposes Jest debugger. Also defined in the "test:debug" package.json script.

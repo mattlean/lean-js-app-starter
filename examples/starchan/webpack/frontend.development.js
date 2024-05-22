@@ -13,8 +13,8 @@ const {
 } = require('../PATHS')
 
 if (
-    (process.env.E2E && !process.env.PORT_DEV_SERVER_E2E) ||
-    !process.env.PORT_DEV_SERVER
+    (process.env.E2E && !process.env.PORT_WEBPACK_DEV_SERVER_E2E) ||
+    !process.env.PORT_WEBPACK_DEV_SERVER
 ) {
     throw new Error('webpack-dev-server port was not set')
 }
@@ -71,8 +71,8 @@ module.exports = merge([
             },
             historyApiFallback: true,
             port: process.env.E2E
-                ? process.env.PORT_DEV_SERVER_E2E
-                : process.env.PORT_DEV_SERVER,
+                ? process.env.PORT_WEBPACK_DEV_SERVER_E2E
+                : process.env.PORT_WEBPACK_DEV_SERVER,
             watchFiles: ['src/frontend/**/*.ejs'],
         },
         rule: {

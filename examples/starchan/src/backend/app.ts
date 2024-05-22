@@ -65,12 +65,12 @@ const helmetOptions: {
 if (process.env.E2E) {
     helmetOptions.contentSecurityPolicy.directives['connect-src'] = [
         `http://localhost:${process.env.PORT_EXPRESS_E2E}`,
-        `ws://localhost:${process.env.PORT_DEV_SERVER_E2E}`,
+        `ws://localhost:${process.env.PORT_WEBPACK_DEV_SERVER_E2E}`,
     ]
 } else if (process.env.NODE_ENV === 'development') {
     helmetOptions.contentSecurityPolicy.directives['connect-src'] = [
         `http://localhost:${process.env.PORT_EXPRESS}`,
-        `ws://localhost:${process.env.PORT_DEV_SERVER}`,
+        `ws://localhost:${process.env.PORT_WEBPACK_DEV_SERVER}`,
     ]
 }
 app.use(helmet(helmetOptions)) // Middleware that enhances security by setting HTTP response headers
