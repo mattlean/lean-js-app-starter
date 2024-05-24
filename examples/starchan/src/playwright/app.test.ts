@@ -2,10 +2,10 @@ import { expect, test } from '@playwright/test'
 
 import { loadApp } from './util'
 
-test('has starchan title', async ({ page }) => {
+test('has ljas-starchan title', async ({ page }) => {
     await loadApp(page)
 
-    await expect(page).toHaveTitle(/starchan/i)
+    await expect(page).toHaveTitle(/ljas-starchan/i)
 })
 
 test('navigates to Lean JavaScript Application Starter repository when GitHub link is clicked', async ({

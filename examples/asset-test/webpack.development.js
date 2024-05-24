@@ -1,5 +1,3 @@
-require('dotenv').config()
-
 const setupReactFastRefreshServerTs = require('ljas-webpack/setupReactFastRefreshServerTs')
 const {
     buildSourceMaps,

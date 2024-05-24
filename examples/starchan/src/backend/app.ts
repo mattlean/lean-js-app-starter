@@ -30,16 +30,15 @@ const app = express()
 // Setup EJS templates
 app.set('view engine', 'ejs')
 
+// Use the generated views from the frontend build
 const viewDirs = []
 if (process.env.NODE_ENV === 'test') {
-    // Use the generated views from the frontend build
     viewDirs.push(
         `${PATH_BUILD_DEV}/generated-views`,
         `${PATH_BACKEND_SRC}/views`,
     )
 } else {
     viewDirs.push(
-        // Use the generated views from the frontend build
         BUNDLED_GENERATED_VIEWS_BUILD_PATH,
         `${BUNDLED_BACK_BUILD_PATH}/views`,
     )

@@ -1,5 +1,3 @@
-require('dotenv').config()
-
 const injectTransformedSass = require('ljas-webpack/injectTransformedSass')
 const setupReactFastRefreshServerTs = require('ljas-webpack/setupReactFastRefreshServerTs')
 const { buildSourceMaps } = require('ljas-webpack')

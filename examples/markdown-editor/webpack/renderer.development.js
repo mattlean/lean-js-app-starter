@@ -1,5 +1,3 @@
-require('dotenv').config()
-
 const autoprefixer = require('autoprefixer')
 const injectTransformedCss = require('ljas-webpack/injectTransformedCss')
 const setupReactFastRefreshServerTs = require('ljas-webpack/setupReactFastRefreshServerTs')

@@ -3,7 +3,7 @@
     "watch": [
         "webpack/",
         "src/backend/views/",
-        "*.nodemon.json",
+        "nodemon.backend.json",
         "package.json",
         "tsconfig.json"
     ]

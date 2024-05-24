@@ -1,5 +1,3 @@
-require('dotenv').config()
-
 const buildHtml = require('ljas-webpack/buildHtml')
 const { merge } = require('webpack-merge')
 const { EnvironmentPlugin } = require('webpack')

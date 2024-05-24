@@ -37,5 +37,4 @@ declare global {
     }
 }
 
-// TODO: might be able to remove this
 export {}
