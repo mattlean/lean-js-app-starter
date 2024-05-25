@@ -14,7 +14,8 @@ import {
     MOCK_REPLY,
     MOCK_THREAD_INCLUDES_REPLY,
 } from '../../../../common/MOCK_DATA'
-import { TestApp, setupDefaultMsw } from '../../../../common/util/test'
+import { TestApp } from '../../../../common/TestApp'
+import { setupDefaultMsw } from '../../../../common/msw'
 import { buildStore } from '../../../common/redux'
 
 const server = setupDefaultMsw()

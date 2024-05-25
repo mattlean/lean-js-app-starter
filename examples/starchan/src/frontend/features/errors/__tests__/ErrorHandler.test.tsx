@@ -3,7 +3,7 @@
  */
 import { render, screen } from '@testing-library/react'
 
-import { TestApp } from '../../../../common/util/test'
+import { TestApp } from '../../../../common/TestApp'
 import { buildStore } from '../../../common/redux'
 
 beforeAll(() => {

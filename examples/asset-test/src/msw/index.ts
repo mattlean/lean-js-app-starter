@@ -1,4 +1,8 @@
-import { server } from '../msw/node'
+import { setupServer } from 'msw/node'
+
+import { handlers } from './handlers'
+
+export const server = setupServer(...handlers)
 
 /**
  * Enable MSW to mock network requests with default settings.

@@ -50,6 +50,7 @@ module.exports = {
                 'src/**/__mocks__/**/*.[jt]s?(x)',
                 'src/**/__tests__/**/*.[jt]s?(x)',
                 'src/**/?(*.)+(spec|test).[jt]s?(x)',
+                'src/msw/**/*.[jt]s',
             ],
             extends: [
                 'eslint:recommended',
@@ -67,6 +68,11 @@ module.exports = {
 
         /* Playwright */
         {
+            env: {
+                browser: true,
+                es2021: true,
+                node: true,
+            },
             files: 'src/playwright/**/*.[jt]s',
             extends: [
                 'eslint:recommended',

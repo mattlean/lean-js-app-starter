@@ -7,7 +7,8 @@ import {
     waitForElementToBeRemoved,
 } from '@testing-library/react'
 
-import { TestApp, setupDefaultMsw } from '../../../common/util/test'
+import { TestApp } from '../../../common/TestApp'
+import { setupDefaultMsw } from '../../../common/msw'
 import { buildStore } from '../../common/redux'
 
 setupDefaultMsw()

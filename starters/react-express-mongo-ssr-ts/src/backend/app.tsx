@@ -38,14 +38,15 @@ if (process.env.NODE_ENV === 'test') {
 }
 app.set('views', viewDirs)
 
-// app.use(helmet()) // Middleware that enhances security by setting HTTP response headers
-
 if (process.env.NODE_ENV === 'production') {
     app.use(compression()) // Middleware that compresses most response bodies
 }
 
+/**
+ * GET /
+ * Server-side render the React app.
+ */
 app.get('/', (req, res, next) => {
-    // Server-side render the React app
     let serverSideRendering
 
     try {

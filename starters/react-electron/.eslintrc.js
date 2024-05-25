@@ -62,6 +62,7 @@ module.exports = {
                 'src/**/__mocks__/**/*.js?(x)',
                 'src/**/__tests__/**/*.js?(x)',
                 'src/**/?(*.)+(spec|test).js?(x)',
+                'src/renderer/msw/**/*.js',
             ],
             extends: [
                 'eslint:recommended',
