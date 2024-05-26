@@ -1,5 +1,5 @@
 {
-    "name": "react-express-mongo-ssr-ts",
+    "name": "ljas-react-express-mongo-ssr-ts",
     "version": "0.2.0",
     "description": "",
     "main": "build/development/backend/server.js",

@@ -46,6 +46,7 @@
         "starters/react-electron",
         "starters/react-electron-ts",
         "starters/react-express-mongo-ssr-ts",
+        "starters/react-express-postgres-ssr-ts",
         "ljas-webpack"
     ],
     "private": true
