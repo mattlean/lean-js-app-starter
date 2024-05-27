@@ -12,7 +12,7 @@
         "src/**/*.test.jsx",
         "src/**/*.test.ts",
         "src/**/*.test.tsx",
-        "webpack.development.js"
+        "webpack/*.development.js"
     ],
     "watch": [
         "src/",

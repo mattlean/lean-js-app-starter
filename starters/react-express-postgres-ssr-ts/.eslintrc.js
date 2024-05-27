@@ -35,7 +35,7 @@ module.exports = {
     overrides: [
         /* Source */
         {
-            files: ['src/**/*.[jt]s'],
+            files: ['prisma/**/*.[jt]s', 'src/**/*.[jt]s'],
             extends: [
                 'eslint:recommended',
                 'plugin:@typescript-eslint/recommended',
@@ -70,18 +70,6 @@ module.exports = {
             },
             files: ['src/frontend/**/*.[jt]s?(x)'],
             ...CONFIG_REACT_TS,
-        },
-
-        /* Prisma Scripts */
-        {
-            files: ['prisma/**/*.[jt]s'],
-            extends: [
-                'eslint:recommended',
-                'plugin:@typescript-eslint/recommended',
-                'prettier',
-            ],
-            parser: '@typescript-eslint/parser',
-            plugins: ['@typescript-eslint'],
         },
 
         /* Jest */

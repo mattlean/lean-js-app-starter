@@ -7,7 +7,8 @@
         "src/**/*.spec.js",
         "src/**/*.spec.jsx",
         "src/**/*.test.js",
-        "src/**/*.test.jsx"
+        "src/**/*.test.jsx",
+        "webpack/*.development.js"
     ],
     "watch": ["src/", "webpack/", "nodemon.production.json", "package.json"]
 }

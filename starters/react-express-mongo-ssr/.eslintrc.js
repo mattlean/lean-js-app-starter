@@ -2,7 +2,7 @@ const RULES_REACT = {
     // This requires code utilizing JSX to be within a .jsx file.
     // This is to be consistent with TypeScript where it requires
     // all code utilizing JSX to be within a .tsx file.
-    'react/jsx-filename-extension': ['error', { extensions: ['.jsx', '.tsx'] }],
+    'react/jsx-filename-extension': 'error',
 }
 
 const CONFIG_REACT_TS = {
@@ -11,11 +11,8 @@ const CONFIG_REACT_TS = {
         'plugin:react/recommended',
         'plugin:react/jsx-runtime',
         'plugin:react-hooks/recommended',
-        'plugin:@typescript-eslint/recommended',
         'prettier',
     ],
-    parser: '@typescript-eslint/parser',
-    plugins: ['@typescript-eslint'],
     rules: RULES_REACT,
 }
 
@@ -33,25 +30,9 @@ module.exports = {
     root: true,
     rules: {},
     overrides: [
-        /* Source, Dev Scripts, and Prisma */
-        {
-            files: [
-                'dev-scripts/**/*.[jt]s',
-                'prisma/**/*.[jt]s',
-                'src/**/*.[jt]s',
-            ],
-            extends: [
-                'eslint:recommended',
-                'plugin:@typescript-eslint/recommended',
-                'prettier',
-            ],
-            parser: '@typescript-eslint/parser',
-            plugins: ['@typescript-eslint'],
-        },
-
         /* Backend Source */
         {
-            files: ['src/backend/**/*.[jt]s?(x)'],
+            files: ['src/backend/**/*.js?(x)'],
             ...CONFIG_REACT_TS,
         },
 
@@ -62,7 +43,7 @@ module.exports = {
                 es2021: true,
                 node: true,
             },
-            files: ['src/common/**/*.[jt]s?(x)'],
+            files: ['src/common/**/*.js?(x)'],
             ...CONFIG_REACT_TS,
         },
 
@@ -72,7 +53,7 @@ module.exports = {
                 browser: true,
                 es2021: true,
             },
-            files: ['src/frontend/**/*.[jt]s?(x)'],
+            files: ['src/frontend/**/*.js?(x)'],
             ...CONFIG_REACT_TS,
         },
 
@@ -84,23 +65,21 @@ module.exports = {
                 node: true,
             },
             files: [
-                'prisma/singleton.ts',
-                'src/**/__mocks__/**/*.[jt]s?(x)',
-                'src/**/__tests__/**/*.[jt]s?(x)',
-                'src/**/?(*.)+(spec|test).[jt]s?(x)',
-                'src/common/msw/**/*.[jt]s',
+                'prisma/singleton.js',
+                'src/**/__mocks__/**/*.js?(x)',
+                'src/**/__tests__/**/*.js?(x)',
+                'src/**/?(*.)+(spec|test).js?(x)',
+                'src/common/msw/**/*.js',
             ],
             extends: [
                 'eslint:recommended',
                 'plugin:react/recommended',
                 'plugin:react/jsx-runtime',
                 'plugin:react-hooks/recommended',
-                'plugin:@typescript-eslint/recommended',
                 'plugin:jest/recommended',
                 'prettier',
             ],
-            parser: '@typescript-eslint/parser',
-            plugins: ['@typescript-eslint', 'jest'],
+            plugins: ['jest'],
             rules: RULES_REACT,
         },
 
@@ -111,15 +90,12 @@ module.exports = {
                 es2021: true,
                 node: true,
             },
-            files: 'src/playwright/**/*.[jt]s',
+            files: 'src/playwright/**/*.js',
             extends: [
                 'eslint:recommended',
-                'plugin:@typescript-eslint/recommended',
                 'plugin:playwright/recommended',
                 'prettier',
             ],
-            parser: '@typescript-eslint/parser',
-            plugins: ['@typescript-eslint'],
         },
     ],
     settings: {
