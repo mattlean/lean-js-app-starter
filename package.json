@@ -45,7 +45,9 @@
         "starters/react-browser-ts",
         "starters/react-electron",
         "starters/react-electron-ts",
+        "starters/react-express-mongo-ssr",
         "starters/react-express-mongo-ssr-ts",
+        "starters/react-express-postgres-ssr",
         "starters/react-express-postgres-ssr-ts",
         "ljas-webpack"
     ],

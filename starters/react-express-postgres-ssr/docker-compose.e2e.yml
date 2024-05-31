@@ -1,0 +1,51 @@
+version: '3.8'
+name: ljas-express-postgres-e2e
+services:
+    db:
+        build:
+            dockerfile: db.Dockerfile
+        image: ljas-express-postgres-e2e-db
+        container_name: ljas-express-postgres-e2e-db
+        restart: always
+        ports:
+            - '${POSTGRES_PORT_E2E}:${POSTGRES_PORT_E2E}'
+        env_file: .env
+        command: '-p ${POSTGRES_PORT_E2E}'
+        # Uncomment all related lines to persist database data
+        # volumes:
+        #     - ljas-express-postgres-e2e-db-data:/var/lib/postgresql/data
+        healthcheck:
+            test:
+                [
+                    'CMD-SHELL',
+                    'pg_isready -d $${POSTGRES_DB} -U $${POSTGRES_USER} -p ${POSTGRES_PORT_E2E}',
+                ]
+            interval: 10s
+            timeout: 5s
+            retries: 5
+    app:
+        build:
+            dockerfile: e2e.Dockerfile
+        image: ljas-express-postgres-e2e
+        container_name: ljas-express-postgres-e2e
+        depends_on:
+            db:
+                condition: service_healthy
+        restart: always
+        ports:
+            - '${PORT_EXPRESS_E2E}:${PORT_EXPRESS_E2E}'
+            - '${PORT_WEBPACK_DEV_SERVER_E2E}:${PORT_WEBPACK_DEV_SERVER_E2E}'
+            - '5655:5555' # Exposes Prisma Studio. Also defined in the "prisma:studio" package.json script.
+            - '9329:9229' # Exposes Node.js debugger. Also defined in the "start:debug" package.json script.
+            - '9330:9230' # Exposes Jest debugger. Also defined in the "test:debug" package.json script.
+            - '9331:9231' # Exposes webpack debugger. Also defined in the build debug package.json scripts.
+            - '9423:9323' # Exposes Playwright report. Also defined in the "test:e2e:report" package.json script and Playwright config.
+        environment:
+            - DATABASE_URL=${DATABASE_URL_E2E}
+            - E2E=true
+        volumes:
+            - .:/code
+            - ljas-express-postgres-e2e-node_modules:/code/node_modules
+volumes:
+    # ljas-express-postgres-e2e-db-data:
+    ljas-express-postgres-e2e-node_modules:
