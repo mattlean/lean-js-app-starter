@@ -1,3 +1,6 @@
+/**
+ * @jest-environment jest-fixed-jsdom
+ */
 import renderer from 'react-test-renderer'
 
 import HelloWorld from './HelloWorld'

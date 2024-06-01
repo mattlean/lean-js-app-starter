@@ -146,10 +146,14 @@ module.exports = {
     // snapshotSerializers: [],
 
     // The test environment that will be used for testing
-    testEnvironment: 'jsdom',
+    testEnvironment: 'jest-fixed-jsdom',
 
     // Options that will be passed to the testEnvironment
-    // testEnvironmentOptions: {},
+    testEnvironmentOptions: {
+        // This is needed to force JSDOM to use the default export condition
+        // when importing msw/node for correct imports
+        customExportConditions: [''],
+    },
 
     // Adds a location field to test results
     // testLocationInResults: false,
