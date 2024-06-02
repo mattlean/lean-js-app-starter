@@ -13,6 +13,7 @@
  * uninterrupted even though Jest has encountered a type error.
  */
 module.exports = {
+    include: ['src/**/*'],
     exclude: [
         'src/**/__mocks__',
         'src/**/__tests__',
@@ -20,5 +21,6 @@ module.exports = {
         'src/**/*.spec.ts',
         'src/**/*.test.js',
         'src/**/*.test.ts',
+        'src/playwright/**/*',
     ],
 }

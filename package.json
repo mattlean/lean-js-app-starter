@@ -35,6 +35,7 @@
         "examples/markdown-editor",
         "examples/notes-api",
         "examples/starchan",
+        "starters/basic-browser-ts",
         "starters/basic-nodejs",
         "starters/basic-nodejs-ts",
         "starters/express-mongo",
