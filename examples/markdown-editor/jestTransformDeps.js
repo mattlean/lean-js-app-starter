@@ -4,6 +4,7 @@
 const deps = [
     'bail',
     'ccount',
+    'character-entities',
     'character-entities-html4',
     'character-entities-legacy',
     'comma-separated-tokens',

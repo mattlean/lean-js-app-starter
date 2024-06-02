@@ -1,7 +1,7 @@
 {
     "name": "ljas-basic-browser-ts",
     "version": "0.2.0",
-    "description": "This is a starter for a [React](https://react.dev) frontend project.",
+    "description": "",
     "main": "build/development/app.js",
     "author": "",
     "scripts": {
