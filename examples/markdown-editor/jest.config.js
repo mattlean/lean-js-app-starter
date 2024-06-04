@@ -187,7 +187,16 @@ module.exports = {
         [`/node_modules/((${jestTransformDeps})/)`]: [
             'babel-jest',
             {
-                configFile: './babel-jest.config.json',
+                presets: [
+                    '@babel/preset-env',
+                    [
+                        '@babel/preset-react',
+                        {
+                            development: true,
+                            runtime: 'automatic',
+                        },
+                    ],
+                ],
             },
         ],
     },
