@@ -1,5 +1,5 @@
 {
-    "name": "ljas-basic-nodejs-ts",
+    "name": "ljas-basic-node-ts",
     "version": "0.2.0",
     "description": "",
     "main": "build/development/app.js",

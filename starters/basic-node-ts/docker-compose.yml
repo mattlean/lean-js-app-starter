@@ -1,10 +1,10 @@
 version: '3.8'
-name: ljas-basic-nodejs
+name: ljas-basic-node-ts
 services:
     app:
         build: .
-        image: ljas-basic-nodejs
-        container_name: ljas-basic-nodejs
+        image: ljas-basic-node-ts
+        container_name: ljas-basic-node-ts
         restart: always
         ports:
             - '9229:9229' # Exposes Node.js debugger. Also defined in the "start:debug" package.json script.
@@ -12,6 +12,6 @@ services:
             - '9231:9231' # Exposes webpack debugger. Also defined in the build debug package.json scripts.
         volumes:
             - .:/code
-            - ljas-basic-nodejs-node_modules:/code/node_modules
+            - ljas-basic-node-ts-node_modules:/code/node_modules
 volumes:
-    ljas-basic-nodejs-node_modules:
+    ljas-basic-node-ts-node_modules:
