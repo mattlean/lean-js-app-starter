@@ -1,11 +1,11 @@
 version: '3.8'
-name: ljas-counter-e2e
+name: ljas-counter-react-e2e
 services:
     app:
         build:
             dockerfile: e2e.Dockerfile
-        image: ljas-counter-e2e
-        container_name: ljas-counter-e2e
+        image: ljas-counter-react-e2e
+        container_name: ljas-counter-react-e2e
         restart: always
         ports:
             - '${PORT_WEBPACK_DEV_SERVER_E2E}:${PORT_WEBPACK_DEV_SERVER_E2E}'
@@ -17,6 +17,6 @@ services:
             - PORT=${PORT_WEBPACK_DEV_SERVER_E2E} # Specify port for http-server to listen on
         volumes:
             - .:/code
-            - ljas-counter-e2e-node_modules:/code/node_modules
+            - ljas-counter-react-e2e-node_modules:/code/node_modules
 volumes:
-    ljas-counter-e2e-node_modules:
+    ljas-counter-react-e2e-node_modules:

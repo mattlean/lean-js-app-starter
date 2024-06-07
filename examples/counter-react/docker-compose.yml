@@ -1,10 +1,10 @@
 version: '3.8'
-name: ljas-counter
+name: ljas-counter-react
 services:
     app:
         build: .
-        image: ljas-counter
-        container_name: ljas-counter
+        image: ljas-counter-react
+        container_name: ljas-counter-react
         restart: always
         ports:
             - '${PORT_WEBPACK_DEV_SERVER}:${PORT_WEBPACK_DEV_SERVER}'
@@ -13,6 +13,6 @@ services:
             - '9323:9323' # Exposes Playwright report. Also defined in the "test:e2e:report" package.json script and Playwright config.
         volumes:
             - .:/code
-            - ljas-counter-node_modules:/code/node_modules
+            - ljas-counter-react-node_modules:/code/node_modules
 volumes:
-    ljas-counter-node_modules:
+    ljas-counter-react-node_modules:

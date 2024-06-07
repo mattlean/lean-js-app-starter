@@ -25,5 +25,5 @@ module.exports = merge([
         },
     },
 
-    buildHtml({ title: 'ljas-counter' }),
+    buildHtml({ title: 'ljas-counter-react' }),
 ])
