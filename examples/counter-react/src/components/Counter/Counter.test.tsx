@@ -65,6 +65,32 @@ test('Counter component changes count to force count value when force button is 
     expect(screen.queryByText(0)).not.toBeInTheDocument()
 })
 
+test('Counter component disables force button when force count input is empty', async () => {
+    expect.assertions(4)
+
+    const user = userEvent.setup()
+
+    render(<Counter />)
+
+    // Expect force input to start empty
+    const inputForceCount = screen.getByRole('spinbutton')
+    expect(inputForceCount).toHaveValue(null)
+
+    // Expect force button to start disabled
+    const btnForceCount = screen.getByRole('button', { name: /force!/i })
+    expect(btnForceCount).toBeDisabled()
+
+    await user.type(inputForceCount, '5')
+
+    // Expect force button to become enabled
+    expect(btnForceCount).toBeEnabled()
+
+    await user.clear(inputForceCount)
+
+    // Expect force button to become disabled again
+    expect(btnForceCount).toBeDisabled()
+})
+
 test('Counter component resets count when reset button is clicked', async () => {
     expect.assertions(6)
 

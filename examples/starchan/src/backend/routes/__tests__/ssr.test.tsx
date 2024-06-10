@@ -22,7 +22,7 @@ import { server } from '../../../common/msw'
 import { buildStore } from '../../../frontend/common/redux'
 import { setSubject } from '../../../frontend/features/formInputs/formInputsSlice'
 import app from '../../app'
-import { prismaMock } from '../../common/util/test'
+import { prismaMock } from '../../common/util/jest'
 import MOCK_THREAD_LIST_RES from './MOCK_THREAD_LIST_RES.json'
 
 let cleanupJsdom: { (): void }

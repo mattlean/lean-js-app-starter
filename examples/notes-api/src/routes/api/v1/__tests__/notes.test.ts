@@ -7,7 +7,7 @@ import {
     genProtectMiddlewareAuthImpl,
     prismaMock,
     restoreProtectMiddlewareImpl,
-} from '../../../../common/util/test'
+} from '../../../../common/util/jest'
 import {
     MOCK_NOTE_EMPTY,
     MOCK_NOTE_W_CONTENT,

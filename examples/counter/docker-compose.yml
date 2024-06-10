@@ -1,0 +1,18 @@
+version: '3.8'
+name: ljas-counter
+services:
+    app:
+        build: .
+        image: ljas-counter
+        container_name: ljas-counter
+        restart: always
+        ports:
+            - '${PORT_WEBPACK_DEV_SERVER}:${PORT_WEBPACK_DEV_SERVER}'
+            - '9230:9230' # Exposes Jest debugger. Also defined in the "test:debug" package.json script.
+            - '9231:9231' # Exposes webpack debugger. Also defined in the build debug package.json scripts.
+            - '9323:9323' # Exposes Playwright report. Also defined in the "test:e2e:report" package.json script and Playwright config.
+        volumes:
+            - .:/code
+            - ljas-counter-node_modules:/code/node_modules
+volumes:
+    ljas-counter-node_modules:

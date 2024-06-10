@@ -26,6 +26,5 @@ module.exports = {
         'src/**/*.test.tsx',
         'src/playwright/**/*',
         'src/common/msw/**/*',
-        'src/common/util/test.tsx',
     ],
 }

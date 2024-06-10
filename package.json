@@ -31,6 +31,7 @@
     },
     "workspaces": [
         "examples/asset-test",
+        "examples/counter",
         "examples/counter-react",
         "examples/markdown-editor",
         "examples/notes-api",

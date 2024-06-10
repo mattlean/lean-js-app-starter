@@ -43,7 +43,11 @@ export default function Counter() {
                             type="number"
                             value={forceCountInput}
                             onChange={(e) => {
-                                setForceCountInput(e.target.valueAsNumber)
+                                setForceCountInput(
+                                    Number.isNaN(e.target.valueAsNumber)
+                                        ? ''
+                                        : e.target.valueAsNumber,
+                                )
                             }}
                             placeholder="Force count to be..."
                             className="form-control"
@@ -51,7 +55,10 @@ export default function Counter() {
                         <button
                             disabled={typeof forceCountInput !== 'number'}
                             onClick={() => {
-                                if (typeof forceCountInput === 'number') {
+                                if (
+                                    typeof forceCountInput === 'number' &&
+                                    !Number.isNaN(forceCountInput)
+                                ) {
                                     setCount(forceCountInput)
                                 }
                             }}

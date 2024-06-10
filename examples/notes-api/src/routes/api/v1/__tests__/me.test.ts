@@ -6,7 +6,7 @@ import {
     genProtectMiddlewareAuthImpl,
     prismaMock,
     restoreProtectMiddlewareImpl,
-} from '../../../../common/util/test'
+} from '../../../../common/util/jest'
 import { MOCK_REQ_USER, MOCK_USER } from './MOCK_DATA'
 
 jest.mock('../../../../common/auth')

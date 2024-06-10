@@ -10,7 +10,7 @@ import {
     MOCK_THREAD_W_SUBJECT_COMMENT,
 } from '../../../../../common/MOCK_DATA'
 import app from '../../../../app'
-import { prismaMock } from '../../../../common/util/test'
+import { prismaMock } from '../../../../common/util/jest'
 import MOCK_THREAD_LIST_RES from '../../../__tests__/MOCK_THREAD_LIST_RES.json'
 
 describe('create thread endpoint', () => {
