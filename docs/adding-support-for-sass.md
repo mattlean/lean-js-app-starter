@@ -24,6 +24,12 @@ Then update `.stylelintrc.json` to include `stylelint-config-standard-scss` in t
 { "extends": ["stylelint-config-standard-scss"] }
 ```
 
-And that's it! You should be able to handle `.sass` and `.scss` files in your JavaScript or TypeScript code now.
+You should be able to handle `.sass` and `.scss` files in your JavaScript or TypeScript code now.
+
+Although everything should be working, you should also update the `lint:styles` `package.json` script to look for `.sass` and `.scss` files using something like this command:
+
+```
+stylelint "src/**/*.{sass,scss}"
+```
 
 You can find an example of Sass being configured for the [Counter](../examples/counter) example project.

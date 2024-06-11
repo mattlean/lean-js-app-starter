@@ -19,7 +19,7 @@
         "format:write": "prettier --write .",
         "lint": "eslint .",
         "lint:fix": "npm run lint -- --fix",
-        "lint:styles": "stylelint \"src/**/*.{css,sass,scss}\"",
+        "lint:styles": "stylelint \"src/**/*.{sass,scss}\"",
         "lint:styles:fix": "npm run lint:styles -- --fix",
         "lint-staged": "lint-staged",
         "start": "webpack serve --mode development",

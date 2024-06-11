@@ -1,0 +1,17 @@
+version: '3.8'
+name: ljas-todo-list
+services:
+    app:
+        build: .
+        image: ljas-todo-list
+        container_name: ljas-todo-list
+        restart: always
+        ports:
+            - '${PORT_WEBPACK_DEV_SERVER}:${PORT_WEBPACK_DEV_SERVER}'
+            - '9230:9230' # Exposes Jest debugger. Also defined in the "test:debug" package.json script.
+            - '9231:9231' # Exposes webpack debugger. Also defined in the build debug package.json scripts.
+        volumes:
+            - .:/code
+            - ljas-todo-list-node_modules:/code/node_modules
+volumes:
+    ljas-todo-list-node_modules:
