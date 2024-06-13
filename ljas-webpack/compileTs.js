@@ -13,6 +13,7 @@ const { compileJs } = require('.')
  * - @babel/preset-typescript@^7.21.5
  * - babel-loader@^9.1.2
  * - fork-ts-checker-webpack-plugin@^8.0.0
+ * - typescript@~5.3.3
  *
  * @param {Object} [options] Options object that determines how babel-loader and Fork TS Checker Webpack Plugin will be configured.
  * @param {Object} [options.babelLoader] babel-loader options. Setting this will completely override the default Babel configuration. (https://webpack.js.org/loaders/babel-loader/#options)

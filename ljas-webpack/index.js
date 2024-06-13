@@ -251,7 +251,7 @@ exports.loadImages = (options) => ({
  * Configure webpack-dev-server:
  * https://webpack.js.org/configuration/dev-server
  *
- * Tested with: webpack-dev-server@^4.15.0
+ * Tested with: webpack-dev-server@^5.0.4
  *
  * @param {Object} [options] Options for webpack-dev-server. (https://webpack.js.org/configuration/dev-server/#devserver)
  * @returns {Object} A webpack configuration object that sets up webpack-dev-server.
