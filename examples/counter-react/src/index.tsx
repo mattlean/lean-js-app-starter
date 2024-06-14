@@ -1,7 +1,7 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 
-import Counter from './components/Counter'
+import App from './components/App'
 import './index.scss'
 
 const rootEl = document.getElementById('root')
@@ -13,6 +13,6 @@ if (!rootEl) {
 const root = createRoot(rootEl)
 root.render(
     <StrictMode>
-        <Counter />
+        <App />
     </StrictMode>,
 )

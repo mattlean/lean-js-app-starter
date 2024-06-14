@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Counter component matches snapshot 1`] = `
-<DocumentFragment>
+exports[`App element matches snapshot 1`] = `
+<div
+  class="align-items-center d-flex flex-column h-100"
+>
   <div
     class="align-items-center container d-flex justify-content-center h-100"
   >
@@ -68,7 +70,6 @@ exports[`Counter component matches snapshot 1`] = `
             class="form-control"
             placeholder="Force count to be..."
             type="number"
-            value=""
           />
           <button
             class="btn btn-danger"
@@ -88,5 +89,31 @@ exports[`Counter component matches snapshot 1`] = `
       </div>
     </div>
   </div>
-</DocumentFragment>
+  <footer
+    class="text-center text-muted"
+  >
+    <p
+      class="mb-0"
+    >
+      Learn about the tech stack used for this project and more at its 
+      <a
+        class="text-muted"
+        href="https://github.com/mattlean/lean-js-app-starter/tree/master/examples/counter"
+      >
+        GitHub repo
+      </a>
+      .
+    </p>
+    <p>
+      This was built with 
+      <a
+        class="text-muted"
+        href="https://github.com/mattlean/lean-js-app-starter"
+      >
+        Lean JS App Starter
+      </a>
+      .
+    </p>
+  </footer>
+</div>
 `;

@@ -1,8 +1,10 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons.css';
-@import './components/Counter';
+
+body {
+    background-color: $gray-200;
+}
 
 #root {
-    background-color: $gray-200;
     height: 100vh;
 }

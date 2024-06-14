@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FooterText component matches snapshot 1`] = `
+<DocumentFragment>
+  <footer
+    class="text-center text-muted"
+    id="footer-text"
+  >
+    <p
+      class="mb-0"
+    >
+      Learn about the tech stack used for this project and more at its 
+      <a
+        class="text-muted"
+        href="https://github.com/mattlean/lean-js-app-starter/tree/master/examples/counter-react"
+      >
+        GitHub repo
+      </a>
+      .
+    </p>
+    <p>
+      This was built with 
+      <a
+        class="text-muted"
+        href="https://github.com/mattlean/lean-js-app-starter"
+      >
+        Lean JS App Starter
+      </a>
+      .
+    </p>
+  </footer>
+</DocumentFragment>
+`;

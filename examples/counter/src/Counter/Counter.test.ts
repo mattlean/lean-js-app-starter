@@ -1,7 +1,7 @@
 import { screen } from '@testing-library/dom'
 import userEvent from '@testing-library/user-event'
 
-import Counter, { createCounter } from '.'
+import Counter from '.'
 import { clearRootEl, setupRootEl } from '../jestUtil'
 
 describe('Counter element', () => {
@@ -20,7 +20,11 @@ describe('Counter element', () => {
             throw new Error('HTML element with an ID of "root" was not found.')
         }
 
-        return createCounter(rootEl)
+        const c = new Counter()
+        const counterElement = c.createElement()
+        rootEl.appendChild(counterElement)
+
+        return counterElement
     }
 
     it('matches snapshot', () => {

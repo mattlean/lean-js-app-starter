@@ -1,7 +1,10 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons.css';
 
-#root {
+body {
     background-color: $gray-200;
+}
+
+#root {
     height: 100vh;
 }

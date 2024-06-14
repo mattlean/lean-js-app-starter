@@ -20,10 +20,9 @@ export default class Counter {
 
     /**
      * Create the counter element.
-     * @param startCount Number the counter should start at
      * @returns The div element containing the counter elements
      */
-    create(startCount = 0) {
+    createElement() {
         const counter = document.createElement('div')
         counter.setAttribute(
             'class',
@@ -42,7 +41,7 @@ export default class Counter {
         const cardBody = document.createElement('div')
         cardBody.setAttribute(
             'class',
-            'card-body d-flex flex-column align-items-center px-5',
+            'align-items-center card-body d-flex flex-column px-5',
         )
         card.appendChild(cardBody)
 
@@ -56,7 +55,7 @@ export default class Counter {
         const countText = document.createElement('p')
         countText.setAttribute('class', 'display-1')
         this._countText = countText
-        this.setCount(startCount)
+        this.setCount(this._count)
         cardBody.appendChild(countText)
 
         const btnsDiv = document.createElement('div')
@@ -169,17 +168,4 @@ export default class Counter {
             this._countText.textContent = this._count.toString()
         }
     }
-}
-
-/**
- * Create a new counter element and replace an element's children with it.
- * @param element Element to render the counter in
- * @param countStart Number the counter should start at
- * @returns The counter element
- */
-export function createCounter(element: HTMLElement, countStart = 0) {
-    const c = new Counter()
-    const counterElement = c.create(countStart)
-    element.replaceChildren(counterElement)
-    return counterElement
 }

@@ -8,8 +8,34 @@ body {
     font-family: Arial, sans-serif;
 }
 
+h1,
+h2 {
+    letter-spacing: 0.2rem;
+    text-transform: uppercase;
+}
+
 #root {
-    width: 960px;
     margin: 0 auto;
     text-align: center;
+    width: 960px;
+}
+
+#intro {
+    margin-bottom: 5rem;
+}
+
+#footer-text {
+    color: #888;
+    font-style: italic;
+    margin-top: 10rem;
+    margin-bottom: 2rem;
+}
+
+#footer-text p {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+}
+
+#footer-text a {
+    color: #888;
 }
