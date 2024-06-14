@@ -3,7 +3,7 @@
 **Lean JS App Starter (LJAS)** is a development environment that is designed to get you up and running as quickly as possible while being open and adaptable to your code's ever-changing needs as your app grows.
 
 -   🎉 **More than just JavaScript & browsers: build servers, desktop apps, CLI tools, and more!**  
-    Support for [TypeScript](https://typescriptlang.org), [Node.js](https://nodejs.org), [Electron](https://electronjs.org), [React](https://react.dev), and Node.js servers that handle React server-side rendering.
+    Support for [TypeScript](https://typescriptlang.org), [Node.js](https://nodejs.org), [Electron](https://electronjs.org), [React](https://react.dev), and [Express](https://expressjs.com) servers that handle React server-side rendering.
 -   🐳 **Docker development environment**  
     Alternatively run the dev environment in a [Docker container](https://docker.com) to improve consistency for developers across macOS, Windows, and Linux.
 -   🧪 **Robust testing environment**  
@@ -24,24 +24,26 @@
 
 ## Getting Started
 
-Choose the starter projects below that fit your needs and learn more about what each offers:
+**Starter projects** are development environments that essentially act as the foundation for you to starting building off of. Each one is designed for different environments like the browser or Node.js, and each can also utilize different technologies such as JavaScript, TypeScript, React, or Express, etc.
 
-| Starter                                              | Description                                                                                        |
-| ---------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| Basic Browser [[JS](github.com) \| [TS](github.com)] | Just vanilla JavaScript or TypeScript for the browser                                              |
-| Basic Node.js                                        | Just vanilla JavaScript or TypeScript for Node.js                                                  |
-| Express + MongoDB                                    | Node.js, Express, MongoDB, and Prisma                                                              |
-| Express + PostgresDB                                 | Node.js, Express, PostgresDB, and Prisma                                                           |
-| React Browser                                        | React for the browser                                                                              |
-| React Electron                                       | React for Electron                                                                                 |
-| React + Express + MongoDB SSR                        | React for the browser, Node.js, Express, MongoDB, and Prisma with server-side rendering support    |
-| React + Express + PostgresDB SSR                     | React for the browser, Node.js, Express, PostgresDB, and Prisma with server-side rendering support |
+Select a starter project below that fits your needs to learn about what each one offers:
+
+| Starter                               | Description                                                                                                                           | JavaScript                                                                                                                                                      | TypeScript                                                                                                                                                      |
+| ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Basic Browser                         | A simple vanilla JavaScript or TypeScript-based frontend for the browser.                                                             | [Download](https://github.com/mattlean/lean-js-app-starter) / [View Source](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/basic-browser) | [Download](https://github.com/mattlean/lean-js-app-starter) / [View Source](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/basic-browser) |
+| Basic Node.js                         | A simple vanilla JavaScript or TypeScript-based Node.js app.                                                                          | [Download](https://github.com/mattlean/lean-js-app-starter) / [View Source](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/basic-browser) | [Download](https://github.com/mattlean/lean-js-app-starter) / [View Source](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/basic-browser) |
+| Express + MongoDB                     | A web server that runs off Node.js, Express, MongoDB, and Prisma.                                                                     | [Download](https://github.com/mattlean/lean-js-app-starter) / [View Source](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/basic-browser) | [Download](https://github.com/mattlean/lean-js-app-starter) / [View Source](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/basic-browser) |
+| Express + PostgreSQL                  | A web server that runs off Node.js, Express, PostgreSQL, and Prisma.                                                                  | [Download](https://github.com/mattlean/lean-js-app-starter) / [View Source](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/basic-browser) | [Download](https://github.com/mattlean/lean-js-app-starter) / [View Source](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/basic-browser) |
+| React Browser                         | A React frontend.                                                                                                                     | [Download](https://github.com/mattlean/lean-js-app-starter) / [View Source](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/basic-browser) | [Download](https://github.com/mattlean/lean-js-app-starter) / [View Source](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/basic-browser) |
+| React Electron                        | An Electron desktop app that uses React for its renderer processes.                                                                   | [Download](https://github.com/mattlean/lean-js-app-starter) / [View Source](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/basic-browser) | [Download](https://github.com/mattlean/lean-js-app-starter) / [View Source](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/basic-browser) |
+| React + Express + MongoDB with SSR    | A full-stack web app that runs off Node.js, Express, PostgreSQL, Prisma, and React. The backend supports React server-side rendering. | [Download](https://github.com/mattlean/lean-js-app-starter) / [View Source](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/basic-browser) | [Download](https://github.com/mattlean/lean-js-app-starter) / [View Source](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/basic-browser) |
+| React + Express + PostgreSQL with SSR | A full-stack web app that runs off Node.js, Express, PostgreSQL, Prisma, and React. The backend supports React server-side rendering. | [Download](https://github.com/mattlean/lean-js-app-starter) / [View Source](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/basic-browser) | [Download](https://github.com/mattlean/lean-js-app-starter) / [View Source](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/basic-browser) |
 
 ## Examples
 
-If you want to check out what some projects built using LJAS look like or see some other configuration variants that add different functionality, look at some of our [example projects](/examples).
+**Example projects** are built off of starter projects and act as a demonstration of what your own work could look like. They can be handy if you need references for customized configurations that extend LJAS's functionality or just some good ol' inspiration.
 
-Feel free to use them as starting points for your own work if you find that they share a lot in common with your own app's needs.
+Take a look at the example projects in the [examples directory](examples/).
 
 ## License
 
