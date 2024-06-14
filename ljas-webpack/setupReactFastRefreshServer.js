@@ -17,7 +17,7 @@ const { compileReact, setupDevServer } = require('.')
  * - @pmmmwh/react-refresh-webpack-plugin@^0.5.11
  * - babel-loader@^9.1.2
  * - react-refresh@^0.14.0
- * - webpack-dev-server@^4.15.0
+ * - webpack-dev-server@^5.0.4
  *
  * @param {Object} [options] Options object that determines how babel-loader, React Refresh Webpack Plugin, and webpack-dev-server will be configured.
  * @param {Object} [options.babelLoader] babel-loader options. Setting this will completely override the default Babel configuration. (https://webpack.js.org/loaders/babel-loader/#options)
