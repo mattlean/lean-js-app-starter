@@ -21,13 +21,13 @@ const CONFIG_REACT_TS = {
 
 module.exports = {
     env: {
-        es2021: true,
+        es2020: true,
         node: true,
     },
     extends: ['eslint:recommended', 'prettier'],
     ignorePatterns: ['build/', 'coverage/', 'playwright-report/'],
     parserOptions: {
-        ecmaVersion: '2021',
+        ecmaVersion: '2020',
         sourceType: 'module',
     },
     root: true,
@@ -59,7 +59,7 @@ module.exports = {
         {
             env: {
                 browser: true,
-                es2021: true,
+                es2020: true,
                 node: true,
             },
             files: ['src/common/**/*.[jt]s?(x)'],
@@ -70,7 +70,7 @@ module.exports = {
         {
             env: {
                 browser: true,
-                es2021: true,
+                es2020: true,
             },
             files: ['src/frontend/**/*.[jt]s?(x)'],
             ...CONFIG_REACT_TS,
@@ -79,7 +79,7 @@ module.exports = {
         /* Jest */
         {
             env: {
-                es2021: true,
+                es2020: true,
                 jest: true,
                 node: true,
             },
@@ -100,7 +100,7 @@ module.exports = {
                 'prettier',
             ],
             parser: '@typescript-eslint/parser',
-            plugins: ['@typescript-eslint', 'jest'],
+            plugins: ['@typescript-eslint'],
             rules: RULES_REACT,
         },
 
@@ -108,7 +108,7 @@ module.exports = {
         {
             env: {
                 browser: true,
-                es2021: true,
+                es2020: true,
                 node: true,
             },
             files: 'src/playwright/**/*.[jt]s',
