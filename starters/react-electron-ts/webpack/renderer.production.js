@@ -52,10 +52,11 @@ module.exports = merge([
                     /\.(spec|test)\.(j|t)sx?$/,
                 ],
             },
+            babelLoaderCache: true,
             forkTsChecker: {
                 typescript: {
                     configOverwrite: {
-                        include: ['src/global.d.ts', 'src/renderer/**/*'],
+                        include: ['src/renderer/**/*', 'src/global.d.ts'],
                         ...tsconfigBuildOverride,
                     },
                 },

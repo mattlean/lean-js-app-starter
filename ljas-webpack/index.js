@@ -26,6 +26,7 @@ exports.buildSourceMaps = (option) => ({ devtool: option })
  *
  * @param {Object} [options] Options object that determines how babel-loader will be configured.
  * @param {Object} [options.babelLoader] babel-loader options. Setting this will completely override the default Babel configuration. (https://webpack.js.org/loaders/babel-loader/#options)
+ * @param {boolean} [options.babelLoaderCache] Enables the cache for babel-loader if true.
  * @param {Object} [options.babelLoaderPlugins] Babel plugins. (https://babeljs.io/docs/plugins)
  * @param {Object} [options.babelLoaderPresets] Babel presets. Setting this will override the default Babel preset configuration. (https://babeljs.io/docs/presets)
  * @param {Object} [options.babelPresetEnv] Babel's preset-env options. Will be overwritten by `options.babelLoader` if it is set. (https://babeljs.io/docs/babel-preset-env#options)
@@ -46,6 +47,7 @@ exports.compileJs = (options) => ({
                 use: {
                     loader: 'babel-loader',
                     options: options?.babelLoader ?? {
+                        cacheDirectory: options?.babelLoaderCache,
                         plugins: options?.babelLoaderPlugins,
                         presets: options?.babelLoaderPresets ?? [
                             [
@@ -84,6 +86,7 @@ exports.compileJs = (options) => ({
  *
  * @param {Object} [options] Options object that determines how babel-loader will be configured.
  * @param {Object} [options.babelLoader] babel-loader options. Setting this will completely override the default Babel configuration. (https://webpack.js.org/loaders/babel-loader/#options)
+ * @param {boolean} [options.babelLoaderCache] Enables the cache for babel-loader if true.
  * @param {Object} [options.babelLoaderPlugins] Babel plugins. (https://babeljs.io/docs/plugins)
  * @param {Object} [options.babelLoaderPresets] Babel presets. Setting this will override the default Babel preset configuration. (https://babeljs.io/docs/presets)
  * @param {Object} [options.babelPresetEnv] Babel's preset-env options. Will be overwritten by `options.babelLoader` if it is set. (https://babeljs.io/docs/babel-preset-env#options)
@@ -105,6 +108,7 @@ exports.compileReact = (options, mode) =>
             use: {
                 loader: 'babel-loader',
                 options: options?.babelLoader ?? {
+                    cacheDirectory: options?.babelLoaderCache,
                     plugins: options?.babelLoaderPlugins,
                     presets: options?.babelLoaderPresets ?? [
                         [

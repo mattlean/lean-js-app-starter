@@ -24,6 +24,7 @@ module.exports = merge([
                 /\.(spec|test)\.(j|t)s$/,
             ],
         },
+        babelLoaderCache: true,
         forkTsChecker: {
             typescript: { configOverwrite: tsconfigBuildOverride },
         },

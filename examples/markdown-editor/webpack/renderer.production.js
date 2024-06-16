@@ -60,6 +60,7 @@ module.exports = merge([
                     /\.(spec|test)\.(j|t)sx?$/,
                 ],
             },
+            babelLoaderCache: true,
             forkTsChecker: {
                 typescript: {
                     configOverwrite: {

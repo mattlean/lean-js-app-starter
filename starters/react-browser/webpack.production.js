@@ -51,6 +51,7 @@ module.exports = merge([
                     /\.(spec|test)\.jsx?$/,
                 ],
             },
+            babelLoaderCache: true,
         },
         'production',
     ),

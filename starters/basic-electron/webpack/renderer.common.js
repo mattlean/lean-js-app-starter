@@ -26,5 +26,6 @@ module.exports = merge([
                 /\.(spec|test)\.js$/,
             ],
         },
+        babelLoaderCache: true,
     }),
 ])
