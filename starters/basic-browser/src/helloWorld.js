@@ -1,5 +1,6 @@
 /**
- * Create a div element with the contents "Hello World!"
+ * Create a div element that contains "Hello World!"
+ * @returns A div element that contains "Hello World!"
  */
 export default function helloWorld() {
     const helloWorldDiv = document.createElement('div')

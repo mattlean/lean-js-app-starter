@@ -1,0 +1,3 @@
+{
+    "watch": ["webpack/main.*.js", "nodemon.main.json", "package.json"]
+}

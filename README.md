@@ -20,7 +20,7 @@
 ## Documentation
 
 -   🤔 Need help deciding if LJAS is right for you? Read ["Why Lean JS App Starter?"](/docs/why.md)
--   🥽 To learn more about everything LJAS has to offer: [dive into the docs](/docs).
+-   🤿 To learn more about everything LJAS has to offer: [dive into the docs!](/docs)
 
 ## Getting Started
 

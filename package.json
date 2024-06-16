@@ -39,6 +39,7 @@
         "examples/todo-list",
         "starters/basic-browser",
         "starters/basic-browser-ts",
+        "starters/basic-electron",
         "starters/basic-node",
         "starters/basic-node-ts",
         "starters/express-mongo",

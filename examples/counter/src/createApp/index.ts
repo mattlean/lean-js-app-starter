@@ -2,10 +2,11 @@ import Counter from '../Counter'
 import createFooterText from '../createFooterText'
 
 /**
- * Create the app element.
+ * Create the app element and render it within another element.
+ * @param element Element to render the app element in
  * @returns The app element containing the counter and footer text elements
  */
-const createApp = (rootEl: HTMLElement) => {
+const createApp = (element: HTMLElement) => {
     const app = document.createElement('div')
     app.setAttribute('class', 'align-items-center d-flex flex-column h-100')
 
@@ -13,8 +14,7 @@ const createApp = (rootEl: HTMLElement) => {
     app.appendChild(c.createElement())
     app.appendChild(createFooterText())
 
-    rootEl.replaceChildren(app)
-
+    element.replaceChildren(app)
     return app
 }
 

@@ -30,7 +30,6 @@ module.exports = {
                 'plugin:jest/recommended',
                 'prettier',
             ],
-            plugins: ['jest'],
         },
     ],
 }
