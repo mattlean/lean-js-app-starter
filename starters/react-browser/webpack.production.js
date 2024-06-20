@@ -7,7 +7,7 @@ const {
 } = require('ljas-webpack')
 const { merge } = require('webpack-merge')
 
-const { PATH_BUILD_PROD, PATH_SRC } = require('./PATHS')
+const { PATH_BUILD_PROD, PATH_ROOT, PATH_SRC } = require('./PATHS')
 
 module.exports = merge([
     {
@@ -40,21 +40,21 @@ module.exports = merge([
 
     buildSourceMaps('source-map'),
 
-    compileReact(
-        {
-            rule: {
-                include: PATH_SRC,
-                exclude: [
-                    /node_modules/,
-                    /__mocks__\/.*.jsx?$/,
-                    /__tests__\/.*.jsx?$/,
-                    /\.(spec|test)\.jsx?$/,
-                ],
-            },
-            babelLoaderCache: true,
+    compileReact({
+        rule: {
+            include: PATH_SRC,
+            exclude: [
+                /node_modules/,
+                /__mocks__\/.*.jsx?$/,
+                /__tests__\/.*.jsx?$/,
+                /\.(spec|test)\.jsx?$/,
+            ],
         },
-        'production',
-    ),
+        babelLoader: {
+            cacheDirectory: true,
+            configFile: `${PATH_ROOT}/babel.production.js`,
+        },
+    }),
 
     loadFonts({
         rule: { generator: { filename: 'assets/[name].[hash][ext][query]' } },

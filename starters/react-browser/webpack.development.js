@@ -7,7 +7,7 @@ const {
 } = require('ljas-webpack')
 const { merge } = require('webpack-merge')
 
-const { PATH_BUILD_DEV, PATH_SRC } = require('./PATHS')
+const { PATH_BUILD_DEV, PATH_ROOT, PATH_SRC } = require('./PATHS')
 
 if (!process.env.PORT_WEBPACK_DEV_SERVER) {
     throw new Error('🔴 webpack-dev-server port was not set')
@@ -62,6 +62,9 @@ module.exports = merge([
                 /\.(spec|test)\.jsx?$/,
             ],
         },
-        babelLoaderCache: true,
+        babelLoader: {
+            cacheDirectory: true,
+            configFile: `${PATH_ROOT}/babel.config.js`,
+        },
     }),
 ])

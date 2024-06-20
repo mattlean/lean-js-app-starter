@@ -3,7 +3,7 @@ const compileTs = require('ljas-webpack/compileTs')
 const { merge } = require('webpack-merge')
 
 const tsconfigBuildOverride = require('./tsconfigBuildOverride')
-const { PATH_COMMON_SRC, PATH_RENDERER_SRC } = require('../PATHS')
+const { PATH_COMMON_SRC, PATH_RENDERER_SRC, PATH_ROOT } = require('../PATHS')
 
 module.exports = merge([
     {
@@ -27,7 +27,10 @@ module.exports = merge([
                 /\.(spec|test)\.(j|t)s$/,
             ],
         },
-        babelLoaderCache: true,
+        babelLoader: {
+            cacheDirectory: true,
+            configFile: `${PATH_ROOT}/babel.renderer.js`,
+        },
         forkTsChecker: {
             typescript: {
                 configOverwrite: {

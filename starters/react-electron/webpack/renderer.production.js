@@ -11,6 +11,7 @@ const {
     PATH_COMMON_SRC,
     PATH_RENDERER_BUILD_PROD,
     PATH_RENDERER_SRC,
+    PATH_ROOT,
 } = require('../PATHS')
 
 module.exports = merge([
@@ -44,21 +45,21 @@ module.exports = merge([
 
     buildSourceMaps('source-map'),
 
-    compileReact(
-        {
-            rule: {
-                include: [PATH_COMMON_SRC, PATH_RENDERER_SRC],
-                exclude: [
-                    /node_modules/,
-                    /__mocks__\/.*.jsx?$/,
-                    /__tests__\/.*.jsx?$/,
-                    /\.(spec|test)\.jsx?$/,
-                ],
-            },
-            babelLoaderCache: true,
+    compileReact({
+        rule: {
+            include: [PATH_COMMON_SRC, PATH_RENDERER_SRC],
+            exclude: [
+                /node_modules/,
+                /__mocks__\/.*.jsx?$/,
+                /__tests__\/.*.jsx?$/,
+                /\.(spec|test)\.jsx?$/,
+            ],
         },
-        'production',
-    ),
+        babelLoader: {
+            cacheDirectory: true,
+            configFile: `${PATH_ROOT}/babel.renderer.production.js`,
+        },
+    }),
 
     loadFonts({
         rule: { generator: { filename: 'assets/[name].[hash][ext][query]' } },

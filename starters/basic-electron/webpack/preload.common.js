@@ -1,8 +1,8 @@
-const setupNodeExternals = require('ljas-webpack/setupNodeExternals')
 const { compileJs } = require('ljas-webpack')
+const setupNodeExternals = require('ljas-webpack/setupNodeExternals')
 const { merge } = require('webpack-merge')
 
-const { PATH_COMMON_SRC, PATH_PRELOAD_SRC } = require('../PATHS')
+const { PATH_COMMON_SRC, PATH_PRELOAD_SRC, PATH_ROOT } = require('../PATHS')
 
 module.exports = merge([
     {
@@ -26,7 +26,10 @@ module.exports = merge([
                 /\.(spec|test)\.js$/,
             ],
         },
-        babelLoaderCache: true,
+        babelLoader: {
+            cacheDirectory: true,
+            configFile: `${PATH_ROOT}/babel.renderer.js`,
+        },
     }),
 
     setupNodeExternals({

@@ -6,9 +6,10 @@ const { merge } = require('webpack-merge')
 
 const templateParameters = require('./templateParameters')
 const {
-    PATH_FRONTEND_BUILD_DEV,
     PATH_COMMON_SRC,
+    PATH_FRONTEND_BUILD_DEV,
     PATH_FRONTEND_SRC,
+    PATH_ROOT,
 } = require('../PATHS')
 
 if (
@@ -83,6 +84,9 @@ module.exports = merge([
                 /\.(spec|test)\.jsx?$/,
             ],
         },
-        babelLoaderCache: true,
+        babelLoader: {
+            cacheDirectory: true,
+            configFile: `${PATH_ROOT}/babel.config.js`,
+        },
     }),
 ])

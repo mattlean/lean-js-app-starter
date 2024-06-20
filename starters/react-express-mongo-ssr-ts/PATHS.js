@@ -1,6 +1,7 @@
 const path = require('path')
 
 module.exports = {
+    PATH_ROOT: __dirname,
     PATH_BACKEND_BUILD_DEV: path.resolve(
         __dirname,
         'build/development/backend',

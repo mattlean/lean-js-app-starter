@@ -7,8 +7,8 @@ const { merge } = require('webpack-merge')
 
 const tsconfigBuildOverride = require('./tsconfigBuildOverride')
 const {
-    PATH_FRONTEND_BUILD_PROD,
     PATH_COMMON_SRC,
+    PATH_FRONTEND_BUILD_PROD,
     PATH_FRONTEND_SRC,
 } = require('../PATHS')
 

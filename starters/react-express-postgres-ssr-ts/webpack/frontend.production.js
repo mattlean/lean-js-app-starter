@@ -5,9 +5,10 @@ const { merge } = require('webpack-merge')
 
 const tsconfigBuildOverride = require('./tsconfigBuildOverride')
 const {
-    PATH_FRONTEND_BUILD_PROD,
     PATH_COMMON_SRC,
+    PATH_FRONTEND_BUILD_PROD,
     PATH_FRONTEND_SRC,
+    PATH_ROOT,
 } = require('../PATHS')
 
 module.exports = merge([
@@ -41,33 +42,33 @@ module.exports = merge([
 
     buildSourceMaps('source-map'),
 
-    compileReactTs(
-        {
-            rule: {
-                include: [PATH_COMMON_SRC, PATH_FRONTEND_SRC],
-                exclude: [
-                    /node_modules/,
-                    /__mocks__\/.*.(j|t)sx?$/,
-                    /__tests__\/.*.(j|t)sx?$/,
-                    /\.(spec|test)\.(j|t)sx?$/,
-                ],
-            },
-            babelLoaderCache: true,
-            forkTsChecker: {
-                typescript: {
-                    configOverwrite: {
-                        include: [
-                            'src/common/**/*',
-                            'src/frontend/**/*',
-                            'src/global.d.ts',
-                        ],
-                        ...tsconfigBuildOverride,
-                    },
+    compileReactTs({
+        rule: {
+            include: [PATH_COMMON_SRC, PATH_FRONTEND_SRC],
+            exclude: [
+                /node_modules/,
+                /__mocks__\/.*.(j|t)sx?$/,
+                /__tests__\/.*.(j|t)sx?$/,
+                /\.(spec|test)\.(j|t)sx?$/,
+            ],
+        },
+        babelLoader: {
+            cacheDirectory: true,
+            configFile: `${PATH_ROOT}/babel.production.js`,
+        },
+        forkTsChecker: {
+            typescript: {
+                configOverwrite: {
+                    include: [
+                        'src/common/**/*',
+                        'src/frontend/**/*',
+                        'src/global.d.ts',
+                    ],
+                    ...tsconfigBuildOverride,
                 },
             },
         },
-        'production',
-    ),
+    }),
 
     loadFonts({
         rule: { generator: { filename: 'assets/[name].[hash][ext][query]' } },

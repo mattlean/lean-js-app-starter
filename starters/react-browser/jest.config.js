@@ -3,6 +3,8 @@
  * https://jestjs.io/docs/configuration
  */
 
+const { PATH_ROOT } = require('./PATHS')
+
 module.exports = {
     // All imported modules in your tests should be mocked automatically
     // automock: false,
@@ -184,18 +186,7 @@ module.exports = {
     transform: {
         '\\.jsx?$': [
             'babel-jest',
-            {
-                presets: [
-                    '@babel/preset-env',
-                    [
-                        '@babel/preset-react',
-                        {
-                            development: true,
-                            runtime: 'automatic',
-                        },
-                    ],
-                ],
-            },
+            { configFile: `${PATH_ROOT}/babel.jest.js` },
         ],
     },
 

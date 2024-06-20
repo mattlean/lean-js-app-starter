@@ -12,6 +12,7 @@ const {
     PATH_COMMON_SRC,
     PATH_RENDERER_BUILD_DEV,
     PATH_RENDERER_SRC,
+    PATH_ROOT,
 } = require('../PATHS')
 
 if (!process.env.PORT_WEBPACK_DEV_SERVER) {
@@ -68,7 +69,10 @@ module.exports = merge([
                 /\.(spec|test)\.(j|t)sx?$/,
             ],
         },
-        babelLoaderCache: true,
+        babelLoader: {
+            cacheDirectory: true,
+            configFile: `${PATH_ROOT}/babel.renderer.js`,
+        },
         forkTsChecker: {
             typescript: {
                 configOverwrite: {

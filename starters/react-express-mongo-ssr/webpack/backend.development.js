@@ -1,7 +1,7 @@
 const { buildSourceMaps, compileReact } = require('ljas-webpack')
 const { merge } = require('webpack-merge')
 
-const { PATH_BACKEND_BUILD_DEV, PATH_SRC } = require('../PATHS')
+const { PATH_BACKEND_BUILD_DEV, PATH_ROOT, PATH_SRC } = require('../PATHS')
 
 module.exports = merge([
     {
@@ -10,19 +10,19 @@ module.exports = merge([
 
     buildSourceMaps('cheap-module-source-map'),
 
-    compileReact(
-        {
-            rule: {
-                include: PATH_SRC,
-                exclude: [
-                    /node_modules/,
-                    /__mocks__\/.*.jsx?$/,
-                    /__tests__\/.*.jsx?$/,
-                    /\.(spec|test)\.jsx?$/,
-                ],
-            },
-            babelLoaderCache: true,
+    compileReact({
+        rule: {
+            include: PATH_SRC,
+            exclude: [
+                /node_modules/,
+                /__mocks__\/.*.jsx?$/,
+                /__tests__\/.*.jsx?$/,
+                /\.(spec|test)\.jsx?$/,
+            ],
         },
-        'development',
-    ),
+        babelLoader: {
+            cacheDirectory: true,
+            configFile: `${PATH_ROOT}/babel.config.js`,
+        },
+    }),
 ])

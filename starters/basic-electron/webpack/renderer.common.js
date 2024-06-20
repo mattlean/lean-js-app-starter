@@ -2,7 +2,7 @@ const buildHtml = require('ljas-webpack/buildHtml')
 const { compileJs } = require('ljas-webpack')
 const { merge } = require('webpack-merge')
 
-const { PATH_COMMON_SRC, PATH_RENDERER_SRC } = require('../PATHS')
+const { PATH_COMMON_SRC, PATH_RENDERER_SRC, PATH_ROOT } = require('../PATHS')
 
 module.exports = merge([
     {
@@ -26,6 +26,9 @@ module.exports = merge([
                 /\.(spec|test)\.js$/,
             ],
         },
-        babelLoaderCache: true,
+        babelLoader: {
+            cacheDirectory: true,
+            configFile: `${PATH_ROOT}/babel.renderer.js`,
+        },
     }),
 ])

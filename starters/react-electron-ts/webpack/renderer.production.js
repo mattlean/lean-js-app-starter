@@ -8,6 +8,7 @@ const {
     PATH_COMMON_SRC,
     PATH_RENDERER_BUILD_PROD,
     PATH_RENDERER_SRC,
+    PATH_ROOT,
 } = require('../PATHS')
 
 module.exports = merge([
@@ -41,29 +42,29 @@ module.exports = merge([
 
     buildSourceMaps('source-map'),
 
-    compileReactTs(
-        {
-            rule: {
-                include: [PATH_COMMON_SRC, PATH_RENDERER_SRC],
-                exclude: [
-                    /node_modules/,
-                    /__mocks__\/.*.(j|t)sx?$/,
-                    /__tests__\/.*.(j|t)sx?$/,
-                    /\.(spec|test)\.(j|t)sx?$/,
-                ],
-            },
-            babelLoaderCache: true,
-            forkTsChecker: {
-                typescript: {
-                    configOverwrite: {
-                        include: ['src/renderer/**/*', 'src/global.d.ts'],
-                        ...tsconfigBuildOverride,
-                    },
+    compileReactTs({
+        rule: {
+            include: [PATH_COMMON_SRC, PATH_RENDERER_SRC],
+            exclude: [
+                /node_modules/,
+                /__mocks__\/.*.(j|t)sx?$/,
+                /__tests__\/.*.(j|t)sx?$/,
+                /\.(spec|test)\.(j|t)sx?$/,
+            ],
+        },
+        babelLoader: {
+            cacheDirectory: true,
+            configFile: `${PATH_ROOT}/babel.renderer.production.js`,
+        },
+        forkTsChecker: {
+            typescript: {
+                configOverwrite: {
+                    include: ['src/renderer/**/*', 'src/global.d.ts'],
+                    ...tsconfigBuildOverride,
                 },
             },
         },
-        'production',
-    ),
+    }),
 
     loadFonts({
         rule: { generator: { filename: 'assets/[name].[hash][ext][query]' } },
