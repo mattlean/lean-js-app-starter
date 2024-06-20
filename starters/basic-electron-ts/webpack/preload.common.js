@@ -29,7 +29,7 @@ module.exports = merge([
         },
         babelLoader: {
             cacheDirectory: true,
-            configFile: `${PATH_ROOT}/babel.renderer.js`,
+            configFile: `${PATH_ROOT}/babel.config.js`,
         },
         forkTsChecker: {
             typescript: {
