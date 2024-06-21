@@ -17,11 +17,15 @@ export default function App() {
             <FontTest />
             <footer id="footer-text">
                 <p>
-                    Check out the{' '}
-                    <a href="https://github.com/mattlean/lean-js-app-starter/tree/master/examples/asset-test">
-                        source code
-                    </a>{' '}
-                    for this project on GitHub.
+                    Learn about the tech stack used for this project and more at
+                    its{' '}
+                    <a
+                        href="https://github.com/mattlean/lean-js-app-starter/tree/master/examples/asset-test"
+                        className="text-muted"
+                    >
+                        GitHub repo
+                    </a>
+                    .
                 </p>
                 <p>
                     This was built with{' '}

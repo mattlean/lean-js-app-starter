@@ -142,3 +142,27 @@ TODO:
 -   docker image prune
 -   docker builder prune
 -   docker system prune
+
+## Troubleshooting
+
+**Changes to my code are not being seen by nodemon or webpack when they are running in a container.**
+
+Some machines run into issues with watching files in Docker containers.
+
+To resolve this issue with nodemon, pass the `--legacy-watch` (or `-L`) flag whenever it is run. It is most likely that you will most likely need to update your `dev` `package.json` script with it. For more information on this, refer to the [nodemon README](https://github.com/remy/nodemon?tab=readme-ov-file#application-isnt-restarting).
+
+To resolve this issue with webpack, set the `watchOptions.poll` option in a webpack configuration file. For more information on this, refer to the ["Watch and WatchOptions" page in the webpack docs](https://webpack.js.org/configuration/watch/#watchoptionspoll).
+
+**I am trying to start containers on Windows and am encountering the following error:**
+
+```
+failed to solve: rpc error: code = Unknown desc = failed to solve with frontend dockerfile.v0: failed to create LLB definition: failed to authorize: rpc error: code = Unknown desc = failed to fetch anonymous token: unexpected status: 503 Service Unavailable
+```
+
+You are most likely running Linux containers which are intended for usage on Linux or macOS. When running Docker containers on Windows, it is expected that you use Windows containers.
+
+To switch to them, right-click the Docker icon in the nofication area of the taskbar, and select "Switch to Windows containers..." To use the command line to switch between containers, run:
+
+```
+& $Env:ProgramFiles\Docker\Docker\DockerCli.exe -SwitchDaemon
+```

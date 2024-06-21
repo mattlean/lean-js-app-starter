@@ -10,10 +10,10 @@
  * Build source maps:
  * https://webpack.js.org/configuration/devtool
  *
- * @param {string} [option] Option that chooses a style of source mapping. (https://webpack.js.org/configuration/devtool)
+ * @param {string} devtool Option that chooses a style of source mapping. (https://webpack.js.org/configuration/devtool)
  * @returns {Object} A webpack configuration object that sets up the webpack devtool option.
  */
-exports.buildSourceMaps = (option) => ({ devtool: option })
+exports.buildSourceMaps = (devtool) => ({ devtool })
 
 /**
  * Compile JavaScript code with babel-loader:
@@ -264,4 +264,15 @@ exports.setupDevServer = (options) => ({
     devServer: {
         ...options,
     },
+})
+
+/**
+ * Ignore files when webpack is running in watch mode:
+ * https://webpack.js.org/configuration/watch
+ *
+ * @param {string|Array.<string>} ignored RegEx or globs to match folders and files that will be ignored. (https://webpack.js.org/configuration/watch/#watchoptionsignored)
+ * @returns {Object} A webpack configuration object that makes webpack ignore specified files during watch mode.
+ */
+exports.watchIgnore = (ignored) => ({
+    watchOptions: { ignored },
 })
