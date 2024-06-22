@@ -11,3 +11,7 @@ Things that use Browserslist:
 So the only thing you need to do to change your build targets is update .browserslistrc, even if you're working in a Node.js environment, contrary to the "browsers" in Browserslist.
 
 The only exception is when working with Electron where you will need to alter the webpack targets for the main and preload processes.
+
+## How do I clear babel-loader's cache?
+
+Delete the `node_modules/.cache/babel-loader` directory.

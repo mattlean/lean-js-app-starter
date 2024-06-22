@@ -21,6 +21,8 @@ module.exports = merge([
             filename: '[name].js',
             path: PATH_BUILD_DEV,
         },
+
+        target: 'browserslist:development',
     },
 
     buildSourceMaps('cheap-module-source-map'),

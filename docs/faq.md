@@ -28,3 +28,11 @@ Although Node.js does have very good support for modern ECMAScript standards, so
 
 There are a few other quirks that come along with ECMAScript modules and Node.js too. For example, in order to use them you must utilize them in `.mjs` files or
 set the `type` field in `package.json` to `"module"` which introduces its own complications around configuration and the developer experience. Using webpack allows us to avoid all of these issues while introducing some useful tools that Node.js lacks out-of-the-box.
+
+### How do you change Node.js versions?
+
+We currently default Node.js to version 18.16. If you want to change that you need to do is update `engines.node` field in `package.json` and the Node.js version in `.browserslistrc`.
+
+If you're using the Docker development environment, you will also need to update the Dockerfiles' `FROM` instructions to a base image with the updated Node.js version. You can find an appropriate official Node.js image here: https://hub.docker.com/_/node/tags
+
+Don't forget to make sure everything is still working as expected after changing versions.

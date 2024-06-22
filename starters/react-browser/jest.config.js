@@ -3,8 +3,6 @@
  * https://jestjs.io/docs/configuration
  */
 
-const { PATH_ROOT } = require('./PATHS')
-
 module.exports = {
     // All imported modules in your tests should be mocked automatically
     // automock: false,
@@ -183,12 +181,7 @@ module.exports = {
     // testRunner: "jest-circus/runner",
 
     // A map from regular expressions to paths to transformers
-    transform: {
-        '\\.jsx?$': [
-            'babel-jest',
-            { configFile: `${PATH_ROOT}/babel.jest.js` },
-        ],
-    },
+    // transform: undefined
 
     // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
     // transformIgnorePatterns: [
