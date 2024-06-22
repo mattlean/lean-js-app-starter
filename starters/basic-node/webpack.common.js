@@ -12,8 +12,6 @@ module.exports = merge([
             clean: true,
             filename: '[name].js',
         },
-
-        target: 'node',
     },
 
     compileJs({
