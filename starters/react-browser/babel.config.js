@@ -1,5 +1,8 @@
 module.exports = (api) => {
-    const presetEnv = ['@babel/preset-env', { browserslistEnv: 'development' }]
+    const presetEnv = [
+        '@babel/preset-env',
+        { browserslistEnv: 'development', modules: false },
+    ]
     const presetReact = [
         '@babel/preset-react',
         { development: true, runtime: 'automatic' },
@@ -15,8 +18,8 @@ module.exports = (api) => {
         plugins.push(require.resolve('react-refresh/babel'))
     }
 
-    if (!api.env('test')) {
-        presetEnv[1].modules = false
+    if (api.env('test')) {
+        delete presetEnv[1].modules
     }
 
     return {
