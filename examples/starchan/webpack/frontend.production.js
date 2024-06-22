@@ -10,6 +10,7 @@ const {
     PATH_COMMON_SRC,
     PATH_FRONTEND_BUILD_PROD,
     PATH_FRONTEND_SRC,
+    PATH_ROOT,
 } = require('../PATHS')
 
 module.exports = merge([
@@ -34,6 +35,8 @@ module.exports = merge([
                 },
             },
         },
+
+        target: 'browserslist:frontend-production',
     },
 
     buildTransformedCss({
@@ -54,7 +57,10 @@ module.exports = merge([
                     /\.(spec|test)\.(j|t)sx?$/,
                 ],
             },
-            babelLoaderCache: true,
+            babelLoader: {
+                cacheDirectory: true,
+                configFile: `${PATH_ROOT}/babel.frontend.production.js`,
+            },
             forkTsChecker: {
                 typescript: {
                     configOverwrite: {

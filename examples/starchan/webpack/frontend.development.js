@@ -10,6 +10,7 @@ const {
     PATH_COMMON_SRC,
     PATH_FRONTEND_BUILD_DEV,
     PATH_FRONTEND_SRC,
+    PATH_ROOT,
 } = require('../PATHS')
 
 if (
@@ -27,6 +28,8 @@ module.exports = merge([
             filename: '[name].js',
             path: PATH_FRONTEND_BUILD_DEV,
         },
+
+        target: 'browserslist:frontend-development',
     },
 
     buildCss({
@@ -84,7 +87,10 @@ module.exports = merge([
                 /\.(spec|test)\.(j|t)sx?$/,
             ],
         },
-        babelLoaderCache: true,
+        babelLoader: {
+            cacheDirectory: true,
+            configFile: `${PATH_ROOT}/babel.frontend.js`,
+        },
         forkTsChecker: {
             typescript: {
                 configOverwrite: {

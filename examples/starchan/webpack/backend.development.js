@@ -7,6 +7,7 @@ const tsconfigBuildOverride = require('./tsconfigBuildOverride')
 const {
     PATH_BACKEND_BUILD_DEV,
     PATH_BACKEND_SRC,
+    PATH_ROOT,
     PATH_SRC,
 } = require('../PATHS')
 
@@ -24,8 +25,8 @@ module.exports = merge([
                         noErrorOnMissing: true,
                     },
                     {
-                        from: `${PATH_BACKEND_SRC}/views`,
-                        to: `${PATH_BACKEND_BUILD_DEV}/views`,
+                        from: `${PATH_BACKEND_SRC}/views/*.ejs`,
+                        to: `${PATH_BACKEND_BUILD_DEV}/views/[name][ext]`,
                         noErrorOnMissing: true,
                     },
                 ],
@@ -46,7 +47,10 @@ module.exports = merge([
                     /\.(spec|test)\.(j|t)sx?$/,
                 ],
             },
-            babelLoaderCache: true,
+            babelLoader: {
+                cacheDirectory: true,
+                configFile: `${PATH_ROOT}/babel.backend.js`,
+            },
             forkTsChecker: {
                 typescript: {
                     configOverwrite: {
