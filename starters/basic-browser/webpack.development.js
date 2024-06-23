@@ -1,5 +1,6 @@
 const {
     buildSourceMaps,
+    compileJs,
     injectCss,
     loadFonts,
     loadImages,
@@ -7,7 +8,7 @@ const {
 } = require('ljas-webpack')
 const { merge } = require('webpack-merge')
 
-const { PATH_BUILD_DEV, PATH_SRC } = require('./PATHS')
+const { PATH_BUILD_DEV, PATH_ROOT, PATH_SRC } = require('./PATHS')
 
 if (!process.env.PORT_WEBPACK_DEV_SERVER) {
     throw new Error('🔴 webpack-dev-server port was not set')
@@ -21,9 +22,27 @@ module.exports = merge([
             filename: '[name].js',
             path: PATH_BUILD_DEV,
         },
+
+        target: 'browserslist:development',
     },
 
     buildSourceMaps('cheap-module-source-map'),
+
+    compileJs({
+        rule: {
+            include: PATH_SRC,
+            exclude: [
+                /node_modules/,
+                /__mocks__\/.*.js$/,
+                /__tests__\/.*.js$/,
+                /\.(spec|test)\.js$/,
+            ],
+        },
+        babelLoader: {
+            cacheDirectory: true,
+            configFile: `${PATH_ROOT}/babel.config.js`,
+        },
+    }),
 
     injectCss({ rule: { include: PATH_SRC } }),
 

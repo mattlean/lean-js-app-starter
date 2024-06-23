@@ -1,8 +1,10 @@
 const buildTransformedCss = require('ljas-webpack/buildTransformedCss')
+const compileTs = require('ljas-webpack/compileTs')
 const { buildSourceMaps, loadFonts, loadImages } = require('ljas-webpack')
 const { merge } = require('webpack-merge')
 
-const { PATH_BUILD_PROD, PATH_SRC } = require('./PATHS')
+const tsconfigBuildOverride = require('./tsconfigBuildOverride')
+const { PATH_BUILD_PROD, PATH_ROOT, PATH_SRC } = require('./PATHS')
 
 module.exports = merge([
     {
@@ -26,6 +28,8 @@ module.exports = merge([
                 },
             },
         },
+
+        target: 'browserslist:production',
     },
 
     buildTransformedCss({
@@ -34,6 +38,25 @@ module.exports = merge([
     }),
 
     buildSourceMaps('source-map'),
+
+    compileTs({
+        rule: {
+            include: PATH_SRC,
+            exclude: [
+                /node_modules/,
+                /__mocks__\/.*.(j|t)s$/,
+                /__tests__\/.*.(j|t)s$/,
+                /\.(spec|test)\.(j|t)s$/,
+            ],
+        },
+        babelLoader: {
+            cacheDirectory: true,
+            configFile: `${PATH_ROOT}/babel.config.js`,
+        },
+        forkTsChecker: {
+            typescript: { configOverwrite: tsconfigBuildOverride },
+        },
+    }),
 
     loadFonts({
         rule: { generator: { filename: 'assets/[name].[hash][ext][query]' } },

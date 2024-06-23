@@ -1,9 +1,7 @@
 const buildHtml = require('ljas-webpack/buildHtml')
-const compileTs = require('ljas-webpack/compileTs')
 const { merge } = require('webpack-merge')
 
-const tsconfigBuildOverride = require('./tsconfigBuildOverride')
-const { PATH_ROOT, PATH_SRC } = require('./PATHS')
+const { PATH_SRC } = require('./PATHS')
 
 module.exports = merge([
     {
@@ -13,23 +11,4 @@ module.exports = merge([
     },
 
     buildHtml({ title: 'ljas-basic-browser-ts' }),
-
-    compileTs({
-        rule: {
-            include: PATH_SRC,
-            exclude: [
-                /node_modules/,
-                /__mocks__\/.*.(j|t)s$/,
-                /__tests__\/.*.(j|t)s$/,
-                /\.(spec|test)\.(j|t)s$/,
-            ],
-        },
-        babelLoader: {
-            cacheDirectory: true,
-            configFile: `${PATH_ROOT}/babel.config.js`,
-        },
-        forkTsChecker: {
-            typescript: { configOverwrite: tsconfigBuildOverride },
-        },
-    }),
 ])
