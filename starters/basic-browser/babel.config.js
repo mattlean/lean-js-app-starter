@@ -1,18 +1,29 @@
 module.exports = (api) => {
+    const isProduction = api.env('production')
+    const isTest = api.env('test')
+
+    /**
+     * Configuration for preset-env:
+     * https://babeljs.io/docs/babel-preset-env
+     */
     const presetEnv = [
         '@babel/preset-env',
         { browserslistEnv: 'development', modules: false },
     ]
 
-    const plugins = []
-
-    if (api.env('production')) {
+    if (isProduction) {
         presetEnv[1].browserslistEnv = 'production'
     }
 
-    if (api.env('test')) {
+    if (isTest) {
         delete presetEnv[1].modules
     }
+
+    /**
+     * Babel plugins:
+     * https://babeljs.io/docs/plugins
+     */
+    const plugins = []
 
     return {
         presets: [presetEnv],
