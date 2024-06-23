@@ -18,10 +18,6 @@ module.exports = (api) => {
         plugins.push(require.resolve('react-refresh/babel'))
     }
 
-    if (api.env('test')) {
-        delete presetEnv[1].modules
-    }
-
     return {
         presets: [presetEnv, presetReact, '@babel/preset-typescript'],
         plugins,

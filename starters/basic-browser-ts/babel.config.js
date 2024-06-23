@@ -10,10 +10,6 @@ module.exports = (api) => {
         presetEnv[1].browserslistEnv = 'production'
     }
 
-    if (api.env('test')) {
-        delete presetEnv[1].modules
-    }
-
     return {
         presets: [presetEnv, '@babel/preset-typescript'],
         plugins,
