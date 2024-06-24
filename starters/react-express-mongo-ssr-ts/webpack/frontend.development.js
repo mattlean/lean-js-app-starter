@@ -28,6 +28,8 @@ module.exports = merge([
             filename: '[name].js',
             path: PATH_FRONTEND_BUILD_DEV,
         },
+
+        target: 'browserslist:frontend-development',
     },
 
     buildCss({
@@ -87,7 +89,7 @@ module.exports = merge([
         },
         babelLoader: {
             cacheDirectory: true,
-            configFile: `${PATH_ROOT}/babel.config.js`,
+            configFile: `${PATH_ROOT}/babel.frontend.js`,
         },
         forkTsChecker: {
             typescript: {

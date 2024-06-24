@@ -24,7 +24,7 @@ module.exports = merge([
         },
         babelLoader: {
             cacheDirectory: true,
-            configFile: `${PATH_ROOT}/babel.config.js`,
+            configFile: `${PATH_ROOT}/babel.backend.js`,
         },
         forkTsChecker: {
             typescript: {

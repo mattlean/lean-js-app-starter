@@ -33,6 +33,8 @@ module.exports = merge([
                 },
             },
         },
+
+        target: 'browserslist:frontend-production',
     },
 
     buildTransformedCss({
@@ -54,7 +56,7 @@ module.exports = merge([
         },
         babelLoader: {
             cacheDirectory: true,
-            configFile: `${PATH_ROOT}/babel.production.js`,
+            configFile: `${PATH_ROOT}/babel.frontend.js`,
         },
         forkTsChecker: {
             typescript: {

@@ -12,7 +12,7 @@ module.exports = merge([
             filename: '[name].js',
         },
 
-        target: 'node',
+        target: 'browserslist:backend',
     },
 
     setupNodeExternals({
