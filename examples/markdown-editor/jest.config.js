@@ -3,6 +3,7 @@
  * https://jestjs.io/docs/configuration
  */
 const jestTransformDeps = require('./jestTransformDeps')
+const { PATH_ROOT } = require('./PATHS')
 
 module.exports = {
     // All imported modules in your tests should be mocked automatically
@@ -186,18 +187,7 @@ module.exports = {
         // packages that utilize ESM
         [`/node_modules/((${jestTransformDeps})/)`]: [
             'babel-jest',
-            {
-                presets: [
-                    '@babel/preset-env',
-                    [
-                        '@babel/preset-react',
-                        {
-                            development: true,
-                            runtime: 'automatic',
-                        },
-                    ],
-                ],
-            },
+            { configFile: `${PATH_ROOT}/babel.jest.js` },
         ],
     },
 

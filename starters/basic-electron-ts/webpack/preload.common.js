@@ -31,9 +31,7 @@ module.exports = merge([
             configFile: `${PATH_ROOT}/babel.config.js`,
         },
         forkTsChecker: {
-            typescript: {
-                typescript: { configFile: 'tsconfig.build.preload.json' },
-            },
+            typescript: { configFile: 'tsconfig.build.preload.json' },
         },
     }),
 

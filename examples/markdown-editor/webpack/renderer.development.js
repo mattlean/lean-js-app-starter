@@ -6,11 +6,11 @@ const tailwindcssNesting = require('tailwindcss/nesting')
 const { buildSourceMaps, loadFonts, loadImages } = require('ljas-webpack')
 const { merge } = require('webpack-merge')
 
-const tsconfigBuildOverride = require('./tsconfigBuildOverride')
 const {
     PATH_COMMON_SRC,
     PATH_RENDERER_BUILD_DEV,
     PATH_RENDERER_SRC,
+    PATH_ROOT,
 } = require('../PATHS')
 
 if (!process.env.PORT_WEBPACK_DEV_SERVER) {
@@ -72,7 +72,10 @@ module.exports = merge([
                 /\.(spec|test)\.(j|t)sx?$/,
             ],
         },
-        babelLoaderCache: true,
+        babelLoader: {
+            cacheDirectory: true,
+            configFile: `${PATH_ROOT}/babel.renderer.js`,
+        },
         devServer: {
             devMiddleware: { writeToDisk: true },
             historyApiFallback: true,
@@ -80,12 +83,7 @@ module.exports = merge([
             watchFiles: ['src/renderer/**/*.ejs'],
         },
         forkTsChecker: {
-            typescript: {
-                configOverwrite: {
-                    include: ['src/renderer/**/*', 'src/global.d.ts'],
-                    ...tsconfigBuildOverride,
-                },
-            },
+            typescript: { configFile: 'tsconfig.build.renderer.json' },
         },
     }),
 ])
