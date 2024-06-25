@@ -7,6 +7,7 @@
     --reply-active: #d6bad0;
     --reply-border-active: #ba9dbf;
     --table-purple: #98e;
+    --title-red: #af0a0f;
     --user-green: #117743;
 
     box-sizing: border-box;
@@ -38,9 +39,16 @@ pre {
 }
 
 #title {
+    color: var(--title-red);
     font-family: Tahoma, sans-serif;
     font-size: 28px;
     text-align: center;
+}
+
+.about {
+    font-size: 11px;
+    margin: 0 auto;
+    width: 468px;
 }
 
 .post-form {
@@ -176,7 +184,6 @@ pre {
 }
 
 .footer {
-    font-size: 10px;
     text-align: center;
 }
 

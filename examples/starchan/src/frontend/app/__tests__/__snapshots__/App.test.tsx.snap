@@ -5,12 +5,12 @@ exports[`App component matches diff snapshot transitioning from loading render t
 - First value
 + Second value
 
-@@ -5,15 +5,50 @@
-      >
-        *chan
-      </h1>
-    </header>
-    <hr />
+@@ -24,15 +24,50 @@
+          Please remember to always be respectful!
+        </strong>
+      </p>
+      <hr />
+    </div>
 -   <div
 -     class="loading"
 +   <main>
@@ -59,7 +59,7 @@ exports[`App component matches diff snapshot transitioning from loading render t
       class="footer"
       id="bottom"
     >
-      <p>"
+      <nav>"
 `;
 
 exports[`App component matches snapshot for basic render 1`] = `
@@ -73,6 +73,25 @@ exports[`App component matches snapshot for basic render 1`] = `
   </header>
   <hr />
   <div
+    class="about"
+  >
+    <p>
+      *chan (pronounced as starchan) is a simple forum inspired by Japanese 
+      <a
+        href="https://en.wikipedia.org/wiki/Textboard"
+      >
+        textboards
+      </a>
+      . All users are anonymous, so no account registration is required. Feel free to participate in discussion by starting a new thread or finding an existing thread to reply to.
+    </p>
+    <p>
+      <strong>
+        Please remember to always be respectful!
+      </strong>
+    </p>
+    <hr />
+  </div>
+  <div
     class="loading"
   >
     Loading...
@@ -81,21 +100,6 @@ exports[`App component matches snapshot for basic render 1`] = `
     class="footer"
     id="bottom"
   >
-    <p>
-      *chan (pronounced as starchan) is a 
-      <a
-        href="https://en.wikipedia.org/wiki/Textboard"
-      >
-        textboard
-      </a>
-       that demonstrates one of 
-      <a
-        href="#"
-      >
-        Lean JS App Starter's full-stack project setups
-      </a>
-      . It showcases an Express server that acts as a REST API and a React server-side renderer. These work in tandem with a React frontend.
-    </p>
     <nav>
       <ul
         class="footer__links"
@@ -104,14 +108,7 @@ exports[`App component matches snapshot for basic render 1`] = `
           <a
             href="#"
           >
-            About
-          </a>
-        </li>
-        <li>
-          <a
-            href="#"
-          >
-            *chan GitHub
+            *chan GitHub Repo
           </a>
         </li>
         <li>

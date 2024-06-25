@@ -1,4 +1,4 @@
-import { Menu, MenuItemConstructorOptions, app, shell } from 'electron'
+import { Menu, MenuItemConstructorOptions, app, dialog, shell } from 'electron'
 
 import { colorModes } from '../common/types'
 import {
@@ -127,6 +127,21 @@ export const buildMenuTemplate = () => {
         {
             label: 'Help',
             submenu: [
+                {
+                    label: 'Tech stack info',
+                    click: () =>
+                        dialog.showMessageBox({
+                            message:
+                                'This project was built with the following technologies:\n\n• TypeScript\n• Electron\n• React\n• unified & remark\n• Tailwind CSS\n• Lean JavaScript Application Starter',
+                        }),
+                },
+                {
+                    label: 'ljas-markdown-editor GitHub Repo',
+                    click: () =>
+                        shell.openExternal(
+                            'https://github.com/mattlean/lean-js-app-starter/tree/master/examples/markdown-editor',
+                        ),
+                },
                 {
                     label: 'Lean JavaScript Application Starter',
                     click: () =>
