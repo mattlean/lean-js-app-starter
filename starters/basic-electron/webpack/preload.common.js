@@ -13,7 +13,7 @@ module.exports = merge([
             filename: '[name].js',
         },
 
-        target: 'electron-preload',
+        target: 'electron29.1-preload',
     },
 
     compileJs({

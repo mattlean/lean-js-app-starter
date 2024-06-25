@@ -2,7 +2,6 @@ const compileTs = require('ljas-webpack/compileTs')
 const setupNodeExternals = require('ljas-webpack/setupNodeExternals')
 const { merge } = require('webpack-merge')
 
-const tsconfigBuildOverride = require('./tsconfigBuildOverride')
 const { PATH_COMMON_SRC, PATH_MAIN_SRC, PATH_ROOT } = require('../PATHS')
 
 module.exports = merge([
@@ -14,7 +13,7 @@ module.exports = merge([
             filename: '[name].js',
         },
 
-        target: 'electron-main',
+        target: 'electron29.1-main',
     },
 
     compileTs({
@@ -33,10 +32,7 @@ module.exports = merge([
         },
         forkTsChecker: {
             typescript: {
-                configOverwrite: {
-                    include: ['src/main/**/*', 'src/global.d.ts'],
-                    ...tsconfigBuildOverride,
-                },
+                typescript: { configFile: 'tsconfig.build.main.json' },
             },
         },
     }),

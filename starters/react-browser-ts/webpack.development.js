@@ -7,7 +7,6 @@ const {
 } = require('ljas-webpack')
 const { merge } = require('webpack-merge')
 
-const tsconfigBuildOverride = require('./tsconfigBuildOverride')
 const { PATH_BUILD_DEV, PATH_ROOT, PATH_SRC } = require('./PATHS')
 
 if (!process.env.PORT_WEBPACK_DEV_SERVER) {
@@ -70,7 +69,7 @@ module.exports = merge([
             configFile: `${PATH_ROOT}/babel.config.js`,
         },
         forkTsChecker: {
-            typescript: { configOverwrite: tsconfigBuildOverride },
+            typescript: { configFile: 'tsconfig.build.json' },
         },
     }),
 ])

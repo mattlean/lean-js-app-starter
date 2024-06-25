@@ -7,7 +7,6 @@ const {
 } = require('ljas-webpack')
 const { merge } = require('webpack-merge')
 
-const tsconfigBuildOverride = require('./tsconfigBuildOverride')
 const {
     PATH_COMMON_SRC,
     PATH_RENDERER_BUILD_DEV,
@@ -74,12 +73,7 @@ module.exports = merge([
             configFile: `${PATH_ROOT}/babel.renderer.js`,
         },
         forkTsChecker: {
-            typescript: {
-                configOverwrite: {
-                    include: ['src/renderer/**/*', 'src/global.d.ts'],
-                    ...tsconfigBuildOverride,
-                },
-            },
+            typescript: { configFile: 'tsconfig.build.renderer.json' },
         },
     }),
 ])

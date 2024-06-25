@@ -4,7 +4,6 @@ const setupReactFastRefreshServerTs = require('ljas-webpack/setupReactFastRefres
 const { buildSourceMaps, loadFonts, loadImages } = require('ljas-webpack')
 const { merge } = require('webpack-merge')
 
-const tsconfigBuildOverride = require('./tsconfigBuildOverride')
 const templateParameters = require('./templateParameters')
 const {
     PATH_COMMON_SRC,
@@ -92,16 +91,7 @@ module.exports = merge([
             configFile: `${PATH_ROOT}/babel.frontend.js`,
         },
         forkTsChecker: {
-            typescript: {
-                configOverwrite: {
-                    include: [
-                        'src/common/**/*',
-                        'src/frontend/**/*',
-                        'src/global.d.ts',
-                    ],
-                    ...tsconfigBuildOverride,
-                },
-            },
+            typescript: { configFile: 'tsconfig.build.frontend.json' },
         },
     }),
 ])

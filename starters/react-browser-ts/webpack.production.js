@@ -3,7 +3,6 @@ const compileReactTs = require('ljas-webpack/compileReactTs')
 const { buildSourceMaps, loadFonts, loadImages } = require('ljas-webpack')
 const { merge } = require('webpack-merge')
 
-const tsconfigBuildOverride = require('./tsconfigBuildOverride')
 const { PATH_BUILD_PROD, PATH_ROOT, PATH_SRC } = require('./PATHS')
 
 module.exports = merge([
@@ -54,7 +53,7 @@ module.exports = merge([
             configFile: `${PATH_ROOT}/babel.config.js`,
         },
         forkTsChecker: {
-            typescript: { configOverwrite: tsconfigBuildOverride },
+            typescript: { configFile: 'tsconfig.build.json' },
         },
     }),
 
