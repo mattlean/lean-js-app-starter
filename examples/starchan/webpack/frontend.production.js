@@ -5,7 +5,6 @@ const removeUnusedCss = require('ljas-webpack/removeUnusedCss')
 const { buildSourceMaps, loadFonts, loadImages } = require('ljas-webpack')
 const { merge } = require('webpack-merge')
 
-const tsconfigBuildOverride = require('./tsconfigBuildOverride')
 const {
     PATH_COMMON_SRC,
     PATH_FRONTEND_BUILD_PROD,
@@ -46,36 +45,24 @@ module.exports = merge([
 
     buildSourceMaps('source-map'),
 
-    compileReactTs(
-        {
-            rule: {
-                include: [PATH_COMMON_SRC, PATH_FRONTEND_SRC],
-                exclude: [
-                    /node_modules/,
-                    /__mocks__\/.*.(j|t)sx?$/,
-                    /__tests__\/.*.(j|t)sx?$/,
-                    /\.(spec|test)\.(j|t)sx?$/,
-                ],
-            },
-            babelLoader: {
-                cacheDirectory: true,
-                configFile: `${PATH_ROOT}/babel.frontend.js`,
-            },
-            forkTsChecker: {
-                typescript: {
-                    configOverwrite: {
-                        include: [
-                            'src/common/**/*',
-                            'src/frontend/**/*',
-                            'src/global.d.ts',
-                        ],
-                        ...tsconfigBuildOverride,
-                    },
-                },
-            },
+    compileReactTs({
+        rule: {
+            include: [PATH_COMMON_SRC, PATH_FRONTEND_SRC],
+            exclude: [
+                /node_modules/,
+                /__mocks__\/.*.(j|t)sx?$/,
+                /__tests__\/.*.(j|t)sx?$/,
+                /\.(spec|test)\.(j|t)sx?$/,
+            ],
         },
-        'production',
-    ),
+        babelLoader: {
+            cacheDirectory: true,
+            configFile: `${PATH_ROOT}/babel.frontend.js`,
+        },
+        forkTsChecker: {
+            typescript: { configFile: 'tsconfig.build.frontend.json' },
+        },
+    }),
 
     loadFonts({
         rule: { generator: { filename: 'assets/[name].[hash][ext][query]' } },

@@ -2,7 +2,6 @@ const compileReactTs = require('ljas-webpack/compileReactTs')
 const setupNodeExternals = require('ljas-webpack/setupNodeExternals')
 const { merge } = require('webpack-merge')
 
-const tsconfigBuildOverride = require('./tsconfigBuildOverride')
 const { PATH_BACKEND_SRC, PATH_ROOT, PATH_SRC } = require('../PATHS')
 
 module.exports = merge([
@@ -32,12 +31,7 @@ module.exports = merge([
             configFile: `${PATH_ROOT}/babel.backend.js`,
         },
         forkTsChecker: {
-            typescript: {
-                configOverwrite: {
-                    include: ['src/**/*'],
-                    ...tsconfigBuildOverride,
-                },
-            },
+            typescript: { configFile: 'tsconfig.build.backend.json' },
         },
     }),
 
