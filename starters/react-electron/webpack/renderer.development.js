@@ -53,12 +53,6 @@ module.exports = merge([
     }),
 
     setupReactFastRefreshServer({
-        devServer: {
-            devMiddleware: { writeToDisk: true },
-            historyApiFallback: true,
-            port: process.env.PORT_WEBPACK_DEV_SERVER,
-            watchFiles: ['src/renderer/**/*.ejs'],
-        },
         rule: {
             include: [PATH_COMMON_SRC, PATH_RENDERER_SRC],
             exclude: [
@@ -71,6 +65,12 @@ module.exports = merge([
         babelLoader: {
             cacheDirectory: true,
             configFile: `${PATH_ROOT}/babel.renderer.js`,
+        },
+        devServer: {
+            devMiddleware: { writeToDisk: true },
+            historyApiFallback: true,
+            port: process.env.PORT_WEBPACK_DEV_SERVER,
+            watchFiles: ['src/renderer/**/*.ejs'],
         },
     }),
 ])

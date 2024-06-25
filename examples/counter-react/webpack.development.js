@@ -26,11 +26,6 @@ module.exports = merge([
     injectTransformedSass({ rule: { include: PATH_SRC } }),
 
     setupReactFastRefreshServerTs({
-        devServer: {
-            historyApiFallback: true,
-            port: process.env.PORT_WEBPACK_DEV_SERVER,
-            watchFiles: ['src/**/*.ejs'],
-        },
         rule: {
             include: PATH_SRC,
             exclude: [
@@ -43,6 +38,11 @@ module.exports = merge([
         babelLoader: {
             cacheDirectory: true,
             configFile: `${PATH_ROOT}/babel.config.js`,
+        },
+        devServer: {
+            historyApiFallback: true,
+            port: process.env.PORT_WEBPACK_DEV_SERVER,
+            watchFiles: ['src/**/*.ejs'],
         },
         forkTsChecker: {
             typescript: { configFile: 'tsconfig.build.json' },

@@ -66,17 +66,6 @@ module.exports = merge([
     }),
 
     setupReactFastRefreshServer({
-        devServer: {
-            devMiddleware: {
-                // Write files to disk so they can be served by Express as static files
-                writeToDisk: true,
-            },
-            historyApiFallback: true,
-            port: process.env.E2E
-                ? process.env.PORT_WEBPACK_DEV_SERVER_E2E
-                : process.env.PORT_WEBPACK_DEV_SERVER,
-            watchFiles: ['src/frontend/**/*.ejs'],
-        },
         rule: {
             include: [PATH_COMMON_SRC, PATH_FRONTEND_SRC],
             exclude: [
@@ -89,6 +78,17 @@ module.exports = merge([
         babelLoader: {
             cacheDirectory: true,
             configFile: `${PATH_ROOT}/babel.frontend.js`,
+        },
+        devServer: {
+            devMiddleware: {
+                // Write files to disk so they can be served by Express as static files
+                writeToDisk: true,
+            },
+            historyApiFallback: true,
+            port: process.env.E2E
+                ? process.env.PORT_WEBPACK_DEV_SERVER_E2E
+                : process.env.PORT_WEBPACK_DEV_SERVER,
+            watchFiles: ['src/frontend/**/*.ejs'],
         },
     }),
 ])

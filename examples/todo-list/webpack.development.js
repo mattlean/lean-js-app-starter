@@ -1,6 +1,5 @@
 const {
     buildSourceMaps,
-    compileReact,
     injectCss,
     loadFonts,
     loadImages,
@@ -22,31 +21,11 @@ module.exports = merge([
             filename: '[name].js',
             path: PATH_BUILD_DEV,
         },
+
+        target: 'browserslist:development',
     },
 
     buildSourceMaps('cheap-module-source-map'),
-
-    compileReact({
-        babelLoaderPresets: [
-            ['@babel/env', { modules: false }],
-            '@babel/preset-flow',
-            ['@babel/preset-react', { development: true }],
-        ],
-        devServer: {
-            historyApiFallback: true,
-            port: process.env.PORT_WEBPACK_DEV_SERVER,
-            watchFiles: ['src/**/*.ejs'],
-        },
-        rule: {
-            include: PATH_SRC,
-            exclude: [
-                /node_modules/,
-                /__mocks__\/.*.jsx?$/,
-                /__tests__\/.*.jsx?$/,
-                /\.(spec|test)\.jsx?$/,
-            ],
-        },
-    }),
 
     injectCss({ rule: { include: PATH_SRC } }),
 
@@ -70,5 +49,9 @@ module.exports = merge([
         },
     }),
 
-    setupDevServer(),
+    setupDevServer({
+        historyApiFallback: true,
+        port: process.env.PORT_WEBPACK_DEV_SERVER,
+        watchFiles: ['src/**/*.ejs'],
+    }),
 ])

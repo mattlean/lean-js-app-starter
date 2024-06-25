@@ -181,18 +181,7 @@ module.exports = {
     // testRunner: "jest-circus/runner",
 
     // A map from regular expressions to paths to transformers
-    transform: {
-        '\\.jsx?$': [
-            'babel-jest',
-            {
-                presets: [
-                    ['@babel/preset-env', { targets: { node: '18.16' } }],
-                    '@babel/preset-flow',
-                    ['@babel/preset-react', { development: true }],
-                ],
-            },
-        ],
-    },
+    // transform: undefined
 
     // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
     // transformIgnorePatterns: [
