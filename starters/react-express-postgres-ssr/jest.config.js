@@ -189,7 +189,7 @@ module.exports = {
     transform: {
         '\\.jsx?$': [
             'babel-jest',
-            { configFile: `${PATH_ROOT}/babel.jest.js` },
+            { configFile: `${PATH_ROOT}/babel.frontend.js` },
         ],
     },
 

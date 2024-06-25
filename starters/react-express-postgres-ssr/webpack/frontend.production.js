@@ -36,6 +36,8 @@ module.exports = merge([
                 },
             },
         },
+
+        target: 'browserslist:frontend-production',
     },
 
     buildTransformedCss({
@@ -45,24 +47,21 @@ module.exports = merge([
 
     buildSourceMaps('source-map'),
 
-    compileReact(
-        {
-            rule: {
-                include: [PATH_COMMON_SRC, PATH_FRONTEND_SRC],
-                exclude: [
-                    /node_modules/,
-                    /__mocks__\/.*.jsx?$/,
-                    /__tests__\/.*.jsx?$/,
-                    /\.(spec|test)\.jsx?$/,
-                ],
-            },
-            babelLoader: {
-                cacheDirectory: true,
-                configFile: `${PATH_ROOT}/babel.production.js`,
-            },
+    compileReact({
+        rule: {
+            include: [PATH_COMMON_SRC, PATH_FRONTEND_SRC],
+            exclude: [
+                /node_modules/,
+                /__mocks__\/.*.jsx?$/,
+                /__tests__\/.*.jsx?$/,
+                /\.(spec|test)\.jsx?$/,
+            ],
         },
-        'production',
-    ),
+        babelLoader: {
+            cacheDirectory: true,
+            configFile: `${PATH_ROOT}/babel.frontend.js`,
+        },
+    }),
 
     loadFonts({
         rule: { generator: { filename: 'assets/[name].[hash][ext][query]' } },

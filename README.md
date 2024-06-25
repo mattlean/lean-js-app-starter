@@ -9,17 +9,20 @@
 -   🧪 **Robust testing environment**  
     Write unit tests with [Jest](https://jestjs.io) and end-to-end tests with [Playwright](https://playwright.dev). Test frontends with [Testing Library](https://testing-library.com) and backends with [SuperTest](https://github.com/ladjs/supertest). Mock network requests with [MSW](https://mswjs.io).
 -   🗄️ **Support for PostgreSQL & MongoDB**  
-     Connect to [PostgreSQL](https://postgresql.org) and [MongoDB](https://mongodb.com) easily with [Prisma](https://prisma.io). Containerized databases are available so you aren't required to install database directly on your machine.
+     Connect to [PostgreSQL](https://postgresql.org) and [MongoDB](https://mongodb.com) easily with [Prisma](https://prisma.io). Containerized databases are available so you aren't required to install databases directly on your machine.
 -   ⚡ **Hot module replacement & auto-reloading**  
-    See changes reflected quickly in your app as soon as you hit save in your code.
+    See changes reflected quickly in your app as soon as you save changes to your code.
 -   📦 **Optimized builds for production environments**  
     Generate optimized builds specialized for running in production environments. Output cross-browser compatible bundles for the web or OS-specific executable bundles for Linux, macOS, or Windows.
+-   🧼 **Effortlessly maintain consistent code style**  
+     Stop worrying about needing to remember rules or having disagreements with other team members about code styling. Just let [Prettier](https://prettier.io) and [ESLint](https://eslint.org) enforce code style for you.
 -   🥇 **Powered by the gold standards of the JS build tool ecosystem**  
-    Nothing fancy and no surprises–it's just [webpack](https://webpack.js.org), [Babel](https://babeljs.io), and [ESLint](https://eslint.org). The configurations are intentionally designed to follow standard conventions out-of-the-box, so they are easy to understand and customize if needed.
+    Nothing fancy and no surprises–it's just [webpack](https://webpack.js.org), [Babel](https://babeljs.io), and [ESLint](https://eslint.org). The configurations are intentionally designed to follow standard conventions out-of-the-box, so they are easy to understand and customize.
 
 ## Documentation
 
 -   🤔 Need help deciding if LJAS is right for you? Read ["Why Lean JS App Starter?"](/docs/why.md)
+
 -   🤿 To learn more about everything LJAS has to offer: [dive into the docs!](/docs)
 
 ## Getting Started

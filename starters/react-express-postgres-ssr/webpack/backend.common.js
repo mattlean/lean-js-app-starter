@@ -1,7 +1,8 @@
 const setupNodeExternals = require('ljas-webpack/setupNodeExternals')
+const { compileReact } = require('ljas-webpack')
 const { merge } = require('webpack-merge')
 
-const { PATH_BACKEND_SRC } = require('../PATHS')
+const { PATH_BACKEND_SRC, PATH_ROOT, PATH_SRC } = require('../PATHS')
 
 module.exports = merge([
     {
@@ -12,8 +13,24 @@ module.exports = merge([
             filename: '[name].js',
         },
 
-        target: 'node',
+        target: 'browserslist:backend',
     },
+
+    compileReact({
+        rule: {
+            include: PATH_SRC,
+            exclude: [
+                /node_modules/,
+                /__mocks__\/.*.jsx?$/,
+                /__tests__\/.*.jsx?$/,
+                /\.(spec|test)\.jsx?$/,
+            ],
+        },
+        babelLoader: {
+            cacheDirectory: true,
+            configFile: `${PATH_ROOT}/babel.backend.js`,
+        },
+    }),
 
     setupNodeExternals({
         // TODO: remove this before going to prod
