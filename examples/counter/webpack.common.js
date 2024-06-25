@@ -2,8 +2,7 @@ const buildHtml = require('ljas-webpack/buildHtml')
 const compileTs = require('ljas-webpack/compileTs')
 const { merge } = require('webpack-merge')
 
-const tsconfigBuildOverride = require('./tsconfigBuildOverride')
-const { PATH_SRC } = require('./PATHS')
+const { PATH_ROOT, PATH_SRC } = require('./PATHS')
 
 module.exports = merge([
     {
@@ -24,9 +23,12 @@ module.exports = merge([
                 /\.(spec|test)\.(j|t)s$/,
             ],
         },
-        babelLoaderCache: true,
+        babelLoader: {
+            cacheDirectory: true,
+            configFile: `${PATH_ROOT}/babel.config.js`,
+        },
         forkTsChecker: {
-            typescript: { configOverwrite: tsconfigBuildOverride },
+            typescript: { configFile: 'tsconfig.build.json' },
         },
     }),
 ])

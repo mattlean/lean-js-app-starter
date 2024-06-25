@@ -7,8 +7,8 @@
     "scripts": {
         "build": "webpack --mode development",
         "build:debug": "node --inspect-brk=0.0.0.0:9231 node_modules/.bin/webpack --mode development",
-        "build:production": "webpack --mode production",
-        "build:production:debug": "node --inspect-brk=0.0.0.0:9231 node_modules/.bin/webpack --mode production",
+        "build:production": "NODE_ENV=production webpack --mode production",
+        "build:production:debug": "NODE_ENV=production node --inspect-brk=0.0.0.0:9231 node_modules/.bin/webpack --mode production",
         "build:stats": "npm run build:production -- --json > stats.json",
         "check-types": "tsc",
         "dev": "nodemon --exec \"npm start\"",

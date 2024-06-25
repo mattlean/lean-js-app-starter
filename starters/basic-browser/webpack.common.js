@@ -1,7 +1,8 @@
 const buildHtml = require('ljas-webpack/buildHtml')
+const { compileJs } = require('ljas-webpack')
 const { merge } = require('webpack-merge')
 
-const { PATH_SRC } = require('./PATHS')
+const { PATH_ROOT, PATH_SRC } = require('./PATHS')
 
 module.exports = merge([
     {
@@ -11,4 +12,20 @@ module.exports = merge([
     },
 
     buildHtml({ title: 'ljas-basic-browser' }),
+
+    compileJs({
+        rule: {
+            include: PATH_SRC,
+            exclude: [
+                /node_modules/,
+                /__mocks__\/.*.js$/,
+                /__tests__\/.*.js$/,
+                /\.(spec|test)\.js$/,
+            ],
+        },
+        babelLoader: {
+            cacheDirectory: true,
+            configFile: `${PATH_ROOT}/babel.config.js`,
+        },
+    }),
 ])

@@ -1,4 +1,3 @@
-const compileTs = require('ljas-webpack/compileTs')
 const {
     buildSourceMaps,
     injectCss,
@@ -8,7 +7,7 @@ const {
 } = require('ljas-webpack')
 const { merge } = require('webpack-merge')
 
-const { PATH_BUILD_DEV, PATH_ROOT, PATH_SRC } = require('./PATHS')
+const { PATH_BUILD_DEV, PATH_SRC } = require('./PATHS')
 
 if (!process.env.PORT_WEBPACK_DEV_SERVER) {
     throw new Error('🔴 webpack-dev-server port was not set')
@@ -27,25 +26,6 @@ module.exports = merge([
     },
 
     buildSourceMaps('cheap-module-source-map'),
-
-    compileTs({
-        rule: {
-            include: PATH_SRC,
-            exclude: [
-                /node_modules/,
-                /__mocks__\/.*.(j|t)s$/,
-                /__tests__\/.*.(j|t)s$/,
-                /\.(spec|test)\.(j|t)s$/,
-            ],
-        },
-        babelLoader: {
-            cacheDirectory: true,
-            configFile: `${PATH_ROOT}/babel.config.js`,
-        },
-        forkTsChecker: {
-            typescript: { configFile: 'tsconfig.build.json' },
-        },
-    }),
 
     injectCss({ rule: { include: PATH_SRC } }),
 

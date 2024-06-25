@@ -1,13 +1,8 @@
 const buildTransformedCss = require('ljas-webpack/buildTransformedCss')
-const {
-    buildSourceMaps,
-    compileJs,
-    loadFonts,
-    loadImages,
-} = require('ljas-webpack')
+const { buildSourceMaps, loadFonts, loadImages } = require('ljas-webpack')
 const { merge } = require('webpack-merge')
 
-const { PATH_BUILD_PROD, PATH_ROOT, PATH_SRC } = require('./PATHS')
+const { PATH_BUILD_PROD, PATH_SRC } = require('./PATHS')
 
 module.exports = merge([
     {
@@ -41,22 +36,6 @@ module.exports = merge([
     }),
 
     buildSourceMaps('source-map'),
-
-    compileJs({
-        rule: {
-            include: PATH_SRC,
-            exclude: [
-                /node_modules/,
-                /__mocks__\/.*.js$/,
-                /__tests__\/.*.js$/,
-                /\.(spec|test)\.js$/,
-            ],
-        },
-        babelLoader: {
-            cacheDirectory: true,
-            configFile: `${PATH_ROOT}/babel.config.js`,
-        },
-    }),
 
     loadFonts({
         rule: { generator: { filename: 'assets/[name].[hash][ext][query]' } },

@@ -27,6 +27,8 @@ module.exports = merge([
                 },
             },
         },
+
+        target: 'browserslist:production',
     },
 
     buildTransformedSass({
