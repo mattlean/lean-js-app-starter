@@ -16,14 +16,7 @@ module.exports = (api) => {
      * Configuration for preset-env:
      * https://babeljs.io/docs/babel-preset-env
      */
-    const presetEnv = [
-        '@babel/preset-env',
-        { browserslistEnv: 'development', modules: false },
-    ]
-
-    if (isProduction) {
-        presetEnv[1].browserslistEnv = 'production'
-    }
+    const presetEnv = ['@babel/preset-env', { modules: false }]
 
     if (isTest) {
         delete presetEnv[1].modules
