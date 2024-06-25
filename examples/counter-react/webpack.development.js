@@ -3,8 +3,7 @@ const setupReactFastRefreshServerTs = require('ljas-webpack/setupReactFastRefres
 const { buildSourceMaps } = require('ljas-webpack')
 const { merge } = require('webpack-merge')
 
-const tsconfigBuildOverride = require('./tsconfigBuildOverride')
-const { PATH_BUILD_DEV, PATH_SRC } = require('./PATHS')
+const { PATH_BUILD_DEV, PATH_ROOT, PATH_SRC } = require('./PATHS')
 
 if (!process.env.PORT_WEBPACK_DEV_SERVER) {
     throw new Error('🔴 webpack-dev-server port was not set')
@@ -39,9 +38,12 @@ module.exports = merge([
                 /\.(spec|test)\.(j|t)sx?$/,
             ],
         },
-        babelLoaderCache: true,
+        babelLoader: {
+            cacheDirectory: true,
+            configFile: `${PATH_ROOT}/babel.config.js`,
+        },
         forkTsChecker: {
-            typescript: { configOverwrite: tsconfigBuildOverride },
+            typescript: { configFile: 'tsconfig.build.json' },
         },
     }),
 ])
