@@ -11,6 +11,10 @@ module.exports = (api) => {
         { browserslistEnv: 'backend', modules: false },
     ]
 
+    if (isTest) {
+        delete presetEnv[1].modules
+    }
+
     /**
      * Configuration for preset-react:
      * https://babeljs.io/docs/babel-preset-react
@@ -25,10 +29,6 @@ module.exports = (api) => {
 
     if (isProduction) {
         delete presetReact[1].development
-    }
-
-    if (isTest) {
-        delete presetEnv[1].modules
     }
 
     return {

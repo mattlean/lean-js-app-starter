@@ -187,6 +187,10 @@ module.exports = {
 
     // A map from regular expressions to paths to transformers
     transform: {
+        'src\\/backend\\/(.*)\\.jsx$': [
+            'babel-jest',
+            { configFile: `${PATH_ROOT}/babel.backend.js` },
+        ],
         '\\.jsx?$': [
             'babel-jest',
             { configFile: `${PATH_ROOT}/babel.frontend.js` },
