@@ -184,9 +184,17 @@ module.exports = {
 
     // A map from regular expressions to paths to transformers
     transform: {
+        'src\\/main\\/(.*)\\.jsx$': [
+            'babel-jest',
+            { configFile: `${PATH_ROOT}/babel.main.js` },
+        ],
+        'src\\/preload\\/(.*)\\.jsx$': [
+            'babel-jest',
+            { configFile: `${PATH_ROOT}/babel.preload.js` },
+        ],
         '\\.jsx?$': [
             'babel-jest',
-            { configFile: `${PATH_ROOT}/babel.jest.js` },
+            { configFile: `${PATH_ROOT}/babel.renderer.js` },
         ],
     },
 

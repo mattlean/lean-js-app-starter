@@ -57,7 +57,7 @@ module.exports = merge([
         },
         babelLoader: {
             cacheDirectory: true,
-            configFile: `${PATH_ROOT}/babel.renderer.production.js`,
+            configFile: `${PATH_ROOT}/babel.renderer.js`,
         },
     }),
 

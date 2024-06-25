@@ -1,7 +1,9 @@
+const compileTs = require('ljas-webpack/compileTs')
 const setupNodeExternals = require('ljas-webpack/setupNodeExternals')
 const { merge } = require('webpack-merge')
 
-const { PATH_PRELOAD_SRC } = require('../PATHS')
+const tsconfigBuildOverride = require('./tsconfigBuildOverride')
+const { PATH_COMMON_SRC, PATH_PRELOAD_SRC, PATH_ROOT } = require('../PATHS')
 
 module.exports = merge([
     {
@@ -14,6 +16,30 @@ module.exports = merge([
 
         target: 'electron29.1-preload',
     },
+
+    compileTs({
+        rule: {
+            include: [PATH_COMMON_SRC, PATH_PRELOAD_SRC],
+            exclude: [
+                /node_modules/,
+                /__mocks__\/.*.(j|t)s$/,
+                /__tests__\/.*.(j|t)s$/,
+                /\.(spec|test)\.(j|t)s$/,
+            ],
+        },
+        babelLoader: {
+            cacheDirectory: true,
+            configFile: `${PATH_ROOT}/babel.preload.js`,
+        },
+        forkTsChecker: {
+            typescript: {
+                configOverwrite: {
+                    include: ['src/preload/**/*', 'src/global.d.ts'],
+                    ...tsconfigBuildOverride,
+                },
+            },
+        },
+    }),
 
     setupNodeExternals({
         // TODO: remove this before going to prod
