@@ -5,7 +5,7 @@ RUN echo '\nexport PS1="\e[1;36m[🐳 app-e2e] \u@\h:\W#\e[0m "' >> ~/.bashrc
 
 WORKDIR /code
 
-# Copy package.json so npm dependencies can be installed in the build process
+# Copy package.json so npm dependencies can be installed during the image build process
 COPY package.json .
 RUN npm install
 RUN npm run test:e2e:install
