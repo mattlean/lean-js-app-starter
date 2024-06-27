@@ -6,6 +6,8 @@
 -   Introduce Prettier 3.2.5
 -   Introduce Prisma ^4.15.0
 -   Introduce Playwright ^1.44.0
+-   Introduce PostgreSQL support with new Express + PostgreSQL starters: `express-postgres` & `react-express-postgres-ssr`
+-   Introduce `electron-icon-maker` ^0.0.5
 -   Replace Enzyme with Testing Library: `@testing-library/dom@^9.3.4` & `@testing-library/react@^14.2.1`
 -   Replace Flow and PropTypes with TypeScript ~5.3.3
 -   Replace React Hot Loader with React Refresh ^0.14.0
@@ -31,9 +33,8 @@
 -   Create new vanilla JavaScript starter for desktops: `basic-electron`
 -   Create new vanilla JavaScript starter for Node.js: `basic-node`
 -   Create new Express + MongoDB starter: `express-mongo`
--   Create new Express + PostgreSQL starter: `express-postgres`
 -   Create new React starter for browsers: `react-browser`
 -   Create new React starter for desktops: `react-electron`
--   Create new React server-server rendering starters: `react-express-mongo-ssr` & `react-express-postgres-ssr`
+-   Create new React + Express + MongoDB server-side rendering starter: `react-express-mongo-ssr`
 -   Create new desktop app example: `markdown-editor`
 -   Create new Express + PostgreSQL example: `notes-api`

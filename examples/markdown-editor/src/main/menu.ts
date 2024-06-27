@@ -132,7 +132,7 @@ export const buildMenuTemplate = () => {
                     click: () =>
                         dialog.showMessageBox({
                             message:
-                                'This project was built with the following technologies:\n\n• TypeScript\n• Electron\n• React\n• unified & remark\n• Tailwind CSS\n• Lean JavaScript Application Starter',
+                                'This project was built with the following technologies:\n\n• TypeScript\n• Electron\n• React\n• unified, rehype, remark\n• Tailwind CSS\n• Lean JavaScript Application Starter',
                         }),
                 },
                 {
