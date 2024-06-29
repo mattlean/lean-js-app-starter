@@ -1,12 +1,12 @@
 ## 1.0.0
 
--   Create Docker development environments for all projects except for Electron-based projects
+-   Introduce Docker development environments for all projects except for Electron-based projects
+-   Introduce PostgreSQL support with new Express + PostgreSQL starters: `express-postgres` & `react-express-postgres-ssr`
 -   Introduce dotenv ^16.4.5
 -   Introduce Mock Service Worker ^2.2.2
 -   Introduce Prettier 3.2.5
 -   Introduce Prisma ^4.15.0
 -   Introduce Playwright ^1.44.0
--   Introduce PostgreSQL support with new Express + PostgreSQL starters: `express-postgres` & `react-express-postgres-ssr`
 -   Introduce `electron-icon-maker` ^0.0.5
 -   Replace Enzyme with Testing Library: `@testing-library/dom@^9.3.4` & `@testing-library/react@^14.2.1`
 -   Replace Flow and PropTypes with TypeScript ~5.3.3

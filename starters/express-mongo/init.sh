@@ -13,6 +13,7 @@ cd $SCRIPT_DIR
 # Read possible CLI flags
 while [ $# -gt 0 ] ; do
     case $1 in
+        --skip-build) SKIP_BUILD=true ;;
         --skip-npm-install) SKIP_NPM_INSTALL=true ;;
         --skip-prisma) SKIP_PRISMA=true ;;
     esac
@@ -62,19 +63,21 @@ if [ "$SKIP_PRISMA" != "true" ]; then
 fi
 
 # Make sure a build exists
-if [ "${NODE_ENV}" == "production" ]; then
-    echo "${PREFIX} Starting the production build process..."
-    npm run build:production
-    echo "${PREFIX} Build process completed!"
-elif [[
-    (-d "./build/development" && ! -z "$(ls -A ./build/development)")
-    && (-f "./build/development/server.js")
-]]; then
-    echo "${PREFIX} The development build already exists, so skip the build process."
-else
-    echo "${PREFIX} Starting the development build process..."
-    npm run build
-    echo "${PREFIX} Build process completed!"
+if [ "$SKIP_BUILD" != "true" ]; then
+    if [ "${NODE_ENV}" == "production" ]; then
+        echo "${PREFIX} Starting the production build process..."
+        npm run build:production
+        echo "${PREFIX} Build process completed!"
+    elif [[
+        (-d "./build/development" && ! -z "$(ls -A ./build/development)")
+        && (-f "./build/development/server.js")
+    ]]; then
+        echo "${PREFIX} The development build already exists, so skip the build process."
+    else
+        echo "${PREFIX} Starting the development build process..."
+        npm run build
+        echo "${PREFIX} Build process completed!"
+    fi
 fi
 
 echo "${PREFIX} Initialization script completed!"

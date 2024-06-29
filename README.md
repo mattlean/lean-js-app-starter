@@ -7,7 +7,7 @@
 -   🐳 **Docker development environment**  
     Alternatively run the dev environment in a [Docker container](https://docker.com) to improve consistency for developers across macOS, Windows, and Linux.
 -   🧪 **Robust testing environment**  
-    Write unit tests with [Jest](https://jestjs.io) and end-to-end tests with [Playwright](https://playwright.dev). Test frontends with [Testing Library](https://testing-library.com) and backends with [SuperTest](https://github.com/ladjs/supertest). Mock network requests with [MSW](https://mswjs.io).
+    Write unit tests with [Jest](https://jestjs.io) and end-to-end tests with [Playwright](https://playwright.dev). Test frontends with [Testing Library](https://testing-library.com) and backend APIs with [SuperTest](https://github.com/ladjs/supertest). Mock network requests with [MSW](https://mswjs.io).
 -   🗄️ **Support for PostgreSQL & MongoDB**  
      Connect to [PostgreSQL](https://postgresql.org) and [MongoDB](https://mongodb.com) easily with [Prisma](https://prisma.io). Containerized databases are available so you aren't required to install databases directly on your machine.
 -   ⚡ **Hot module replacement & auto-reloading**  
@@ -21,9 +21,9 @@
 
 ## Documentation
 
--   🤔 Need help deciding if LJAS is right for you? Read ["Why Lean JS App Starter?"](/docs/why.md)
+-   🤔 Need help deciding if LJAS is right for you? Read ["Why Lean JS App Starter?"](./docs/why.md)
 
--   🤿 To learn more about everything LJAS has to offer: [dive into the docs!](/docs)
+-   🤿 To learn more about everything LJAS has to offer: [dive into the docs!](./docs)
 
 ## Getting Started
 
@@ -47,7 +47,7 @@ Select a starter project below that fits your needs to learn about what each one
 
 **Example projects** are built off of starter projects and act as a demonstration of what your own work could look like. They can be handy if you need references for customized configurations that extend LJAS's functionality or just some good ol' inspiration.
 
-Take a look at the example projects in the [examples directory](examples/).
+[Take a look at the example projects in the `examples/` directory.](./examples/)
 
 ## License
 

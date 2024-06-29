@@ -1,6 +1,6 @@
 # Examples
 
-This directory contains various example projects that began with starter projects and went on to customize thier own configurations. Here is an overview on how each example expands upon their starters:
+This directory contains various example projects that began with starter projects and went on to customize their own configurations. Here is an overview on how each example expands upon their starters:
 
 ### [\*chan (`starchan`)](./starchan/)
 
