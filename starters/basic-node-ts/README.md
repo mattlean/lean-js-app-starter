@@ -108,6 +108,8 @@ Next, create a dev build with webpack using this command:
 npm run build
 ```
 
+TODO: link to webpack doc
+
 #### (Optional) Create a `.env` file
 
 While this is not required, your project may rely on environment variables in a `.env` file. If so, then copy the `.env.example` file and paste it as `.env`. This can be done with this command:
@@ -115,6 +117,8 @@ While this is not required, your project may rely on environment variables in a 
 ```console
 cp .env.example .env
 ```
+
+_Learn more about how this project handles environment variable files with the [`dotenv` package](https://github.com/motdotla/dotenv) from its README._
 
 #### 3. Start the development build
 

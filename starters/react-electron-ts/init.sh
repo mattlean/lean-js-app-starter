@@ -13,6 +13,8 @@ cd $SCRIPT_DIR
 # Read possible CLI flags
 while [ $# -gt 0 ] ; do
     case $1 in
+        --skip-build) SKIP_BUILD=true ;;
+        --skip-env-file) SKIP_ENV_FILE=true ;;
         --skip-npm-install) SKIP_NPM_INSTALL=true ;;
     esac
 
@@ -20,15 +22,17 @@ while [ $# -gt 0 ] ; do
 done
 
 # Create .env file if it doesn't already exist
-if [ -f ".env.example" ]; then
-    if [ ! -f ".env" ]; then
-        cp .env.example .env
-        echo "${PREFIX} New .env file was created."
-    else
-        echo "${PREFIX} Existing .env file was found, so skip the .env creation process."
+if [ "$SKIP_ENV_FILE" != "true" ]; then
+    if [ -f ".env.example" ]; then
+        if [ ! -f ".env" ]; then
+            cp .env.example .env
+            echo "${PREFIX} New .env file was created."
+        else
+            echo "${PREFIX} Existing .env file was found, so skip the .env creation process."
+        fi
+    elif [ ! -f ".env" ]; then
+        echo ".env file could not be created because .env.example was not found."
     fi
-elif [ ! -f ".env" ]; then
-    echo ".env file could not be created because .env.example was not found."
 fi
 
 if [ "$SKIP_NPM_INSTALL" != "true" ]; then
@@ -48,21 +52,23 @@ if [ "$SKIP_NPM_INSTALL" != "true" ]; then
 fi
 
 # Make sure a build exists
-if [ "${NODE_ENV}" == "production" ]; then
-    echo "${PREFIX} Starting the production build process..."
-    npm run build:production
-    echo "${PREFIX} Build process completed!"
-elif [[
-        (-d "./build/development/preload" && ! -z "$(ls -A ./build/development/preload)")
-        && (-d "./build/development/renderer" && ! -z "$(ls -A ./build/development/renderer)")
-        && (-d "./build/development/main" && ! -z "$(ls -A ./build/development/main)")
-        && (-f "./build/development/main/main.js") && (-f "./build/development/preload/preload.js")
-]]; then
-    echo "${PREFIX} The development build already exists, so skip the build process."
-else
-    echo "${PREFIX} Starting the development build process..."
-    npm run build
-    echo "${PREFIX} Build process completed!"
+if [ "$SKIP_BUILD" != "true" ]; then
+    if [ "${NODE_ENV}" == "production" ]; then
+        echo "${PREFIX} Starting the production build process..."
+        npm run build:production
+        echo "${PREFIX} Build process completed!"
+    elif [[
+            (-d "./build/development/preload" && ! -z "$(ls -A ./build/development/preload)")
+            && (-d "./build/development/renderer" && ! -z "$(ls -A ./build/development/renderer)")
+            && (-d "./build/development/main" && ! -z "$(ls -A ./build/development/main)")
+            && (-f "./build/development/main/main.js") && (-f "./build/development/preload/preload.js")
+    ]]; then
+        echo "${PREFIX} The development build already exists, so skip the build process."
+    else
+        echo "${PREFIX} Starting the development build process..."
+        npm run build
+        echo "${PREFIX} Build process completed!"
+    fi
 fi
 
 echo "${PREFIX} Initialization script completed!"
