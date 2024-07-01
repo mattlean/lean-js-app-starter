@@ -3,7 +3,12 @@ const injectTransformedCss = require('ljas-webpack/injectTransformedCss')
 const setupReactFastRefreshServerTs = require('ljas-webpack/setupReactFastRefreshServerTs')
 const tailwindcss = require('tailwindcss')
 const tailwindcssNesting = require('tailwindcss/nesting')
-const { buildSourceMaps, loadFonts, loadImages } = require('ljas-webpack')
+const {
+    buildSourceMaps,
+    loadFonts,
+    loadImages,
+    watchIgnore,
+} = require('ljas-webpack')
 const { merge } = require('webpack-merge')
 
 const {
@@ -86,4 +91,6 @@ module.exports = merge([
             typescript: { configFile: 'tsconfig.build.renderer.json' },
         },
     }),
+
+    watchIgnore(/node_modules/),
 ])

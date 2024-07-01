@@ -4,6 +4,7 @@ const {
     injectCss,
     loadFonts,
     loadImages,
+    watchIgnore,
 } = require('ljas-webpack')
 const { merge } = require('webpack-merge')
 
@@ -72,4 +73,6 @@ module.exports = merge([
             typescript: { configFile: 'tsconfig.build.json' },
         },
     }),
+
+    watchIgnore(/node_modules/),
 ])

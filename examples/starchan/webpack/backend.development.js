@@ -1,5 +1,5 @@
 const CopyPlugin = require('copy-webpack-plugin')
-const { buildSourceMaps } = require('ljas-webpack')
+const { buildSourceMaps, watchIgnore } = require('ljas-webpack')
 const { merge } = require('webpack-merge')
 
 const { PATH_BACKEND_BUILD_DEV, PATH_BACKEND_SRC } = require('../PATHS')
@@ -28,4 +28,6 @@ module.exports = merge([
     },
 
     buildSourceMaps('cheap-module-source-map'),
+
+    watchIgnore(/node_modules/),
 ])

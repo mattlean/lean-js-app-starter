@@ -4,6 +4,7 @@ const {
     loadFonts,
     loadImages,
     setupDevServer,
+    watchIgnore,
 } = require('ljas-webpack')
 const { merge } = require('webpack-merge')
 
@@ -54,4 +55,6 @@ module.exports = merge([
         port: process.env.PORT_WEBPACK_DEV_SERVER,
         watchFiles: ['src/**/*.ejs'],
     }),
+
+    watchIgnore(/node_modules/),
 ])

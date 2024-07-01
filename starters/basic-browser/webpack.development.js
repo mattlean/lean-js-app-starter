@@ -4,6 +4,7 @@ const {
     loadFonts,
     loadImages,
     setupDevServer,
+    watchIgnore,
 } = require('ljas-webpack')
 const { merge } = require('webpack-merge')
 
@@ -50,4 +51,6 @@ module.exports = merge([
     }),
 
     setupDevServer(),
+
+    watchIgnore(/node_modules/),
 ])

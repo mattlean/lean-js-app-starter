@@ -1,7 +1,12 @@
 const buildCss = require('ljas-webpack/buildCss')
 const buildHtml = require('ljas-webpack/buildHtml')
 const setupReactFastRefreshServer = require('ljas-webpack/setupReactFastRefreshServer')
-const { buildSourceMaps, loadFonts, loadImages } = require('ljas-webpack')
+const {
+    buildSourceMaps,
+    loadFonts,
+    loadImages,
+    watchIgnore,
+} = require('ljas-webpack')
 const { merge } = require('webpack-merge')
 
 const templateParameters = require('./templateParameters')
@@ -91,4 +96,6 @@ module.exports = merge([
             watchFiles: ['src/frontend/**/*.ejs'],
         },
     }),
+
+    watchIgnore(/node_modules/),
 ])

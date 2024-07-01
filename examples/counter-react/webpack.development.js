@@ -1,6 +1,6 @@
 const injectTransformedSass = require('ljas-webpack/injectTransformedSass')
 const setupReactFastRefreshServerTs = require('ljas-webpack/setupReactFastRefreshServerTs')
-const { buildSourceMaps } = require('ljas-webpack')
+const { buildSourceMaps, watchIgnore } = require('ljas-webpack')
 const { merge } = require('webpack-merge')
 
 const { PATH_BUILD_DEV, PATH_ROOT, PATH_SRC } = require('./PATHS')
@@ -48,4 +48,6 @@ module.exports = merge([
             typescript: { configFile: 'tsconfig.build.json' },
         },
     }),
+
+    watchIgnore(/node_modules/),
 ])

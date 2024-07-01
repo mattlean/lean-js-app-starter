@@ -1,7 +1,12 @@
 const buildCss = require('ljas-webpack/buildCss')
 const buildHtml = require('ljas-webpack/buildHtml')
 const setupReactFastRefreshServerTs = require('ljas-webpack/setupReactFastRefreshServerTs')
-const { buildSourceMaps, loadFonts, loadImages } = require('ljas-webpack')
+const {
+    buildSourceMaps,
+    loadFonts,
+    loadImages,
+    watchIgnore,
+} = require('ljas-webpack')
 const { merge } = require('webpack-merge')
 
 const templateParameters = require('./templateParameters')
@@ -94,4 +99,6 @@ module.exports = merge([
             typescript: { configFile: 'tsconfig.build.frontend.json' },
         },
     }),
+
+    watchIgnore(/node_modules/),
 ])
