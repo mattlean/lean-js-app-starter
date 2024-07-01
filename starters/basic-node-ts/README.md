@@ -2,19 +2,19 @@
 
 This is a **[Lean JS App Starter](https://github.com/mattlean/lean-js-app-starter)** project for a [Node.js](https://nodejs.org) application.
 
-_Note that this uses TypeScript. If you want the JavaScript equivalent to this, use the [`basic-node` starter](../basic-node) instead._
+_Note that this starter project uses TypeScript. If you want the JavaScript-only equivalent to this, then use the [`basic-node` starter](../basic-node) instead._
 
 ## Technology Overview
 
 -   [TypeScript](https://typescriptlang.org): JavaScript with type safety
 -   [Node.js](https://nodejs.org): Runtime environment that allows JavaScript to execute outside of web browsers
 -   [Jest](https://jestjs.io): Testing framework
--   [webpack](https://webpack.js.org): Bundler used to create builds of the app
--   [Babel](https://babeljs.io): Compiler used with webpack to support TypeScript while producing cross-browser compatible code for the build
+-   [webpack](https://webpack.js.org): Bundler used to create builds
+-   [Babel](https://babeljs.io): Compiler used with webpack to support TypeScript and output Node.js-compatible code
 -   [ESLint](https://eslint.org): Linter used to identify problems in TypeScript and JavaScript code
 -   [Prettier](https://prettier.io): Formatter used to enforce code style
--   [Husky](https://typicode.github.io/husky) & [lint-staged](https://github.com/okonet/lint-staged): Pre-commit hooks to check for type, lint, and formatting errors before Git commits
--   [Docker](https://docker.com): Used for an optional development environment
+-   [Husky](https://typicode.github.io/husky) + [lint-staged](https://github.com/okonet/lint-staged): Pre-commit hooks to check for type, lint, and formatting errors before Git commits are made
+-   [Docker](https://docker.com): Used for an optional containerized development environment
 
 ## Getting Started
 
@@ -40,7 +40,7 @@ bash init.sh
 
 #### 2. Start the development build
 
-Finally, start the dev build with this `package.json` script:
+Start the dev build with this `package.json` script:
 
 ```console
 npm run dev
@@ -52,7 +52,7 @@ When you're done working, you can press Ctrl+C in the terminal running the dev b
 
 ### B) Docker Development Environment (Recommended)
 
-This method is the simplest as it only has one prerequisite and has PostgreSQL and Prisma setup for you out-of-the-box.
+This method is the simplest as it only only requires Docker and has one step. Also, you won't need to worry about which Node.js version your machine is running because the dev environment will use a separate Node.js process running inside the container.
 
 TODO: link to docker dev env doc
 
@@ -62,17 +62,9 @@ The only requirement is [Docker](https://www.docker.com/get-started).
 
 This was tested on Docker Desktop 4.20.0, but many other Docker versions should still work.
 
-#### 1. Create a `.env` file
+#### 1. Start the Docker dev environment
 
-This can be done by opening a terminal and running the init script like so:
-
-```console
-bash init.sh --skip-build --skip-npm-install --skip-prisma
-```
-
-#### 2. Start the Docker dev environment
-
-Finally, all you need to do is run the following Docker command:
+Run the following Docker command:
 
 ```console
 docker compose up
@@ -94,12 +86,9 @@ This method manually does what the init script does for you.
 
 #### 0. Prerequisites
 
-Installation of the following is required before proceeding with this method:
+The only prerequisite is that you must have [Node.js](https://nodejs.org/en/download/package-manager) installed.
 
--   [Node.js](https://nodejs.org/en/download/package-manager)
--   [PostgreSQL](https://postgresql.org/download)
-
-This was tested on Node.js v18.16.0 and PostgreSQL 15.3, but many other versions should still work.
+This was tested on Node.js v18.16.0, but many other versions should still work.
 
 #### 1. Install npm dependencies & devDependencies
 
@@ -111,29 +100,7 @@ npm install
 
 _Learn more about [`npm install`](https://docs.npmjs.com/cli/v10/commands/npm-install) in the npm Docs._
 
-#### 2. Create a `.env` file
-
-Next, copy the `.env.example` file and paste it as `.env`. This can be done with this command:
-
-```console
-cp .env.example .env
-```
-
-#### 3. Setup & connect Prisma to PostgreSQL
-
-Then, setup Prisma and the database by running the following commands:
-
-```console
-npm run prisma migrate dev
-npm run prisma generate
-```
-
-You will then need to update the `.env` file's `DATABASE_URL` environment variable to the appropriate connection string so Prisma can connect to PostgreSQL. For more information on this, read the Prisma documentation:
-https://prisma.io/docs/orm/overview/databases/postgresql
-
-_Learn more about [`prisma migrate`](https://prisma.io/docs/orm/prisma-migrate/understanding-prisma-migrate/overview) and [`prisma generate`](https://prisma.io/docs/orm/prisma-client/setup-and-configuration/generating-prisma-client) in the Prisma docs._
-
-#### 4. Create a development build
+#### 2. Create a development build
 
 Next, create a dev build with webpack using this command:
 
@@ -141,15 +108,23 @@ Next, create a dev build with webpack using this command:
 npm run build
 ```
 
-#### 5. Start the development server
+#### (Optional) Create a `.env` file
 
-Finally, start the dev server with following command:
+While this is not required, your project may rely on environment variables in a `.env` file. If so, then copy the `.env.example` file and paste it as `.env`. This can be done with this command:
+
+```console
+cp .env.example .env
+```
+
+#### 3. Start the development build
+
+Finally, start the dev build with following command:
 
 ```console
 npm run dev
 ```
 
-When you're done working, you can press Ctrl+C in the terminal running the dev server to shut it down.
+When you're done working, you can press Ctrl+C in the terminal running the dev build to shut it down.
 
 ## Learn More With the Documentation
 
