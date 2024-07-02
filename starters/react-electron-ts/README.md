@@ -50,15 +50,15 @@ bash init.sh
 
 _[Learn exactly what the init script is doing in method 2.](#method-2-manual-installation)_
 
-#### Step 2: Start the development server
+#### Step 2: Start the development build
 
-Start the dev server with this `package.json` script:
+Start the dev build with this `package.json` script:
 
 ```console
 npm run dev
 ```
 
-When you're done working, you can press Ctrl+C in the terminal running the dev server to shut it down.
+When you're done working, you can press Ctrl+C in the terminal running the dev build to shut it down.
 
 ---
 
@@ -82,9 +82,9 @@ npm install
 
 _Learn more about [`npm install`](https://docs.npmjs.com/cli/v10/commands/npm-install) in the npm Docs._
 
-#### 2. Create a development server
+#### 2. Create a development build
 
-Next, create a dev server with webpack using this command:
+Next, create a dev build with webpack using this command:
 
 ```console
 npm run build
@@ -102,15 +102,15 @@ cp .env.example .env
 
 _Learn more about how this project handles environment variable files with the [`dotenv` package](https://github.com/motdotla/dotenv) from its README._
 
-#### 3. Start the development server
+#### 3. Start the development build
 
-Finally, start the dev server with following command:
+Finally, start the dev build with following command:
 
 ```console
 npm run dev
 ```
 
-When you're done working, you can press Ctrl+C in the terminal running the dev server to shut it down.
+When you're done working, you can press Ctrl+C in the terminal running the dev build to shut it down.
 
 ## Learn More With the Documentation
 
