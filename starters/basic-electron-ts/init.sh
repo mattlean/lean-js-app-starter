@@ -2,7 +2,7 @@
 
 # Electron Version
 
-PREFIX="[🚀 init.sh]"
+PREFIX="[🚀 (LJAS) init.sh]"
 
 echo "${PREFIX} Beginning the initialization script..."
 
@@ -21,8 +21,8 @@ while [ $# -gt 0 ] ; do
     shift
 done
 
-# Create .env file if it doesn't already exist
 if [ "$SKIP_ENV_FILE" != "true" ]; then
+    # Create .env file if it doesn't already exist
     if [ -f ".env.example" ]; then
         if [ ! -f ".env" ]; then
             cp .env.example .env
@@ -51,8 +51,8 @@ if [ "$SKIP_NPM_INSTALL" != "true" ]; then
     fi
 fi
 
-# Make sure a build exists
 if [ "$SKIP_BUILD" != "true" ]; then
+    # Make sure a build exists
     if [ "${NODE_ENV}" == "production" ]; then
         echo "${PREFIX} Starting the production build process..."
         npm run build:production

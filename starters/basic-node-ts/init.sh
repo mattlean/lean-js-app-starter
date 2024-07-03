@@ -2,7 +2,7 @@
 
 # Basic Node.js Version
 
-PREFIX="[🚀 init.sh]"
+PREFIX="[🚀 (LJAS) init.sh]"
 
 echo "${PREFIX} Beginning the initialization script..."
 
