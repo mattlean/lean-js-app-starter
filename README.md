@@ -27,7 +27,7 @@
 
 ## Getting Started
 
-**Starter projects** are development environments that essentially act as the foundation for you to starting building off of. Each one is designed for different environments like the browser or Node.js, and each can also utilize different technologies such as JavaScript, TypeScript, React, or Express, etc.
+**Starter projects** are development environments that essentially act as the foundation for you to starting building off of. Each one is designed for different targets like the browser or Node.js, and each can also utilize different technologies such as JavaScript, TypeScript, React, or Express, etc.
 
 Select a starter project below that fits your needs to learn about what each one offers:
 
@@ -45,7 +45,7 @@ Select a starter project below that fits your needs to learn about what each one
 
 ## Examples
 
-**Example projects** are built off of starter projects and act as a demonstration of what your own work could look like. They can be handy if you need references for customized configurations that extend LJAS's functionality or just some good ol' inspiration.
+**Example projects** are built off of starter projects and act as a demonstration of how LJAS can be adapted to different project requirements. They can be handy if you need references for customized configurations that extend LJAS's functionality or just some good ol' inspiration.
 
 [Take a look at the example projects in the `examples/` directory.](./examples/)
 
