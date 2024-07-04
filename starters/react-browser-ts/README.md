@@ -16,7 +16,7 @@ _Note that this starter project uses TypeScript. If you want the JavaScript-only
 -   [Playwright](https://playwright.dev): End-to-end (E2E) testing
 -   [webpack](https://webpack.js.org): Bundler used to create builds
 -   [Babel](https://babeljs.io): Compiler used with webpack to support TypeScript and output cross-browser compatible code
--   [ESLint](https://eslint.org): Linter used to identify problems in TypeScript and JavaScript code
+-   [ESLint](https://eslint.org): Linter used to identify problems in TypeScript & JavaScript code
 -   [Stylelint](https://stylelint.io): Linter used to identify problems in CSS code
 -   [Prettier](https://prettier.io): Formatter used to enforce code style
 -   [Husky](https://typicode.github.io/husky) + [lint-staged](https://github.com/okonet/lint-staged): Pre-commit hooks to check for type, lint, and formatting errors before Git commits are made
@@ -29,6 +29,8 @@ There are three different methods you can use to get started:
 1. [Initialization Script (Recommended)](#method-1-initialization-script-recommended)
 2. [Docker Development Environment (Recommended)](#method-2-docker-development-environment-recommended)
 3. [Manual Installation](#method-3-manual-installation)
+
+---
 
 ### Method 1: Initialization Script (Recommended)
 
@@ -60,9 +62,13 @@ npm run dev
 
 When you're done working, you can press Ctrl+C in the terminal running the dev server to shut it down.
 
+---
+
 ### Method 2: Docker Development Environment (Recommended)
 
 This method is the simplest as it only only requires Docker. Also, you won't need to worry about which Node.js version your machine is running because the dev environment will use a separate Node.js process running inside the container.
+
+TODO: link to docker dev env doc
 
 #### Prerequisites
 
@@ -80,7 +86,7 @@ bash init.sh --skip-e2e --skip-npm-install
 
 #### Step 2. Start the Docker development environment
 
-Finally, start the Docker dev environment with the following command:
+Start the Docker dev environment with the following command:
 
 ```console
 docker compose up
@@ -93,6 +99,8 @@ This command may take a while the first time you run it since it will need to cr
 Although the development server is running within the container, it will still be able to watch for changes you make to the code on your host machine. That means the development server will still be able to reflect changes in the app as you write code and will operate similarly to if you were running the development server natively like in methods 1 or 3.
 
 When you're done working, you can press Ctrl+C in the terminal running the container to shut it down.
+
+---
 
 ### Method 3: Manual Installation
 

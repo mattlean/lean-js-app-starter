@@ -2,7 +2,7 @@
 
 This is a **[Lean JS App Starter](https://github.com/mattlean/lean-js-app-starter)** project for an [Express](https://expressjs.com) application that works with a [PostgreSQL](https://postgresql.org) database.
 
-_Note that this uses TypeScript. If you want the JavaScript equivalent to this, use the [`express-postgres` starter](../express-postgres) instead._
+_Note that this starter project uses TypeScript. If you want the JavaScript-only equivalent to this, then use the [`express-postgres` starter](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/express-postgres) instead._
 
 ## Technology Overview
 
@@ -12,22 +12,28 @@ _Note that this uses TypeScript. If you want the JavaScript equivalent to this, 
 -   [Prisma](https://prisma.io): Node.js object relational mapper (ORM) used to work with PostgreSQL
 -   [PostgreSQL](https://postgresql.org): Relational database
 -   [Jest](https://jestjs.io): Testing framework
--   [webpack](https://webpack.js.org): Bundler used to create builds of the app
--   [Babel](https://babeljs.io): Compiler used with webpack to support TypeScript while producing cross-browser compatible code for the build
--   [ESLint](https://eslint.org): Linter used to identify problems in TypeScript and JavaScript code
+-   [webpack](https://webpack.js.org): Bundler used to create builds
+-   [Babel](https://babeljs.io): Compiler used with webpack to support TypeScript and output Node.js-compatible code
+-   [ESLint](https://eslint.org): Linter used to identify problems in TypeScript & JavaScript code
 -   [Prettier](https://prettier.io): Formatter used to enforce code style
--   [Husky](https://typicode.github.io/husky) & [lint-staged](https://github.com/okonet/lint-staged): Pre-commit hooks to check for type, lint, and formatting errors before Git commits
--   [Docker](https://docker.com): Used for an optional development environment
+-   [Husky](https://typicode.github.io/husky) + [lint-staged](https://github.com/okonet/lint-staged): Pre-commit hooks to check for type, lint, and formatting errors before Git commits are made
+-   [Docker](https://docker.com): Used for an optional containerized development environment
 
 ## Getting Started
 
 There are three different methods you can use to get started:
 
-### A) Initialization Script (Recommended)
+1. [Initialization Script (Recommended)](#method-1-initialization-script-recommended)
+2. [Docker Development Environment (Recommended)](#method-2-docker-development-environment-recommended)
+3. [Manual Installation](#method-3-manual-installation)
+
+---
+
+### Method 1: Initialization Script (Recommended)
 
 This method is the simplest if you are not using the Docker dev environment (method B).
 
-#### 0. Prerequisites
+#### Prerequisites
 
 Installation of the following is required before proceeding with this method:
 
@@ -36,7 +42,7 @@ Installation of the following is required before proceeding with this method:
 
 This was tested on Node.js v18.16.0 and PostgreSQL 15.3, but many other versions should still work.
 
-#### 1. Run the initialization script
+#### Step 1: Run the initialization script
 
 Open a terminal and run the init script in the project root directory which will execute all the setup commands like `npm install` for you:
 
@@ -44,14 +50,16 @@ Open a terminal and run the init script in the project root directory which will
 bash init.sh
 ```
 
-#### 2. Connect Prisma to PostgreSQL
+#### Step 2. Connect Prisma to PostgreSQL
 
-Update the `.env` file's `DATABASE_URL` environment variable to the appropriate connection string so Prisma can connect to PostgreSQL. For more information on this, read the Prisma documentation:
+Update the `.env` file's `DATABASE_URL` environment variable to the appropriate connection string so Prisma can connect to PostgreSQL.
+
+For more information on this, read the Prisma documentation:
 https://www.prisma.io/docs/orm/overview/databases/postgresql#connection-details
 
-#### 3. Start the development server
+#### Step 3. Start the development server
 
-Finally, start the dev server with this `package.json` script:
+Start the dev server with this `package.json` script:
 
 ```console
 npm run dev
@@ -61,49 +69,43 @@ When you're done working, you can press Ctrl+C in the terminal running the dev s
 
 ---
 
-### B) Docker Development Environment (Recommended)
+### Method 2: Docker Development Environment (Recommended)
 
-This method is the simplest as it only has one prerequisite and has PostgreSQL and Prisma setup for you out-of-the-box.
+This method is the simplest as it only has one prerequisite and has PostgreSQL and Prisma setup for you.
 
 TODO: link to docker dev env doc
 
-#### 0. Prerequisites
+#### Prerequisites
 
 The only requirement is [Docker](https://www.docker.com/get-started).
 
 This was tested on Docker Desktop 4.20.0, but many other Docker versions should still work.
 
-#### 1. Create a `.env` file
+#### Step 1. Create a `.env` file
 
-This can be done by opening a terminal and running the init script like so:
+This can be done with the init script:
 
 ```console
 bash init.sh --skip-build --skip-npm-install --skip-prisma
 ```
 
-#### 2. Start the Docker dev environment
+#### Step 2. Start the Docker development environment
 
-Finally, all you need to do is run the following Docker command:
+Start the Docker dev environment with the following command:
 
 ```console
 docker compose up
 ```
 
-TODO: maybe move the following somewhere else
-
-This command may take a while the first time you run it since it will need to create a new Docker image, download npm dependencies, etc. However, subsequent runs of this command will be much faster since it can reuse cached layers under most circumstances, or in the best case scenario, reuse a completely cached image.
-
-Although the development server is running within the container, it will still be able to watch for changes you make to the code on your host machine. That means the development server will still be able to reflect changes in the app as you write code and will operate similarly to if you were running the development server natively like in methods 1 or 3.
-
 When you're done working, you can press Ctrl+C in the terminal running the container to shut it down.
 
 ---
 
-### C) Manual Installation
+### Method 3: Manual Installation
 
 This method manually does what the init script does for you.
 
-#### 0. Prerequisites
+#### Prerequisites
 
 Installation of the following is required before proceeding with this method:
 
@@ -112,7 +114,7 @@ Installation of the following is required before proceeding with this method:
 
 This was tested on Node.js v18.16.0 and PostgreSQL 15.3, but many other versions should still work.
 
-#### 1. Install npm dependencies & devDependencies
+#### Step 1. Install npm dependencies & devDependencies
 
 First, open a terminal and install npm dependencies with the following command:
 
@@ -122,37 +124,41 @@ npm install
 
 _Learn more about [`npm install`](https://docs.npmjs.com/cli/v10/commands/npm-install) in the npm Docs._
 
-#### 2. Create a `.env` file
+#### Step 2. Create a `.env` file
 
-Next, copy the `.env.example` file and paste it as `.env`. This can be done with this command:
+Copy the `.env.example` file and paste it as `.env`. This can be done with this command:
 
 ```console
 cp .env.example .env
 ```
 
-#### 3. Setup & connect Prisma to PostgreSQL
+#### Step 3. Setup & connect Prisma to PostgreSQL
 
-Then, setup Prisma and the database by running the following commands:
+Setup Prisma and the database by running the following commands:
 
 ```console
 npm run prisma migrate dev
 npm run prisma generate
 ```
 
-You will then need to update the `.env` file's `DATABASE_URL` environment variable to the appropriate connection string so Prisma can connect to PostgreSQL. For more information on this, read the Prisma documentation:
-https://prisma.io/docs/orm/overview/databases/postgresql
-
 _Learn more about [`prisma migrate`](https://prisma.io/docs/orm/prisma-migrate/understanding-prisma-migrate/overview) and [`prisma generate`](https://prisma.io/docs/orm/prisma-client/setup-and-configuration/generating-prisma-client) in the Prisma docs._
 
-#### 4. Create a development build
+You will then need to update the `.env` file's `DATABASE_URL` environment variable to the appropriate connection string so Prisma can connect to PostgreSQL.
 
-Next, create a dev build with webpack using this command:
+For more information on this, read the Prisma documentation:
+https://prisma.io/docs/orm/overview/databases/postgresql
+
+#### Step 4. Create a development build
+
+Create a dev build with webpack using this command:
 
 ```console
 npm run build
 ```
 
-#### 5. Start the development server
+TODO: link to webpack doc
+
+#### Step 5. Start the development server
 
 Finally, start the dev server with following command:
 
