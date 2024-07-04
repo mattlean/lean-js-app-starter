@@ -58,7 +58,7 @@ TODO: link to docker dev env doc
 
 #### 0. Prerequisites
 
-The only requirement is [Docker](https://www.docker.com/get-started).
+The only requirement is [Docker](https://docker.com/get-started).
 
 This was tested on Docker Desktop 4.20.0, but many other Docker versions should still work.
 

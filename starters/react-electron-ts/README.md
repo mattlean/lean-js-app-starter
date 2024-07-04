@@ -7,7 +7,7 @@ _Note that this starter project uses TypeScript. If you want the JavaScript-only
 ## Technology Overview
 
 -   [TypeScript](https://typescriptlang.org): JavaScript with type safety
--   [Electron](https://electronjs.org): Framework for building desktop apps through Node.js & Chromium
+-   [Electron](https://electronjs.org): Framework for building desktop apps through [Node.js](https://nodejs.org) & [Chromium](https://chromium.org/chromium-projects/)
 -   [React](https://react.dev): Library for user interfaces
 -   [CSS](https://w3.org/Style/CSS/Overview.en.html): The standard language for styling
 -   [Embedded JavaScript (EJS)](https://ejs.co): Templating language used to generate the build's `index.html` document
@@ -16,7 +16,7 @@ _Note that this starter project uses TypeScript. If you want the JavaScript-only
 -   [Mock Service Worker (MSW)](https://mswjs.io): API mocking library used to mock network requests
 -   [Playwright](https://playwright.dev): End-to-end testing
 -   [webpack](https://webpack.js.org): Bundler used to create builds
--   [Babel](https://babeljs.io): Compiler used with webpack to support TypeScript and output Node.js-compatible code
+-   [Babel](https://babeljs.io): Compiler used with webpack to support TypeScript and output Electron-compatible code
 -   [ESLint](https://eslint.org): Linter used to identify problems in TypeScript and JavaScript code
 -   [Stylelint](https://stylelint.io): Linter used to identify problems in CSS code
 -   [Prettier](https://prettier.io): Formatter used to enforce code style
@@ -32,7 +32,7 @@ There are two different methods you can use to get started:
 
 ### Method 1: Initialization Script (Recommended)
 
-This method is the simplest if you are not using the Docker dev environment (method B).
+This method is the simplest.
 
 #### Prerequisites
 
@@ -66,13 +66,13 @@ When you're done working, you can press Ctrl+C in the terminal running the dev b
 
 This method manually does what the init script does for you.
 
-#### 0. Prerequisites
+#### Step 0. Prerequisites
 
 The only prerequisite is that you must have [Node.js](https://nodejs.org/en/download/package-manager) installed.
 
 This was tested on Node.js v18.16.0, but many other versions should still work.
 
-#### 1. Install npm dependencies & devDependencies
+#### Step 1. Install npm dependencies & devDependencies
 
 First, open a terminal and install npm dependencies with the following command:
 
@@ -82,9 +82,9 @@ npm install
 
 _Learn more about [`npm install`](https://docs.npmjs.com/cli/v10/commands/npm-install) in the npm Docs._
 
-#### 2. Create a development build
+#### Step 2. Create a development build
 
-Next, create a dev build with webpack using this command:
+Create a dev build with webpack using this command:
 
 ```console
 npm run build
@@ -94,7 +94,7 @@ TODO: link to webpack doc
 
 #### (Optional) Create a `.env` file
 
-While this is not required, your project may rely on environment variables in a `.env` file. If so, then copy the `.env.example` file and paste it as `.env`. This can be done with this command:
+If your project relies on a `.env` file, then copy the `.env.example` file and paste it as `.env`. This can be done with this command:
 
 ```console
 cp .env.example .env
@@ -102,7 +102,7 @@ cp .env.example .env
 
 _Learn more about how this project handles environment variable files with the [`dotenv` package](https://github.com/motdotla/dotenv) from its README._
 
-#### 3. Start the development build
+#### Step 3. Start the development build
 
 Finally, start the dev build with following command:
 
