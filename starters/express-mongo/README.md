@@ -1,50 +1,172 @@
-# Basic Node.js Starter Project (TypeScript)
+# Express + MongoDB Starter
 
-This is a starter for a [Node.js](https://nodejs.org) project that provides a very lightweight, minimal configuration. This is great if you want to start any Node.js project from the ground-up as there are no dependencies.
+This is a **[Lean JS App Starter](https://github.com/mattlean/lean-js-app-starter)** project for an [Express](https://expressjs.com) application that works with a [MongoDB](https://mongodb.com) database.
 
-If you want to use Express, you may want to look at the [express-postgres-ts](../express-postgres-ts) starter project instead.
-
-Note that this uses TypeScript. If you want the JavaScript equivalent to this, use the [basic-nodejs](../basic-nodejs) project instead.
-
-## Getting Started
-
-### Standard Method
-
-The only prerequisite is that you must have [Node.js](https://nodejs.org) installed. This was tested on Node.js v18.16.0, but many other Node.js versions should still work.
-
-Once Node.js is installed, install the project dependencies with the following command:
-
-```
-npm install
-```
-
-Finally, you can start the development server with following command:
-
-```
-npm run dev
-```
-
-### Docker Development Environment
-
-Alternatively, you can also run the Docker development environment which only requires an installation of [Docker](https://docker.com). This was tested on Docker Desktop 4.20.0, but many other Docker installations should work.
-
-Then all you need to do is run the following command to start the development server:
-
-```
-docker compose up
-```
+_If you need TypeScript, then use the [`express-mongo-ts` starter](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/express-mongo-ts) instead._
 
 ## Technology Overview
 
--   [Babel](https://babeljs.io): Compiler used with webpack to support TypeScript and ECMAScript modules with Jest.
--   [Docker](https://docker.com): Used for an optional development environment. This can be handy if you want more consistency across different machines with minimal setup.
--   [ESLint](https://eslint.org): Linter to quickly find code problems.
--   [Git](https://git-scm.com): Version control system to track code changes.
--   [Husky](https://typicode.github.io/husky) & [lint-staged](https://github.com/okonet/lint-staged): Pre-commit hooks to enforce code style and identify problems.
--   [Jest](https://jestjs.io): Testing framework to ensure code correctness and coverage.
--   [Prettier](https://prettier.io): Formatter to enforce code style.
--   [webpack](https://webpack.js.org): Bundler used to build the app.
+-   [Node.js](https://nodejs.org): Runtime environment that allows JavaScript to execute outside of web browsers
+-   [Express](https://expressjs.com): Web framework for Node.js
+-   [Prisma](https://prisma.io): Node.js object relational mapper (ORM) used to work with MongoDB
+-   [MongoDB](https://mongodb.com): NoSQL database
+-   [Jest](https://jestjs.io): Testing framework
+-   [webpack](https://webpack.js.org): Bundler used to create builds
+-   [Babel](https://babeljs.io): Compiler used with webpack to output Node.js-compatible code
+-   [ESLint](https://eslint.org): Linter used to identify problems in JavaScript
+-   [Prettier](https://prettier.io): Formatter used to enforce code style
+-   [Husky](https://typicode.github.io/husky) + [lint-staged](https://github.com/okonet/lint-staged): Pre-commit hooks to check for lint and formatting errors before Git commits are made
+-   [Docker](https://docker.com): Used for an optional containerized development environment
 
-## Learn More
+## Getting Started
 
-To get a more in-depth idea about what building off of this starter project is like, please read the [Developer Experience Walkthrough](./dx-walkthrough.md).
+There are three different methods you can use to get started:
+
+1. [Initialization Script (Recommended)](#method-1-initialization-script-recommended)
+2. [Docker Development Environment (Recommended)](#method-2-docker-development-environment-recommended)
+3. [Manual Installation](#method-3-manual-installation)
+
+---
+
+### Method 1: Initialization Script (Recommended)
+
+This method is the simplest if you are not using the Docker dev environment (method B).
+
+#### Prerequisites
+
+Installation of the following is required before proceeding with this method:
+
+-   [Node.js](https://nodejs.org/en/download/package-manager)
+-   [MongoDB](hhttps://mongodb.com)
+
+This was tested on Node.js v18.16.0, but many other versions should still work. This was also tested with MongoDB 4.4.25, and any other Mongo 4 version should work well.
+
+#### Step 1: Run the initialization script
+
+Open a terminal and run the init script in the project root directory which will execute all the setup commands like `npm install` for you:
+
+```console
+bash init.sh
+```
+
+#### Step 2. Connect Prisma to MongoDB
+
+Update the `.env` file's `DATABASE_URL` environment variable to the appropriate connection string so Prisma can connect to MongoDB.
+
+For more information on this, read the Prisma documentation:
+https://prisma.io/docs/orm/overview/databases/mongodb#connection-details
+
+#### Step 3. Start the development server
+
+Start the dev server with this `package.json` script:
+
+```console
+npm run dev
+```
+
+When you're done working, you can press Ctrl+C in the terminal running the dev server to shut it down.
+
+---
+
+### Method 2: Docker Development Environment (Recommended)
+
+This method is the simplest as it only has one prerequisite and has MongoDB and Prisma setup for you.
+
+TODO: link to docker dev env doc
+
+#### Prerequisites
+
+The only requirement is [Docker](https://docker.com/get-started).
+
+This was tested on Docker Desktop 4.20.0, but many other Docker versions should still work.
+
+#### Step 1. Create a `.env` file
+
+This can be done with the init script:
+
+```console
+bash init.sh --skip-build --skip-npm-install --skip-prisma
+```
+
+#### Step 2. Start the Docker development environment
+
+Start the Docker dev environment with the following command:
+
+```console
+docker compose up
+```
+
+When you're done working, you can press Ctrl+C in the terminal running the container to shut it down.
+
+---
+
+### Method 3: Manual Installation
+
+This method manually does what the init script does for you.
+
+#### Prerequisites
+
+Installation of the following is required before proceeding with this method:
+
+-   [Node.js](https://nodejs.org/en/download/package-manager)
+-   [MongoDB](hhttps://mongodb.com)
+
+This was tested on Node.js v18.16.0, but many other versions should still work. This was also tested with MongoDB 4.4.25, and any other Mongo 4 version should work well.
+
+#### Step 1. Install npm dependencies & devDependencies
+
+First, open a terminal and install npm dependencies with the following command:
+
+```console
+npm install
+```
+
+_Learn more about [`npm install`](https://docs.npmjs.com/cli/v10/commands/npm-install) in the npm Docs._
+
+#### Step 2. Create a `.env` file
+
+Copy the `.env.example` file and paste it as `.env`. This can be done with this command:
+
+```console
+cp .env.example .env
+```
+
+#### Step 3. Setup & connect Prisma to MongoDB
+
+Setup Prisma and the database by running the following commands:
+
+```console
+npm run prisma migrate dev
+npm run prisma generate
+```
+
+_Learn more about [`prisma migrate`](https://prisma.io/docs/orm/prisma-migrate/understanding-prisma-migrate/overview) and [`prisma generate`](https://prisma.io/docs/orm/prisma-client/setup-and-configuration/generating-prisma-client) in the Prisma docs._
+
+Update the `.env` file's `DATABASE_URL` environment variable to the appropriate connection string so Prisma can connect to MongoDB.
+
+For more information on this, read the Prisma documentation:
+https://prisma.io/docs/orm/overview/databases/mongodb#connection-details
+
+#### Step 4. Create a development build
+
+Create a dev build with webpack using this command:
+
+```console
+npm run build
+```
+
+TODO: link to webpack doc
+
+#### Step 5. Start the development server
+
+Finally, start the dev server with following command:
+
+```console
+npm run dev
+```
+
+When you're done working, you can press Ctrl+C in the terminal running the dev server to shut it down.
+
+## Learn More With the Documentation
+
+[Read the docs to learn more about what else you can do with Lean JS App Starter and how it works.](https://github.com/mattlean/lean-js-app-starter/tree/master/docs)
