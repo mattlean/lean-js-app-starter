@@ -1,8 +1,8 @@
 # Basic Node.js Starter (TypeScript)
 
-This is a **[Lean JS App Starter](https://github.com/mattlean/lean-js-app-starter)** project for a [Node.js](https://nodejs.org) application.
+This is a **[Lean JS App Starter](https://github.com/mattlean/lean-js-app-starter)** project for a [Node.js](https://nodejs.org) application written in [TypeScript](https://typescriptlang.org).
 
-_Note that this starter project uses TypeScript. If you want the JavaScript-only equivalent to this, then use the [`basic-node` starter](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/basic-node) instead._
+_If you're not interested in TypeScript, then use the [`basic-node` starter](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/basic-node) instead._
 
 ## Technology Overview
 
