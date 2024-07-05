@@ -55,7 +55,7 @@ bash init.sh
 Update the `.env` file's `DATABASE_URL` environment variable to the appropriate connection string so Prisma can connect to PostgreSQL.
 
 For more information on this, read the Prisma documentation:
-https://www.prisma.io/docs/orm/overview/databases/postgresql#connection-details
+https://prisma.io/docs/orm/overview/databases/postgresql#connection-details
 
 #### Step 3. Start the development server
 
@@ -77,7 +77,7 @@ TODO: link to docker dev env doc
 
 #### Prerequisites
 
-The only requirement is [Docker](https://www.docker.com/get-started).
+The only requirement is [Docker](https://docker.com/get-started).
 
 This was tested on Docker Desktop 4.20.0, but many other Docker versions should still work.
 
@@ -143,10 +143,10 @@ npm run prisma generate
 
 _Learn more about [`prisma migrate`](https://prisma.io/docs/orm/prisma-migrate/understanding-prisma-migrate/overview) and [`prisma generate`](https://prisma.io/docs/orm/prisma-client/setup-and-configuration/generating-prisma-client) in the Prisma docs._
 
-You will then need to update the `.env` file's `DATABASE_URL` environment variable to the appropriate connection string so Prisma can connect to PostgreSQL.
+Update the `.env` file's `DATABASE_URL` environment variable to the appropriate connection string so Prisma can connect to PostgreSQL.
 
 For more information on this, read the Prisma documentation:
-https://prisma.io/docs/orm/overview/databases/postgresql
+https://prisma.io/docs/orm/overview/databases/postgresql#connection-details
 
 #### Step 4. Create a development build
 
