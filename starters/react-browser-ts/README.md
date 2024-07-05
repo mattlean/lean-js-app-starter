@@ -81,7 +81,7 @@ This was tested on Docker Desktop 4.20.0, but many other Docker versions should 
 This can be done with the init script:
 
 ```console
-bash init.sh --skip-e2e --skip-npm-install
+bash init.sh --skip-npm-install --skip-playwright
 ```
 
 #### Step 2. Start the Docker development environment

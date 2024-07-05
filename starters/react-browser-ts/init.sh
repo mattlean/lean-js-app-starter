@@ -13,9 +13,9 @@ cd $SCRIPT_DIR
 # Read possible CLI flags
 while [ $# -gt 0 ] ; do
     case $1 in
-        --skip-e2e) SKIP_E2E=true ;;
         --skip-env-file) SKIP_ENV_FILE=true ;;
         --skip-npm-install) SKIP_NPM_INSTALL=true ;;
+        --skip-playwright) SKIP_PLAYWRIGHT=true ;;
     esac
 
     shift
@@ -46,7 +46,7 @@ if [ "$SKIP_NPM_INSTALL" != "true" ]; then
     fi
 fi
 
-if [ "$SKIP_E2E" != "true" ]; then
+if [ "$SKIP_PLAYWRIGHT" != "true" ]; then
     # Install Playwright browser binaries and dependencies
     echo "${PREFIX} Installing Playwright browser binaries and dependencies..."
     npm run test:e2e:install
