@@ -2,7 +2,7 @@
 
 This is a **[Lean JS App Starter](https://github.com/mattlean/lean-js-app-starter)** project for an [Express](https://expressjs.com) application written in [TypeScript](https://typescriptlang.org) that works with a [PostgreSQL](https://postgresql.org) database.
 
-_If you're not interested in TypeScript, then use the [`express-postgres` starter](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/express-postgres) instead._
+_If you don't need TypeScript, then then use the [`express-postgres` starter](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/express-postgres) instead._
 
 ## Technology Overview
 
@@ -14,7 +14,7 @@ _If you're not interested in TypeScript, then use the [`express-postgres` starte
 -   [Jest](https://jestjs.io): Testing framework
 -   [webpack](https://webpack.js.org): Bundler used to create builds
 -   [Babel](https://babeljs.io): Compiler used with webpack to support TypeScript and output Node.js-compatible code
--   [ESLint](https://eslint.org): Linter used to identify problems in TypeScript & JavaScript code
+-   [ESLint](https://eslint.org): Linter used to identify problems in TypeScript & JavaScript
 -   [Prettier](https://prettier.io): Formatter used to enforce code style
 -   [Husky](https://typicode.github.io/husky) + [lint-staged](https://github.com/okonet/lint-staged): Pre-commit hooks to check for type, lint, and formatting errors before Git commits are made
 -   [Docker](https://docker.com): Used for an optional containerized development environment

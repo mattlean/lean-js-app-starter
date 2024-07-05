@@ -2,7 +2,7 @@
 
 This is a **[Lean JS App Starter](https://github.com/mattlean/lean-js-app-starter)** project for a [React](https://react.dev) application written in [TypeScript](https://typescriptlang.org) targeted for macOS, Windows, and Linux.
 
-_If you're not interested in TypeScript, use the [`react-electron` starter](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/react-electron) instead._
+_If you don't need TypeScript, then use the [`react-electron` starter](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/react-electron) instead._
 
 ## Technology Overview
 
@@ -17,8 +17,8 @@ _If you're not interested in TypeScript, use the [`react-electron` starter](http
 -   [Playwright](https://playwright.dev): End-to-end (E2E) testing
 -   [webpack](https://webpack.js.org): Bundler used to create builds
 -   [Babel](https://babeljs.io): Compiler used with webpack to support TypeScript and output Electron-compatible code
--   [ESLint](https://eslint.org): Linter used to identify problems in TypeScript & JavaScript code
--   [Stylelint](https://stylelint.io): Linter used to identify problems in CSS code
+-   [ESLint](https://eslint.org): Linter used to identify problems in TypeScript & JavaScript
+-   [Stylelint](https://stylelint.io): Linter used to identify problems in CSS
 -   [Prettier](https://prettier.io): Formatter used to enforce code style
 -   [Husky](https://typicode.github.io/husky) + [lint-staged](https://github.com/okonet/lint-staged): Pre-commit hooks to check for type, lint, and formatting errors before Git commits are made
 -   [Docker](https://docker.com): Used for an optional containerized development environment

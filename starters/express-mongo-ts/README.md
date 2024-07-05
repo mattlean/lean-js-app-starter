@@ -26,7 +26,7 @@ npm run dev
 
 ### Docker Development Environment
 
-Alternatively, you can also run the Docker development environment which only requires an installation of [Docker](https://www.docker.com). This was tested on Docker Desktop 4.20.0, but many other Docker installations should work.
+Alternatively, you can also run the Docker development environment which only requires an installation of [Docker](https://docker.com). This was tested on Docker Desktop 4.20.0, but many other Docker installations should work.
 
 Then all you need to do is run the following command to start the development server:
 
@@ -37,7 +37,7 @@ docker compose up
 ## Technology Overview
 
 -   [Babel](https://babeljs.io): Compiler used with webpack to support TypeScript and ECMAScript modules with Jest.
--   [Docker](https://www.docker.com): Used for an optional development environment. This can be handy if you want more consistency across different machines with minimal setup.
+-   [Docker](https://docker.com): Used for an optional development environment. This can be handy if you want more consistency across different machines with minimal setup.
 -   [ESLint](https://eslint.org): Linter to quickly find code problems.
 -   [Git](https://git-scm.com): Version control system to track code changes.
 -   [Husky](https://typicode.github.io/husky) & [lint-staged](https://github.com/okonet/lint-staged): Pre-commit hooks to enforce code style and identify problems.

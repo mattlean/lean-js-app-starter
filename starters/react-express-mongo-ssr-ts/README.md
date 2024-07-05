@@ -2,7 +2,7 @@
 
 This is a **[Lean JS App Starter](https://github.com/mattlean/lean-js-app-starter)** project for an [Express](https://expressjs.com) application that supports [React](https://react.dev) server-side rendering. It's written in [TypeScript](https://typescriptlang.org) and works with a [MongoDB](https://mongodb.com) database.
 
-_If you're not interested in TypeScript, then use the [`react-express-mongo-ssr-ts` starter](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/react-express-mongo-ssr-ts) instead._
+_If you don't need TypeScript, then then use the [`react-express-mongo-ssr-ts` starter](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/react-express-mongo-ssr-ts) instead._
 
 ## Technology Overview
 
@@ -20,8 +20,8 @@ _If you're not interested in TypeScript, then use the [`react-express-mongo-ssr-
 -   [Playwright](https://playwright.dev): End-to-end (E2E) testing
 -   [webpack](https://webpack.js.org): Bundler used to create builds
 -   [Babel](https://babeljs.io): Compiler used with webpack to support TypeScript and output cross-browser compatible code
--   [ESLint](https://eslint.org): Linter used to identify problems in TypeScript & JavaScript code
--   [Stylelint](https://stylelint.io): Linter used to identify problems in CSS code
+-   [ESLint](https://eslint.org): Linter used to identify problems in TypeScript & JavaScript
+-   [Stylelint](https://stylelint.io): Linter used to identify problems in CSS
 -   [Prettier](https://prettier.io): Formatter used to enforce code style
 -   [Husky](https://typicode.github.io/husky) + [lint-staged](https://github.com/okonet/lint-staged): Pre-commit hooks to check for type, lint, and formatting errors before Git commits are made
 -   [Docker](https://docker.com): Used for an optional containerized development environment
