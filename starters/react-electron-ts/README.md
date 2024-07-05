@@ -1,23 +1,23 @@
 # React + Electron Starter (TypeScript)
 
-This is a **[Lean JS App Starter](https://github.com/mattlean/lean-js-app-starter)** project for a [React](https://react.dev) application targeted for macOS, Windows, and Linux.
+This is a **[Lean JS App Starter](https://github.com/mattlean/lean-js-app-starter)** project for a [React](https://react.dev) application written in [TypeScript](https://typescriptlang.org) targeted for macOS, Windows, and Linux.
 
-_Note that this starter project uses TypeScript. If you want the JavaScript-only equivalent to this, then use the [`basic-electron` starter](../basic-electron) instead._
+_If you're not interested in TypeScript, use the [`react-electron` starter](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/react-electron) instead._
 
 ## Technology Overview
 
 -   [TypeScript](https://typescriptlang.org): JavaScript with type safety
--   [Electron](https://electronjs.org): Framework for building desktop apps through [Node.js](https://nodejs.org) & [Chromium](https://chromium.org/chromium-projects/)
+-   [Electron](https://electronjs.org): Framework for building desktop apps through [Node.js](https://nodejs.org) & [Chromium](https://chromium.org/chromium-projects)
 -   [React](https://react.dev): Library for user interfaces
 -   [CSS](https://w3.org/Style/CSS/Overview.en.html): The standard language for styling
 -   [Embedded JavaScript (EJS)](https://ejs.co): Templating language used to generate the build's `index.html` document
 -   [Jest](https://jestjs.io): Testing framework
 -   [React Testing Library](https://testing-library.com/docs/react-testing-library/intro): Unit testing library specialized for React components
 -   [Mock Service Worker (MSW)](https://mswjs.io): API mocking library used to mock network requests
--   [Playwright](https://playwright.dev): End-to-end testing
+-   [Playwright](https://playwright.dev): End-to-end (E2E) testing
 -   [webpack](https://webpack.js.org): Bundler used to create builds
 -   [Babel](https://babeljs.io): Compiler used with webpack to support TypeScript and output Electron-compatible code
--   [ESLint](https://eslint.org): Linter used to identify problems in TypeScript and JavaScript code
+-   [ESLint](https://eslint.org): Linter used to identify problems in TypeScript & JavaScript code
 -   [Stylelint](https://stylelint.io): Linter used to identify problems in CSS code
 -   [Prettier](https://prettier.io): Formatter used to enforce code style
 -   [Husky](https://typicode.github.io/husky) + [lint-staged](https://github.com/okonet/lint-staged): Pre-commit hooks to check for type, lint, and formatting errors before Git commits are made
@@ -66,7 +66,7 @@ When you're done working, you can press Ctrl+C in the terminal running the dev b
 
 This method manually does what the init script does for you.
 
-#### Step 0. Prerequisites
+#### Prerequisites
 
 The only prerequisite is that you must have [Node.js](https://nodejs.org/en/download/package-manager) installed.
 
@@ -82,7 +82,17 @@ npm install
 
 _Learn more about [`npm install`](https://docs.npmjs.com/cli/v10/commands/npm-install) in the npm Docs._
 
-#### Step 2. Create a development build
+#### Step 2. Create a `.env` file
+
+Copy the `.env.example` file and paste it as `.env`. This can be done with this command:
+
+```console
+cp .env.example .env
+```
+
+_Learn more about how this project handles environment variable files with the [`dotenv` package](https://github.com/motdotla/dotenv) from its README._
+
+#### Step 3. Create a development build
 
 Create a dev build with webpack using this command:
 
@@ -92,17 +102,7 @@ npm run build
 
 TODO: link to webpack doc
 
-#### (Optional) Create a `.env` file
-
-If your project relies on a `.env` file, then copy the `.env.example` file and paste it as `.env`. This can be done with this command:
-
-```console
-cp .env.example .env
-```
-
-_Learn more about how this project handles environment variable files with the [`dotenv` package](https://github.com/motdotla/dotenv) from its README._
-
-#### Step 3. Start the development build
+#### Step 4. Start the development build
 
 Finally, start the dev build with following command:
 
