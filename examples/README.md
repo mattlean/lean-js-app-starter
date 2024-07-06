@@ -4,7 +4,7 @@ This directory contains various example projects that began with starter project
 
 ### [\*chan (`starchan`)](./starchan/)
 
--   Built off of [`react-express-mongo-ssr-ts`](../starters/react-express-mongo-ssr-ts/) starter
+-   Built from [`react-express-mongo-ssr-ts`](../starters/react-express-mongo-ssr-ts/) starter
 -   OpenAPI
 -   Redux Toolkit
 -   Moment
@@ -19,25 +19,25 @@ This directory contains various example projects that began with starter project
 
 ### [Counter, Basic TypeScript Version (`counter`)](./counter/)
 
--   Built off of [`basic-browser-ts`](../starters/basic-browser-ts/) starter
+-   Built from [`basic-browser-ts`](../starters/basic-browser-ts/) starter
 -   Bootstrap
 -   Sass
 
 ### [Counter, React Version (`counter-react`)](./counter-react/)
 
--   Built off of [`react-browser-ts`](../starters/react-browser-ts/) starter
+-   Built from [`react-browser-ts`](../starters/react-browser-ts/) starter
 -   Bootstrap
 -   Sass
 
 ### [Markdown Editor (`markdown-editor`)](./markdown-editor/)
 
--   Built off of [`react-electron-ts`](../starters/react-electron-ts/) starter
+-   Built from [`react-electron-ts`](../starters/react-electron-ts/) starter
 -   unified, rehype, remark
 -   Tailwind CSS
 
 ### [Notes API (`notes-api`)](./notes-api/)
 
--   Built off of [`express-postgres-ts`](../starters/express-postgres-ts/) starter
+-   Built from [`express-postgres-ts`](../starters/express-postgres-ts/) starter
 -   Swagger, OpenAPI
 -   express-validator
 -   bcrypt
@@ -48,7 +48,7 @@ This directory contains various example projects that began with starter project
 
 ### [Todo List (`todo-list`)](./todo-list/)
 
--   Built off of [`react-browser`](../starters/react-browser/) starter
+-   Built from [`react-browser`](../starters/react-browser/) starter
 -   Flow
 -   React (with some class components)
 -   Traditional Redux

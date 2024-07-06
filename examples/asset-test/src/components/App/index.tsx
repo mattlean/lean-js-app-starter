@@ -28,7 +28,7 @@ export default function App() {
                     .
                 </p>
                 <p>
-                    This was built with{' '}
+                    Built with{' '}
                     <a href="https://github.com/mattlean/lean-js-app-starter">
                         Lean JS App Starter
                     </a>

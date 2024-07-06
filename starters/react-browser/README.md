@@ -145,4 +145,4 @@ When you're done working, you can press Ctrl+C in the terminal running the dev s
 
 ## Learn More With the Documentation
 
-[Read the docs to learn more about what else you can do with Lean JS App Starter and how it works.](https://github.com/mattlean/lean-js-app-starter/tree/master/docs)
+[📖 Read the docs to learn more about what else you can do with **Lean JS App Starter** and how it works.](https://github.com/mattlean/lean-js-app-starter/tree/master/docs)

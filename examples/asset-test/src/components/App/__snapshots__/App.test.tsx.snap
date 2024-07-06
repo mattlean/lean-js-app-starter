@@ -67,7 +67,7 @@ exports[`App component matches snapshot 1`] = `
       .
     </p>
     <p>
-      This was built with
+      Built with
        
       <a
         href="https://github.com/mattlean/lean-js-app-starter"

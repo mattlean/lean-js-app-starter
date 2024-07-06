@@ -14,7 +14,7 @@ const createFooterText = () => {
 
     const line2 = document.createElement('p')
     line2.innerHTML =
-        'This was built with <a href="https://github.com/mattlean/lean-js-app-starter" class="text-muted">Lean JS App Starter</a>.'
+        'Built with <a href="https://github.com/mattlean/lean-js-app-starter" class="text-muted">Lean JS App Starter</a>.'
     footerText.appendChild(line2)
 
     return footerText

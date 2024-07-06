@@ -2,9 +2,23 @@
 
 This is a counter app written in [TypeScript](https://typescriptlang.org) with [React](https://react.dev).
 
-This was built on top of the [LJAS `react-browser-ts` starter](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/react-browser-ts).
+Check out the [`counter` example](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/react-browser) if you want to see an alternate version of this app written without the use of frontend frameworks/libraries.
+
+## Live Demo
+
+You can view a demo of this project live here:  
+**https://counter-react-qmyj.onrender.com**
+
+_Note this uses [Render](https://render.com)'s free service so if the project hasn't been visited in a while, the initial page load may take longer than usual since the service has to be spun up. Also if the budget of free hours has been used up, the project will fail to load._
 
 ## Technology Overview
+
+This project extends the [`react-browser-ts` starter](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/react-browser-ts) with the following:
+
+-   [Bootstrap](https://getbootstrap.com): Frontend toolkit
+-   [Sass](https://sass-lang.com): CSS extension language
+
+The remaining technologies are inherited from the starter:
 
 -   [TypeScript](https://typescriptlang.org): JavaScript with type safety
 -   [React](https://react.dev): Library for user interfaces
@@ -22,126 +36,6 @@ This was built on top of the [LJAS `react-browser-ts` starter](https://github.co
 -   [Husky](https://typicode.github.io/husky) + [lint-staged](https://github.com/okonet/lint-staged): Pre-commit hooks to check for type, lint, and formatting errors before Git commits are made
 -   [Docker](https://docker.com): Used for an optional containerized development environment
 
-## Getting Started
+## LJAS Documentation
 
-There are three different methods you can use to get started:
-
-1. [Initialization Script (Recommended)](#method-1-initialization-script-recommended)
-2. [Docker Development Environment (Recommended)](#method-2-docker-development-environment-recommended)
-3. [Manual Installation](#method-3-manual-installation)
-
----
-
-### Method 1: Initialization Script (Recommended)
-
-This method is the simplest if you are not using the Docker dev environment (method B).
-
-#### Prerequisites
-
-The only prerequisite is that you must have [Node.js](https://nodejs.org/en/download/package-manager) installed.
-
-This was tested on Node.js v18.16.0, but many other versions should still work.
-
-#### Step 1: Run the initialization script
-
-Open a terminal and run the init script in the project root directory which will execute all the setup commands like `npm install` for you:
-
-```console
-bash init.sh
-```
-
-_[Learn exactly what the init script is doing in method 3.](#method-3-manual-installation)_
-
-#### Step 2: Start the development server
-
-Start the dev server with this `package.json` script:
-
-```console
-npm run dev
-```
-
-When you're done working, you can press Ctrl+C in the terminal running the dev server to shut it down.
-
----
-
-### Method 2: Docker Development Environment (Recommended)
-
-This method is the simplest as it only only requires Docker. Also, you won't need to worry about which Node.js version your machine is running because the dev environment will use a separate Node.js process running inside the container.
-
-TODO: link to docker dev env doc
-
-#### Prerequisites
-
-The only requirement is [Docker](https://docker.com/get-started).
-
-This was tested on Docker Desktop 4.20.0, but many other Docker versions should still work.
-
-#### Step 1. Create a `.env` file
-
-This can be done with the init script:
-
-```console
-bash init.sh --skip-npm-install --skip-playwright
-```
-
-#### Step 2. Start the Docker development environment
-
-Start the Docker dev environment with the following command:
-
-```console
-docker compose up
-```
-
-When you're done working, you can press Ctrl+C in the terminal running the container to shut it down.
-
----
-
-### Method 3: Manual Installation
-
-This method manually does what the init script does for you.
-
-#### Prerequisites
-
-The only prerequisite is that you must have [Node.js](https://nodejs.org/en/download/package-manager) installed.
-
-This was tested on Node.js v18.16.0, but many other versions should still work.
-
-#### Step 1. Install npm dependencies & devDependencies
-
-First, open a terminal and install npm dependencies with the following command:
-
-```console
-npm install
-```
-
-_Learn more about [`npm install`](https://docs.npmjs.com/cli/v10/commands/npm-install) in the npm Docs._
-
-#### Step 2. Create a `.env` file
-
-Copy the `.env.example` file and paste it as `.env`. This can be done with this command:
-
-```console
-cp .env.example .env
-```
-
-#### (Optional) Setup Playwright
-
-If you intend to perform end-to-end testing, setup Playwright with this command:
-
-```console
-npm run test:e2e:install
-```
-
-#### Step 3. Start the development server
-
-Finally, start the dev server with following command:
-
-```console
-npm run dev
-```
-
-When you're done working, you can press Ctrl+C in the terminal running the dev server to shut it down.
-
-## Learn More With the Documentation
-
-[Read the docs to learn more about what else you can do with Lean JS App Starter and how it works.](https://github.com/mattlean/lean-js-app-starter/tree/master/docs)
+[📖 Learn more about **Lean JS App Starter** by reading its docs.](https://github.com/mattlean/lean-js-app-starter/tree/master/docs)

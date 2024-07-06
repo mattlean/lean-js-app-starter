@@ -14,7 +14,7 @@ export default function FooterText() {
                 .
             </p>
             <p>
-                This was built with{' '}
+                Built with{' '}
                 <a
                     href="https://github.com/mattlean/lean-js-app-starter"
                     className="text-muted"
