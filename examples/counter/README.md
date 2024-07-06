@@ -2,7 +2,7 @@
 
 This is a counter browser app written in [TypeScript](https://typescriptlang.org) with only native DOM APIs.
 
-_Check out the [`counter-react` example](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/react-browser) if you want to see an alternate version of this app written with React._
+_Check out the [`counter-react` example](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/counter-react) if you want to see an alternate version of this app written with React._
 
 ## Live Demo
 
@@ -13,7 +13,7 @@ _Note this uses [Render](https://render.com)'s free service so if the project ha
 
 ## Technology Overview
 
-This project extends the [`react-browser-ts` starter](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/react-browser-ts) with the following:
+This project extends the [`basic-browser-ts` starter](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/basic-browser-ts) with the following:
 
 -   [Bootstrap](https://getbootstrap.com): Frontend toolkit
 -   [Sass](https://sass-lang.com): CSS extension language
@@ -21,11 +21,9 @@ This project extends the [`react-browser-ts` starter](https://github.com/mattlea
 The remaining technologies are inherited from the starter:
 
 -   [TypeScript](https://typescriptlang.org): JavaScript with type safety
--   [React](https://react.dev): Library for user interfaces
 -   [CSS](https://w3.org/Style/CSS/Overview.en.html): The standard language for styling
 -   [Embedded JavaScript (EJS)](https://ejs.co): Templating language used to generate the build's `index.html` document
 -   [Jest](https://jestjs.io): Testing framework used mainly for unit testing
--   [React Testing Library](https://testing-library.com/docs/react-testing-library/intro): Unit testing library specialized for React components
 -   [Mock Service Worker (MSW)](https://mswjs.io): API mocking library used to mock network requests
 -   [Playwright](https://playwright.dev): End-to-end (E2E) testing
 -   [webpack](https://webpack.js.org): Bundler used to create builds
@@ -38,7 +36,7 @@ The remaining technologies are inherited from the starter:
 
 ## Run This on Your Machine
 
-Please refer to the ["Getting Started" section of the `react-browser-ts` README](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/react-browser-ts#getting-started).
+Please refer to the ["Getting Started" section of the `basic-browser-ts` README](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/basic-browser-ts#getting-started).
 
 ## LJAS Documentation
 

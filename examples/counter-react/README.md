@@ -2,7 +2,7 @@
 
 This is a counter browser app written in [TypeScript](https://typescriptlang.org) with [React](https://react.dev).
 
-_Check out the [`counter` example](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/react-browser) if you want to see an alternate version of this app written without the use of frontend frameworks/libraries._
+_Check out the [`counter` example](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/counter) if you want to see an alternate version of this app written without the use of frontend frameworks/libraries._
 
 ## Live Demo
 
