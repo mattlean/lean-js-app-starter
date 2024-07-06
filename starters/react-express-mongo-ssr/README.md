@@ -1,17 +1,179 @@
-# \*chan
+# Express + MongoDB with Server-Side Rendering Starter
 
-\*chan (pronounced as starchan) is a [textboard](https://en.wikipedia.org/wiki/Textboard) that demonstrates one of [Lean JS App Starter's full-stack project setups](../../starters/react-express-mongo-ssr/README.md). It showcases an Express server that acts as a REST API and a React server-side renderer. These work in tandem with a React frontend.
+This is a **[Lean JS App Starter](https://github.com/mattlean/lean-js-app-starter)** project for an [Express](https://expressjs.com) application that supports [React](https://react.dev) server-side rendering. It works with a [MongoDB](https://mongodb.com) database.
 
-\*chan was first created in 2012 for as a project for [Udacity's Web Application Engineering course (CS253 taught by Steve Huffman)](https://youtube.com/watch?v=CRYn30--PPk). The assignment was to build a [textboard](https://en.wikipedia.org/wiki/Textboard) web application for [ASCII art](https://en.wikipedia.org/wiki/ASCII_art). It was originally built using [Python](https://python.org), [webapp2](https://cloud.google.com/appengine/docs/legacy/standard/python/tools/webapp2), [Google Cloud Datastore](https://cloud.google.com/datastore), [GQL](https://cloud.google.com/datastore/docs/reference/gql_reference), and [Jinja](https://jinja.palletsprojects.com).
+_If you need TypeScript, then use the [`react-express-mongo-ssr-ts` starter](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/react-express-mongo-ssr-ts) instead._
 
-In 2018 it was rebuilt using JavaScript, [Flow](https://flow.org), [Node.js](https://nodejs.org), [Express](https://expressjs.com), [MongoDB](https://mongodb.com), [Mongoose](https://mongoosejs.com), [React](https://react.dev), [Redux](https://redux.js.org), and [Sass](https://sass-lang.com). The main purpose of this was to rebuild the project in Node.js, MongoDB, and React while implementing server-side rendering to improve SEO performance and support JavaScript-disabled browsing.
+## Technology Overview
 
-In 2023 it was rebuilt again, except this time using [TypeScript](https://typescriptlang.org) instead of JavaScript and Flow, [Prisma](https://prisma.io) instead of Mongoose, [Redux Toolkit](https://redux-toolkit.js.org) instead of traditional Redux, and plain CSS instead of Sass. The main purpose of this was to modernize the stack and streamline the Lean JS App Starter projects involving React server-side rendering.
+-   [Node.js](https://nodejs.org): Runtime environment that allows JavaScript to execute outside of web browsers
+-   [Express](https://expressjs.com): Web framework for Node.js
+-   [Prisma](https://prisma.io): Node.js object relational mapper (ORM) used to work with MongoDB
+-   [MongoDB](https://mongodb.com): NoSQL database
+-   [React](https://react.dev): Library for user interfaces
+-   [CSS](https://w3.org/Style/CSS/Overview.en.html): The standard language for styling
+-   [Embedded JavaScript (EJS)](https://ejs.co): Templating language used to generate the build's `index.html` document
+-   [Jest](https://jestjs.io): Testing framework used mainly for unit testing
+-   [React Testing Library](https://testing-library.com/docs/react-testing-library/intro): Unit testing library specialized for React components
+-   [Mock Service Worker (MSW)](https://mswjs.io): API mocking library used to mock network requests
+-   [Playwright](https://playwright.dev): End-to-end (E2E) testing
+-   [webpack](https://webpack.js.org): Bundler used to create builds
+-   [Babel](https://babeljs.io): Compiler used with webpack to output cross-browser compatible code
+-   [ESLint](https://eslint.org): Linter used to identify problems in JavaScript
+-   [Stylelint](https://stylelint.io): Linter used to identify problems in CSS
+-   [Prettier](https://prettier.io): Formatter used to enforce code style
+-   [Husky](https://typicode.github.io/husky) + [lint-staged](https://github.com/okonet/lint-staged): Pre-commit hooks to check for lint and formatting errors before Git commits are made
+-   [Docker](https://docker.com): Used for an optional containerized development environment
 
-## Running Tests
+## Getting Started
 
-TODO: Note that in order to run tests on the backend, you will need to have a build on your machine as the server-side rendering relies on a view generated from the frontend build process in order to work.
+There are three different methods you can use to get started:
 
-## Generating Data to Work With
+1. [Initialization Script (Recommended)](#method-1-initialization-script-recommended)
+2. [Docker Development Environment (Recommended)](#method-2-docker-development-environment-recommended)
+3. [Manual Installation](#method-3-manual-installation)
 
-If don't want to manually create threads and replies, you can also use the [`genDevData.ts`](dev-scripts/genDevData.ts) script to generate it for you. For more information on how to use it, read the [Dev Scripts README](dev-scripts/README.md).
+---
+
+### Method 1: Initialization Script (Recommended)
+
+This method is the simplest if you are not using the Docker dev environment (method B).
+
+#### Prerequisites
+
+Installation of the following is required before proceeding with this method:
+
+-   [Node.js](https://nodejs.org/en/download/package-manager)
+-   [MongoDB](hhttps://mongodb.com)
+
+This was tested on Node.js v18.16.0, but many other versions should still work. This was also tested with MongoDB 4.4.25, and any other Mongo 4 version should work well.
+
+#### Step 1: Run the initialization script
+
+Open a terminal and run the init script in the project root directory which will execute all the setup commands like `npm install` for you:
+
+```console
+bash init.sh
+```
+
+#### Step 2. Connect Prisma to MongoDB
+
+Update the `.env` file's `DATABASE_URL` environment variable to the appropriate connection string so Prisma can connect to MongoDB.
+
+For more information on this, read the Prisma documentation:
+https://prisma.io/docs/orm/overview/databases/mongodb#connection-details
+
+#### Step 3. Start the development server
+
+Start the dev server with this `package.json` script:
+
+```console
+npm run dev
+```
+
+When you're done working, you can press Ctrl+C in the terminal running the dev server to shut it down.
+
+---
+
+### Method 2: Docker Development Environment (Recommended)
+
+This method is the simplest as it only has one prerequisite and has MongoDB and Prisma setup for you.
+
+TODO: link to docker dev env doc
+
+#### Prerequisites
+
+The only requirement is [Docker](https://docker.com/get-started).
+
+This was tested on Docker Desktop 4.20.0, but many other Docker versions should still work.
+
+#### Step 1. Create a `.env` file
+
+This can be done with the init script:
+
+```console
+bash init.sh --skip-build --skip-npm-install --skip-prisma
+```
+
+#### Step 2. Start the Docker development environment
+
+Start the Docker dev environment with the following command:
+
+```console
+docker compose up
+```
+
+When you're done working, you can press Ctrl+C in the terminal running the container to shut it down.
+
+---
+
+### Method 3: Manual Installation
+
+This method manually does what the init script does for you.
+
+#### Prerequisites
+
+Installation of the following is required before proceeding with this method:
+
+-   [Node.js](https://nodejs.org/en/download/package-manager)
+-   [MongoDB](hhttps://mongodb.com)
+
+This was tested on Node.js v18.16.0, but many other versions should still work. This was also tested with MongoDB 4.4.25, and any other Mongo 4 version should work well.
+
+#### Step 1. Install npm dependencies & devDependencies
+
+First, open a terminal and install npm dependencies with the following command:
+
+```console
+npm install
+```
+
+_Learn more about [`npm install`](https://docs.npmjs.com/cli/v10/commands/npm-install) in the npm Docs._
+
+#### Step 2. Create a `.env` file
+
+Copy the `.env.example` file and paste it as `.env`. This can be done with this command:
+
+```console
+cp .env.example .env
+```
+
+#### Step 3. Setup & connect Prisma to MongoDB
+
+Setup Prisma and the database by running the following commands:
+
+```console
+npm run prisma db push
+npm run prisma generate
+```
+
+_Learn more about [`prisma db push`](https://prisma.io/docs/orm/prisma-migrate/workflows/prototyping-your-schema) and [`prisma generate`](https://prisma.io/docs/orm/prisma-client/setup-and-configuration/generating-prisma-client) in the Prisma docs._
+
+Update the `.env` file's `DATABASE_URL` environment variable to the appropriate connection string so Prisma can connect to MongoDB.
+
+For more information on this, read the Prisma documentation:
+https://prisma.io/docs/orm/overview/databases/mongodb#connection-details
+
+#### Step 4. Create a development build
+
+Create a dev build with webpack using this command:
+
+```console
+npm run build
+```
+
+TODO: link to webpack doc
+
+#### Step 5. Start the development server
+
+Finally, start the dev server with following command:
+
+```console
+npm run dev
+```
+
+When you're done working, you can press Ctrl+C in the terminal running the dev server to shut it down.
+
+## Learn More With the Documentation
+
+[Read the docs to learn more about what else you can do with Lean JS App Starter and how it works.](https://github.com/mattlean/lean-js-app-starter/tree/master/docs)
