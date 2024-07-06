@@ -1,5 +1,7 @@
 # React + Electron Starter (TypeScript)
 
+## `react-electron-ts`
+
 This is a **[Lean JS App Starter](https://github.com/mattlean/lean-js-app-starter)** project for a [React](https://react.dev) application written in [TypeScript](https://typescriptlang.org) targeted for macOS, Windows, and Linux.
 
 _If you don't need TypeScript, then use the [`react-electron` starter](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/react-electron) instead._

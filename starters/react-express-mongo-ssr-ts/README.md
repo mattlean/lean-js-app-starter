@@ -1,5 +1,7 @@
 # Express + MongoDB with Server-Side Rendering Starter (TypeScript)
 
+## `react-express-mongo-ssr-ts`
+
 This is a **[Lean JS App Starter](https://github.com/mattlean/lean-js-app-starter)** project for an [Express](https://expressjs.com) application that supports [React](https://react.dev) server-side rendering. It's written in [TypeScript](https://typescriptlang.org) and works with a [MongoDB](https://mongodb.com) database.
 
 _If you don't need TypeScript, then then use the [`react-express-mongo-ssr-ts` starter](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/react-express-mongo-ssr-ts) instead._
@@ -61,8 +63,7 @@ bash init.sh
 
 Update the `.env` file's `DATABASE_URL` environment variable to the appropriate connection string so Prisma can connect to MongoDB.
 
-For more information on this, read the Prisma documentation:
-https://prisma.io/docs/orm/overview/databases/mongodb#connection-details
+For more info on this, read the [Prisma MongoDB docs](https://prisma.io/docs/orm/overview/databases/mongodb#connection-details).
 
 #### Step 3. Start the development server
 
@@ -152,8 +153,7 @@ _Learn more about [`prisma db push`](https://prisma.io/docs/orm/prisma-migrate/w
 
 Update the `.env` file's `DATABASE_URL` environment variable to the appropriate connection string so Prisma can connect to MongoDB.
 
-For more information on this, read the Prisma documentation:
-https://prisma.io/docs/orm/overview/databases/mongodb#connection-details
+For more info on this, read the [Prisma MongoDB docs](https://prisma.io/docs/orm/overview/databases/mongodb#connection-details).
 
 #### Step 4. Create a development build
 

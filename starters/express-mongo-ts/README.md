@@ -1,5 +1,7 @@
 # Express + MongoDB Starter (TypeScript)
 
+## `express-mongo-ts`
+
 This is a **[Lean JS App Starter](https://github.com/mattlean/lean-js-app-starter)** project for an [Express](https://expressjs.com) application written in [TypeScript](https://typescriptlang.org) that works with a [MongoDB](https://mongodb.com) database.
 
 _If you don't need TypeScript, then then use the [`express-mongo` starter](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/express-mongo) instead._
@@ -54,8 +56,7 @@ bash init.sh
 
 Update the `.env` file's `DATABASE_URL` environment variable to the appropriate connection string so Prisma can connect to MongoDB.
 
-For more information on this, read the Prisma documentation:
-https://prisma.io/docs/orm/overview/databases/mongodb#connection-details
+For more info on this, read the [Prisma MongoDB docs](https://prisma.io/docs/orm/overview/databases/mongodb#connection-details).
 
 #### Step 3. Start the development server
 
@@ -145,8 +146,7 @@ _Learn more about [`prisma migrate`](https://prisma.io/docs/orm/prisma-migrate/u
 
 Update the `.env` file's `DATABASE_URL` environment variable to the appropriate connection string so Prisma can connect to MongoDB.
 
-For more information on this, read the Prisma documentation:
-https://prisma.io/docs/orm/overview/databases/mongodb#connection-details
+For more info on this, read the [Prisma MongoDB docs](https://prisma.io/docs/orm/overview/databases/mongodb#connection-details).
 
 #### Step 4. Create a development build
 
