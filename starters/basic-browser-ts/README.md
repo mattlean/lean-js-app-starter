@@ -92,12 +92,6 @@ Start the Docker dev environment with the following command:
 docker compose up
 ```
 
-TODO: maybe move the following somewhere else
-
-This command may take a while the first time you run it since it will need to create a new Docker image, download npm dependencies, etc. However, subsequent runs of this command will be much faster since it can reuse cached layers under most circumstances, or in the best case scenario, reuse a completely cached image.
-
-Although the development server is running within the container, it will still be able to watch for changes you make to the code on your host machine. That means the development server will still be able to reflect changes in the app as you write code and will operate similarly to if you were running the development server natively like in methods 1 or 3.
-
 When you're done working, you can press Ctrl+C in the terminal running the container to shut it down.
 
 ---

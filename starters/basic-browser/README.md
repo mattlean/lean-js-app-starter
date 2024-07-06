@@ -91,7 +91,7 @@ Start the Docker dev environment with the following command:
 docker compose up
 ```
 
-TODO: maybe move the following somewhere else
+When you're done working, you can press Ctrl+C in the terminal running the container to shut it down.
 
 ---
 
