@@ -1,3 +1,5 @@
+import './index.scss'
+
 /**
  * Create the footer text element.
  * @returns The footer element containing the footer text elements
