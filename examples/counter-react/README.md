@@ -36,6 +36,10 @@ The remaining technologies are inherited from the starter:
 -   [Husky](https://typicode.github.io/husky) + [lint-staged](https://github.com/okonet/lint-staged): Pre-commit hooks to check for type, lint, and formatting errors before Git commits are made
 -   [Docker](https://docker.com): Used for an optional containerized development environment
 
+## Run This on Your Own Machine
+
+Please refer to the ["Getting Started" section of the `react-browser-ts` README](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/react-browser-ts#getting-started).
+
 ## LJAS Documentation
 
 [📖 Learn more about **Lean JS App Starter** by reading its docs.](https://github.com/mattlean/lean-js-app-starter/tree/master/docs)
