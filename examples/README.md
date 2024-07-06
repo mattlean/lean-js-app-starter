@@ -57,9 +57,9 @@ Built from [`express-postgres-ts`](../starters/express-postgres-ts/) starter
 
 Built from [`react-browser`](../starters/react-browser/) starter
 
+-   React (Class Components)
 -   Flow
--   React (with some class components)
--   Traditional Redux
+-   Redux (Classic)
 -   Redux Thunk
 -   Enzyme
 -   Sublime Text
