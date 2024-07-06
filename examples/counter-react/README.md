@@ -1,8 +1,8 @@
-# Counter (React)
+# Counter, React Version
 
-This is a counter app written in [TypeScript](https://typescriptlang.org) with [React](https://react.dev).
+This is a counter browser app written in [TypeScript](https://typescriptlang.org) with [React](https://react.dev).
 
-Check out the [`counter` example](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/react-browser) if you want to see an alternate version of this app written without the use of frontend frameworks/libraries.
+_Check out the [`counter` example](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/react-browser) if you want to see an alternate version of this app written without the use of frontend frameworks/libraries._
 
 ## Live Demo
 
@@ -36,7 +36,7 @@ The remaining technologies are inherited from the starter:
 -   [Husky](https://typicode.github.io/husky) + [lint-staged](https://github.com/okonet/lint-staged): Pre-commit hooks to check for type, lint, and formatting errors before Git commits are made
 -   [Docker](https://docker.com): Used for an optional containerized development environment
 
-## Run This on Your Own Machine
+## Run This on Your Machine
 
 Please refer to the ["Getting Started" section of the `react-browser-ts` README](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/react-browser-ts#getting-started).
 

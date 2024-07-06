@@ -4,6 +4,7 @@
  */
 const createFooterText = () => {
     const footerText = document.createElement('footer')
+    footerText.setAttribute('id', 'footer-text')
     footerText.setAttribute('class', 'text-center text-muted')
 
     const line1 = document.createElement('p')

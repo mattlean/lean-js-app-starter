@@ -91,6 +91,7 @@ exports[`App element matches snapshot 1`] = `
   </div>
   <footer
     class="text-center text-muted"
+    id="footer-text"
   >
     <p
       class="mb-0"

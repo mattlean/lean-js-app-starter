@@ -3,6 +3,7 @@
 exports[`Footer text element matches snapshot 1`] = `
 <footer
   class="text-center text-muted"
+  id="footer-text"
 >
   <p
     class="mb-0"

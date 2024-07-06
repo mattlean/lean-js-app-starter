@@ -1,48 +1,45 @@
-# Basic Node.js Starter Project (TypeScript)
+# Counter, Basic Version
 
-This is a starter for a [React](https://react.dev) frontend project.
+This is a counter browser app written in [TypeScript](https://typescriptlang.org) with only native DOM APIs.
 
-Note that this uses TypeScript. If you want the JavaScript equivalent to this, use the [react-browser](../react-browser) project instead.
+_Check out the [`counter-react` example](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/react-browser) if you want to see an alternate version of this app written with React._
 
-## Getting Started
+## Live Demo
 
-### Standard Method
+You can view a demo of this project live here:  
+**https://counter-abdp.onrender.com**
 
-The only prerequisite is that you must have [Node.js](https://nodejs.org) installed. This was tested on Node.js v18.16.0, but many other Node.js versions should still work.
-
-Once Node.js is installed, install the project dependencies with the following command:
-
-```
-npm install
-```
-
-Finally, you can start the development server with following command:
-
-```
-npm run dev
-```
-
-### Docker Development Environment
-
-Alternatively, you can also run the Docker development environment which only requires an installation of [Docker](https://www.docker.com). This was tested on Docker Desktop 4.20.0, but many other Docker installations should work.
-
-Then all you need to do is run the following command to start the development server:
-
-```
-docker compose up
-```
+_Note this uses [Render](https://render.com)'s free service so if the project hasn't been visited in a while, the initial page load may take longer than usual since the service has to be spun up. Also if the budget of free hours has been used up, the project will fail to load._
 
 ## Technology Overview
 
--   [Babel](https://babeljs.io): Compiler used with webpack to support TypeScript and React while producing cross-browser compatible code for the build.
--   [Docker](https://www.docker.com): Used for an optional development environment. This can be handy if you want more consistency across different machines with minimal setup.
--   [ESLint](https://eslint.org): Linter to quickly find code problems.
--   [Git](https://git-scm.com): Version control system to track code changes.
--   [Husky](https://typicode.github.io/husky) & [lint-staged](https://github.com/okonet/lint-staged): Pre-commit hooks to enforce code style and identify problems.
--   [Jest](https://jestjs.io): Testing framework to ensure code correctness and coverage.
--   [Prettier](https://prettier.io): Formatter to enforce code style.
--   [webpack](https://webpack.js.org): Bundler used to build the app.
+This project extends the [`react-browser-ts` starter](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/react-browser-ts) with the following:
 
-## Learn More
+-   [Bootstrap](https://getbootstrap.com): Frontend toolkit
+-   [Sass](https://sass-lang.com): CSS extension language
 
-To get a more in-depth idea about what building off of this starter project is like, please read the [Developer Experience Walkthrough](./dx-walkthrough.md).
+The remaining technologies are inherited from the starter:
+
+-   [TypeScript](https://typescriptlang.org): JavaScript with type safety
+-   [React](https://react.dev): Library for user interfaces
+-   [CSS](https://w3.org/Style/CSS/Overview.en.html): The standard language for styling
+-   [Embedded JavaScript (EJS)](https://ejs.co): Templating language used to generate the build's `index.html` document
+-   [Jest](https://jestjs.io): Testing framework used mainly for unit testing
+-   [React Testing Library](https://testing-library.com/docs/react-testing-library/intro): Unit testing library specialized for React components
+-   [Mock Service Worker (MSW)](https://mswjs.io): API mocking library used to mock network requests
+-   [Playwright](https://playwright.dev): End-to-end (E2E) testing
+-   [webpack](https://webpack.js.org): Bundler used to create builds
+-   [Babel](https://babeljs.io): Compiler used with webpack to support TypeScript and output cross-browser compatible code
+-   [ESLint](https://eslint.org): Linter used to identify problems in TypeScript & JavaScript
+-   [Stylelint](https://stylelint.io): Linter used to identify problems in CSS
+-   [Prettier](https://prettier.io): Formatter used to enforce code style
+-   [Husky](https://typicode.github.io/husky) + [lint-staged](https://github.com/okonet/lint-staged): Pre-commit hooks to check for type, lint, and formatting errors before Git commits are made
+-   [Docker](https://docker.com): Used for an optional containerized development environment
+
+## Run This on Your Machine
+
+Please refer to the ["Getting Started" section of the `react-browser-ts` README](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/react-browser-ts#getting-started).
+
+## LJAS Documentation
+
+[📖 Learn more about **Lean JS App Starter** by reading its docs.](https://github.com/mattlean/lean-js-app-starter/tree/master/docs)
