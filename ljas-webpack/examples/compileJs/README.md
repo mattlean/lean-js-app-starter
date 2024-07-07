@@ -1,7 +1,5 @@
 # compileJs
 
-This is a demo of the `compileJs` webpack configuration part.
-
 To run webpack, run the following `package.json` script:
 
 ```console

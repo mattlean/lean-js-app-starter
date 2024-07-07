@@ -1,7 +1,5 @@
 # buildSourceMaps
 
-This is a demo of the `buildSourceMaps` webpack configuration part.
-
 To run webpack, run the following `package.json` script:
 
 ```console

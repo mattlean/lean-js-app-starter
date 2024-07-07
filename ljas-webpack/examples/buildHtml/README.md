@@ -1,4 +1,4 @@
-# compileReact
+# buildHtml
 
 To run webpack, run the following `package.json` script:
 

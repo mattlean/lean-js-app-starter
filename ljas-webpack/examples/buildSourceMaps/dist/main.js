@@ -1,2 +1,2 @@
-(()=>{var e;document.body.appendChild(((e=document.createElement("div")).innerHTML="Hello webpack",e))})();
+document.body.appendChild(function(){const e=document.createElement("div");return e.innerHTML="Hello webpack",e}());
 //# sourceMappingURL=main.js.map

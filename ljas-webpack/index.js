@@ -136,6 +136,17 @@ exports.compileReact = (options, mode) =>
     })
 
 /**
+ * Ignore files when webpack is running in watch mode:
+ * https://webpack.js.org/configuration/watch
+ *
+ * @param {string|Array.<string>} ignored RegEx or globs to match folders and files that will be ignored. (https://webpack.js.org/configuration/watch/#watchoptionsignored)
+ * @returns {Object} A webpack configuration object that makes webpack ignore specified files during watch mode.
+ */
+exports.ignoreWatch = (ignored) => ({
+    watchOptions: { ignored },
+})
+
+/**
  * Enable .css file imports and inject CSS into the DOM with css-loader and style-loader:
  * - https://webpack.js.org/loaders/css-loader
  * - https://webpack.js.org/loaders/style-loader
@@ -264,15 +275,4 @@ exports.setupDevServer = (options) => ({
     devServer: {
         ...options,
     },
-})
-
-/**
- * Ignore files when webpack is running in watch mode:
- * https://webpack.js.org/configuration/watch
- *
- * @param {string|Array.<string>} ignored RegEx or globs to match folders and files that will be ignored. (https://webpack.js.org/configuration/watch/#watchoptionsignored)
- * @returns {Object} A webpack configuration object that makes webpack ignore specified files during watch mode.
- */
-exports.watchIgnore = (ignored) => ({
-    watchOptions: { ignored },
 })

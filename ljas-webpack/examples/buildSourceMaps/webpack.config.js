@@ -1,4 +1,7 @@
-const { buildSourceMaps, compileJs } = require('ljas-webpack')
-const { merge } = require('webpack-merge')
+/**
+ * See webpack.config.final.js to view the equivalent webpack config
+ * in the conventional style.
+ */
+const { buildSourceMaps } = require('ljas-webpack')
 
-module.exports = merge([buildSourceMaps('source-map'), compileJs()])
+module.exports = buildSourceMaps('source-map')

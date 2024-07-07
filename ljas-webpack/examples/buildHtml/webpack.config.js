@@ -2,6 +2,6 @@
  * See webpack.config.final.js to view the equivalent webpack config
  * in the conventional style.
  */
-const { compileJs } = require('ljas-webpack')
+const buildHtml = require('ljas-webpack/buildHtml')
 
-module.exports = compileJs()
+module.exports = buildHtml()
