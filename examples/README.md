@@ -6,7 +6,7 @@ Here is an overview on how each example expands upon their starter:
 
 ### [\*chan (`starchan`)](./starchan/)
 
-Built from [`react-express-mongo-ssr-ts`](../starters/react-express-mongo-ssr-ts/) starter
+Built from [`react-express-mongo-ssr-ts`](../starters/react-express-mongo-ssr-ts/) starter.
 
 -   OpenAPI
 -   Redux Toolkit
@@ -18,32 +18,32 @@ Built from [`react-express-mongo-ssr-ts`](../starters/react-express-mongo-ssr-ts
 
 ### [Asset Test (`asset-test`)](./asset-test/)
 
-Configuration identical to [`react-browser-ts`](../starters/react-browser-ts/) starter
+Configuration identical to [`react-browser-ts`](../starters/react-browser-ts/) starter.
 
 ### [Counter, Basic Version (`counter`)](./counter/)
 
-Built from [`basic-browser-ts`](../starters/basic-browser-ts/) starter
+Built from [`basic-browser-ts`](../starters/basic-browser-ts/) starter.
 
 -   Bootstrap
 -   Sass
 
 ### [Counter, React Version (`counter-react`)](./counter-react/)
 
-Built from [`react-browser-ts`](../starters/react-browser-ts/) starter
+Built from [`react-browser-ts`](../starters/react-browser-ts/) starter.
 
 -   Bootstrap
 -   Sass
 
 ### [Markdown Editor (`markdown-editor`)](./markdown-editor/)
 
-Built from [`react-electron-ts`](../starters/react-electron-ts/) starter
+Built from [`react-electron-ts`](../starters/react-electron-ts/) starter.
 
 -   unified, rehype, remark
 -   Tailwind CSS
 
 ### [Notes API (`notes-api`)](./notes-api/)
 
-Built from [`express-postgres-ts`](../starters/express-postgres-ts/) starter
+Built from [`express-postgres-ts`](../starters/express-postgres-ts/) starter.
 
 -   Swagger, OpenAPI
 -   express-validator
@@ -55,7 +55,7 @@ Built from [`express-postgres-ts`](../starters/express-postgres-ts/) starter
 
 ### [Todo List (`todo-list`)](./todo-list/)
 
-Built from [`react-browser`](../starters/react-browser/) starter
+Built from [`react-browser`](../starters/react-browser/) starter.
 
 -   React (Class Components)
 -   Flow

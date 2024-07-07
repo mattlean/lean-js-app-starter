@@ -6,6 +6,13 @@ Note that this project utilizes React class components, classic Redux, and Enzym
 
 Be aware that this was ported from LJAS v0.1.1 is classified as a legacy project. That means it lacks a few features the other projects have (such as Playwright) and will not receive future upgrades for many of its dependencies.
 
+## Live Demo
+
+You can view a demo of this project live here:  
+**https://todo-list-jk0o.onrender.com**
+
+_Note this uses [Render](https://render.com)'s free service so if the project hasn't been visited in a while, the initial page load may take longer than usual since the service has to be spun up. Also if the budget of free hours has been used up, the project will fail to load._
+
 ## Technology Overview
 
 This project extends the [`react-browser` starter](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/react-browser) with the following:

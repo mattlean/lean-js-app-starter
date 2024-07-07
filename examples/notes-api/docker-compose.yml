@@ -40,5 +40,5 @@ services:
             - .:/code
             - ljas-notes-api-node_modules:/code/node_modules
 volumes:
-    ljas-notes-db-data:
+    ljas-notes-api-db-data:
     ljas-notes-api-node_modules:
