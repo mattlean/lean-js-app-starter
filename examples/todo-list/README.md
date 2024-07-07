@@ -1,6 +1,6 @@
 # Todo List (Legacy)
 
-This is a todo list browser app written in JavaScript and [Flow](https://flow.org) with [React](https://react.dev) and [Redux](https://redux.js.org).
+This is a todo list [single-page application (SPA)](https://en.wikipedia.org/wiki/Single-page_application) written in JavaScript and [Flow](https://flow.org) with [React](https://react.dev) and [Redux](https://redux.js.org).
 
 Note that this project utilizes React class components, classic Redux, and Enzyme. If you want to see an example of modern Redux using Redux Toolkit, please checkout the [`starchan` example](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/starchan).
 
@@ -8,7 +8,7 @@ Be aware that this was ported from LJAS v0.1.1 is classified as a legacy project
 
 ## Live Demo
 
-You can view a demo of this project live here:  
+You can try a demo of this app live here:  
 **https://todo-list-jk0o.onrender.com**
 
 _Note this uses [Render](https://render.com)'s free service so if the project hasn't been visited in a while, the initial page load may take longer than usual since the service has to be spun up. Also if the budget of free hours has been used up, the project will fail to load._

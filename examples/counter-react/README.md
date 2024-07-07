@@ -1,12 +1,12 @@
 # Counter, React Version
 
-This is a counter browser app written in [TypeScript](https://typescriptlang.org) with [React](https://react.dev).
+This is a counter [single-page application (SPA)](https://en.wikipedia.org/wiki/Single-page_application) written in [TypeScript](https://typescriptlang.org) with [React](https://react.dev).
 
 _Check out the [`counter` example](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/counter) if you want to see an alternate version of this app written without the use of frontend frameworks/libraries._
 
 ## Live Demo
 
-You can view a demo of this project live here:  
+You can try a demo of this app live here:  
 **https://counter-react-qmyj.onrender.com**
 
 _Note this uses [Render](https://render.com)'s free service so if the project hasn't been visited in a while, the initial page load may take longer than usual since the service has to be spun up. Also if the budget of free hours has been used up, the project will fail to load._

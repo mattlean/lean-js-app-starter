@@ -1,12 +1,12 @@
 # Counter, Basic Version
 
-This is a counter browser app written in [TypeScript](https://typescriptlang.org) with only native DOM APIs.
+This is a counter [single-page application (SPA)](https://en.wikipedia.org/wiki/Single-page_application) written in [TypeScript](https://typescriptlang.org) with only native DOM APIs.
 
 _Check out the [`counter-react` example](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/counter-react) if you want to see an alternate version of this app written with React._
 
 ## Live Demo
 
-You can view a demo of this project live here:  
+You can try a demo of this app live here:  
 **https://counter-abdp.onrender.com**
 
 _Note this uses [Render](https://render.com)'s free service so if the project hasn't been visited in a while, the initial page load may take longer than usual since the service has to be spun up. Also if the budget of free hours has been used up, the project will fail to load._

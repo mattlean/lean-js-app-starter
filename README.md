@@ -64,7 +64,9 @@ Select a starter project below that fits your needs to learn about what each one
 
 ## Examples
 
-**Example projects** are built off of starter projects and act as a demonstration of how LJAS can be adapted to different project requirements. They can be handy if you need references for customized configurations that extend LJAS's functionality or just some good ol' inspiration.
+**Example projects** are built off of starter projects and act as a demonstration of how LJAS can used and adapted to different project requirements.
+
+You will be able to find projects like SPAs, REST APIs, desktop apps, and more. They can be handy if you need references for customized configurations that extend LJAS's functionality or just some good ol' inspiration.
 
 [Take a look at the example projects in the `examples/` directory.](./examples/)
 
