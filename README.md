@@ -8,7 +8,7 @@
 
 **🐳 Docker development environment**
 
-> Alternatively run the dev environment in a [Docker container](https://docker.com) to improve consistency for developers across macOS, Windows, and Linux.
+> Alternatively run the dev environment with [Docker](https://docker.com) to simplify onboarding and improve consistency for developers across macOS, Windows, and Linux.
 
 **🧪 Robust testing environment**
 

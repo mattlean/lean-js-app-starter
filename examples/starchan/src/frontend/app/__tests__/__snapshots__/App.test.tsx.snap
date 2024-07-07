@@ -76,7 +76,7 @@ exports[`App component matches snapshot for basic render 1`] = `
     class="about"
   >
     <p>
-      *chan (pronounced as starchan) is a simple forum inspired by Japanese 
+      *chan (pronounced as "starchan") is a simple forum inspired by Japanese 
       <a
         href="https://en.wikipedia.org/wiki/Textboard"
       >
@@ -106,7 +106,7 @@ exports[`App component matches snapshot for basic render 1`] = `
       >
         <li>
           <a
-            href="#"
+            href="https://github.com/mattlean/lean-js-app-starter/tree/master/examples/starchan"
           >
             *chan GitHub Repo
           </a>

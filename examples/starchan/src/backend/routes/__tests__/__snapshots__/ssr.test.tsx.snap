@@ -14,7 +14,7 @@ exports[`thread list page matches snapshot for basic server-side rendering 1`] =
     class="about"
   >
     <p>
-      *chan (pronounced as starchan) is a simple forum inspired by Japanese
+      *chan (pronounced as "starchan") is a simple forum inspired by Japanese
       <!-- -->
        
       <a
@@ -83,7 +83,7 @@ exports[`thread list page matches snapshot for basic server-side rendering 1`] =
       >
         <li>
           <a
-            href="#"
+            href="https://github.com/mattlean/lean-js-app-starter/tree/master/examples/starchan"
           >
             *chan GitHub Repo
           </a>
