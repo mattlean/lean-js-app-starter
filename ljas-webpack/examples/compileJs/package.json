@@ -1,0 +1,13 @@
+{
+    "scripts": {
+        "build": "webpack"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.22.1",
+        "@babel/preset-env": "^7.22.4",
+        "babel-loader": "^9.1.2",
+        "ljas-webpack": "^0.1.0-rc-20240626",
+        "webpack": "^5.85.0"
+    },
+    "private": true
+}
