@@ -24,7 +24,7 @@
 -   Upgrade webpack to ^5.85.0
 -   Separate asset test and counter from `browser` project into its own examples: `asset-test` & `counter-react`
 -   Replace Node Sass with Dart Sass ~1.64.2 for `counter-react`
--   Rewrite starchan from `nodejs-ssr` project into its own `starchan` example
+-   Rewrite \*chan from `nodejs-ssr` project into its own `starchan` example
 -   Upgrade `react-redux` to ^8.1.3 for `starchan`
 -   Setup Redux Toolkit ^1.9.6 for `starchan`
 -   Upgrade React Router to ^6.16.0 for `starchan`
