@@ -1,48 +1,45 @@
-# Basic Node.js Starter Project (TypeScript)
+# Markdown Editor
 
-This is a starter for a [React](https://react.dev) frontend project.
+![Screenshot of markdown editor](./src/playwright/editor-preview.test.ts-snapshots/editor-preview-standard-chromium-darwin.png)
+This is a [markdown](https://daringfireball.net/projects/markdown) editor desktop app written in [TypeScript](https://typescriptlang.org) with [Electron](https://electronjs.org) and [React](https://react.dev).
 
-Note that this uses TypeScript. If you want the JavaScript equivalent to this, use the [react-browser](../react-browser) project instead.
+The app has the following features:
 
-## Getting Started
-
-### Standard Method
-
-The only prerequisite is that you must have [Node.js](https://nodejs.org) installed. This was tested on Node.js v18.16.0, but many other Node.js versions should still work.
-
-Once Node.js is installed, install the project dependencies with the following command:
-
-```
-npm install
-```
-
-Finally, you can start the development server with following command:
-
-```
-npm run dev
-```
-
-### Docker Development Environment
-
-Alternatively, you can also run the Docker development environment which only requires an installation of [Docker](https://www.docker.com). This was tested on Docker Desktop 4.20.0, but many other Docker installations should work.
-
-Then all you need to do is run the following command to start the development server:
-
-```
-docker compose up
-```
+-   Support for [GitHub flavored markdown](https://github.github.com/gfm)
+-   Real-time preview of markdown
+-   [Light mode](./src/playwright/color-mode.test.ts-snapshots/light-mode-chromium-darwin.png) & [dark mode](./src/playwright/color-mode.test.ts-snapshots/dark-mode-chromium-darwin.png)
+-   Focus mode that reduces UI clutter for the times when you really have to focus on writing
+-   Export markdown preview as HTML
 
 ## Technology Overview
 
--   [Babel](https://babeljs.io): Compiler used with webpack to support TypeScript and React while producing cross-browser compatible code for the build.
--   [Docker](https://www.docker.com): Used for an optional development environment. This can be handy if you want more consistency across different machines with minimal setup.
--   [ESLint](https://eslint.org): Linter to quickly find code problems.
--   [Git](https://git-scm.com): Version control system to track code changes.
--   [Husky](https://typicode.github.io/husky) & [lint-staged](https://github.com/okonet/lint-staged): Pre-commit hooks to enforce code style and identify problems.
--   [Jest](https://jestjs.io): Testing framework to ensure code correctness and coverage.
--   [Prettier](https://prettier.io): Formatter to enforce code style.
--   [webpack](https://webpack.js.org): Bundler used to build the app.
+This project extends the [`react-electron-ts` starter](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/react-electron-ts) with the following:
 
-## Learn More
+-   [unified](https://unifiedjs.com), [rehype](https://unifiedjs.com/explore/package/rehype), [remark](https://unifiedjs.com/explore/package/remark)
+-   [Tailwind CSS](https://tailwindcss.com)
 
-To get a more in-depth idea about what building off of this starter project is like, please read the [Developer Experience Walkthrough](./dx-walkthrough.md).
+The remaining technologies are inherited from the starter:
+
+-   [TypeScript](https://typescriptlang.org): JavaScript with type safety
+-   [Electron](https://electronjs.org): Framework for building desktop apps through [Node.js](https://nodejs.org) & [Chromium](https://chromium.org/chromium-projects)
+-   [React](https://react.dev): Library for user interfaces
+-   [CSS](https://w3.org/Style/CSS/Overview.en.html): The standard language for styling
+-   [Embedded JavaScript (EJS)](https://ejs.co): Templating language used to generate the build's `index.html` document
+-   [Jest](https://jestjs.io): Testing framework
+-   [React Testing Library](https://testing-library.com/docs/react-testing-library/intro): Unit testing library specialized for React components
+-   [Mock Service Worker (MSW)](https://mswjs.io): API mocking library used to mock network requests
+-   [Playwright](https://playwright.dev): End-to-end (E2E) testing
+-   [webpack](https://webpack.js.org): Bundler used to create builds
+-   [Babel](https://babeljs.io): Compiler used with webpack to support TypeScript and output Electron-compatible code
+-   [ESLint](https://eslint.org): Linter used to identify problems in TypeScript & JavaScript
+-   [Stylelint](https://stylelint.io): Linter used to identify problems in CSS
+-   [Prettier](https://prettier.io): Formatter used to enforce code style
+-   [Husky](https://typicode.github.io/husky) + [lint-staged](https://github.com/okonet/lint-staged): Pre-commit hooks to check for type, lint, and formatting errors before Git commits are made
+
+## Run This on Your Machine
+
+Please refer to the ["Getting Started" section of the `react-electron-ts` README](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/react-electron-ts#getting-started).
+
+## LJAS Documentation
+
+[📖 Learn more about **Lean JS App Starter** by reading its docs.](https://github.com/mattlean/lean-js-app-starter/tree/master/docs)
