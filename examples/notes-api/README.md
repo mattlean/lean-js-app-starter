@@ -2,7 +2,7 @@
 
 This is a [representational state transfer (REST) API](https://en.wikipedia.org/wiki/REST) server for a notes app written in [TypeScript](https://typescriptlang.org) with [Express](https://expressjs.com) and [PostgreSQL](https://postgresql.org).
 
-The server has the following features:
+This server has the following features:
 
 -   User registration with passwords encrypted by [bcrypt](https://en.wikipedia.org/wiki/Bcrypt)
 -   User sessions implemented with [JSON web tokens (JWTs)](https://datatracker.ietf.org/doc/html/rfc7519)
@@ -13,13 +13,13 @@ The server has the following features:
 
 ## Live Demo
 
-You can access a demo of the API live here:
+You can access a live demo of this API here:
 
 ```
 https://notes-api-15yz.onrender.com/api/v1
 ```
 
-You can read the docs for it here:  
+You can read the docs for this API here:  
 **https://notes-api-15yz.onrender.com/api/v1/docs**
 
 _Note this uses [Render](https://render.com)'s free service so if the project hasn't been visited in a while, the initial page load may take longer than usual since the service has to be spun up. Also if the budget of free hours has been used up, the project will fail to load._

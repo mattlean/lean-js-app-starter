@@ -6,7 +6,7 @@ _Check out the [`counter` example](https://github.com/mattlean/lean-js-app-start
 
 ## Live Demo
 
-You can try a demo of this app live here:  
+You can try a live demo of this app here:  
 **https://counter-react-qmyj.onrender.com**
 
 _Note this uses [Render](https://render.com)'s free service so if the project hasn't been visited in a while, the initial page load may take longer than usual since the service has to be spun up. Also if the budget of free hours has been used up, the project will fail to load._

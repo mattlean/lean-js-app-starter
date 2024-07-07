@@ -8,7 +8,7 @@ The app has the following features:
 -   Support for [GitHub flavored markdown](https://github.github.com/gfm)
 -   Real-time preview of markdown
 -   [Light mode](./src/playwright/color-mode.test.ts-snapshots/light-mode-chromium-darwin.png) & [dark mode](./src/playwright/color-mode.test.ts-snapshots/dark-mode-chromium-darwin.png)
--   Focus mode that reduces UI clutter for the times when you really have to focus on writing
+-   Focus mode that reduces UI elements to the essentials for those that prefer a minimalist user experience
 -   Export markdown preview as HTML
 
 ## Technology Overview

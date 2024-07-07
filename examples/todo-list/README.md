@@ -8,7 +8,7 @@ Be aware that this was ported from LJAS v0.1.1 is classified as a legacy project
 
 ## Live Demo
 
-You can try a demo of this app live here:  
+You can try a live demo of this app here:  
 **https://todo-list-jk0o.onrender.com**
 
 _Note this uses [Render](https://render.com)'s free service so if the project hasn't been visited in a while, the initial page load may take longer than usual since the service has to be spun up. Also if the budget of free hours has been used up, the project will fail to load._
@@ -42,10 +42,10 @@ The remaining technologies are inherited from the starter:
 
 Please refer to the ["Getting Started" section of the `react-browser` README](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/react-browser#getting-started).
 
-## LJAS Documentation
-
-[📖 Learn more about **Lean JS App Starter** by reading its docs.](https://github.com/mattlean/lean-js-app-starter/tree/master/docs)
-
 ## Project Background
 
 This project was originally created following [Dan Abramov's Fundamentals of Redux Course](https://egghead.io/courses/fundamentals-of-redux-course-from-dan-abramov-bd5cc867).
+
+## LJAS Documentation
+
+[📖 Learn more about **Lean JS App Starter** by reading its docs.](https://github.com/mattlean/lean-js-app-starter/tree/master/docs)
