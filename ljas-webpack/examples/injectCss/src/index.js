@@ -1,6 +1,6 @@
 import './index.css'
 
-function component() {
+function helloElement() {
     const element = document.createElement('div')
 
     element.innerHTML = 'Hello webpack'
@@ -8,4 +8,4 @@ function component() {
     return element
 }
 
-document.body.appendChild(component())
+document.body.appendChild(helloElement())

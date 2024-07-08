@@ -1,6 +1,6 @@
 import WebpackLogo from './webpack-logo.png'
 
-function component() {
+function helloElement() {
     const element = document.createElement('img')
 
     element.setAttribute('src', WebpackLogo)
@@ -9,4 +9,4 @@ function component() {
     return element
 }
 
-document.body.appendChild(component())
+document.body.appendChild(helloElement())

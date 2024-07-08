@@ -9,10 +9,10 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.css$/,
+                test: /\.s[ac]ss$/i,
                 exclude: /node_modules/,
                 sideEffects: true,
-                use: [MiniCssExtractPlugin.loader, 'css-loader'],
+                use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
             },
         ],
     },
