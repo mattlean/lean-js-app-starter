@@ -1,4 +1,4 @@
-# compileReact
+# ljas-webpack compileReact Example
 
 To run webpack, run the following `package.json` script:
 

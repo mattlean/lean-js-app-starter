@@ -1,4 +1,4 @@
-# ljas-webpack buildHtml Example
+# ljas-webpack loadImages Example
 
 To run webpack, run the following `package.json` script:
 

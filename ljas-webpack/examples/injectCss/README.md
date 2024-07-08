@@ -1,4 +1,4 @@
-# ljas-webpack buildHtml Example
+# ljas-webpack injectCss Example
 
 To run webpack, run the following `package.json` script:
 

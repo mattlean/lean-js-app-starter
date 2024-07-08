@@ -1,4 +1,4 @@
-# compileJs
+# ljas-webpack compileJs Example
 
 To run webpack, run the following `package.json` script:
 

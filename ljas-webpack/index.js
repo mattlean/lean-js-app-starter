@@ -190,6 +190,7 @@ exports.injectCss = (options) => ({
  *
  * Tested with:
  * - css-loader@^6.8.1
+ * - sass@~1.64.2
  * - sass-loader@^13.3.2
  * - style-loader@^3.3.3
  *

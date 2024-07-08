@@ -1,4 +1,4 @@
-# buildSourceMaps
+# ljas-webpack buildSourceMaps Example
 
 To run webpack, run the following `package.json` script:
 
