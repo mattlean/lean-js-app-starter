@@ -1,6 +1,6 @@
 {
     "name": "ljas-webpack",
-    "version": "0.1.0-rc-20240626",
+    "version": "0.1.0-rc-20240708",
     "description": "webpack configuration parts for webpack config compositions",
     "main": "index.js",
     "author": "Matthew Lean <matt@mattlean.com> (https://mattlean.com)",
