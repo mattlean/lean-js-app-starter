@@ -7,9 +7,9 @@ const glob = require('glob')
 const removeUnusedCss = require('ljas-webpack/removeUnusedCss')
 const { merge } = require('webpack-merge')
 
-module.exports = merge([
+module.exports = merge(
     buildCss(),
     removeUnusedCss({
         paths: glob.sync('./src/**/*', { nodir: true }),
     }),
-])
+)

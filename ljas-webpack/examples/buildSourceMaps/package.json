@@ -3,7 +3,7 @@
         "build": "webpack"
     },
     "devDependencies": {
-        "ljas-webpack": "^0.1.0-rc-20240626",
+        "ljas-webpack": "^0.1.0-rc-20240708",
         "webpack": "^5.85.0",
         "webpack-cli": "^5.1.1"
     },

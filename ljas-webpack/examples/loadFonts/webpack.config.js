@@ -6,4 +6,4 @@ const buildCss = require('ljas-webpack/buildCss')
 const { loadFonts } = require('ljas-webpack')
 const { merge } = require('webpack-merge')
 
-module.exports = merge([buildCss(), loadFonts()])
+module.exports = merge(buildCss(), loadFonts())

@@ -17,6 +17,7 @@ const { setupDevServer } = require('.')
  * - @babel/core@^7.22.1
  * - @babel/preset-env@^7.22.4
  * - @babel/preset-react@^7.22.3
+ * - @babel/preset-typescript@^7.21.5
  * - @pmmmwh/react-refresh-webpack-plugin@^0.5.11
  * - babel-loader@^9.1.2
  * - fork-ts-checker-webpack-plugin@^8.0.0

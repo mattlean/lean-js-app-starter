@@ -4,7 +4,7 @@
     },
     "devDependencies": {
         "css-loader": "^6.8.1",
-        "ljas-webpack": "^0.1.0-rc-20240626",
+        "ljas-webpack": "^0.1.0-rc-20240708",
         "style-loader": "^3.3.3",
         "webpack": "^5.85.0",
         "webpack-cli": "^5.1.1"

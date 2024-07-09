@@ -6,8 +6,4 @@ const buildHtml = require('ljas-webpack/buildHtml')
 const setupReactFastRefreshServer = require('ljas-webpack/setupReactFastRefreshServer')
 const { merge } = require('webpack-merge')
 
-module.exports = merge(
-    { mode: 'development' },
-    buildHtml(),
-    setupReactFastRefreshServer(),
-)
+module.exports = merge(buildHtml(), setupReactFastRefreshServer())
