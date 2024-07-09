@@ -51,6 +51,8 @@ const setupReactFastRefreshServerTs = (options, mode = 'development') => {
     delete o.reactRefreshWebpackPlugin
 
     return merge([
+        { mode: 'development' },
+
         compileReactTs(
             {
                 ...o,
