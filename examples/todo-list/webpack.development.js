@@ -1,10 +1,10 @@
 const {
     buildSourceMaps,
+    ignoreWatch,
     injectCss,
     loadFonts,
     loadImages,
     setupDevServer,
-    watchIgnore,
 } = require('ljas-webpack')
 const { merge } = require('webpack-merge')
 
@@ -27,6 +27,8 @@ module.exports = merge([
     },
 
     buildSourceMaps('cheap-module-source-map'),
+
+    ignoreWatch(/node_modules/),
 
     injectCss({ rule: { include: PATH_SRC } }),
 
@@ -55,6 +57,4 @@ module.exports = merge([
         port: process.env.PORT_WEBPACK_DEV_SERVER,
         watchFiles: ['src/**/*.ejs'],
     }),
-
-    watchIgnore(/node_modules/),
 ])

@@ -3,9 +3,9 @@ const buildHtml = require('ljas-webpack/buildHtml')
 const setupReactFastRefreshServer = require('ljas-webpack/setupReactFastRefreshServer')
 const {
     buildSourceMaps,
+    ignoreWatch,
     loadFonts,
     loadImages,
-    watchIgnore,
 } = require('ljas-webpack')
 const { merge } = require('webpack-merge')
 
@@ -49,6 +49,8 @@ module.exports = merge([
     }),
 
     buildSourceMaps('cheap-module-source-map'),
+
+    ignoreWatch(/node_modules/),
 
     loadFonts({
         rule: {
@@ -96,6 +98,4 @@ module.exports = merge([
             watchFiles: ['src/frontend/**/*.ejs'],
         },
     }),
-
-    watchIgnore(/node_modules/),
 ])

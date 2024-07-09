@@ -3,9 +3,9 @@ const buildHtml = require('ljas-webpack/buildHtml')
 const setupReactFastRefreshServerTs = require('ljas-webpack/setupReactFastRefreshServerTs')
 const {
     buildSourceMaps,
+    ignoreWatch,
     loadFonts,
     loadImages,
-    watchIgnore,
 } = require('ljas-webpack')
 const { merge } = require('webpack-merge')
 
@@ -49,6 +49,8 @@ module.exports = merge([
     }),
 
     buildSourceMaps('cheap-module-source-map'),
+
+    ignoreWatch(/node_modules/),
 
     loadFonts({
         rule: {
@@ -99,6 +101,4 @@ module.exports = merge([
             typescript: { configFile: 'tsconfig.build.frontend.json' },
         },
     }),
-
-    watchIgnore(/node_modules/),
 ])

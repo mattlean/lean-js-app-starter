@@ -1,10 +1,10 @@
 const setupReactFastRefreshServerTs = require('ljas-webpack/setupReactFastRefreshServerTs')
 const {
     buildSourceMaps,
+    ignoreWatch,
     injectCss,
     loadFonts,
     loadImages,
-    watchIgnore,
 } = require('ljas-webpack')
 const { merge } = require('webpack-merge')
 
@@ -27,6 +27,8 @@ module.exports = merge([
     },
 
     buildSourceMaps('cheap-module-source-map'),
+
+    ignoreWatch(/node_modules/),
 
     injectCss({ rule: { include: PATH_SRC } }),
 
@@ -73,6 +75,4 @@ module.exports = merge([
             typescript: { configFile: 'tsconfig.build.json' },
         },
     }),
-
-    watchIgnore(/node_modules/),
 ])

@@ -5,9 +5,9 @@ const tailwindcss = require('tailwindcss')
 const tailwindcssNesting = require('tailwindcss/nesting')
 const {
     buildSourceMaps,
+    ignoreWatch,
     loadFonts,
     loadImages,
-    watchIgnore,
 } = require('ljas-webpack')
 const { merge } = require('webpack-merge')
 
@@ -37,6 +37,8 @@ module.exports = merge([
     },
 
     buildSourceMaps('cheap-module-source-map'),
+
+    ignoreWatch(/node_modules/),
 
     injectTransformedCss({
         rule: { include: PATH_RENDERER_SRC },
@@ -91,6 +93,4 @@ module.exports = merge([
             typescript: { configFile: 'tsconfig.build.renderer.json' },
         },
     }),
-
-    watchIgnore(/node_modules/),
 ])

@@ -1,6 +1,6 @@
 const injectTransformedSass = require('ljas-webpack/injectTransformedSass')
 const setupReactFastRefreshServerTs = require('ljas-webpack/setupReactFastRefreshServerTs')
-const { buildSourceMaps, watchIgnore } = require('ljas-webpack')
+const { buildSourceMaps, ignoreWatch } = require('ljas-webpack')
 const { merge } = require('webpack-merge')
 
 const { PATH_BUILD_DEV, PATH_ROOT, PATH_SRC } = require('./PATHS')
@@ -22,6 +22,8 @@ module.exports = merge([
     },
 
     buildSourceMaps('cheap-module-source-map'),
+
+    ignoreWatch(/node_modules/),
 
     injectTransformedSass({ rule: { include: PATH_SRC } }),
 
@@ -48,6 +50,4 @@ module.exports = merge([
             typescript: { configFile: 'tsconfig.build.json' },
         },
     }),
-
-    watchIgnore(/node_modules/),
 ])
