@@ -8,7 +8,7 @@ Welcome to the documentation for **Lean JS App Starter (LJAS)**!
 -   [Frequently Asked Questions](./faq.md)
 -   Setup
     -   [Code Editors](./setup/code-editors.md)
-    -   Git Pre-Commit Hooks
+    -   [Git Pre-Commit Hooks](./setup/git-pre-commit-hooks.md)
 -   Developing
     -   Developer Experience Overview
     -   Debugging

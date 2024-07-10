@@ -16,8 +16,8 @@ The remainder of this document will go over how to setup and work with VS Code.
 
 ## Install Extensions
 
-Open the root directory of a project with VS Code and then open the extensions view by clicking on its icon in the activity bar on the side of VS Code. The icon looks like this:  
-![VS Code Extensions view icon](../images/vs-code-extensions-view-icon.png)
+Open the root directory of a project with VS Code and then open the extensions view by clicking on its icon in the activity bar on the side of the editor. The icon looks like this:  
+![VS Code extensions view icon](../images/vs-code-extensions-icon.png)
 
 Type in `@recommended` into the search box to view the recommended extensions for the project and install all of them. All projects will recommend the [ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) and [Prettier extension](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode), but there may be some variance in others depending on the type of project being used. For example, frontend-related projects will also recommend the [Stylelint extension](https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint).
 

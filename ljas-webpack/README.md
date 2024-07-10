@@ -22,7 +22,7 @@ If you're unfamiliar with using `webpack-merge`, we highly recommended reading t
 
 You can also get an idea of how `webpack-merge` works by reading over its usage in the [webpack docs' "Production" guide](https://webpack.js.org/guides/production). It doesn't go over the concept of a configuration parts like SurviveJS does, but it does use `webpack-merge` to split the webpack config across separate files to improve maintainability.
 
-The root of this repository will have various `.js` files that export functions available for you to import into your own webpack configs. Each function exported from these files will have a [JSDoc](https://jsdoc.app) comment that explains what they do and what packages they rely on.
+The root of this repository will have various `.js` files that export functions available for you to import into your own webpack configs. Each function exported from these files will have a [JSDoc](https://jsdoc.app) comment that explains what it does and what packages it relies on.
 
 You can find simple examples of webpack configs for various scenarios written with `ljas-webpack` in the [`examples/`](./examples) directory.
 

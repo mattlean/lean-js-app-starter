@@ -1,37 +1,39 @@
-# Git pre-commit hooks
+# Git Pre-commit Hooks
 
-We've already pre-configured Git pre-commit hooks to type check, lint, and format code, but we don't have them running out-of-the-box due to some difficulty it would introduce for users setting up projects that aren't already associated with a Git repository.
+We've already pre-configured [Git pre-commit hooks](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks#_committing_workflow_hooks) to find type, link, and format warnings/errors, but we don't have them running out-of-the-box due to some difficulty it would introduce for users setting up projects that aren't already associated with a Git repository.
 
 ## Setup
 
-So before you continue, make sure the project is linked to a Git repository. You can simply run `git init` at the project root directory which should generate a `.git` directory there.
+Before you continue this document, make sure the project is linked to a Git repository. You can simply run `git init` at the project root directory which should generate a `.git` directory there.
 
 We use [Husky](https://typicode.github.io/husky) and [lint-staged](https://github.com/okonet/lint-staged) to handle pre-commit hooks, so you will need to install them with the following command:
 
-```
+```console
 npm install husky@^8.0.3 lint-staged@^13.2.2 --save-dev
 ```
 
-Next we'll need to create a new `package.json` script called `prepare`. We can easily do that with this command:
+Next you'll need to create a new `package.json` script called `prepare`. You can easily do that with this command:
 
-```
+```console
 npm pkg set scripts.prepare="husky install"
 ```
 
-Now run the new script:
+Now run the new `prepare` `package.json` script:
 
-```
+```console
 npm run prepare
 ```
 
 As Husky has already been configured in the `.husky` directory and lint-staged has already been configured in the `.lintstagedrc` file, pre-commit hooks should be working for you now!
 
-Note that while setting up Husky is great for your development environment, it may cause issues for other environments where you wouldn't want pre-commit hooks like a CI server or some Docker environments. [You can refer to Husky's "How To" documentation on potential solutions.](https://typicode.github.io/husky/how-to.html#ci-server-and-docker)
+## How do I bypass pre-commit hooks?
 
-## How do I bypass lint-staged's pre-commit hooks?
+Simply pass in the `--no-verify` or `-n` flag with your commit. So for example, in the terminal your command might look similar to:
 
-Simply pass in the `--no-verify` flag with your commit. So for example, in the terminal your command might look similar to:
-
-```
+```console
 git commit --no-verify
 ```
+
+## Disabling pre-commit hooks for certain environments
+
+Note that while pre-commit hooks are great for your development environment, they may cause issues for other environments where you wouldn't want them to run like a CI server or some Docker environments. [For potential solutions, please refer to Husky's "How To" doc.](https://typicode.github.io/husky/how-to.html#ci-server-and-docker)

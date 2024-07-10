@@ -1,6 +1,6 @@
 # Lean JavaScript Application Starter
 
-**Lean JS App Starter (LJAS)** is a development environment that is designed to get you up and running as quickly while being open and flexible to handle potential changes in project requirements as your app grows.
+**Lean JS App Starter (LJAS)** is a development environment that is designed to get you up and running quickly while being flexible to handle potential changing project requirements as your app grows.
 
 **🎉 Don't just code for browsers: build servers, desktop apps, CLI tools, and more**
 
@@ -38,7 +38,7 @@
 
 **🤔 Need help deciding if LJAS is right for you?**
 
-> Read ["Why Lean JS App Starter?"](./docs/why.md)
+> Read the ["Why Lean JS App Starter?" doc](./docs/why.md).
 
 **📖 Learn more about everything LJAS has to offer!**
 
