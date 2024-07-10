@@ -1,36 +1,34 @@
 # Why Lean JS App Starter?
 
-In the past decade, starter projects have seen a historic rise within the JavaScript ecosystem, especially in frontend web development. If you're new to frontend work, starter projects are basically essential. Manually setting up a development environment can be extremely time-consuming and complex. By using a pre-configured, ready-to-go project, you can skip all of the setup work and start writing application code right away.
+This past decade has seen a historic rise for project starters in the JavaScript ecosystem. Sometimes they're called templates, development environments, or boilerplates, but regardless of what they're called, at the end of the day, they all exist for the same reason—they give developers quick and easy access to all the modern conveniences brought to us by all these new libraries and tools that ironically require time-consuming and troublesome setup processes to get them up and running.
 
-Right now there are already a couple great starter projects to work with that truly deliver on their promise to get you to your application code as quickly as possible—[Vite](https://vitejs.dev) being the most notable one currently. However, there are still a few things to consider when choosing the right starter project for you.
+Tools like [Epic Stack](https://github.com/epicweb-dev/epic-stack), [Vite](https://vitejs.dev), or [Create React App](https://create-react-app.dev) are some of the more popular options today, and **Lean JS App Starter (LJAS)** is yet another competitor in the field. And while each tool has their own advantages, LJAS has a few of its own that gives it value in the current ecosystem and may make it the right option for your project.
+
+## Configuration Transparency
+
+Most project starters successfully accomplish their goal of keeping the setup process simple and kickstarting projects quickly. However, one potential problem is that most project starters obfuscate the underlying configurations, making it difficult to understand how everything works and make changes on your own. While this will never be a concern for people who will never need to make customizations, it will be an issue for those that need complete control in order to meet requirements for features that are not available out-of-the-box.
+
+Lean JS App Starter takes a more "classic" approach where nothing is hidden and we try to make working with the configs as straightforward as possible. There is no need to do anything like eject just so you can tinker under-the-hood, and none of the configs are doing anything out of the ordinary. Most of it is written similarly to what you'd write on your own if you were following each tool's getting started guides, so if you understand the basics of a tool—e.g., [webpack](https://webpack.js.org), [Babel](https://babeljs.io), [ESLint](https://eslint.org), [VS Code](https://code.visualstudio.com)—then you will be able to easily understand how LJAS uses it and consequently be able to make changes easily.
+
+That also means if you encounter a tool you're unfamiliar with, going through its getting started guide or skimming through its docs should be adequate enough for you to make customizations. In addition to that, LJAS's documentation does its best to explain how things are configured and the reasoning behind them or, at the very least, will point you to other resources to improve your understanding and help you make your own informed decisions and alterations.
 
 ## Support for Non-Browser Targets
 
-While the frontend web development ecosystem is very comfortable with bundlers, they haven't seen the same level of acceptance elsewhere in the JavaScript ecosystem where many just setup nodemon and call it a day.
+While project starters have been embraced by frontend web development, they haven't seen the same level of adoption elsewhere in the JavaScript ecosystem.
+LJAS brings the developer experience provided by "frontend"-style project starters to [Node.js](https://nodejs.org) and [Electron](https://electronjs.org), and a lot of that is enabled by relying on build tools like webpack and Babel.
 
-LJAS brings the developer experience provided by "frontend"-style starters like Vite or Create React App to Node.js and Electron. This means non-frontend JavaScript developers can leverage all the benefits frontend developers have already been benefiting from like bundling, code splitting, aliasing, tree shaking, minification, Babel plugins, webpack loaders and plugins, etc.
+Some might argue that adding a bundler like webpack is unnecessary for something like backend code because build size is not a concern for end-users. However, there are some scenarios where build size can still be an issue for developers. For instance, long deployment times can be a problem for larger projects, and bundlers can save a significant amount of time by eliminating unnecessary files and code while reducing the overall build size through other means. Bundlers are also valuable for serverless application development where they can used to manage and stay under strict build size limits.
 
-Some might argue that adding a bundler like webpack is unnecessary for something like backend code since we don't need to worry shipping a large build to end-users. However, there are still many cases where bundling is valuable, even for backends.
+Compilers like Babel provide a lot of value for Node.js-based projects too. They can be used for syntax transformations so you can utilize ECMAScript features unsupported for your project's Node.js version just like how they're used for browsers. They can also be used to deal with a lot of the interoperability issues between CommonJS and ECMAScript modules, a plight foreign to most frontend developers. Adding Babel into the workflow isn't far of a deviation from common practices too since it's already common for non-frontend developers to rely on some kind of compilation step in their development process thanks to the popularity of TypeScript.
 
--   Support for Node.js and Electron
--   More consistency for developers working across projects with different targets
--   Node.js development can leverage advantages with using a bundler like aliases
--   Node.js projects can build for production which can help with reducing bundle size which can be critical for some deployments like ones for lambdas
--   With the growth in popularity of TypeScript, now even backend developers will have some kind of compilation step as they code
+On top of all this, non-frontend developers can improve their developer experience by gaining access to all the benefits frontend developers have already been living with like import aliasing, code splitting, Babel plugins, webpack loaders and plugins, optimized bundling for production, etc.
 
-## Transparency
-
-One potential problem is that most project starters obfuscate the underlying configurations, making it difficult to understand how everything works. While that means it's great in keeping it simple for the people that will never need to make customizations, it also means it can cause difficultly for those that need complete control due needing functionality that's not available out-of-the-box.
-
-Lean JS App Starter (LJAS) instead takes a more "classic" approach to starter projects where nothing is obfuscated. There is no need to do anything like eject just so you can tinker under-the-hood, and the configuration isn't doing anything clever or special. Most of it is similar to what you'd write if you were following each build tool's documentation, so if you understand the basics of each tool like webpack, Babel, ESLint, or Docker, you will be able to easily understand how LJAS is setup.
-
-## Prevalence of webpack
-
-Believe it or not, the time where setting up your development environment from scratch or using create-react-app was actually not too long ago (even though it may feel like an eternity already). So while Vite has gained a significant portion of the build tool space, there are still a ton of active codebases that are running their own custom webpack configurations or relying on create-react-app which is webpack based today.
-
-You may have inherited a codebase that falls into this generation and need direction on how to make updates to those configurations, in which case LJAS can be useful as a reference to see how how you can tailor your non-LJAS but still webpack-based configuration to your needs.
-
--   reference state of JS 2023 where webpack is still in the lead
--
+For those working on multiple projects with different targets at the same time, LJAS can be particularly useful for them by providing a consistent development environment across all projects. For example, when working in your source code, you don't need to worry about differing ECMAScript versions because all projects use the same version. LJAS's webpack and Babel setup will deal with transforming the code for you so it can run properly for the target, so you only need to think in terms of "bundler-style modules" which are essentially ECMAScript modules with support for extensionless import declarations (which was popularized by Create React App and webpack). LJAS also uses the same dependencies across the board as much as possible, so you'll mostly be coding with the same technologies like Jest, Playwright, etc. whether or not you're in a project for a browser app or a project for a desktop app. These factors make it a much smoother experience when it comes to reading different project sources and moving code between them.
 
 ## Docker Development Environment
+
+LJAS offers an optional [Docker](https://docker.com)-based developer environment for all projects that do not target Electron. This drastically simplifies the setup process because it cuts down the amount of prerequisites you need to get up and running to just Docker. Containerized development environments help to reduce the "but it works on my machine" problem as everything the app needs to execute will be running in a container.
+
+If a developer has previously worked on other projects, their new LJAS-based project could encounter version conflicts when working natively with dependencies that exist outside of `node_modules/` like Node.js, [PostgreSQL](https://postgresql.org), and [MongoDB](https://mongodb.com). The Docker development environment circumvents this by having all dependencies exist in an isolated containerized environment, so you won't to deal with the hassle of managing multiple versions and instances of each technology on a single machine.
+
+Because containers are so easy to spin up and down and replicate, LJAS also provides a specialized end-to-end (E2E) Docker development environment for frontend-related projects that runs the app in the production environment. This is useful for executing Playwright tests as they will perform under conditions most accurate to the end-user experience, giving more value to the test results. And because it's just another containerized environment, it can be run alongside the standard Docker development environment at the same time with no conflicts.
