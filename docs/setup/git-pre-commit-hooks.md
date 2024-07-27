@@ -1,4 +1,4 @@
-# Git Pre-commit Hooks
+# Git Pre-Commit Hooks
 
 We've already pre-configured [Git pre-commit hooks](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks#_committing_workflow_hooks) to find type, link, and format warnings/errors, but we don't have them running out-of-the-box due to some difficulty it would introduce for users setting up projects that aren't already associated with a Git repository.
 

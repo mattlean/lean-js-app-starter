@@ -1,5 +1,16 @@
 # Debugging
 
+## Contents
+
+-   [Node.js applications & Electron main processes with Visual Studio Code](#nodejs-applications--electron-main-processes-with-visual-studio-code)
+-   [Frontend applications with Google Chrome](#frontend-applications-with-google-chrome)
+-   [Jest tests with Visual Studio Code](#jest-tests-with-visual-studio-code)
+-   [Playwright Tests with Visual Studio Code](#playwright-tests-with-visual-studio-code)
+-   [Playwright Tests with Playwright Inspector](#playwright-tests-with-playwright-inspector)
+-   [webpack build process with Google Chrome](#webpack-build-process-with-google-chrome)
+
+---
+
 ## Node.js applications & Electron main processes with Visual Studio Code
 
 In VS Code, open the run and debug view by clicking on its icon in the activity bar on the side of the editor. The icon looks like this:  
@@ -56,7 +67,7 @@ Note that this method does not work with Electron. For that we recommend the [Pl
 
 ## Playwright Tests with Playwright Inspector
 
-The Playwright Inspector is a GUI tool that's an alternate method for debugging tests. We recommend debugging Playwright with [VS Code's Playwright extension](#playwright-tests-with-visual-studio-code) over this method, but this is the go-to option if you are not coding with VS Code. Also Electron Playwright tests will not work with the VS Code extension, so this is actually the best option for debugging for that scenario.
+The Playwright Inspector is a GUI tool that's an alternate method for debugging tests. We recommend debugging Playwright with [VS Code's Playwright extension](#playwright-tests-with-visual-studio-code) over this method, but this is the go-to option if you are not coding with VS Code. Also Electron Playwright tests will not work with the VS Code extension, so this is actually the best option for debugging in that scenario.
 
 The Playwright docs have [a great guide on how to debug with the Playwright Inspector](https://playwright.dev/docs/debug#playwright-inspector).
 

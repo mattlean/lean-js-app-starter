@@ -1,0 +1,47 @@
+# This Docker Compose configuration file is based on the express-postgres starter.
+# It comments out the lines related to the app service to allow for the usage of a
+# hybrid Docker development environment.
+version: '3.8'
+name: ljas-hybrid-example
+services:
+    db:
+        build:
+            dockerfile: db.Dockerfile
+        image: ljas-hybrid-example-db
+        container_name: ljas-hybrid-example-db
+        restart: always
+        ports:
+            - '${POSTGRES_PORT}:${POSTGRES_PORT}'
+        env_file: .env
+        command: '-p ${POSTGRES_PORT}'
+        volumes:
+            - ljas-hybrid-example-db-data:/var/lib/postgresql/data
+        healthcheck:
+            test:
+                [
+                    'CMD-SHELL',
+                    'pg_isready -d $${POSTGRES_DB} -U $${POSTGRES_USER} -p ${POSTGRES_PORT}',
+                ]
+            interval: 10s
+            timeout: 5s
+            retries: 5
+    # app:
+    #     build: .
+    #     image: ljas-hybrid-example
+    #     container_name: ljas-hybrid-example
+    #     depends_on:
+    #         db:
+    #             condition: service_healthy
+    #     restart: always
+    #     ports:
+    #         - '${PORT_EXPRESS}:${PORT_EXPRESS}'
+    #         - '5555:5555' # Exposes Prisma Studio. Also defined in the "prisma:studio" package.json script.
+    #         - '9229:9229' # Exposes Node.js debugger. Also defined in the "start:debug" package.json script.
+    #         - '9230:9230' # Exposes Jest debugger. Also defined in the "test:debug" package.json script.
+    #         - '9231:9231' # Exposes webpack debugger. Also defined in the build debug package.json scripts.
+    #     volumes:
+    #         - .:/code
+    #         - ljas-hybrid-example-node_modules:/code/node_modules
+volumes:
+    ljas-hybrid-example-db-data:
+    # ljas-hybrid-example-node_modules:

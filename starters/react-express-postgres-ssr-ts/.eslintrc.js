@@ -1,7 +1,4 @@
 const RULES_REACT = {
-    // This requires code utilizing JSX to be within a .jsx file.
-    // This is to be consistent with TypeScript where it requires
-    // all code utilizing JSX to be within a .tsx file.
     'react/jsx-filename-extension': ['error', { extensions: ['.jsx', '.tsx'] }],
 }
 

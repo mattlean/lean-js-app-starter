@@ -1,5 +1,7 @@
 # Developing with Docker
 
+# TODO: Standard, Hybrid, Immersed
+
 Instead of running the projects natively on your computer, we've also provided a containerized development environment with [Docker](https://www.docker.com) that's available for you to use.
 
 ## What things should I consider when deciding whether to use the Docker development environment?
