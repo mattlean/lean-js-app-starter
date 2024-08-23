@@ -48,7 +48,6 @@ services:
             - E2E=true
         volumes:
             - .:/code
-            - ljas-react-express-mongo-ssr-ts-node_modules-e2e:/code/node_modules
-volumes:
-    # ljas-react-express-mongo-ssr-ts-db-data-e2e:
-    ljas-react-express-mongo-ssr-ts-node_modules-e2e:
+            - /code/node_modules
+# volumes:
+#     ljas-react-express-mongo-ssr-ts-db-data-e2e:

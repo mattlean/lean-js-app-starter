@@ -17,6 +17,4 @@ services:
             - PORT=${PORT_WEBPACK_DEV_SERVER_E2E} # Specify port for http-server to listen on
         volumes:
             - .:/code
-            - ljas-basic-browser-ts-e2e-node_modules:/code/node_modules
-volumes:
-    ljas-basic-browser-ts-e2e-node_modules:
+            - /code/node_modules

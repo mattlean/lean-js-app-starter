@@ -41,7 +41,6 @@ services:
             - '9323:9323' # Exposes Playwright report. Also defined in the "test:e2e:report" package.json script and Playwright config.
         volumes:
             - .:/code
-            - ljas-react-express-mongo-ssr-ts-node_modules:/code/node_modules
+            - /code/node_modules
 volumes:
     ljas-react-express-mongo-ssr-ts-db-data:
-    ljas-react-express-mongo-ssr-ts-node_modules:

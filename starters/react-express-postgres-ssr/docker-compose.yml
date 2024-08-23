@@ -40,7 +40,6 @@ services:
             - '9323:9323' # Exposes Playwright report. Also defined in the "test:e2e:report" package.json script and Playwright config.
         volumes:
             - .:/code
-            - ljas-express-postgres-node_modules:/code/node_modules
+            - /code/node_modules
 volumes:
     ljas-express-postgres-db-data:
-    ljas-express-postgres-node_modules:

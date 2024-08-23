@@ -41,7 +41,6 @@ services:
             - '9323:9323' # Exposes Playwright report. Also defined in the "test:e2e:report" package.json script and Playwright config.
         volumes:
             - .:/code
-            - ljas-starchan-node_modules:/code/node_modules
+            - /code/node_modules
 volumes:
     ljas-starchan-db-data:
-    ljas-starchan-node_modules:

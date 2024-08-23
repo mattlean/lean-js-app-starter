@@ -48,7 +48,6 @@ services:
             - E2E=true
         volumes:
             - .:/code
-            - ljas-starchan-node_modules-e2e:/code/node_modules
-volumes:
-    # ljas-starchan-db-data-e2e:
-    ljas-starchan-node_modules-e2e:
+            - /code/node_modules
+# volumes:
+#     ljas-starchan-db-data-e2e:

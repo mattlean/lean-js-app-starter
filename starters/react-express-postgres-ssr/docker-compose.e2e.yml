@@ -45,7 +45,6 @@ services:
             - E2E=true
         volumes:
             - .:/code
-            - ljas-express-postgres-e2e-node_modules:/code/node_modules
-volumes:
-    # ljas-express-postgres-e2e-db-data:
-    ljas-express-postgres-e2e-node_modules:
+            - /code/node_modules
+# volumes:
+#     ljas-express-postgres-e2e-db-data:

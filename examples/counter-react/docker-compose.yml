@@ -13,6 +13,4 @@ services:
             - '9323:9323' # Exposes Playwright report. Also defined in the "test:e2e:report" package.json script and Playwright config.
         volumes:
             - .:/code
-            - ljas-counter-react-node_modules:/code/node_modules
-volumes:
-    ljas-counter-react-node_modules:
+            - /code/node_modules

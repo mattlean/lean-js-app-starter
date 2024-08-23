@@ -38,7 +38,6 @@ services:
             - '9231:9231' # Exposes webpack debugger. Also defined in the build debug package.json scripts.
         volumes:
             - .:/code
-            - ljas-notes-api-node_modules:/code/node_modules
+            - /code/node_modules
 volumes:
     ljas-notes-api-db-data:
-    ljas-notes-api-node_modules:
