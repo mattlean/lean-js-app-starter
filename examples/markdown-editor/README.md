@@ -13,7 +13,7 @@ The app has the following features:
 
 ## Technology Overview
 
-This project extends the [`react-electron-ts` starter](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/react-electron-ts) with the following:
+This project extends the [**React Electron (TypeScript)** starter](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/react-electron-ts) with the following:
 
 -   [unified](https://unifiedjs.com), [rehype](https://unifiedjs.com/explore/package/rehype), [remark](https://unifiedjs.com/explore/package/remark)
 -   [Tailwind CSS](https://tailwindcss.com)
@@ -38,7 +38,7 @@ The remaining technologies are inherited from the starter:
 
 ## Run This on Your Machine
 
-Please refer to the ["Getting Started" section of the `react-electron-ts` `README.md`](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/react-electron-ts#getting-started).
+Please refer to the ["Getting Started" section of the **React Electron (TypeScript)** starter's `README.md`](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/react-electron-ts#getting-started).
 
 ## LJAS Documentation
 
