@@ -44,7 +44,7 @@ The only prerequisite is that you must have [Node.js](https://nodejs.org/en/down
 
 This was tested on Node.js v18.16.0, but many other versions should still work.
 
-#### Step 1: Run the initialization script
+#### Step 1. Run the initialization script
 
 Open a terminal and run the init script in the project root directory which will execute all the setup commands like `npm install` for you:
 
@@ -54,7 +54,7 @@ bash init.sh
 
 _[Learn exactly what the init script is doing in method 3.](#method-3-manual-installation)_
 
-#### Step 2: Start the development server
+#### Step 2. Start the development server
 
 Start the dev server with this `package.json` script:
 
@@ -80,7 +80,7 @@ This was tested on Docker Desktop 4.20.0, but many other Docker versions should 
 
 #### Step 1. Create a `.env` file
 
-This can be done with the init script:
+This can be done with the init script in the project root directory:
 
 ```console
 bash init.sh --skip-npm-install --skip-playwright
@@ -88,7 +88,7 @@ bash init.sh --skip-npm-install --skip-playwright
 
 #### Step 2. Start the Docker development environment
 
-Start the Docker dev environment with the following command:
+Start the Docker dev environment by running the following command in a project directory:
 
 ```console
 docker compose up
@@ -100,7 +100,7 @@ This command may take a while the first time you run it since it will need to cr
 
 Although the development server is running within the container, it will still be able to watch for changes you make to the code on your host machine. That means the development server will still be able to reflect changes in the app as you write code and will operate similarly to if you were running the development server natively like in methods 1 or 3.
 
-When you're done working, you can press Ctrl+C in the terminal running the container to shut it down.
+When you're done working, you can press Ctrl+C in the terminal running the Docker dev environment to shut it down.
 
 ---
 
@@ -116,7 +116,7 @@ This was tested on Node.js v18.16.0, but many other versions should still work.
 
 #### Step 1. Install npm dependencies & devDependencies
 
-First, open a terminal and install npm dependencies with the following command:
+First, open a terminal, navigate to your project's root directory, and install npm dependencies with the following command:
 
 ```console
 npm install

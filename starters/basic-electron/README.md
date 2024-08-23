@@ -38,7 +38,7 @@ The only prerequisite is that you must have [Node.js](https://nodejs.org/en/down
 
 This was tested on Node.js v18.16.0, but many other versions should still work.
 
-#### Step 1: Run the initialization script
+#### Step 1. Run the initialization script
 
 Open a terminal and run the init script in the project root directory which will execute all the setup commands like `npm install` for you:
 
@@ -48,7 +48,7 @@ bash init.sh
 
 _[Learn exactly what the init script is doing in method 2.](#method-2-manual-installation)_
 
-#### Step 2: Start the development build
+#### Step 2. Start the development build
 
 Start the dev build with this `package.json` script:
 
@@ -72,7 +72,7 @@ This was tested on Node.js v18.16.0, but many other versions should still work.
 
 #### Step 1. Install npm dependencies & devDependencies
 
-First, open a terminal and install npm dependencies with the following command:
+First, open a terminal, navigate to your project's root directory, and install npm dependencies with the following command:
 
 ```console
 npm install
@@ -88,7 +88,7 @@ Copy the `.env.example` file and paste it as `.env`. This can be done with this 
 cp .env.example .env
 ```
 
-_Learn more about how this project handles environment variable files with the [`dotenv` package](https://github.com/motdotla/dotenv) from its README._
+_Learn more about how this project handles environment variable files with the [`dotenv` package from its `README.md`](https://github.com/motdotla/dotenv)._
 
 #### Step 3. Create a development build
 

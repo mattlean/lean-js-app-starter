@@ -10,7 +10,8 @@ module.exports = {
             jsx: true,
         },
     },
-    plugins: ['react'],
+    parser: '@typescript-eslint/parser',
+    plugins: ['@typescript-eslint', 'react'],
     rules: {
         'react/jsx-uses-vars': 'error',
     },

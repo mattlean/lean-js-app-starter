@@ -1,4 +1,4 @@
-# Express + PostgreSQL with Server-Side Rendering Starter
+# React + Express + PostgreSQL with Server-Side Rendering Starter
 
 ## `react-express-postgres-ssr`
 
@@ -50,7 +50,7 @@ Installation of the following is required before proceeding with this method:
 
 This was tested on Node.js v18.16.0 and PostgreSQL 15.3, but many other versions should still work.
 
-#### Step 1: Run the initialization script
+#### Step 1. Run the initialization script
 
 Open a terminal and run the init script in the project root directory which will execute all the setup commands like `npm install` for you:
 
@@ -90,7 +90,7 @@ This was tested on Docker Desktop 4.20.0, but many other Docker versions should 
 
 #### Step 1. Create a `.env` file
 
-This can be done with the init script:
+This can be done with the init script in the project root directory:
 
 ```console
 bash init.sh --skip-build --skip-npm-install --skip-prisma
@@ -98,13 +98,13 @@ bash init.sh --skip-build --skip-npm-install --skip-prisma
 
 #### Step 2. Start the Docker development environment
 
-Start the Docker dev environment with the following command:
+Start the Docker dev environment by running the following command in a project directory:
 
 ```console
 docker compose up
 ```
 
-When you're done working, you can press Ctrl+C in the terminal running the container to shut it down.
+When you're done working, you can press Ctrl+C in the terminal running the Docker dev environment to shut it down.
 
 ---
 
@@ -123,7 +123,7 @@ This was tested on Node.js v18.16.0 and PostgreSQL 15.3, but many other versions
 
 #### Step 1. Install npm dependencies & devDependencies
 
-First, open a terminal and install npm dependencies with the following command:
+First, open a terminal, navigate to your project's root directory, and install npm dependencies with the following command:
 
 ```console
 npm install

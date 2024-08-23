@@ -10,4 +10,4 @@ COPY package.json .
 RUN npm install
 RUN npm run test:e2e:install
 
-CMD bash init.sh && npm run dev
+CMD bash init.sh && npm run dev:production

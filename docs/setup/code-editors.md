@@ -21,9 +21,13 @@ Open the root directory of a project with VS Code and then open the extensions v
 
 Type in `@recommended` into the search box to view the recommended extensions for the project and install all of them. All projects will recommend the [ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) and [Prettier extension](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode), but there may be some variance in others depending on the type of project being used. For example, frontend-related projects will also recommend the [Stylelint extension](https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint).
 
+### Developing Inside a Container with Visual Studio Code
+
+If you're using the Docker dev environment, you can develop inside a container with VS Code which sets up all recommended extensions for you out-of-the-box along with a few other benefits. TODO: Read the Docker document to learn how to do that.
+
 ## Configuration
 
-Read the ["Configuration: Visual Studio Code" doc](../configuration/vscode.md) to read about how VS Code is configured.
+Read the ["Configuration: Visual Studio Code" document](../configuration/vscode.md) to read about how VS Code is configured.
 
 ## Debugging
 

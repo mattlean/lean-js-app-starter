@@ -4,7 +4,7 @@ We've already pre-configured [Git pre-commit hooks](https://git-scm.com/book/en/
 
 ## Setup
 
-Before you continue this document, make sure the project is linked to a Git repository. You can simply run `git init` at the project root directory which should generate a `.git` directory there.
+Before you continue this document, make sure the project is linked to a Git repository. You can simply run `git init` at the project's root directory which should generate a `.git` directory there.
 
 We use [Husky](https://typicode.github.io/husky) and [lint-staged](https://github.com/okonet/lint-staged) to handle pre-commit hooks, so you will need to install them with the following command:
 
@@ -36,4 +36,4 @@ git commit --no-verify
 
 ## Disabling pre-commit hooks for certain environments
 
-Note that while pre-commit hooks are great for your development environment, they may cause issues for other environments where you wouldn't want them to run like a CI server or some Docker environments. [For potential solutions, please refer to Husky's "How To" doc.](https://typicode.github.io/husky/how-to.html#ci-server-and-docker)
+Note that while pre-commit hooks are great for your development environment, they may cause issues for other environments where you wouldn't want them to run like a CI server or some Docker environments. [For potential solutions, please refer to Husky's "How To" document.](https://typicode.github.io/husky/how-to.html#ci-server-and-docker)

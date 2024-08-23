@@ -38,7 +38,7 @@ The remaining technologies are inherited from the starter:
 
 ## Run This on Your Machine
 
-Please refer to the ["Getting Started" section of the `react-electron-ts` README](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/react-electron-ts#getting-started).
+Please refer to the ["Getting Started" section of the `react-electron-ts` `README.md`](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/react-electron-ts#getting-started).
 
 ## LJAS Documentation
 

@@ -59,11 +59,11 @@ The remaining technologies are inherited from the starter:
 
 ### Getting Started
 
-Please refer to the ["Getting Started" section of the `react-express-mongo-ssr-ts` README](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/react-express-mongo-ssr-ts#getting-started).
+Please refer to the ["Getting Started" section of the `react-express-mongo-ssr-ts` `README.md`](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/react-express-mongo-ssr-ts#getting-started).
 
 ### Generating Data to Work With
 
-If don't want to manually create threads and replies, you can also use the [`genDevData.ts`](dev-scripts/genDevData.ts) script to generate it for you. For more information on how to use it, read the [Dev Scripts README](dev-scripts/README.md).
+If don't want to manually create threads and replies, you can also use the [`genDevData.ts`](dev-scripts/genDevData.ts) script to generate it for you. For more information on how to use it, read the [Dev Scripts `README.md`](dev-scripts/README.md).
 
 ### Caveat with Backend Jest Tests
 

@@ -10,57 +10,59 @@ If you're new to container-based dev environments there are a few things you wil
 
 ### Docker Benefits
 
-**It makes the dev environment perform more consistently.**
+#### It makes the dev environment perform more consistently.
 
 You can be more confident that your dev environment will behave the same as your teammates, even if they work on a different operating system, thus reducing the number of occurrences of "it works on my machine." You can still benefit from this when working alone too if you find yourself switching between different machines.
 
-**Skip most of the setup process by installing Docker.**
+#### Skip most of the setup process by installing Docker.
 
-When setting up a project natively, you will need to need to install Node.js, other dependencies like databases and npm packages, etc. The Docker dev environment streamlines this process significantly by reducing the prerequisites to just Docker and simplifying the necessary commands to run.
+When setting up a project natively, you will need to need to install Node.js and other dependencies like databases and npm packages. The Docker dev environment streamlines this process by reducing the prerequisites to just Docker and significantly simplifying the setup process.
 
-You won't even need have Node.js installed which lets you completely avoids issues around versions. Usually this is encountered when you're working on multiple projects that rely on different and incompatible Node.js versions. One solution is to upgrade one project's Node.js version which can cause a cascading series of dependency compatibility issues. Another solution is to install something like [nvm](https://github.com/nvm-sh/nvm) which allows you to install multiple versions of Node.js and switch between them. The Docker dev environment solves this by running the exact Node.js version needed in an isolated, containerized environment that cannot conflict with any Node.js installations on your native machine.
+You won't even need have Node.js installed which lets you completely avoid issues around versions. Usually these are encountered when you're working on multiple projects that rely on different, incompatible Node.js versions. One solution is to upgrade a project's Node.js version which can initiate a cascading series of dependency compatibility issues that need to be resolved. Another solution is to use something like [nvm](https://github.com/nvm-sh/nvm) which allows you to install multiple versions of Node.js and switch between them. The Docker dev environment solves this by running the exact Node.js version needed in an isolated, containerized environment that cannot conflict with any Node.js installations on your native machine.
 
 Database-based projects have the most elaborate setup processes due to their involvement with MongoDB, PostgreSQL, and Prisma. Dealing with multiple versions at once can cause conflicts just like when working with Node.js natively, but the Docker dev environment gets around this by running the database in an isolated, containerized environment. In addition to this, there are more steps in getting Prisma setup and connected to the database, but LJAS's Docker dev environment handles all of that for you by default so you don't need to worry about setting a database username or password, a connection string, etc. to get started.
 
 ### Docker Trade-Offs
 
-**You should learn yet another thing: Docker.**
+#### You should learn yet another thing: Docker.
 
 While you can get away with just using `docker compose up`, `docker compose stop`, and `docker compose down` for a while, at some point you will probably need to do something other than these three commands.
 
-Even though the Docker dev environment does not require expert-level Docker experience, even acquiring a basic understanding of it still means that you need t spent time to learn another technology. While these which can be an issue if you're tight on time.
+Even though the Docker dev environment does not require expert-level Docker experience, even acquiring a basic understanding of it still means that you need to spend time learning another technology which can be an issue for some people.
 
-**Docker can be resource intensive for some machines.**
+#### Docker can be resource intensive for some machines.
 
 Because Docker is limited to a subset of your host machine's resources, everything running within the container will always be slower when compared to running everything natively. Usually this is not very noticeable for higher-end machines, but this can be a significant problem for machines with weaker hardware.
 
-The good thing about Docker is that it is extremely easy to get the containers running and torn down, so it won't hurt to try spinning up the Docker dev environment just to see how it works for your machine. If you experience less than acceptable performance, take a look at TODO: the section on performance improvement suggestions before you decide to roll with the native dev environment.
+The good thing about Docker is that it is extremely easy to get the containers running and torn down, so it won't hurt to try spinning up the Docker dev environment just to see how it works for your machine. If you experience less than acceptable performance, take a look at TODO: the section on performance improvement suggestions before settling on the native dev environment.
 
-**Caveats concerning linting, formatting, and type checking.**
+#### Caveats concerning linting, formatting, and type checking.
 
 The Docker dev environment uses a [bind mount](https://docs.docker.com/storage/bind-mounts) to give the container direct access to the project directory on your host machine. The only directory that is skipped is the `node_modules` directory as its contents can vary depending on operating system, so the container will generate its own unique one.
 
-The problem this causes is that if you're natively running terminal commands or editor functionalities that rely on `node_modules`, they won't have access to the container's `node_modules` directory which will break things like ESLint, Prettier, and type checking. One solution to this is to have another `node_modules` directory specifically for your host machine's operating system so you will need to run `npm install` (and `npm run prisma generate` if you're working with a database) natively so your terminal commands and editor functionalities can perform properly.
+The problem this causes is that if you're natively running terminal commands or editor functionalities, they won't have access to the container's `node_modules` directory which will break things like ESLint, Prettier, and type checking.
 
-This brings up another issue where now you have two different `node_modules` directories: one on the host machine and one in the container. Consequently you will need to make sure that both are always up-to-date, otherwise you may encounter unexpected behavior. Most people are okay with this, but if you don't want to worry about multiple `node_modules` directories, you can use VS Code to develop inside the container which we go over how to do in TODO: this section. Note that this option's own trade-off is that it means you have to use VS Code and when the container stops or crashes, the connected VS Code instance will also stop working as well which some people find inconvenient.
+One solution to this is to have another `node_modules` directory specifically for your host machine's operating system, so you will need to run `npm install` (and `npm run prisma generate` if you're working with a database) natively so your terminal commands and editor functionalities can perform properly. However, this causes another problem because now you have two different `node_modules` directories: one in the host machine and one in the container. Because of this, you will need to make sure that both are always up-to-date, otherwise you may encounter unexpected behavior.
 
-**The Docker dev environment is consistent across different machines until it isn't.**
+Most people are okay with having two `node_modules` directories, but if you don't want to worry about that, you can alternatively use VS Code to develop inside the container which we go over how to do in TODO: this section. Note that this option's own trade-off is that it means you have to use VS Code and when the container stops or crashes, the connected VS Code instance will also stop working as well which most people find inconvenient.
+
+#### The Docker dev environment is consistent across different machines until it isn't.
 
 You may have noticed in the benefits section that we say, "It makes the dev environment perform _more_ consistently." We cannot say it performs _100% consistently_ because unfortunately there are always weird cases that comes up where even a Docker container will run fine on one machine but run into a problem on another, requiring a machine-specific fix to do.
 
-It is true that the Docker dev environment does significantly reduce the "it works on my machine problem" when compared to native setup, but it does not completely eliminate it, so please refer to the TODO: troubleshooting section of this document if you encounter any problems.
+It is true that the Docker dev environment does significantly reduce the "it works on my machine problem" when compared to native setup, but it does not completely eliminate it. Please refer to the TODO: troubleshooting section of this document if you encounter any problems.
 
 ## Docker Basics
 
 This section will go over some basic things for Docker intended for people who want to use the Docker dev environment without any Docker experience.
 
-**Installing Docker**
+#### Installing Docker
 
 There are a few different ways to get Docker up and running on your machine, but we suggest installing [Docker Desktop](https://www.docker.com/products/docker-desktop) which will install Docker and a GUI that lets you manage your containers.
 
-Even if you intend to completely ignore the GUI and interface with Docker solely through terminal commands, we still recommend Docker Desktop because it simplifies the installation process for Docker significantly.
+Even if you intend to completely ignore the GUI and interface with Docker solely through terminal commands, we still recommend Docker Desktop because it simplifies the installation process significantly.
 
-**Stopping the Docker Dev Environment**
+#### Stopping the Docker Dev Environment
 
 You can stop them with one of the following options:
 
@@ -68,9 +70,9 @@ You can stop them with one of the following options:
 -   Use Docker Desktop to stop the containers.
 -   Open another terminal, navigate to the project directory, and run [`docker compose stop`](https://docs.docker.com/reference/cli/docker/compose/stop).
 
-**Getting Container Information**
+#### Getting Container Information
 
-You can run [`docker ps` (shorthand for `docker container ls`)](https://docs.docker.com/reference/cli/docker/container/ls) to see all currently running containers and information on them like container ID, what image they were build from, up-time, ports, etc:
+You can run [`docker ps` (shorthand for `docker container ls`)](https://docs.docker.com/reference/cli/docker/container/ls) to see all currently running containers and information on them like container ID, what image they were built from, up-time, ports, etc:
 
 ```console
 docker ps
@@ -84,27 +86,27 @@ docker ps -a
 
 Alternatively, you can view this information with Docker Desktop in the "Containers" tab.
 
-**Accessing Container Logs**
+#### Accessing Container Logs
 
 If you used [`docker compose up`](https://docs.docker.com/reference/cli/docker/compose/up) to start the dev environment, the terminal you ran the command in will display all of the logs output by the dev environment.
 
-If you don't want the Docker logs to take up your terminal, you can start the dev environment in detached mode by passing the [`-d` flag (shorthand for `--detach`)](https://docs.docker.com/engine/reference/run/#foreground-and-background) like so:
+If you don't want the logs to occupy your terminal, you can start the dev environment in detached mode by passing the [`-d` flag (shorthand for `--detach`)](https://docs.docker.com/engine/reference/run/#foreground-and-background) like so:
 
 ```console
 docker compose up -d
 ```
 
-This starts the containers in the background so you can keep using your existing terminal for something else. You can always access the logs will be hidden at first, you can still view them using [`docker logs` (shorthand for `docker container logs`)](https://docs.docker.com/reference/cli/docker/container/logs) like so:
+This starts the containers in the background so you can keep using your existing terminal for something else. You can always access the logs later using [`docker logs` (shorthand for `docker container logs`)](https://docs.docker.com/reference/cli/docker/container/logs) like so:
 
 ```console
 docker logs CONTAINER_NAME -f
 ```
 
-You can close the logs by pressing Ctrl+C, and even though the logs will have closed, the containers running the dev environment will continue to work in the background.
+You can close the logs by pressing Ctrl+C, and even though the logs will have closed, the containers running the dev environment will continue to work uninterrupted in the background.
 
-Alternatively, you can view a container logs through Docker Desktop by clicking on it in the "Containers" tab and then viewing its "Logs" tab.
+Alternatively, you can view container logs through Docker Desktop by clicking on it in the "Containers" tab and then viewing its "Logs" tab.
 
-**Running Terminal Commands Inside the Container**
+#### Running Terminal Commands Inside the Container
 
 You can pass commands from your host machine to the container using [`docker exec` (shorthand for `docker container exec`)](https://docs.docker.com/reference/cli/docker/container/exec) commands, but we think it's easier to just gain full access to the container's [Bash](https://gnu.org/software/bash) using this command:
 
@@ -112,9 +114,9 @@ You can pass commands from your host machine to the container using [`docker exe
 docker exec -it CONTAINER_NAME bash
 ```
 
-Now the container's Bash will open and any command you run will execute within the context of the container until you close the Bash with Ctrl+C. To clarify that this is the Bash within the container, you will see that the Bash prompt will include a 🐳 emoji.
+Now the container's Bash will open and any command you run will execute within the context of the container until you close it with Ctrl+C. You will see that the Bash prompt will include a 🐳 emoji to clarify that you are working within the container.
 
-Alternatively, you can also access the terminal from inside the container with Docker Desktop by going to the "Containers" tab, selecting the container you want to access, and clicking on the "Terminal" tab.
+Alternatively, you can also access the terminal inside the container with Docker Desktop by going to the "Containers" tab, selecting the container you want to access, and clicking on the "Terminal" tab.
 
 ## More Learning Resources
 
@@ -134,16 +136,51 @@ The following resources are beginner-level guides from the [Docker docs](https:/
 -   [Running containers: Multi-container applications](https://docs.docker.com/guides/docker-concepts/running-containers/multi-container-applications)
 -   [Language-specific guides: Node.js](https://docs.docker.com/language/nodejs)
 
+## Docker End-to-End Test Environment
+
+If you're running a frontend-related project like the [React Browser starter](../../starters/react-browser) or the [React + Express + MongoDB with SSR starter](../../starters/react-express-postgres-ssr), then you will have access to a specialized Docker test environment specialized for end-to-end (E2E) testing with Playwright.
+
+The Docker E2E test environment is completely separate from the Docker dev environment, so it will have its own unique set of containers, networks, and volumes, allowing it to be run alongside the Docker dev environment without any conflicts.
+
+This separation is highlighted particularly when working with databases. If the dev and test environments shared the same database, the Playwright tests would generate data that would pollute your dev environment which is not desirable for most people. Conversely, the dev environment could also negatively affect the reliability of Playwright's test results. Keeping things separate makes working with the databases simpler and cleaner, and helps to improve consistency and trustworthiness for Playwright.
+
+To start the Docker E2E test environment, all you need to do is run this command in the project's root directory:
+
+```console
+docker compose -f docker-compose.e2e.yml up
+```
+
+To shut down the test environment, you can remove the containers through Docker Desktop or you can run this command in the project's root directory:
+
+```
+docker compose -f docker-compose.e2e.yml down
+```
+
+Note that the Docker E2E test environment produces a production build, so rebuilds will consequently be slower when compared to the dev environment. It was intentional because it allows Playwright test results to be execute in an environment more accurate to what end-users will experience, giving my value and reliability to E2E test results.
+
+Also note that database data is not persisted by default for the Docker E2E test environment so that Playwright can start with a consistent, clean slate to test off of. If you need to persist data, shut down the test environment if it is running, open your project's `docker-compose.e2e.yml` file and uncomment the necessary database volume-related lines. The database data will be persisted in these volumes the next time you start the test environment.
+
 ## Developing Inside a Container with Visual Studio Code
 
-TODO:
+VS Code allows you to develop inside of containers, so we have preconfigured the Docker dev environment to work with this feature to make things more convenient for those who prefer this method of development.
 
-1. Install the [Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) extension.
-2. Make sure project containers are running.
-3. Use "Attach to running container..." and attach to the container you want.
+Developing inside a container allows you to avoid [one potential drawback with using the Docker dev environment where you need to worry about two different `node_modules` directories](#caveats-concerning-linting-formatting-and-type-checking). An added benefit to this method is that it also sets up all of the recommended VS Code extensions for you and runs the development apps in debug mode so you can have all linting, formatting, type checking, debugging, and terminal features ready out-of-the-box.
+
+Before you develop inside a container, you must have the Docker dev environment setup and ready, so please follow the instructions in the `README.md` for your project beforehand.
+
+1. Open VS Code and install the [Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) extension.
+
+2. Next, run `docker compose up` and to start the Docker dev environment.
+
+3. After all of the containers are running, return to VS Code and [attach to the container](https://code.visualstudio.com/docs/devcontainers/attach-container#_attach-to-a-docker-container) running the app service. So for example, if I'm working off of the [Express PostgreSQL starter](../../starters/express-postgres), I would select the `ljas-express-postgres` container.
+
 4. Once the attached VS Code instance is open, open `/code` folder in the explorer and run `cd /code` in the terminal.
 
-## Connect Natively Running App with Containerized Database
+If you would like to read more about this VS Code feature, read the ["Developing inside a Container" document in the VS Code docs](https://code.visualstudio.com/docs/devcontainers/containers).
+
+## Hybrid Native/Docker Development Environment
+
+It is possible to run an app natively and have it connect to a database running in a container to create a hybrid native/Docker dev environment. [Read the "Connecting a Natively Running App with a Containerized Database" section in the database document to learn more about it and how to set it up.](./databases/README.md#connecting-a-natively-running-app-with-a-containerized-database)
 
 ## Troubleshooting
 
@@ -182,9 +219,9 @@ To switch to them, right-click the Docker icon in the nofication area of the tas
 Projects involving Playwright are split into two different Docker setups by default:
 
 1. Dev environment: This Docker environment is meant for feature development and will run a development build. This environment will not have Playwright dependencies installed by default.
-2. E2E environment: This is a specialized Docker environment meant for end-to-end testing and will run a production build intended to run with Playwright.
+2. E2E test environment: This is a specialized Docker environment meant for end-to-end testing and will run a production build intended to run with Playwright.
 
-If Playwright isn't working in your container, you are probably trying to run Playwright in the dev environment container. We encourage you to use the E2E environment when working with Playwright because it runs a production build which will more accurately represent the experience your end-users will have.
+If Playwright isn't working in your app container, you are probably trying to run Playwright in the dev environment. We encourage you to use the E2E test environment when working with Playwright because it runs a production build which will more accurately represent the experience your end-users will have.
 
 If you still want Playwright to run in the dev environment, you can get it working by using the `INSTALL_PLAYWRIGHT_DEPS` build argument that, when set to `true`, will perform the Playwright dependency installation step in the image building process.
 

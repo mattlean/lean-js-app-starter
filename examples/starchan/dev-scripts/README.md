@@ -1,6 +1,6 @@
 # Dev Scripts
 
-## genDevData.ts
+## `genDevData.ts`
 
 This script will generate threads with random content generated using [Lorem ipsum](https://en.wikipedia.org/wiki/Lorem_ipsum) in the database.
 
@@ -22,7 +22,7 @@ _`MOCK_ALL_THREAD_DATA.json` was generated like this:_
 npm run gen-dev-data -- --outputJSON > MOCK_ALL_THREAD_DATA.json
 ```
 
-## genMockThreadListRes.ts
+## `genMockThreadListRes.ts`
 
 This script will generate a mock thread list response using thread JSON data. This is handy because the JSON data output by `genDevData.ts` is slightly different than what would be output by the thread list endpoint. This means that this script is useful for making sure that the format of mocked response data in tests accurately reflects what would be used in a real environment.
 

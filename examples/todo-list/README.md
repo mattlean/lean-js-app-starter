@@ -40,7 +40,7 @@ The remaining technologies are inherited from the starter:
 
 ## Run This on Your Machine
 
-Please refer to the ["Getting Started" section of the `react-browser` README](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/react-browser#getting-started).
+Please refer to the ["Getting Started" section of the `react-browser` `README.md`](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/react-browser#getting-started).
 
 ## Project Background
 

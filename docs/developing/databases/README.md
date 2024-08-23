@@ -50,11 +50,11 @@ The Prisma docs go over other good reasons to use their products in their [intro
 -   [Notes API (`notes-api`)](../../../examples/notes-api): REST API that uses PostgreSQL & Prisma
 -   [\*chan (`starchan`)](../../../examples/starchan): Server-side rendered React app that uses MongoDB & Prisma
 
-## Connecting Host Machine Applications to Docker Databases (Hybrid Docker Development Environment)
+## Connecting a Natively Running App with a Containerized Database
 
-Some may prefer to only run the database in the Docker development environment and run everything else on their host machine. We refer to this as a **hybrid Docker development environment** as it splits the services across the host machine and Docker containers but keeps a working network between them.
+Some may prefer running their app natively while connecting it to the database running in a container. This creates a hybrid native/Docker dev environment and can be a great option for those who want to see improved performance for app development but still want all of the conveniences that come with running the database in the Docker dev environment.
 
-To accomplish this, first remove the `app` service and its dependent volumes in the Docker Compose config file. You can reference [an example that applies these changes to the **Express + PostgreSQL starter's** `docker-compose.yml` file.](./docker-compose.hybrid-example.yml)
+To set this up, first remove the `app` service and its dependent volumes in the Docker Compose config file. You can reference [an example that applies these changes to the **Express + PostgreSQL starter's** `docker-compose.yml` file.](./docker-compose.hybrid-example.yml)
 
 Then all you need to do is modify the `DATABASE_URL` environment variable in the `.env` file to the appropriate connection string so Prisma can connect to the database.
 

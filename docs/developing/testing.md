@@ -72,7 +72,7 @@ npm run test:coverage:open
 
 ### Debugging Jest Tests
 
-[Please refer to the "Jest tests with Visual Studio Code" section of the "Debugging" doc.](./debugging.md#jest-tests-with-visual-studio-code)
+[Please refer to the "Jest tests with Visual Studio Code" section of the "Debugging" document.](./debugging.md#jest-tests-with-visual-studio-code)
 
 ## Playwright
 
@@ -124,7 +124,7 @@ npm run test:e2e:report
 
 ### Debugging Playwright Tests
 
-Please refer to the ["Playwright Tests with Visual Studio Code" section](./debugging.md#playwright-tests-with-visual-studio-code) or the ["Playwright Tests with Playwright Inspector" section](./debugging.md#playwright-tests-with-playwright-inspector) of the "Debugging" doc.
+Please refer to the ["Playwright Tests with Visual Studio Code" section](./debugging.md#playwright-tests-with-visual-studio-code) or the ["Playwright Tests with Playwright Inspector" section](./debugging.md#playwright-tests-with-playwright-inspector) of the "Debugging" document.
 
 ### Docker End-to-End Testing Environment
 

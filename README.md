@@ -38,7 +38,7 @@
 
 **🤔 Need help deciding if LJAS is right for you?**
 
-> Read the ["Why Lean JS App Starter?" doc](./docs/why.md).
+> Read the ["Why Lean JS App Starter?" document](./docs/why.md).
 
 **📖 Learn more about everything LJAS has to offer!**
 
