@@ -55,7 +55,7 @@ Even though the Docker environments do not require expert-level Docker experienc
 
 Because Docker is limited to a subset of your host machine's resources, everything running within the container will always be slower when compared to running everything natively. Usually this is not very noticeable for higher-end machines, but this can be a significant problem for machines with weaker hardware.
 
-The good thing about Docker is that it is extremely easy to get the containers running and torn down, so it won't hurt to try spinning up the Docker dev environment just to see how it works for your machine. If you experience less than acceptable performance, take a look at TODO: the section on performance improvement suggestions before settling on the native dev environment.
+The good thing about Docker is that it is extremely easy to get the containers running and torn down, so it won't hurt to try spinning up the Docker dev environment just to see how it works for your machine. If you experience less than acceptable performance, take a look at ["Performance Tips" section](#performance-tips) before potentially settling on the native dev environment.
 
 #### Caveats concerning linting, formatting, and type checking.
 
@@ -85,7 +85,7 @@ If you're running a frontend-related project like the [React Browser starter](..
 
 The Docker E2E test environment is completely separate from the Docker dev environment, so it will have its own unique set of containers, networks, and volumes, allowing it to be run alongside the Docker dev environment without any conflicts.
 
-This separation is highlighted particularly when working with databases. If the dev and test environments shared the same database, the Playwright tests would generate data that would pollute your dev environment which is not desirable for most people. Conversely, the dev environment could also negatively affect the reliability of Playwright's test results. Keeping things separate makes working with the databases simpler and cleaner, and helps to improve consistency and trustworthiness for Playwright.
+This separation is highlighted particularly when working with databases. If the dev and test environments shared the same database, the Playwright tests would generate data that would pollute your dev environment which is not desirable for most people. Conversely, the dev environment could also negatively affect the reliability of Playwright's test results. Keeping things separate makes working with the databases simpler and cleaner, and helps to improve stability and trustworthiness for Playwright.
 
 Just like the Docker dev environment, you will only need Docker which you can learn how to install by reading the ["Installing Docker" section in this document](#installing-docker). Once that's installed, follow the instructions for getting started with the Docker dev environment in the `README.md` for your project.
 
@@ -122,9 +122,9 @@ You can shut a Docker environment down with the following options:
 -   Press Ctrl+C in the terminal where the container logs are output to stop all containers in the environment.
 -   Use Docker Desktop to stop/remove the environment's containers.
 
-Note that stopping a container makes it temporarily inactive so it will no longer consume memory on your native machine, but it will take up storage space. Starting a stopped container is fast and will let you quickly get back into where you last left off.
+Note that stopping a container makes it temporarily inactive so it will no longer consume memory on your native machine, but it will take up disk space. Starting a stopped container is fast and will let you quickly get back into where you last left off.
 
-Removing a container deletes the container and everything within it that is not inside the project directory (the project directory on your native machine and the `/code` directory in the app container) or a volume. This completely frees up all the storage space the container was taking on your native machine. Starting a Docker environment again means that it will have to create new containers which can potentially be a slow process if the build cache is invalidated.
+Removing a container deletes the container and everything within it that is not inside the project directory (the project directory on your native machine and the `/code` directory in the app container) or a volume. This completely frees up all the disk space the container was taking on your native machine. Starting a Docker environment again means that it will have to create new containers which can potentially be a slow process if the build cache is invalidated.
 
 Alternatively, you can stop and remove a dev environment's containers by navigating to a project directory and running [`docker compose stop`](https://docs.docker.com/reference/cli/docker/compose/stop) and [`docker compose down`](https://docs.docker.com/reference/cli/docker/compose/down), respectively.
 
@@ -138,7 +138,7 @@ You can run [`docker ps` (shorthand for `docker container ls`)](https://docs.doc
 docker ps
 ```
 
-You can also view stopped containers by using the [`-a` flag (shorthand for `--all`)](https://docs.docker.com/reference/cli/docker/container/ls/#all) like so:
+You can also view stopped containers by using the [`-a` option (shorthand for `--all`)](https://docs.docker.com/reference/cli/docker/container/ls/#all) like so:
 
 ```console
 docker ps -a
@@ -150,7 +150,7 @@ Alternatively, you can view this information with Docker Desktop in the "Contain
 
 If you used [`docker compose up`](https://docs.docker.com/reference/cli/docker/compose/up) to start an environment, the terminal you ran the command in will display all of the logs output.
 
-If you don't want the logs to occupy your terminal, you can start the environment in detached mode by passing the [`-d` flag (shorthand for `--detach`)](https://docs.docker.com/engine/reference/run/#foreground-and-background) like so:
+If you don't want the logs to occupy your terminal, you can start the environment in detached mode by passing the [`-d` option (shorthand for `--detach`)](https://docs.docker.com/engine/reference/run/#foreground-and-background) like so:
 
 ```console
 docker compose up -d
@@ -196,6 +196,12 @@ The following resources are beginner-level guides from the [Docker docs](https:/
 -   [Running containers: Multi-container applications](https://docs.docker.com/guides/docker-concepts/running-containers/multi-container-applications)
 -   [Language-specific guides: Node.js](https://docs.docker.com/language/nodejs)
 
+## Hybrid Native/Docker Development Environment
+
+It is possible to run parts of the project natively and other parts of it with Docker. We refer to this as a hybrid dev environment.
+
+We go over how to setup a hybrid dev environment by setting up a natively running app that connects to a Docker-based database in the ["Connecting a Natively Running App with a Containerized Database" section in the database document.](./databases/README.md#connecting-a-natively-running-app-with-a-containerized-database)
+
 ## Developing Inside a Container with Visual Studio Code
 
 VS Code allows you to develop inside of containers, so we have preconfigured the Docker dev environment to work with this feature to make things more convenient for those who prefer this method of development.
@@ -216,29 +222,35 @@ Before you develop inside a container, you must have the Docker dev environment 
 
 If you would like to read more about this VS Code feature, read the ["Developing inside a Container" document in the VS Code docs](https://code.visualstudio.com/docs/devcontainers/containers).
 
-## Hybrid Native/Docker Development Environment
+## Performance Tips
 
-It is possible to run an app natively and have it connect to a database running in a container to create a hybrid native/Docker dev environment. [Read the "Connecting a Natively Running App with a Containerized Database" section in the database document to learn more about it and how to set it up.](./databases/README.md#connecting-a-natively-running-app-with-a-containerized-database)
+If you're running into performance issues, first check that your virtual disk space still has reasonable remaining capacity. If it doesn't, read the solution for the ["I am running into issues with Docker and disk space. How do I deal with that?" question in the "Troubleshooting" section.](#i-am-running-into-issues-with-docker-and-disk-space-how-do-i-deal-with-that)
+
+Next, you may want to consider allocating more of your native hardware's resources to Docker besides disk space. You can configure how many CPUs and how much memory can be used by Docker in the "Resources" tab in the Docker Desktop settings.
+
+Finally, you can consider using a hybrid dev environment which we talk about in the ["Hybrid Native/Docker Development Environment" section.](#hybrid-nativedocker-development-environment)
 
 ## Troubleshooting
 
-**How do I reduce the space Docker requires?**
+This section is for common solutions to some problems you may encounter when dealing with Docker environments.
 
-TODO:
+-   [I am running into issues with Docker and disk space. How do I deal with that?](#i-am-running-into-issues-with-docker-and-disk-space-how-do-i-deal-with-that)
+-   [I am running into problems preventing me from running Docker environments on Windows.](#i-am-running-into-problems-preventing-me-from-running-docker-environments-on-windows)
+-   [How do I force Docker to create a completely fresh image and ignore the build cache?](#how-do-i-force-docker-to-create-a-completely-fresh-image-and-ignore-the-build-cache)
+-   [Changes to my code are not being seen by nodemon or webpack when they are running in a container.](#changes-to-my-code-are-not-being-seen-by-nodemon-or-webpack-when-they-are-running-in-a-container)
+-   [Playwright does not work in the Docker dev environment.](#playwright-does-not-work-in-the-docker-dev-environment)
 
--   docker image prune
--   docker builder prune
--   docker system prune
+#### I am running into issues with Docker and disk space. How do I deal with that?
 
-**Changes to my code are not being seen by nodemon or webpack when they are running in a container.**
+Docker's philosophy is to generally keep as many objects, e.g. images, containers, and volumes, as possible until they are explicitly deleted by the user. As a result, the more Docker is used, the more common it is for it to take up a lot of disk space.
 
-Some machines run into issues with watching files in Docker containers.
+So if Docker is taking up more disk space than you would like, the first thing you should do is delete all dangling objects using a prune command. [`docker image prune`](https://docs.docker.com/reference/cli/docker/image/prune) is probably the first command you should try, but if you still need to free up more disk space after running that, consider using [`docker volume prune`](https://docs.docker.com/reference/cli/docker/volume/prune), [`docker builder prune`](https://docs.docker.com/reference/cli/docker/builder/prune), or [`docker system prune`](https://docs.docker.com/reference/cli/docker/system/prune). You can read more about pruning by reading the ["Prune unused objects" document in the Docker docs](https://docs.docker.com/engine/manage-resources/pruning).
 
-To resolve this issue with nodemon, pass the `--legacy-watch` (or `-L`) flag whenever it is run. It is most likely that you will most likely need to update your `dev` `package.json` script with it. For more information on this, refer to the ["Application isn't restarting" in the nodemon README](https://github.com/remy/nodemon?tab=readme-ov-file#application-isnt-restarting).
+If you've performed all the pruning you can, but you still need more virtual disk space for Docker, you can allocate more virtual disk space by adjusting its limit in the "Resources" tab in the Docker Desktop settings.
 
-To resolve this issue with webpack, set the `watchOptions.poll` option in a webpack configuration file. For more information on this, refer to the ["Watch and WatchOptions" page in the webpack docs](https://webpack.js.org/configuration/watch/#watchoptionspoll).
+#### I am running into problems preventing me from running Docker environments on Windows.
 
-**I am trying to start containers on Windows and am encountering the following error:**
+When trying to start containers on Windows, you may encounter an error like:
 
 ```
 failed to solve: rpc error: code = Unknown desc = failed to solve with frontend dockerfile.v0: failed to create LLB definition: failed to authorize: rpc error: code = Unknown desc = failed to fetch anonymous token: unexpected status: 503 Service Unavailable
@@ -252,20 +264,31 @@ To switch to them, right-click the Docker icon in the nofication area of the tas
 & $Env:ProgramFiles\Docker\Docker\DockerCli.exe -SwitchDaemon
 ```
 
-**I'm using a project's Docker dev environment, but Playwright won't work in the container. Why is that and how can I fix it?**
+#### How do I force Docker to create a completely fresh image and ignore the build cache?
 
-Projects involving Playwright are split into two different Docker setups by default:
+Sometimes you may encounter cases where Docker will use the build cache during the image building process when you don't want it to. If you can't find another way to invalidate the cache, you can force Docker to not use the cache by passing the [`--no-cache` option](https://docs.docker.com/reference/cli/docker/compose/build/#options) to [`docker compose build`](https://docs.docker.com/reference/cli/docker/compose/build) like so:
 
-1. Dev environment: This Docker environment is meant for feature development and will run a development build. This environment will not have Playwright dependencies installed by default.
-2. E2E test environment: This is a specialized Docker environment meant for end-to-end testing and will run a production build intended to run with Playwright.
+```console
+docker compose build --no-cache
+```
 
-If Playwright isn't working in your app container, you are probably trying to run Playwright in the dev environment. We encourage you to use the E2E test environment when working with Playwright because it runs a production build which will more accurately represent the experience your end-users will have.
+#### Changes to my code are not being seen by nodemon or webpack when they are running in a container.
 
-If you still want Playwright to run in the dev environment, you can get it working by using the `INSTALL_PLAYWRIGHT_DEPS` build argument that, when set to `true`, will perform the Playwright dependency installation step in the image building process.
+Some machines run into issues with watching files in Docker containers.
+
+To resolve this issue with nodemon, pass the `--legacy-watch` (or `-L`) flag whenever it is run. It is most likely that you will most likely need to update your `dev` `package.json` script with it. For more information on this, refer to the ["Application isn't restarting" in the nodemon README](https://github.com/remy/nodemon?tab=readme-ov-file#application-isnt-restarting).
+
+To resolve this issue with webpack, set the `watchOptions.poll` option in a webpack configuration file. For more information on this, refer to the ["Watch and WatchOptions" page in the webpack docs](https://webpack.js.org/configuration/watch/#watchoptionspoll).
+
+#### Playwright does not work in the Docker dev environment.
+
+Playwright is not setup by default in the Docker dev environment because we want to encourage you to use the Docker end-to-end (E2E) test environment instead. The test environment runs in a production environment which will more accurately represent the experience your end-users will have, and the dev environment's image building process becomes much faster as it will skip setting up Playwright.
+
+Still, some may want to run Playwright in the dev environment as iteration there is much faster when compared to iteration in the test environment, so you can get Playwright working in the dev environment by using the `INSTALL_PLAYWRIGHT_DEPS` build argument that, when set to `true`, will perform the Playwright dependency installation step during the image building process.
 
 There are a couple of ways of setting up build arguments, but one way to do it is to run the following command:
 
-```
+```console
 docker compose build --build-arg INSTALL_PLAYWRIGHT_DEPS=true
 ```
 
@@ -278,7 +301,3 @@ docker compose build
 ```
 
 This is basically the same thing as setting `INSTALL_PLAYWRIGHT_DEPS` to `false`, but it's unnecessary to explicitly do that since the `Dockerfile` will do it for you by default.
-
-**For some reason Docker's build cache is not invalidating during the image creation process. How do I force it to create a new, fresh image?**
-
-TODO: docker compose build --no-cache or docker builder prune

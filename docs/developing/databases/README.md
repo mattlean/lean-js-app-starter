@@ -52,7 +52,7 @@ The Prisma docs go over other good reasons to use their products in their [intro
 
 ## Connecting a Natively Running App with a Containerized Database
 
-Some may prefer running their app natively while connecting it to the database running in a container. This creates a hybrid native/Docker dev environment and can be a great option for those who want to see improved performance for app development but still want all of the conveniences that come with running the database in the Docker dev environment.
+Some may prefer running their app natively while connecting it to the database running in a container. This creates what we refer to as a hybrid dev environment and can be a great option for those who want to see improved performance for app development but still want all of the conveniences that come with running the database in the Docker dev environment.
 
 To set this up, first remove the `app` service and its dependent volumes in the Docker Compose config file. You can reference [an example that applies these changes to the **Express + PostgreSQL starter's** `docker-compose.yml` file.](./docker-compose.hybrid-example.yml)
 

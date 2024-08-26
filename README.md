@@ -6,9 +6,9 @@
 
 > Support for [TypeScript](https://typescriptlang.org), [Node.js](https://nodejs.org), [Electron](https://electronjs.org), [React](https://react.dev), and [Express](https://expressjs.com) servers that support React server-side rendering.
 
-**🐳 Docker development environment**
+**🐳 Docker development & testing environments**
 
-> Alternatively run the dev environment with [Docker](https://docker.com) to simplify onboarding and improve consistency for developers across macOS, Windows, and Linux.
+> Alternatively run the dev environment with [Docker](https://docker.com) to simplify onboarding and improve consistency for developers across macOS, Windows, and Linux. Use a specialized Docker test environment to improve the stability and trustworthiness of end-to-end test results.
 
 **🧪 Robust testing environment**
 
