@@ -73,7 +73,7 @@ The Playwright docs have [a great guide on how to debug with the Playwright Insp
 
 ## webpack build process with Google Chrome
 
-First start webpack in debug mode using a debugging `package.json` build script like `npm run build:debug`.
+First start webpack in debug mode using a debugging `package.json` build script like `npm run build:debug` or `npm run build:production:debug`.
 
 Note that if you're using the Docker dev environment, you must run these commands from within the container for them to work.
 
