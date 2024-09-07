@@ -1,9 +1,29 @@
-## Prevalence of webpack
+# webpack Configuration
 
-Believe it or not, the time where setting up your development environment from scratch or using Create React App was actually not too long ago (even though it may feel like an eternity already). So while Vite has gained a significant portion of the project starter space, there are still a ton of active codebases that are running their own custom webpack configurations or relying on Create React App which is webpack based.
+## Overview
 
-You may have inherited a codebase that falls into this generation and need direction on how to make updates to those configurations, in which case LJAS can be useful as a reference to see how how you can tailor your non-LJAS but still webpack-based configuration to your needs.
+Every webpack process is split into four types of files:
 
--   reference state of JS 2023 where webpack is still in the lead
+-   `*.config.js`: The entry point into the webpack process's configuration.
+-   `*.development.js`: Configurations specifically for the development build.
+-   `*.production.js`: Configurations specifically for the production build.
+-   `*.common.js`: Configurations that are common for all builds.
 
-By choosing webpack, you'll have access to the most potential solutions on Google, GitHub, StackOverflow, etc.
+If there is only one webpack process in the project's build process, you will find the webpack config files in the project's root directory prefixed with `webpack`, e.g. `webpack.config.js`, `webpack.production.js`, etc.
+
+If the project's build process involves multiple webpack processes, each webpack process will have its own set of four config files as described above in the `webpack/` directory. The prefix for each webpack process will pertain to what it's for, so for example a webpack process for a backend portion of the build will have the prefix `backend` and one for a frontend portion will have the prefix `frontend`.
+
+Most webpack configurations stuff all of their configuration in one huge `webpack.config.js` file, but as your configuration grows in complexity and size, stuffing everything into one large file can to hurt readability and maintainability. This is why LJAS splits its webpack config across multiple files and then uses [`webpack-merge`](https://npmjs.com/package/webpack-merge) to combine the relevant config files for the given environment.
+
+LJAS also uses webpack configuration parts from our own package called [`ljas-webpack`](https://github.com/mattlean/lean-js-app-starter/tree/master/ljas-webpack). This allows us to easily reuse common webpack config code across multiple projects. [If you would like to learn more about `webpack-merge` and `ljas-webpack`, we go more into detail on how it all works together in `ljas-webpack`'s `README.md`.](https://github.com/mattlean/lean-js-app-starter/tree/master/ljas-webpack/README.md)
+
+## Learning Resources
+
+-   [webpack's "Getting Started" guide](https://webpack.js.org/guides/getting-started)  
+    Learn the basics of webpack from the "Getting Started" guide in the webpack docs.
+-   [webpack's "Production" guide](https://webpack.js.org/guides/production)  
+     Learn about webpack's best practices and write a configuration for production.
+-   [SurviveJS webpack book](https://survivejs.com/books/webpack)  
+    A book on webpack that starts from the basics and goes all the way to advanced techniques that will teach you how to get the most out of webpack. It was written by one of the founders of the webpack core team.
+    -   ["Composing Configuration" chapter](https://survivejs.com/webpack/developing/composing-configuration)  
+        This particular chapter is the most important one in the book because this is where LJAS's webpack configuration composition strategy comes from. It explains what webpack config parts are and how to compose webpack configs with `webpack-merge`.

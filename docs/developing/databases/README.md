@@ -33,7 +33,7 @@ The Prisma docs go over other good reasons to use their products in their [intro
 
 -   [PostgreSQL tutorial](https://postgresql.org/docs/current/tutorial.html)  
     Learn the basic concepts for PostgreSQL and how to execute queries with `psql`.
--   [Prisma's relational database guide](https://prisma.io/docs/getting-started/setup-prisma/start-from-scratch/relational-databases-typescript-postgresql)  
+-   [Prisma's relational databases guide](https://prisma.io/docs/getting-started/setup-prisma/start-from-scratch/relational-databases-typescript-postgresql)  
     Learn the basics for Prisma with PostgreSQL.
 
 ### MongoDB
