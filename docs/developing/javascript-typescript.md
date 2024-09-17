@@ -25,3 +25,15 @@ If you are using a TypeScript starter, you will usually be using files with a `.
 If your ECMAScript code uses [JSX](https://react.dev/learn/writing-markup-with-jsx), then you will need to add an "x" to the end of the file extension. So for JavaScript that would be `.jsx` and for TypeScript that would be `.tsx`.
 
 We understand it may not be common to require `.jsx` file extensions for code involving JSX, but we thought it made sense to be consistent with [TypeScript's rule that restricts JSX to files with `.tsx` file extensions](https://typescriptlang.org/docs/handbook/jsx.html). If you want to alter that behavior you can go into the ESLint config file, `.eslintrc.js`, and change the [`react/jsx-filename-extension` rule](https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-filename-extension.md).
+
+## Linting
+
+TODO:
+
+## Type Checking
+
+TODO:
+
+## Formatting
+
+TODO:

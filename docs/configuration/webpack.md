@@ -2,6 +2,8 @@
 
 ## Overview
 
+Most webpack configurations you'll come across on the web will cram all of their configuration in one huge `webpack.config.js` file, but as your configuration grows in complexity and size, stuffing everything into one file can hurt readability and maintainability. This is why LJAS splits its webpack config across multiple files and then uses [`webpack-merge`](https://npmjs.com/package/webpack-merge) to combine the relevant config files for the given environment.
+
 Every webpack process is split into four types of files:
 
 -   `*.config.js`: The entry point into the webpack process's configuration.
@@ -11,9 +13,7 @@ Every webpack process is split into four types of files:
 
 If there is only one webpack process in the project's build process, you will find the webpack config files in the project's root directory prefixed with `webpack`, e.g. `webpack.config.js`, `webpack.production.js`, etc.
 
-If the project's build process involves multiple webpack processes, each webpack process will have its own set of four config files as described above in the `webpack/` directory. The prefix for each webpack process will pertain to what it's for, so for example a webpack process for a backend portion of the build will have the prefix `backend` and one for a frontend portion will have the prefix `frontend`.
-
-Most webpack configurations stuff all of their configuration in one huge `webpack.config.js` file, but as your configuration grows in complexity and size, stuffing everything into one large file can to hurt readability and maintainability. This is why LJAS splits its webpack config across multiple files and then uses [`webpack-merge`](https://npmjs.com/package/webpack-merge) to combine the relevant config files for the given environment.
+If the project's build process involves multiple webpack processes, each webpack process will have its own set of four config files as described above in the `webpack/` directory. What differentiates each set of config files will be its prefix which will correspond to the webpack process it's for. For example, the [React + Express + PostgreSQL with Server-Side Rendering starter](../starters/react-express-postgres-ssr) has two webpack processes: one for the backend and one for the frontend. The set of config files relevant to the backend will be prefixed with `backend`, and the frontend will have its own equivalent prefixed with `frontend`.
 
 LJAS also uses webpack configuration parts from our own package called [`ljas-webpack`](https://github.com/mattlean/lean-js-app-starter/tree/master/ljas-webpack). This allows us to easily reuse common webpack config code across multiple projects. [If you would like to learn more about `webpack-merge` and `ljas-webpack`, we go more into detail on how it all works together in `ljas-webpack`'s `README.md`.](https://github.com/mattlean/lean-js-app-starter/tree/master/ljas-webpack/README.md)
 

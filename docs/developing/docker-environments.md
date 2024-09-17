@@ -180,21 +180,12 @@ Alternatively, you can also access the terminal inside the container with Docker
 
 ## More Learning Resources
 
-The following resources are beginner-level guides from the [Docker docs](https://docs.docker.com) that will teach you fundamental Docker concepts that will be useful when using LJAS's Docker environments. It also covers the fundamentals of how the they work under-the-hood.
+The following resources are beginner-level guides from the [Docker docs](https://docs.docker.com) that will teach you fundamental Docker concepts that will be useful when using LJAS's Docker environments.
 
 -   [Getting started: Get Docker Desktop](https://docs.docker.com/guides/getting-started/get-docker-desktop)
 -   [The basics: What is a container?](https://docs.docker.com/guides/docker-concepts/the-basics/what-is-a-container)
 -   [The basics: What is an image?](https://docs.docker.com/guides/docker-concepts/the-basics/what-is-an-image)
 -   [The basics: What is Docker Compose?](https://docs.docker.com/guides/docker-concepts/the-basics/what-is-docker-compose)
--   [Building images: Understanding image layers](https://docs.docker.com/guides/docker-concepts/building-images/understanding-image-layers)
--   [Building images: Writing a Dockerfile](https://docs.docker.com/guides/docker-concepts/building-images/writing-a-dockerfile)
--   [Building images: Build, tag and publish an image](https://docs.docker.com/guides/docker-concepts/building-images/build-tag-and-publish-an-image)
--   [Running containers: Publishing ports](https://docs.docker.com/guides/docker-concepts/running-containers/publishing-ports)
--   [Running containers: Overriding container defaults](https://docs.docker.com/guides/docker-concepts/running-containers/overriding-container-defaults)
--   [Running containers: Persisting container data](https://docs.docker.com/guides/docker-concepts/running-containers/persisting-container-data)
--   [Running containers: Sharing local files with containers](https://docs.docker.com/guides/docker-concepts/running-containers/sharing-local-files)
--   [Running containers: Multi-container applications](https://docs.docker.com/guides/docker-concepts/running-containers/multi-container-applications)
--   [Language-specific guides: Node.js](https://docs.docker.com/language/nodejs)
 
 ## Hybrid Native/Docker Development Environment
 

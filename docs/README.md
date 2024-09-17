@@ -8,29 +8,31 @@ Welcome to the documentation for **Lean JS App Starter (LJAS)**!
 -   [**Frequently Asked Questions**](./faq.md)
 -   **Setup**  
     _How to setup LJAS and start your project._
-    -   [Getting Started](./getting-started.md)
+    -   [Getting Started](./setup/getting-started.md)
     -   [Code Editors](./setup/code-editors.md)
     -   [Git Pre-Commit Hooks](./setup/git-pre-commit-hooks.md)
 -   **Developing**  
-    _How to use the dev environment._
+    _How to develop with LJAS._
     -   Developer Experience Overview
-    -   [Debugging](./developing/debugging.md)
-    -   [Databases](./developing/databases/README.md)
+    -   [JavaScript & TypeScript](./developing/javascript-typescript.md)
     -   [Styling](./developing/styling.md)
-    -   Testing
-    -   Linting & Type Checking
-    -   Docker Development Environment
+    -   [Databases](./developing/databases/README.md)
+    -   [Testing](./developing/testing.md)
+    -   [Debugging](./developing/debugging.md)
+    -   [Docker Environments](./developing/docker-environments.md)
 -   [**Building**](./building.md)  
     _How the build process works and how to create builds for production._
 -   **Configuration**  
     _How the default configurations work and how to customize them._
-    -   Babel
-    -   Docker
-    -   ESLint
-    -   Jest
+    -   [`.env` File](./configuration/dotenv-file.md)
+    -   [Babel](./configuration/babel.md)
+    -   [Docker](./configuration/docker.md)
+    -   [ESLint](./configuration/eslint.md)
+    -   [Husky & lint-staged](./configuration/husky-lint-staged.md)
+    -   [Jest](./configuration/jest.md)
     -   nodemon
     -   Playwright
-    -   TypeScript
+    -   [TypeScript](./configuration/typescript.md)
     -   [Visual Studio Code](./configuration/vscode.md)
     -   [webpack](./configuration/webpack.md)
 -   [**Origins**](./origins.md)  

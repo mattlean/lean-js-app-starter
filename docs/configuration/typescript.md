@@ -1,15 +1,16 @@
-# TypeScript
+# TypeScript Configuration
 
-TODO:
-These options override the default tsconfig.json options to avoid typechecking
-for certain files in the build process. This is because we don't want some type
-errors to cause the build process to fail which can unnecessary hinder the
-development server or production deployments.
+## Overview
 
-Because this only affects the build process, type checking and linting in other
-processes like VS Code or pre-commit hooks will still behave correctly.
+TypeScript projects all have a `tsconfig.json` file in their project's root directory which is responsible for type checking during development.
 
-For example: we want the development server to continue to build properly even
-if there is a type error in a test file. However, Jest will still fail to run
-the test and notify us of the type error. This allows the application to run
-uninterrupted even though Jest has encountered a type error.
+In addition to the standard `tsconfig.json`, there are more TypeScript config files specifically used for webpack processes. If there is just one webpack process, then there will only be a `tsconfig.build.json`. If there are multiple webpack processes involved, then there will be multiple config files, each with a different suffix depending on its build target. For example, the [React + Express + PostgreSQL with Server-Side Rendering starter](../starters/react-express-postgres-ssr) has a `tsconfig.build.frontend.json` and a `tsconfig.build.backend.json`.
+
+The TypeScript config files for webpack processes use `tsconfig.json` as a base configuration and override some of the options set in it so we can type check everything during development but skip type checking for files irrelevant to the build (i.e. tests).
+
+## Learning Resources
+
+-   [Download TypeScript](https://typescriptlang.org/download)  
+    Learn how to download, install, and use the TypeScript compiler.
+-   [Project Configuration: What is a tsconfig.json](https://typescriptlang.org/docs/handbook/tsconfig-json.html)  
+    Learn what `tsconfig.json` does and how to extend a base configuration.
