@@ -20,6 +20,7 @@ Welcome to the documentation for **Lean JS App Starter (LJAS)**!
     -   [Testing](./developing/testing.md)
     -   [Debugging](./developing/debugging.md)
     -   [Docker Environments](./developing/docker-environments.md)
+    -   [React Server-Side Rendering](./developing/react-ssr.md)
 -   [**Building**](./building.md)  
     _How the build process works and how to create builds for production._
 -   **Configuration**  

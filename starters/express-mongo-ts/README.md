@@ -1,10 +1,8 @@
 # Express + MongoDB Starter (TypeScript)
 
-## `express-mongo-ts`
-
 This is a **[Lean JS App Starter](https://github.com/mattlean/lean-js-app-starter)** project for an [Express](https://expressjs.com) application written in [TypeScript](https://typescriptlang.org) that works with a [MongoDB](https://mongodb.com) database.
 
-_If you don't need TypeScript, then then use the [`express-mongo` starter](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/express-mongo) instead._
+_If you don't need TypeScript, then then use the [Express + MongoDB starter](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/express-mongo) instead._
 
 ## Technology Overview
 

@@ -82,8 +82,8 @@ npm run test:coverage:open
 | ------------------------------------- | -------------------------------------------------------- | ----------------------------------------------------------- |
 | Basic Browser                         | [View Source](../../starters/basic-browser)              | [View Source](../../starters/basic-browser-ts)              |
 | Basic Electron                        | [View Source](../../starters/basic-electron)             | [View Source](../../starters/basic-electron-ts)             |
-| React Browser                         | [View Source](../../starters/react-electron)             | [View Source](../../starters/react-electron-ts)             |
-| React Electron                        | [View Source](../../starters/react-electron)             | [View Source](../../starters/react-electron-ts)             |
+| React + Browser                       | [View Source](../../starters/react-electron)             | [View Source](../../starters/react-electron-ts)             |
+| React + Electron                      | [View Source](../../starters/react-electron)             | [View Source](../../starters/react-electron-ts)             |
 | React + Express + MongoDB with SSR    | [View Source](../../starters/react-express-mongo-ssr)    | [View Source](../../starters/react-express-mongo-ssr-ts)    |
 | React + Express + PostgreSQL with SSR | [View Source](../../starters/react-express-postgres-ssr) | [View Source](../../starters/react-express-postgres-ssr-ts) |
 

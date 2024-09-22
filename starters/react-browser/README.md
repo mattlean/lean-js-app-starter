@@ -1,10 +1,8 @@
-# React Browser Starter
-
-## `react-browser`
+# React + Browser Starter
 
 This is a **[Lean JS App Starter](https://github.com/mattlean/lean-js-app-starter)** project for a [React](https://react.dev) application targeted for web browsers.
 
-_If you need TypeScript, then use the [`react-browser-ts` starter](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/react-browser-ts) instead._
+_If you need TypeScript, then use the [React + Browser starter (TypeScript)](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/react-browser-ts) instead._
 
 ## Technology Overview
 

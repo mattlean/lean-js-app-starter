@@ -1,10 +1,8 @@
 # Express + PostgreSQL Starter
 
-## `express-postgres`
-
 This is a **[Lean JS App Starter](https://github.com/mattlean/lean-js-app-starter)** project for an [Express](https://expressjs.com) application that works with a [PostgreSQL](https://postgresql.org) database.
 
-_If you need TypeScript, then use the [`express-postgres-ts` starter](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/express-postgres-ts) instead._
+_If you need TypeScript, then use the [Express + PostgreSQL starter (TypeScript)](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/express-postgres-ts) instead._
 
 ## Technology Overview
 

@@ -1,6 +1,6 @@
 ## 1.0.0
 
--   Introduce Docker development environments for all projects except for Electron-based projects
+-   Introduce Docker dev environments for all projects except for Electron-based projects
 -   Introduce PostgreSQL support with new Express + PostgreSQL starters: `express-postgres` & `react-express-postgres-ssr`
 -   Introduce dotenv ^16.4.5
 -   Introduce Mock Service Worker ^2.2.2

@@ -81,7 +81,7 @@ Once Docker is installed, follow the instructions for getting started with the D
 
 ## Setting Up the Docker End-to-End Test Environment
 
-If you're running a frontend-related project like the [React Browser starter](../../starters/react-browser) or the [React + Express + MongoDB with SSR starter](../../starters/react-express-postgres-ssr), then you will have access to a specialized Docker test environment specialized for end-to-end (E2E) testing with Playwright.
+If you're running a frontend-related project like the [React + Browser starter](../../starters/react-browser) or the [React + Express + MongoDB with SSR starter](../../starters/react-express-postgres-ssr), then you will have access to a specialized Docker test environment specialized for end-to-end (E2E) testing with Playwright.
 
 The Docker E2E test environment is completely separate from the Docker dev environment, so it will have its own unique set of containers, networks, and volumes, allowing it to be run alongside the Docker dev environment without any conflicts.
 

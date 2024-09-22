@@ -1,10 +1,8 @@
 # Basic Browser Starter (TypeScript)
 
-## `basic-browser-ts`
-
 This is a **[Lean JS App Starter](https://github.com/mattlean/lean-js-app-starter)** project for a [TypeScript](https://typescriptlang.org) application targeted for web browsers.
 
-_If you don't need TypeScript, then use the [`basic-browser` starter](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/basic-browser) instead._
+_If you don't need TypeScript, then use the [Basic Browser starter](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/basic-browser) instead._
 
 ## Technology Overview
 

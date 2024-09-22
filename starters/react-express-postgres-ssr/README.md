@@ -1,10 +1,8 @@
 # React + Express + PostgreSQL with Server-Side Rendering Starter
 
-## `react-express-postgres-ssr`
-
 This is a **[Lean JS App Starter](https://github.com/mattlean/lean-js-app-starter)** project for an [Express](https://expressjs.com) application that supports [React](https://react.dev) server-side rendering. It works with a [PostgreSQL](https://postgresql.org) database.
 
-_If you need TypeScript, then use the [`react-express-postgres-ssr-ts` starter](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/react-express-postgres-ssr-ts) instead._
+_If you need TypeScript, then use the [React + Express + PostgreSQL with SSR starter (TypeScript)](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/react-express-postgres-ssr-ts) instead._
 
 ## Technology Overview
 

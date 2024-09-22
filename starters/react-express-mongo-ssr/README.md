@@ -1,10 +1,8 @@
 # React + Express + MongoDB with Server-Side Rendering Starter
 
-## `react-express-mongo-ssr`
-
 This is a **[Lean JS App Starter](https://github.com/mattlean/lean-js-app-starter)** project for an [Express](https://expressjs.com) application that supports [React](https://react.dev) server-side rendering. It works with a [MongoDB](https://mongodb.com) database.
 
-_If you need TypeScript, then use the [`react-express-mongo-ssr-ts` starter](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/react-express-mongo-ssr-ts) instead._
+_If you need TypeScript, then use the [React + Express + MongoDB with SSR starter (TypeScript)](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/react-express-mongo-ssr-ts) instead._
 
 ## Technology Overview
 

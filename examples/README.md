@@ -4,9 +4,9 @@ This directory contains various examples that began as starter projects. Most we
 
 Here is an overview on how each example expands upon their starter:
 
-### [\*chan (`starchan`)](./starchan/)
+### [\*chan](./starchan)
 
-Built from [`react-express-mongo-ssr-ts`](../starters/react-express-mongo-ssr-ts/) starter.
+Built from [React + Express + MongoDB with SSR starter (TypeScript)](../starters/react-express-mongo-ssr-ts).
 
 -   OpenAPI
 -   Redux Toolkit
@@ -16,34 +16,34 @@ Built from [`react-express-mongo-ssr-ts`](../starters/react-express-mongo-ssr-ts
 -   Helmet
 -   Embedded JavaScript (EJS)
 
-### [Asset Test (`asset-test`)](./asset-test/)
+### [Asset Test](./asset-test)
 
-Configuration identical to [`react-browser-ts`](../starters/react-browser-ts/) starter.
+Configuration identical to [React + Browser starter (TypeScript)](../starters/react-browser-ts).
 
-### [Counter, Basic Version (`counter`)](./counter/)
+### [Counter, Basic Version](./counter)
 
-Built from [`basic-browser-ts`](../starters/basic-browser-ts/) starter.
-
--   Bootstrap
--   Sass
-
-### [Counter, React Version (`counter-react`)](./counter-react/)
-
-Built from [`react-browser-ts`](../starters/react-browser-ts/) starter.
+Built from [Basic Browser starter (TypeScript)](../starters/basic-browser-ts).
 
 -   Bootstrap
 -   Sass
 
-### [Markdown Editor (`markdown-editor`)](./markdown-editor/)
+### [Counter, React Version](./counter-react)
 
-Built from [`react-electron-ts`](../starters/react-electron-ts/) starter.
+Built from [React + Browser starter (TypeScript)](../starters/react-browser-ts).
+
+-   Bootstrap
+-   Sass
+
+### [Markdown Editor](./markdown-editor)
+
+Built from [React + Electron starter (TypeScript)](../starters/react-electron-ts).
 
 -   unified, rehype, remark
 -   Tailwind CSS
 
-### [Notes API (`notes-api`)](./notes-api/)
+### [Notes API](./notes-api)
 
-Built from [`express-postgres-ts`](../starters/express-postgres-ts/) starter.
+Built from [Express + PostgresDB starter (TypeScript)](../starters/express-postgres-ts).
 
 -   Swagger, OpenAPI
 -   express-validator
@@ -53,9 +53,9 @@ Built from [`express-postgres-ts`](../starters/express-postgres-ts/) starter.
 -   Embedded JavaScript (EJS)
 -   Postman
 
-### [Todo List (`todo-list`)](./todo-list/)
+### [Todo List](./todo-list)
 
-Built from [`react-browser`](../starters/react-browser/) starter.
+Built from [React + Browser starter](../starters/react-browser).
 
 -   React (Class Components)
 -   Flow
