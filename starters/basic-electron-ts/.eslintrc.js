@@ -10,12 +10,12 @@ const CONFIG_TS = {
 
 module.exports = {
     env: {
-        es2020: true,
+        es2024: true,
         node: true,
     },
     extends: ['eslint:recommended', 'prettier'],
     parserOptions: {
-        ecmaVersion: '2020',
+        ecmaVersion: 'latest',
         sourceType: 'module',
     },
     root: true,
@@ -31,7 +31,7 @@ module.exports = {
         {
             env: {
                 browser: true,
-                es2020: true,
+                es2024: true,
                 node: true,
             },
             files: ['src/preload/**/*.[jt]s?(x)'],
@@ -42,7 +42,7 @@ module.exports = {
         {
             env: {
                 browser: true,
-                es2020: true,
+                es2024: true,
             },
             files: ['src/renderer/**/*.[jt]s?(x)'],
             ...CONFIG_TS,
@@ -57,7 +57,7 @@ module.exports = {
         /* Jest */
         {
             env: {
-                es2020: true,
+                es2024: true,
                 jest: true,
                 node: true,
             },
@@ -81,7 +81,7 @@ module.exports = {
         {
             env: {
                 browser: true,
-                es2020: true,
+                es2024: true,
                 node: true,
             },
             files: 'src/playwright/**/*.[jt]s',

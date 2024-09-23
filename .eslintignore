@@ -1,0 +1,5 @@
+build/
+coverage/
+dist/
+flow-typed/
+playwright-report/
