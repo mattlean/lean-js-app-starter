@@ -25,7 +25,7 @@ On top of all this, non-frontend developers can improve their developer experien
 
 For those working on multiple projects with different targets at the same time, LJAS can be particularly useful for them by providing a consistent development environment across all projects. For example, when working in your source code, you don't need to worry about differing ECMAScript versions because all projects use the same version. LJAS's webpack and Babel setup will deal with transforming the code for you so it can run properly for the target, so you only need to think in terms of "bundler-style modules" which are essentially ECMAScript modules with support for extensionless import declarations (which was popularized by Create React App and webpack). LJAS also uses the same dependencies across the board as much as possible, so you'll mostly be coding with the same technologies like Jest, Playwright, etc. whether or not you're in a project for a browser app or a project for a desktop app. These factors result in a much smoother experience when it comes to reading different project sources and moving code between them.
 
-## Docker Development Environment
+## Docker Environments
 
 LJAS offers an optional [Docker](https://docker.com)-based developer environment for all projects that do not target Electron. This drastically simplifies the setup process because it cuts down the amount of prerequisites you need to get up and running to just Docker. Containerized dev environments help to reduce the "but it works on my machine" problem as everything the app needs to execute will be running in a container.
 

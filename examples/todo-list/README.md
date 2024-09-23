@@ -2,7 +2,7 @@
 
 This is a todo list [single-page application (SPA)](https://en.wikipedia.org/wiki/Single-page_application) written in JavaScript and [Flow](https://flow.org) with [React](https://react.dev) and [Redux](https://redux.js.org). It simulates interaction with a mock backend API.
 
-Note that this project utilizes React class components, classic Redux, and Enzyme. If you want to see an example of modern Redux using Redux Toolkit, please checkout the [\*chan example](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/starchan).
+Note that this project utilizes React class components, classic Redux, and Enzyme. If you want to see an example of modern Redux using Redux Toolkit, please checkout the [**\*chan** example](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/starchan).
 
 Be aware that this was ported from LJAS v0.1.1 is classified as a legacy project. That means it lacks a few features the other projects have (such as Playwright) and will not receive future upgrades for many of its dependencies.
 

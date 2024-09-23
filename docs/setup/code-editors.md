@@ -2,7 +2,7 @@
 
 LJAS supports **[Visual Studio Code (VS Code)](https://code.visualstudio.com)**, but it is not required. We do highly recommend it because it will ensure a smooth editor setup process for you as we have some things preconfigured for it, and all the documentation will explain things from a Visual Studio Code user's perspective.
 
-If you decide to not use VS Code, we highly recommend that you figure out how to get [ESLint](https://eslint.org) and [Prettier](https://prettier.io) (and type checking if you're using [TypeScript](https://typescriptlang.org)) operating in your editor. Catching warnings and errors in real-time as you code is extremely valuable!
+If you decide against using VS Code, we highly recommend that you figure out how to get [ESLint](https://eslint.org) and [Prettier](https://prettier.io) (and type checking if you're using [TypeScript](https://typescriptlang.org)) operating in your editor. Catching warnings and errors in real-time as you code is extremely valuable!
 
 Although LJAS no longer supports [Sublime Text](https://sublimetext.com). you can still refer to the TODO: [v0.1.1 Sublime Text documentation] if that is your editor of choice.
 

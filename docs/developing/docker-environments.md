@@ -5,7 +5,7 @@ LJAS provides two different [Docker](https://docker.com) environments:
 1. **Development Environment**  
    An alternative to the native dev environment that runs the entire app in a containerized Docker environment. It is available for all non-Electron based projects.
 2. **End-to-End Test Environment**  
-   A specialized Docker environment specifically for end-to-end (E2E) testing using Playwright. It is available for all frontend-based projects.
+   A specialized Docker environment specifically for end-to-end (E2E) testing using [Playwright](https://playwright.dev). It is available for all frontend-based projects.
 
 ## Contents
 
