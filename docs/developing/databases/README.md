@@ -15,7 +15,10 @@ This document is only relevant to the following Prisma-related starter projects:
 
 -   [Why Prisma?](#why-prisma)
 -   [Learning Resources](#learning-resources)
+-   [Connecting to Docker Databases Through a Terminal](#connecting-to-docker-databases-through-a-terminal)
+-   [Connecting a Natively Running App with a Containerized Database](#connecting-a-natively-running-app-with-a-containerized-database)
 -   [Examples](#examples)
+-   [Frequently Asked Questions](#frequently-asked-questions)
 
 ## Why Prisma?
 
@@ -45,10 +48,9 @@ The Prisma docs go over other good reasons to use their products in their [intro
 -   [Prisma's MongoDB guide](https://prisma.io/docs/getting-started/setup-prisma/start-from-scratch/mongodb-typescript-mongodb)  
     Learn the basics for Prisma with MongoDB.
 
-## Examples
+## Connecting to Docker Databases Through a Terminal
 
--   [Notes API (`notes-api`)](../../../examples/notes-api): REST API that uses PostgreSQL & Prisma
--   [\*chan (`starchan`)](../../../examples/starchan): Server-side rendered React app that uses MongoDB & Prisma
+To learn how to connect to Docker databases through a terminal, read the ["Connecting to Docker Databases Through a Terminal" section in the Docker Environments document](../docker-environments.md#connecting-to-docker-databases-through-a-terminal).
 
 ## Connecting a Natively Running App with a Containerized Database
 
@@ -60,7 +62,7 @@ Then all you need to do is modify the `DATABASE_URL` environment variable in the
 
 If you're working with unchanged values from the initial setup, then all you need to do is change `db` in the existing connection string to `localhost`.
 
-Using the [**Express + Postgres starter's** `.env` file](../../../starters/express-postgres/.env.example) as an example, you would modify this...
+Using the [**Express + PostgresSQL starter's** `.env` file](../../../starters/express-postgres/.env.example) as an example, you would modify this...
 
 ```
 DATABASE_URL="postgresql://postgres:password@db:5432/postgres?schema=public"
@@ -72,23 +74,19 @@ DATABASE_URL="postgresql://postgres:password@db:5432/postgres?schema=public"
 DATABASE_URL="postgresql://postgres:password@localhost:5432/postgres?schema=public"
 ```
 
-## Connecting to Docker Databases
+## Examples
 
-After a database container is up and running, you can connect to it with the following commands depending on your database type:
+-   [Notes API](https://github.com/mattlean/lean-js-app-starter/tree/master/examples/notes-api): REST API that uses PostgreSQL & Prisma
+-   [\*chan](https://github.com/mattlean/lean-js-app-starter/tree/master/examples/starchan): Server-side rendered React app that uses MongoDB & Prisma
 
-### MongoDB
+## Frequently Asked Questions (FAQ)
 
-```console
-docker exec -it ljas-express-mongo-db mongo -u mongo
-```
+### Questions
 
-### PostgreSQL
+-   [How do I fix type errors encountered with Prisma?](#how-do-i-fix-type-errors-encountered-with-prisma)
+-   [Why do you still use MongoDB 4 and not a newer version?](#why-do-you-still-use-mongodb-4-and-not-a-newer-version)
 
-```console
-docker exec -it ljas-express-postgres-db -u postgres psql
-```
-
-## Prisma Type Error Fix
+#### How do I fix type errors encountered with Prisma?
 
 You may encounter a case where TypeScript is throwing type errors with your Prisma-related code. If this is happening, try running [`prisma generate`](https://prisma.io/docs/orm/prisma-client/setup-and-configuration/generating-prisma-client) to generate the [Prisma Client](https://prisma.io/docs/orm/prisma-client/setup-and-configuration/introduction).
 
@@ -100,6 +98,6 @@ npm run prisma generate
 
 Note that if you ever make any changes to the Prisma schema, you must re-run `prisma generate` to update the Prisma Client as well.
 
-## Why do you still use MongoDB 4 and not a newer version?
+#### Why do you still use MongoDB 4 and not a newer version?
 
 At the moment the [official Prisma example uses a MongoDB 4 base image](https://github.com/prisma/prisma/blob/main/docker/mongodb_replica/Dockerfile) so we follow and do the same.

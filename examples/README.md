@@ -43,7 +43,7 @@ Built from [React + Electron starter (TypeScript)](../starters/react-electron-ts
 
 ### [Notes API](./notes-api)
 
-Built from [Express + PostgresDB starter (TypeScript)](../starters/express-postgres-ts).
+Built from [Express + PostgreSQL starter (TypeScript)](../starters/express-postgres-ts).
 
 -   Swagger, OpenAPI
 -   express-validator

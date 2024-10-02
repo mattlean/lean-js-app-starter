@@ -4,7 +4,7 @@
 
 All frontend-based projects will have Playwright configured through the `playwright.config.js` file in the project's root directory.
 
-The Playwright config most uses the defaults except that it sets the [`testDir` property](https://playwright.dev/docs/api/class-testconfig#test-config-test-dir) to `.src/playwright`. For Electron-based projects, the [`projects` property](https://playwright.dev/docs/api/class-testconfig#test-config-projects) reduces the browser to only Chromium as that is the only browser needed for Electron.
+The [Playwright config](https://playwright.dev/docs/test-configuration) most uses the defaults except that it sets the [`testDir` property](https://playwright.dev/docs/api/class-testconfig#test-config-test-dir) to `.src/playwright`. For Electron-based projects, the [`projects` property](https://playwright.dev/docs/api/class-testconfig#test-config-projects) reduces the browser to only Chromium as that is the only browser needed for Electron.
 
 ## Learning Resources
 

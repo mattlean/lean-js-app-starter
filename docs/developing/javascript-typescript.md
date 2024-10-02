@@ -5,6 +5,10 @@
 -   [ECMAScript Version](#ecmascript-version)
 -   [TypeScript Version](#typescript-version)
 -   [Creating JavaScript, TypeScript, and JSX-Related Files](#creating-javascript-typescript-and-jsx-related-files)
+-   [Linting](#linting)
+-   [Type Checking](#type-checking)
+-   [Formatting](#formatting)
+-   [Auto & Hot Reloading](#auto--hot-reloading)
 
 ## ECMAScript Version
 
@@ -28,15 +32,51 @@ We understand it may not be common to require `.jsx` file extensions for code in
 
 ## Linting
 
-TODO:
+LJAS uses [ESLint](https://eslint.org) to lint JavaScript and TypeScript. You can run it with the following `package.json` script:
+
+```console
+npm run lint
+```
+
+ESLint has a [`--fix` option](https://eslint.org/docs/latest/use/command-line-interface#--fix) which will cause it to automatically fix as many problems as possible. A shortcut for passing this option is available as the following script:
+
+```console
+npm run lint:fix
+```
+
+Instead of using `package.json` scripts, we suggest enabling ESLint in your code editor to lint in real-time. We show how to set this up with [Visual Studio Code (VS Code)](https://code.visualstudio.com) in the ["Install Extensions" section in the Code Editors document](../setup/code-editors.md#install-extensions).
+
+To learn how to configure ESLint, read the [ESLint configuration document](../configuration/eslint.md).
 
 ## Type Checking
 
-TODO:
+You can run the TypeScript compiler to type check the project source code by running the following `package.json` script:
+
+```console
+npm run check-types
+```
+
+Instead of using this script, we suggest enabling real-time type checking in your code editor. We suggest using VS Code since it does this for you out-of-the-box.
 
 ## Formatting
 
-TODO:
+LJAS uses [Prettier](https://prettier.io) to format all code. To identify all files with code style issues, run the following `package.json` script:
+
+```console
+npm run format
+```
+
+Note that this is an alias for `npm run format:check` which only identifies issues and does not make any changes to files.
+
+If you want to automatically address all of these code style issues, use the following script:
+
+```console
+npm run format:fix
+```
+
+Instead of using these scripts, we suggest enabling formatting on save with Prettier in your code editor. We show how to set this up with VS Code in the ["Install Extensions" section in the Code Editors document](../setup/code-editors.md#install-extensions).
+
+To learn how to configure Prettier, read the [Prettier configuration document](../configuration/prettier.md)
 
 ## Auto & Hot Reloading
 

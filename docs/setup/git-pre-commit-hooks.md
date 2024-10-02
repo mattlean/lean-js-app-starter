@@ -1,5 +1,14 @@
 # Git Pre-Commit Hooks
 
+## Contents
+
+-   [Overview](#overview)
+-   [Setup](#setup)
+-   [Bypassing Pre-Commit Hooks](#bypassing-pre-commit-hooks)
+-   [Disabling Pre-commit Hooks for Certain Environments](#disabling-pre-commit-hooks-for-certain-environments)
+
+## Overview
+
 We've already pre-configured [Git pre-commit hooks](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks#_committing_workflow_hooks) to find type, link, and format warnings/errors, but we don't have them running out-of-the-box due to some difficulty it would introduce for users setting up projects that aren't already associated with a Git repository.
 
 ## Setup
@@ -26,7 +35,7 @@ npm run prepare
 
 As Husky has already been configured in the `.husky/` directory and lint-staged has already been configured in the `.lintstagedrc` file, pre-commit hooks should be working for you now!
 
-## How do I bypass pre-commit hooks?
+## Bypassing Pre-Commit Hooks
 
 Simply pass in the `--no-verify` or `-n` flag with your commit. So for example, in the terminal your command might look similar to:
 
@@ -34,6 +43,6 @@ Simply pass in the `--no-verify` or `-n` flag with your commit. So for example, 
 git commit --no-verify
 ```
 
-## Disabling pre-commit hooks for certain environments
+## Disabling Pre-commit Hooks for Certain Environments
 
 Note that while pre-commit hooks are great for your development environment, they may cause issues for other environments where you wouldn't want them to run like a CI server or some Docker environments. [For potential solutions, please refer to Husky's "How To" document.](https://typicode.github.io/husky/how-to.html#ci-server-and-docker)

@@ -59,7 +59,7 @@ The remaining technologies are inherited from the starter:
 
 ### Getting Started
 
-Please refer to the ["Getting Started" section of the **React + Express + MongoDB with Server-Side Rendering (TypeScript)** starter's `README.md`](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/react-express-mongo-ssr-ts#getting-started).
+Please refer to the ["Getting Started" section in the **React + Express + MongoDB with Server-Side Rendering (TypeScript)** starter's `README.md`](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/react-express-mongo-ssr-ts#getting-started).
 
 ### Generating Data to Work With
 

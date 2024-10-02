@@ -53,7 +53,7 @@ The remaining technologies are inherited from the starter:
 
 ## Run This on Your Machine
 
-Please refer to the ["Getting Started" section of the **Express PostgreSQL (TypeScript)** starter's `README.md`](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/express-postgres-ts#getting-started).
+Please refer to the ["Getting Started" section in the **Express PostgreSQL (TypeScript)** starter's `README.md`](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/express-postgres-ts#getting-started).
 
 ## LJAS Documentation
 

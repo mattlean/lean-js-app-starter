@@ -6,7 +6,7 @@ All database-based projects will have their Prisma configuration found in the `p
 
 ## `DATABASE_URL` Environment Variable
 
-By default, the Prisma Schema will look for the `DATABASE_URL` environment variable which defines the [connection string](https://pris.ly/d/connection-strings). We recommend assigning this through the `.env` file which you can learn more about in the [`.env` File Configuration documentation](./dotenv-file.md).
+By default, the Prisma Schema will look for the `DATABASE_URL` environment variable which defines the [connection string](https://pris.ly/d/connection-strings). We recommend assigning this through the `.env` file which you can learn more about in the [`.env` File document](./dotenv-file.md).
 
 ## Learning Resources
 

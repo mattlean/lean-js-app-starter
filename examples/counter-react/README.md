@@ -38,7 +38,7 @@ The remaining technologies are inherited from the starter:
 
 ## Run This on Your Machine
 
-Please refer to the ["Getting Started" section of the **React + Browser (TypeScript)** starter's `README.md`](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/react-browser-ts#getting-started).
+Please refer to the ["Getting Started" section in the **React + Browser (TypeScript)** starter's `README.md`](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/react-browser-ts#getting-started).
 
 ## LJAS Documentation
 

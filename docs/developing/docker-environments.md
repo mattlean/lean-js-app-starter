@@ -21,6 +21,7 @@ LJAS provides two different [Docker](https://docker.com) environments:
     -   [Accessing Containers Logs](#accessing-container-logs)
     -   [Running Terminal Commands Inside the Container](#running-terminal-commands-inside-the-container)
 -   [More Learning Resources](#more-learning-resources)
+-   [Connecting to Docker Databases Through a Terminal](#connecting-to-docker-databases-through-a-terminal)
 -   [Developing Inside a Container with Visual Studio Code](#developing-inside-a-container-with-visual-studio-code)
 -   [Hybrid Native/Docker Development Environment](#hybrid-nativedocker-development-environment)
 -   [Troubleshooting](#troubleshooting)
@@ -187,6 +188,22 @@ The following resources are beginner-level guides from the [Docker docs](https:/
 -   [The basics: What is an image?](https://docs.docker.com/guides/docker-concepts/the-basics/what-is-an-image)
 -   [The basics: What is Docker Compose?](https://docs.docker.com/guides/docker-concepts/the-basics/what-is-docker-compose)
 
+## Connecting to Docker Databases Through a Terminal
+
+After a database container is up and running, you can connect to it through a terminal with the following commands depending on your database type:
+
+### MongoDB
+
+```console
+docker exec -it ljas-express-mongo-db mongo -u mongo
+```
+
+### PostgreSQL
+
+```console
+docker exec -it ljas-express-postgres-db -u postgres psql
+```
+
 ## Hybrid Native/Docker Development Environment
 
 It is possible to run parts of the project natively and other parts of it with Docker. We refer to this as a hybrid dev environment.
@@ -224,6 +241,8 @@ Finally, you can consider using a hybrid dev environment which we talk about in 
 ## Troubleshooting
 
 This section is for common solutions to some problems you may encounter when dealing with Docker environments.
+
+### Problems
 
 -   [I am running into issues with Docker and disk space. How do I deal with that?](#i-am-running-into-issues-with-docker-and-disk-space-how-do-i-deal-with-that)
 -   [I am running into problems preventing me from running Docker environments on Windows.](#i-am-running-into-problems-preventing-me-from-running-docker-environments-on-windows)

@@ -1,6 +1,6 @@
 # Nodemon Configuration
 
-Each project may have a different set of nodemon configuration files, but they all fall into one of the following two categories:
+Each project may have a different set of [nodemon configuration files](https://github.com/remy/nodemon?tab=readme-ov-file#config-files), but they all fall into one of the following two categories:
 
 ## 1. Configuration File Watch
 

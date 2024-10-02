@@ -1,5 +1,7 @@
 # Frequently Asked Questions (FAQ)
 
+This document goes over frequently asked questions that don't really fit anywhere else in the docs. If you don't find your specific question here, try looking at other FAQ sections in specific documents relevant to your question.
+
 ## Questions
 
 -   [How do I remove all mentions of Lean JS App Starter from my project?](#how-do-i-remove-all-mentions-of-lean-js-app-starter-from-my-project)

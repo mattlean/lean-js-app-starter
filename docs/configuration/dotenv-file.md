@@ -6,4 +6,4 @@ The `.env` file does not exist by default, so you will need to create a new one 
 
 Note that the `.env` file should never be committed to version control or shared as it could potentially contain private secrets. It is ignored by default in `.gitignore` in the project's root directory.
 
-For more information on configuring and working with the `.env` file, please read the [`dotenv`'s README](https://github.com/motdotla/dotenv).
+For more information on configuring and working with the `.env` file, please read the [`dotenv`'s `README.md`](https://github.com/motdotla/dotenv).
