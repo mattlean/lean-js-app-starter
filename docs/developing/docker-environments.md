@@ -251,7 +251,7 @@ This section is for common solutions to some problems you may encounter when dea
 -   [I am running into issues with Docker and disk space. How do I deal with that?](#i-am-running-into-issues-with-docker-and-disk-space-how-do-i-deal-with-that)
 -   [I am running into problems preventing me from running Docker environments on Windows.](#i-am-running-into-problems-preventing-me-from-running-docker-environments-on-windows)
 -   [How do I force Docker to create a completely fresh image and ignore the build cache?](#how-do-i-force-docker-to-create-a-completely-fresh-image-and-ignore-the-build-cache)
--   [Changes to my code are not being seen by Nodemon or webpack when they are running in a container.](#changes-to-my-code-are-not-being-seen-by-nodemon-or-webpack-when-they-are-running-in-a-container)
+-   [Changes to my code are not being seen by nodemon or webpack when they are running in a container.](#changes-to-my-code-are-not-being-seen-by-nodemon-or-webpack-when-they-are-running-in-a-container)
 -   [Playwright does not work in the Docker dev environment.](#playwright-does-not-work-in-the-docker-dev-environment)
 
 #### I am running into issues with Docker and disk space. How do I deal with that?
@@ -286,11 +286,11 @@ Sometimes you may encounter cases where Docker will use the build cache during t
 docker compose build --no-cache
 ```
 
-#### Changes to my code are not being seen by Nodemon or webpack when they are running in a container.
+#### Changes to my code are not being seen by nodemon or webpack when they are running in a container.
 
 Some machines run into issues with watching files in Docker containers.
 
-To resolve this issue with Nodemon, pass the `--legacy-watch` (or `-L`) flag whenever it is run. It is most likely that you will most likely need to update your `dev` `package.json` script with it. For more information on this, refer to the ["Application isn't restarting" in the Nodemon README](https://github.com/remy/nodemon?tab=readme-ov-file#application-isnt-restarting).
+To resolve this issue with nodemon, pass the `--legacy-watch` (or `-L`) flag whenever it is run. It is most likely that you will most likely need to update your `dev` `package.json` script with it. For more information on this, refer to the ["Application isn't restarting" in the nodemon README](https://github.com/remy/nodemon?tab=readme-ov-file#application-isnt-restarting).
 
 To resolve this issue with webpack, set the `watchOptions.poll` option in a webpack configuration file. For more information on this, refer to the ["Watch and WatchOptions" page in the webpack docs](https://webpack.js.org/configuration/watch/#watchoptionspoll).
 

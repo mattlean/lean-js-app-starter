@@ -8,11 +8,13 @@
     -   [Coverage with Jest](#coverage-with-jest)
     -   [Debugging Jest Tests](#debugging-jest-tests)
     -   [Configuring Jest](#configuring-jest)
+    -   [Jest Learning Resources](#jest-learning-resources)
 -   Playwright
     -   [Creating Playwright Test Files](#creating-playwright-test-files)
     -   [Running Playwright Tests](#running-playwright-tests)
     -   [Debugging Playwright Tests](#debugging-playwright-tests)
     -   [Configuring Playwright](#configuring-playwright)
+    -   [Playwright Learning Resources](#playwright-learning-resources)
 
 ## Jest
 
@@ -80,6 +82,15 @@ To learn how to debug Jest Tests, refer to the ["Jest tests with Visual Studio C
 
 Read the [Jest configuration document](../configuration/jest.md) to learn how it is configured and how to customize it yourself.
 
+### Jest Learning Resources
+
+-   [Jest Docs: Getting Started](https://jestjs.io/docs/getting-started)  
+    Learn the basics of writing and running Jest tests.
+-   [React Testing Library (RTL) Tutorial](https://robinwieruch.de/react-testing-library/)  
+     Learn [RTL](https://testing-library.com/docs/react-testing-library/intro) in a tutorial written by Robin Wieruch. This tutorial is recommended by the [Testing Library docs](https://testing-library.com/docs/react-testing-library/intro#tutorials).
+-   [Mock Service Worker (MSW) Docs: Getting started](https://mswjs.io/docs/getting-started)  
+     Learn how to use MSW by following their getting started document.
+
 ## Playwright
 
 [Playwright](https://playwright.dev) is only setup for frontend-related projects:
@@ -141,3 +152,8 @@ To learn how to use it, read the ["Setting Up the Docker End-to-End Test Environ
 ### Configuring Playwright
 
 Read the [Playwright configuration document](../configuration/playwright.md) to learn how it is configured and how to customize it yourself.
+
+### Playwright Learning Resources
+
+-   [Playwright Docs: Getting Started](https://playwright.dev/docs/intro)  
+    Learn how to use and write tests with Playwright by following their getting started document.

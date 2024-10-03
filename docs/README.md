@@ -31,7 +31,7 @@ Welcome to the documentation for **Lean JS App Starter (LJAS)**!
     -   [ESLint](./configuration/eslint.md)
     -   [Husky & lint-staged](./configuration/husky-lint-staged.md)
     -   [Jest](./configuration/jest.md)
-    -   [Nodemon](./configuration/nodemon.md)
+    -   [nodemon](./configuration/nodemon.md)
     -   [Playwright](./configuration/playwright.md)
     -   [Prisma](./configuration/prisma.md)
     -   [TypeScript](./configuration/typescript.md)

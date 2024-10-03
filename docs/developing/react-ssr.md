@@ -1,10 +1,17 @@
 # React Server-Side Rendering
 
-This document explains the details behind the approach we used to support React server-side rendering (SSR) in [react-ssr-express-postgres](../starters/react-ssr-express-postgres) and [react-ssr-express-mongo](../starters/react-ssr-express-mongo) since there are a few different ways it could be setup.
+This document explains the details behind the approach LJAS uses to support React server-side rendering (SSR) since there are a few different ways it could be setup.
+
+This document is only relevant to the following SSR-related starter projects:
+
+| Starter Project Name                  | JavaScript                                               | TypeScript                                                  |
+| ------------------------------------- | -------------------------------------------------------- | ----------------------------------------------------------- |
+| React + Express + MongoDB with SSR    | [View Source](../../starters/react-express-mongo-ssr)    | [View Source](../../starters/react-express-mongo-ssr-ts)    |
+| React + Express + PostgreSQL with SSR | [View Source](../../starters/react-express-postgres-ssr) | [View Source](../../starters/react-express-postgres-ssr-ts) |
 
 ## Separate Frontend & Backend Build Processes
 
-There are two different webpack build processes, one for the frontend and one for the backend, and they are executed one-after-another in that order because the backend one is dependent on the frontend one fully completing to behave properly.
+There are two different webpack build processes, one for the frontend and one for the backend, and they are executed one-after-another in that order because the backend is dependent on the output of the frontend build process.
 
 It is possible to run the backend without completing the frontend build process, but the whole reason why they are run in sequence is because the frontend build process generates the files that Express needs to render views like the JavaScript, EJS template files, images, etc. So if you run the backend build process alone, you will not be able to develop or use anything that involves a view which might not be a problem if you're working on a team exclusively as a backend API developer or something like that.
 
