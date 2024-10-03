@@ -17,6 +17,7 @@ This document is only relevant to the following Prisma-related starter projects:
 -   [Learning Resources](#learning-resources)
 -   [Connecting to Docker Databases Through a Terminal](#connecting-to-docker-databases-through-a-terminal)
 -   [Connecting a Natively Running App with a Containerized Database](#connecting-a-natively-running-app-with-a-containerized-database)
+-   [Prisma Configuration](#prisma-configuration)
 -   [Examples](#examples)
 -   [Frequently Asked Questions](#frequently-asked-questions)
 
@@ -73,6 +74,10 @@ DATABASE_URL="postgresql://postgres:password@db:5432/postgres?schema=public"
 ```
 DATABASE_URL="postgresql://postgres:password@localhost:5432/postgres?schema=public"
 ```
+
+## Prisma Configuration
+
+Read the [Prisma configuration document](../../configuration/prisma.md) to learn how it is configured and how to customize it yourself.
 
 ## Examples
 

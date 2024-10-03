@@ -10,8 +10,6 @@ LJAS provides two different [Docker](https://docker.com) environments:
 ## Contents
 
 -   [Docker vs. Native Environments](#docker-vs-native-environments)
-    -   [Docker Benefits](#docker-benefits)
-    -   [Docker Trade-Offs](#docker-trade-offs)
 -   [Setting Up the Docker Dev Environment](#setting-up-the-docker-dev-environment)
 -   [Setting Up the Docker End-to-End Test Environment](#setting-up-the-docker-end-to-end-test-environment)
 -   [Docker Basics](#docker-basics)
@@ -22,8 +20,10 @@ LJAS provides two different [Docker](https://docker.com) environments:
     -   [Running Terminal Commands Inside the Container](#running-terminal-commands-inside-the-container)
 -   [More Learning Resources](#more-learning-resources)
 -   [Connecting to Docker Databases Through a Terminal](#connecting-to-docker-databases-through-a-terminal)
--   [Developing Inside a Container with Visual Studio Code](#developing-inside-a-container-with-visual-studio-code)
 -   [Hybrid Native/Docker Development Environment](#hybrid-nativedocker-development-environment)
+-   [Developing Inside a Container with Visual Studio Code](#developing-inside-a-container-with-visual-studio-code)
+-   [Performance Tips](#performance-tips)
+-   [Configuration](#configuration)
 -   [Troubleshooting](#troubleshooting)
 
 ## Docker vs. Native Environments
@@ -237,6 +237,10 @@ If you're running into performance issues, first check that your virtual disk sp
 Next, you may want to consider allocating more of your native hardware's resources to Docker besides disk space. You can configure how many CPUs and how much memory can be used by Docker in the "Resources" tab in the Docker Desktop settings.
 
 Finally, you can consider using a hybrid dev environment which we talk about in the ["Hybrid Native/Docker Development Environment" section.](#hybrid-nativedocker-development-environment)
+
+## Configuration
+
+Read the [Docker configuration document](../configuration/docker.md) to learn how it is configured and how to customize it yourself.
 
 ## Troubleshooting
 

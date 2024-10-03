@@ -7,10 +7,12 @@
     -   [Running Jest Tests](#running-jest-tests)
     -   [Coverage with Jest](#coverage-with-jest)
     -   [Debugging Jest Tests](#debugging-jest-tests)
+    -   [Configuring Jest](#configuring-jest)
 -   Playwright
     -   [Creating Playwright Test Files](#creating-playwright-test-files)
     -   [Running Playwright Tests](#running-playwright-tests)
     -   [Debugging Playwright Tests](#debugging-playwright-tests)
+    -   [Configuring Playwright](#configuring-playwright)
 
 ## Jest
 
@@ -74,6 +76,10 @@ npm run test:coverage:open
 
 To learn how to debug Jest Tests, refer to the ["Jest tests with Visual Studio Code" section in the Debugging document](./debugging.md#jest-tests-with-visual-studio-code).
 
+### Configuring Jest
+
+Read the [Jest configuration document](../configuration/jest.md) to learn how it is configured and how to customize it yourself.
+
 ## Playwright
 
 [Playwright](https://playwright.dev) is only setup for frontend-related projects:
@@ -131,3 +137,7 @@ Please refer to the ["Playwright Tests with Visual Studio Code" section](./debug
 If you're working off of an non-Electron based LJAS project that supports Playwright, you will have access to a Docker test environment specialized for working with Playwright tests.
 
 To learn how to use it, read the ["Setting Up the Docker End-to-End Test Environment" section in the Docker Environments document](../developing/docker-environments.md#setting-up-the-docker-end-to-end-test-environment).
+
+### Configuring Playwright
+
+Read the [Playwright configuration document](../configuration/playwright.md) to learn how it is configured and how to customize it yourself.

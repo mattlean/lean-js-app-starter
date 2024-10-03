@@ -42,4 +42,4 @@ If you're using the Docker dev environment, you can develop inside a container w
 
 ## Configuration
 
-Read the [Visual Studio Code configuration document](../configuration/vscode.md) to read about how VS Code is configured and how to customize it yourself.
+Read the [Visual Studio Code configuration document](../configuration/vscode.md) to learn how VS Code is configured and how to customize it yourself.

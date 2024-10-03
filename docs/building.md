@@ -56,7 +56,7 @@ The following build process tools rely on Browserslist:
 -   [PostCSS](https://postcss.org)
 -   [Autoprefixer](https://github.com/postcss/autoprefixer)
 
-Edit the `.browserslistrc` file in the project's root directory to change build targets. For more information on configuring Browserslist, please read the TODO: Browserslist configuration document. Always try to define build targets as precisely as possible as it will exclude unnecessary code for irrelevant platforms and keep your build size as small as possible.
+Edit the `.browserslistrc` file in the project's root directory to change build targets. For more information on configuring Browserslist, please read the [Browserslist configuration document](./configuration/browserslist.md). Always try to define build targets as precisely as possible as it will exclude unnecessary code for irrelevant platforms and keep your build size as small as possible.
 
 When working with Electron projects, you will also need to alter the webpack targets for the main process in `webpack/main.common.js` and the preload process in `webpack/preload.common.js`.
 
@@ -77,6 +77,8 @@ If you need to test the distributable app build process but you don't want to go
 ```console
 npm run pack
 ```
+
+To learn how to configure electron-builder, read the [electron-builder configuration document](./configuration/electron-builder.md).
 
 ## Building Icons for Electron Applications
 

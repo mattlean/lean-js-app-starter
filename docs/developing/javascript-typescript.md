@@ -9,6 +9,7 @@
 -   [Type Checking](#type-checking)
 -   [Formatting](#formatting)
 -   [Auto & Hot Reloading](#auto--hot-reloading)
+-   [Configuration](#configuration)
 
 ## ECMAScript Version
 
@@ -76,7 +77,7 @@ npm run format:fix
 
 Instead of using these scripts, we suggest enabling formatting on save with Prettier in your code editor. We show how to set this up with VS Code in the ["Install Extensions" section in the Code Editors document](../setup/code-editors.md#install-extensions).
 
-To learn how to configure Prettier, read the [Prettier configuration document](../configuration/prettier.md)
+To learn how to configure Prettier, read the [Prettier configuration document](../configuration/prettier.md).
 
 ## Auto & Hot Reloading
 
@@ -101,3 +102,14 @@ npm run dev
 Frontend React-related build processes do not rely on auto reloading and Nodemon in the same way because [React Fast Refresh](https://reactnative.dev/docs/fast-refresh) is used to show your app's changes instead. This feature is setup with [React Refresh Webpack Plugin](https://github.com/pmmmwh/react-refresh-webpack-plugin) and activates hot reloading which enables webpack-dev-server to seamlessly update specific modules and components while the app is running, only falling back to a full reload when absolutely necessary.
 
 This allows React development to iterate faster because changes will be "live patched" to the app process which will run continuously and uninterrupted. This is in contrast to auto reloading where Nodemon has to completely restart the app process every time a change occurs.
+
+## Configuration
+
+Read the following configuration documents to learn how the corresponding configurations work and how to customize them yourself:
+
+-   [Babel](../configuration/babel.md)
+-   [ESLint](../configuration/eslint.md)
+-   [nodemon](../configuration/nodemon.md)
+-   [Prettier](../configuration/prettier.md)
+-   [TypeScript](../configuration/typescript.md)
+-   [webpack](../configuration/webpack.md)
