@@ -4,8 +4,8 @@ LJAS supports [PostgreSQL](https://postgresql.org) and [MongoDB](https://mongodb
 
 This document is only relevant to the following Prisma-related starter projects:
 
-| Starter Project Name                  | JavaScript                                                                                                     | TypeScript                                                                                                        |
-| ------------------------------------- | -------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| Starter Project Name                  | JavaScript                                                                                                         | TypeScript                                                                                                            |
+| ------------------------------------- | ------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------- |
 | Express + MongoDB                     | [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-dev/starters/express-mongo)              | [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-dev/starters/express-mongo-ts)              |
 | Express + PostgreSQL                  | [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-dev/starters/express-postgres)           | [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-dev/starters/express-postgres-ts)           |
 | React + Express + MongoDB with SSR    | [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-dev/starters/react-express-mongo-ssr)    | [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-dev/starters/react-express-mongo-ssr-ts)    |
