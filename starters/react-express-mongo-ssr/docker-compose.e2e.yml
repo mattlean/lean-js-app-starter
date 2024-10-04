@@ -34,6 +34,9 @@ services:
             dockerfile: e2e.Dockerfile
         image: ljas-react-express-mongo-ssr-e2e
         container_name: ljas-react-express-mongo-ssr-e2e
+        depends_on:
+            db:
+                condition: service_healthy
         restart: always
         ports:
             - '${PORT_EXPRESS_E2E}:${PORT_EXPRESS_E2E}'

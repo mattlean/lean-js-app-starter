@@ -30,6 +30,9 @@ services:
         build: .
         image: ljas-starchan
         container_name: ljas-starchan
+        depends_on:
+            db:
+                condition: service_healthy
         restart: always
         ports:
             - '${PORT_EXPRESS}:${PORT_EXPRESS}'

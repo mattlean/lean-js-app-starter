@@ -32,8 +32,5 @@ module.exports = merge([
         },
     }),
 
-    setupNodeExternals({
-        // TODO: remove this before going to prod
-        additionalModuleDirs: ['../../node_modules'],
-    }),
+    setupNodeExternals(),
 ])

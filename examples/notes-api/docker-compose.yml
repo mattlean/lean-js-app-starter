@@ -12,7 +12,7 @@ services:
         env_file: .env
         command: '-p ${POSTGRES_PORT}'
         volumes:
-            - ljas-notes-db-data:/var/lib/postgresql/data
+            - ljas-notes-api-db-data:/var/lib/postgresql/data
         healthcheck:
             test:
                 [
