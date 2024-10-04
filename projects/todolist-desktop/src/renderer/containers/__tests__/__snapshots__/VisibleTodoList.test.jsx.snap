@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`VisibleTodoList renders properly 1`] = `
-<p>
-  Loading...
-</p>
-`;

@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Global error handler returns a 500 error when the SSR error handler throws a ServerError 1`] = `
+"<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>ljas-starchan</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+    </head>
+    <body>
+        <h1>Internal server error</h1>
+        <p>Trigger the global error handler from the SSR error handler with a ServerError</p>
+    </body>
+</html>
+"
+`;
+
+exports[`Global error handler returns a 500 error when the SSR error handler throws an error 1`] = `
+"<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>ljas-starchan</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+    </head>
+    <body>
+        <h1>Internal server error</h1>
+        
+    </body>
+</html>
+"
+`;
+
+exports[`Not found error handlers handles a non-API route with no handler using the regular not found error handler 1`] = `
+"<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Error | ljas-starchan</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <script defer src="/app.js"></script><link href="/app.css" rel="stylesheet"></head>
+    <body>
+        <div id="root"><h1>Not found</h1><p><i>/definitely-not-found was not found.</i></p><p><a href="/">Return to the home page.</a></p></div>
+        <script>
+            window.__PRELOADED_STATE__ = {"api":{"queries":{},"mutations":{},"provided":{},"subscriptions":{},"config":{"online":true,"focused":true,"middlewareRegistered":true,"refetchOnFocus":false,"refetchOnReconnect":false,"refetchOnMountOrArgChange":false,"keepUnusedDataFor":60,"reducerPath":"api"}},"appErrors":[{"heading":"Not found","content":"/definitely-not-found was not found."}],"formError":"","formInputs":{"subject":"","comment":""}}
+        </script>
+    </body>
+</html>
+"
+`;
+
+exports[`SSR error handler returns a 500 error when the fail route is requested 1`] = `
+"<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Error | ljas-starchan</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <script defer src="/app.js"></script><link href="/app.css" rel="stylesheet"></head>
+    <body>
+        <div id="root"><h1>Internal server error</h1><p><a href="/">Return to the home page.</a></p></div>
+        <script>
+            window.__PRELOADED_STATE__ = {"api":{"queries":{},"mutations":{},"provided":{},"subscriptions":{},"config":{"online":true,"focused":true,"middlewareRegistered":true,"refetchOnFocus":false,"refetchOnReconnect":false,"refetchOnMountOrArgChange":false,"keepUnusedDataFor":60,"reducerPath":"api"}},"appErrors":[{"heading":"Internal server error"}],"formError":"","formInputs":{"subject":"","comment":""}}
+        </script>
+    </body>
+</html>
+"
+`;

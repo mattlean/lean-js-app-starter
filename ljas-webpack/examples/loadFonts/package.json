@@ -1,0 +1,15 @@
+{
+    "scripts": {
+        "build": "webpack"
+    },
+    "devDependencies": {
+        "css-loader": "^6.8.1",
+        "css-minimizer-webpack-plugin": "^6.0.0",
+        "ljas-webpack": "^0.1.0-rc-20240708",
+        "mini-css-extract-plugin": "^2.7.6",
+        "webpack": "^5.85.0",
+        "webpack-cli": "^5.1.1",
+        "webpack-merge": "^5.9.0"
+    },
+    "private": true
+}

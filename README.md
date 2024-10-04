@@ -1,92 +1,79 @@
 # Lean JavaScript Application Starter
-Skip boilerplate setup and get straight to the code you care about for your next JavaScript application.
 
-## Overview
-### 🚀 Simple Setup
-Follow a few simple steps in the ["Getting Started" documentation](docs/getting_started.md) and get straight to coding!
+**Lean JS App Starter (LJAS)** is a development environment that is designed to get you up and running quickly while being flexible to handle potential changing project requirements as your app grows.
 
-### 🌙 Consistent Codebase Across Multiple Environments
-Consistent JavaScript standard, dependencies, and configuration no matter what environment you're building for.
+**🎉 Don't just code for browsers: build servers, desktop apps, CLI tools, and more**
 
-| 🏄‍ Web Browser                                          | 🌐 Node.js                                              | 🖥️ Desktop                                              |
-|--------------------------------------------------------|--------------------------------------------------------|--------------------------------------------------------|
-| [JavaScript (ES2015)](docs/javascript_features.md)     | [JavaScript (ES2015)](docs/javascript_features.md)     | [JavaScript (ES2015)](docs/javascript_features.md)     |
-| [Babel](https://babeljs.io)                            | [Babel](https://babeljs.io)                            | [Babel](https://babeljs.io)                            |
-| [Flow](https://flow.org)                               | [Flow](https://flow.org)                               | [Flow](https://flow.org)                               |
-| [Jest](https://jestjs.io)                              | [Jest](https://jestjs.io)                              | [Jest](https://jestjs.io)                              |
-| [webpack](https://webpack.js.org)                      | [webpack](https://webpack.js.org)                      | [webpack](https://webpack.js.org)                      |
-| [React](https://reactjs.org)                           | [React](https://reactjs.org)                           | [React](https://reactjs.org)                           |
-| [Redux](https://redux.js.org)                          | [Redux](https://redux.js.org)                          | [Redux](https://redux.js.org)                          |
-| [React Router](https://reacttraining.com/react-router) | [React Router](https://reacttraining.com/react-router) | [React Router](https://reacttraining.com/react-router) |
-| [Sass](https://sass-lang.com)                          | [Sass](https://sass-lang.com)                          | [Sass](https://sass-lang.com)                          |
-|                                                        | [Node.js](https://nodejs.org)                          | [Electron](https://electronjs.org)                     |
-|                                                        | [Express](https://expressjs.com)                       |                                                        |
-|                                                        | [MongoDB](https://mongodb.com)                         |                                                        |
-|                                                        | [Mongoose](https://mongoosejs.com)                     |                                                        |
+> Support for [TypeScript](https://typescriptlang.org), [Node.js](https://nodejs.org), [Electron](https://electronjs.org), [React](https://react.dev), and [Express](https://expressjs.com) servers that support React server-side rendering.
 
-Future support for more environments and libraries are being considered.
+**🐳 Docker development & testing environments**
 
-### 👩‍💻 Helpful Features for Development
-#### Useful Tooling
-Plugins, source maps, scripts, and tool integrations like Redux DevTools, Devtron, and many others are already setup for you to make debugging easier.
+> Alternatively run the dev environment with [Docker](https://docker.com) to simplify onboarding and improve consistency for developers across macOS, Windows, and Linux. Use a specialized Docker test environment to improve the stability and trustworthiness of end-to-end test results.
 
-Optionally use Flow, ESLint, and stylelint to help identify potential problems and produce better, safer code.
+**🧪 Robust testing environment**
 
-#### Automatic Reloading & Hot Loading
-No need to manually refresh, rebuild, and rerun your apps during development. Let a script automate all of that for you so you can see your changes as soon as possible. When coding with React, take advantage of hot loading so you can tweak components in real-time without refreshing and losing state.
+> Write unit tests with [Jest](https://jestjs.io) and end-to-end tests with [Playwright](https://playwright.dev). Test frontends with [Testing Library](https://testing-library.com) and backend APIs with [SuperTest](https://github.com/ladjs/supertest). Mock network requests with [MSW](https://mswjs.io).
 
-#### Server-Side Rendering Support
-Render React components on the server and neatly integrate your browser and Node.js codebases together.
+**🗄️ Support for PostgreSQL & MongoDB**
 
-### 🏛️ Build For Production
-Create a production ready build with one simple command. Minification and exclusion of unused code are all handled for you. Only the necessary JavaScript transformations/polyfills and CSS vendor prefixes for targeted browser versions are included. This ensures the build works everywhere you need while being the smallest size possible.
+> Connect to [PostgreSQL](https://postgresql.org) and [MongoDB](https://mongodb.com) easily with [Prisma](https://prisma.io). Containerized databases are available so you aren't required to install databases directly on your machine.
 
-### 🔧 Fully Customizable
-If you ever need to change the configuration for anything, you can easily do so. The starting codebases are small, documented, easy to understand, and ready to adjust to all of your needs.
+**⚡ Hot module replacement & auto-reloading**
 
-## Get Started
-### 🏄‍ Web Browser
-#### Download
-If you want to build an app for web browsers, start with the [latest `browser` release](https://github.com/IsaacLean/lean-js-app-starter/releases).
+> See changes reflected quickly in your app as soon as you save changes to your code.
 
-#### Examples
-You can find some example browser apps in the following branches:
+**📦 Optimized builds for production environments**
 
-- [`todolist-browser`](https://github.com/IsaacLean/lean-js-app-starter/tree/todolist-browser): A todo list app. Connects with mock backend API.
-- [`starchan-frontend`](https://github.com/IsaacLean/lean-js-app-starter/tree/starchan-frontend): The frontend app for an anonymous text board called *chan (pronounced star-chan). Requires connection with the *chan backend API on the [`nodejs` branch](https://github.com/IsaacLean/lean-js-app-starter/tree/nodejs).
+> Generate optimized builds specialized for running in production environments. Output cross-browser compatible bundles for the web or OS-specific executable bundles for Linux, macOS, or Windows.
 
-[Click here for documentation on building browser apps.](docs/envs/browser/README.md)
+**🧼 Effortlessly maintain consistent code style**
 
-### 🌐 Node.js
-#### Downloads
-If you want to build an app for Node.js, you have two options:
+> Stop worrying about needing to remember rules or having disagreements with other team members about code styling. Just let [Prettier](https://prettier.io) and [ESLint](https://eslint.org) enforce code style for you.
 
-- [`nodejs`](https://github.com/IsaacLean/lean-js-app-starter/tree/nodejs): An Express, MongoDB, and Mongoose starter project
-- [`nodejs-ssr`](https://github.com/IsaacLean/lean-js-app-starter/tree/nodejs-ssr): An Express, MongoDB, and Mongoose starter project that supports server-side rendering for React
+**⛷️ Smoothly move across multiple projects**
 
-You can find the latest releases for these on the [releases page](https://github.com/IsaacLean/lean-js-app-starter/releases).
+> The project setup and configuration consistency allows developers working on multiple LJAS-based projects to move back-and-forth between them easily. If you are familiar with one LJAS project then you will be comfortable working with all of them, regardless if the build target is a browser, Node.js, or Electron.
 
-#### Examples
-The Node.js example apps come with the base projects in the following branches:
+**🥇 Powered by the gold standards of the JS build tool ecosystem**
 
-- [`nodejs`](https://github.com/IsaacLean/lean-js-app-starter/tree/nodejs): A REST API for an anonymous text board called *chan (pronounced star-chan). Optionally connects with the *chan frontend app on the [`starchan-frontend` branch](https://github.com/IsaacLean/lean-js-app-starter/tree/starchan-frontend).
-- [`nodejs-ssr`](https://github.com/IsaacLean/lean-js-app-starter/tree/nodejs-ssr): A version of the *chan backend that supports server-side rendering of the frontend app.
+> Nothing fancy and no surprises–it's just [webpack](https://webpack.js.org), [Babel](https://babeljs.io), and [ESLint](https://eslint.org). The configurations are intentionally designed to follow standard conventions out-of-the-box, so they are easy to understand and customize.
 
-[Click here for documentation on building Node.js apps.](docs/envs/nodejs/README.md)
+## Documentation
 
-### 🖥️ Desktop
-#### Download
-If you want to build an app for desktop, start with the [latest `desktop` release](https://github.com/IsaacLean/lean-js-app-starter/releases).
+**🤔 Need help deciding if LJAS is right for you?**
 
-#### Examples
-You can find an example desktop app in the following branch:
+> Read the ["Why Lean JS App Starter?" document](./docs/why.md).
 
-- [`todolist-desktop`](https://github.com/IsaacLean/lean-js-app-starter/tree/todolist-desktop): A todo list app ported from the browser targeted app on the [`todolist-browser` branch](https://github.com/IsaacLean/lean-js-app-starter/tree/todolist-browser).
+**📖 Learn more about everything LJAS has to offer!**
 
-[Click here for documentation on building desktop apps.](docs/envs/desktop/README.md)
+> [Check out the docs!](./docs)
 
-### 🏊 Documentation
-You can dive deeper into the project by reading the [documentation](docs/README.md) which is also included locally with each copy of the project in the [`docs/`](docs) folder.
+## Getting Started
+
+LJAS offers several different **starter projects** with various different technologies pre-configured for you. Each one is designed for different targets like the browser or Node.js, and can also utilize different technologies such as JavaScript, TypeScript, React, or Express, etc. They are all designed as complete development environments that you can rely on out-of-the-box.
+
+Select a starter project below that fits your needs to learn about what each one offers:
+
+| Starter Project Name                  | Description                                                                                                                           | JavaScript                                                                                                                                                                                | TypeScript                                                                                                                                                                                   |
+| ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Basic Browser                         | A simple setup for a frontend built with just vanilla JavaScript or TypeScript.                                                       | [Download](https://github.com/mattlean/lean-js-app-starter/releases) / [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-dev/starters/basic-browser)              | [Download](https://github.com/mattlean/lean-js-app-starter/releases) / [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-dev/starters/basic-browser-ts)              |
+| Basic Electron                        | A simple setup for an Electron desktop app built with just vanilla JavaScript or TypeScript.                                          | [Download](https://github.com/mattlean/lean-js-app-starter/releases) / [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-dev/starters/basic-electron)             | [Download](https://github.com/mattlean/lean-js-app-starter/releases) / [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-dev/starters/basic-electron-ts)             |
+| Basic Node.js                         | A simple setup for a Node.js app built with just vanilla JavaScript or TypeScript.                                                    | [Download](https://github.com/mattlean/lean-js-app-starter/releases) / [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-dev/starters/basic-node)                 | [Download](https://github.com/mattlean/lean-js-app-starter/releases) / [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-dev/starters/basic-node-ts)                 |
+| Express + MongoDB                     | A web server that runs off Node.js, Express, MongoDB, and Prisma.                                                                     | [Download](https://github.com/mattlean/lean-js-app-starter/releases) / [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-dev/starters/express-mongo)              | [Download](https://github.com/mattlean/lean-js-app-starter/releases) / [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-dev/starters/express-mongo-ts)              |
+| Express + PostgreSQL                  | A web server that runs off Node.js, Express, PostgreSQL, and Prisma.                                                                  | [Download](https://github.com/mattlean/lean-js-app-starter/releases) / [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-dev/starters/express-postgres)           | [Download](https://github.com/mattlean/lean-js-app-starter/releases) / [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-dev/starters/express-postgres-ts)           |
+| React + Browser                       | A frontend that uses React.                                                                                                           | [Download](https://github.com/mattlean/lean-js-app-starter/releases) / [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-dev/starters/react-browser)              | [Download](https://github.com/mattlean/lean-js-app-starter/releases) / [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-dev/starters/react-browser-ts)              |
+| React + Electron                      | An Electron desktop app that uses React for its renderer processes.                                                                   | [Download](https://github.com/mattlean/lean-js-app-starter/releases) / [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-dev/starters/react-electron)             | [Download](https://github.com/mattlean/lean-js-app-starter/releases) / [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-dev/starters/react-electron-ts)             |
+| React + Express + MongoDB with SSR    | A full-stack web app that runs off Node.js, Express, PostgreSQL, Prisma, and React. The backend supports React server-side rendering. | [Download](https://github.com/mattlean/lean-js-app-starter/releases) / [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-dev/starters/react-express-mongo-ssr)    | [Download](https://github.com/mattlean/lean-js-app-starter/releases) / [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-dev/starters/react-express-mongo-ssr-ts)    |
+| React + Express + PostgreSQL with SSR | A full-stack web app that runs off Node.js, Express, PostgreSQL, Prisma, and React. The backend supports React server-side rendering. | [Download](https://github.com/mattlean/lean-js-app-starter/releases) / [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-dev/starters/react-express-postgres-ssr) | [Download](https://github.com/mattlean/lean-js-app-starter/releases) / [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-dev/starters/react-express-postgres-ssr-ts) |
+
+## Examples
+
+**Example projects** are built off of starter projects and act as a demonstration of how LJAS can used and adapted to different project requirements.
+
+You will be able to find projects like SPAs, REST APIs, desktop apps, and more. They can be handy if you need references for customized configurations that extend LJAS's functionality or just some good ol' inspiration.
+
+[Take a look at the example projects in the `examples/` directory.](./examples/)
 
 ## License
-This open source project is licensed under the [MIT License](https://choosealicense.com/licenses/mit).
+
+Lean JavaScript Application Starter is open source software [licensed as MIT](https://choosealicense.com/licenses/mit).

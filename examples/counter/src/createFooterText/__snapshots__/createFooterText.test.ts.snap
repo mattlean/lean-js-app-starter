@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer text element matches snapshot 1`] = `
+<footer
+  class="text-center text-muted"
+  id="footer-text"
+>
+  <p
+    class="mb-0"
+  >
+    Learn about the tech stack used for this project and more at its 
+    <a
+      class="text-muted"
+      href="https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-dev/examples/counter"
+    >
+      GitHub repo
+    </a>
+    .
+  </p>
+  <p>
+    Built with 
+    <a
+      class="text-muted"
+      href="https://github.com/mattlean/lean-js-app-starter"
+    >
+      Lean JS App Starter
+    </a>
+    .
+  </p>
+</footer>
+`;

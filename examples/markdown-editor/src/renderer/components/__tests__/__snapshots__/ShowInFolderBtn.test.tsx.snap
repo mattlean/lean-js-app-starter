@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ShowInFolderBtn component matches snapshot 1`] = `
+<DocumentFragment>
+  <button
+    class="btn"
+    disabled=""
+  >
+    Show In Folder
+  </button>
+</DocumentFragment>
+`;

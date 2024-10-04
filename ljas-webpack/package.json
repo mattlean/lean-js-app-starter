@@ -1,0 +1,51 @@
+{
+    "name": "ljas-webpack",
+    "version": "0.1.0-rc-20240708",
+    "description": "webpack configuration parts for webpack config compositions",
+    "main": "index.js",
+    "author": "Matthew Lean <matt@mattlean.com> (https://mattlean.com)",
+    "license": "MIT",
+    "scripts": {
+        "format": "npm run format:check",
+        "format:check": "prettier --check .",
+        "format:write": "prettier --write .",
+        "lint": "eslint .",
+        "lint:fix": "npm run lint -- --fix"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/mattlean/lean-js-app-starter.git",
+        "directory": "ljas-webpack"
+    },
+    "bugs": {
+        "url": "https://github.com/mattlean/lean-js-app-starter/issues"
+    },
+    "homepage": "https://github.com/mattlean/lean-js-app-starter/blob/v1.0.0-dev/ljas-webpack/README.md",
+    "peerDependencies": {
+        "webpack": "^5.85.0"
+    },
+    "devDependencies": {
+        "@trivago/prettier-plugin-sort-imports": "^4.3.0",
+        "@typescript-eslint/eslint-plugin": "^6.21.0",
+        "eslint": "^8.41.0",
+        "eslint-config-prettier": "^9.1.0",
+        "eslint-plugin-react": "^7.32.2",
+        "prettier": "3.2.5"
+    },
+    "keywords": [
+        "ljas-webpack",
+        "lean-js-app-starter",
+        "ljas",
+        "lean",
+        "javascript",
+        "js",
+        "application",
+        "app",
+        "starter",
+        "webpack",
+        "configuration",
+        "config",
+        "parts",
+        "webpack-merge"
+    ]
+}

@@ -1,0 +1,7 @@
+{
+    "watch": [
+        "build/development/preload/",
+        "build/development/main/",
+        "nodemon.development.json"
+    ]
+}

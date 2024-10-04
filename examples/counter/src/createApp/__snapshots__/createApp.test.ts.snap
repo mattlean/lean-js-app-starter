@@ -1,0 +1,120 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App element matches snapshot 1`] = `
+<div
+  class="align-items-center d-flex flex-column h-100"
+>
+  <div
+    class="align-items-center container d-flex justify-content-center h-100"
+  >
+    <div
+      class="card"
+    >
+      <div
+        class="card-header"
+      >
+        Counting App
+      </div>
+      <div
+        class="align-items-center card-body d-flex flex-column px-5"
+      >
+        <p
+          class="lead"
+        >
+          Count is currently...
+        </p>
+        <p
+          class="display-1"
+        >
+          0
+        </p>
+        <div
+          class="column-gap-3 d-flex w-100"
+        >
+          <button
+            class="btn btn-success w-50"
+          >
+            <i
+              class="bi bi-dash-circle"
+              style="font-size: 1.5rem;"
+            >
+              <span
+                class="sr-only"
+              >
+                Decrement Count
+              </span>
+            </i>
+          </button>
+          <button
+            class="btn btn-success w-50"
+          >
+            <i
+              class="bi bi-plus-circle-fill"
+              style="font-size: 1.5rem;"
+            >
+              <span
+                class="sr-only"
+              >
+                Increment Count
+              </span>
+            </i>
+          </button>
+        </div>
+        <hr
+          class="w-100"
+        />
+        <div
+          class="input-group"
+        >
+          <input
+            class="form-control"
+            placeholder="Force count to be..."
+            type="number"
+          />
+          <button
+            class="btn btn-danger"
+            disabled=""
+          >
+            Force!
+          </button>
+        </div>
+        <hr
+          class="w-100"
+        />
+        <button
+          class="btn btn-primary w-100"
+        >
+          Reset
+        </button>
+      </div>
+    </div>
+  </div>
+  <footer
+    class="text-center text-muted"
+    id="footer-text"
+  >
+    <p
+      class="mb-0"
+    >
+      Learn about the tech stack used for this project and more at its 
+      <a
+        class="text-muted"
+        href="https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-dev/examples/counter"
+      >
+        GitHub repo
+      </a>
+      .
+    </p>
+    <p>
+      Built with 
+      <a
+        class="text-muted"
+        href="https://github.com/mattlean/lean-js-app-starter"
+      >
+        Lean JS App Starter
+      </a>
+      .
+    </p>
+  </footer>
+</div>
+`;

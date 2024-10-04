@@ -1,0 +1,7 @@
+build/
+coverage/
+flow-typed/
+node_modules/
+*.sublime-workspace
+.env
+stats.json

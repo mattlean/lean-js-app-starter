@@ -1,0 +1,3 @@
+{
+    "watch": ["build/development/backend/", "nodemon.development.json"]
+}
