@@ -19,7 +19,7 @@ This document is only relevant to the following Prisma-related starter projects:
 -   [Connecting a Natively Running App with a Containerized Database](#connecting-a-natively-running-app-with-a-containerized-database)
 -   [Prisma Configuration](#prisma-configuration)
 -   [Examples](#examples)
--   [Frequently Asked Questions](#frequently-asked-questions)
+-   [Frequently Asked Questions](#frequently-asked-questions-faq)
 
 ## Why Prisma?
 
