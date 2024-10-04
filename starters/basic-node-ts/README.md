@@ -2,7 +2,7 @@
 
 This is a **[Lean JS App Starter](https://github.com/mattlean/lean-js-app-starter)** project for a [Node.js](https://nodejs.org) application written in [TypeScript](https://typescriptlang.org).
 
-_If you don't need TypeScript, then then use the [Basic Node.js starter](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/basic-node) instead._
+_If you don't need TypeScript, then then use the [Basic Node.js starter](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-dev/starters/basic-node) instead._
 
 ## Technology Overview
 
@@ -62,7 +62,7 @@ When you're done working, you can press Ctrl+C in the terminal running the dev b
 
 This method is the simplest as it only only requires Docker and has one step. Also, you won't need to worry about which Node.js version your machine is running because the dev environment will use a separate Node.js process running inside the container.
 
-For more information on the Docker dev environment, please read the ["Docker Environments" document in the LJAS docs](https://github.com/mattlean/lean-js-app-starter/blob/master/docs/developing/docker-environments.md).
+For more information on the Docker dev environment, please read the ["Docker Environments" document in the LJAS docs](https://github.com/mattlean/lean-js-app-starter/blob/v1.0.0-dev/docs/developing/docker-environments.md).
 
 #### Prerequisites
 
@@ -110,7 +110,7 @@ Create a dev build with webpack using this command:
 npm run build
 ```
 
-For more information on the build process, please read the ["Building" document in the LJAS docs](https://github.com/mattlean/lean-js-app-starter/blob/master/docs/building.md).
+For more information on the build process, please read the ["Building" document in the LJAS docs](https://github.com/mattlean/lean-js-app-starter/blob/v1.0.0-dev/docs/building.md).
 
 #### (Optional) Create a `.env` file
 
@@ -134,4 +134,4 @@ When you're done working, you can press Ctrl+C in the terminal running the dev b
 
 ## Learn More With the Documentation
 
-[📖 Read the docs to learn more about what else you can do with **Lean JS App Starter** and how it works.](https://github.com/mattlean/lean-js-app-starter/tree/master/docs)
+[📖 Read the docs to learn more about what else you can do with **Lean JS App Starter** and how it works.](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-dev/docs)

@@ -4,12 +4,12 @@ LJAS supports [PostgreSQL](https://postgresql.org) and [MongoDB](https://mongodb
 
 This document is only relevant to the following Prisma-related starter projects:
 
-| Starter Project Name                  | JavaScript                                                  | TypeScript                                                     |
-| ------------------------------------- | ----------------------------------------------------------- | -------------------------------------------------------------- |
-| Express + MongoDB                     | [View Source](../../../starters/express-mongo)              | [View Source](../../../starters/express-mongo-ts)              |
-| Express + PostgreSQL                  | [View Source](../../../starters/express-postgres)           | [View Source](../../../starters/express-postgres-ts)           |
-| React + Express + MongoDB with SSR    | [View Source](../../../starters/react-express-mongo-ssr)    | [View Source](../../../starters/react-express-mongo-ssr-ts)    |
-| React + Express + PostgreSQL with SSR | [View Source](../../../starters/react-express-postgres-ssr) | [View Source](../../../starters/react-express-postgres-ssr-ts) |
+| Starter Project Name                  | JavaScript                                                                                                     | TypeScript                                                                                                        |
+| ------------------------------------- | -------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| Express + MongoDB                     | [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-dev/starters/express-mongo)              | [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-dev/starters/express-mongo-ts)              |
+| Express + PostgreSQL                  | [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-dev/starters/express-postgres)           | [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-dev/starters/express-postgres-ts)           |
+| React + Express + MongoDB with SSR    | [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-dev/starters/react-express-mongo-ssr)    | [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-dev/starters/react-express-mongo-ssr-ts)    |
+| React + Express + PostgreSQL with SSR | [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-dev/starters/react-express-postgres-ssr) | [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-dev/starters/react-express-postgres-ssr-ts) |
 
 ## Contents
 
@@ -81,8 +81,8 @@ Read the [Prisma configuration document](../../configuration/prisma.md) to learn
 
 ## Examples
 
--   [Notes API](https://github.com/mattlean/lean-js-app-starter/tree/master/examples/notes-api): REST API that uses PostgreSQL & Prisma
--   [\*chan](https://github.com/mattlean/lean-js-app-starter/tree/master/examples/starchan): Server-side rendered React app that uses MongoDB & Prisma
+-   [Notes API](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-dev/examples/notes-api): REST API that uses PostgreSQL & Prisma
+-   [\*chan](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-dev/examples/starchan): Server-side rendered React app that uses MongoDB & Prisma
 
 ## Frequently Asked Questions (FAQ)
 

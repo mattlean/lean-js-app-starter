@@ -2,14 +2,14 @@
 
 ## Contents
 
--   Jest
+-   [Jest](#jest)
     -   [Creating Jest Test Files](#creating-jest-test-files)
     -   [Running Jest Tests](#running-jest-tests)
     -   [Coverage with Jest](#coverage-with-jest)
     -   [Debugging Jest Tests](#debugging-jest-tests)
     -   [Configuring Jest](#configuring-jest)
     -   [Jest Learning Resources](#jest-learning-resources)
--   Playwright
+-   [Playwright](#playwright)
     -   [Creating Playwright Test Files](#creating-playwright-test-files)
     -   [Running Playwright Tests](#running-playwright-tests)
     -   [Debugging Playwright Tests](#debugging-playwright-tests)
@@ -95,14 +95,14 @@ Read the [Jest configuration document](../configuration/jest.md) to learn how it
 
 [Playwright](https://playwright.dev) is only setup for frontend-related projects:
 
-| Starter Project Name                  | JavaScript                                               | TypeScript                                                  |
-| ------------------------------------- | -------------------------------------------------------- | ----------------------------------------------------------- |
-| Basic Browser                         | [View Source](../../starters/basic-browser)              | [View Source](../../starters/basic-browser-ts)              |
-| Basic Electron                        | [View Source](../../starters/basic-electron)             | [View Source](../../starters/basic-electron-ts)             |
-| React + Browser                       | [View Source](../../starters/react-electron)             | [View Source](../../starters/react-electron-ts)             |
-| React + Electron                      | [View Source](../../starters/react-electron)             | [View Source](../../starters/react-electron-ts)             |
-| React + Express + MongoDB with SSR    | [View Source](../../starters/react-express-mongo-ssr)    | [View Source](../../starters/react-express-mongo-ssr-ts)    |
-| React + Express + PostgreSQL with SSR | [View Source](../../starters/react-express-postgres-ssr) | [View Source](../../starters/react-express-postgres-ssr-ts) |
+| Starter Project Name                  | JavaScript                                                                                                         | TypeScript                                                                                                            |
+| ------------------------------------- | ------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------- |
+| Basic Browser                         | [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-dev/starters/basic-browser)              | [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-dev/starters/basic-browser-ts)              |
+| Basic Electron                        | [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-dev/starters/basic-electron)             | [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-dev/starters/basic-electron-ts)             |
+| React + Browser                       | [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-dev/starters/react-browser)              | [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-dev/starters/react-browser-ts)              |
+| React + Electron                      | [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-dev/starters/react-electron)             | [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-dev/starters/react-electron-ts)             |
+| React + Express + MongoDB with SSR    | [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-dev/starters/react-express-mongo-ssr)    | [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-dev/starters/react-express-mongo-ssr-ts)    |
+| React + Express + PostgreSQL with SSR | [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-dev/starters/react-express-postgres-ssr) | [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-dev/starters/react-express-postgres-ssr-ts) |
 
 ### Creating Playwright Test Files
 

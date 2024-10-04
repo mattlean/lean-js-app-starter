@@ -2,4 +2,4 @@
 
 This directory contains various simple examples of webpack configurations built using `ljas-webpack`.
 
-For more complicated examples, check out **Lean JS App Starter**'s [examples](https://github.com/mattlean/lean-js-app-starter/tree/master/examples) and [starter projects](https://github.com/mattlean/lean-js-app-starter/tree/master/starters).
+For more complicated examples, check out **Lean JS App Starter**'s [examples](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-dev/examples) and [starter projects](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-dev/starters).

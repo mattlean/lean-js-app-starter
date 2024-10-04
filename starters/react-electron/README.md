@@ -2,7 +2,7 @@
 
 This is a **[Lean JS App Starter](https://github.com/mattlean/lean-js-app-starter)** project for a [React](https://react.dev) application targeted for macOS, Windows, and Linux.
 
-_If you need TypeScript, then use the [React + Electron starter (TypeScript)](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/react-electron-ts) instead._
+_If you need TypeScript, then use the [React + Electron starter (TypeScript)](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-dev/starters/react-electron-ts) instead._
 
 ## Technology Overview
 
@@ -98,7 +98,7 @@ Create a dev build with webpack using this command:
 npm run build
 ```
 
-For more information on the build process, please read the ["Building" document in the LJAS docs](https://github.com/mattlean/lean-js-app-starter/blob/master/docs/building.md).
+For more information on the build process, please read the ["Building" document in the LJAS docs](https://github.com/mattlean/lean-js-app-starter/blob/v1.0.0-dev/docs/building.md).
 
 #### Step 4. Start the development build
 
@@ -112,4 +112,4 @@ When you're done working, you can press Ctrl+C in the terminal running the dev b
 
 ## Learn More With the Documentation
 
-[📖 Read the docs to learn more about what else you can do with **Lean JS App Starter** and how it works.](https://github.com/mattlean/lean-js-app-starter/tree/master/docs)
+[📖 Read the docs to learn more about what else you can do with **Lean JS App Starter** and how it works.](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-dev/docs)

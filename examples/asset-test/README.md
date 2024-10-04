@@ -4,7 +4,7 @@ This is an asset test primarily used to test [Lean JS App Starter](https://githu
 
 ## Technology Overview
 
-This project extends the [**React + Browser** starter](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/react-browser-ts) with the following:
+This project extends the [**React + Browser** starter](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-dev/starters/react-browser-ts) with the following:
 
 -   [Bootstrap](https://getbootstrap.com): Frontend toolkit
 -   [Sass](https://sass-lang.com): CSS extension language
@@ -29,8 +29,8 @@ The remaining technologies are inherited from the starter:
 
 ## Run This on Your Machine
 
-Please refer to the ["Getting Started" section in the **React + Browser** starter's `README.md`](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/react-browser-ts#getting-started).
+Please refer to the ["Getting Started" section in the **React + Browser** starter's `README.md`](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-dev/starters/react-browser-ts#getting-started).
 
 ## LJAS Documentation
 
-[📖 Learn more about **Lean JS App Starter** by reading its docs.](https://github.com/mattlean/lean-js-app-starter/tree/master/docs)
+[📖 Learn more about **Lean JS App Starter** by reading its docs.](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-dev/docs)

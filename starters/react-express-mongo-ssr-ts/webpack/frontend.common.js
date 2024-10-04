@@ -16,11 +16,8 @@ module.exports = merge([
 
     // Build EJS templates with injected assets for Express views
     buildHtml({
-        // TODO: remove the comments below
         filename: '../generated-views/index.ejs',
-        // template: 'src/frontend/index.ejs?raw',
         template: '!!raw-loader!src/frontend/index.ejs',
-        // template: 'src/frontend/index.ejs',
         templateParameters,
     }),
 ])

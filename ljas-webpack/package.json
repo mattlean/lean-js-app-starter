@@ -20,7 +20,7 @@
     "bugs": {
         "url": "https://github.com/mattlean/lean-js-app-starter/issues"
     },
-    "homepage": "https://github.com/mattlean/lean-js-app-starter/blob/master/ljas-webpack/README.md",
+    "homepage": "https://github.com/mattlean/lean-js-app-starter/blob/v1.0.0-dev/ljas-webpack/README.md",
     "peerDependencies": {
         "webpack": "^5.85.0"
     },

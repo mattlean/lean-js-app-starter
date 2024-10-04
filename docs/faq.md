@@ -17,7 +17,7 @@ This document goes over frequently asked questions that don't really fit anywher
 
 Search the code for strings that are the title of the starter project code name prefixed with `ljas-`. There shouldn't be many of them to replace.
 
-For example, if you're using the [React + Browser starter](https://github.com/mattlean/lean-js-app-starter/tree/master/starters/react-browser), you would search and replace for `ljas-react-browser`. This would replace the `package.json` `name` field and the title option in the webpack configuration used as the contents of the `<title>` tag in the HTML template.
+For example, if you're using the [React + Browser starter](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-dev/starters/react-browser), you would search and replace for `ljas-react-browser`. This would replace the `package.json` `name` field and the title option in the webpack configuration used as the contents of the `<title>` tag in the HTML template.
 
 Then the final thing you need to do is clear contents of the `README.md` file and you'll be good to go.
 

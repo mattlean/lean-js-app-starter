@@ -90,14 +90,6 @@ export const buildMenuTemplate = () => {
                     },
                     accelerator: 'CmdOrCtrl+O',
                 },
-                // TODO: Figure out why this doesn't work.
-                // {
-                //     label: 'Open Recent',
-                //     role: 'recentDocuments',
-                //     submenu: [
-                //         { label: 'Clear Recent', role: 'clearRecentDocuments' },
-                //     ],
-                // },
                 { type: 'separator' },
                 {
                     id: 'save',
@@ -139,7 +131,7 @@ export const buildMenuTemplate = () => {
                     label: 'ljas-markdown-editor GitHub Repo',
                     click: () =>
                         shell.openExternal(
-                            'https://github.com/mattlean/lean-js-app-starter/tree/master/examples/markdown-editor',
+                            'https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-dev/examples/markdown-editor',
                         ),
                 },
                 {

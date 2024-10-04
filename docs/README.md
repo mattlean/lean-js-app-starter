@@ -1,4 +1,4 @@
-# Documentation
+# LJAS Documentation
 
 Welcome to the documentation for **Lean JS App Starter (LJAS)**!
 
@@ -8,6 +8,8 @@ Welcome to the documentation for **Lean JS App Starter (LJAS)**!
 
 _Find out why you should consider using LJAS for your project._
 
+---
+
 ### Setup
 
 _How to setup LJAS and start your project._
@@ -15,6 +17,8 @@ _How to setup LJAS and start your project._
 -   [Getting Started](./setup/getting-started.md)
 -   [Code Editors](./setup/code-editors.md)
 -   [Git Pre-Commit Hooks](./setup/git-pre-commit-hooks.md)
+
+---
 
 ### **Developing**
 
@@ -29,9 +33,13 @@ _How to develop with LJAS._
 -   [React Server-Side Rendering](./developing/react-ssr.md)
 -   [Docker Environments](./developing/docker-environments.md)
 
+---
+
 ### [**Building**](./building.md)
 
 _How the build process works and how to create builds for production._
+
+---
 
 ### **Configuration**
 
@@ -54,9 +62,13 @@ _How the default configurations work and how to customize them._
 -   [Visual Studio Code](./configuration/vscode.md)
 -   [webpack](./configuration/webpack.md)
 
+---
+
 ### [**Frequently Asked Questions**](./faq.md)
 
 _Answers to common questions that don't really fit anywhere else in the docs._
+
+---
 
 ### [**Origins**](./origins.md)
 
