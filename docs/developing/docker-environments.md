@@ -76,7 +76,7 @@ It is true that the Docker environments do significantly reduce the "it works on
 
 ## Setting Up the Docker Dev Environment
 
-Native dev environments may have many multiple prerequisites, but Docker dev environments only need Docker. You can learn how to install Docker by reading the ["Installing Docker" section in this document](#installing-docker).
+Native dev environments may have many multiple prerequisites, but Docker dev environments only need Docker. You can learn how to install Docker by reading the ["Installing Docker" section](#installing-docker).
 
 Once Docker is installed, follow the instructions for getting started with the Docker dev environment in the `README.md` for your project.
 
@@ -88,7 +88,7 @@ The Docker E2E test environment is completely separate from the Docker dev envir
 
 This separation is highlighted particularly when working with databases. If the dev and test environments shared the same database, the Playwright tests would generate data that would pollute your dev environment which is not desirable for most people. Conversely, the dev environment could also negatively affect the reliability of Playwright's test results. Keeping things separate makes working with the databases simpler and cleaner, and helps to improve stability and trustworthiness for Playwright.
 
-Just like the Docker dev environment, you will only need Docker which you can learn how to install by reading the ["Installing Docker" section in this document](#installing-docker). Once that's installed, follow the instructions for getting started with the Docker dev environment in the `README.md` for your project.
+Just like the Docker dev environment, you will only need Docker which you can learn how to install by reading the ["Installing Docker" section](#installing-docker). Once that's installed, follow the instructions for getting started with the Docker dev environment in the `README.md` for your project.
 
 The only difference is in the final step where instead of running `docker compose up` to start the dev environment, run the following command in the project's root directory to start the test environment instead:
 
@@ -208,7 +208,7 @@ docker exec -it ljas-express-postgres-db -u postgres psql
 
 It is possible to run parts of the project natively and other parts of it with Docker. We refer to this as a hybrid dev environment.
 
-We go over how to setup a hybrid dev environment by setting up a natively running app that connects to a Docker-based database in the ["Connecting a Natively Running App with a Containerized Database" section in the database document.](./databases/README.md#connecting-a-natively-running-app-with-a-containerized-database)
+We go over how to setup a hybrid dev environment by setting up a natively running app that connects to a Docker-based database in the ["Connecting a Natively Running App with a Containerized Database" section in the "Database" document.](./databases/README.md#connecting-a-natively-running-app-with-a-containerized-database)
 
 ## Developing Inside a Container with Visual Studio Code
 

@@ -79,7 +79,7 @@ When you're done working, you can press Ctrl+C in the terminal running the dev s
 
 This method is the simplest as it only has one prerequisite and has PostgreSQL and Prisma setup for you.
 
-TODO: link to docker dev env doc
+For more information on the Docker dev environment, please read the ["Docker Environments" document in the LJAS docs](https://github.com/mattlean/lean-js-app-starter/blob/master/docs/developing/docker-environments.md).
 
 #### Prerequisites
 
@@ -161,7 +161,7 @@ Create a dev build with webpack using this command:
 npm run build
 ```
 
-TODO: link to webpack doc
+For more information on the build process, please read the ["Building" document in the LJAS docs](https://github.com/mattlean/lean-js-app-starter/blob/master/docs/building.md).
 
 #### Step 5. Start the development server
 

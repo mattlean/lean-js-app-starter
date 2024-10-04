@@ -4,11 +4,6 @@
 
 All front-end related projects have a [Stylelint config file](https://stylelint.io/user-guide/configure) called `.stylelintrc.json` in the project's root directory. Alongside that file is also a `.stylelintignore` file which is responsible for telling Stylelint which files and directories should be skipped when linting.
 
-## Learning Resources
-
--   [Stylelint Docs: Getting Started](https://stylelint.io/user-guide/get-started)  
-    Learn the basics of configuring Stylelint by setting up a basic Stylelint configuration from scratch.
-
 ## Adding Support for Sass
 
 The frontend starter projects only support CSS by default since that is the fundamental stylesheet language, but it doesn't take much to setup Sass.
@@ -44,3 +39,8 @@ Although everything should be working, you should also update the `lint:styles` 
 ```
 
 You can find examples of Sass being configured in the [Counter](../../examples/counter) and [Counter, React version](../../examples/counter-react) examples.
+
+## Learning Resources
+
+-   [Stylelint Docs: Getting Started](https://stylelint.io/user-guide/get-started)  
+    Learn the basics of configuring Stylelint by setting up a basic Stylelint configuration from scratch.

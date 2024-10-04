@@ -34,11 +34,11 @@ Type in `@recommended` into the search box to view the recommended extensions fo
 
 ## Debugging
 
-If you want to learn how to debug with VS Code, read the [Debugging document](../developing/debugging.md).
+If you want to learn how to debug with VS Code, read the ["Debugging" document](../developing/debugging.md).
 
 ## Developing Inside a Container
 
-If you're using the Docker dev environment, you can develop inside a container with VS Code which sets up all recommended extensions for you out-of-the-box along with a few other benefits. Read the ["Developing Inside a Container with Visual Studio Code" section in the Docker Environments document](../developing/docker-environments.md#developing-inside-a-container-with-visual-studio-code) to learn how to do that.
+If you're using the Docker dev environment, you can develop inside a container with VS Code which sets up all recommended extensions for you out-of-the-box along with a few other benefits. Read the ["Developing Inside a Container with Visual Studio Code" section in the "Docker Environments" document](../developing/docker-environments.md#developing-inside-a-container-with-visual-studio-code) to learn how to do that.
 
 ## Configuration
 

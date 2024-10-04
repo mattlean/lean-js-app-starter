@@ -68,7 +68,7 @@ When you're done working, you can press Ctrl+C in the terminal running the dev s
 
 This method is the simplest as it only only requires Docker. Also, you won't need to worry about which Node.js version your machine is running because the dev environment will use a separate Node.js process running inside the container.
 
-TODO: link to docker dev env doc
+For more information on the Docker dev environment, please read the ["Docker Environments" document in the LJAS docs](https://github.com/mattlean/lean-js-app-starter/blob/master/docs/developing/docker-environments.md).
 
 #### Prerequisites
 
@@ -91,12 +91,6 @@ Start the Docker dev environment by running the following command in a project d
 ```console
 docker compose up
 ```
-
-TODO: maybe move the following somewhere else
-
-This command may take a while the first time you run it since it will need to create a new Docker image, download npm dependencies, etc. However, subsequent runs of this command will be much faster since it can reuse cached layers under most circumstances, or in the best case scenario, reuse a completely cached image.
-
-Although the development server is running within the container, it will still be able to watch for changes you make to the code on your host machine. That means the development server will still be able to reflect changes in the app as you write code and will operate similarly to if you were running the development server natively like in methods 1 or 3.
 
 When you're done working, you can press Ctrl+C in the terminal running the Docker dev environment to shut it down.
 

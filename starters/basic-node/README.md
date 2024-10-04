@@ -61,7 +61,7 @@ When you're done working, you can press Ctrl+C in the terminal running the dev b
 
 This method is the simplest as it only only requires Docker and has one step. Also, you won't need to worry about which Node.js version your machine is running because the dev environment will use a separate Node.js process running inside the container.
 
-TODO: link to docker dev env doc
+For more information on the Docker dev environment, please read the ["Docker Environments" document in the LJAS docs](https://github.com/mattlean/lean-js-app-starter/blob/master/docs/developing/docker-environments.md).
 
 #### Prerequisites
 
@@ -109,7 +109,7 @@ Create a dev build with webpack using this command:
 npm run build
 ```
 
-TODO: link to webpack doc
+For more information on the build process, please read the ["Building" document in the LJAS docs](https://github.com/mattlean/lean-js-app-starter/blob/master/docs/building.md).
 
 #### (Optional) Create a `.env` file
 

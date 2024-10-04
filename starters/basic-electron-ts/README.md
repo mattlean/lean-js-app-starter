@@ -97,7 +97,7 @@ Create a dev build with webpack using this command:
 npm run build
 ```
 
-TODO: link to webpack doc
+For more information on the build process, please read the ["Building" document in the LJAS docs](https://github.com/mattlean/lean-js-app-starter/blob/master/docs/building.md).
 
 #### Step 4. Start the development build
 

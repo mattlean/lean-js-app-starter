@@ -76,7 +76,7 @@ npm run test:coverage:open
 
 ### Debugging Jest Tests
 
-To learn how to debug Jest Tests, refer to the ["Jest tests with Visual Studio Code" section in the Debugging document](./debugging.md#jest-tests-with-visual-studio-code).
+To learn how to debug Jest Tests, refer to the ["Jest tests with Visual Studio Code" section in the "Debugging" document](./debugging.md#jest-tests-with-visual-studio-code).
 
 ### Configuring Jest
 
@@ -141,13 +141,13 @@ npm run test:e2e:report
 
 ### Debugging Playwright Tests
 
-Please refer to the ["Playwright Tests with Visual Studio Code" section](./debugging.md#playwright-tests-with-visual-studio-code) or the ["Playwright Tests with Playwright Inspector" section](./debugging.md#playwright-tests-with-playwright-inspector) of the Debugging document.
+Please refer to the ["Playwright Tests with Visual Studio Code" section](./debugging.md#playwright-tests-with-visual-studio-code) or the ["Playwright Tests with Playwright Inspector" section](./debugging.md#playwright-tests-with-playwright-inspector) of the "Debugging" document.
 
 ### Docker End-to-End Test Environment
 
 If you're working off of an non-Electron based LJAS project that supports Playwright, you will have access to a Docker test environment specialized for working with Playwright tests.
 
-To learn how to use it, read the ["Setting Up the Docker End-to-End Test Environment" section in the Docker Environments document](../developing/docker-environments.md#setting-up-the-docker-end-to-end-test-environment).
+To learn how to use it, read the ["Setting Up the Docker End-to-End Test Environment" section in the "Docker Environments" document](../developing/docker-environments.md#setting-up-the-docker-end-to-end-test-environment).
 
 ### Configuring Playwright
 

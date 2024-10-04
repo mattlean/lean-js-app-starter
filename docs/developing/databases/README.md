@@ -51,7 +51,7 @@ The Prisma docs go over other good reasons to use their products in their [intro
 
 ## Connecting to Docker Databases Through a Terminal
 
-To learn how to connect to Docker databases through a terminal, read the ["Connecting to Docker Databases Through a Terminal" section in the Docker Environments document](../docker-environments.md#connecting-to-docker-databases-through-a-terminal).
+To learn how to connect to Docker databases through a terminal, read the ["Connecting to Docker Databases Through a Terminal" section in the "Docker Environments" document](../docker-environments.md#connecting-to-docker-databases-through-a-terminal).
 
 ## Connecting a Natively Running App with a Containerized Database
 

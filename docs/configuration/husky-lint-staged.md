@@ -2,7 +2,7 @@
 
 ## Overview
 
-Husky configuration can be found in `.husky/pre-commit` which simply runs the `lint-staged` `package.json` script. The lint-staged configuration can be found in the project's root directory as `.lintstagedrc`.
+Husky configuration can be found in `.husky/pre-commit` which simply runs the `lint-staged` `package.json` script. The lint-staged configuration can be found in the project's root directory as the `.lintstagedrc` file.
 
 ## Learning Resources
 

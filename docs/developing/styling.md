@@ -44,7 +44,7 @@ Stylelint has a [`--fix` option](https://stylelint.io/user-guide/options/#fix) w
 npm run lint:styles:fix
 ```
 
-Instead of using `package.json` scripts, we suggest enabling Stylelint in your code editor to lint in real-time. We show how to set this up with [Visual Studio Code (VS Code)](https://code.visualstudio.com) in the ["Install Extensions" section in the Code Editors document](../setup/code-editors.md#install-extensions).
+Instead of using `package.json` scripts, we suggest enabling Stylelint in your code editor to lint in real-time. We show how to set this up with [Visual Studio Code (VS Code)](https://code.visualstudio.com) in the ["Install Extensions" section in the "Code Editors" document](../setup/code-editors.md#install-extensions).
 
 To learn how to configure Stylelint, read the [Stylelint configuration document](../configuration/stylelint.md).
 
@@ -64,7 +64,7 @@ If you want to automatically address all of these code style issues, use the fol
 npm run format:fix
 ```
 
-Instead of using these scripts, we suggest enabling formatting on save with Prettier in your code editor. We show how to set this up with VS Code in the ["Install Extensions" section in the Code Editors document](../setup/code-editors.md#install-extensions).
+Instead of using these scripts, we suggest enabling formatting on save with Prettier in your code editor. We show how to set this up with VS Code in the ["Install Extensions" section in the "Code Editors" document](../setup/code-editors.md#install-extensions).
 
 To learn how to configure Prettier, read the [Prettier configuration document](../configuration/prettier.md).
 
