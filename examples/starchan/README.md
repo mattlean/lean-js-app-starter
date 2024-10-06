@@ -25,13 +25,13 @@ _Note this uses [Render](https://render.com)'s free service so if the project ha
 
 This project extends the [**React + Express + MongoDB with Server-Side Rendering (TypeScript)** starter](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-dev/starters/react-express-mongo-ssr-ts) with the following:
 
--   [OpenAPI](https://swagger.io/specification)
--   [Redux Toolkit](https://redux-toolkit.js.org), [RTK Query](https://redux-toolkit.js.org/rtk-query/overview)
--   [Moment](https://momentjs.com)
--   [React Router](https://reactrouter.com)
--   [express-validator](https://express-validator.github.io)
--   [Helmet](https://github.com/helmetjs/helmet)
--   [Embedded JavaScript (EJS)](https://ejs.co)
+-   [OpenAPI](https://swagger.io/specification): REST API specification
+-   [Redux Toolkit](https://redux-toolkit.js.org): React state management with "modern" Redux
+-   [RTK Query](https://redux-toolkit.js.org/rtk-query/overview): Data fetching & caching for Redux
+-   [Moment](https://momentjs.com): Date library
+-   [React Router](https://reactrouter.com): React routing
+-   [express-validator](https://express-validator.github.io): Set of Express middlewares for validation & sanitization
+-   [Helmet](https://github.com/helmetjs/helmet): Express middleware that sets security-related HTTP response headers
 
 The remaining technologies are inherited from the starter:
 
@@ -42,7 +42,7 @@ The remaining technologies are inherited from the starter:
 -   [MongoDB](https://mongodb.com): NoSQL database
 -   [React](https://react.dev): Library for user interfaces
 -   [CSS](https://w3.org/Style/CSS/Overview.en.html): The standard language for styling
--   [Embedded JavaScript (EJS)](https://ejs.co): Templating language used to generate the build's `index.html` document
+-   [Embedded JavaScript (EJS)](https://ejs.co): Templating language used to generate the frontend build's `index.html` document and render Express templates
 -   [Jest](https://jestjs.io): Testing framework used mainly for unit testing
 -   [React Testing Library](https://testing-library.com/docs/react-testing-library/intro): Unit testing library specialized for React components
 -   [Mock Service Worker (MSW)](https://mswjs.io): API mocking library used to mock network requests
@@ -54,6 +54,7 @@ The remaining technologies are inherited from the starter:
 -   [Prettier](https://prettier.io): Formatter used to enforce code style
 -   [Husky](https://typicode.github.io/husky) + [lint-staged](https://github.com/okonet/lint-staged): Pre-commit hooks to check for type, lint, and formatting errors before Git commits are made
 -   [Docker](https://docker.com): Used for an optional containerized development environment
+-   [npm](https://npmjs.com): Package manager
 
 ## Running This on Your Machine
 

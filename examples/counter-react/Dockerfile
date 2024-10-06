@@ -5,8 +5,8 @@ RUN echo '\nexport PS1="\e[1;36m[🐳 app] \u@\h:\W#\e[0m "' >> ~/.bashrc
 
 WORKDIR /code
 
-# Copy package.json so npm dependencies can be installed during the image build process
-COPY package.json .
-RUN npm install
+# Copy package.json & package-lock.json so npm dependencies can be installed during the image build process
+COPY package.json package-lock.json .
+RUN npm ci
 
 CMD ["npm", "run", "dev"]

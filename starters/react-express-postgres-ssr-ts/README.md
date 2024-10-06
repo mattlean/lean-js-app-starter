@@ -13,7 +13,7 @@ _If you don't need TypeScript, then then use the [React + Express + PostgreSQL w
 -   [PostgreSQL](https://postgresql.org): NoSQL database
 -   [React](https://react.dev): Library for user interfaces
 -   [CSS](https://w3.org/Style/CSS/Overview.en.html): The standard language for styling
--   [Embedded JavaScript (EJS)](https://ejs.co): Templating language used to generate the build's `index.html` document
+-   [Embedded JavaScript (EJS)](https://ejs.co): Templating language used to generate the frontend build's `index.html` document and render Express templates
 -   [Jest](https://jestjs.io): Testing framework used mainly for unit testing
 -   [React Testing Library](https://testing-library.com/docs/react-testing-library/intro): Unit testing library specialized for React components
 -   [Mock Service Worker (MSW)](https://mswjs.io): API mocking library used to mock network requests
@@ -25,6 +25,7 @@ _If you don't need TypeScript, then then use the [React + Express + PostgreSQL w
 -   [Prettier](https://prettier.io): Formatter used to enforce code style
 -   [Husky](https://typicode.github.io/husky) + [lint-staged](https://github.com/okonet/lint-staged): Pre-commit hooks to check for type, lint, and formatting errors before Git commits are made
 -   [Docker](https://docker.com): Used for an optional containerized development environment
+-   [npm](https://npmjs.com): Package manager
 
 ## Getting Started
 

@@ -5,3 +5,4 @@ flow-typed/
 playwright-report/
 test-results/
 *.sublime-workspace
+package-lock.json

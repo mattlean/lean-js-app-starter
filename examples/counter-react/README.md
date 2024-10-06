@@ -15,7 +15,7 @@ _Note this uses [Render](https://render.com)'s free service so if the project ha
 
 This project extends the [**React + Browser (TypeScript)** starter](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-dev/starters/react-browser-ts) with the following:
 
--   [Bootstrap](https://getbootstrap.com): Frontend toolkit
+-   [Bootstrap](https://getbootstrap.com): UI toolkit
 -   [Sass](https://sass-lang.com): CSS extension language
 
 The remaining technologies are inherited from the starter:
@@ -35,6 +35,7 @@ The remaining technologies are inherited from the starter:
 -   [Prettier](https://prettier.io): Formatter used to enforce code style
 -   [Husky](https://typicode.github.io/husky) + [lint-staged](https://github.com/okonet/lint-staged): Pre-commit hooks to check for type, lint, and formatting errors before Git commits are made
 -   [Docker](https://docker.com): Used for an optional containerized development environment
+-   [npm](https://npmjs.com): Package manager
 
 ## Run This on Your Machine
 

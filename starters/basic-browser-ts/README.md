@@ -19,6 +19,7 @@ _If you don't need TypeScript, then use the [Basic Browser starter](https://gith
 -   [Prettier](https://prettier.io): Formatter used to enforce code style
 -   [Husky](https://typicode.github.io/husky) + [lint-staged](https://github.com/okonet/lint-staged): Pre-commit hooks to check for type, lint, and formatting errors before Git commits are made
 -   [Docker](https://docker.com): Used for an optional containerized development environment
+-   [npm](https://npmjs.com): Package manager
 
 ## Getting Started
 

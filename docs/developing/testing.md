@@ -86,7 +86,7 @@ Read the [Jest configuration document](../configuration/jest.md) to learn how it
 
 -   [Jest Docs: Getting Started](https://jestjs.io/docs/getting-started)  
     Learn the basics of writing and running Jest tests.
--   [React Testing Library (RTL) Tutorial](https://robinwieruch.de/react-testing-library/)  
+-   [React Testing Library (RTL) Tutorial](https://robinwieruch.de/react-testing-library)  
      Learn [RTL](https://testing-library.com/docs/react-testing-library/intro) in a tutorial written by Robin Wieruch. This tutorial is recommended by the [Testing Library docs](https://testing-library.com/docs/react-testing-library/intro#tutorials).
 -   [Mock Service Worker (MSW) Docs: Getting started](https://mswjs.io/docs/getting-started)  
      Learn how to use MSW by following their getting started document.

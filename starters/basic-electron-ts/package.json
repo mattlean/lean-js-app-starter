@@ -1,6 +1,6 @@
 {
     "name": "ljas-basic-electron-ts",
-    "version": "0.2.0",
+    "version": "1.0.0-rc",
     "description": "A basic Electron app that displays \"Hello World!\"",
     "main": "build/development/main/main.js",
     "author": "",

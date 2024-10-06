@@ -4,12 +4,7 @@ This is an asset test primarily used to test [Lean JS App Starter](https://githu
 
 ## Technology Overview
 
-This project extends the [**React + Browser** starter](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-dev/starters/react-browser-ts) with the following:
-
--   [Bootstrap](https://getbootstrap.com): Frontend toolkit
--   [Sass](https://sass-lang.com): CSS extension language
-
-The remaining technologies are inherited from the starter:
+This project builds on top of the [**React + Browser** starter](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-dev/starters/react-browser-ts).
 
 -   [TypeScript](https://typescriptlang.org): JavaScript with type safety
 -   [React](https://react.dev): Library for user interfaces
@@ -26,6 +21,7 @@ The remaining technologies are inherited from the starter:
 -   [Prettier](https://prettier.io): Formatter used to enforce code style
 -   [Husky](https://typicode.github.io/husky) + [lint-staged](https://github.com/okonet/lint-staged): Pre-commit hooks to check for type, lint, and formatting errors before Git commits are made
 -   [Docker](https://docker.com): Used for an optional containerized development environment
+-   [npm](https://npmjs.com): Package manager
 
 ## Run This on Your Machine
 

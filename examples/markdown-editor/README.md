@@ -15,8 +15,8 @@ The app has the following features:
 
 This project extends the [**React + Electron (TypeScript)** starter](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-dev/starters/react-electron-ts) with the following:
 
--   [unified](https://unifiedjs.com), [rehype](https://unifiedjs.com/explore/package/rehype), [remark](https://unifiedjs.com/explore/package/remark)
--   [Tailwind CSS](https://tailwindcss.com)
+-   [unified](https://unifiedjs.com), [rehype](https://unifiedjs.com/explore/package/rehype), [remark](https://unifiedjs.com/explore/package/remark): Libraries for working with markdown & HTML
+-   [Tailwind CSS](https://tailwindcss.com): Utility-first CSS framework
 
 The remaining technologies are inherited from the starter:
 
@@ -35,6 +35,7 @@ The remaining technologies are inherited from the starter:
 -   [Stylelint](https://stylelint.io): Linter used to identify problems in CSS
 -   [Prettier](https://prettier.io): Formatter used to enforce code style
 -   [Husky](https://typicode.github.io/husky) + [lint-staged](https://github.com/okonet/lint-staged): Pre-commit hooks to check for type, lint, and formatting errors before Git commits are made
+-   [npm](https://npmjs.com): Package manager
 
 ## Run This on Your Machine
 

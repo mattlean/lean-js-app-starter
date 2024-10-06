@@ -28,13 +28,14 @@ _Note this uses [Render](https://render.com)'s free service so if the project ha
 
 This project extends the [**Express PostgreSQL (TypeScript)** starter](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-dev/starters/express-postgres-ts) with the following:
 
--   [Swagger](https://swagger.io), [OpenAPI](https://swagger.io/specification)
--   [express-validator](https://express-validator.github.io)
--   [bcrypt](https://en.wikipedia.org/wiki/Bcrypt)
--   [JSON Web Token (JWT)](https://datatracker.ietf.org/doc/html/rfc7519)
--   [Helmet](https://github.com/helmetjs/helmet)
--   [Embedded JavaScript (EJS)](https://ejs.co)
--   [Postman](https://postman.com)
+-   [OpenAPI](https://swagger.io/specification): REST API specification
+-   [Swagger](https://swagger.io): OpenAPI documentation generation
+-   [express-validator](https://express-validator.github.io): Set of Express middlewares for validation & sanitization
+-   [bcrypt](https://en.wikipedia.org/wiki/Bcrypt): Password hashing
+-   [JSON Web Token (JWT)](https://datatracker.ietf.org/doc/html/rfc7519): Sessions
+-   [Helmet](https://github.com/helmetjs/helmet): Express middleware that sets security-related HTTP response headers
+-   [Embedded JavaScript (EJS)](https://ejs.co): Templating language used to render Express templates
+-   [Postman](https://postman.com): API testing tool
 
 The remaining technologies are inherited from the starter:
 
@@ -50,6 +51,7 @@ The remaining technologies are inherited from the starter:
 -   [Prettier](https://prettier.io): Formatter used to enforce code style
 -   [Husky](https://typicode.github.io/husky) + [lint-staged](https://github.com/okonet/lint-staged): Pre-commit hooks to check for type, lint, and formatting errors before Git commits are made
 -   [Docker](https://docker.com): Used for an optional containerized development environment
+-   [npm](https://npmjs.com): Package manager
 
 ## Run This on Your Machine
 

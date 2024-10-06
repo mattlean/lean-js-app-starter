@@ -14,7 +14,9 @@ Like most JavaScript projects, LJAS relies on [`package.json`](https://docs.npmj
 
 ## Package Manager
 
-While there are multiple package managers that support `package.json` like [Yarn](https://yarnpkg.com), we currently only support [npm](https://npmjs.com) out-of-the-box since it is usually installed alongside [Node.js](https://nodejs.org). Because of this, the docs are written in the perspective of an npm user.
+While there are multiple package managers that support `package.json`, we currently only support [npm](https://npmjs.com) out-of-the-box since it is usually installed alongside [Node.js](https://nodejs.org). Because of this, the docs are written in the perspective of an npm user.
+
+If you want to see an example project using [Yarn](https://yarnpkg.com), check out the [Todo List example](../../examples/todo-list).
 
 Switching to a different package manager shouldn't be difficult as long as you do it early, so we highly recommend that you decide on one package manager when you start a new project and stick with it to avoid issues that can arise when switching package managers later in development.
 

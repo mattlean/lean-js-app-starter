@@ -1,6 +1,6 @@
 {
     "name": "ljas-notes-api",
-    "version": "0.2.0",
+    "version": "1.0.0-rc",
     "description": "A REST API for a notes app powered by Express and PostgreSQL.",
     "main": "build/development/server.js",
     "author": "Matthew Lean <matt@mattlean.com> (https://mattlean.com)",

@@ -72,7 +72,7 @@ Select a starter project below that fits your needs to learn about what each one
 
 You will be able to find projects like SPAs, REST APIs, desktop apps, and more. They can be handy if you need references for customized configurations that extend LJAS's functionality or just some good ol' inspiration.
 
-[Take a look at the example projects in the `examples/` directory.](./examples/)
+[Take a look at the example projects in the `examples/` directory.](./examples)
 
 ## License
 

@@ -1,6 +1,6 @@
 {
     "name": "ljas-counter-react",
-    "version": "0.2.0",
+    "version": "1.0.0-rc",
     "description": "",
     "main": "build/development/app.js",
     "author": "Matthew Lean <matt@mattlean.com> (https://mattlean.com)",

@@ -1,6 +1,6 @@
 {
     "name": "ljas-counter",
-    "version": "0.2.0",
+    "version": "1.0.0-rc",
     "description": "",
     "main": "build/development/app.js",
     "author": "",

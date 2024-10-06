@@ -20,6 +20,7 @@ _If you need TypeScript, then use the [React + Electron starter (TypeScript)](ht
 -   [Stylelint](https://stylelint.io): Linter used to identify problems in CSS
 -   [Prettier](https://prettier.io): Formatter used to enforce code style
 -   [Husky](https://typicode.github.io/husky) + [lint-staged](https://github.com/okonet/lint-staged): Pre-commit hooks to check for lint and formatting errors before Git commits are made
+-   [npm](https://npmjs.com): Package manager
 
 ## Getting Started
 
