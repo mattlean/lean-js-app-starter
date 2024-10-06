@@ -40,7 +40,7 @@ Installation of the following is required before proceeding with this method:
 -   [Node.js](https://nodejs.org/en/download/package-manager)
 -   [MongoDB](hhttps://mongodb.com)
 
-This was tested on Node.js v18.16.0, but many other versions should still work. This was also tested with MongoDB 4.4.25, and any other Mongo 4 version should work well.
+This was tested on Node.js v20.9.0, but any version >= 20.9 to <21 should still work. This was also tested with MongoDB 4.4.25, and any other Mongo 4 version should work well.
 
 #### Step 1. Run the initialization script
 
@@ -111,7 +111,7 @@ Installation of the following is required before proceeding with this method:
 -   [Node.js](https://nodejs.org/en/download/package-manager)
 -   [MongoDB](hhttps://mongodb.com)
 
-This was tested on Node.js v18.16.0, but many other versions should still work. This was also tested with MongoDB 4.4.25, and any other Mongo 4 version should work well.
+This was tested on Node.js v20.9.0, but any version >= 20.9 to <21 should still work. This was also tested with MongoDB 4.4.25, and any other Mongo 4 version should work well.
 
 #### Step 1. Install npm dependencies & devDependencies
 

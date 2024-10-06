@@ -60,6 +60,9 @@
         "test:e2e:report": "playwright show-report --host 0.0.0.0 --port 9323",
         "test:watch": "npm run test -- --watch || npm run test -- --watchAll"
     },
+    "engines": {
+        "node": ">=20.9 <21"
+    },
     "dependencies": {
         "dotenv": "^16.4.5",
         "electron-devtools-installer": "^3.2.0",

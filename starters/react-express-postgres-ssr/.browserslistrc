@@ -1,5 +1,5 @@
 [backend]
-node 18.16
+node >=20.9 and node <21
 
 [frontend-development]
 last 1 chrome version

@@ -25,7 +25,7 @@ Then the final thing you need to do is clear contents of the `README.md` file an
 
 #### How do you change Node.js versions?
 
-We currently default Node.js to version 18.16. If you want to change that you need to do is update `engines.node` field in `package.json` and the Node.js version in the `.browserslistrc` file. Then make sure the app works as expected.
+We currently support Node.js versions >=20.9 to <21 by default. If you want to change that you need to do is update `engines.node` field in `package.json` and the Node.js version in the `.browserslistrc` file. Then make sure the app works as expected.
 
 If you're using the Docker development environment, you will also need to update the Dockerfiles' `FROM` instructions to a base image with the updated Node.js version. You can find an appropriate official Node.js image here: https://hub.docker.com/_/node/tags
 

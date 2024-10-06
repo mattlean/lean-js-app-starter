@@ -38,7 +38,7 @@ This method is the simplest if you are not using the Docker dev environment (met
 
 The only prerequisite is that you must have [Node.js](https://nodejs.org/en/download/package-manager) installed.
 
-This was tested on Node.js v18.16.0, but many other versions should still work.
+This was tested on Node.js v20.9.0, but any version >= 20.9 to <21 should still work.
 
 #### Step 1. Run the initialization script
 
@@ -102,7 +102,7 @@ This method manually does what the init script does for you.
 
 The only prerequisite is that you must have [Node.js](https://nodejs.org/en/download/package-manager) installed.
 
-This was tested on Node.js v18.16.0, but many other versions should still work.
+This was tested on Node.js v20.9.0, but any version >= 20.9 to <21 should still work.
 
 #### Step 1. Install npm dependencies & devDependencies
 

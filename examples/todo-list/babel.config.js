@@ -39,10 +39,7 @@ module.exports = (api) => {
      * Configuration for preset-react:
      * https://babeljs.io/docs/babel-preset-react
      */
-    const presetReact = [
-        '@babel/preset-react',
-        { development: true, runtime: 'automatic' },
-    ]
+    const presetReact = ['@babel/preset-react', { development: true }]
 
     if (isProduction) {
         delete presetReact[1].development

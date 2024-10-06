@@ -34,7 +34,7 @@
         "test:watch": "npm run test -- --watch || npm run test -- --watchAll"
     },
     "engines": {
-        "node": ">=18.16 <19"
+        "node": ">=20.9 <21"
     },
     "dependencies": {
         "@babel/cli": "^7.21.5",

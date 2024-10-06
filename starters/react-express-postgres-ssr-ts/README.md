@@ -48,7 +48,7 @@ Installation of the following is required before proceeding with this method:
 -   [Node.js](https://nodejs.org/en/download/package-manager)
 -   [PostgreSQL](https://postgresql.org/download)
 
-This was tested on Node.js v18.16.0 and PostgreSQL 15.3, but many other versions should still work.
+This was tested on Node.js v20.9.0 and PostgreSQL 15.3, but many other versions should still work.
 
 #### Step 1. Run the initialization script
 
@@ -119,7 +119,7 @@ Installation of the following is required before proceeding with this method:
 -   [Node.js](https://nodejs.org/en/download/package-manager)
 -   [PostgreSQL](https://postgresql.org/download)
 
-This was tested on Node.js v18.16.0 and PostgreSQL 15.3, but many other versions should still work.
+This was tested on Node.js v20.9.0 and PostgreSQL 15.3, but many other versions should still work.
 
 #### Step 1. Install npm dependencies & devDependencies
 
