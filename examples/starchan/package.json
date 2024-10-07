@@ -1,6 +1,6 @@
 {
     "name": "ljas-starchan",
-    "version": "1.0.0-rc",
+    "version": "1.0.0",
     "description": "An anonymous textboard powered by Express and React server-side rendering.",
     "main": "build/development/backend/server.js",
     "author": "Matthew Lean <matt@mattlean.com> (https://mattlean.com)",

@@ -1,6 +1,6 @@
 {
     "name": "ljas-express-mongo-ts",
-    "version": "1.0.0-rc",
+    "version": "0.0.0",
     "description": "",
     "main": "build/development/server.js",
     "author": "",

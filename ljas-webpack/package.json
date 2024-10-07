@@ -1,6 +1,6 @@
 {
     "name": "ljas-webpack",
-    "version": "0.1.0-rc-20240708",
+    "version": "0.1.0",
     "description": "webpack configuration parts for webpack config compositions",
     "main": "index.js",
     "author": "Matthew Lean <matt@mattlean.com> (https://mattlean.com)",
@@ -20,7 +20,7 @@
     "bugs": {
         "url": "https://github.com/mattlean/lean-js-app-starter/issues"
     },
-    "homepage": "https://github.com/mattlean/lean-js-app-starter/blob/v1.0.0-dev/ljas-webpack/README.md",
+    "homepage": "https://github.com/mattlean/lean-js-app-starter/blob/master/ljas-webpack/README.md",
     "peerDependencies": {
         "webpack": "^5.85.0"
     },

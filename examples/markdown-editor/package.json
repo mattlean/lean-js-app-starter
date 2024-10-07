@@ -1,6 +1,6 @@
 {
     "name": "ljas-markdown-editor",
-    "version": "1.0.0-rc",
+    "version": "1.0.0",
     "description": "A markdown editor that runs as a desktop app.",
     "main": "build/development/main/main.js",
     "author": "Matthew Lean <matt@mattlean.com> (https://mattlean.com)",

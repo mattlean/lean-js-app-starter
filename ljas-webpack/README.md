@@ -1,6 +1,6 @@
 # ljas-webpack
 
-[![npm](https://img.shields.io/npm/v/ljas-webpack.svg?colorB=brightgreen)](https://npmjs.com/package/ljas-webpack) [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/mattlean/ljas-webpack/blob/master/LICENSE)
+[![npm](https://img.shields.io/npm/v/ljas-webpack.svg?colorB=brightgreen)](https://npmjs.com/package/ljas-webpack) [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/mattlean/lean-js-app-starter/blob/master/ljas-webpack/LICENSE)
 
 `ljas-webpack` is a library of [webpack](https://webpack.js.org) configuration parts. It was originally built for **[Lean JS App Starter (LJAS)](https://github.com/mattlean/lean-js-app-starter)**, but you may find it useful for your own webpack configurations.
 
@@ -26,8 +26,8 @@ The root of this repository will have various `.js` files that export functions 
 
 You can find simple examples of webpack configs for various scenarios written with `ljas-webpack` in the [`examples/`](./examples) directory.
 
-For more complicated examples, check out Lean JS App Starter's [examples](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-dev/examples) and [starter projects](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-dev/starters).
+For more complicated examples, check out Lean JS App Starter's [examples](https://github.com/mattlean/lean-js-app-starter/tree/master/examples) and [starter projects](https://github.com/mattlean/lean-js-app-starter/tree/master/starters).
 
 ## License
 
-`ljas-webpack` is open source software [licensed as MIT](https://github.com/mattlean/lean-js-app-starter/blob/v1.0.0-dev/ljas-webpack/LICENSE).
+`ljas-webpack` is open source software [licensed as MIT](https://github.com/mattlean/lean-js-app-starter/blob/master/ljas-webpack/LICENSE).

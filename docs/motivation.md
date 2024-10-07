@@ -1,4 +1,4 @@
-# Why Lean JS App Starter?
+# Motivation
 
 This past decade has seen a historic rise for project starters in the JavaScript ecosystem. Sometimes they're called templates, development environments, or boilerplates, but regardless of what they're called, at the end of the day, they all exist for the same reason—they give developers quick and easy access to all the modern conveniences brought to us by all these new libraries and tools that ironically require time-consuming and troublesome setup processes to get them up and running.
 

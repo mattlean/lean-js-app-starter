@@ -4,7 +4,7 @@ Welcome to the documentation for **Lean JS App Starter (LJAS)**!
 
 ## Table of Contents
 
-### [Why Lean JS App Starter?](./why.md)
+### [Motivation](./motivation.md)
 
 _Find out why you should consider using LJAS for your project._
 

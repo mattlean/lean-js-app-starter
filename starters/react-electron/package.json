@@ -1,6 +1,6 @@
 {
     "name": "ljas-react-electron",
-    "version": "1.0.0-rc",
+    "version": "0.0.0",
     "description": "A basic Electron app that displays \"Hello World!\"",
     "main": "build/development/main/main.js",
     "author": "",

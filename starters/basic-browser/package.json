@@ -1,6 +1,6 @@
 {
     "name": "ljas-basic-browser",
-    "version": "1.0.0-rc",
+    "version": "0.0.0",
     "description": "",
     "main": "build/development/app.js",
     "author": "",
