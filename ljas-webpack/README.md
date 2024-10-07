@@ -16,15 +16,19 @@ You can see this comparison yourself with a [basic example that we have availabl
 
 ## Usage
 
-Although it's not required, we highly recommend using this library with [`webpack-merge`](https://npmjs.com/package/webpack-merge) as it will make it easier to compose webpack composition parts together.
+Although it's not required, we designed this library with the intention that it would be used with [`webpack-merge`](https://npmjs.com/package/webpack-merge).
 
-If you're unfamiliar with using `webpack-merge`, we highly recommended reading the ["Composing Configuration" chapter from the SurviveJS webpack book](https://survivejs.com/webpack/developing/composing-configuration), a free book by one of the founders of the webpack core team, [Juho Vepsäläinen](https://survivejs.com/about-me). This resource was actually the catalyst for this library.
+If you're unfamiliar with `webpack-merge`, its main purpose is to improve the composition and maintenance of webpack configurations. We highly recommended reading the ["Composing Configuration" chapter in the SurviveJS webpack book](https://survivejs.com/webpack/developing/composing-configuration), a free book by one of the founders of the webpack core team, [Juho Vepsäläinen](https://survivejs.com/about-me). This resource was actually the catalyst for this library.
 
 You can also get an idea of how `webpack-merge` works by reading over its usage in the [webpack docs' "Production" guide](https://webpack.js.org/guides/production). It doesn't go over the concept of a configuration parts like SurviveJS does, but it does use `webpack-merge` to split the webpack config across separate files to improve maintainability.
 
 The root of this repository will have various `.js` files that export functions available for you to import into your own webpack configs. Each function exported from these files will have a [JSDoc](https://jsdoc.app) comment that explains what it does and what packages it relies on.
 
-You can find simple examples of webpack configs for various scenarios written with `ljas-webpack` in the [`examples/`](./examples) directory.
+## Documentation & Examples
+
+Besides reading the JSDoc comments in the source code, you can also view the HTML docs generated from them in the [`docs/`](./docs) directory.
+
+You can also find simple examples of webpack configs for various scenarios written with `ljas-webpack` in the [`examples/`](./examples) directory.
 
 For more complicated examples, check out Lean JS App Starter's [examples](https://github.com/mattlean/lean-js-app-starter/tree/master/examples) and [starter projects](https://github.com/mattlean/lean-js-app-starter/tree/master/starters).
 

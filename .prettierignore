@@ -4,5 +4,6 @@ dist/
 flow-typed/
 playwright-report/
 test-results/
+ljas-webpack/docs/
 *.sublime-workspace
 package-lock.json
