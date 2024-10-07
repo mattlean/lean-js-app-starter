@@ -1,3 +1,5 @@
 docs/
 examples/
+.eslintignore
+.prettierignore
 .prettierrc.json
