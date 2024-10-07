@@ -9,7 +9,7 @@
         "format": "npm run format:check",
         "format:check": "prettier --check .",
         "format:write": "prettier --write .",
-        "jsdoc": "jsdoc",
+        "gen-jsdoc": "jsdoc --readme home.md -c conf.json -r",
         "lint": "eslint .",
         "lint:fix": "npm run lint -- --fix"
     },

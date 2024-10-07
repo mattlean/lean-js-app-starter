@@ -26,9 +26,9 @@ The root of this repository will have various `.js` files that export functions 
 
 ## Documentation & Examples
 
-Besides reading the JSDoc comments in the source code, you can also view the HTML docs generated from them in the [`docs/`](./docs) directory.
+Besides reading the JSDoc comments in the source code, you can also view the HTML docs generated from them in the [`docs/`](./docs) directory. You can also view the docs for the latest version of the library at: https://mattlean.github.io/lean-js-app-starter
 
-You can also find simple examples of webpack configs for various scenarios written with `ljas-webpack` in the [`examples/`](./examples) directory.
+If you would like to see some examples of webpack configs, check out the [`examples/`](./examples) directory.
 
 For more complicated examples, check out Lean JS App Starter's [examples](https://github.com/mattlean/lean-js-app-starter/tree/master/examples) and [starter projects](https://github.com/mattlean/lean-js-app-starter/tree/master/starters).
 
