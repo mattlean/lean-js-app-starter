@@ -24,7 +24,9 @@ _If you need TypeScript, then use the [React + Electron starter (TypeScript)](ht
 
 ## Getting Started
 
-There are two different methods you can use to get started:
+First, [**download the starter project's ZIP file**](https://github.com/mattlean/lean-js-app-starter/releases/download/v1.0.0-rc/ljas-react-electron_1-0-0.zip) and extract it.
+
+Then, choose one of the following methods:
 
 1. [Initialization Script (Recommended)](#method-1-initialization-script-recommended)
 2. [Manual Installation](#method-2-manual-installation)

@@ -28,7 +28,9 @@ _If you need TypeScript, then use the [React + Express + MongoDB with SSR starte
 
 ## Getting Started
 
-There are three different methods you can use to get started:
+First, [**download the starter project's ZIP file**](https://github.com/mattlean/lean-js-app-starter/releases/download/v1.0.0-rc/ljas-react-express-mongo-ssr_1-0-0.zip) and extract it.
+
+Then, choose one of the following methods:
 
 1. [Initialization Script (Recommended)](#method-1-initialization-script-recommended)
 2. [Docker Development Environment (Recommended)](#method-2-docker-development-environment-recommended)
