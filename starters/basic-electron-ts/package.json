@@ -92,7 +92,7 @@
         "jest": "^29.5.0",
         "jest-environment-jsdom": "^29.7.0",
         "jest-fixed-jsdom": "^0.0.2",
-        "ljas-webpack": "^0.1.0-rc-20240708",
+        "ljas-webpack": "^0.1.0",
         "mini-css-extract-plugin": "^2.7.6",
         "msw": "^2.2.2",
         "nodemon": "^2.0.22",

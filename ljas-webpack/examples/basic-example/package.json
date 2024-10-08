@@ -12,7 +12,7 @@
         "css-minimizer-webpack-plugin": "^6.0.0",
         "fork-ts-checker-webpack-plugin": "^8.0.0",
         "html-webpack-plugin": "^5.5.1",
-        "ljas-webpack": "^0.1.0-rc-20240708",
+        "ljas-webpack": "^0.1.0",
         "mini-css-extract-plugin": "^2.7.6",
         "typescript": "~5.3.3",
         "webpack": "^5.85.0",

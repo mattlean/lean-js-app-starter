@@ -96,6 +96,8 @@ The only difference is in the final step where instead of running `docker compos
 docker compose -f docker-compose.e2e.yml up
 ```
 
+Once the test environment is running, you can [run Playwright](./testing.md#playwright) against it as usual.
+
 To shut down the test environment, you can remove the containers through Docker Desktop or run this command in the project's root directory:
 
 ```console

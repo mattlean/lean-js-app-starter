@@ -14,7 +14,7 @@
         "@pmmmwh/react-refresh-webpack-plugin": "^0.5.11",
         "babel-loader": "^9.1.2",
         "fork-ts-checker-webpack-plugin": "^8.0.0",
-        "ljas-webpack": "^0.1.0-rc-20240708",
+        "ljas-webpack": "^0.1.0",
         "react-refresh": "^0.14.0",
         "typescript": "~5.3.3",
         "webpack": "^5.85.0",

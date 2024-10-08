@@ -5973,10 +5973,10 @@ listenercount@~1.0.1:
   resolved "https://registry.yarnpkg.com/listenercount/-/listenercount-1.0.1.tgz#84c8a72ab59c4725321480c975e6508342e70937"
   integrity sha512-3mk/Zag0+IJxeDrxSgaDPy4zZ3w05PRZeJNnlWhzFz5OkX49J4krc+A8X2d2M69vGMBEX0uyl8M+W+8gH+kBqQ==
 
-ljas-webpack@^0.1.0-rc-20240708:
-  version "0.1.0-rc-20240708"
-  resolved "https://registry.yarnpkg.com/ljas-webpack/-/ljas-webpack-0.1.0-rc-20240708.tgz#191ac651475e83b2e92200fcf9fe48c8c3209e44"
-  integrity sha512-bv5LC4LbZcMxo8ur9O7S2qraLVkjjf0nfkKhoLBQSwfKGwi3u7LSPgpzIMdqNlE14xoVE7m/b4seovqUEaIrtQ==
+ljas-webpack@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/ljas-webpack/-/ljas-webpack-0.1.0.tgz#05b1abb030cab47311e9e958b2c585c90beb7982"
+  integrity sha512-bub0NDEy3+Wirg5wRbGjt0aDianX7rza8FbS/ehC6ZA6E2QT5s4Z/Aqr0LUEKahFwxaffv8JwT45BmQEDe3TwA==
 
 loader-runner@^4.2.0:
   version "4.3.0"
