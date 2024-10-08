@@ -2,7 +2,7 @@
 
 This is a **[Lean JS App Starter](https://github.com/mattlean/lean-js-app-starter)** project for a [React](https://react.dev) application written in [TypeScript](https://typescriptlang.org) targeted for web browsers.
 
-_If you don't need TypeScript, then use the [React + Browser starter](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-dev/starters/react-browser) instead._
+_If you don't need TypeScript, then use the [React + Browser starter](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-rc/starters/react-browser) instead._
 
 ## Technology Overview
 
@@ -71,7 +71,7 @@ When you're done working, you can press Ctrl+C in the terminal running the dev s
 
 This method is the simplest as it only only requires Docker. Also, you won't need to worry about which Node.js version your machine is running because the dev environment will use a separate Node.js process running inside the container.
 
-For more information on the Docker dev environment, please read the ["Docker Environments" document in the LJAS docs](https://github.com/mattlean/lean-js-app-starter/blob/v1.0.0-dev/docs/developing/docker-environments.md).
+For more information on the Docker dev environment, please read the ["Docker Environments" document in the LJAS docs](https://github.com/mattlean/lean-js-app-starter/blob/v1.0.0-rc/docs/developing/docker-environments.md).
 
 #### Prerequisites
 
@@ -147,4 +147,4 @@ When you're done working, you can press Ctrl+C in the terminal running the dev s
 
 ## Learn More With the Documentation
 
-[📖 Read the docs to learn more about what else you can do with **Lean JS App Starter** and how it works.](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-dev/docs)
+[📖 Read the docs to learn more about what else you can do with **Lean JS App Starter** and how it works.](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-rc/docs)

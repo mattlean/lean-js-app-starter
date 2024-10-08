@@ -2,7 +2,7 @@
 
 This is a counter [single-page application (SPA)](https://en.wikipedia.org/wiki/Single-page_application) written in [TypeScript](https://typescriptlang.org) with [React](https://react.dev).
 
-_Check out the [**Counter, Basic Version** example](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-dev/starters/counter) if you want to see an alternate version of this app written without the use of frontend frameworks/libraries._
+_Check out the [**Counter, Basic Version** example](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-rc/starters/counter) if you want to see an alternate version of this app written without the use of frontend frameworks/libraries._
 
 ## Live Demo
 
@@ -13,7 +13,7 @@ _Note this uses [Render](https://render.com)'s free service so if the project ha
 
 ## Technology Overview
 
-This project extends the [**React + Browser (TypeScript)** starter](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-dev/starters/react-browser-ts) with the following:
+This project extends the [**React + Browser (TypeScript)** starter](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-rc/starters/react-browser-ts) with the following:
 
 -   [Bootstrap](https://getbootstrap.com): UI toolkit
 -   [Sass](https://sass-lang.com): CSS extension language
@@ -39,8 +39,8 @@ The remaining technologies are inherited from the starter:
 
 ## Run This on Your Machine
 
-Please refer to the ["Getting Started" section in the **React + Browser (TypeScript)** starter's `README.md`](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-dev/starters/react-browser-ts#getting-started).
+Please refer to the ["Getting Started" section in the **React + Browser (TypeScript)** starter's `README.md`](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-rc/starters/react-browser-ts#getting-started).
 
 ## LJAS Documentation
 
-[📖 Learn more about **Lean JS App Starter** by reading its docs.](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-dev/docs)
+[📖 Learn more about **Lean JS App Starter** by reading its docs.](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-rc/docs)

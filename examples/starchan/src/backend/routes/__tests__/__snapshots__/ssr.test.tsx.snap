@@ -83,7 +83,7 @@ exports[`thread list page matches snapshot for basic server-side rendering 1`] =
       >
         <li>
           <a
-            href="https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-dev/examples/starchan"
+            href="https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-rc/examples/starchan"
           >
             *chan GitHub Repo
           </a>

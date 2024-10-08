@@ -2,7 +2,7 @@
 
 This is a **[Lean JS App Starter](https://github.com/mattlean/lean-js-app-starter)** project for an [Express](https://expressjs.com) application that supports [React](https://react.dev) server-side rendering. It's written in [TypeScript](https://typescriptlang.org) and works with a [PostgreSQL](https://postgresql.org) database.
 
-_If you don't need TypeScript, then then use the [React + Express + PostgreSQL with SSR starter](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-dev/starters/react-express-postgres-ssr) instead._
+_If you don't need TypeScript, then then use the [React + Express + PostgreSQL with SSR starter](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-rc/starters/react-express-postgres-ssr) instead._
 
 ## Technology Overview
 
@@ -82,7 +82,7 @@ When you're done working, you can press Ctrl+C in the terminal running the dev s
 
 This method is the simplest as it only has one prerequisite and has PostgreSQL and Prisma setup for you.
 
-For more information on the Docker dev environment, please read the ["Docker Environments" document in the LJAS docs](https://github.com/mattlean/lean-js-app-starter/blob/v1.0.0-dev/docs/developing/docker-environments.md).
+For more information on the Docker dev environment, please read the ["Docker Environments" document in the LJAS docs](https://github.com/mattlean/lean-js-app-starter/blob/v1.0.0-rc/docs/developing/docker-environments.md).
 
 #### Prerequisites
 
@@ -164,7 +164,7 @@ Create a dev build with webpack using this command:
 npm run build
 ```
 
-For more information on the build process, please read the ["Building" document in the LJAS docs](https://github.com/mattlean/lean-js-app-starter/blob/v1.0.0-dev/docs/building.md).
+For more information on the build process, please read the ["Building" document in the LJAS docs](https://github.com/mattlean/lean-js-app-starter/blob/v1.0.0-rc/docs/building.md).
 
 #### Step 5. Start the development server
 
@@ -178,4 +178,4 @@ When you're done working, you can press Ctrl+C in the terminal running the dev s
 
 ## Learn More With the Documentation
 
-[📖 Read the docs to learn more about what else you can do with **Lean JS App Starter** and how it works.](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-dev/docs)
+[📖 Read the docs to learn more about what else you can do with **Lean JS App Starter** and how it works.](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-rc/docs)

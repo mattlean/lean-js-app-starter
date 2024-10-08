@@ -15,7 +15,7 @@ If there is only one webpack process in the project's build process, you will fi
 
 If the project's build process involves multiple webpack processes, each webpack process will have its own set of four config files as described above in the `webpack/` directory. What differentiates each set of config files will be its prefix which will correspond to the webpack process it's for. For example, the [React + Express + PostgreSQL with Server-Side Rendering starter](../starters/react-express-postgres-ssr) has two webpack processes: one for the backend and one for the frontend. The set of config files relevant to the backend will be prefixed with `backend`, and the frontend will have its own equivalent prefixed with `frontend`.
 
-LJAS also uses webpack configuration parts from our own package called [`ljas-webpack`](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-dev/ljas-webpack). This allows us to easily reuse common webpack config code across multiple projects. [If you would like to learn more about `webpack-merge` and `ljas-webpack`, we go more into detail on how it all works together in `ljas-webpack`'s `README.md`.](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-dev/ljas-webpack/README.md)
+LJAS also uses webpack configuration parts from our own package called [`ljas-webpack`](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-rc/ljas-webpack). This allows us to easily reuse common webpack config code across multiple projects. [If you would like to learn more about `webpack-merge` and `ljas-webpack`, we go more into detail on how it all works together in `ljas-webpack`'s `README.md`.](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-rc/ljas-webpack/README.md)
 
 ## Learning Resources
 

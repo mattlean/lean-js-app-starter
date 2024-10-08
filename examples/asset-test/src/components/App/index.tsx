@@ -20,7 +20,7 @@ export default function App() {
                     Learn about the tech stack used for this project and more at
                     its{' '}
                     <a
-                        href="https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-dev/examples/asset-test"
+                        href="https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-rc/examples/asset-test"
                         className="text-muted"
                     >
                         GitHub repo
