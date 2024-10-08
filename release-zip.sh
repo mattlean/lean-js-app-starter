@@ -12,7 +12,7 @@ done
 for subdir in */
 do
     echo "Zipping: ${subdir}"
-    zip -r ${subdir%/}.zip ${subdir}
+    zip -r ${subdir%/}_1-0-0.zip ${subdir}
 done
 
 for subdir in */
