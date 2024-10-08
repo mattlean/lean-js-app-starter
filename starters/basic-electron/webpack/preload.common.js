@@ -1,5 +1,5 @@
-const { compileJs } = require('ljas-webpack')
 const setupNodeExternals = require('ljas-webpack/setupNodeExternals')
+const { compileJs } = require('ljas-webpack')
 const { merge } = require('webpack-merge')
 
 const { PATH_COMMON_SRC, PATH_PRELOAD_SRC, PATH_ROOT } = require('../PATHS')

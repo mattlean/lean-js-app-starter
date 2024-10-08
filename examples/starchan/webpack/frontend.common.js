@@ -1,6 +1,6 @@
 const buildHtml = require('ljas-webpack/buildHtml')
-const { merge } = require('webpack-merge')
 const { EnvironmentPlugin } = require('webpack')
+const { merge } = require('webpack-merge')
 
 const templateParameters = require('./templateParameters')
 const { PATH_FRONTEND_SRC } = require('../PATHS')

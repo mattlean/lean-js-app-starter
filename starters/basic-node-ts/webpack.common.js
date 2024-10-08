@@ -1,5 +1,5 @@
-const setupNodeExternals = require('ljas-webpack/setupNodeExternals')
 const compileTs = require('ljas-webpack/compileTs')
+const setupNodeExternals = require('ljas-webpack/setupNodeExternals')
 const { merge } = require('webpack-merge')
 
 const { PATH_ROOT, PATH_SRC } = require('./PATHS')
