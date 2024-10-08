@@ -18,6 +18,7 @@
 -   Upgrade ESLint to ^8.41.0
 -   Upgrade Express to ^4.18.2
 -   Upgrade Jest to ^29.5.0
+-   Upgrade Node.js to ^20.9.0
 -   Upgrade React to ^18.2.0
 -   Upgrade SuperTest to ^6.3.3
 -   Upgrade Stylelint to ^16.2.1
