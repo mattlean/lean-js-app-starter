@@ -20,13 +20,13 @@ LJAS supports [CSS](https://w3.org/Style/CSS/Overview.en.html) for all frontend-
 
 ## Getting Started
 
-You can create a `.css` file anywhere and import it in JavaScript file. So for example you could create `src/index.css` and then import it in `src/index.js` like so:
+You can create a `.css` anywhere in the `src/` directory and import it in any ECMAScript file. So for example you could create `src/index.css` and then import it in `src/index.js` like so:
 
 ```javascript
 import './index.css'
 ```
 
-Then webpack will handle generating the CSS files for the build process.
+Then webpack will handle how the CSS gets loaded in the bundle during the build process.
 
 You can see an example of this in the [`buildCss` `ljas-webpack` example](../../ljas-webpack/examples/buildCss).
 
@@ -61,7 +61,7 @@ Note that this is an alias for `npm run format:check` which only identifies issu
 If you want to automatically address all of these code style issues, use the following script:
 
 ```console
-npm run format:fix
+npm run format:write
 ```
 
 Instead of using these scripts, we suggest enabling formatting on save with Prettier in your code editor. We show how to set this up with VS Code in the ["Install Extensions" section in the "Code Editors" document](../setup/code-editors.md#install-extensions).

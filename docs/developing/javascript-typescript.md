@@ -72,7 +72,7 @@ Note that this is an alias for `npm run format:check` which only identifies issu
 If you want to automatically address all of these code style issues, use the following script:
 
 ```console
-npm run format:fix
+npm run format:write
 ```
 
 Instead of using these scripts, we suggest enabling formatting on save with Prettier in your code editor. We show how to set this up with VS Code in the ["Install Extensions" section in the "Code Editors" document](../setup/code-editors.md#install-extensions).
@@ -83,9 +83,9 @@ To learn how to configure Prettier, read the [Prettier configuration document](.
 
 We utilize [webpack](https://webpack.js.org)'s [watch mode](https://webpack.js.org/configuration/watch) for [Node.js](https://nodejs.org)-based source code and [webpack-dev-server](https://webpack.js.org/configuration/dev-server) for browser-based source code to watch the `src/` directory and create new builds if any changes occur there. This is done during `package.json` scripts like `build:watch` and `dev` (e.g., `npm run backend:build:watch`, `npm run frontend:dev`, `npm run main:build:watch`, `npm run renderer:dev`).
 
-Note that webpack alone only generates a new build and will not restart the app process. This means that, for most build processes except for those involving hot reloading, changes may not be reflected in a running app until you shut down its current one and start a completely new app process. That responsibility is given to [nodemon](https://nodemon.io) which restarts the app after webpack completes generating a new build, enabling auto reload functionality.
+Note that webpack alone only generates a new build and will not restart the app process. This means that, for most build processes except for those involving hot reloading, changes may not be reflected in a running app until you shut down its current one and start a completely new app process. To prevent you from having to manually do that, [nodemon](https://nodemon.io) watches webpack for you, waiting for it to generate a new build so it can restart the app at the correct time, enabling auto reload functionality.
 
-So one (not recommended) way to get auto reloading working is to run a command similar to the following:
+So one, not recommended, way to get auto reloading working is to run a command similar to the following:
 
 ```
 npm run build:watch && npm run start:debug
@@ -93,7 +93,7 @@ npm run build:watch && npm run start:debug
 
 In this case, `npm run build:watch` runs webpack which will create new builds when changes occur to the source code. Then `npm run start:debug` runs nodemon which will run the app process and then restart it after webpack finishes a new build.
 
-The recommend method is the `dev` `package.json` script that essentially does all of this for you except in [a better way with concurrently](https://github.com/open-cli-tools/concurrently):
+The recommend method is to use the `dev` `package.json` script that essentially does all of this for you except in [a better way with concurrently](https://github.com/open-cli-tools/concurrently):
 
 ```
 npm run dev

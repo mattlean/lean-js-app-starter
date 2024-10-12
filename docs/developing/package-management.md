@@ -16,7 +16,7 @@ Like most JavaScript projects, LJAS relies on [`package.json`](https://docs.npmj
 
 While there are multiple package managers that support `package.json`, we currently only support [npm](https://npmjs.com) out-of-the-box since it is usually installed alongside [Node.js](https://nodejs.org). Because of this, the docs are written in the perspective of an npm user.
 
-If you want to see an example project using [Yarn](https://yarnpkg.com), check out the [Todo List example](../../examples/todo-list).
+If you want to see an example project using [Yarn](https://yarnpkg.com), check out the [todo list example](../../examples/todo-list).
 
 Switching to a different package manager shouldn't be difficult as long as you do it early, so we highly recommend that you decide on one package manager when you start a new project and stick with it to avoid issues that can arise when switching package managers later in development.
 
@@ -52,7 +52,13 @@ When you install a package, it will add itself under the [`dependencies` field](
 npm install jest --save-dev
 ```
 
-This will install Jest and add it under the [`devDependencies` field](https://docs.npmjs.com/cli/v10/configuring-npm/package-json#devdependencies).
+This will install Jest and add it under the [`devDependencies` field](https://docs.npmjs.com/cli/v10/configuring-npm/package-json#devdependencies). A shorter alternative to the `--save-dev` flag is `-D`.
+
+If you need to update the version for existing dependency, you can use the [`npm update` command](https://docs.npmjs.com/cli/v10/commands/npm-update) like so:
+
+```console
+npm update react@18.3.1
+```
 
 Uninstalling existing dependencies is done with the [`npm uninstall` command](https://docs.npmjs.com/cli/v6/commands/npm-uninstall) like so:
 
@@ -62,7 +68,7 @@ npm uninstall react
 
 ### Scripts
 
-The [`scripts` field](https://docs.npmjs.com/cli/v10/configuring-npm/package-json#scripts) allows you to define `package.json` scripts which become terminal commands. By default we provide many scripts for you to use which we cover in [other documents in the "Developing" section of the docs](../developing).
+The [`scripts` field](https://docs.npmjs.com/cli/v10/configuring-npm/package-json#scripts) allows you to define `package.json` scripts which become terminal commands. We provide many scripts for you to use out-of-the-box which we cover in [other documents in the "Developing" section of the docs](../developing).
 
 Here is an example of our lint script which will run ESLint and identify potential problems in your code:
 
@@ -81,7 +87,7 @@ LJAS organizes all packages that are required to execute the build process and a
 ### Problems
 
 -   [Some of my packages are having problems running.](#some-of-my-packages-are-having-problems-running)
--   [How do I figure out which packages are dependent on a package?](#how-do-i-figure-out-which-packages-are-dependent-on-a-package)
+-   [How do I figure out which packages are dependent on a specific package?](#how-do-i-figure-out-which-packages-are-dependent-on-a-specific-package)
 
 #### Some of my packages are having problems running.
 
@@ -99,7 +105,7 @@ npm ci
 
 This command acts similarly to running [`npm install` without passing in any arguments](https://docs.npmjs.com/cli/v10/commands/npm-install#description) except it will not perform any changes to [`package-lock.json`](https://docs.npmjs.com/cli/v10/configuring-npm/package-lock-json).
 
-#### How do I figure out which packages are dependent on a package?
+#### How do I figure out which packages are dependent on a specific package?
 
 Sometimes you need to figure out which packages are dependent on a specific package. This can be handy in situations where you need to resolve version conflicts. Sometimes looking at your `package.json` alone isn't enough as there could be deeper, unseen relations in your project's dependency tree that are causing problems.
 

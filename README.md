@@ -1,6 +1,6 @@
 # Lean JavaScript Application Starter
 
-**Lean JS App Starter (LJAS)** is a development environment that is designed to get you up and running quickly while being flexible to handle potential changing project requirements as your app grows.
+**Lean JS App Starter (LJAS)** is a development environment designed to kickstart projects across browser, Node.js, and Electron platforms. It offers a modern developer experience, leveraging standard tools from the JavaScript ecosystem. LJAS's transparent and highly customizable configuration makes it easy to modify and meet the unique needs of your app.
 
 **🎉 Don't just code for browsers: build servers, desktop apps, CLI tools, and more**
 
@@ -16,7 +16,7 @@
 
 **🗄️ Support for PostgreSQL & MongoDB**
 
-> Connect to [PostgreSQL](https://postgresql.org) and [MongoDB](https://mongodb.com) easily with [Prisma](https://prisma.io). Containerized databases are available so you aren't required to install databases directly on your machine.
+> Connect to [PostgreSQL](https://postgresql.org) and [MongoDB](https://mongodb.com) easily with [Prisma](https://prisma.io). Containerized databases are available so you aren't required to install databases natively on your machine.
 
 **⚡ Hot module replacement & auto-reloading**
 
@@ -34,9 +34,9 @@
 
 > The project setup and configuration consistency allows developers working on multiple LJAS-based projects to move back-and-forth between them easily. If you are familiar with one LJAS project then you will be comfortable working with all of them, regardless if the build target is a browser, Node.js, or Electron.
 
-**🥇 Powered by the gold standards of the JS build tool ecosystem**
+**🥇 Powered by the gold standards of the JS tooling ecosystem**
 
-> Nothing fancy and no surprises–it's just [webpack](https://webpack.js.org), [Babel](https://babeljs.io), and [ESLint](https://eslint.org). The configurations are intentionally designed to follow standard conventions out-of-the-box, so they are easy to understand and customize.
+> Nothing fancy and no surprises–the core tools are [webpack](https://webpack.js.org), [Babel](https://babeljs.io), and [ESLint](https://eslint.org). The configurations are intentionally designed by default to follow standard conventions, so they are easy to understand and customize.
 
 ## Documentation
 
@@ -44,7 +44,7 @@
 
 > Read the ["Motivation" document](./docs/motivation.md).
 
-**📖 Learn more about everything LJAS has to offer!**
+**📖 Learn about everything LJAS has to offer!**
 
 > [Check out the docs!](./docs)
 
@@ -52,16 +52,16 @@
 
 LJAS offers several different **starter projects** with various different technologies pre-configured for you. Each one is designed for different targets like the browser or Node.js, and can also utilize different technologies such as JavaScript, TypeScript, React, or Express, etc. They are all designed as complete development environments that you can rely on out-of-the-box.
 
-Select a starter project below that fits your needs to learn about what each one offers:
+Select a starter project below that fits your needs:
 
 | Starter Project Name                  | Description                                                                                                                           | JavaScript                                                                                                                                                                                                                                            | TypeScript                                                                                                                                                                                                                                                  |
 | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Basic Browser                         | A simple setup for a frontend built with just vanilla JavaScript or TypeScript.                                                       | [Download](https://github.com/mattlean/lean-js-app-starter/releases/download/v1.0.0-rc/ljas-basic-browser_1-0-0.zip) / [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-rc/starters/basic-browser)                           | [Download](https://github.com/mattlean/lean-js-app-starter/releases/download/v1.0.0-rc/ljas-basic-browser-ts_1-0-0.zip) / [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-rc/starters/basic-browser-ts)                           |
+| Basic Browser                         | A simple setup for a browser frontend built with just vanilla JavaScript or TypeScript.                                               | [Download](https://github.com/mattlean/lean-js-app-starter/releases/download/v1.0.0-rc/ljas-basic-browser_1-0-0.zip) / [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-rc/starters/basic-browser)                           | [Download](https://github.com/mattlean/lean-js-app-starter/releases/download/v1.0.0-rc/ljas-basic-browser-ts_1-0-0.zip) / [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-rc/starters/basic-browser-ts)                           |
 | Basic Electron                        | A simple setup for an Electron desktop app built with just vanilla JavaScript or TypeScript.                                          | [Download](https://github.com/mattlean/lean-js-app-starter/releases/download/v1.0.0-rc/ljas-basic-electron_1-0-0.zip) / [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-rc/starters/basic-electron)                         | [Download](https://github.com/mattlean/lean-js-app-starter/releases/download/v1.0.0-rc/ljas-basic-electron-ts_1-0-0.zip) / [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-rc/starters/basic-electron-ts)                         |
 | Basic Node.js                         | A simple setup for a Node.js app built with just vanilla JavaScript or TypeScript.                                                    | [Download](https://github.com/mattlean/lean-js-app-starter/releases/download/v1.0.0-rc/ljas-basic-node_1-0-0.zip) / [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-rc/starters/basic-node)                                 | [Download](https://github.com/mattlean/lean-js-app-starter/releases/download/v1.0.0-rc/ljas-basic-node-ts_1-0-0.zip) / [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-rc/starters/basic-node-ts)                                 |
 | Express + MongoDB                     | A web server that runs off Node.js, Express, MongoDB, and Prisma.                                                                     | [Download](https://github.com/mattlean/lean-js-app-starter/releases/download/v1.0.0-rc/ljas-express-mongo_1-0-0.zip) / [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-rc/starters/express-mongo)                           | [Download](https://github.com/mattlean/lean-js-app-starter/releases/download/v1.0.0-rc/ljas-express-mongo-ts_1-0-0.zip) / [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-rc/starters/express-mongo-ts)                           |
 | Express + PostgreSQL                  | A web server that runs off Node.js, Express, PostgreSQL, and Prisma.                                                                  | [Download](https://github.com/mattlean/lean-js-app-starter/releases/download/v1.0.0-rc/ljas-express-postgres_1-0-0.zip) / [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-rc/starters/express-postgres)                     | [Download](https://github.com/mattlean/lean-js-app-starter/releases/download/v1.0.0-rc/ljas-express-postgres-ts_1-0-0.zip) / [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-rc/starters/express-postgres-ts)                     |
-| React + Browser                       | A frontend that uses React.                                                                                                           | [Download](https://github.com/mattlean/lean-js-app-starter/releases/download/v1.0.0-rc/ljas-react-browser_1-0-0.zip) / [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-rc/starters/react-browser)                           | [Download](https://github.com/mattlean/lean-js-app-starter/releases/download/v1.0.0-rc/ljas-react-browser-ts_1-0-0.zip) / [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-rc/starters/react-browser-ts)                           |
+| React + Browser                       | A browser frontend that uses React.                                                                                                   | [Download](https://github.com/mattlean/lean-js-app-starter/releases/download/v1.0.0-rc/ljas-react-browser_1-0-0.zip) / [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-rc/starters/react-browser)                           | [Download](https://github.com/mattlean/lean-js-app-starter/releases/download/v1.0.0-rc/ljas-react-browser-ts_1-0-0.zip) / [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-rc/starters/react-browser-ts)                           |
 | React + Electron                      | An Electron desktop app that uses React for its renderer processes.                                                                   | [Download](https://github.com/mattlean/lean-js-app-starter/releases/download/v1.0.0-rc/ljas-react-electron_1-0-0.zip) / [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-rc/starters/react-electron)                         | [Download](https://github.com/mattlean/lean-js-app-starter/releases/download/v1.0.0-rc/ljas-react-electron-ts_1-0-0.zip) / [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-rc/starters/react-electron-ts)                         |
 | React + Express + MongoDB with SSR    | A full-stack web app that runs off Node.js, Express, PostgreSQL, Prisma, and React. The backend supports React server-side rendering. | [Download](https://github.com/mattlean/lean-js-app-starter/releases/download/v1.0.0-rc/ljas-react-express-mongo-ssr_1-0-0.zip) / [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-rc/starters/react-express-mongo-ssr)       | [Download](https://github.com/mattlean/lean-js-app-starter/releases/download/v1.0.0-rc/ljas-react-express-mongo-ssr-ts_1-0-0.zip) / [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-rc/starters/react-express-mongo-ssr-ts)       |
 | React + Express + PostgreSQL with SSR | A full-stack web app that runs off Node.js, Express, PostgreSQL, Prisma, and React. The backend supports React server-side rendering. | [Download](https://github.com/mattlean/lean-js-app-starter/releases/download/v1.0.0-rc/ljas-react-express-postgres-ssr_1-0-0.zip) / [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-rc/starters/react-express-postgres-ssr) | [Download](https://github.com/mattlean/lean-js-app-starter/releases/download/v1.0.0-rc/ljas-react-express-postgres-ssr-ts_1-0-0.zip) / [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-rc/starters/react-express-postgres-ssr-ts) |
@@ -76,4 +76,4 @@ You will be able to find projects like SPAs, REST APIs, desktop apps, and more. 
 
 ## License
 
-Lean JavaScript Application Starter is open source software [licensed as MIT](https://choosealicense.com/licenses/mit).
+Lean JavaScript Application Starter is open source software [licensed as MIT](https://github.com/mattlean/lean-js-app-starter/blob/master/LICENSE).

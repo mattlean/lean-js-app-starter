@@ -15,6 +15,8 @@ This document is only relevant to the following Prisma-related starter projects:
 
 -   [Why Prisma?](#why-prisma)
 -   [Learning Resources](#learning-resources)
+-   [Prisma CLI](#prisma-cli)
+-   [Prisma Studio](#prisma-studio)
 -   [Connecting to Docker Databases Through a Terminal](#connecting-to-docker-databases-through-a-terminal)
 -   [Connecting a Natively Running App with a Containerized Database](#connecting-a-natively-running-app-with-a-containerized-database)
 -   [Prisma Configuration](#prisma-configuration)
@@ -25,11 +27,11 @@ This document is only relevant to the following Prisma-related starter projects:
 
 We decided to use Prisma primarily because of the following:
 
--   Object-relational mapping (ORM) with support for both PostgreSQL & MongoDB
--   Auto-generated types when working with TypeScript
--   Migration system
+-   [Object-relational mapping (ORM) with support for both PostgreSQL & MongoDB](https://prisma.io/docs/orm/overview/databases)
+-   [Generated types for TypeScript derived from models](https://prisma.io/docs/orm/prisma-client/type-safety#what-are-generated-types)
+-   [Support for migrations](https://prisma.io/docs/orm/prisma-migrate/understanding-prisma-migrate/overview)
 
-The Prisma docs go over other good reasons to use their products in their [introduction docs](https://.prisma.io/docs/concepts/overview/why-prisma).
+The Prisma docs go over other good reasons to use their ORM in their [introduction docs](https://prisma.io/docs/orm/overview/introduction/why-prisma).
 
 ## Learning Resources
 
@@ -49,6 +51,26 @@ The Prisma docs go over other good reasons to use their products in their [intro
 -   [Prisma's MongoDB guide](https://prisma.io/docs/getting-started/setup-prisma/start-from-scratch/mongodb-typescript-mongodb)  
     Learn the basics for Prisma with MongoDB.
 
+## Prisma CLI
+
+The [Prisma command line interface (CLI)](https://prisma.io/docs/orm/tools/prisma-cli) is the primary way of interacting with Prisma. It is used to do various things like make migrations and generate the Prisma Client.
+
+The Prisma CLI can be accessed through the `prisma` `package.json` script:
+
+```console
+npm run prisma
+```
+
+## Prisma Studio
+
+[Prisma Studio](https://prisma.io/studio) is a tool that lets you explore and manipulate the data in your database through a UI in the browser. It is an alternative to using something like `psql` or `mongo` that works in a terminal.
+
+To start it, run the following `package.json` script:
+
+```console
+npm run prisma:studio
+```
+
 ## Connecting to Docker Databases Through a Terminal
 
 To learn how to connect to Docker databases through a terminal, read the ["Connecting to Docker Databases Through a Terminal" section in the "Docker Environments" document](../docker-environments.md#connecting-to-docker-databases-through-a-terminal).
@@ -59,7 +81,7 @@ Some may prefer running their app natively while connecting it to the database r
 
 To set this up, first remove the `app` service and its dependent volumes in the Docker Compose config file. You can reference [an example that applies these changes to the **Express + PostgreSQL starter's** `docker-compose.yml` file.](./docker-compose.hybrid-example.yml)
 
-Then all you need to do is modify the `DATABASE_URL` environment variable in the `.env` file to the appropriate connection string so Prisma can connect to the database.
+After that, all you need to do is modify the `DATABASE_URL` environment variable in the `.env` file to the appropriate connection string so Prisma can connect to the database.
 
 If you're working with unchanged values from the initial setup, then all you need to do is change `db` in the existing connection string to `localhost`.
 
@@ -93,7 +115,7 @@ Read the [Prisma configuration document](../../configuration/prisma.md) to learn
 
 #### How do I fix type errors encountered with Prisma?
 
-You may encounter a case where TypeScript is throwing type errors with your Prisma-related code. If this is happening, try running [`prisma generate`](https://prisma.io/docs/orm/prisma-client/setup-and-configuration/generating-prisma-client) to generate the [Prisma Client](https://prisma.io/docs/orm/prisma-client/setup-and-configuration/introduction).
+You may encounter a case where TypeScript is throwing type errors with your Prisma-related code when it shouldn't. If this is happening, try running [`prisma generate`](https://prisma.io/docs/orm/prisma-client/setup-and-configuration/generating-prisma-client) to generate the [Prisma Client](https://prisma.io/docs/orm/prisma-client/setup-and-configuration/introduction).
 
 You can use the `prisma` `package.json` script to do this:
 

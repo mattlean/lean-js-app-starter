@@ -8,6 +8,7 @@
 -   [Build Targets](#build-targets)
 -   [Building Distributable Applications for Electron](#building-distributable-applications-for-electron)
 -   [Building Icons for Electron Applications](#building-icons-for-electron-applications)
+-   [Debugging the webpack Build Process](#debugging-the-wepback-build-process)
 -   [Troubleshooting](#troubleshooting)
 
 ## Overview
@@ -89,6 +90,10 @@ Here is an example of this script converting a `.png` file:
 ```console
 npm run make-icons -- --input=/absolute/path/file.png --output=./relative/path/to/folder
 ```
+
+## Debugging the wepback Build Process
+
+Please refer to the ["webpack Build Process with Google Chrome" section in the "Debugging" document](./developing/debugging.md#webpack-build-process-with-google-chrome)
 
 ## Troubleshooting
 

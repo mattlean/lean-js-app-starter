@@ -2,8 +2,6 @@
 
 This directory contains various examples that began as starter projects. Most went on to develop their own specialized configurations.
 
-Here is an overview on how each example expands upon their starter:
-
 ### [\*chan](./starchan)
 
 A textboard built on top of the [React + Express + MongoDB with SSR starter (TypeScript)](../starters/react-express-mongo-ssr-ts).

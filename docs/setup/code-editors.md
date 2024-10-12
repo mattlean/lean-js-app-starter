@@ -11,19 +11,19 @@
 
 ## Overview
 
-LJAS supports **[Visual Studio Code (VS Code)](https://code.visualstudio.com)**, but it is not required. We do highly recommend it because it will ensure a smooth editor setup process for you as we have some things preconfigured for it, and all the documentation will explain things from a Visual Studio Code user's perspective.
+LJAS supports **[Visual Studio Code (VS Code)](https://code.visualstudio.com)**, but it is not required. We highly recommend it as all of the documentation will explain things from a Visual Studio Code user's perspective, but none of the tools it uses are specific to VS Code so there should always be a way to set things up for a different editor.
 
 If you decide against using VS Code, we highly recommend that you figure out how to get [ESLint](https://eslint.org) and [Prettier](https://prettier.io) (and type checking if you're using [TypeScript](https://typescriptlang.org)) operating in your editor. Catching warnings and errors in real-time as you code is extremely valuable!
 
-Although LJAS no longer supports [Sublime Text](https://sublimetext.com). you can still refer to the [v0.1.1 Sublime Text documentation](https://github.com/mattlean/lean-js-app-starter/blob/v0.1.1/docs/tools/sublime_text.md) if that is your editor of choice.
+Although LJAS no longer supports [Sublime Text](https://sublimetext.com), you can still refer to the [v0.1.1 Sublime Text document](https://github.com/mattlean/lean-js-app-starter/blob/v0.1.1/docs/tools/sublime_text.md) and figure out how to set that up yourself if that is your editor of choice.
 
-If for whatever reason your editor does not work with these tools, then you can resort to `package.json` scripts like `npm run lint`, `npm run format`, and `npm run check-types` to check for potential problems manually in a terminal.
+If for whatever reason your editor does not work with these tools, you can resort to using `package.json` scripts like `npm run lint`, `npm run format`, and `npm run check-types` to check for problems manually in a terminal. We cover these in the ["Developing" section of the docs](../developing).
 
 The remainder of this document will go over how to setup and work with VS Code.
 
 ## Download & Install
 
-[Download and install Visual Studio Code here](https://code.visualstudio.com/download).
+[Download and install Visual Studio Code here.](https://code.visualstudio.com/download)
 
 ## Install Extensions
 

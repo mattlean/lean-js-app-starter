@@ -24,14 +24,14 @@
 
 LJAS uses the default Jest behavior which only has two patterns that you will need to follow if you want Jest to be able to find your tests without changing the [`testMatch` option](https://jestjs.io/docs/configuration#testmatch-arraystring) in the Jest config file.
 
-The first one is that it will match all JavaScript and TypeScript files with `.spec` or `.test` before its file extension. For example, the following file names would be matched by Jest:
+The first one is that it will match all JavaScript and TypeScript files with `.spec` or `.test` before its file extension. For example, the following file names would be matched:
 
 -   `foo.test.js`
 -   `bar.spec.jsx`
 -   `baz.test.ts`
 -   `xyzzy.spec.tsx`
 
-The second one is that it will match all JavaScript and TypeScript files within a `__tests__` directory, even if its file name does not have `.spec` or `.test` before its file extension. For example, the following files would be matched by Jest:
+The second one is that it will match all JavaScript and TypeScript files within a `__tests__` directory, even if its file name does not have `.spec` or `.test` before its file extension. For example, the following files would be matched:
 
 -   `__tests__/foo.js`
 -   `bar/__tests__/baz.jsx`
@@ -106,7 +106,7 @@ Read the [Jest configuration document](../configuration/jest.md) to learn how it
 
 ### Creating Playwright Test Files
 
-Playwright will look for all JavaScript and TypeScript files including `.spec` or `.test` before its file extension in the `src/playwright/` directory. For example, the following files would be matched by Jest:
+Playwright will look for all JavaScript and TypeScript files including `.spec` or `.test` before its file extension in the `src/playwright/` directory. For example, the following files would be matched:
 
 -   `src/playwright/foo.test.js`
 -   `src/playwright/bar.spec.ts`
@@ -133,7 +133,7 @@ You can also run Playwright in [UI mode](https://playwright.dev/docs/test-ui-mod
 npm run test:e2e:dev
 ```
 
-If a test fails, Playwright will serve an HTML report of the results at [`http://localhost:9323`](http://localhost:9323). If you ever want to access this after it has closed, you can use the `test:e2e:report` `package.json` script to server it again:
+If a test fails, Playwright will serve an HTML report of the results at [`http://localhost:9323`](http://localhost:9323). If you ever want to access this after it has closed, you can use the `test:e2e:report` `package.json` script to serve it again:
 
 ```console
 npm run test:e2e:report
@@ -141,11 +141,11 @@ npm run test:e2e:report
 
 ### Debugging Playwright Tests
 
-Please refer to the ["Playwright Tests with Visual Studio Code" section](./debugging.md#playwright-tests-with-visual-studio-code) or the ["Playwright Tests with Playwright Inspector" section](./debugging.md#playwright-tests-with-playwright-inspector) of the "Debugging" document.
+Please refer to the ["Playwright Tests with Visual Studio Code" section](./debugging.md#playwright-tests-with-visual-studio-code) or the ["Playwright Tests with Playwright Inspector" section](./debugging.md#playwright-tests-with-playwright-inspector) in the "Debugging" document.
 
 ### Docker End-to-End Test Environment
 
-If you're working off of an non-Electron based LJAS project that supports Playwright, you will have access to a Docker test environment specialized for working with Playwright tests.
+If you're working off of a non-Electron based LJAS project that supports Playwright, you will have access to a Docker test environment specialized for working with Playwright tests.
 
 To learn how to use it, read the ["Setting Up the Docker End-to-End Test Environment" section in the "Docker Environments" document](../developing/docker-environments.md#setting-up-the-docker-end-to-end-test-environment).
 
