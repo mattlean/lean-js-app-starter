@@ -6,7 +6,9 @@
 
 ## Installation
 
-`npm install --save-dev ljas-webpack`
+```console
+npm install ljas-webpack
+```
 
 ## ljas-webpack vs. Conventional webpack Configuration
 

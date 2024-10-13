@@ -41,7 +41,7 @@ if [ "$SKIP_NPM_INSTALL" != "true" ]; then
     else
         # Install npm dependencies if node_modules doesn't exist and environment is not production
         echo "${PREFIX} Installing all package dependencies..."
-        npm install
+        npm ci
         echo "${PREFIX} Package dependency installation completed!"
     fi
 fi

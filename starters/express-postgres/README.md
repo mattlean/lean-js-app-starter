@@ -120,7 +120,7 @@ This was tested on Node.js v20.9.0 and PostgreSQL 15.3, but many other versions 
 First, open a terminal, navigate to your project's root directory, and install npm dependencies with the following command:
 
 ```console
-npm install
+npm ci
 ```
 
 _Learn more about [`npm install`](https://docs.npmjs.com/cli/v10/commands/npm-install) in the npm Docs._

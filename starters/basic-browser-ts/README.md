@@ -112,7 +112,7 @@ This was tested on Node.js v20.9.0, but any version >= 20.9 to <21 should still 
 First, open a terminal, navigate to your project's root directory, and install npm dependencies with the following command:
 
 ```console
-npm install
+npm ci
 ```
 
 _Learn more about [`npm install`](https://docs.npmjs.com/cli/v10/commands/npm-install) in the npm Docs._

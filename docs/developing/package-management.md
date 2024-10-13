@@ -66,6 +66,14 @@ Uninstalling existing dependencies is done with the [`npm uninstall` command](ht
 npm uninstall react
 ```
 
+When you need to install all dependencies during setup for a project, run the [`npm ci`](https://docs.npmjs.com/cli/v10/commands/npm-ci) command to do so:
+
+```console
+npm ci
+```
+
+This command acts similarly to running [`npm install` without passing in any arguments](https://docs.npmjs.com/cli/v10/commands/npm-install#description) except it will not perform any changes to [`package-lock.json`](https://docs.npmjs.com/cli/v10/configuring-npm/package-lock-json).
+
 ### Scripts
 
 The [`scripts` field](https://docs.npmjs.com/cli/v10/configuring-npm/package-json#scripts) allows you to define `package.json` scripts which become terminal commands. We provide many scripts for you to use out-of-the-box which we cover in [other documents in the "Developing" section of the docs](../developing).
@@ -97,13 +105,13 @@ When in doubt, first try deleting your existing `node_modules` directory. This c
 rm -rf node_modules
 ```
 
-Then install a brand new `node_modules` directory using the [`npm ci` command](https://docs.npmjs.com/cli/v10/commands/npm-ci):
+Then reinstall all of your project's dependencies.
+
+Alternatively, you can remove the existing `node_modules` directory and create a brand new one using a single command called [`npm ci`](https://docs.npmjs.com/cli/v10/commands/npm-ci):
 
 ```console
 npm ci
 ```
-
-This command acts similarly to running [`npm install` without passing in any arguments](https://docs.npmjs.com/cli/v10/commands/npm-install#description) except it will not perform any changes to [`package-lock.json`](https://docs.npmjs.com/cli/v10/configuring-npm/package-lock-json).
 
 #### How do I figure out which packages are dependent on a specific package?
 
