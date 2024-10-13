@@ -99,7 +99,7 @@ The recommend method is to use the `dev` `package.json` script that essentially 
 npm run dev
 ```
 
-Frontend React-related build processes do not rely on auto reloading and nodemon in the same way because [React Fast Refresh](https://reactnative.dev/docs/fast-refresh) is used to show your app's changes instead. This feature is setup with [React Refresh Webpack Plugin](https://github.com/pmmmwh/react-refresh-webpack-plugin) and activates hot reloading which enables webpack-dev-server to seamlessly update specific modules and components while the app is running, only falling back to a full reload when absolutely necessary.
+Frontend React-based build processes do not rely on auto reloading and nodemon in the same way because [React Fast Refresh](https://reactnative.dev/docs/fast-refresh) is used to show your app's changes instead. This feature is setup with [React Refresh Webpack Plugin](https://github.com/pmmmwh/react-refresh-webpack-plugin) and activates hot reloading which enables webpack-dev-server to seamlessly update specific modules and components while the app is running, only falling back to a full reload when absolutely necessary.
 
 This allows React development to iterate faster because changes will be "live patched" to the app process which will run continuously and uninterrupted. This is in contrast to auto reloading where nodemon has to completely restart the app process every time a change occurs.
 

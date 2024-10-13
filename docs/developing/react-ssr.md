@@ -2,7 +2,7 @@
 
 This document explains the details behind the approach LJAS uses to support React server-side rendering (SSR) since there are a few different ways it could be setup.
 
-This document is only relevant to the following SSR-related starter projects:
+This document is only relevant to the following SSR-based starter projects:
 
 | Starter Project Name                  | JavaScript                                                                                                        | TypeScript                                                                                                           |
 | ------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
@@ -24,7 +24,7 @@ It is possible to run the backend without completing the frontend build process,
 
 ### Handling React on the Backend
 
-webpack is configured to handle imports and compile all React-related code within the backend, so you are able to import the frontend's components and render views with them using [React DOM's server APIs](https://react.dev/reference/react-dom/server) like [`renderToString`](https://react.dev/reference/react-dom/server/renderToString) or [`renderToPipeableStream`](https://react.dev/reference/react-dom/server/renderToPipeableStream).
+webpack is configured to handle imports and compile all React-related code within the backend, so you are able to import the frontend's components and render views with them using [React DOM's server APIs](https://react.dev/reference/react-dom/server) like [`renderToString`](https://react.dev/reference/react-dom/server/renderToString).
 
 When a user loads the app in their browser, the backend serves its rendering of the React code, and the browser will execute the JavaScript that runs [`hydrateRoot`](https://react.dev/reference/react-dom/client/hydrateRoot) to have the client-side React attach to the server rendering and take over.
 

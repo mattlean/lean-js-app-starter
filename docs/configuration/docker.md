@@ -2,7 +2,7 @@
 
 ## Overview
 
-All non-Electron projects will offer a Docker environments that are handled by files located in the project's root directory.
+All projects except for Electron-based ones will offer a Docker environments that are handled by files located in the project's root directory.
 
 The development environment is configured through the `Dockerfile` which is used to assemble the image for the application container and the `docker-compose.yml` file which is used to setup Docker Compose and manage multiple containers. Docker Compose is always setup as long as a Docker environment is supported, even if the project only involves one container as it simplifies the commands and makes them consistent across projects.
 

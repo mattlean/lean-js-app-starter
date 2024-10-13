@@ -76,7 +76,8 @@
         "remark-gfm": "^4.0.0",
         "remark-parse": "^11.0.0",
         "remark-rehype": "^11.1.0",
-        "unified": "^11.0.4"
+        "unified": "^11.0.4",
+        "webpack-node-externals": "^3.0.0"
     },
     "devDependencies": {
         "@babel/cli": "^7.21.5",

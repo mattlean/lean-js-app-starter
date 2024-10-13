@@ -145,7 +145,7 @@ Please refer to the ["Playwright Tests with Visual Studio Code" section](./debug
 
 ### Docker End-to-End Test Environment
 
-If you're working off of a non-Electron based LJAS project that supports Playwright, you will have access to a Docker test environment specialized for working with Playwright tests.
+If you're working off of a project that supports Playwright and does not utilize Electron, you will have access to a Docker test environment specialized for working with Playwright tests.
 
 To learn how to use it, read the ["Setting Up the Docker End-to-End Test Environment" section in the "Docker Environments" document](../developing/docker-environments.md#setting-up-the-docker-end-to-end-test-environment).
 

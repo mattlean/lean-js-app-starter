@@ -10,7 +10,7 @@ For Electron-based projects, this config file determines which Electron version 
 
 Other types of projects use [Browserslist environments](https://github.com/browserslist/browserslist?tab=readme-ov-file#configuring-for-different-environments) that change the build targets depending on the environment that the build is intended for.
 
-For frontend-based projects, the config file determines which browsers are targeted for the development and production environments.
+For browser-based projects, the config file determines which browsers are targeted for the development and production environments.
 
 For server-side rendering (SSR) supporting projects, the config file has one environment that determines the target Node.js version for the backend and the target browsers for the development and production environments.
 
