@@ -5,6 +5,7 @@
         "src/backend/views/",
         "nodemon.backend.json",
         "package.json",
-        "tsconfig.json"
+        "tsconfig.json",
+        "tsconfig.build.backend.json"
     ]
 }

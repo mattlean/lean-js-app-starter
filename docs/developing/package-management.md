@@ -97,6 +97,8 @@ LJAS organizes all packages that are required to execute the build process and a
 -   [Some of my packages are having problems running.](#some-of-my-packages-are-having-problems-running)
 -   [How do I figure out which packages are dependent on a specific package?](#how-do-i-figure-out-which-packages-are-dependent-on-a-specific-package)
 
+---
+
 #### Some of my packages are having problems running.
 
 When in doubt, first try deleting your existing `node_modules` directory. This can be done by running the following command in your project's root directory:
@@ -112,6 +114,8 @@ Alternatively, you can remove the existing `node_modules` directory and create a
 ```console
 npm ci
 ```
+
+---
 
 #### How do I figure out which packages are dependent on a specific package?
 

@@ -113,6 +113,8 @@ Read the [Prisma configuration document](../../configuration/prisma.md) to learn
 -   [How do I fix type errors encountered with Prisma?](#how-do-i-fix-type-errors-encountered-with-prisma)
 -   [Why do you still use MongoDB 4 and not a newer version?](#why-do-you-still-use-mongodb-4-and-not-a-newer-version)
 
+---
+
 #### How do I fix type errors encountered with Prisma?
 
 You may encounter a case where TypeScript is throwing type errors with your Prisma-related code when it shouldn't. If this is happening, try running [`prisma generate`](https://prisma.io/docs/orm/prisma-client/setup-and-configuration/generating-prisma-client) to generate the [Prisma Client](https://prisma.io/docs/orm/prisma-client/setup-and-configuration/introduction).
@@ -124,6 +126,8 @@ npm run prisma generate
 ```
 
 Note that if you ever make any changes to the Prisma schema, you must re-run `prisma generate` to update the Prisma Client as well.
+
+---
 
 #### Why do you still use MongoDB 4 and not a newer version?
 

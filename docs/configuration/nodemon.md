@@ -2,7 +2,7 @@
 
 ## Overview
 
-Each project may have a different set of [nodemon configuration files](https://github.com/remy/nodemon?tab=readme-ov-file#config-files), but they all fall into one of the following two categories:
+Every project may have a different mix of [nodemon configuration files](https://github.com/remy/nodemon?tab=readme-ov-file#config-files), but each file falls into one of the following two categories:
 
 ### 1. Configuration File Watch
 
@@ -26,7 +26,7 @@ These nodemon config files are responsible for restarting the app process when n
 -   `nodemon.development.json`
 -   `nodemon.production.json`
 
-Note that `nodemon.production.json` is not actually used for production deployments. It is only used for debugging production builds with the development environment.
+Note that `nodemon.production.json` is not actually used for production deployments. It is only used for debugging production builds.
 
 ## Learning Resources
 

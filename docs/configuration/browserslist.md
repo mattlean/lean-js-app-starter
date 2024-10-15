@@ -12,7 +12,7 @@ Other types of projects use [Browserslist environments](https://github.com/brows
 
 For browser-based projects, the config file determines which browsers are targeted for the development and production environments.
 
-For server-side rendering (SSR) supporting projects, the config file has one environment that determines the target Node.js version for the backend and the target browsers for the development and production environments.
+For server-side rendering (SSR) supporting projects, the config file has one environment that determines the target Node.js version for the backend. The development and production environments determine the target browsers for the frontend.
 
 ## Learning Resources
 

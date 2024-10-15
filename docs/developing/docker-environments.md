@@ -260,6 +260,8 @@ This section is for common solutions to some problems you may encounter when dea
 -   [Changes to my code are not being seen by nodemon or webpack when they are running in a container.](#changes-to-my-code-are-not-being-seen-by-nodemon-or-webpack-when-they-are-running-in-a-container)
 -   [Playwright does not work in the Docker dev environment.](#playwright-does-not-work-in-the-docker-dev-environment)
 
+---
+
 #### I am running into issues with Docker and disk space. How do I deal with that?
 
 Docker's philosophy is to generally keep as many objects, e.g. images, containers, and volumes, as possible until they are explicitly deleted by the user. As a result, the more Docker is used, the more common it is for it to take up a lot of disk space.
@@ -267,6 +269,8 @@ Docker's philosophy is to generally keep as many objects, e.g. images, container
 So if Docker is taking up more disk space than you would like, the first thing you should do is delete all dangling objects using a prune command. [`docker image prune`](https://docs.docker.com/reference/cli/docker/image/prune) is probably the first command you should try, but if you still need to free up more disk space after running that, consider using [`docker volume prune`](https://docs.docker.com/reference/cli/docker/volume/prune), [`docker builder prune`](https://docs.docker.com/reference/cli/docker/builder/prune), or [`docker system prune`](https://docs.docker.com/reference/cli/docker/system/prune). You can read more about pruning by reading the ["Prune unused objects" document in the Docker docs](https://docs.docker.com/engine/manage-resources/pruning).
 
 If you've performed all the pruning you can, but you still need more virtual disk space for Docker, you can allocate more virtual disk space by adjusting its limit in the "Resources" tab in the Docker Desktop settings.
+
+---
 
 #### I am running into problems preventing me from running Docker environments on Windows.
 
@@ -284,6 +288,8 @@ To switch to them, right-click the Docker icon in the nofication area of the tas
 & $Env:ProgramFiles\Docker\Docker\DockerCli.exe -SwitchDaemon
 ```
 
+---
+
 #### How do I force Docker to create a completely fresh image and ignore the build cache?
 
 Sometimes you may encounter cases where Docker will use the build cache during the image building process when you don't want it to. If you can't find another way to invalidate the cache, you can force Docker to not use the cache by passing the [`--no-cache` option](https://docs.docker.com/reference/cli/docker/compose/build/#options) to [`docker compose build`](https://docs.docker.com/reference/cli/docker/compose/build) like so:
@@ -294,6 +300,8 @@ docker compose build --no-cache
 
 This will build a new image which you can then produce containers from using `docker compose up`.
 
+---
+
 #### Changes to my code are not being seen by nodemon or webpack when they are running in a container.
 
 Some machines run into issues with watching files in Docker containers.
@@ -301,6 +309,8 @@ Some machines run into issues with watching files in Docker containers.
 To resolve this issue with nodemon, pass the `--legacy-watch` (or `-L`) flag whenever it is run. It is likely that you will need to update your `dev` `package.json` script with it. For more information on this, refer to the ["Application isn't restarting" in the nodemon README](https://github.com/remy/nodemon?tab=readme-ov-file#application-isnt-restarting).
 
 To resolve this issue with webpack, set the `watchOptions.poll` option in a webpack configuration file. For more information on this, refer to the ["Watch and WatchOptions" page in the webpack docs](https://webpack.js.org/configuration/watch/#watchoptionspoll).
+
+---
 
 #### Playwright does not work in the Docker dev environment.
 

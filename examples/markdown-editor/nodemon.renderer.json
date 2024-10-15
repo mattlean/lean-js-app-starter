@@ -4,6 +4,7 @@
         "nodemon.renderer.json",
         "package.json",
         "tailwind.config.js",
-        "tsconfig.json"
+        "tsconfig.json",
+        "tsconfig.build.renderer.json"
     ]
 }

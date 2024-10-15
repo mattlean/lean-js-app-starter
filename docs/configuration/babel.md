@@ -2,9 +2,9 @@
 
 ## Overview
 
-Most projects only have one [Babel config file](https://babeljs.io/docs/config-files) found in the project's root directory as `babel.config.js`. Some projects that involve multiple build targets that require different Babel settings will have multiple config files with a different suffix depending on the build target. For example, the [React + Express + PostgreSQL with Server-Side Rendering starter](../starters/react-express-postgres-ssr) has a backend Babel config file called `babel.backend.js` and a frontend Babel config file called `babel.frontend.js`.
+Most projects only have one [Babel config file](https://babeljs.io/docs/config-files) found in the project's root directory as `babel.config.js`. Some projects that involve multiple build targets that require different Babel settings will have multiple config files that are named with a different suffix depending on the build target. For example, the [React + Express + PostgreSQL with Server-Side Rendering starter](../../starters/react-express-postgres-ssr) has a backend Babel config file called `babel.backend.js` and a frontend Babel config file called `babel.frontend.js`.
 
-We currently use a JavaScript configuration file over a different option like `.babelrc` or `babel.config.json` as it allows us to alter the configuration dynamically during runtime based on different conditions like the environment being used.
+We currently use a JavaScript configuration file over other options like `.babelrc` or `babel.config.json` as it allows us to alter the configuration dynamically during runtime based on different conditions like the environment being used.
 
 ## Learning Resources
 

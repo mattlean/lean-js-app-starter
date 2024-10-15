@@ -19,9 +19,9 @@ When working with Electron-based projects, an additional step must be done to pr
 
 ## Why use webpack still?
 
-At the time of writing, webpack is starting to fall out of fashion, but we still believe that it remains one of the best options for a JavaScript-based dev environment. Believe it or not, the time where setting up your development environment from scratch or using [Create React App](https://create-react-app.dev) was actually not too long ago (even though it may feel like an eternity already), and during the peak of this era, webpack was the number one build tool. LJAS originally was created in this webpack-era which is one of the reasons as to why we started with it, but we still intend to keep it because we think webpack's value still justifies itself in today's ecosystem.
+At the time of writing, webpack is starting to fall out of fashion, but we still believe that it remains one of the best options for a JavaScript projects. Believe it or not, the time where setting up your development environment from scratch or using [Create React App](https://create-react-app.dev) was actually not too long ago (even though it may feel like an eternity in technology time already), and during the peak of this era, webpack was the number one build tool. LJAS originally was created in this webpack-era which is one of the reasons as to why we started with it, but we still intend to keep it because we think webpack's value still justifies itself in today's ecosystem.
 
-The most popular JavaScript-based dev environment is currently [Vite](https://vitejs.dev) which is undoubtably great for getting frontend web apps off the ground quickly as it hides the complexity around working with build tools. However, webpack stands its ground because there is still a strong use case where many users need full control of their build tools and require the ability to do things beyond out-of-the-box functionality with something like Vite. While Vite does offer you to go under-the-hood and customize its esbuild and Rollup configurations, at that point we argue that webpack becomes the superior competitor as
+The most popular JavaScript-based dev environment is currently [Vite](https://vitejs.dev) which is undoubtably great for getting frontend web apps off the ground quickly as it hides the complexity around working with build tools. However, webpack stands its ground because there is still a strong use case where many users need full control of their build tools and require the ability to do things beyond out-of-the-box functionality with something like Vite. While Vite does offer you to go under-the-hood and customize its [esbuild](https://esbuild.github.io) and [Rollup](https://rollupjs.org) configurations, at that point we argue that webpack becomes the superior competitor as
 it still has the most mature ecosystem that boasts an abundance of packages that can pretty much do everything you'd need along with a better selection of resources to search for and reference when compared to Vite, esbuild, and Rollup's resources.
 
 webpack is also generic so it can be used for any JavaScript project, not just frontend ones, which is how LJAS can target other platforms besides browsers. Outside of meta-frameworks, there isn't really a ubiquitous Vite or Create React App equivalent for Node.js apps. By applying webpack to Node.js, we can introduce all the bells and whistles frontend developers have been working with to the Node.js space while making non-browser projects easier for frontend developers to adjust to.
@@ -30,17 +30,39 @@ webpack is also generic so it can be used for any JavaScript project, not just f
 
 There are several different build-related commands offered as `package.json` scripts that vary depending on which starter you're building off of, but two scripts that all projects have are:
 
--   `npm run build`  
-    Create a development build in the `build/development/` directory. This process is automatically run for you in the `npm run dev` script.
--   `npm run build:production`  
-    A variant of the `build` script that creates a production build in the `build/production/` directory. This is the build you should deploy to production.
+```console
+npm run build
+```
+
+Create a development build in the `build/development/` directory. This process is automatically run for you in the `npm run dev` script.
+
+---
+
+```console
+npm run build:production
+```
+
+A variant of the `build` script that creates a production build in the `build/production/` directory. This is the build you should deploy to production.
+
+---
 
 In addition to this, different starters will have other variant scripts available to you like:
 
--   `npm run build:debug`  
-    Debug the webpack build process for development builds. Learn more about debugging webpack in the ["webpack build process with Google Chrome" section in the debugging document](./developing/debugging.md#webpack-build-process-with-google-chrome).
--   `npm run build:stats`  
-    Run the webpack build process for a development build and output a `stats.json` file that can be analyzed using a build analysis tool. Learn more about webpack build analysis in the ["Build Analysis" chapter from the SurviveJS webpack book](https://survivejs.com/books/webpack/optimizing/build-analysis).
+```console
+npm run build:debug
+```
+
+Debug the webpack build process for development builds. Learn more about debugging webpack in the ["webpack build process with Google Chrome" section in the debugging document](./developing/debugging.md#webpack-build-process-with-google-chrome).
+
+---
+
+```console
+npm run build:stats
+```
+
+Run the webpack build process for a development build and output a `stats.json` file that can be analyzed using a build analysis tool. Learn more about webpack build analysis in the ["Build Analysis" chapter from the SurviveJS webpack book](https://survivejs.com/books/webpack/optimizing/build-analysis).
+
+---
 
 You can always use `:production` in a script to control whether or not the build process should target the production environment.
 
@@ -65,13 +87,13 @@ When working with Electron projects, you will also need to alter the webpack tar
 
 LJAS uses [electron-builder](https://electron.build) to build distributable apps for macOS, Windows, and Linux.
 
-Before building distributable apps, you must have an existing webpack production build, so make sure that `npm run build:production` has been run beforehand. Once that's available, run the following `package.json` script:
+Before building distributable apps, you must have an existing webpack production build, so make sure that the `build:production` `package.json` script has been run beforehand. Once that's available, run the following:
 
 ```console
 npm run dist
 ```
 
-This will use the webpack build in the `build/production/` directory and produce a distributable app in the `dist/` directory.
+This will initiate electron-builder which will use the build in the `build/production/` directory and produce a distributable app in the `dist/` directory.
 
 If you need to test the distributable app build process but you don't want to go through it completely, you can run the following script to generate the `dist/` directory without completely packaging the app:
 
@@ -93,7 +115,7 @@ npm run make-icons -- --input=/absolute/path/file.png --output=./relative/path/t
 
 ## Debugging the wepback Build Process
 
-Please refer to the ["webpack Build Process with Google Chrome" section in the "Debugging" document](./developing/debugging.md#webpack-build-process-with-google-chrome)
+Please refer to the ["webpack Build Process with Google Chrome" section in the "Debugging" document](./developing/debugging.md#webpack-build-process-with-google-chrome).
 
 ## Troubleshooting
 

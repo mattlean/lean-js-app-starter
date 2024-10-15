@@ -19,6 +19,7 @@
         "webpack/",
         "nodemon.production.json",
         "package.json",
-        "tsconfig.json"
+        "tsconfig.json",
+        "tsconfig.build.*.json"
     ]
 }
