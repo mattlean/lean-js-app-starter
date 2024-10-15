@@ -1,6 +1,6 @@
 # Frequently Asked Questions (FAQ)
 
-This document goes over frequently asked questions that don't really fit anywhere else in the docs. If you don't find your specific question here, try looking at other FAQ sections in specific documents relevant to your question.
+This document goes over frequently asked questions that don't really fit anywhere else in the docs. If you don't find your specific question here, try looking at other FAQ or troubleshooting sections in specific documents relevant to your question.
 
 ## Questions
 
@@ -13,21 +13,19 @@ This document goes over frequently asked questions that don't really fit anywher
 
 ---
 
-#### How do I remove all mentions of Lean JS App Starter from my project?
+#### How do I remove all mentions of Lean JS App Starter from my application?
 
-Search the code for strings that are the title of the starter project code name prefixed with `ljas-`. There shouldn't be many of them to replace.
+Search the code for strings that are the starter project code name prefixed with `ljas-`. This will be the same value as the `name` field in `package.json`. There are not many of them to replace.
 
-For example, if you're using the [React + Browser starter](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-rc/starters/react-browser), you would search and replace for `ljas-react-browser`. This would replace the `package.json` `name` field and the title option in the webpack configuration used as the contents of the `<title>` tag in the HTML template.
-
-Then the final thing you need to do is clear contents of the `README.md` file and you'll be good to go.
+For example, if you're using the [React + Browser starter](../starters/react-browser), you would search and replace for `ljas-react-browser`. This would replace the `package.json` `name` field and the title option in the webpack configuration used as the contents of the `<title>` tag in the HTML template.
 
 ---
 
 #### How do you change Node.js versions?
 
-We currently support Node.js versions >=20.9 to <21 by default. If you want to change that you need to do is update `engines.node` field in `package.json` and the Node.js version in the `.browserslistrc` file. Then make sure the app works as expected.
+We currently support Node.js versions >=20.9 to <21 by default. If you want to change that, you need to update the `engines.node` field in `package.json` and the Node.js version in the `.browserslistrc` file.
 
-If you're using the Docker development environment, you will also need to update the Dockerfiles' `FROM` instructions to a base image with the updated Node.js version. You can find an appropriate official Node.js image here: https://hub.docker.com/_/node/tags
+If you're using the Docker development environment, you will also need to update the Dockerfiles' `FROM` instructions to a base image with the updated Node.js version. You can find an appropriate official Node.js image on Docker Hub: https://hub.docker.com/_/node/tags
 
 Don't forget to make sure everything is still working as expected after changing versions.
 
@@ -41,7 +39,7 @@ This is to remain consistent with the TypeScript projects where the language req
 
 #### Why use Babel over the official TypeScript compiler?
 
-We use Babel to compile TypeScript because we already use it to handle syntax transforms, browser polyfills, and React. To keep performance, we move type checking to a separate process using [Fork TS Checker Webpack Plugin](https://github.com/TypeStrong/fork-ts-checker-webpack-plugin).
+We use Babel to compile TypeScript because we already use it to handle syntax transforms, browser polyfills, and React. This also helps to improve performance for the build process as type checking gets moved into a separate process using [Fork TS Checker Webpack Plugin](https://github.com/TypeStrong/fork-ts-checker-webpack-plugin).
 
 ---
 
@@ -53,7 +51,7 @@ Because ECMAScript modules are used for the frontend projects, we've decided to 
 
 #### Why do you still use webpack for Node.js projects?
 
-We do this to maintain consistency with all of the other projects, mainly with the Node.js projects using TypeScript, and we're avoiding some quirks Node.js has with ECMAScript modules and imports.
+We do this to maintain consistency with all of the other projects, mainly for the Node.js projects using TypeScript, and we're avoiding some quirks Node.js has with ECMAScript modules and imports.
 
 Although Node.js does have very good support for modern ECMAScript standards, some of the developer experience slightly varies from the standard experience offered by codebases that utilize TypeScript or webpack. For example, [Node.js requires file extensions in `import` declarations because of its stricter implementation of the ECMAScript 2015 specification](https://nodejs.org/api/esm.html#mandatory-file-extensions), whereas TypeScript and webpack have opted to handle imports with a more lenient approach that guesses file extensions similarly to CommonJS `require` function calls. Without webpack, we could rely on the `experimental-specifier-resolution` flag, but [Node.js recommends against this since it is planned to be removed](https://nodejs.org/dist/latest-v18.x/docs/api/esm.html#customizing-esm-specifier-resolution-algorithm).
 

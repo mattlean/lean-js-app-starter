@@ -7,4 +7,4 @@ All Electron-based projects have their [electron-builder configuration](https://
 ## Learning Resources
 
 -   [electron-builder Docs: Quick Setup Guide](https://electron.build/#quick-setup-guide)  
-    Learn the basics of configuring electron-builder by setting up a basic electron-builder configuration from scratch.
+    Learn the basics of configuring electron-builder by setting up a simple electron-builder configuration from scratch.

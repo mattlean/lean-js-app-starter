@@ -11,4 +11,4 @@ Note that we currently use the [deprecated config system](https://eslint.org/doc
 ## Learning Resources
 
 -   [Getting Started with ESLint](https://eslint.org/docs/v8.x/use/getting-started)  
-    Learn the basics of configuring ESLint by setting up a basic ESLint configuration from scratch.
+    Learn the basics of configuring ESLint by setting up a simple ESLint configuration from scratch.

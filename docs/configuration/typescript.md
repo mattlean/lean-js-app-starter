@@ -10,7 +10,7 @@ If there are multiple webpack processes involved, then there will be multiple co
 
 These webpack-specific TypeScript config files extend `tsconfig.json` and override some of the options set in it so we can type check everything during development, but still skip type checking irrelevant files for the build (i.e. tests).
 
-Note that the [`noEmit` option](https://typescriptlang.org/tsconfig/#noEmit) is enabled as LJAS does not use `tsc` to compile TypeScript files. Instead, the webpack build process uses Babel to compile everything including TypeScript. Type checking is performed in a separate process to improve build speeds.
+Note that the [`noEmit` option](https://typescriptlang.org/tsconfig/#noEmit) is enabled as LJAS does not use `tsc` to compile TypeScript files. Instead, the webpack build process uses Babel to compile everything including TypeScript. [We explain why we do this in the FAQ document.](../faq.md#why-use-babel-over-the-official-typescript-compiler)
 
 ## Learning Resources
 

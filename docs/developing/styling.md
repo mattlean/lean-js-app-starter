@@ -17,6 +17,7 @@ LJAS supports [CSS](https://w3.org/Style/CSS/Overview.en.html) for all frontend-
 -   [Linting](#linting)
 -   [Formatting](#formatting)
 -   [Adding Support for Sass](#adding-support-for-sass)
+-   [Examples](#examples)
 
 ## Getting Started
 
@@ -71,3 +72,9 @@ To learn how to configure Prettier, read the [Prettier configuration document](.
 ## Adding Support for Sass
 
 To learn how to add support for Sass in your project, refer to the ["Adding Support for Sass" section in the Stylelint configuration document](../configuration/stylelint.md#adding-support-for-sass).
+
+## Examples
+
+-   [\*chan](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-rc/examples/starchan): Express server that server-side renders a React frontend
+-   [Asset Test](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-rc/examples/asset-test): Test for LJAS's asset loading capabilities
+-   [Markdown Editor](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-rc/examples/markdown-editor): Markdown editor desktop app
