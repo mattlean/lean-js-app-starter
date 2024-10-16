@@ -268,7 +268,7 @@ Docker's philosophy is to generally keep as many objects, e.g. images, container
 
 So if Docker is taking up more disk space than you would like, the first thing you should do is delete all dangling objects using a prune command. [`docker image prune`](https://docs.docker.com/reference/cli/docker/image/prune) is probably the first command you should try, but if you still need to free up more disk space after running that, consider using [`docker volume prune`](https://docs.docker.com/reference/cli/docker/volume/prune), [`docker builder prune`](https://docs.docker.com/reference/cli/docker/builder/prune), or [`docker system prune`](https://docs.docker.com/reference/cli/docker/system/prune). You can read more about pruning by reading the ["Prune unused objects" document in the Docker docs](https://docs.docker.com/engine/manage-resources/pruning).
 
-If you've performed all the pruning you can, but you still need more virtual disk space for Docker, you can allocate more virtual disk space by adjusting its limit in the "Resources" tab in the Docker Desktop settings.
+If you've performed all the pruning you can but still need more space, manually go through all your containers, images, and volumes and delete anything that you can confirm is unnecessary. After that, re-run prune commands and then if you still need more virtual disk space for Docker, you can allocate more by adjusting its limit in the "Resources" tab in the Docker Desktop settings.
 
 ---
 

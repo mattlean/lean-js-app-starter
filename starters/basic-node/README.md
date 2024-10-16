@@ -1,11 +1,12 @@
 # Basic Node.js Starter
 
-This is a **[Lean JS App Starter](https://github.com/mattlean/lean-js-app-starter)** project for a [Node.js](https://nodejs.org) application.
+This is a [**Lean JS App Starter (LJAS)**](https://github.com/mattlean/lean-js-app-starter) starter project for a [Node.js](https://nodejs.org) application written in vanilla JavaScript.
 
 _If you need TypeScript, then use the [Basic Node.js starter (TypeScript)](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-rc/starters/basic-node-ts) instead._
 
 ## Technology Overview
 
+-   [JavaScript](https://tc39.es/ecma262): Just plain, vanilla JavaScript
 -   [Node.js](https://nodejs.org): Runtime environment that allows JavaScript to execute outside of web browsers
 -   [Jest](https://jestjs.io): Testing framework
 -   [webpack](https://webpack.js.org): Bundler used to create builds
@@ -30,23 +31,23 @@ Then, choose one of the following methods:
 
 ### Method 1: Initialization Script (Recommended)
 
-This method is the simplest if you are not using the Docker dev environment (method B).
+This method is the simplest if you are not using the Docker dev environment (method 2).
 
 #### Prerequisites
 
 The only prerequisite is that you must have [Node.js](https://nodejs.org/en/download/package-manager) installed.
 
-This was tested on Node.js v20.9.0, but any version >= 20.9 to <21 should still work.
+This was tested on Node.js v20.9.0, but any version from >=20.9 to <21 will work.
 
 #### Step 1. Run the initialization script
 
-Open a terminal and run the init script in the project root directory which will execute all the setup commands like `npm install` for you:
+Open a terminal and run the init script in the project's root directory which will execute all the setup commands like `npm install` for you:
 
 ```console
 bash init.sh
 ```
 
-_[Learn exactly what the init script is doing in method 3.](#method-3-manual-installation)_
+[_Note: Learn exactly what the init script is doing in method 3._](#method-3-manual-installation)
 
 #### Step 2. Start the development build
 
@@ -62,13 +63,13 @@ When you're done working, you can press Ctrl+C in the terminal running the dev b
 
 ### Method 2: Docker Development Environment (Recommended)
 
-This method is the simplest as it only only requires Docker and has one step. Also, you won't need to worry about which Node.js version your machine is running because the dev environment will use a separate Node.js process running inside the container.
+This method is the simplest as it only only requires Docker. You won't even need to worry about Node.js since the dev environment will use a separate Node.js process inside the container.
 
 For more information on the Docker dev environment, please read the ["Docker Environments" document in the LJAS docs](https://github.com/mattlean/lean-js-app-starter/blob/v1.0.0-rc/docs/developing/docker-environments.md).
 
 #### Prerequisites
 
-The only requirement is [Docker](https://docker.com/get-started).
+The only prerequisite is that you must have [Docker](https://docker.com/get-started) installed.
 
 This was tested on Docker Desktop 4.20.0, but many other Docker versions should still work.
 
@@ -86,15 +87,15 @@ When you're done working, you can press Ctrl+C in the terminal running the conta
 
 ### Method 3: Manual Installation
 
-This method manually does what the init script does for you.
+This method manually does what the init script does for you normally.
 
 #### Prerequisites
 
 The only prerequisite is that you must have [Node.js](https://nodejs.org/en/download/package-manager) installed.
 
-This was tested on Node.js v20.9.0, but any version >= 20.9 to <21 should still work.
+This was tested on Node.js v20.9.0, but any version from >=20.9 to <21 will work.
 
-#### Step 1. Install npm dependencies & devDependencies
+#### Step 1. Install npm dependencies
 
 First, open a terminal, navigate to your project's root directory, and install npm dependencies with the following command:
 
@@ -102,37 +103,39 @@ First, open a terminal, navigate to your project's root directory, and install n
 npm ci
 ```
 
-_Learn more about [`npm install`](https://docs.npmjs.com/cli/v10/commands/npm-install) in the npm Docs._
+[_Note: Learn more about `npm ci` in the npm Docs._](https://docs.npmjs.com/cli/v10/commands/npm-ci)
 
 #### Step 2. Create a development build
 
-Create a dev build with webpack using this command:
+Create a dev build with webpack using this `package.json` script:
 
 ```console
 npm run build
 ```
 
-For more information on the build process, please read the ["Building" document in the LJAS docs](https://github.com/mattlean/lean-js-app-starter/blob/v1.0.0-rc/docs/building.md).
+[_Note: Learn more about the build process in the LJAS docs._](https://github.com/mattlean/lean-js-app-starter/blob/v1.0.0-rc/docs/building.md)
 
 #### (Optional) Create a `.env` file
 
-If your project relies on a `.env` file, then copy the `.env.example` file and paste it as `.env`. This can be done with this command:
+If your project relies on a `.env` file, then copy the `.env.example` file and paste it as `.env`. This can be done with this command in the project's root directory:
 
 ```console
 cp .env.example .env
 ```
 
-_Learn more about how this project handles environment variable files with the [`dotenv` package from its `README.md`](https://github.com/motdotla/dotenv)._
+[_Note: Learn more about the `.env` file in the LJAS docs._](https://github.com/mattlean/lean-js-app-starter/blob/v1.0.0-rc/docs/configuration/dotenv-file.md)
 
 #### Step 3. Start the development build
 
-Finally, start the dev build with following command:
+Finally, start the dev build with this `package.json` script:
 
 ```console
 npm run dev
 ```
 
 When you're done working, you can press Ctrl+C in the terminal running the dev build to shut it down.
+
+[_Note: Learn more about the `dev` `package.json` script in the LJAS docs._](https://github.com/mattlean/lean-js-app-starter/blob/v1.0.0-rc/docs/developing/javascript-typescript.md#auto--hot-reloading)
 
 ## Learn More With the Documentation
 

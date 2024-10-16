@@ -1,6 +1,6 @@
 # React + Express + MongoDB with Server-Side Rendering Starter (TypeScript)
 
-This is a **[Lean JS App Starter](https://github.com/mattlean/lean-js-app-starter)** project for an [Express](https://expressjs.com) application that supports [React](https://react.dev) server-side rendering. It's written in [TypeScript](https://typescriptlang.org) and works with a [MongoDB](https://mongodb.com) database.
+This is a [**Lean JS App Starter (LJAS)**](https://github.com/mattlean/lean-js-app-starter) starter project for an [Express](https://expressjs.com) application written in [TypeScript](https://typescriptlang.org) and supports [React](https://react.dev) server-side rendering. It works with [MongoDB](https://mongodb.com).
 
 _If you don't need TypeScript, then then use the [React + Express + MongoDB with SSR starter](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-rc/starters/react-express-mongo-ssr) instead._
 
@@ -24,7 +24,7 @@ _If you don't need TypeScript, then then use the [React + Express + MongoDB with
 -   [Stylelint](https://stylelint.io): Linter used to identify problems in CSS
 -   [Prettier](https://prettier.io): Formatter used to enforce code style
 -   [Husky](https://typicode.github.io/husky) + [lint-staged](https://github.com/okonet/lint-staged): Pre-commit hooks to check for type, lint, and formatting errors before Git commits are made
--   [Docker](https://docker.com): Used for an optional containerized development environment
+-   [Docker](https://docker.com): Used for optional containerized development & testing environments
 -   [npm](https://npmjs.com): Package manager
 
 ## Getting Started
@@ -41,30 +41,36 @@ Then, choose one of the following methods:
 
 ### Method 1: Initialization Script (Recommended)
 
-This method is the simplest if you are not using the Docker dev environment (method B).
+This method is the simplest if you are not using the Docker dev environment (method 2).
 
 #### Prerequisites
 
 Installation of the following is required before proceeding with this method:
 
 -   [Node.js](https://nodejs.org/en/download/package-manager)
--   [MongoDB](hhttps://mongodb.com)
+-   [MongoDB](https://mongodb.com)
 
-This was tested on Node.js v20.9.0, but any version >= 20.9 to <21 should still work. This was also tested with MongoDB 4.4.25, and any other Mongo 4 version should work well.
+This was tested on Node.js v20.9.0, but any version from >=20.9 to <21 will work. This was also tested with MongoDB 4.4.25, but any version from >=4.4 to <5 will work.
 
-#### Step 1. Run the initialization script
+#### Step 1. Create a `.env` file & define `DATABASE_URL`
 
-Open a terminal and run the init script in the project root directory which will execute all the setup commands like `npm install` for you:
+The `.env` file can be created with the init script in the project's root directory:
+
+```console
+bash init.sh --skip-build --skip-npm-install --skip-prisma
+```
+
+Next, edit the `.env` file's `DATABASE_URL` environment variable to the appropriate [connection string](https://prisma.io/docs/orm/overview/databases/mongodb#connection-details) so Prisma can connect to MongoDB.
+
+#### Step 2. Run the initialization script
+
+Open a terminal and run the init script in the project's root directory (without passing in any flags) which will execute all the setup commands like `npm install` for you:
 
 ```console
 bash init.sh
 ```
 
-#### Step 2. Connect Prisma to MongoDB
-
-Update the `.env` file's `DATABASE_URL` environment variable to the appropriate connection string so Prisma can connect to MongoDB.
-
-For more info on this, read the [Prisma MongoDB docs](https://prisma.io/docs/orm/overview/databases/mongodb#connection-details).
+[_Note: Learn exactly what the init script is doing in method 3._](#method-3-manual-installation)
 
 #### Step 3. Start the development server
 
@@ -80,19 +86,19 @@ When you're done working, you can press Ctrl+C in the terminal running the dev s
 
 ### Method 2: Docker Development Environment (Recommended)
 
-This method is the simplest as it only has one prerequisite and has MongoDB and Prisma setup for you.
+This method is the simplest as it only requires Docker. You won't even need to worry about installing and configuring Node.js, MongoDB, and Prisma as they are all setup for you inside containers.
 
 For more information on the Docker dev environment, please read the ["Docker Environments" document in the LJAS docs](https://github.com/mattlean/lean-js-app-starter/blob/v1.0.0-rc/docs/developing/docker-environments.md).
 
 #### Prerequisites
 
-The only requirement is [Docker](https://docker.com/get-started).
+The only prerequisite is that you must have [Docker](https://docker.com/get-started) installed.
 
 This was tested on Docker Desktop 4.20.0, but many other Docker versions should still work.
 
 #### Step 1. Create a `.env` file
 
-This can be done with the init script in the project root directory:
+This can be done with the init script in the project's root directory:
 
 ```console
 bash init.sh --skip-build --skip-npm-install --skip-prisma
@@ -112,18 +118,18 @@ When you're done working, you can press Ctrl+C in the terminal running the Docke
 
 ### Method 3: Manual Installation
 
-This method manually does what the init script does for you.
+This method manually does what the init script does for you normally.
 
 #### Prerequisites
 
 Installation of the following is required before proceeding with this method:
 
 -   [Node.js](https://nodejs.org/en/download/package-manager)
--   [MongoDB](hhttps://mongodb.com)
+-   [MongoDB](https://mongodb.com)
 
-This was tested on Node.js v20.9.0, but any version >= 20.9 to <21 should still work. This was also tested with MongoDB 4.4.25, and any other Mongo 4 version should work well.
+This was tested on Node.js v20.9.0, but any version from >=20.9 to <21 will work. This was also tested with MongoDB 4.4.25, but any version from >=4.4 to <5 will work.
 
-#### Step 1. Install npm dependencies & devDependencies
+#### Step 1. Install npm dependencies
 
 First, open a terminal, navigate to your project's root directory, and install npm dependencies with the following command:
 
@@ -131,17 +137,21 @@ First, open a terminal, navigate to your project's root directory, and install n
 npm ci
 ```
 
-_Learn more about [`npm install`](https://docs.npmjs.com/cli/v10/commands/npm-install) in the npm Docs._
+[_Note: Learn more about `npm ci` in the npm Docs._](https://docs.npmjs.com/cli/v10/commands/npm-ci)
 
-#### Step 2. Create a `.env` file
+#### Step 2. Create a `.env` file & define `DATABASE_URL`
 
-Copy the `.env.example` file and paste it as `.env`. This can be done with this command:
+Copy the `.env.example` file and paste it as the `.env` file. This can be done with this command in the project's root directory:
 
 ```console
 cp .env.example .env
 ```
 
-#### Step 3. Setup & connect Prisma to MongoDB
+Next, edit the `.env` file's `DATABASE_URL` environment variable to the appropriate [connection string](https://prisma.io/docs/orm/overview/databases/mongodb#connection-details) so Prisma can connect to MongoDB.
+
+[_Note: Learn more about the `.env` file in the LJAS docs._](https://github.com/mattlean/lean-js-app-starter/blob/v1.0.0-rc/docs/configuration/dotenv-file.md)
+
+#### Step 3. Setup database with Prisma
 
 Setup Prisma and the database by running the following commands:
 
@@ -152,29 +162,27 @@ npm run prisma generate
 
 _Learn more about [`prisma db push`](https://prisma.io/docs/orm/prisma-migrate/workflows/prototyping-your-schema) and [`prisma generate`](https://prisma.io/docs/orm/prisma-client/setup-and-configuration/generating-prisma-client) in the Prisma docs._
 
-Update the `.env` file's `DATABASE_URL` environment variable to the appropriate connection string so Prisma can connect to MongoDB.
-
-For more info on this, read the [Prisma MongoDB docs](https://prisma.io/docs/orm/overview/databases/mongodb#connection-details).
-
 #### Step 4. Create a development build
 
-Create a dev build with webpack using this command:
+Create a dev build with webpack using this `package.json` script:
 
 ```console
 npm run build
 ```
 
-For more information on the build process, please read the ["Building" document in the LJAS docs](https://github.com/mattlean/lean-js-app-starter/blob/v1.0.0-rc/docs/building.md).
+[_Note: Learn more about the build process in the LJAS docs._](https://github.com/mattlean/lean-js-app-starter/blob/v1.0.0-rc/docs/building.md)
 
 #### Step 5. Start the development server
 
-Finally, start the dev server with following command:
+Finally, start the dev server with this `package.json` script:
 
 ```console
 npm run dev
 ```
 
 When you're done working, you can press Ctrl+C in the terminal running the dev server to shut it down.
+
+[_Note: Learn more about the `dev` `package.json` script in the LJAS docs._](https://github.com/mattlean/lean-js-app-starter/blob/v1.0.0-rc/docs/developing/javascript-typescript.md#auto--hot-reloading)
 
 ## Learn More With the Documentation
 

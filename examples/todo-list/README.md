@@ -4,7 +4,7 @@ This is a todo list [single-page application (SPA)](https://en.wikipedia.org/wik
 
 Note that this project utilizes React v16.7 (pre-hook era code), "classic" Redux, and Enzyme. If you want to see an example using React hooks, modern Redux through Redux Toolkit, and React Testing Library, please checkout the [**\*chan** example](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-rc/starters/starchan).
 
-Be aware that this was ported from LJAS v0.1.1 is classified as a legacy project. That means it lacks a few features the other projects have (such as Playwright) and will not receive future upgrades for many of its dependencies.
+Be aware that this was ported from LJAS v0.1.1 is classified as a legacy project. That means it lacks a few features the other projects have (such as Playwright) and will not receive future upgrades for many of its dependencies (like Flow and Yarn).
 
 ## Live Demo
 

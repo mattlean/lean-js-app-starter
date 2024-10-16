@@ -59,6 +59,8 @@ npm run check-types
 
 Instead of using this script, we suggest enabling real-time type checking in your code editor. We suggest using VS Code since it does this for you out-of-the-box.
 
+Starting from v1.x.x, LJAS has dropped support of Flow, but we have the [todo list example](../../examples/todo-list) ported from v0.1.1 which still uses it. Please note that this example is considered legacy so it will not receive significant future updates.
+
 ## Formatting
 
 LJAS uses [Prettier](https://prettier.io) to format all code. To identify all files with code style issues, run the following `package.json` script:

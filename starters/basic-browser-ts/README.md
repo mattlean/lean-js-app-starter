@@ -1,6 +1,6 @@
 # Basic Browser Starter (TypeScript)
 
-This is a **[Lean JS App Starter](https://github.com/mattlean/lean-js-app-starter)** project for a [TypeScript](https://typescriptlang.org) application targeted for web browsers.
+This is a [**Lean JS App Starter (LJAS)**](https://github.com/mattlean/lean-js-app-starter) starter project for a [TypeScript](https://typescriptlang.org) application targeted for web browsers.
 
 _If you don't need TypeScript, then use the [Basic Browser starter](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-rc/starters/basic-browser) instead._
 
@@ -18,7 +18,7 @@ _If you don't need TypeScript, then use the [Basic Browser starter](https://gith
 -   [Stylelint](https://stylelint.io): Linter used to identify problems in CSS
 -   [Prettier](https://prettier.io): Formatter used to enforce code style
 -   [Husky](https://typicode.github.io/husky) + [lint-staged](https://github.com/okonet/lint-staged): Pre-commit hooks to check for type, lint, and formatting errors before Git commits are made
--   [Docker](https://docker.com): Used for an optional containerized development environment
+-   [Docker](https://docker.com): Used for optional containerized development & testing environments
 -   [npm](https://npmjs.com): Package manager
 
 ## Getting Started
@@ -35,23 +35,23 @@ Then, choose one of the following methods:
 
 ### Method 1: Initialization Script (Recommended)
 
-This method is the simplest if you are not using the Docker dev environment (method B).
+This method is the simplest if you are not using the Docker dev environment (method 2).
 
 #### Prerequisites
 
 The only prerequisite is that you must have [Node.js](https://nodejs.org/en/download/package-manager) installed.
 
-This was tested on Node.js v20.9.0, but any version >= 20.9 to <21 should still work.
+This was tested on Node.js v20.9.0, but any version from >=20.9 to <21 will work.
 
 #### Step 1. Run the initialization script
 
-Open a terminal and run the init script in the project root directory which will execute all the setup commands like `npm install` for you:
+Open a terminal and run the init script in the project's root directory which will execute all the setup commands like `npm install` for you:
 
 ```console
 bash init.sh
 ```
 
-_[Learn exactly what the init script is doing in method 3.](#method-3-manual-installation)_
+[_Note: Learn exactly what the init script is doing in method 3._](#method-3-manual-installation)
 
 #### Step 2. Start the development server
 
@@ -67,19 +67,19 @@ When you're done working, you can press Ctrl+C in the terminal running the dev s
 
 ### Method 2: Docker Development Environment (Recommended)
 
-This method is the simplest as it only only requires Docker. Also, you won't need to worry about which Node.js version your machine is running because the dev environment will use a separate Node.js process running inside the container.
+This method is the simplest as it only only requires Docker. You won't even need to worry about Node.js since the dev environment will use a separate Node.js process inside the container.
 
 For more information on the Docker dev environment, please read the ["Docker Environments" document in the LJAS docs](https://github.com/mattlean/lean-js-app-starter/blob/v1.0.0-rc/docs/developing/docker-environments.md).
 
 #### Prerequisites
 
-The only requirement is [Docker](https://docker.com/get-started).
+The only prerequisite is that you must have [Docker](https://docker.com/get-started) installed.
 
 This was tested on Docker Desktop 4.20.0, but many other Docker versions should still work.
 
 #### Step 1. Create a `.env` file
 
-This can be done with the init script in the project root directory:
+This can be done with the init script in the project's root directory:
 
 ```console
 bash init.sh --skip-npm-install --skip-playwright
@@ -99,15 +99,15 @@ When you're done working, you can press Ctrl+C in the terminal running the Docke
 
 ### Method 3: Manual Installation
 
-This method manually does what the init script does for you.
+This method manually does what the init script does for you normally.
 
 #### Prerequisites
 
 The only prerequisite is that you must have [Node.js](https://nodejs.org/en/download/package-manager) installed.
 
-This was tested on Node.js v20.9.0, but any version >= 20.9 to <21 should still work.
+This was tested on Node.js v20.9.0, but any version from >=20.9 to <21 will work.
 
-#### Step 1. Install npm dependencies & devDependencies
+#### Step 1. Install npm dependencies
 
 First, open a terminal, navigate to your project's root directory, and install npm dependencies with the following command:
 
@@ -115,15 +115,17 @@ First, open a terminal, navigate to your project's root directory, and install n
 npm ci
 ```
 
-_Learn more about [`npm install`](https://docs.npmjs.com/cli/v10/commands/npm-install) in the npm Docs._
+[_Note: Learn more about `npm ci` in the npm Docs._](https://docs.npmjs.com/cli/v10/commands/npm-ci)
 
 #### Step 2. Create a `.env` file
 
-Copy the `.env.example` file and paste it as `.env`. This can be done with this command:
+Copy the `.env.example` file and paste it as the `.env` file. This can be done with this command in the project's root directory:
 
 ```console
 cp .env.example .env
 ```
+
+[_Note: Learn more about the `.env` file in the LJAS docs._](https://github.com/mattlean/lean-js-app-starter/blob/v1.0.0-rc/docs/configuration/dotenv-file.md)
 
 #### (Optional) Setup Playwright
 
@@ -135,13 +137,15 @@ npm run test:e2e:install
 
 #### Step 3. Start the development server
 
-Finally, start the dev server with following command:
+Finally, start the dev server with this `package.json` script:
 
 ```console
 npm run dev
 ```
 
 When you're done working, you can press Ctrl+C in the terminal running the dev server to shut it down.
+
+[_Note: Learn more about the `dev` `package.json` script in the LJAS docs._](https://github.com/mattlean/lean-js-app-starter/blob/v1.0.0-rc/docs/developing/javascript-typescript.md#auto--hot-reloading)
 
 ## Learn More With the Documentation
 
