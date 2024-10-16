@@ -20,7 +20,7 @@ This project builds on top of the [**React + Browser** starter](https://github.c
 -   [Stylelint](https://stylelint.io): Linter used to identify problems in CSS
 -   [Prettier](https://prettier.io): Formatter used to enforce code style
 -   [Husky](https://typicode.github.io/husky) + [lint-staged](https://github.com/okonet/lint-staged): Pre-commit hooks to check for type, lint, and formatting errors before Git commits are made
--   [Docker](https://docker.com): Used for an optional containerized development environment
+-   [Docker](https://docker.com): Used for optional containerized development & testing environments
 -   [npm](https://npmjs.com): Package manager
 
 ## Run This on Your Machine

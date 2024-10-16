@@ -17,7 +17,7 @@ _Note this uses [Render](https://render.com)'s free service so if the project ha
 
 This project extends the [**React + Browser** starter](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-rc/starters/react-browser) with the following:
 
--   [React (v16.7)](https://react.dev): Library for user interfaces, uses pre-hook era code
+-   [React (v16.7)](https://legacy.reactjs.org): Library for user interfaces, uses pre-hook era code
 -   [Flow](https://flow.org): Static type checker, alternative to TypeScript
 -   [Redux](https://redux.js.org): React state management with "classic" Redux
 -   [Redux Thunk](https://github.com/reduxjs/redux-thunk): Redux middleware used to execute network requests and store responses in Redux store
@@ -27,6 +27,7 @@ This project extends the [**React + Browser** starter](https://github.com/mattle
 
 The remaining technologies are inherited from the starter:
 
+-   [JavaScript](https://tc39.es/ecma262): Just plain, vanilla JavaScript
 -   [CSS](https://w3.org/Style/CSS/Overview.en.html): The standard language for styling
 -   [Embedded JavaScript (EJS)](https://ejs.co): Templating language used to generate the build's `index.html` document
 -   [Jest](https://jestjs.io): Testing framework used mainly for unit testing
