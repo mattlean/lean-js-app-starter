@@ -56,7 +56,7 @@ A REST API server for a notes app. Built on top of the [Express + PostgreSQL sta
 
 A simple todo list SPA. Built on top of the [React + Browser starter](../starters/react-browser).
 
--   React (Class Components)
+-   React (v16.7)
 -   Flow
 -   Redux
 -   Redux Thunk
