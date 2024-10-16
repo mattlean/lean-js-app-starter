@@ -1,0 +1,12 @@
+[backend]
+node >=20.9 and node <21
+
+[frontend-development]
+last 1 chrome version
+last 1 edge version
+last 1 firefox version
+last 1 opera version
+last 1 safari version
+
+[frontend-production]
+defaults

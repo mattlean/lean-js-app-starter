@@ -1,33 +1,75 @@
-# Lean JavaScript Application Starter Documentation
+# LJAS Documentation
+
+Welcome to the documentation for **Lean JS App Starter (LJAS)**!
+
 ## Table of Contents
-* [Read Me](../README.md)
-* [Motivation](motivation.md)
-* [Getting Started](getting_started.md)
-* [JavaScript Features](javascript_features.md)
-* [Environments](envs/README.md)
-  * [Web Browser](envs/browser/README.md)
-    * [Getting Started](envs/browser/getting_started.md)
-    * [Developing](envs/browser/developing.md)
-    * [Building](envs/browser/building.md)
-    * [Dependencies](envs/browser/dependencies.md)
-    * [Configuration](envs/browser/configuration.md)
-    * [Examples](envs/browser/examples.md)
-  * [Node.js](envs/nodejs/README.md)
-    * [Node.js](envs/nodejs/nodejs/README.md)
-      * [Getting Started](envs/nodejs/nodejs/getting_started.md)
-      * [Developing](envs/nodejs/nodejs/developing.md)
-      * [Building](envs/nodejs/nodejs/building.md)
-      * [Dependencies](envs/nodejs/nodejs/dependencies.md)
-      * [Configuration](envs/nodejs/nodejs/configuration.md)
-      * [Examples](envs/nodejs/nodejs/examples.md)
-  * [Desktop](envs/desktop/README.md)
-    * [Getting Started](envs/desktop/getting_started.md)
-    * [Developing](envs/desktop/developing.md)
-    * [Building](envs/desktop/building.md)
-    * [Dependencies](envs/desktop/dependencies.md)
-    * [Configuration](envs/desktop/configuration.md)
-    * [Examples](envs/desktop/examples.md)
-* [Tools](tools/README.md)
-  * [Postman](tools/postman.md)
-  * [Sublime Text](tools/sublime_text.md)
-* [Resources](resources.md)
+
+### [Motivation](./motivation.md)
+
+_Find out why you should consider using LJAS for your project._
+
+---
+
+### Setup
+
+_How to setup LJAS and start your project._
+
+-   [Getting Started](./setup/getting-started.md)
+-   [Code Editors](./setup/code-editors.md)
+-   [Git Pre-Commit Hooks](./setup/git-pre-commit-hooks.md)
+
+---
+
+### **Developing**
+
+_How to develop with LJAS._
+
+-   [JavaScript & TypeScript](./developing/javascript-typescript.md)
+-   [Styling](./developing/styling.md)
+-   [Databases](./developing/databases/README.md)
+-   [Testing](./developing/testing.md)
+-   [Debugging](./developing/debugging.md)
+-   [Package Management](./developing/package-management.md)
+-   [React Server-Side Rendering](./developing/react-ssr.md)
+-   [Docker Environments](./developing/docker-environments.md)
+
+---
+
+### [**Building**](./building.md)
+
+_How the build process works and how to create builds for production._
+
+---
+
+### **Configuration**
+
+_How the default configurations work and how to customize them._
+
+-   [`.env` File](./configuration/dotenv-file.md)
+-   [Babel](./configuration/babel.md)
+-   [Browserslist](./configuration/browserslist.md)
+-   [Docker](./configuration/docker.md)
+-   [electron-builder](./configuration/electron-builder.md)
+-   [ESLint](./configuration/eslint.md)
+-   [Husky & lint-staged](./configuration/husky-lint-staged.md)
+-   [Jest](./configuration/jest.md)
+-   [nodemon](./configuration/nodemon.md)
+-   [Playwright](./configuration/playwright.md)
+-   [Prettier](./configuration/prettier.md)
+-   [Prisma](./configuration/prisma.md)
+-   [Stylelint](./configuration/stylelint.md)
+-   [TypeScript](./configuration/typescript.md)
+-   [Visual Studio Code](./configuration/vscode.md)
+-   [webpack](./configuration/webpack.md)
+
+---
+
+### [**Frequently Asked Questions**](./faq.md)
+
+_Answers to common questions that don't really fit anywhere else in the docs._
+
+---
+
+### [**Origins**](./origins.md)
+
+_The history of Lean JS App Starter._

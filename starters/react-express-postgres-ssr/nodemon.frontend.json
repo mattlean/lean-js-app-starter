@@ -1,0 +1,8 @@
+{
+    "watch": [
+        "webpack/frontend.*.js",
+        "webpack/templateParameters.js",
+        "nodemon.frontend.json",
+        "package.json"
+    ]
+}

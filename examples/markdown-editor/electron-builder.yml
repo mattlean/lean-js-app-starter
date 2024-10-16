@@ -1,0 +1,7 @@
+appId: 'com.ljas.ljas-markdown-editor'
+files: 'build/production/**/*'
+productName: 'ljas-markdown-editor'
+mac:
+    category: public.app-category.productivity
+directories:
+    buildResources: 'build/production'

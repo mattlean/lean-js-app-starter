@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SVGTest component matches snapshot 1`] = `
+<div>
+  <h2>
+    SVG Test
+  </h2>
+  <img
+    alt="React Logo"
+    className="react-logo"
+    src="test-file-stub"
+  />
+</div>
+`;

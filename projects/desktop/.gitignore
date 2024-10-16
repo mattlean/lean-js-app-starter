@@ -1,8 +1,0 @@
-build/
-coverage/
-flow-typed/
-node_modules/
-.eslintcache
-*.sublime-workspace
-stats.*.json
-yarn-error.log

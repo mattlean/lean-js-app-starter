@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddTodo renders properly 1`] = `
+[
+  <input />,
+  <button
+    onClick={[Function]}
+  >
+    Add Todo
+  </button>,
+]
+`;

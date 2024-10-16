@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'Inter';
+    src: url('./Inter-Regular.woff2') format('woff2');
+}
+
+body {
+    background-color: rebeccapurple;
+    font-family: 'Inter', sans-serif;
+}

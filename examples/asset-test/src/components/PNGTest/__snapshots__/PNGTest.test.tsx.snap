@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PNGTest component matches snapshot 1`] = `
+<div>
+  <h2>
+    PNG Test
+  </h2>
+  <img
+    alt="webpack Logo"
+    className="webpack-logo"
+    src="test-file-stub"
+  />
+</div>
+`;

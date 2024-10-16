@@ -1,0 +1,3 @@
+appId: 'com.ljas.ljas-react-electron-ts'
+files: 'build/production/**/*'
+productName: 'ljas-react-electron-ts'

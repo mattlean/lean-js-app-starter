@@ -1,0 +1,14 @@
+{
+    "extends": "./tsconfig",
+    "include": ["src/**/*"],
+    "exclude": [
+        "src/**/__mocks__",
+        "src/**/__tests__",
+        "src/**/*.spec.js",
+        "src/**/*.spec.ts",
+        "src/**/*.test.js",
+        "src/**/*.test.ts",
+        "src/msw/**/*",
+        "src/playwright/**/*"
+    ]
+}
