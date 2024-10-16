@@ -79,7 +79,7 @@ This was tested on Docker Desktop 4.20.0, but many other Docker versions should 
 
 #### Step 1. Create a `.env` file
 
-This can be done with the init script in the project's root directory:
+Open a terminal and create a `.env` file through the init script in the project's root directory:
 
 ```console
 bash init.sh --skip-npm-install --skip-playwright
@@ -149,4 +149,4 @@ When you're done working, you can press Ctrl+C in the terminal running the dev s
 
 ## Learn More With the Documentation
 
-[📖 Read the docs to learn more about what else you can do with **Lean JS App Starter** and how it works.](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-rc/docs)
+[📖 Read the docs to learn more about what else you can do with **Lean JS App Starter**.](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-rc/docs)
