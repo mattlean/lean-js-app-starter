@@ -54,20 +54,20 @@ This was tested on Node.js v20.9.0, but any version from >=20.9 to <21 will work
 
 #### Step 1. Create a `.env` file & define `DATABASE_URL`
 
-The `.env` file can be created with the init script in the project's root directory:
+Open a terminal and use the init script in the project's root directory to create a `.env` file:
 
 ```console
-bash init.sh --skip-build --skip-npm-install --skip-prisma
+bash init.sh --skip-build --skip-npm-ci --skip-prisma
 ```
 
 Next, edit the `.env` file's `DATABASE_URL` environment variable to the appropriate [connection string](https://prisma.io/docs/orm/overview/databases/mongodb#connection-details) so Prisma can connect to MongoDB.
 
 #### Step 2. Run the initialization script
 
-Open a terminal and run the init script in the project's root directory (without passing in any flags) which will execute all the setup commands like `npm install` for you:
+Run the init script in the project's root directory. This will perform all of the setup for you like creating a `.env` file and installing npm dependencies:
 
 ```console
-bash init.sh
+bash init.sh --install-playwright
 ```
 
 [_Note: Learn exactly what the init script is doing in method 3._](#method-3-manual-installation)
@@ -101,7 +101,7 @@ This was tested on Docker Desktop 4.20.0, but many other Docker versions should 
 Open a terminal and create a `.env` file through the init script in the project's root directory:
 
 ```console
-bash init.sh --skip-build --skip-npm-install --skip-prisma
+bash init.sh --skip-build --skip-npm-ci --skip-prisma
 ```
 
 #### Step 2. Start the Docker development environment
@@ -171,6 +171,14 @@ npm run build
 ```
 
 [_Note: Learn more about the build process in the LJAS docs._](https://github.com/mattlean/lean-js-app-starter/blob/v1.0.0-rc/docs/building.md)
+
+#### (Optional) Setup Playwright
+
+If you intend to perform end-to-end testing, setup Playwright with this command:
+
+```console
+npm run test:e2e:install
+```
 
 #### Step 5. Start the development server
 

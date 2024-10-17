@@ -41,7 +41,7 @@ This was tested on Node.js v20.9.0, but any version from >=20.9 to <21 will work
 
 #### Step 1. Run the initialization script
 
-Open a terminal and run the init script in the project's root directory which will execute all the setup commands like `npm install` for you:
+Open a terminal and run the init script in the project's root directory. This will perform all of the setup for you like creating a `.env` file and installing npm dependencies:
 
 ```console
 bash init.sh

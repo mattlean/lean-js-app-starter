@@ -15,7 +15,7 @@ while [ $# -gt 0 ] ; do
     case $1 in
         --skip-build) SKIP_BUILD=true ;;
         --skip-env-file) SKIP_ENV_FILE=true ;;
-        --skip-npm-install) SKIP_NPM_INSTALL=true ;;
+        --skip-npm-ci) SKIP_NPM_CI=true ;;
         --skip-prisma) SKIP_PRISMA=true ;;
     esac
 
@@ -38,7 +38,7 @@ if [ "$SKIP_ENV_FILE" != "true" ]; then
     fi
 fi
 
-if [ "$SKIP_NPM_INSTALL" != "true" ]; then
+if [ "$SKIP_NPM_CI" != "true" ]; then
     if [ "${NODE_ENV}" == "production" ]; then
         # Always install dependencies if the environment is production
         echo "${PREFIX} Installing production package dependencies..."

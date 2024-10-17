@@ -13,9 +13,10 @@ cd $SCRIPT_DIR
 # Read possible CLI flags
 while [ $# -gt 0 ] ; do
     case $1 in
+        --install-playwright) INSTALL_PLAYWRIGHT=true ;;
         --skip-build) SKIP_BUILD=true ;;
         --skip-env-file) SKIP_ENV_FILE=true ;;
-        --skip-npm-install) SKIP_NPM_INSTALL=true ;;
+        --skip-npm-ci) SKIP_NPM_CI=true ;;
         --skip-prisma) SKIP_PRISMA=true ;;
     esac
 
@@ -38,7 +39,7 @@ if [ "$SKIP_ENV_FILE" != "true" ]; then
     fi
 fi
 
-if [ "$SKIP_NPM_INSTALL" != "true" ]; then
+if [ "$SKIP_NPM_CI" != "true" ]; then
     if [ "${NODE_ENV}" == "production" ]; then
         # Always install dependencies if the environment is production
         echo "${PREFIX} Installing production package dependencies..."
@@ -81,6 +82,13 @@ if [ "$SKIP_BUILD" != "true" ]; then
         npm run build
         echo "${PREFIX} Build process completed!"
     fi
+fi
+
+if [ "$INSTALL_PLAYWRIGHT" == "true" ]; then
+    # Install Playwright browser binaries and dependencies
+    echo "${PREFIX} Installing Playwright browser binaries and dependencies..."
+    npm run test:e2e:install
+    echo "${PREFIX} Playwright browser binary and dependency installation completed!"
 fi
 
 echo "${PREFIX} Initialization script completed!"

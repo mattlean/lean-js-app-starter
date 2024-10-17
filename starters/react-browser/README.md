@@ -47,10 +47,10 @@ This was tested on Node.js v20.9.0, but any version from >=20.9 to <21 will work
 
 #### Step 1. Run the initialization script
 
-Open a terminal and run the init script in the project's root directory which will execute all the setup commands like `npm install` for you:
+Open a terminal and run the init script in the project's root directory. This will perform all of the setup for you like creating a `.env` file and installing npm dependencies:
 
 ```console
-bash init.sh
+bash init.sh --install-playwright
 ```
 
 [_Note: Learn exactly what the init script is doing in method 3._](#method-3-manual-installation)
@@ -84,7 +84,7 @@ This was tested on Docker Desktop 4.20.0, but many other Docker versions should 
 Open a terminal and create a `.env` file through the init script in the project's root directory:
 
 ```console
-bash init.sh --skip-npm-install --skip-playwright
+bash init.sh --skip-npm-ci
 ```
 
 #### Step 2. Start the Docker development environment

@@ -14,13 +14,13 @@ cd $SCRIPT_DIR
 while [ $# -gt 0 ] ; do
     case $1 in
         --skip-build) SKIP_BUILD=true ;;
-        --skip-npm-install) SKIP_NPM_INSTALL=true ;;
+        --skip-npm-ci) SKIP_NPM_CI=true ;;
     esac
 
     shift
 done
 
-if [ "$SKIP_NPM_INSTALL" != "true" ]; then
+if [ "$SKIP_NPM_CI" != "true" ]; then
     if [ "${NODE_ENV}" == "production" ]; then
         # Always install dependencies if the environment is production
         echo "${PREFIX} Installing production package dependencies..."
