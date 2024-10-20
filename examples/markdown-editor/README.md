@@ -21,7 +21,7 @@ This project extends the [**React + Electron (TypeScript)** starter](https://git
 The remaining technologies are inherited from the starter:
 
 -   [TypeScript](https://typescriptlang.org): JavaScript with type safety
--   [Electron](https://electronjs.org): Framework for building desktop apps through [Node.js](https://nodejs.org) & [Chromium](https://chromium.org/chromium-projects)
+-   [Electron](https://electronjs.org): Framework for building desktop apps through [Node.js](https://nodejs.org) & [Chromium](https://chromium.org)
 -   [React](https://react.dev): Library for user interfaces
 -   [CSS](https://w3.org/Style/CSS/Overview.en.html): The standard language for styling
 -   [Embedded JavaScript (EJS)](https://ejs.co): Templating language used to generate the build's `index.html` document

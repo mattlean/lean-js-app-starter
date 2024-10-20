@@ -8,7 +8,8 @@
 -   Introduce Prisma ^4.15.0
 -   Introduce Playwright ^1.44.0
 -   Introduce `electron-icon-maker` ^0.0.5
--   Replace Enzyme with Testing Library: `@testing-library/dom@^9.3.4` & `@testing-library/react@^14.2.1`
+-   Replace Enzyme with React Testing Library ^14.2.1
+-   Add DOM Testing Library ^9.3.4 for non-React frontend projects
 -   Replace Flow and PropTypes with TypeScript ~5.3.3
 -   Replace React Hot Loader with React Refresh ^0.14.0
 -   Replace Sublime Text support with Visual Studio support
