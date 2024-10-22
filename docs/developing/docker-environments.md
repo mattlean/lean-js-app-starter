@@ -256,7 +256,7 @@ This section is for common solutions to some problems you may encounter when dea
 
 -   [I am running into issues with Docker and disk space. How do I deal with that?](#i-am-running-into-issues-with-docker-and-disk-space-how-do-i-deal-with-that)
 -   [I am running into problems preventing me from running Docker environments on Windows.](#i-am-running-into-problems-preventing-me-from-running-docker-environments-on-windows)
--   [How do I force Docker to create a completely fresh image and ignore the build cache?](#how-do-i-force-docker-to-create-a-completely-fresh-image-and-ignore-the-build-cache)
+-   [Docker keeps reusing a stale image when I don't want it to. How do I force Docker to create a completely fresh one?](#docker-keeps-reusing-a-stale-image-when-i-dont-want-it-to-how-do-i-force-docker-to-create-a-completely-fresh-one)
 -   [Changes to my code are not being seen by nodemon or webpack when they are running in a container.](#changes-to-my-code-are-not-being-seen-by-nodemon-or-webpack-when-they-are-running-in-a-container)
 -   [Playwright does not work in the Docker dev environment.](#playwright-does-not-work-in-the-docker-dev-environment)
 
@@ -290,15 +290,23 @@ To switch to them, right-click the Docker icon in the nofication area of the tas
 
 ---
 
-#### How do I force Docker to create a completely fresh image and ignore the build cache?
+#### Docker keeps reusing a stale image when I don't want it to. How do I force Docker to create a completely fresh one?
 
-Sometimes you may encounter cases where Docker will use the build cache during the image building process when you don't want it to. If you can't find another way to invalidate the cache, you can force Docker to not use the cache by passing the [`--no-cache` option](https://docs.docker.com/reference/cli/docker/compose/build/#options) to [`docker compose build`](https://docs.docker.com/reference/cli/docker/compose/build) like so:
+After creating an image the first time, sometimes you may encounter cases where Docker won't create a new image when you want it to. If this happens, you can force it to run the image build process using this command:
+
+```console
+docker compose up --build
+```
+
+If a new image still isn't built even after forcing the image build process to occur, then that means Docker is using the build cache during the entire process. You can force it to avoid using this cache by passing the [`--no-cache` option](https://docs.docker.com/reference/cli/docker/compose/build/#options) to [`docker compose build`](https://docs.docker.com/reference/cli/docker/compose/build) like so:
 
 ```console
 docker compose build --no-cache
 ```
 
-This will build a new image which you can then produce containers from using `docker compose up`.
+This will force Docker to build a completely new image which you can then produce containers from using `docker compose up` afterwards.
+
+Note that if you run into this issue a lot, you should identify issues in your Docker configuration and make improvements so it can invalidate the build cache on its own. You should avoid manually running these commands regularly and should treat it as a last resort.
 
 ---
 

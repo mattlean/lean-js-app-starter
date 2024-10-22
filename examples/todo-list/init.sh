@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Browser Version
+# Todo List Version
 
 PREFIX="[🚀 (LJAS) init.sh]"
 
@@ -13,9 +13,8 @@ cd $SCRIPT_DIR
 # Read possible CLI flags
 while [ $# -gt 0 ] ; do
     case $1 in
-        --install-playwright) INSTALL_PLAYWRIGHT=true ;;
         --skip-env-file) SKIP_ENV_FILE=true ;;
-        --skip-npm-ci) SKIP_NPM_CI=true ;;
+        --skip-yarn) SKIP_YARN=true ;;
     esac
 
     shift
@@ -35,27 +34,20 @@ if [ "$SKIP_ENV_FILE" != "true" ]; then
     fi
 fi
 
-if [ "$SKIP_NPM_CI" != "true" ]; then
+if [ "$SKIP_YARN" != "true" ]; then
     if [ "${NODE_ENV}" == "production" ]; then
-        # Always install npm dependencies if the environment is production
-        echo "${PREFIX} Installing production npm dependencies..."
-        npm ci
-        echo "${PREFIX} npm dependency installation completed!"
+        # Always install Yarn dependencies if the environment is production
+        echo "${PREFIX} Installing production Yarn dependencies..."
+        yarn
+        echo "${PREFIX} Yarn dependency installation completed!"
     elif [ -d "./node_modules" ]; then
-        echo "${PREFIX} The node_modules directory already exists, so skip npm dependency installation."
+        echo "${PREFIX} The node_modules directory already exists, so skip Yarn dependency installation."
     else
-        # Install npm dependencies if node_modules doesn't exist and environment is not production
-        echo "${PREFIX} Installing all npm dependencies..."
-        npm ci
-        echo "${PREFIX} npm dependency installation completed!"
+        # Install Yarn dependencies if node_modules doesn't exist and environment is not production
+        echo "${PREFIX} Installing all Yarn dependencies..."
+        yarn
+        echo "${PREFIX} Yarn dependency installation completed!"
     fi
-fi
-
-if [ "$INSTALL_PLAYWRIGHT" == "true" ]; then
-    # Install Playwright browser binaries and dependencies
-    echo "${PREFIX} Installing Playwright browser binaries and dependencies..."
-    npm run test:e2e:install
-    echo "${PREFIX} Playwright browser binary and dependency installation completed!"
 fi
 
 echo "${PREFIX} Initialization script completed!"

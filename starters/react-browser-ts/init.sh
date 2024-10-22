@@ -37,17 +37,17 @@ fi
 
 if [ "$SKIP_NPM_CI" != "true" ]; then
     if [ "${NODE_ENV}" == "production" ]; then
-        # Always install dependencies if the environment is production
-        echo "${PREFIX} Installing production package dependencies..."
+        # Always install npm dependencies if the environment is production
+        echo "${PREFIX} Installing production npm dependencies..."
         npm ci
-        echo "${PREFIX} Package dependency installation completed!"
+        echo "${PREFIX} npm dependency installation completed!"
     elif [ -d "./node_modules" ]; then
-        echo "${PREFIX} The node_modules directory already exists, so skip package dependency installation."
+        echo "${PREFIX} The node_modules directory already exists, so skip npm dependency installation."
     else
         # Install npm dependencies if node_modules doesn't exist and environment is not production
-        echo "${PREFIX} Installing all package dependencies..."
+        echo "${PREFIX} Installing all npm dependencies..."
         npm ci
-        echo "${PREFIX} Package dependency installation completed!"
+        echo "${PREFIX} npm dependency installation completed!"
     fi
 fi
 
