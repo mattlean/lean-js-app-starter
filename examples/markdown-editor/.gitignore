@@ -1,0 +1,13 @@
+/blob-report/
+/playwright-report/
+/playwright/.cache/
+/test-results/
+build/
+coverage/
+dist/
+node_modules/
+.env
+stats.main.json
+stats.preload.json
+stats.renderer.json
+!src/main/icons/build/

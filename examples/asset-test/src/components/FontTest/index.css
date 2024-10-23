@@ -1,0 +1,12 @@
+@font-face {
+    font-family: 'DotGothic16';
+    src: url('./DotGothic16-Regular.ttf') format('truetype');
+}
+
+.font-test {
+    font-family: 'DotGothic16', sans-serif;
+}
+
+.font-test p {
+    text-align: left;
+}

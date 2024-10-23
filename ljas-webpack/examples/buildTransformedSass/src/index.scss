@@ -1,0 +1,14 @@
+$placeholder-color: rebeccapurple;
+
+::placeholder {
+    color: $placeholder-color;
+}
+
+.bg {
+    background-color: red;
+}
+@media (min-resolution: 2dppx) {
+    .bg {
+        background-color: blue;
+    }
+}

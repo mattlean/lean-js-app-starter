@@ -1,0 +1,42 @@
+## 1.0.0
+
+-   Introduce Docker dev environments for all projects except for Electron-based projects
+-   Introduce PostgreSQL support with new Express + PostgreSQL starters: `express-postgres` & `react-express-postgres-ssr`
+-   Introduce dotenv ^16.4.5
+-   Introduce Mock Service Worker ^2.2.2
+-   Introduce Prettier 3.2.5
+-   Introduce Prisma ^4.15.0
+-   Introduce Playwright ^1.44.0
+-   Introduce `electron-icon-maker` ^0.0.5
+-   Replace Enzyme with React Testing Library ^14.2.1
+-   Add DOM Testing Library ^9.3.4 for non-React frontend projects
+-   Replace Flow and PropTypes with TypeScript ~5.3.3
+-   Replace React Hot Loader with React Refresh ^0.14.0
+-   Replace Sublime Text support with Visual Studio support
+-   Drop support for Yarn
+-   Upgrade Babel to ^7.22.1
+-   Upgrade Electron to 29.1.0
+-   Upgrade ESLint to ^8.41.0
+-   Upgrade Express to ^4.18.2
+-   Upgrade Jest to ^29.5.0
+-   Upgrade Node.js to ^20.9.0
+-   Upgrade React to ^18.2.0
+-   Upgrade SuperTest to ^6.3.3
+-   Upgrade Stylelint to ^16.2.1
+-   Upgrade webpack to ^5.85.0
+-   Separate asset test and counter from `browser` project into its own examples: `asset-test` & `counter-react`
+-   Replace Node Sass with Dart Sass ~1.64.2 for `counter-react`
+-   Rewrite \*chan from `nodejs-ssr` project into its own `starchan` example
+-   Upgrade `react-redux` to ^8.1.3 for `starchan`
+-   Setup Redux Toolkit ^1.9.6 for `starchan`
+-   Upgrade React Router to ^6.16.0 for `starchan`
+-   Port `todolist-browser` project as `todo-list` example
+-   Create new vanilla JavaScript starter for browsers: `basic-browser`
+-   Create new vanilla JavaScript starter for desktops: `basic-electron`
+-   Create new vanilla JavaScript starter for Node.js: `basic-node`
+-   Create new Express + MongoDB starter: `express-mongo`
+-   Create new React starter for browsers: `react-browser`
+-   Create new React starter for desktops: `react-electron`
+-   Create new React + Express + MongoDB server-side rendering starter: `react-express-mongo-ssr`
+-   Create new desktop app example: `markdown-editor`
+-   Create new Express + PostgreSQL example: `notes-api`

@@ -1,0 +1,125 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App component matches diff snapshot transitioning from loading render to complete render 1`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -24,15 +24,50 @@
+          Please remember to always be respectful!
+        </strong>
+      </p>
+      <hr />
+    </div>
+-   <div
+-     class="loading"
++   <main>
++     <section
++       class="post-form"
++     >
++       <span
++         class="post-form__txt"
++       >
++         [
++         <button
++           class="post-form__btn"
++         >
++           Start a New Thread
++         </button>
++         ]
++       </span>
++       <noscript />
++     </section>
++     <hr />
++     <p>
++       Currently no threads exist. Why don't you create the first one?
++     </p>
++   </main>
++   <nav>
++     <ol
++       class="page-select"
++       data-testid="page-select"
++     >
++       <li
++         class="page-select__page page-select__page--active"
++       >
++         [
++         <a
++           href="/"
+          >
+-     Loading...
+-   </div>
++           1
++         </a>
++         ]
++       </li>
++     </ol>
++   </nav>
+    <footer
+      class="footer"
+      id="bottom"
+    >
+      <nav>"
+`;
+
+exports[`App component matches snapshot for basic render 1`] = `
+<DocumentFragment>
+  <header>
+    <h1
+      id="title"
+    >
+      *chan
+    </h1>
+  </header>
+  <hr />
+  <div
+    class="about"
+  >
+    <p>
+      *chan (pronounced as "starchan") is a simple forum inspired by Japanese 
+      <a
+        href="https://en.wikipedia.org/wiki/Textboard"
+      >
+        textboards
+      </a>
+      . All users are anonymous, so no account registration is required. Feel free to participate in discussion by starting a new thread or finding an existing thread to reply to.
+    </p>
+    <p>
+      <strong>
+        Please remember to always be respectful!
+      </strong>
+    </p>
+    <hr />
+  </div>
+  <div
+    class="loading"
+  >
+    Loading...
+  </div>
+  <footer
+    class="footer"
+    id="bottom"
+  >
+    <nav>
+      <ul
+        class="footer__links"
+      >
+        <li>
+          <a
+            href="https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0/examples/starchan"
+          >
+            *chan GitHub Repo
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://github.com/mattlean/lean-js-app-starter"
+          >
+            Lean JavaScript Application Starter
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </footer>
+</DocumentFragment>
+`;

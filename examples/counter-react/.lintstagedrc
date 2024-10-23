@@ -1,0 +1,6 @@
+{
+    "*": "prettier --ignore-unknown --write",
+    "*.{js,jsx,ts,tsx}": "eslint",
+    "*.{sass,scss}": "stylelint",
+    "*.ts?(x)": "bash -c tsc"
+}

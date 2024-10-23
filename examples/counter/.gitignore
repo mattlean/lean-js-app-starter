@@ -1,0 +1,9 @@
+/blob-report/
+/playwright-report/
+/playwright/.cache/
+/test-results/
+build/
+coverage/
+node_modules/
+.env
+stats.json
