@@ -1,0 +1,102 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`thread list page matches snapshot for basic server-side rendering 1`] = `
+<DocumentFragment>
+  <header>
+    <h1
+      id="title"
+    >
+      *chan
+    </h1>
+  </header>
+  <hr />
+  <div
+    class="about"
+  >
+    <p>
+      *chan (pronounced as "starchan") is a simple forum inspired by Japanese
+      <!-- -->
+       
+      <a
+        href="https://en.wikipedia.org/wiki/Textboard"
+      >
+        textboards
+      </a>
+      . All users are anonymous, so no account registration is required. Feel free to participate in discussion by starting a new thread or finding an existing thread to reply to.
+    </p>
+    <p>
+      <strong>
+        Please remember to always be respectful!
+      </strong>
+    </p>
+    <hr />
+  </div>
+  <main>
+    <section
+      class="post-form"
+    >
+      <span
+        class="post-form__txt"
+      >
+        [
+        <button
+          class="post-form__btn"
+        >
+          Start a New Thread
+        </button>
+        ]
+      </span>
+      <noscript>
+        &lt;form action="/" method="post"&gt;&lt;table class="post-form__table"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;th&gt;&lt;label for="subject"&gt;Subject&lt;/label&gt;&lt;/th&gt;&lt;td&gt;&lt;input id="subject" name="subject" type="text" value=""/&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;th&gt;&lt;label for="comment"&gt;Comment&lt;/label&gt;&lt;/th&gt;&lt;td&gt;&lt;textarea id="comment" name="comment"&gt;&lt;/textarea&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colSpan="2" class="post-form__post-cell"&gt;&lt;button type="submit"&gt;Post&lt;/button&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/form&gt;
+      </noscript>
+    </section>
+    <hr />
+    <p>
+      Currently no threads exist. Why don't you create the first one?
+    </p>
+  </main>
+  <nav>
+    <ol
+      class="page-select"
+      data-testid="page-select"
+    >
+      <li
+        class="page-select__page page-select__page--active"
+      >
+        [
+        <a
+          href="/"
+        >
+          1
+        </a>
+        ]
+      </li>
+    </ol>
+  </nav>
+  <footer
+    class="footer"
+    id="bottom"
+  >
+    <nav>
+      <ul
+        class="footer__links"
+      >
+        <li>
+          <a
+            href="https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0/examples/starchan"
+          >
+            *chan GitHub Repo
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://github.com/mattlean/lean-js-app-starter"
+          >
+            Lean JavaScript Application Starter
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </footer>
+</DocumentFragment>
+`;

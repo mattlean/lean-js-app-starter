@@ -1,0 +1,136 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App component matches snapshot 1`] = `
+<div
+  className="align-items-center d-flex flex-column h-100"
+>
+  <div
+    className="align-items-center container d-flex justify-content-center h-100"
+  >
+    <div
+      className="card"
+    >
+      <div
+        className="card-header"
+      >
+        Counting App
+      </div>
+      <div
+        className="align-items-center card-body d-flex flex-column px-5"
+      >
+        <p
+          className="lead"
+        >
+          Count is currently...
+        </p>
+        <p
+          className="display-1"
+        >
+          0
+        </p>
+        <div
+          className="column-gap-3 d-flex w-100"
+        >
+          <button
+            className="btn btn-success w-50"
+            onClick={[Function]}
+          >
+            <i
+              className="bi bi-dash-circle"
+              style={
+                {
+                  "fontSize": "1.5rem",
+                }
+              }
+            >
+              <span
+                className="sr-only"
+              >
+                Decrement Count
+              </span>
+            </i>
+          </button>
+          <button
+            className="btn btn-success w-50"
+            onClick={[Function]}
+          >
+            <i
+              className="bi bi-plus-circle-fill"
+              style={
+                {
+                  "fontSize": "1.5rem",
+                }
+              }
+            >
+              <span
+                className="sr-only"
+              >
+                Increment Count
+              </span>
+            </i>
+          </button>
+        </div>
+        <hr
+          className="w-100"
+        />
+        <div
+          className="input-group"
+        >
+          <input
+            className="form-control"
+            onChange={[Function]}
+            placeholder="Force count to be..."
+            type="number"
+            value=""
+          />
+          <button
+            className="btn btn-danger"
+            disabled={true}
+            onClick={[Function]}
+          >
+            Force!
+          </button>
+        </div>
+        <hr
+          className="w-100"
+        />
+        <button
+          className="btn btn-primary w-100"
+          onClick={[Function]}
+        >
+          Reset
+        </button>
+      </div>
+    </div>
+  </div>
+  <footer
+    className="text-center text-muted"
+    id="footer-text"
+  >
+    <p
+      className="mb-0"
+    >
+      Learn about the tech stack used for this project and more at its
+       
+      <a
+        className="text-muted"
+        href="https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0/examples/counter-react"
+      >
+        GitHub repo
+      </a>
+      .
+    </p>
+    <p>
+      Built with
+       
+      <a
+        className="text-muted"
+        href="https://github.com/mattlean/lean-js-app-starter"
+      >
+        Lean JS App Starter
+      </a>
+      .
+    </p>
+  </footer>
+</div>
+`;

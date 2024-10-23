@@ -1,0 +1,9 @@
+{
+    "recommendations": [
+        "ajmnz.swagger-jsdoc-indent",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "ms-azuretools.vscode-docker",
+        "prisma.prisma"
+    ]
+}

@@ -1,0 +1,6 @@
+docs/
+examples/
+.eslintignore
+.prettierignore
+.prettierrc.json
+update-ex-lock.sh

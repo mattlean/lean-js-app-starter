@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HtmlExportBtn component matches snapshot 1`] = `
+<DocumentFragment>
+  <button
+    class="btn"
+  >
+    Export as HTML
+  </button>
+  <article />
+</DocumentFragment>
+`;

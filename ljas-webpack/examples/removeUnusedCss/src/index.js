@@ -1,0 +1,12 @@
+import './index.css'
+
+function helloElement() {
+    const element = document.createElement('div')
+
+    element.setAttribute('class', 'used-style')
+    element.innerHTML = 'Hello webpack'
+
+    return element
+}
+
+document.body.appendChild(helloElement())

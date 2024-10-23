@@ -1,0 +1,459 @@
+{
+    "info": {
+        "_postman_id": "c907d1a3-9b9b-4460-a56a-ef7dbdc29799",
+        "name": "Notes API",
+        "description": "A REST API for a notes app.",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "_exporter_id": "405103"
+    },
+    "item": [
+        {
+            "name": "Ping",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{BASE_URL}}/api/v1/ping",
+                    "host": ["{{BASE_URL}}"],
+                    "path": ["api", "v1", "ping"]
+                },
+                "description": "A public test route that will respond \"pong\" when requested."
+            },
+            "response": []
+        },
+        {
+            "name": "Register",
+            "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "{{BASE_URL}}/api/v1/register",
+                    "host": ["{{BASE_URL}}"],
+                    "path": ["api", "v1", "register"]
+                },
+                "description": "Create a new account and retrieve a JSON web token."
+            },
+            "response": [
+                {
+                    "name": "Register as \"user\"",
+                    "originalRequest": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"username\": \"user\",\n    \"password\": \"password\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{BASE_URL}}/api/v1/register",
+                            "host": ["{{BASE_URL}}"],
+                            "path": ["api", "v1", "register"]
+                        }
+                    },
+                    "_postman_previewlanguage": null,
+                    "header": null,
+                    "cookie": [],
+                    "body": null
+                }
+            ]
+        },
+        {
+            "name": "Login",
+            "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "{{BASE_URL}}/api/v1/login",
+                    "host": ["{{BASE_URL}}"],
+                    "path": ["api", "v1", "login"]
+                },
+                "description": "Login and retrieve a JSON web token."
+            },
+            "response": [
+                {
+                    "name": "Login as \"user\"",
+                    "originalRequest": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"username\": \"user\",\n    \"password\": \"password\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{BASE_URL}}/api/v1/login",
+                            "host": ["{{BASE_URL}}"],
+                            "path": ["api", "v1", "login"]
+                        }
+                    },
+                    "_postman_previewlanguage": null,
+                    "header": null,
+                    "cookie": [],
+                    "body": null
+                }
+            ]
+        },
+        {
+            "name": "Me",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{BASE_URL}}/api/v1/me",
+                    "host": ["{{BASE_URL}}"],
+                    "path": ["api", "v1", "me"]
+                },
+                "description": "A protected route that retrieves the logged in user's info."
+            },
+            "response": []
+        },
+        {
+            "name": "List notes",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{BASE_URL}}/api/v1/notes",
+                    "host": ["{{BASE_URL}}"],
+                    "path": ["api", "v1", "notes"]
+                },
+                "description": "A protected route that lists all owned notes."
+            },
+            "response": []
+        },
+        {
+            "name": "Create note",
+            "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "{{BASE_URL}}/api/v1/notes",
+                    "host": ["{{BASE_URL}}"],
+                    "path": ["api", "v1", "notes"]
+                },
+                "description": "A protected route that creates a new note under the logged in user's ownership."
+            },
+            "response": [
+                {
+                    "name": "Create empty note",
+                    "originalRequest": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{BASE_URL}}/api/v1/notes",
+                            "host": ["{{BASE_URL}}"],
+                            "path": ["api", "v1", "notes"]
+                        }
+                    },
+                    "_postman_previewlanguage": null,
+                    "header": null,
+                    "cookie": [],
+                    "body": null
+                },
+                {
+                    "name": "Create note with content",
+                    "originalRequest": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"content\": \"Note with only content!\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{BASE_URL}}/api/v1/notes",
+                            "host": ["{{BASE_URL}}"],
+                            "path": ["api", "v1", "notes"]
+                        }
+                    },
+                    "_postman_previewlanguage": null,
+                    "header": null,
+                    "cookie": [],
+                    "body": null
+                }
+            ]
+        },
+        {
+            "name": "Read note",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{BASE_URL}}/api/v1/notes/:uuid",
+                    "host": ["{{BASE_URL}}"],
+                    "path": ["api", "v1", "notes", ":uuid"],
+                    "variable": [
+                        {
+                            "key": "uuid",
+                            "value": ""
+                        }
+                    ]
+                },
+                "description": "A protected route that reads an owned note."
+            },
+            "response": [
+                {
+                    "name": "Read note with UUID",
+                    "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{BASE_URL}}/api/v1/notes/:uuid",
+                            "host": ["{{BASE_URL}}"],
+                            "path": ["api", "v1", "notes", ":uuid"],
+                            "variable": [
+                                {
+                                    "key": "uuid",
+                                    "value": "87fb6614-7609-4ccb-997d-df7c0fbc6e67"
+                                }
+                            ]
+                        }
+                    },
+                    "_postman_previewlanguage": null,
+                    "header": null,
+                    "cookie": [],
+                    "body": null
+                }
+            ]
+        },
+        {
+            "name": "Update note",
+            "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "{{BASE_URL}}/api/v1/notes/:uuid",
+                    "host": ["{{BASE_URL}}"],
+                    "path": ["api", "v1", "notes", ":uuid"],
+                    "variable": [
+                        {
+                            "key": "uuid",
+                            "value": ""
+                        }
+                    ]
+                },
+                "description": "A protected route that updates an owned note."
+            },
+            "response": [
+                {
+                    "name": "Update note with UUID",
+                    "originalRequest": {
+                        "method": "PUT",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"title\": \"Updated Title\",\n    \"content\": \"Updated content!\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{BASE_URL}}/api/v1/notes/:uuid",
+                            "host": ["{{BASE_URL}}"],
+                            "path": ["api", "v1", "notes", ":uuid"],
+                            "variable": [
+                                {
+                                    "key": "uuid",
+                                    "value": "87fb6614-7609-4ccb-997d-df7c0fbc6e67"
+                                }
+                            ]
+                        }
+                    },
+                    "_postman_previewlanguage": null,
+                    "header": null,
+                    "cookie": [],
+                    "body": null
+                }
+            ]
+        },
+        {
+            "name": "Patch note",
+            "request": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "{{BASE_URL}}/api/v1/notes/:uuid",
+                    "host": ["{{BASE_URL}}"],
+                    "path": ["api", "v1", "notes", ":uuid"],
+                    "variable": [
+                        {
+                            "key": "uuid",
+                            "value": null
+                        }
+                    ]
+                },
+                "description": "A protected route that patches an owned note."
+            },
+            "response": [
+                {
+                    "name": "Patch note content with UUID",
+                    "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "name": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"content\": \"Patched content!\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{BASE_URL}}/api/v1/notes/:uuid",
+                            "host": ["{{BASE_URL}}"],
+                            "path": ["api", "v1", "notes", ":uuid"],
+                            "variable": [
+                                {
+                                    "key": "uuid",
+                                    "value": "87fb6614-7609-4ccb-997d-df7c0fbc6e67"
+                                }
+                            ]
+                        }
+                    },
+                    "_postman_previewlanguage": null,
+                    "header": null,
+                    "cookie": [],
+                    "body": null
+                }
+            ]
+        },
+        {
+            "name": "Delete note",
+            "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                    "raw": "{{BASE_URL}}/api/v1/notes/:uuid",
+                    "host": ["{{BASE_URL}}"],
+                    "path": ["api", "v1", "notes", ":uuid"],
+                    "variable": [
+                        {
+                            "key": "uuid",
+                            "value": ""
+                        }
+                    ]
+                },
+                "description": "A protected route that deletes an owned note."
+            },
+            "response": [
+                {
+                    "name": "Delete note with UUID",
+                    "originalRequest": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "{{BASE_URL}}/api/v1/notes/:uuid",
+                            "host": ["{{BASE_URL}}"],
+                            "path": ["api", "v1", "notes", ":uuid"],
+                            "variable": [
+                                {
+                                    "key": "uuid",
+                                    "value": "87fb6614-7609-4ccb-997d-df7c0fbc6e67"
+                                }
+                            ]
+                        }
+                    },
+                    "_postman_previewlanguage": null,
+                    "header": null,
+                    "cookie": [],
+                    "body": null
+                }
+            ]
+        }
+    ],
+    "auth": {
+        "type": "bearer"
+    },
+    "event": [
+        {
+            "listen": "prerequest",
+            "script": {
+                "type": "text/javascript",
+                "exec": [""]
+            }
+        },
+        {
+            "listen": "test",
+            "script": {
+                "type": "text/javascript",
+                "exec": [""]
+            }
+        }
+    ]
+}

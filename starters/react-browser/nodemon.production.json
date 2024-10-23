@@ -1,0 +1,14 @@
+{
+    "ext": "js,json,jsx",
+    "ignore": [
+        "src/playwright/",
+        "src/**/__mocks__",
+        "src/**/__tests__",
+        "src/**/*.spec.js",
+        "src/**/*.spec.jsx",
+        "src/**/*.test.js",
+        "src/**/*.test.jsx",
+        "webpack.development.js"
+    ],
+    "watch": ["src/", "nodemon.production.json", "package.json", "webpack.*.js"]
+}

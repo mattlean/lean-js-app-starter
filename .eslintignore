@@ -1,0 +1,6 @@
+build/
+coverage/
+dist/
+flow-typed/
+playwright-report/
+ljas-webpack/docs/
