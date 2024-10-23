@@ -26,7 +26,7 @@ _Note this uses [Render](https://render.com)'s free service so if the project ha
 
 ## Technology Overview
 
-This project extends the [**Express + PostgreSQL (TypeScript)** starter](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-rc/starters/express-postgres-ts) with the following:
+This project extends the [**Express + PostgreSQL (TypeScript)** starter](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0/starters/express-postgres-ts) with the following:
 
 -   [OpenAPI](https://swagger.io/specification): REST API specification
 -   [Swagger](https://swagger.io): OpenAPI documentation generation
@@ -55,8 +55,8 @@ The remaining technologies are inherited from the starter:
 
 ## Run This on Your Machine
 
-Please refer to the ["Getting Started" section in the **Express + PostgreSQL (TypeScript)** starter's `README.md`](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-rc/starters/express-postgres-ts#getting-started).
+Please refer to the ["Getting Started" section in the **Express + PostgreSQL (TypeScript)** starter's `README.md`](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0/starters/express-postgres-ts#getting-started).
 
 ## LJAS Documentation
 
-[📖 Learn more about **Lean JS App Starter** by reading its docs.](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-rc/docs)
+[📖 Learn more about **Lean JS App Starter** by reading its docs.](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0/docs)

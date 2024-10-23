@@ -23,7 +23,7 @@ _Note this uses [Render](https://render.com)'s free service so if the project ha
 
 ## Technology Overview
 
-This project extends the [**React + Express + MongoDB with Server-Side Rendering (TypeScript)** starter](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-rc/starters/react-express-mongo-ssr-ts) with the following:
+This project extends the [**React + Express + MongoDB with Server-Side Rendering (TypeScript)** starter](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0/starters/react-express-mongo-ssr-ts) with the following:
 
 -   [OpenAPI](https://swagger.io/specification): REST API specification
 -   [Redux Toolkit](https://redux-toolkit.js.org): React state management with "modern" Redux
@@ -60,7 +60,7 @@ The remaining technologies are inherited from the starter:
 
 ### Getting Started
 
-Please refer to the ["Getting Started" section in the **React + Express + MongoDB with Server-Side Rendering (TypeScript)** starter's `README.md`](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-rc/starters/react-express-mongo-ssr-ts#getting-started).
+Please refer to the ["Getting Started" section in the **React + Express + MongoDB with Server-Side Rendering (TypeScript)** starter's `README.md`](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0/starters/react-express-mongo-ssr-ts#getting-started).
 
 ### Generating Data to Work With
 
@@ -80,4 +80,4 @@ In 2023 it was rebuilt again, except this time using [TypeScript](https://typesc
 
 ## LJAS Documentation
 
-[📖 Learn more about **Lean JS App Starter** by reading its docs.](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-rc/docs)
+[📖 Learn more about **Lean JS App Starter** by reading its docs.](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0/docs)

@@ -2,7 +2,7 @@
 
 This is a [**Lean JS App Starter (LJAS)**](https://github.com/mattlean/lean-js-app-starter) starter project for an [Express](https://expressjs.com) application written in [TypeScript](https://typescriptlang.org) and supports [React](https://react.dev) server-side rendering. It works with [MongoDB](https://mongodb.com).
 
-_If you don't need TypeScript, then then use the [React + Express + MongoDB with SSR starter](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-rc/starters/react-express-mongo-ssr) instead._
+_If you don't need TypeScript, then then use the [React + Express + MongoDB with SSR starter](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0/starters/react-express-mongo-ssr) instead._
 
 ## Technology Overview
 
@@ -29,7 +29,7 @@ _If you don't need TypeScript, then then use the [React + Express + MongoDB with
 
 ## Getting Started
 
-First, [**download the starter project's ZIP file**](https://github.com/mattlean/lean-js-app-starter/releases/download/v1.0.0-rc/ljas-react-express-mongo-ssr-ts_1-0-0.zip) and extract it.
+First, [**download the starter project's ZIP file**](https://github.com/mattlean/lean-js-app-starter/releases/download/v1.0.0/ljas-react-express-mongo-ssr-ts_1-0-0.zip) and extract it.
 
 Then, choose one of the following methods:
 
@@ -88,7 +88,7 @@ When you're done working, you can press Ctrl+C in the terminal running the dev s
 
 This method is the simplest as it only requires Docker. You won't even need to worry about installing and configuring Node.js, MongoDB, and Prisma as they are all setup for you inside containers.
 
-For more information on the Docker dev environment, please read the ["Docker Environments" document in the LJAS docs](https://github.com/mattlean/lean-js-app-starter/blob/v1.0.0-rc/docs/developing/docker-environments.md).
+For more information on the Docker dev environment, please read the ["Docker Environments" document in the LJAS docs](https://github.com/mattlean/lean-js-app-starter/blob/v1.0.0/docs/developing/docker-environments.md).
 
 #### Prerequisites
 
@@ -149,7 +149,7 @@ cp .env.example .env
 
 Next, edit the `.env` file's `DATABASE_URL` environment variable to the appropriate [connection string](https://prisma.io/docs/orm/overview/databases/mongodb#connection-details) so Prisma can connect to MongoDB.
 
-[_Note: Learn more about the `.env` file in the LJAS docs._](https://github.com/mattlean/lean-js-app-starter/blob/v1.0.0-rc/docs/configuration/dotenv-file.md)
+[_Note: Learn more about the `.env` file in the LJAS docs._](https://github.com/mattlean/lean-js-app-starter/blob/v1.0.0/docs/configuration/dotenv-file.md)
 
 #### Step 3. Setup database with Prisma
 
@@ -170,7 +170,7 @@ Create a dev build with webpack using this `package.json` script:
 npm run build
 ```
 
-[_Note: Learn more about the build process in the LJAS docs._](https://github.com/mattlean/lean-js-app-starter/blob/v1.0.0-rc/docs/building.md)
+[_Note: Learn more about the build process in the LJAS docs._](https://github.com/mattlean/lean-js-app-starter/blob/v1.0.0/docs/building.md)
 
 #### (Optional) Setup Playwright
 
@@ -190,8 +190,8 @@ npm run dev
 
 When you're done working, you can press Ctrl+C in the terminal running the dev server to shut it down.
 
-[_Note: Learn more about the `dev` `package.json` script in the LJAS docs._](https://github.com/mattlean/lean-js-app-starter/blob/v1.0.0-rc/docs/developing/javascript-typescript.md#auto--hot-reloading)
+[_Note: Learn more about the `dev` `package.json` script in the LJAS docs._](https://github.com/mattlean/lean-js-app-starter/blob/v1.0.0/docs/developing/javascript-typescript.md#auto--hot-reloading)
 
 ## Learn More With the Documentation
 
-[📖 Read the docs to learn more about what else you can do with **Lean JS App Starter**.](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-rc/docs)
+[📖 Read the docs to learn more about what else you can do with **Lean JS App Starter**.](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0/docs)

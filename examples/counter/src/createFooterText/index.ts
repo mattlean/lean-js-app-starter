@@ -12,7 +12,7 @@ const createFooterText = () => {
     const line1 = document.createElement('p')
     line1.setAttribute('class', 'mb-0')
     line1.innerHTML =
-        'Learn about the tech stack used for this project and more at its <a href="https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-rc/examples/counter" class="text-muted">GitHub repo</a>.'
+        'Learn about the tech stack used for this project and more at its <a href="https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0/examples/counter" class="text-muted">GitHub repo</a>.'
     footerText.appendChild(line1)
 
     const line2 = document.createElement('p')

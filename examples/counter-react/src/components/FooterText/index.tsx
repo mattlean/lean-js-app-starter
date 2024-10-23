@@ -6,7 +6,7 @@ export default function FooterText() {
             <p className="mb-0">
                 Learn about the tech stack used for this project and more at its{' '}
                 <a
-                    href="https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-rc/examples/counter-react"
+                    href="https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0/examples/counter-react"
                     className="text-muted"
                 >
                     GitHub repo

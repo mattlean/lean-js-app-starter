@@ -106,7 +106,7 @@ exports[`App component matches snapshot for basic render 1`] = `
       >
         <li>
           <a
-            href="https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0-rc/examples/starchan"
+            href="https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0/examples/starchan"
           >
             *chan GitHub Repo
           </a>
