@@ -139,6 +139,10 @@ If a test fails, Playwright will serve an HTML report of the results at [`http:/
 npm run test:e2e:report
 ```
 
+Some prefer running a separate dev server specifically for E2E tests, so we offer a `loadApp` function in `src/playwright/util.js` (or `util.ts` if your project is TypeScript-based) that allows your Playwright tests to switch between the regular dev server host (which by default is http://localhost:8080 or http://localhost:3000 depending on the situation) or the E2E dev server host (which by default is http://localhost:8180 or http://localhost:3100 depending on the situation).
+
+To switch to the E2E dev server host, set the `E2E` environment variable in the `.env` file to `true`. Then the next time you run Playwright tests through a `test:e2e` script, it will run tests against the E2E dev server host. If you want to switch back to testing against the regular dev server host, set `.env` to `false` or an empty value.
+
 ### Debugging Playwright Tests
 
 Please refer to the ["Playwright Tests with Visual Studio Code" section](./debugging.md#playwright-tests-with-visual-studio-code) or the ["Playwright Tests with Playwright Inspector" section](./debugging.md#playwright-tests-with-playwright-inspector) in the "Debugging" document.
