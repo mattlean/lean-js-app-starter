@@ -4,7 +4,7 @@ export default function Footer() {
             <nav>
                 <ul className="footer__links">
                     <li>
-                        <a href="https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0/examples/starchan">
+                        <a href="https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0-dev/examples/starchan">
                             *chan GitHub Repo
                         </a>
                     </li>

@@ -4,7 +4,7 @@ const router = Router()
 
 router.get('/', (req, res) =>
     res.send(
-        'Notes API is live at: /api/v1<br><br>Learn about the tech stack used for this project and more at its <a href="https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0/examples/notes-api">GitHub repo</a>.<br>Built with <a href="https://github.com/mattlean/lean-js-app-starter">Lean JS App Starter</a>.',
+        'Notes API is live at: /api/v1<br><br>Learn about the tech stack used for this project and more at its <a href="https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0-dev/examples/notes-api">GitHub repo</a>.<br>Built with <a href="https://github.com/mattlean/lean-js-app-starter">Lean JS App Starter</a>.',
     ),
 )
 

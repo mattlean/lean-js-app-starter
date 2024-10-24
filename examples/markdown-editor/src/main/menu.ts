@@ -131,7 +131,7 @@ export const buildMenuTemplate = () => {
                     label: 'ljas-markdown-editor GitHub Repo',
                     click: () =>
                         shell.openExternal(
-                            'https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0/examples/markdown-editor',
+                            'https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0-dev/examples/markdown-editor',
                         ),
                 },
                 {

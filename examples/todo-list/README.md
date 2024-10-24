@@ -2,7 +2,7 @@
 
 This is a todo list [single-page application (SPA)](https://en.wikipedia.org/wiki/Single-page_application) written in JavaScript and [Flow](https://flow.org) with [React](https://react.dev) and [Redux](https://redux.js.org). It simulates interaction with a mock backend API.
 
-Note that this project utilizes React v16.7 (pre-hook era code), "classic" Redux, and Enzyme. If you want to see an example using React hooks, modern Redux through Redux Toolkit, and React Testing Library, please checkout the [**\*chan** example](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0/starters/starchan).
+Note that this project utilizes React v16.7 (pre-hook era code), "classic" Redux, and Enzyme. If you want to see an example using React hooks, modern Redux through Redux Toolkit, and React Testing Library, please checkout the [**\*chan** example](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0-dev/starters/starchan).
 
 Be aware that this was ported from LJAS v0.1.1 is classified as a legacy project. That means it lacks a few features the other projects have (such as Playwright) and will not receive future upgrades for many of its dependencies (like Flow and Yarn).
 
@@ -15,7 +15,7 @@ _Note this uses [Render](https://render.com)'s free service so if the project ha
 
 ## Technology Overview
 
-This project extends the [**React + Browser** starter](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0/starters/react-browser) with the following:
+This project extends the [**React + Browser** starter](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0-dev/starters/react-browser) with the following:
 
 -   [React (v16.7)](https://legacy.reactjs.org): Library for user interfaces, uses pre-hook era code
 -   [Flow](https://flow.org): Static type checker, alternative to TypeScript
@@ -43,7 +43,7 @@ The remaining technologies are inherited from the starter:
 
 ## Run This on Your Machine
 
-Please refer to the ["Getting Started" section in the **React + Browser** starter's `README.md`](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0/starters/react-browser#getting-started).
+Please refer to the ["Getting Started" section in the **React + Browser** starter's `README.md`](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0-dev/starters/react-browser#getting-started).
 
 ## Project Background
 
@@ -51,4 +51,4 @@ This project was originally created following [Dan Abramov's Fundamentals of Red
 
 ## LJAS Documentation
 
-[📖 Learn more about **Lean JS App Starter** by reading its docs.](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0/docs)
+[📖 Learn more about **Lean JS App Starter** by reading its docs.](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0-dev/docs/README.md)
