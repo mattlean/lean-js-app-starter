@@ -36,6 +36,7 @@
         "examples/markdown-editor",
         "examples/notes-api",
         "examples/starchan",
+        "examples/tic-tac-toe",
         "starters/basic-browser",
         "starters/basic-browser-ts",
         "starters/basic-electron",
