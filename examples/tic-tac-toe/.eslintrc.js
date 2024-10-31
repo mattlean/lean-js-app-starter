@@ -1,5 +1,6 @@
 const RULES_REACT = {
     'react/jsx-filename-extension': 'error',
+    'react/prop-types': 'off',
 }
 
 module.exports = {
