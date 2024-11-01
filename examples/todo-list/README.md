@@ -1,6 +1,6 @@
 # Todo List (Legacy)
 
-This is a todo list [single-page application (SPA)](https://en.wikipedia.org/wiki/Single-page_application) written in JavaScript and [Flow](https://flow.org) with [React](https://react.dev) and [Redux](https://redux.js.org). It simulates interaction with a mock backend API.
+This is a todo list [single-page application (SPA)](https://en.wikipedia.org/wiki/Single-page_application) written in [JavaScript](https://tc39.es/ecma262) and [Flow](https://flow.org) with [React](https://react.dev) and [Redux](https://redux.js.org). It simulates interaction with a mock backend API.
 
 Note that this project utilizes React v16.7 (pre-hook era code), "classic" Redux, and Enzyme. If you want to see an example using React hooks, modern Redux through Redux Toolkit, and React Testing Library, please checkout the [**\*chan** example](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0-dev/starters/starchan).
 

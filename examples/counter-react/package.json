@@ -1,7 +1,7 @@
 {
     "name": "ljas-counter-react",
     "version": "1.0.0",
-    "description": "",
+    "description": "A simple counter SPA written with React.",
     "main": "build/development/app.js",
     "author": "Matthew Lean <matt@mattlean.com> (https://mattlean.com)",
     "license": "MIT",

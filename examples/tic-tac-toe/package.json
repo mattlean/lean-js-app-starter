@@ -1,7 +1,7 @@
 {
     "name": "ljas-tic-tac-toe",
-    "version": "0.1.0",
-    "description": "",
+    "version": "1.0.0",
+    "description": "A tic-tac-toe game.",
     "main": "build/development/app.js",
     "author": "Matthew Lean <matt@mattlean.com> (https://mattlean.com)",
     "license": "MIT",

@@ -1,7 +1,7 @@
 {
     "name": "ljas-todo-list",
     "version": "1.0.0",
-    "description": "This is a starter for a [React](https://react.dev) frontend project.",
+    "description": "A simple todo list SPA.",
     "main": "build/development/app.js",
     "author": "",
     "scripts": {
