@@ -16,8 +16,8 @@ LJAS supports [CSS](https://w3.org/Style/CSS/Overview.en.html) for all frontend-
 -   [Getting Started](#getting-started)
 -   [Linting](#linting)
 -   [Formatting](#formatting)
--   [Adding Support for Sass](#adding-support-for-sass)
 -   [Examples](#examples)
+-   [Adding Support for Sass](#adding-support-for-sass)
 
 ## Getting Started
 
