@@ -52,6 +52,12 @@ A REST API server for a notes app. Built on top of the [Express + PostgreSQL sta
 -   Embedded JavaScript (EJS)
 -   Postman
 
+### [Tic-Tac-Toe](./tic-tac-toe)
+
+A tic-tac-toe game with a time travel timeline.
+
+Its configuration identical to [React + Browser starter](../starters/react-browser).
+
 ### [Todo List](./todo-list)
 
 A simple todo list SPA. Built on top of the [React + Browser starter](../starters/react-browser).
