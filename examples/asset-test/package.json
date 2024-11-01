@@ -1,7 +1,7 @@
 {
     "name": "ljas-asset-test",
     "version": "1.0.0",
-    "description": "",
+    "description": "A test for LJAS's asset loading capabilities.",
     "main": "build/development/app.js",
     "author": "Matthew Lean <matt@mattlean.com> (https://mattlean.com)",
     "license": "MIT",
