@@ -4,7 +4,7 @@ This is an asset test primarily used to test [Lean JS App Starter](https://githu
 
 ## Technology Overview
 
-This project builds on top of the [**React + Browser** starter](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0-dev/starters/react-browser-ts).
+This project builds on top of the [**React + Browser (TypeScript)** starter](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0-dev/starters/react-browser-ts).
 
 -   [TypeScript](https://typescriptlang.org): JavaScript with type safety
 -   [React](https://react.dev): Library for user interfaces
@@ -25,7 +25,7 @@ This project builds on top of the [**React + Browser** starter](https://github.c
 
 ## Run This on Your Machine
 
-Please refer to the ["Getting Started" section in the **React + Browser** starter's `README.md`](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0-dev/starters/react-browser-ts#getting-started).
+Please refer to the ["Getting Started" section in the **React + Browser (TypeScript)** starter's `README.md`](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0-dev/starters/react-browser-ts#getting-started).
 
 ## LJAS Documentation
 
