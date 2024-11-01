@@ -12,7 +12,7 @@ https://github.com/users/mattlean/projects/3
 
 If you want to work on something that isn't on the issue page or project board, then feel free to create a new issue. Note that sometimes the board contains tickets that don't have a corresponding issue yet which means that the LJAS core team does have plans to work on it. So even if you don't see an issue for something, make sure there isn't an existing ticket for it on the project board too before creating a brand new issue.
 
-## Branching
+## Branches & Commits
 
 Every development version has what we call a **development branch** which holds all of the work that is intended for that version's release. The development branch will always have a `-dev` suffix at the end of its name. For example, if the upcoming version is 1.1.0, then the development branch name will be `v1.1.0-dev`.
 
@@ -29,3 +29,5 @@ If you want to preserve your Git commit history, you can push another branch tha
 ## Review Process
 
 Now that your pull request is ready, assign a reviewer from the LJAS core team on it. They will review your work, test it, and reply with feedback. They will notify you if the code needs more work or not. Once the code is in an acceptable state, the pull request will be approved by the reviewer and will be acceptable for merging into the development branch.
+
+Once the development branch is completely ready, it will be merged into the `master` branch by the LJAS core team, and your work will go into the new release version.
