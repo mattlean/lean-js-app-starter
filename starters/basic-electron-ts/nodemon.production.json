@@ -1,25 +1,25 @@
 {
-    "ext": "js,json,jsx,ts,tsx",
-    "ignore": [
-        "src/playwright/",
-        "src/**/__mocks__",
-        "src/**/__tests__",
-        "src/**/*.spec.js",
-        "src/**/*.spec.jsx",
-        "src/**/*.spec.ts",
-        "src/**/*.spec.tsx",
-        "src/**/*.test.js",
-        "src/**/*.test.jsx",
-        "src/**/*.test.ts",
-        "src/**/*.test.tsx",
-        "webpack/*.development.js"
-    ],
-    "watch": [
-        "src/",
-        "webpack/",
-        "nodemon.production.json",
-        "package.json",
-        "tsconfig.json",
-        "tsconfig.build.*.json"
-    ]
+  "ext": "js,json,jsx,ts,tsx",
+  "ignore": [
+    "src/playwright/",
+    "src/**/__mocks__",
+    "src/**/__tests__",
+    "src/**/*.spec.js",
+    "src/**/*.spec.jsx",
+    "src/**/*.spec.ts",
+    "src/**/*.spec.tsx",
+    "src/**/*.test.js",
+    "src/**/*.test.jsx",
+    "src/**/*.test.ts",
+    "src/**/*.test.tsx",
+    "webpack/*.development.js"
+  ],
+  "watch": [
+    "src/",
+    "webpack/",
+    "nodemon.production.json",
+    "package.json",
+    "tsconfig.json",
+    "tsconfig.build.*.json"
+  ]
 }

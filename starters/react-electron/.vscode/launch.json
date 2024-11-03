@@ -1,47 +1,47 @@
 {
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
-    "version": "0.2.0",
-    "configurations": [
-        {
-            "type": "node",
-            "request": "attach",
-            "name": "Attach to Running Jest",
-            "port": 9230
-        },
-        {
-            "type": "node",
-            "request": "attach",
-            "name": "Attach to Running Main Process",
-            "address": "localhost",
-            "localRoot": "${workspaceFolder}",
-            "port": 9229,
-            "skipFiles": ["<node_internals>/**"]
-        },
-        {
-            "name": "Launch & Attach to Jest",
-            "type": "node",
-            "request": "launch",
-            "runtimeArgs": [
-                "--inspect-brk=0.0.0.0:9230",
-                "${workspaceRoot}/node_modules/.bin/jest",
-                "--runInBand"
-            ],
-            "console": "integratedTerminal",
-            "internalConsoleOptions": "neverOpen"
-        },
-        {
-            "name": "Launch & Attach to Main Process",
-            "type": "node",
-            "request": "launch",
-            "cwd": "${workspaceFolder}",
-            "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/electron",
-            "windows": {
-                "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/electron.cmd"
-            },
-            "args": ["."],
-            "outputCapture": "std"
-        }
-    ]
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "attach",
+      "name": "Attach to Running Jest",
+      "port": 9230
+    },
+    {
+      "type": "node",
+      "request": "attach",
+      "name": "Attach to Running Main Process",
+      "address": "localhost",
+      "localRoot": "${workspaceFolder}",
+      "port": 9229,
+      "skipFiles": ["<node_internals>/**"]
+    },
+    {
+      "name": "Launch & Attach to Jest",
+      "type": "node",
+      "request": "launch",
+      "runtimeArgs": [
+        "--inspect-brk=0.0.0.0:9230",
+        "${workspaceRoot}/node_modules/.bin/jest",
+        "--runInBand"
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    },
+    {
+      "name": "Launch & Attach to Main Process",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/electron",
+      "windows": {
+        "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/electron.cmd"
+      },
+      "args": ["."],
+      "outputCapture": "std"
+    }
+  ]
 }

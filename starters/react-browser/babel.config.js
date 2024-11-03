@@ -1,60 +1,60 @@
 module.exports = (api) => {
-    const isDevelopment = api.env('development')
-    const isProduction = api.env('production')
-    const isTest = api.env('test')
+  const isDevelopment = api.env("development");
+  const isProduction = api.env("production");
+  const isTest = api.env("test");
 
-    api.cache.using(() => {
-        if (isProduction) {
-            return 'production'
-        } else if (isTest) {
-            return 'test'
-        } else {
-            return 'development'
-        }
-    })
-
-    /**
-     * Configuration for preset-env:
-     * https://babeljs.io/docs/babel-preset-env
-     */
-    const presetEnv = [
-        '@babel/preset-env',
-        { browserslistEnv: 'development', modules: false },
-    ]
-
+  api.cache.using(() => {
     if (isProduction) {
-        presetEnv[1].browserslistEnv = 'production'
+      return "production";
+    } else if (isTest) {
+      return "test";
+    } else {
+      return "development";
     }
+  });
 
-    if (isTest) {
-        delete presetEnv[1].modules
-    }
+  /**
+   * Configuration for preset-env:
+   * https://babeljs.io/docs/babel-preset-env
+   */
+  const presetEnv = [
+    "@babel/preset-env",
+    { browserslistEnv: "development", modules: false },
+  ];
 
-    /**
-     * Configuration for preset-react:
-     * https://babeljs.io/docs/babel-preset-react
-     */
-    const presetReact = [
-        '@babel/preset-react',
-        { development: true, runtime: 'automatic' },
-    ]
+  if (isProduction) {
+    presetEnv[1].browserslistEnv = "production";
+  }
 
-    if (isProduction) {
-        delete presetReact[1].development
-    }
+  if (isTest) {
+    delete presetEnv[1].modules;
+  }
 
-    /**
-     * Babel plugins:
-     * https://babeljs.io/docs/plugins
-     */
-    const plugins = []
+  /**
+   * Configuration for preset-react:
+   * https://babeljs.io/docs/babel-preset-react
+   */
+  const presetReact = [
+    "@babel/preset-react",
+    { development: true, runtime: "automatic" },
+  ];
 
-    if (isDevelopment) {
-        plugins.push(require.resolve('react-refresh/babel'))
-    }
+  if (isProduction) {
+    delete presetReact[1].development;
+  }
 
-    return {
-        presets: [presetEnv, presetReact],
-        plugins,
-    }
-}
+  /**
+   * Babel plugins:
+   * https://babeljs.io/docs/plugins
+   */
+  const plugins = [];
+
+  if (isDevelopment) {
+    plugins.push(require.resolve("react-refresh/babel"));
+  }
+
+  return {
+    presets: [presetEnv, presetReact],
+    plugins,
+  };
+};

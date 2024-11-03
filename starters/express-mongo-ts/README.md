@@ -6,19 +6,19 @@ _If you don't need TypeScript, then then use the [Express + MongoDB starter](htt
 
 ## Technology Overview
 
--   [TypeScript](https://typescriptlang.org): JavaScript with type safety
--   [Node.js](https://nodejs.org): Runtime environment that allows JavaScript to execute outside of web browsers
--   [Express](https://expressjs.com): Web framework for Node.js
--   [Prisma](https://prisma.io): Node.js object relational mapper (ORM) used to work with MongoDB
--   [MongoDB](https://mongodb.com): NoSQL database
--   [Jest](https://jestjs.io): Testing framework
--   [webpack](https://webpack.js.org): Bundler used to create builds
--   [Babel](https://babeljs.io): Compiler used with webpack to support TypeScript and output Node.js-compatible code
--   [ESLint](https://eslint.org): Linter used to identify problems in TypeScript & JavaScript
--   [Prettier](https://prettier.io): Formatter used to enforce code style
--   [Husky](https://typicode.github.io/husky) + [lint-staged](https://github.com/okonet/lint-staged): Pre-commit hooks to check for type, lint, and formatting errors before Git commits are made
--   [Docker](https://docker.com): Used for an optional containerized development environment
--   [npm](https://npmjs.com): Package manager
+- [TypeScript](https://typescriptlang.org): JavaScript with type safety
+- [Node.js](https://nodejs.org): Runtime environment that allows JavaScript to execute outside of web browsers
+- [Express](https://expressjs.com): Web framework for Node.js
+- [Prisma](https://prisma.io): Node.js object relational mapper (ORM) used to work with MongoDB
+- [MongoDB](https://mongodb.com): NoSQL database
+- [Jest](https://jestjs.io): Testing framework
+- [webpack](https://webpack.js.org): Bundler used to create builds
+- [Babel](https://babeljs.io): Compiler used with webpack to support TypeScript and output Node.js-compatible code
+- [ESLint](https://eslint.org): Linter used to identify problems in TypeScript & JavaScript
+- [Prettier](https://prettier.io): Formatter used to enforce code style
+- [Husky](https://typicode.github.io/husky) + [lint-staged](https://github.com/okonet/lint-staged): Pre-commit hooks to check for type, lint, and formatting errors before Git commits are made
+- [Docker](https://docker.com): Used for an optional containerized development environment
+- [npm](https://npmjs.com): Package manager
 
 ## Getting Started
 
@@ -40,8 +40,8 @@ This method is the simplest if you are not using the Docker dev environment (met
 
 Installation of the following is required before proceeding with this method:
 
--   [Node.js](https://nodejs.org/en/download/package-manager)
--   [MongoDB](https://mongodb.com)
+- [Node.js](https://nodejs.org/en/download/package-manager)
+- [MongoDB](https://mongodb.com)
 
 This was tested on Node.js v20.9.0, but any version from >=20.9 to <21 will work. This was also tested with MongoDB 4.4.25, but any version from >=4.4 to <5 will work.
 
@@ -117,8 +117,8 @@ This method manually does what the init script does for you normally.
 
 Installation of the following is required before proceeding with this method:
 
--   [Node.js](https://nodejs.org/en/download/package-manager)
--   [MongoDB](https://mongodb.com)
+- [Node.js](https://nodejs.org/en/download/package-manager)
+- [MongoDB](https://mongodb.com)
 
 This was tested on Node.js v20.9.0, but any version from >=20.9 to <21 will work. This was also tested with MongoDB 4.4.25, but any version from >=4.4 to <5 will work.
 

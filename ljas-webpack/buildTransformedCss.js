@@ -1,8 +1,8 @@
-const autoprefixer = require('autoprefixer')
-const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const autoprefixer = require("autoprefixer");
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-const buildCss = require('./buildCss')
+const buildCss = require("./buildCss");
 
 /**
  * Enable .css file imports and build the CSS with css-loader and mini-css-extract-plugin.
@@ -40,35 +40,35 @@ const buildCss = require('./buildCss')
  * @returns {Object} A webpack configuration object that sets up Autoprefixer, css-loader, css-minimizer-webpack-plugin, mini-css-extract-plugin, and postcss-loader.
  */
 const buildTransformedCss = (options) =>
-    buildCss({
-        rule: {
-            use: [
-                {
-                    loader: MiniCssExtractPlugin.loader,
-                    options: options?.miniCssExtractPluginLoader,
-                },
-                { loader: 'css-loader', options: options?.cssLoader },
-                {
-                    loader: 'postcss-loader',
-                    options: options?.postcssLoader ?? {
-                        postcssOptions: {
-                            plugins: [autoprefixer(options?.autoprefixer)],
-                        },
-                    },
-                },
-            ],
-            ...options?.rule,
+  buildCss({
+    rule: {
+      use: [
+        {
+          loader: MiniCssExtractPlugin.loader,
+          options: options?.miniCssExtractPluginLoader,
         },
-        plugins: options?.plugins ?? [
-            new MiniCssExtractPlugin({ ...options?.miniCssExtractPlugin }),
-        ],
-        optimization: {
-            minimizer: options?.minimizer ?? [
-                // For webpack@5 you can use the `...` syntax to extend existing minimizers (i.e. `terser-webpack-plugin`)
-                `...`,
-                new CssMinimizerPlugin(options?.cssMinimizer),
-            ],
+        { loader: "css-loader", options: options?.cssLoader },
+        {
+          loader: "postcss-loader",
+          options: options?.postcssLoader ?? {
+            postcssOptions: {
+              plugins: [autoprefixer(options?.autoprefixer)],
+            },
+          },
         },
-    })
+      ],
+      ...options?.rule,
+    },
+    plugins: options?.plugins ?? [
+      new MiniCssExtractPlugin({ ...options?.miniCssExtractPlugin }),
+    ],
+    optimization: {
+      minimizer: options?.minimizer ?? [
+        // For webpack@5 you can use the `...` syntax to extend existing minimizers (i.e. `terser-webpack-plugin`)
+        `...`,
+        new CssMinimizerPlugin(options?.cssMinimizer),
+      ],
+    },
+  });
 
-module.exports = buildTransformedCss
+module.exports = buildTransformedCss;

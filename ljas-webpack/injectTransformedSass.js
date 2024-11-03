@@ -1,6 +1,6 @@
-const autoprefixer = require('autoprefixer')
+const autoprefixer = require("autoprefixer");
 
-const { injectSass } = require('.')
+const { injectSass } = require(".");
 
 /**
  * Enable .css file imports and inject CSS into the DOM with css-loader, sass-loader, and style-loader.
@@ -35,26 +35,26 @@ const { injectSass } = require('.')
  * @returns {Object} webpack configuration object that sets up Autoprefixer, css-loader, postcss-loader, sass-loader, and style-loader.
  */
 const injectTransformedSass = (options) =>
-    injectSass({
-        rule: {
-            use: [
-                {
-                    loader: 'style-loader',
-                    options: options?.styleLoader,
-                },
-                { loader: 'css-loader', options: options?.cssLoader },
-                {
-                    loader: 'postcss-loader',
-                    options: options?.postcssLoader ?? {
-                        postcssOptions: {
-                            plugins: [autoprefixer(options?.autoprefixer)],
-                        },
-                    },
-                },
-                { loader: 'sass-loader', options: options?.sassLoader },
-            ],
-            ...options?.rule,
+  injectSass({
+    rule: {
+      use: [
+        {
+          loader: "style-loader",
+          options: options?.styleLoader,
         },
-    })
+        { loader: "css-loader", options: options?.cssLoader },
+        {
+          loader: "postcss-loader",
+          options: options?.postcssLoader ?? {
+            postcssOptions: {
+              plugins: [autoprefixer(options?.autoprefixer)],
+            },
+          },
+        },
+        { loader: "sass-loader", options: options?.sassLoader },
+      ],
+      ...options?.rule,
+    },
+  });
 
-module.exports = injectTransformedSass
+module.exports = injectTransformedSass;

@@ -1,10 +1,10 @@
 {
-    "watch": [
-        "webpack/frontend.*.js",
-        "webpack/templateParameters.js",
-        "nodemon.frontend.json",
-        "package.json",
-        "tsconfig.json",
-        "tsconfig.build.frontend.json"
-    ]
+  "watch": [
+    "webpack/frontend.*.js",
+    "webpack/templateParameters.js",
+    "nodemon.frontend.json",
+    "package.json",
+    "tsconfig.json",
+    "tsconfig.build.frontend.json"
+  ]
 }

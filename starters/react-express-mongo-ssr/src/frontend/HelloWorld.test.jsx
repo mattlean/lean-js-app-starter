@@ -1,11 +1,11 @@
 /**
  * @jest-environment jest-fixed-jsdom
  */
-import renderer from 'react-test-renderer'
+import renderer from "react-test-renderer";
 
-import HelloWorld from './HelloWorld'
+import HelloWorld from "./HelloWorld";
 
-test('HelloWorld component matches snapshot', () => {
-    const tree = renderer.create(<HelloWorld />).toJSON()
-    expect(tree).toMatchSnapshot()
-})
+test("HelloWorld component matches snapshot", () => {
+  const tree = renderer.create(<HelloWorld />).toJSON();
+  expect(tree).toMatchSnapshot();
+});

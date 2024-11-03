@@ -1,5 +1,5 @@
-import 'dotenv/config'
+import "dotenv/config";
 
-import helloWorld from './helloWorld'
+import helloWorld from "./helloWorld";
 
-console.log(helloWorld())
+console.log(helloWorld());

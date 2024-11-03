@@ -6,24 +6,24 @@
  */
 
 module.exports = (api) => {
-    api.cache(true)
+  api.cache(true);
 
-    /**
-     * Configuration for preset-env:
-     * https://babeljs.io/docs/babel-preset-env
-     */
-    const presetEnv = '@babel/preset-env'
+  /**
+   * Configuration for preset-env:
+   * https://babeljs.io/docs/babel-preset-env
+   */
+  const presetEnv = "@babel/preset-env";
 
-    /**
-     * Configuration for preset-react:
-     * https://babeljs.io/docs/babel-preset-react
-     */
-    const presetReact = [
-        '@babel/preset-react',
-        { development: true, runtime: 'automatic' },
-    ]
+  /**
+   * Configuration for preset-react:
+   * https://babeljs.io/docs/babel-preset-react
+   */
+  const presetReact = [
+    "@babel/preset-react",
+    { development: true, runtime: "automatic" },
+  ];
 
-    return {
-        presets: [presetEnv, presetReact],
-    }
-}
+  return {
+    presets: [presetEnv, presetReact],
+  };
+};

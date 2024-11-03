@@ -6,21 +6,21 @@ _If you don't need TypeScript, then use the [Basic Electron starter](https://git
 
 ## Technology Overview
 
--   [TypeScript](https://typescriptlang.org): JavaScript with type safety
--   [Electron](https://electronjs.org): Framework for building desktop apps through [Node.js](https://nodejs.org) & [Chromium](https://chromium.org)
--   [CSS](https://w3.org/Style/CSS/Overview.en.html): The standard language for styling
--   [Embedded JavaScript (EJS)](https://ejs.co): Templating language used to generate the build's `index.html` document
--   [Jest](https://jestjs.io): Testing framework
--   [DOM Testing Library](https://testing-library.com/docs/dom-testing-library/intro): Unit testing library for DOM nodes
--   [Mock Service Worker (MSW)](https://mswjs.io): API mocking library used to mock network requests
--   [Playwright](https://playwright.dev): End-to-end (E2E) testing
--   [webpack](https://webpack.js.org): Bundler used to create builds
--   [Babel](https://babeljs.io): Compiler used with webpack to support TypeScript and output Electron-compatible code
--   [ESLint](https://eslint.org): Linter used to identify problems in TypeScript & JavaScript
--   [Stylelint](https://stylelint.io): Linter used to identify problems in CSS
--   [Prettier](https://prettier.io): Formatter used to enforce code style
--   [Husky](https://typicode.github.io/husky) + [lint-staged](https://github.com/okonet/lint-staged): Pre-commit hooks to check for type, lint, and formatting errors before Git commits are made
--   [npm](https://npmjs.com): Package manager
+- [TypeScript](https://typescriptlang.org): JavaScript with type safety
+- [Electron](https://electronjs.org): Framework for building desktop apps through [Node.js](https://nodejs.org) & [Chromium](https://chromium.org)
+- [CSS](https://w3.org/Style/CSS/Overview.en.html): The standard language for styling
+- [Embedded JavaScript (EJS)](https://ejs.co): Templating language used to generate the build's `index.html` document
+- [Jest](https://jestjs.io): Testing framework
+- [DOM Testing Library](https://testing-library.com/docs/dom-testing-library/intro): Unit testing library for DOM nodes
+- [Mock Service Worker (MSW)](https://mswjs.io): API mocking library used to mock network requests
+- [Playwright](https://playwright.dev): End-to-end (E2E) testing
+- [webpack](https://webpack.js.org): Bundler used to create builds
+- [Babel](https://babeljs.io): Compiler used with webpack to support TypeScript and output Electron-compatible code
+- [ESLint](https://eslint.org): Linter used to identify problems in TypeScript & JavaScript
+- [Stylelint](https://stylelint.io): Linter used to identify problems in CSS
+- [Prettier](https://prettier.io): Formatter used to enforce code style
+- [Husky](https://typicode.github.io/husky) + [lint-staged](https://github.com/okonet/lint-staged): Pre-commit hooks to check for type, lint, and formatting errors before Git commits are made
+- [npm](https://npmjs.com): Package manager
 
 ## Getting Started
 

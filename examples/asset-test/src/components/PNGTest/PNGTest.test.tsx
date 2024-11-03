@@ -1,8 +1,8 @@
-import renderer from 'react-test-renderer'
+import renderer from "react-test-renderer";
 
-import PNGTest from '.'
+import PNGTest from ".";
 
-test('PNGTest component matches snapshot', () => {
-    const tree = renderer.create(<PNGTest />).toJSON()
-    expect(tree).toMatchSnapshot()
-})
+test("PNGTest component matches snapshot", () => {
+  const tree = renderer.create(<PNGTest />).toJSON();
+  expect(tree).toMatchSnapshot();
+});

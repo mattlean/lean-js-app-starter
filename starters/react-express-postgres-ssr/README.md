@@ -6,26 +6,26 @@ _If you need TypeScript, then use the [React + Express + PostgreSQL with SSR sta
 
 ## Technology Overview
 
--   [JavaScript](https://tc39.es/ecma262): Just plain, vanilla JavaScript
--   [Node.js](https://nodejs.org): Runtime environment that allows JavaScript to execute outside of web browsers
--   [Express](https://expressjs.com): Web framework for Node.js
--   [Prisma](https://prisma.io): Node.js object relational mapper (ORM) used to work with PostgreSQL
--   [PostgreSQL](https://postgresql.org): Relational database
--   [React](https://react.dev): Library for user interfaces
--   [CSS](https://w3.org/Style/CSS/Overview.en.html): The standard language for styling
--   [Embedded JavaScript (EJS)](https://ejs.co): Templating language used to generate the frontend build's `index.html` document and render Express templates
--   [Jest](https://jestjs.io): Testing framework used mainly for unit testing
--   [React Testing Library](https://testing-library.com/docs/react-testing-library/intro): Unit testing library specialized for React components
--   [Mock Service Worker (MSW)](https://mswjs.io): API mocking library used to mock network requests
--   [Playwright](https://playwright.dev): End-to-end (E2E) testing
--   [webpack](https://webpack.js.org): Bundler used to create builds
--   [Babel](https://babeljs.io): Compiler used with webpack to output cross-browser compatible code
--   [ESLint](https://eslint.org): Linter used to identify problems in JavaScript
--   [Stylelint](https://stylelint.io): Linter used to identify problems in CSS
--   [Prettier](https://prettier.io): Formatter used to enforce code style
--   [Husky](https://typicode.github.io/husky) + [lint-staged](https://github.com/okonet/lint-staged): Pre-commit hooks to check for lint and formatting errors before Git commits are made
--   [Docker](https://docker.com): Used for optional containerized development & testing environments
--   [npm](https://npmjs.com): Package manager
+- [JavaScript](https://tc39.es/ecma262): Just plain, vanilla JavaScript
+- [Node.js](https://nodejs.org): Runtime environment that allows JavaScript to execute outside of web browsers
+- [Express](https://expressjs.com): Web framework for Node.js
+- [Prisma](https://prisma.io): Node.js object relational mapper (ORM) used to work with PostgreSQL
+- [PostgreSQL](https://postgresql.org): Relational database
+- [React](https://react.dev): Library for user interfaces
+- [CSS](https://w3.org/Style/CSS/Overview.en.html): The standard language for styling
+- [Embedded JavaScript (EJS)](https://ejs.co): Templating language used to generate the frontend build's `index.html` document and render Express templates
+- [Jest](https://jestjs.io): Testing framework used mainly for unit testing
+- [React Testing Library](https://testing-library.com/docs/react-testing-library/intro): Unit testing library specialized for React components
+- [Mock Service Worker (MSW)](https://mswjs.io): API mocking library used to mock network requests
+- [Playwright](https://playwright.dev): End-to-end (E2E) testing
+- [webpack](https://webpack.js.org): Bundler used to create builds
+- [Babel](https://babeljs.io): Compiler used with webpack to output cross-browser compatible code
+- [ESLint](https://eslint.org): Linter used to identify problems in JavaScript
+- [Stylelint](https://stylelint.io): Linter used to identify problems in CSS
+- [Prettier](https://prettier.io): Formatter used to enforce code style
+- [Husky](https://typicode.github.io/husky) + [lint-staged](https://github.com/okonet/lint-staged): Pre-commit hooks to check for lint and formatting errors before Git commits are made
+- [Docker](https://docker.com): Used for optional containerized development & testing environments
+- [npm](https://npmjs.com): Package manager
 
 ## Getting Started
 
@@ -47,8 +47,8 @@ This method is the simplest if you are not using the Docker dev environment (met
 
 Installation of the following is required before proceeding with this method:
 
--   [Node.js](https://nodejs.org/en/download/package-manager)
--   [PostgreSQL](https://postgresql.org/download)
+- [Node.js](https://nodejs.org/en/download/package-manager)
+- [PostgreSQL](https://postgresql.org/download)
 
 This was tested on Node.js v20.9.0, but any version from >=20.9 to <21 will work. This was also tested with PostgreSQL 15.3, but any version from >=15.3 to <16 will work.
 
@@ -124,8 +124,8 @@ This method manually does what the init script does for you normally.
 
 Installation of the following is required before proceeding with this method:
 
--   [Node.js](https://nodejs.org/en/download/package-manager)
--   [PostgreSQL](https://postgresql.org/download)
+- [Node.js](https://nodejs.org/en/download/package-manager)
+- [PostgreSQL](https://postgresql.org/download)
 
 This was tested on Node.js v20.9.0, but any version from >=20.9 to <21 will work. This was also tested with PostgreSQL 15.3, but any version from >=15.3 to <16 will work.
 

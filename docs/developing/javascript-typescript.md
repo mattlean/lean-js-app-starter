@@ -2,14 +2,14 @@
 
 ## Contents
 
--   [ECMAScript Version](#ecmascript-version)
--   [TypeScript Version](#typescript-version)
--   [Creating JavaScript, TypeScript, and JSX-Related Files](#creating-javascript-typescript-and-jsx-related-files)
--   [Linting](#linting)
--   [Type Checking](#type-checking)
--   [Formatting](#formatting)
--   [Auto & Hot Reloading](#auto--hot-reloading)
--   [Configuration](#configuration)
+- [ECMAScript Version](#ecmascript-version)
+- [TypeScript Version](#typescript-version)
+- [Creating JavaScript, TypeScript, and JSX-Related Files](#creating-javascript-typescript-and-jsx-related-files)
+- [Linting](#linting)
+- [Type Checking](#type-checking)
+- [Formatting](#formatting)
+- [Auto & Hot Reloading](#auto--hot-reloading)
+- [Configuration](#configuration)
 
 ## ECMAScript Version
 
@@ -109,9 +109,9 @@ This allows React development to iterate faster because changes will be "live pa
 
 Read the following configuration documents to learn how the corresponding configurations work and how to customize them yourself:
 
--   [Babel](../configuration/babel.md)
--   [ESLint](../configuration/eslint.md)
--   [nodemon](../configuration/nodemon.md)
--   [Prettier](../configuration/prettier.md)
--   [TypeScript](../configuration/typescript.md)
--   [webpack](../configuration/webpack.md)
+- [Babel](../configuration/babel.md)
+- [ESLint](../configuration/eslint.md)
+- [nodemon](../configuration/nodemon.md)
+- [Prettier](../configuration/prettier.md)
+- [TypeScript](../configuration/typescript.md)
+- [webpack](../configuration/webpack.md)

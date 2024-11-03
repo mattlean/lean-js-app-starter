@@ -1,89 +1,89 @@
-import { expect, test } from '@playwright/test'
+import { expect, test } from "@playwright/test";
 
 import {
-    MOCK_BARBAZ_FILE_CONTENT,
-    MOCK_FOOBAR_FILE_CONTENT,
-} from '../common/MOCK_DATA'
+  MOCK_BARBAZ_FILE_CONTENT,
+  MOCK_FOOBAR_FILE_CONTENT,
+} from "../common/MOCK_DATA";
 import {
-    launchElectron,
-    resetColorMode,
-    skipUnsavedChangesDialog,
-} from './util'
+  launchElectron,
+  resetColorMode,
+  skipUnsavedChangesDialog,
+} from "./util";
 
-test('markdown in editor generates HTML in preview', async () => {
-    const electronApp = await launchElectron()
-    const window = await electronApp.firstWindow()
+test("markdown in editor generates HTML in preview", async () => {
+  const electronApp = await launchElectron();
+  const window = await electronApp.firstWindow();
 
-    await resetColorMode(window)
-    await skipUnsavedChangesDialog(electronApp)
+  await resetColorMode(window);
+  await skipUnsavedChangesDialog(electronApp);
 
-    const editor = window.getByRole('textbox')
-    const preview = window.getByRole('article')
+  const editor = window.getByRole("textbox");
+  const preview = window.getByRole("article");
 
-    // Expect the editor to start focused
-    await expect(editor).toBeFocused()
+  // Expect the editor to start focused
+  await expect(editor).toBeFocused();
 
-    // Type markdown in the editor
-    await editor.fill(MOCK_FOOBAR_FILE_CONTENT)
+  // Type markdown in the editor
+  await editor.fill(MOCK_FOOBAR_FILE_CONTENT);
 
-    // Expect the correct HTML to be generated in the preview
-    await expect(
-        window.getByRole('heading', { name: /hello world/i }),
-    ).toBeVisible()
-    await expect(preview.getByText(/foobar!/i)).toBeVisible()
+  // Expect the correct HTML to be generated in the preview
+  await expect(
+    window.getByRole("heading", { name: /hello world/i }),
+  ).toBeVisible();
+  await expect(preview.getByText(/foobar!/i)).toBeVisible();
 
-    // Perform visual comparison of UI with some content in the editor and preview
-    await expect(window).toHaveScreenshot('editor-preview-basic.png')
+  // Perform visual comparison of UI with some content in the editor and preview
+  await expect(window).toHaveScreenshot("editor-preview-basic.png");
 
-    await electronApp.close()
-})
+  await electronApp.close();
+});
 
-test('standard markdown in editor generates HTML in preview', async () => {
-    const electronApp = await launchElectron()
-    const window = await electronApp.firstWindow()
+test("standard markdown in editor generates HTML in preview", async () => {
+  const electronApp = await launchElectron();
+  const window = await electronApp.firstWindow();
 
-    await resetColorMode(window)
-    await skipUnsavedChangesDialog(electronApp)
+  await resetColorMode(window);
+  await skipUnsavedChangesDialog(electronApp);
 
-    const editor = window.getByRole('textbox')
-    const preview = window.getByRole('article')
+  const editor = window.getByRole("textbox");
+  const preview = window.getByRole("article");
 
-    // Expect the editor to start focused
-    await expect(editor).toBeFocused()
+  // Expect the editor to start focused
+  await expect(editor).toBeFocused();
 
-    // Type markdown in the editor
-    await editor.fill(MOCK_BARBAZ_FILE_CONTENT)
+  // Type markdown in the editor
+  await editor.fill(MOCK_BARBAZ_FILE_CONTENT);
 
-    // Expect the correct HTML to be generated in the preview
-    await expect(preview.getByRole('strong')).toHaveCount(4)
-    await expect(preview.getByRole('emphasis')).toHaveCount(3)
-    await expect(preview.getByRole('blockquote')).toHaveCount(4)
-    await expect(preview.getByRole('listitem')).toHaveCount(14)
-    await expect(preview.getByRole('code')).toHaveCount(1)
-    await expect(preview.getByRole('separator')).toHaveCount(1)
-    await expect(preview.getByRole('link')).toHaveCount(4)
+  // Expect the correct HTML to be generated in the preview
+  await expect(preview.getByRole("strong")).toHaveCount(4);
+  await expect(preview.getByRole("emphasis")).toHaveCount(3);
+  await expect(preview.getByRole("blockquote")).toHaveCount(4);
+  await expect(preview.getByRole("listitem")).toHaveCount(14);
+  await expect(preview.getByRole("code")).toHaveCount(1);
+  await expect(preview.getByRole("separator")).toHaveCount(1);
+  await expect(preview.getByRole("link")).toHaveCount(4);
 
-    // Perform visual comparison of UI with some content in the editor and preview
-    await expect(window).toHaveScreenshot('editor-preview-standard.png')
+  // Perform visual comparison of UI with some content in the editor and preview
+  await expect(window).toHaveScreenshot("editor-preview-standard.png");
 
-    await electronApp.close()
-})
+  await electronApp.close();
+});
 
-test('extended markdown in editor generates HTML in preview', async () => {
-    const electronApp = await launchElectron()
-    const window = await electronApp.firstWindow()
+test("extended markdown in editor generates HTML in preview", async () => {
+  const electronApp = await launchElectron();
+  const window = await electronApp.firstWindow();
 
-    await resetColorMode(window)
-    await skipUnsavedChangesDialog(electronApp)
+  await resetColorMode(window);
+  await skipUnsavedChangesDialog(electronApp);
 
-    const editor = window.getByRole('textbox')
-    const preview = window.getByRole('article')
+  const editor = window.getByRole("textbox");
+  const preview = window.getByRole("article");
 
-    // Expect the editor to start focused
-    await expect(editor).toBeFocused()
+  // Expect the editor to start focused
+  await expect(editor).toBeFocused();
 
-    // Type markdown in the editor
-    await editor.fill(`# Extended Markdown Test
+  // Type markdown in the editor
+  await editor.fill(`# Extended Markdown Test
 
 ## Autolink literals
 
@@ -109,16 +109,16 @@ A note[^1]
 ## Tasklist
 
 * [ ] to do
-* [x] done`)
+* [x] done`);
 
-    // Expect the correct HTML to be generated in the preview
-    await expect(preview.getByRole('link')).toHaveCount(5)
-    await expect(preview.getByRole('deletion')).toHaveCount(2)
-    await expect(preview.getByRole('table')).toHaveCount(1)
-    await expect(preview.getByRole('list')).toHaveCount(2)
+  // Expect the correct HTML to be generated in the preview
+  await expect(preview.getByRole("link")).toHaveCount(5);
+  await expect(preview.getByRole("deletion")).toHaveCount(2);
+  await expect(preview.getByRole("table")).toHaveCount(1);
+  await expect(preview.getByRole("list")).toHaveCount(2);
 
-    // Perform visual comparison of UI with some content in the editor and preview
-    await expect(window).toHaveScreenshot('editor-preview-extended.png')
+  // Perform visual comparison of UI with some content in the editor and preview
+  await expect(window).toHaveScreenshot("editor-preview-extended.png");
 
-    await electronApp.close()
-})
+  await electronApp.close();
+});

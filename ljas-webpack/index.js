@@ -13,7 +13,7 @@
  * @param {string} devtool Option that chooses a style of source mapping. (https://webpack.js.org/configuration/devtool)
  * @returns {Object} A webpack configuration object that sets up the webpack devtool option.
  */
-exports.buildSourceMaps = (devtool) => ({ devtool })
+exports.buildSourceMaps = (devtool) => ({ devtool });
 
 /**
  * Compile JavaScript code with babel-loader:
@@ -41,38 +41,38 @@ exports.buildSourceMaps = (devtool) => ({ devtool })
  * @returns {Object} A webpack configuration object that sets up babel-loader.
  */
 exports.compileJs = (options) => ({
-    module: {
-        rules: [
-            {
-                use: {
-                    loader: 'babel-loader',
-                    options: options?.babelLoader ?? {
-                        cacheDirectory: options?.babelLoaderCache,
-                        plugins: options?.babelLoaderPlugins,
-                        presets: options?.babelLoaderPresets ?? [
-                            [
-                                '@babel/preset-env',
-                                options?.babelPresetEnv ?? {
-                                    // This is set so Babel will preserve ECMAScript modules and pass it
-                                    // onto webpack so it can tree shake.
-                                    // TODO: Note that this might not be needed anymore and "auto" might
-                                    // work... need to look more into this. If this is changed, remember
-                                    // to update every other related function default like compileReactTs() as well.
-                                    modules: false,
-                                },
-                            ],
-                        ],
-                    },
+  module: {
+    rules: [
+      {
+        use: {
+          loader: "babel-loader",
+          options: options?.babelLoader ?? {
+            cacheDirectory: options?.babelLoaderCache,
+            plugins: options?.babelLoaderPlugins,
+            presets: options?.babelLoaderPresets ?? [
+              [
+                "@babel/preset-env",
+                options?.babelPresetEnv ?? {
+                  // This is set so Babel will preserve ECMAScript modules and pass it
+                  // onto webpack so it can tree shake.
+                  // TODO: Note that this might not be needed anymore and "auto" might
+                  // work... need to look more into this. If this is changed, remember
+                  // to update every other related function default like compileReactTs() as well.
+                  modules: false,
                 },
-                ...options?.rule,
-                exclude: options?.rule?.exclude ?? /node_modules/,
-                test: options?.rule?.test ?? /\.js$/,
-            },
-        ],
-    },
-    plugins: options?.plugins,
-    resolve: options?.resolve,
-})
+              ],
+            ],
+          },
+        },
+        ...options?.rule,
+        exclude: options?.rule?.exclude ?? /node_modules/,
+        test: options?.rule?.test ?? /\.js$/,
+      },
+    ],
+  },
+  plugins: options?.plugins,
+  resolve: options?.resolve,
+});
 
 /**
  * Compile React JavaScript code with babel-loader:
@@ -103,37 +103,37 @@ exports.compileJs = (options) => ({
  * @returns {Object} A webpack configuration object that sets up babel-loader.
  */
 exports.compileReact = (options, mode) =>
-    this.compileJs({
-        rule: {
-            use: {
-                loader: 'babel-loader',
-                options: options?.babelLoader ?? {
-                    cacheDirectory: options?.babelLoaderCache,
-                    plugins: options?.babelLoaderPlugins,
-                    presets: options?.babelLoaderPresets ?? [
-                        [
-                            '@babel/preset-env',
-                            options?.babelPresetEnv ?? { modules: false },
-                        ],
-                        [
-                            '@babel/preset-react',
-                            options?.babelPresetReact ?? {
-                                development: mode === 'development',
-                                runtime: 'automatic',
-                            },
-                        ],
-                    ],
-                },
-            },
-            ...options?.rule,
-            test: options?.rule?.test ?? /\.jsx?$/,
+  this.compileJs({
+    rule: {
+      use: {
+        loader: "babel-loader",
+        options: options?.babelLoader ?? {
+          cacheDirectory: options?.babelLoaderCache,
+          plugins: options?.babelLoaderPlugins,
+          presets: options?.babelLoaderPresets ?? [
+            [
+              "@babel/preset-env",
+              options?.babelPresetEnv ?? { modules: false },
+            ],
+            [
+              "@babel/preset-react",
+              options?.babelPresetReact ?? {
+                development: mode === "development",
+                runtime: "automatic",
+              },
+            ],
+          ],
         },
-        plugins: options?.plugins,
-        resolve: {
-            extensions: ['.js', '.jsx', '.json', '.wasm'],
-            ...options?.resolve,
-        },
-    })
+      },
+      ...options?.rule,
+      test: options?.rule?.test ?? /\.jsx?$/,
+    },
+    plugins: options?.plugins,
+    resolve: {
+      extensions: [".js", ".jsx", ".json", ".wasm"],
+      ...options?.resolve,
+    },
+  });
 
 /**
  * Ignore files when webpack is running in watch mode:
@@ -143,8 +143,8 @@ exports.compileReact = (options, mode) =>
  * @returns {Object} A webpack configuration object that makes webpack ignore specified files during watch mode.
  */
 exports.ignoreWatch = (ignored) => ({
-    watchOptions: { ignored },
-})
+  watchOptions: { ignored },
+});
 
 /**
  * Enable .css file imports and inject CSS into the DOM with css-loader and style-loader:
@@ -167,20 +167,20 @@ exports.ignoreWatch = (ignored) => ({
  * @returns {Object} webpack configuration object that sets up css-loader and style-loader.
  */
 exports.injectCss = (options) => ({
-    module: {
-        rules: [
-            {
-                use: [
-                    { loader: 'style-loader', options: options?.styleLoader },
-                    { loader: 'css-loader', options: options?.cssLoader },
-                ],
-                ...options?.rule,
-                exclude: options?.rule?.exclude ?? /node_modules/,
-                test: options?.rule?.test ?? /\.css$/,
-            },
+  module: {
+    rules: [
+      {
+        use: [
+          { loader: "style-loader", options: options?.styleLoader },
+          { loader: "css-loader", options: options?.cssLoader },
         ],
-    },
-})
+        ...options?.rule,
+        exclude: options?.rule?.exclude ?? /node_modules/,
+        test: options?.rule?.test ?? /\.css$/,
+      },
+    ],
+  },
+});
 
 /**
  * Enable .sass and .scss file imports and inject CSS into the DOM with css-loader, sass-loader, and style-loader:
@@ -207,17 +207,17 @@ exports.injectCss = (options) => ({
  * @returns {Object} webpack configuration object that sets up css-loader, sass-loader, and style-loader.
  */
 exports.injectSass = (options) =>
-    this.injectCss({
-        rule: {
-            use: [
-                { loader: 'style-loader', options: options?.styleLoader },
-                { loader: 'css-loader', options: options?.cssLoader },
-                { loader: 'sass-loader', options: options?.sassLoader },
-            ],
-            ...options?.rule,
-            test: options?.rule?.test ?? /\.s[ac]ss$/i,
-        },
-    })
+  this.injectCss({
+    rule: {
+      use: [
+        { loader: "style-loader", options: options?.styleLoader },
+        { loader: "css-loader", options: options?.cssLoader },
+        { loader: "sass-loader", options: options?.sassLoader },
+      ],
+      ...options?.rule,
+      test: options?.rule?.test ?? /\.s[ac]ss$/i,
+    },
+  });
 
 /**
  * Enable imports of font files (.eot, .otf, .ttf, .woff, .woff2) with an asset module:
@@ -230,16 +230,16 @@ exports.injectSass = (options) =>
  * @returns webpack configuration object that sets up an asset module to support fonts.
  */
 exports.loadFonts = (options) => ({
-    module: {
-        rules: [
-            {
-                test: /\.(eot|otf|ttf|woff|woff2)$/i,
-                type: 'asset/resource',
-                ...options?.rule,
-            },
-        ],
-    },
-})
+  module: {
+    rules: [
+      {
+        test: /\.(eot|otf|ttf|woff|woff2)$/i,
+        type: "asset/resource",
+        ...options?.rule,
+      },
+    ],
+  },
+});
 
 /**
  * Enable imports of image files (.gif, .jpeg, .jpg, .png, .svg) with an asset module:
@@ -252,16 +252,16 @@ exports.loadFonts = (options) => ({
  * @returns webpack configuration object that sets up an asset module to support images.
  */
 exports.loadImages = (options) => ({
-    module: {
-        rules: [
-            {
-                test: /\.(gif|jpeg|jpg|png|svg)$/i,
-                type: 'asset/resource',
-                ...options?.rule,
-            },
-        ],
-    },
-})
+  module: {
+    rules: [
+      {
+        test: /\.(gif|jpeg|jpg|png|svg)$/i,
+        type: "asset/resource",
+        ...options?.rule,
+      },
+    ],
+  },
+});
 
 /**
  * Configure webpack-dev-server:
@@ -273,7 +273,7 @@ exports.loadImages = (options) => ({
  * @returns {Object} A webpack configuration object that sets up webpack-dev-server.
  */
 exports.setupDevServer = (options) => ({
-    devServer: {
-        ...options,
-    },
-})
+  devServer: {
+    ...options,
+  },
+});

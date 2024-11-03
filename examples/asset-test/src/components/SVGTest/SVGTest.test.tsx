@@ -1,8 +1,8 @@
-import renderer from 'react-test-renderer'
+import renderer from "react-test-renderer";
 
-import SVGTest from '.'
+import SVGTest from ".";
 
-test('SVGTest component matches snapshot', () => {
-    const tree = renderer.create(<SVGTest />).toJSON()
-    expect(tree).toMatchSnapshot()
-})
+test("SVGTest component matches snapshot", () => {
+  const tree = renderer.create(<SVGTest />).toJSON();
+  expect(tree).toMatchSnapshot();
+});

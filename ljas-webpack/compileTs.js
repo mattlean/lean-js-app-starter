@@ -1,6 +1,6 @@
-const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
+const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 
-const { compileJs } = require('.')
+const { compileJs } = require(".");
 
 /**
  * Compile TypeScript code with babel-loader and type check with Fork TS Checker Webpack Plugin:
@@ -34,35 +34,32 @@ const { compileJs } = require('.')
  * @returns {Object} A webpack configuration object that sets up babel-loader and Fork TS Checker Webpack Plugin.
  */
 const compileTs = (options) =>
-    compileJs({
-        rule: {
-            use: {
-                loader: 'babel-loader',
-                options: options?.babelLoader ?? {
-                    cacheDirectory: options?.babelLoaderCache,
-                    plugins: options?.babelLoaderPlugins,
-                    presets: options?.babelLoaderPresets ?? [
-                        [
-                            '@babel/preset-env',
-                            options?.babelPresetEnv ?? { modules: false },
-                        ],
-                        [
-                            '@babel/preset-typescript',
-                            options?.babelPresetTypeScript,
-                        ],
-                    ],
-                },
-            },
-            ...options?.rule,
-            test: options?.rule?.test ?? /\.[jt]s$/,
+  compileJs({
+    rule: {
+      use: {
+        loader: "babel-loader",
+        options: options?.babelLoader ?? {
+          cacheDirectory: options?.babelLoaderCache,
+          plugins: options?.babelLoaderPlugins,
+          presets: options?.babelLoaderPresets ?? [
+            [
+              "@babel/preset-env",
+              options?.babelPresetEnv ?? { modules: false },
+            ],
+            ["@babel/preset-typescript", options?.babelPresetTypeScript],
+          ],
         },
-        plugins: options?.plugins ?? [
-            new ForkTsCheckerWebpackPlugin(options?.forkTsChecker),
-        ],
-        resolve: {
-            extensions: ['.js', '.json', '.ts', '.wasm'],
-            ...options?.resolve,
-        },
-    })
+      },
+      ...options?.rule,
+      test: options?.rule?.test ?? /\.[jt]s$/,
+    },
+    plugins: options?.plugins ?? [
+      new ForkTsCheckerWebpackPlugin(options?.forkTsChecker),
+    ],
+    resolve: {
+      extensions: [".js", ".json", ".ts", ".wasm"],
+      ...options?.resolve,
+    },
+  });
 
-module.exports = compileTs
+module.exports = compileTs;

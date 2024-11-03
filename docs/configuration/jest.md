@@ -12,5 +12,5 @@ When working in TypeScript-based projects, [`ts-jest`](https://kulshekhar.github
 
 ## Learning Resources
 
--   [Jest Docs: Getting Started](https://jestjs.io/docs/getting-started)  
-    Learn the basics of configuring Jest by setting up a simple Jest configuration from scratch.
+- [Jest Docs: Getting Started](https://jestjs.io/docs/getting-started)  
+  Learn the basics of configuring Jest by setting up a simple Jest configuration from scratch.

@@ -1,7 +1,7 @@
-import bcrypt from 'bcrypt'
-import { NextFunction, Request, Response } from 'express'
+import bcrypt from "bcrypt";
+import { NextFunction, Request, Response } from "express";
 
-export { prismaMock } from '../../../prisma/singleton'
+export { prismaMock } from "../../../prisma/singleton";
 
 /**
  * Generate implementation for protectMiddleware that mocks authorization.
@@ -9,24 +9,24 @@ export { prismaMock } from '../../../prisma/singleton'
  * @returns Function that generates protectMiddleware function implementation
  */
 export const genProtectMiddlewareAuthImpl =
-    (reqUser: DecodedJWT) =>
-    (req: Request, res: Response, next: NextFunction) => {
-        req.user = reqUser
-        return next()
-    }
+  (reqUser: DecodedJWT) =>
+  (req: Request, res: Response, next: NextFunction) => {
+    req.user = reqUser;
+    return next();
+  };
 
 /**
  * Restore original implementation for protectMiddleware.
  * @returns protectMiddleware function implementation
  */
 export const restoreProtectMiddlewareImpl = (
-    req: Request,
-    res: Response,
-    next: NextFunction,
+  req: Request,
+  res: Response,
+  next: NextFunction,
 ) => {
-    const { protectMiddleware } = jest.requireActual('../auth')
-    return protectMiddleware(req, res, next)
-}
+  const { protectMiddleware } = jest.requireActual("../auth");
+  return protectMiddleware(req, res, next);
+};
 
 /**
  * Produce hash from plain text password synchronously.
@@ -34,4 +34,4 @@ export const restoreProtectMiddlewareImpl = (
  * @returns The encrypted data salt
  */
 export const hashPasswordSync = (password: string) =>
-    bcrypt.hashSync(password, 5)
+  bcrypt.hashSync(password, 5);

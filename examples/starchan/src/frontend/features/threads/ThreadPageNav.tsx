@@ -1,23 +1,23 @@
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 export interface Props {
-    isBottom?: boolean
+  isBottom?: boolean;
 }
 
 export default function ThreadPageNav({ isBottom }: Props) {
-    const jumpTo = isBottom ? (
-        <a href="#top">Top</a>
-    ) : (
-        <a href="#bottom">Bottom</a>
-    )
+  const jumpTo = isBottom ? (
+    <a href="#top">Top</a>
+  ) : (
+    <a href="#bottom">Bottom</a>
+  );
 
-    return (
-        <nav>
-            {isBottom && <hr />}[
-            <Link to="/" onClick={() => scrollTo(0, 0)}>
-                Return
-            </Link>
-            ] [{jumpTo}]{!isBottom && <hr />}
-        </nav>
-    )
+  return (
+    <nav>
+      {isBottom && <hr />}[
+      <Link to="/" onClick={() => scrollTo(0, 0)}>
+        Return
+      </Link>
+      ] [{jumpTo}]{!isBottom && <hr />}
+    </nav>
+  );
 }

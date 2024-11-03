@@ -1,5 +1,5 @@
 {
-    "*": "prettier --ignore-unknown --write",
-    "*.css": "stylelint",
-    "*.{js,jsx}": ["eslint", "flow"]
+  "*": "prettier --ignore-unknown --write",
+  "*.css": "stylelint",
+  "*.{js,jsx}": ["eslint", "flow"]
 }

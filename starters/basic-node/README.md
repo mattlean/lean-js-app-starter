@@ -6,16 +6,16 @@ _If you need TypeScript, then use the [Basic Node.js starter (TypeScript)](https
 
 ## Technology Overview
 
--   [JavaScript](https://tc39.es/ecma262): Just plain, vanilla JavaScript
--   [Node.js](https://nodejs.org): Runtime environment that allows JavaScript to execute outside of web browsers
--   [Jest](https://jestjs.io): Testing framework
--   [webpack](https://webpack.js.org): Bundler used to create builds
--   [Babel](https://babeljs.io): Compiler used with webpack to output Node.js-compatible code
--   [ESLint](https://eslint.org): Linter used to identify problems in JavaScript
--   [Prettier](https://prettier.io): Formatter used to enforce code style
--   [Husky](https://typicode.github.io/husky) + [lint-staged](https://github.com/okonet/lint-staged): Pre-commit hooks to check for lint and formatting errors before Git commits are made
--   [Docker](https://docker.com): Used for an optional containerized development environment
--   [npm](https://npmjs.com): Package manager
+- [JavaScript](https://tc39.es/ecma262): Just plain, vanilla JavaScript
+- [Node.js](https://nodejs.org): Runtime environment that allows JavaScript to execute outside of web browsers
+- [Jest](https://jestjs.io): Testing framework
+- [webpack](https://webpack.js.org): Bundler used to create builds
+- [Babel](https://babeljs.io): Compiler used with webpack to output Node.js-compatible code
+- [ESLint](https://eslint.org): Linter used to identify problems in JavaScript
+- [Prettier](https://prettier.io): Formatter used to enforce code style
+- [Husky](https://typicode.github.io/husky) + [lint-staged](https://github.com/okonet/lint-staged): Pre-commit hooks to check for lint and formatting errors before Git commits are made
+- [Docker](https://docker.com): Used for an optional containerized development environment
+- [npm](https://npmjs.com): Package manager
 
 ## Getting Started
 

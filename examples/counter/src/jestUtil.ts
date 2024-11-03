@@ -5,14 +5,14 @@
  * @param rootEl Optionally pass in the rootEl to be cleared, otherwise a query for the element with the root ID will be made
  */
 export const clearRootEl = (rootEl?: HTMLElement) => {
-    const r = rootEl ? rootEl : document.getElementById('root')
+  const r = rootEl ? rootEl : document.getElementById("root");
 
-    if (!r) {
-        throw new Error('HTML element with an ID of "root" was not found.')
-    }
+  if (!r) {
+    throw new Error('HTML element with an ID of "root" was not found.');
+  }
 
-    r.innerHTML = ''
-}
+  r.innerHTML = "";
+};
 
 /**
  * Setup the root element.
@@ -20,9 +20,9 @@ export const clearRootEl = (rootEl?: HTMLElement) => {
  * @returns The new root element
  */
 export const setupRootEl = () => {
-    const rootEl = document.createElement('div')
-    rootEl.setAttribute('id', 'root')
-    document.body.replaceChildren(rootEl)
+  const rootEl = document.createElement("div");
+  rootEl.setAttribute("id", "root");
+  document.body.replaceChildren(rootEl);
 
-    return rootEl
-}
+  return rootEl;
+};

@@ -1,9 +1,9 @@
 {
-    "opts": {
-        "destination": "./docs/"
-    },
-    "source": {
-        "exclude": ["node_modules/", "examples/"],
-        "include": ["."]
-    }
+  "opts": {
+    "destination": "./docs/"
+  },
+  "source": {
+    "exclude": ["node_modules/", "examples/"],
+    "include": ["."]
+  }
 }

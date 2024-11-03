@@ -1,41 +1,41 @@
-import { NextFunction, Request, Response, Router } from 'express'
+import { NextFunction, Request, Response, Router } from "express";
 
-import { ServerError } from '../../../common/error'
-import { prisma } from '../../../common/prisma'
+import { ServerError } from "../../../common/error";
+import { prisma } from "../../../common/prisma";
 
-const router = Router()
+const router = Router();
 
 /**
  * Express middleware that generates response data from a user.
  */
 const genUserDataMiddleware = async (
-    req: Request,
-    res: Response,
-    next: NextFunction,
+  req: Request,
+  res: Response,
+  next: NextFunction,
 ) => {
-    if (!req.user) {
-        return next(new ServerError(401))
+  if (!req.user) {
+    return next(new ServerError(401));
+  }
+
+  let user;
+  try {
+    user = await prisma.user.findUniqueOrThrow({
+      where: { uuid: req.user.uuid },
+    });
+  } catch (err) {
+    if (err instanceof Error) {
+      return next(new ServerError(401, undefined, err));
     }
+    return next(err);
+  }
 
-    let user
-    try {
-        user = await prisma.user.findUniqueOrThrow({
-            where: { uuid: req.user.uuid },
-        })
-    } catch (err) {
-        if (err instanceof Error) {
-            return next(new ServerError(401, undefined, err))
-        }
-        return next(err)
-    }
+  res.locals.data = { ...user };
+  delete res.locals.data.password;
+  delete res.locals.data.createdAt;
+  delete res.locals.data.updatedAt;
 
-    res.locals.data = { ...user }
-    delete res.locals.data.password
-    delete res.locals.data.createdAt
-    delete res.locals.data.updatedAt
-
-    return next()
-}
+  return next();
+};
 
 /**
  * @openapi
@@ -69,8 +69,8 @@ const genUserDataMiddleware = async (
  *     tags:
  *       - Authentication & Authorization
  */
-router.get('/', genUserDataMiddleware, async (req, res) =>
-    res.json({ data: res.locals.data }),
-)
+router.get("/", genUserDataMiddleware, async (req, res) =>
+  res.json({ data: res.locals.data }),
+);
 
-export { router as meHandler }
+export { router as meHandler };

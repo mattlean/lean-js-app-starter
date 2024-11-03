@@ -9,22 +9,22 @@ LJAS provides two different [Docker](https://docker.com) environments:
 
 ## Contents
 
--   [Docker vs. Native Environments](#docker-vs-native-environments)
--   [Setting Up the Docker Dev Environment](#setting-up-the-docker-dev-environment)
--   [Setting Up the Docker End-to-End Test Environment](#setting-up-the-docker-end-to-end-test-environment)
--   [Docker Basics](#docker-basics)
-    -   [Installing Docker](#installing-docker)
-    -   [Shutting Down a Docker Environment](#shutting-down-a-docker-environment)
-    -   [Getting Container Information](#getting-container-information)
-    -   [Accessing Containers Logs](#accessing-container-logs)
-    -   [Running Terminal Commands Inside the Container](#running-terminal-commands-inside-the-container)
--   [More Learning Resources](#more-learning-resources)
--   [Connecting to Docker Databases Through a Terminal](#connecting-to-docker-databases-through-a-terminal)
--   [Hybrid Native/Docker Development Environment](#hybrid-nativedocker-development-environment)
--   [Developing Inside a Container with Visual Studio Code](#developing-inside-a-container-with-visual-studio-code)
--   [Performance Tips](#performance-tips)
--   [Configuration](#configuration)
--   [Troubleshooting](#troubleshooting)
+- [Docker vs. Native Environments](#docker-vs-native-environments)
+- [Setting Up the Docker Dev Environment](#setting-up-the-docker-dev-environment)
+- [Setting Up the Docker End-to-End Test Environment](#setting-up-the-docker-end-to-end-test-environment)
+- [Docker Basics](#docker-basics)
+  - [Installing Docker](#installing-docker)
+  - [Shutting Down a Docker Environment](#shutting-down-a-docker-environment)
+  - [Getting Container Information](#getting-container-information)
+  - [Accessing Containers Logs](#accessing-container-logs)
+  - [Running Terminal Commands Inside the Container](#running-terminal-commands-inside-the-container)
+- [More Learning Resources](#more-learning-resources)
+- [Connecting to Docker Databases Through a Terminal](#connecting-to-docker-databases-through-a-terminal)
+- [Hybrid Native/Docker Development Environment](#hybrid-nativedocker-development-environment)
+- [Developing Inside a Container with Visual Studio Code](#developing-inside-a-container-with-visual-studio-code)
+- [Performance Tips](#performance-tips)
+- [Configuration](#configuration)
+- [Troubleshooting](#troubleshooting)
 
 ## Docker vs. Native Environments
 
@@ -126,8 +126,8 @@ Even if you intend to completely ignore the GUI and interface with Docker solely
 
 You can shut a Docker environment down with the following options:
 
--   Press Ctrl+C in the terminal where the container logs are output to stop all containers in the environment.
--   Use Docker Desktop to stop/remove the environment's containers.
+- Press Ctrl+C in the terminal where the container logs are output to stop all containers in the environment.
+- Use Docker Desktop to stop/remove the environment's containers.
 
 Note that stopping a container makes it temporarily inactive so it will no longer consume memory on your native machine, but it will take up disk space. Starting a stopped container is fast and will let your app quickly get back up and running.
 
@@ -189,10 +189,10 @@ Alternatively, you can also access the terminal inside the container with Docker
 
 The following resources are beginner-level guides from the [Docker docs](https://docs.docker.com) that will teach you fundamental Docker concepts that will be useful when using LJAS's Docker environments.
 
--   [Getting started: Get Docker Desktop](https://docs.docker.com/get-started/get-docker/)
--   [The basics: What is a container?](https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-a-container)
--   [The basics: What is an image?](https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-an-image)
--   [The basics: What is Docker Compose?](https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-docker-compose)
+- [Getting started: Get Docker Desktop](https://docs.docker.com/get-started/get-docker/)
+- [The basics: What is a container?](https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-a-container)
+- [The basics: What is an image?](https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-an-image)
+- [The basics: What is Docker Compose?](https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-docker-compose)
 
 ## Connecting to Docker Databases Through a Terminal
 
@@ -254,11 +254,11 @@ This section is for common solutions to some problems you may encounter when dea
 
 ### Problems
 
--   [I am running into issues with Docker and disk space. How do I deal with that?](#i-am-running-into-issues-with-docker-and-disk-space-how-do-i-deal-with-that)
--   [I am running into problems preventing me from running Docker environments on Windows.](#i-am-running-into-problems-preventing-me-from-running-docker-environments-on-windows)
--   [Docker keeps reusing a stale image when I don't want it to. How do I force Docker to create a completely fresh one?](#docker-keeps-reusing-a-stale-image-when-i-dont-want-it-to-how-do-i-force-docker-to-create-a-completely-fresh-one)
--   [Changes to my code are not being seen by nodemon or webpack when they are running in a container.](#changes-to-my-code-are-not-being-seen-by-nodemon-or-webpack-when-they-are-running-in-a-container)
--   [Playwright does not work in the Docker dev environment.](#playwright-does-not-work-in-the-docker-dev-environment)
+- [I am running into issues with Docker and disk space. How do I deal with that?](#i-am-running-into-issues-with-docker-and-disk-space-how-do-i-deal-with-that)
+- [I am running into problems preventing me from running Docker environments on Windows.](#i-am-running-into-problems-preventing-me-from-running-docker-environments-on-windows)
+- [Docker keeps reusing a stale image when I don't want it to. How do I force Docker to create a completely fresh one?](#docker-keeps-reusing-a-stale-image-when-i-dont-want-it-to-how-do-i-force-docker-to-create-a-completely-fresh-one)
+- [Changes to my code are not being seen by nodemon or webpack when they are running in a container.](#changes-to-my-code-are-not-being-seen-by-nodemon-or-webpack-when-they-are-running-in-a-container)
+- [Playwright does not work in the Docker dev environment.](#playwright-does-not-work-in-the-docker-dev-environment)
 
 ---
 

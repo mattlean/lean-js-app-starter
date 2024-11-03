@@ -3,5 +3,5 @@
  * with ljas-webpack.
  */
 module.exports = {
-    devtool: 'source-map',
-}
+  devtool: "source-map",
+};

@@ -1,2 +1,2 @@
-import 'dotenv/config'
-import 'snapshot-diff/extend-expect'
+import "dotenv/config";
+import "snapshot-diff/extend-expect";

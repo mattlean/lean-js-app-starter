@@ -3,12 +3,12 @@
  * with ljas-webpack.
  */
 module.exports = {
-    module: {
-        rules: [
-            {
-                test: /\.(gif|jpeg|jpg|png|svg)$/i,
-                type: 'asset/resource',
-            },
-        ],
-    },
-}
+  module: {
+    rules: [
+      {
+        test: /\.(gif|jpeg|jpg|png|svg)$/i,
+        type: "asset/resource",
+      },
+    ],
+  },
+};

@@ -11,8 +11,8 @@ This document is only relevant to the following SSR-based starter projects:
 
 ## Contents
 
--   [Overview](#overview)
--   [Examples](#examples)
+- [Overview](#overview)
+- [Examples](#examples)
 
 ## Overview
 
@@ -44,4 +44,4 @@ This means that loading the frontend through the Express server will more accura
 
 ## Examples
 
--   [\*chan](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0-dev/examples/starchan): Express server that server-side renders a React frontend
+- [\*chan](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0-dev/examples/starchan): Express server that server-side renders a React frontend

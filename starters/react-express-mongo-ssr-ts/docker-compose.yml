@@ -1,49 +1,49 @@
-version: '3.8'
+version: "3.8"
 name: ljas-react-express-mongo-ssr-ts
 services:
-    db:
-        build:
-            dockerfile: db.Dockerfile
-        image: ljas-react-express-mongo-ssr-ts-db
-        container_name: ljas-react-express-mongo-ssr-ts-db
-        restart: always
-        ports:
-            - '${MONGO_REPLICA_PORT}:${MONGO_REPLICA_PORT}'
-        env_file: .env
-        volumes:
-            - ljas-react-express-mongo-ssr-ts-db-data:/data/db
-        healthcheck:
-            test:
-                [
-                    'CMD',
-                    'mongo',
-                    'admin',
-                    '--port',
-                    '${MONGO_REPLICA_PORT}',
-                    '--eval',
-                    "db.adminCommand('ping')",
-                ]
-            interval: 5s
-            timeout: 2s
-            retries: 20
-    app:
-        build: .
-        image: ljas-react-express-mongo-ssr-ts
-        container_name: ljas-react-express-mongo-ssr-ts
-        depends_on:
-            db:
-                condition: service_healthy
-        restart: always
-        ports:
-            - '${PORT_EXPRESS}:${PORT_EXPRESS}'
-            - '${PORT_WEBPACK_DEV_SERVER}:${PORT_WEBPACK_DEV_SERVER}'
-            - '5555:5555' # Exposes Prisma Studio. Also defined in the "prisma:studio" package.json script.
-            - '9229:9229' # Exposes Node.js debugger. Also defined in the "start:debug" package.json script.
-            - '9230:9230' # Exposes Jest debugger. Also defined in the "test:debug" package.json script.
-            - '9231:9231' # Exposes webpack debugger. Also defined in the build debug package.json scripts.
-            - '9323:9323' # Exposes Playwright report. Also defined in the "test:e2e:report" package.json script and Playwright config.
-        volumes:
-            - .:/code
-            - /code/node_modules
+  db:
+    build:
+      dockerfile: db.Dockerfile
+    image: ljas-react-express-mongo-ssr-ts-db
+    container_name: ljas-react-express-mongo-ssr-ts-db
+    restart: always
+    ports:
+      - "${MONGO_REPLICA_PORT}:${MONGO_REPLICA_PORT}"
+    env_file: .env
+    volumes:
+      - ljas-react-express-mongo-ssr-ts-db-data:/data/db
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "mongo",
+          "admin",
+          "--port",
+          "${MONGO_REPLICA_PORT}",
+          "--eval",
+          "db.adminCommand('ping')",
+        ]
+      interval: 5s
+      timeout: 2s
+      retries: 20
+  app:
+    build: .
+    image: ljas-react-express-mongo-ssr-ts
+    container_name: ljas-react-express-mongo-ssr-ts
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: always
+    ports:
+      - "${PORT_EXPRESS}:${PORT_EXPRESS}"
+      - "${PORT_WEBPACK_DEV_SERVER}:${PORT_WEBPACK_DEV_SERVER}"
+      - "5555:5555" # Exposes Prisma Studio. Also defined in the "prisma:studio" package.json script.
+      - "9229:9229" # Exposes Node.js debugger. Also defined in the "start:debug" package.json script.
+      - "9230:9230" # Exposes Jest debugger. Also defined in the "test:debug" package.json script.
+      - "9231:9231" # Exposes webpack debugger. Also defined in the build debug package.json scripts.
+      - "9323:9323" # Exposes Playwright report. Also defined in the "test:e2e:report" package.json script and Playwright config.
+    volumes:
+      - .:/code
+      - /code/node_modules
 volumes:
-    ljas-react-express-mongo-ssr-ts-db-data:
+  ljas-react-express-mongo-ssr-ts-db-data:

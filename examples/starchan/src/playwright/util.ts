@@ -1,4 +1,4 @@
-import { Page } from '@playwright/test'
+import { Page } from "@playwright/test";
 
 /**
  * Load the frontend application with either the development or end-to-end host.
@@ -13,27 +13,27 @@ import { Page } from '@playwright/test'
  * @returns A promise that will resolve to the main resource response
  */
 export const loadApp = (
-    page: Page,
-    {
-        gotoOptions,
-        serverType,
-        url,
-    }: {
-        gotoOptions?: Parameters<typeof page.goto>[1]
-        serverType?: 'development' | 'e2e'
-        url?: string
-    } = {},
+  page: Page,
+  {
+    gotoOptions,
+    serverType,
+    url,
+  }: {
+    gotoOptions?: Parameters<typeof page.goto>[1];
+    serverType?: "development" | "e2e";
+    url?: string;
+  } = {},
 ) => {
-    let u = process.env.E2E ? process.env.HOST_E2E : process.env.HOST
-    if (url) {
-        u = url
-    } else if (process.env.HOST_E2E && serverType === 'e2e') {
-        u = process.env.HOST_E2E
-    }
+  let u = process.env.E2E ? process.env.HOST_E2E : process.env.HOST;
+  if (url) {
+    u = url;
+  } else if (process.env.HOST_E2E && serverType === "e2e") {
+    u = process.env.HOST_E2E;
+  }
 
-    if (!u) {
-        throw new Error('Host was not set')
-    }
+  if (!u) {
+    throw new Error("Host was not set");
+  }
 
-    return page.goto(u, gotoOptions)
-}
+  return page.goto(u, gotoOptions);
+};

@@ -1,8 +1,8 @@
-import { BrowserWindow, dialog, shell } from 'electron'
-import { readFile } from 'node:fs/promises'
+import { BrowserWindow, dialog, shell } from "electron";
+import { readFile } from "node:fs/promises";
 
-import { isFileOpen } from './currFile'
-import { sendMainErrorMessage } from './interfaces/mse'
+import { isFileOpen } from "./currFile";
+import { sendMainErrorMessage } from "./interfaces/mse";
 
 /**
  * Open a file and retrieve its contents.
@@ -11,20 +11,20 @@ import { sendMainErrorMessage } from './interfaces/mse'
  * @returns The contents of the markdown file
  */
 export const openFile = async (win: BrowserWindow, filePath: string) => {
-    let fileContent
-    try {
-        fileContent = await readFile(filePath, { encoding: 'utf-8' })
-    } catch (err) {
-        if (err instanceof Error) {
-            sendMainErrorMessage(err, win)
-            return
-        } else {
-            throw err
-        }
+  let fileContent;
+  try {
+    fileContent = await readFile(filePath, { encoding: "utf-8" });
+  } catch (err) {
+    if (err instanceof Error) {
+      sendMainErrorMessage(err, win);
+      return;
+    } else {
+      throw err;
     }
+  }
 
-    return fileContent
-}
+  return fileContent;
+};
 
 /**
  * Show the open dialog and read contents of the selected markdown file.
@@ -33,31 +33,31 @@ export const openFile = async (win: BrowserWindow, filePath: string) => {
  *     currently open markdown file, or undefined if no file was opened
  */
 export const showFileOpenDialog = async (win: BrowserWindow) => {
-    const result = await dialog.showOpenDialog(win, {
-        title: 'Open Markdown',
-        properties: ['openFile'],
-        filters: [{ name: 'Markdown File', extensions: ['md'] }],
-    })
+  const result = await dialog.showOpenDialog(win, {
+    title: "Open Markdown",
+    properties: ["openFile"],
+    filters: [{ name: "Markdown File", extensions: ["md"] }],
+  });
 
-    if (result.canceled) {
-        return
-    }
+  if (result.canceled) {
+    return;
+  }
 
-    const [filePath] = result.filePaths
+  const [filePath] = result.filePaths;
 
-    const markdownSaved = await openFile(win, filePath)
+  const markdownSaved = await openFile(win, filePath);
 
-    if (typeof markdownSaved === 'string') {
-        return [filePath, markdownSaved] as const
-    }
-}
+  if (typeof markdownSaved === "string") {
+    return [filePath, markdownSaved] as const;
+  }
+};
 
 /**
  * Open the folder the currently opened markdown file is located in.
  */
 export const showInFolder = async () => {
-    const filePath = isFileOpen()
-    if (filePath) {
-        await shell.showItemInFolder(filePath)
-    }
-}
+  const filePath = isFileOpen();
+  if (filePath) {
+    await shell.showItemInFolder(filePath);
+  }
+};

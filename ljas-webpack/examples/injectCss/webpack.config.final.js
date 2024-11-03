@@ -3,13 +3,13 @@
  * with ljas-webpack.
  */
 module.exports = {
-    module: {
-        rules: [
-            {
-                test: /\.css$/,
-                exclude: /node_modules/,
-                use: ['style-loader', 'css-loader'],
-            },
-        ],
-    },
-}
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        exclude: /node_modules/,
+        use: ["style-loader", "css-loader"],
+      },
+    ],
+  },
+};

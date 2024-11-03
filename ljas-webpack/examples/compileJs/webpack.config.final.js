@@ -3,18 +3,18 @@
  * with ljas-webpack.
  */
 module.exports = {
-    module: {
-        rules: [
-            {
-                test: /\.js$/,
-                exclude: /node_modules/,
-                use: {
-                    loader: 'babel-loader',
-                    options: {
-                        presets: [['@babel/preset-env', { modules: false }]],
-                    },
-                },
-            },
-        ],
-    },
-}
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: [["@babel/preset-env", { modules: false }]],
+          },
+        },
+      },
+    ],
+  },
+};

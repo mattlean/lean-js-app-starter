@@ -1,61 +1,61 @@
 {
-    "name": "lean-js-app-starter",
-    "version": "1.1.0-dev",
-    "description": "Starter JavaScript/TypeScript projects for kicking off your web, Node.js, and native desktop apps",
-    "author": "Matthew Lean <matt@mattlean.com> (https://mattlean.com)",
-    "license": "MIT",
-    "scripts": {
-        "format": "npm run format:check",
-        "format:check": "prettier --check .",
-        "format:write": "prettier --write .",
-        "lint": "eslint .",
-        "lint:fix": "npm run lint -- --fix",
-        "lint-staged": "lint-staged",
-        "prepare": "node .husky/install.mjs"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/mattlean/lean-js-app-starter.git"
-    },
-    "bugs": {
-        "url": "https://github.com/mattlean/lean-js-app-starter/issues"
-    },
-    "homepage": "https://github.com/mattlean/lean-js-app-starter#readme",
-    "devDependencies": {
-        "@trivago/prettier-plugin-sort-imports": "^4.3.0",
-        "eslint": "^8.41.0",
-        "eslint-config-prettier": "^9.1.0",
-        "husky": "^9.0.11",
-        "lint-staged": "^13.2.2",
-        "prettier": "3.2.5"
-    },
-    "workspaces": [
-        "examples/asset-test",
-        "examples/counter",
-        "examples/counter-react",
-        "examples/markdown-editor",
-        "examples/notes-api",
-        "examples/starchan",
-        "examples/tic-tac-toe",
-        "starters/basic-browser",
-        "starters/basic-browser-ts",
-        "starters/basic-electron",
-        "starters/basic-electron-ts",
-        "starters/basic-node",
-        "starters/basic-node-ts",
-        "starters/express-mongo",
-        "starters/express-mongo-ts",
-        "starters/express-postgres",
-        "starters/express-postgres-ts",
-        "starters/react-browser",
-        "starters/react-browser-ts",
-        "starters/react-electron",
-        "starters/react-electron-ts",
-        "starters/react-express-mongo-ssr",
-        "starters/react-express-mongo-ssr-ts",
-        "starters/react-express-postgres-ssr",
-        "starters/react-express-postgres-ssr-ts",
-        "ljas-webpack"
-    ],
-    "private": true
+  "name": "lean-js-app-starter",
+  "version": "1.1.0-dev",
+  "description": "Starter JavaScript/TypeScript projects for kicking off your web, Node.js, and native desktop apps",
+  "author": "Matthew Lean <matt@mattlean.com> (https://mattlean.com)",
+  "license": "MIT",
+  "scripts": {
+    "format": "npm run format:check",
+    "format:check": "prettier --check .",
+    "format:write": "prettier --write .",
+    "lint": "eslint .",
+    "lint:fix": "npm run lint -- --fix",
+    "lint-staged": "lint-staged",
+    "prepare": "node .husky/install.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mattlean/lean-js-app-starter.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mattlean/lean-js-app-starter/issues"
+  },
+  "homepage": "https://github.com/mattlean/lean-js-app-starter#readme",
+  "devDependencies": {
+    "@trivago/prettier-plugin-sort-imports": "^4.3.0",
+    "eslint": "^8.41.0",
+    "eslint-config-prettier": "^9.1.0",
+    "husky": "^9.0.11",
+    "lint-staged": "^13.2.2",
+    "prettier": "3.2.5"
+  },
+  "workspaces": [
+    "examples/asset-test",
+    "examples/counter",
+    "examples/counter-react",
+    "examples/markdown-editor",
+    "examples/notes-api",
+    "examples/starchan",
+    "examples/tic-tac-toe",
+    "starters/basic-browser",
+    "starters/basic-browser-ts",
+    "starters/basic-electron",
+    "starters/basic-electron-ts",
+    "starters/basic-node",
+    "starters/basic-node-ts",
+    "starters/express-mongo",
+    "starters/express-mongo-ts",
+    "starters/express-postgres",
+    "starters/express-postgres-ts",
+    "starters/react-browser",
+    "starters/react-browser-ts",
+    "starters/react-electron",
+    "starters/react-electron-ts",
+    "starters/react-express-mongo-ssr",
+    "starters/react-express-mongo-ssr-ts",
+    "starters/react-express-postgres-ssr",
+    "starters/react-express-postgres-ssr-ts",
+    "ljas-webpack"
+  ],
+  "private": true
 }
