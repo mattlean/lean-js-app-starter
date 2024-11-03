@@ -11,18 +11,18 @@
  * @returns A promise that will resolve to the main resource response
  */
 export const loadApp = (page, { gotoOptions, serverType, url } = {}) => {
-    let u = process.env.E2E
-        ? process.env.PLAYWRIGHT_HOST_E2E
-        : process.env.PLAYWRIGHT_HOST
-    if (url) {
-        u = url
-    } else if (process.env.PLAYWRIGHT_HOST_E2E && serverType === 'e2e') {
-        u = process.env.PLAYWRIGHT_HOST_E2E
-    }
+  let u = process.env.E2E
+    ? process.env.PLAYWRIGHT_HOST_E2E
+    : process.env.PLAYWRIGHT_HOST;
+  if (url) {
+    u = url;
+  } else if (process.env.PLAYWRIGHT_HOST_E2E && serverType === "e2e") {
+    u = process.env.PLAYWRIGHT_HOST_E2E;
+  }
 
-    if (!u) {
-        throw new Error('Host was not set')
-    }
+  if (!u) {
+    throw new Error("Host was not set");
+  }
 
-    return page.goto(u, gotoOptions)
-}
+  return page.goto(u, gotoOptions);
+};

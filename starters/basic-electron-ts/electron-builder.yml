@@ -1,3 +1,3 @@
-appId: 'com.ljas.ljas-basic-electron-ts'
-files: 'build/production/**/*'
-productName: 'ljas-basic-electron-ts'
+appId: "com.ljas.ljas-basic-electron-ts"
+files: "build/production/**/*"
+productName: "ljas-basic-electron-ts"

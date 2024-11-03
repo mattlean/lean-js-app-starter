@@ -1,14 +1,14 @@
-import Enzyme, { shallow } from 'enzyme'
-import Adapter from 'enzyme-adapter-react-16'
-import React from 'react'
+import Enzyme, { shallow } from "enzyme";
+import Adapter from "enzyme-adapter-react-16";
+import React from "react";
 
-import FetchError from '../FetchError'
+import FetchError from "../FetchError";
 
-Enzyme.configure({ adapter: new Adapter() })
+Enzyme.configure({ adapter: new Adapter() });
 
-describe('FetchError', () => {
-    it('renders properly', () => {
-        const component = shallow(<FetchError />)
-        expect(component).toMatchSnapshot()
-    })
-})
+describe("FetchError", () => {
+  it("renders properly", () => {
+    const component = shallow(<FetchError />);
+    expect(component).toMatchSnapshot();
+  });
+});

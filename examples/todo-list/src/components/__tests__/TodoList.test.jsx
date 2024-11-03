@@ -1,15 +1,15 @@
-import Enzyme, { shallow } from 'enzyme'
-import Adapter from 'enzyme-adapter-react-16'
-import React from 'react'
+import Enzyme, { shallow } from "enzyme";
+import Adapter from "enzyme-adapter-react-16";
+import React from "react";
 
-import { mockDatabase } from '../../util/mockAPI'
-import TodoList from '../TodoList'
+import { mockDatabase } from "../../util/mockAPI";
+import TodoList from "../TodoList";
 
-Enzyme.configure({ adapter: new Adapter() })
+Enzyme.configure({ adapter: new Adapter() });
 
-describe('TodoList', () => {
-    it('renders properly', () => {
-        const component = shallow(<TodoList todos={mockDatabase.todos} />)
-        expect(component).toMatchSnapshot()
-    })
-})
+describe("TodoList", () => {
+  it("renders properly", () => {
+    const component = shallow(<TodoList todos={mockDatabase.todos} />);
+    expect(component).toMatchSnapshot();
+  });
+});

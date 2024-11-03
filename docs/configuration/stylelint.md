@@ -6,5 +6,5 @@ All frontend related projects have a [Stylelint config file](https://stylelint.i
 
 ## Learning Resources
 
--   [Stylelint Docs: Getting Started](https://stylelint.io/user-guide/get-started)  
-    Learn the basics of configuring Stylelint by setting up a simple Stylelint configuration from scratch.
+- [Stylelint Docs: Getting Started](https://stylelint.io/user-guide/get-started)  
+  Learn the basics of configuring Stylelint by setting up a simple Stylelint configuration from scratch.

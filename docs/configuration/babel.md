@@ -10,9 +10,9 @@ We currently use a JavaScript configuration file over other options like `.babel
 
 The following resources are from the [Babel docs](https://babeljs.io/docs):
 
--   [What is Babel?](https://babeljs.io/docs)  
-    Get a basic overview of what Babel does.
--   [Usage Guide](https://babeljs.io/docs/usage)  
-    Learn the basics of configuring Babel by setting up a simple Babel configuration from scratch.
--   [Configure Babel: JavaScript configuration files](https://babeljs.io/docs/configuration#javascript-configuration-files)  
-    Learn how to format JavaScript configuration files and how to write dynamic configuration.
+- [What is Babel?](https://babeljs.io/docs)  
+  Get a basic overview of what Babel does.
+- [Usage Guide](https://babeljs.io/docs/usage)  
+  Learn the basics of configuring Babel by setting up a simple Babel configuration from scratch.
+- [Configure Babel: JavaScript configuration files](https://babeljs.io/docs/configuration#javascript-configuration-files)  
+  Learn how to format JavaScript configuration files and how to write dynamic configuration.

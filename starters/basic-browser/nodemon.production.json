@@ -1,11 +1,11 @@
 {
-    "ignore": [
-        "src/playwright/",
-        "src/**/__mocks__",
-        "src/**/__tests__",
-        "src/**/*.spec.js",
-        "src/**/*.test.js",
-        "webpack.development.js"
-    ],
-    "watch": ["src/", "nodemon.production.json", "package.json", "webpack.*.js"]
+  "ignore": [
+    "src/playwright/",
+    "src/**/__mocks__",
+    "src/**/__tests__",
+    "src/**/*.spec.js",
+    "src/**/*.test.js",
+    "webpack.development.js"
+  ],
+  "watch": ["src/", "nodemon.production.json", "package.json", "webpack.*.js"]
 }

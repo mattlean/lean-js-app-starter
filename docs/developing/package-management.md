@@ -4,13 +4,13 @@ Like most JavaScript projects, LJAS relies on [`package.json`](https://docs.npmj
 
 ## Contents
 
--   [Package Manager](#package-manager)
--   [`package.json` Basics](#packagejson-basics)
-    -   [Package Version Practices](#package-version-practices)
-    -   [Managing Dependencies](#managing-dependencies)
-    -   [Scripts](#scripts)
--   [`dependencies` vs. `devDependencies`](#dependencies-vs-devdependencies)
--   [Troubleshooting](#troubleshooting)
+- [Package Manager](#package-manager)
+- [`package.json` Basics](#packagejson-basics)
+  - [Package Version Practices](#package-version-practices)
+  - [Managing Dependencies](#managing-dependencies)
+  - [Scripts](#scripts)
+- [`dependencies` vs. `devDependencies`](#dependencies-vs-devdependencies)
+- [Troubleshooting](#troubleshooting)
 
 ## Package Manager
 
@@ -94,8 +94,8 @@ LJAS organizes all packages that are required to execute the build process and a
 
 ### Problems
 
--   [Some of my packages are having problems running.](#some-of-my-packages-are-having-problems-running)
--   [How do I figure out which packages are dependent on a specific package?](#how-do-i-figure-out-which-packages-are-dependent-on-a-specific-package)
+- [Some of my packages are having problems running.](#some-of-my-packages-are-having-problems-running)
+- [How do I figure out which packages are dependent on a specific package?](#how-do-i-figure-out-which-packages-are-dependent-on-a-specific-package)
 
 ---
 

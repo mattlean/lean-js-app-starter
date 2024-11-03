@@ -14,7 +14,7 @@ Note that the [`noEmit` option](https://typescriptlang.org/tsconfig/#noEmit) is 
 
 ## Learning Resources
 
--   [Download TypeScript](https://typescriptlang.org/download)  
-    Learn how to download, install, and use the TypeScript compiler.
--   [Project Configuration: What is a tsconfig.json](https://typescriptlang.org/docs/handbook/tsconfig-json.html)  
-    Learn what `tsconfig.json` does and how to extend a base configuration.
+- [Download TypeScript](https://typescriptlang.org/download)  
+  Learn how to download, install, and use the TypeScript compiler.
+- [Project Configuration: What is a tsconfig.json](https://typescriptlang.org/docs/handbook/tsconfig-json.html)  
+  Learn what `tsconfig.json` does and how to extend a base configuration.

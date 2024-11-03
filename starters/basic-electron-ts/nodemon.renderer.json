@@ -1,9 +1,9 @@
 {
-    "watch": [
-        "webpack/renderer.*.js",
-        "nodemon.renderer.json",
-        "package.json",
-        "tsconfig.json",
-        "tsconfig.build.renderer.json"
-    ]
+  "watch": [
+    "webpack/renderer.*.js",
+    "nodemon.renderer.json",
+    "package.json",
+    "tsconfig.json",
+    "tsconfig.build.renderer.json"
+  ]
 }

@@ -13,18 +13,18 @@ LJAS supports [CSS](https://w3.org/Style/CSS/Overview.en.html) for all frontend-
 
 ## Contents
 
--   [Getting Started](#getting-started)
--   [Linting](#linting)
--   [Formatting](#formatting)
--   [Examples](#examples)
--   [Adding Support for Sass](#adding-support-for-sass)
+- [Getting Started](#getting-started)
+- [Linting](#linting)
+- [Formatting](#formatting)
+- [Examples](#examples)
+- [Adding Support for Sass](#adding-support-for-sass)
 
 ## Getting Started
 
 You can create a `.css` anywhere in the `src/` directory and import it in any ECMAScript file. So for example you could create `src/index.css` and then import it in `src/index.js` like so:
 
 ```javascript
-import './index.css'
+import "./index.css";
 ```
 
 Then webpack will handle how the CSS gets loaded in the bundle during the build process.
@@ -71,10 +71,10 @@ To learn how to configure Prettier, read the [Prettier configuration document](.
 
 ## Examples
 
--   [\*chan](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0-dev/examples/starchan): Express server that server-side renders a React frontend
--   [Asset Test](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0-dev/examples/asset-test): Test for LJAS's asset loading capabilities
--   [Markdown Editor](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0-dev/examples/markdown-editor): Markdown editor desktop app
--   [Tic-Tac-Toe](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0-dev/examples/tic-tac-toe): A tic-tac-toe game
+- [\*chan](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0-dev/examples/starchan): Express server that server-side renders a React frontend
+- [Asset Test](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0-dev/examples/asset-test): Test for LJAS's asset loading capabilities
+- [Markdown Editor](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0-dev/examples/markdown-editor): Markdown editor desktop app
+- [Tic-Tac-Toe](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0-dev/examples/tic-tac-toe): A tic-tac-toe game
 
 ## Adding Support for Sass
 

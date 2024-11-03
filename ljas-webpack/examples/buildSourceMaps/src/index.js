@@ -1,9 +1,9 @@
 function helloElement() {
-    const element = document.createElement('div')
+  const element = document.createElement("div");
 
-    element.innerHTML = 'Hello webpack'
+  element.innerHTML = "Hello webpack";
 
-    return element
+  return element;
 }
 
-document.body.appendChild(helloElement())
+document.body.appendChild(helloElement());

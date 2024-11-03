@@ -1,3 +1,3 @@
-import { setupColorMode } from './colorMode'
+import { setupColorMode } from "./colorMode";
 
-setupColorMode()
+setupColorMode();

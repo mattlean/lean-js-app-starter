@@ -1,9 +1,9 @@
 {
-    "editor.formatOnSave": true,
-    "editorquickSuggestions": {
-        "strings": "on"
-    },
-    "files.associations": {
-        "*.css": "tailwindcss"
-    }
+  "editor.formatOnSave": true,
+  "editorquickSuggestions": {
+    "strings": "on"
+  },
+  "files.associations": {
+    "*.css": "tailwindcss"
+  }
 }

@@ -1,4 +1,4 @@
-import { validate as uuidValidate, version as uuidVersion } from 'uuid'
+import { validate as uuidValidate, version as uuidVersion } from "uuid";
 
 /**
  * Check whether the passed value is a version 4 UUID.
@@ -6,5 +6,5 @@ import { validate as uuidValidate, version as uuidVersion } from 'uuid'
  * @returns True if value is a version 4 UUID, else false.
  */
 export const isUuidv4 = (value: string) => {
-    return uuidValidate(value) && uuidVersion(value) === 4
-}
+  return uuidValidate(value) && uuidVersion(value) === 4;
+};

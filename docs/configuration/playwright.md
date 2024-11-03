@@ -8,5 +8,5 @@ It mostly uses default settings except that it sets the [`testDir` property](htt
 
 ## Learning Resources
 
--   [Playwright Docs: Getting Started - Installation](https://playwright.dev/docs/intro)  
-    Learn the basics of Playwright configuration by installing Playwright.
+- [Playwright Docs: Getting Started - Installation](https://playwright.dev/docs/intro)  
+  Learn the basics of Playwright configuration by installing Playwright.

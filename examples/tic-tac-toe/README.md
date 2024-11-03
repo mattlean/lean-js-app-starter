@@ -15,22 +15,22 @@ _Note this uses [Render](https://render.com)'s free service so if the project ha
 
 This project builds on top of the [**React + Browser** starter](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0-dev/starters/react-browser-ts).
 
--   [JavaScript](https://tc39.es/ecma262): Just plain, vanilla JavaScript
--   [React](https://react.dev): Library for user interfaces
--   [CSS](https://w3.org/Style/CSS/Overview.en.html): The standard language for styling
--   [Embedded JavaScript (EJS)](https://ejs.co): Templating language used to generate the build's `index.html` document
--   [Jest](https://jestjs.io): Testing framework used mainly for unit testing
--   [React Testing Library](https://testing-library.com/docs/react-testing-library/intro): Unit testing library specialized for React components
--   [Mock Service Worker (MSW)](https://mswjs.io): API mocking library used to mock network requests
--   [Playwright](https://playwright.dev): End-to-end (E2E) testing
--   [webpack](https://webpack.js.org): Bundler used to create builds
--   [Babel](https://babeljs.io): Compiler used with webpack to output cross-browser compatible code
--   [ESLint](https://eslint.org): Linter used to identify problems in JavaScript
--   [Stylelint](https://stylelint.io): Linter used to identify problems in CSS
--   [Prettier](https://prettier.io): Formatter used to enforce code style
--   [Husky](https://typicode.github.io/husky) + [lint-staged](https://github.com/okonet/lint-staged): Pre-commit hooks to check for lint and formatting errors before Git commits are made
--   [Docker](https://docker.com): Used for optional containerized development & testing environments
--   [npm](https://npmjs.com): Package manager
+- [JavaScript](https://tc39.es/ecma262): Just plain, vanilla JavaScript
+- [React](https://react.dev): Library for user interfaces
+- [CSS](https://w3.org/Style/CSS/Overview.en.html): The standard language for styling
+- [Embedded JavaScript (EJS)](https://ejs.co): Templating language used to generate the build's `index.html` document
+- [Jest](https://jestjs.io): Testing framework used mainly for unit testing
+- [React Testing Library](https://testing-library.com/docs/react-testing-library/intro): Unit testing library specialized for React components
+- [Mock Service Worker (MSW)](https://mswjs.io): API mocking library used to mock network requests
+- [Playwright](https://playwright.dev): End-to-end (E2E) testing
+- [webpack](https://webpack.js.org): Bundler used to create builds
+- [Babel](https://babeljs.io): Compiler used with webpack to output cross-browser compatible code
+- [ESLint](https://eslint.org): Linter used to identify problems in JavaScript
+- [Stylelint](https://stylelint.io): Linter used to identify problems in CSS
+- [Prettier](https://prettier.io): Formatter used to enforce code style
+- [Husky](https://typicode.github.io/husky) + [lint-staged](https://github.com/okonet/lint-staged): Pre-commit hooks to check for lint and formatting errors before Git commits are made
+- [Docker](https://docker.com): Used for optional containerized development & testing environments
+- [npm](https://npmjs.com): Package manager
 
 ## Run This on Your Machine
 

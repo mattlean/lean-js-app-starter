@@ -1,34 +1,34 @@
 // @flow
-import React from 'react'
-import { connect } from 'react-redux'
+import React from "react";
+import { connect } from "react-redux";
 
-import { addTodo } from '../actions'
-import type { Dispatch } from '../types'
+import { addTodo } from "../actions";
+import type { Dispatch } from "../types";
 
 let AddTodo = ({ dispatch }: { dispatch: Dispatch }) => {
-    let input
+  let input;
 
-    return (
-        <>
-            <input
-                ref={(node) => {
-                    input = node
-                }}
-            />
-            <button
-                onClick={() => {
-                    if (input) {
-                        dispatch(addTodo(input.value))
-                        input.value = ''
-                    }
-                }}
-            >
-                Add Todo
-            </button>
-        </>
-    )
-}
+  return (
+    <>
+      <input
+        ref={(node) => {
+          input = node;
+        }}
+      />
+      <button
+        onClick={() => {
+          if (input) {
+            dispatch(addTodo(input.value));
+            input.value = "";
+          }
+        }}
+      >
+        Add Todo
+      </button>
+    </>
+  );
+};
 
-AddTodo = connect()(AddTodo)
+AddTodo = connect()(AddTodo);
 
-export default AddTodo
+export default AddTodo;

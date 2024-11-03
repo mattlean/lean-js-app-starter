@@ -3,5 +3,5 @@
  * This should only be available in non-production modes.
  */
 export default function Fail() {
-    throw new Error()
+  throw new Error();
 }

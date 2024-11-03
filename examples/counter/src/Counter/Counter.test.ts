@@ -1,166 +1,162 @@
-import { screen } from '@testing-library/dom'
-import userEvent from '@testing-library/user-event'
+import { screen } from "@testing-library/dom";
+import userEvent from "@testing-library/user-event";
 
-import Counter from '.'
-import { clearRootEl, setupRootEl } from '../jestUtil'
+import Counter from ".";
+import { clearRootEl, setupRootEl } from "../jestUtil";
 
-describe('Counter element', () => {
-    beforeAll(() => setupRootEl())
+describe("Counter element", () => {
+  beforeAll(() => setupRootEl());
 
-    afterEach(() => clearRootEl())
+  afterEach(() => clearRootEl());
 
-    /**
-     * Create the counter element and mount it to the root element.
-     * @returns
-     */
-    function setupTest() {
-        const rootEl = document.getElementById('root')
+  /**
+   * Create the counter element and mount it to the root element.
+   * @returns
+   */
+  function setupTest() {
+    const rootEl = document.getElementById("root");
 
-        if (!rootEl) {
-            throw new Error('HTML element with an ID of "root" was not found.')
-        }
-
-        const c = new Counter()
-        const counterElement = c.createElement()
-        rootEl.appendChild(counterElement)
-
-        return counterElement
+    if (!rootEl) {
+      throw new Error('HTML element with an ID of "root" was not found.');
     }
 
-    it('matches snapshot', () => {
-        expect(setupTest()).toMatchSnapshot()
-    })
+    const c = new Counter();
+    const counterElement = c.createElement();
+    rootEl.appendChild(counterElement);
 
-    it('increments count when + button is clicked', async () => {
-        expect.assertions(4)
+    return counterElement;
+  }
 
-        const user = userEvent.setup()
+  it("matches snapshot", () => {
+    expect(setupTest()).toMatchSnapshot();
+  });
 
-        setupTest()
+  it("increments count when + button is clicked", async () => {
+    expect.assertions(4);
 
-        // Expect counter to start at 0
-        expect(screen.queryByText(0)).toBeInTheDocument()
-        expect(screen.queryByText(1)).not.toBeInTheDocument()
+    const user = userEvent.setup();
 
-        // Click the + button once
-        await user.click(
-            screen.getByRole('button', { name: /increment count/i }),
-        )
+    setupTest();
 
-        // Expect counter to have been incremented to 1
-        expect(screen.queryByText(1)).toBeInTheDocument()
-        expect(screen.queryByText(0)).not.toBeInTheDocument()
-    })
+    // Expect counter to start at 0
+    expect(screen.queryByText(0)).toBeInTheDocument();
+    expect(screen.queryByText(1)).not.toBeInTheDocument();
 
-    it('decrements count when - button is clicked', async () => {
-        expect.assertions(4)
+    // Click the + button once
+    await user.click(screen.getByRole("button", { name: /increment count/i }));
 
-        const user = userEvent.setup()
+    // Expect counter to have been incremented to 1
+    expect(screen.queryByText(1)).toBeInTheDocument();
+    expect(screen.queryByText(0)).not.toBeInTheDocument();
+  });
 
-        setupTest()
+  it("decrements count when - button is clicked", async () => {
+    expect.assertions(4);
 
-        // Expect counter to start at 0
-        expect(screen.queryByText(0)).toBeInTheDocument()
-        expect(screen.queryByText(-1)).not.toBeInTheDocument()
+    const user = userEvent.setup();
 
-        // Click the - button once
-        await user.click(
-            screen.getByRole('button', { name: /decrement count/i }),
-        )
+    setupTest();
 
-        // Expect counter to have been decremented to -1
-        expect(screen.queryByText(-1)).toBeInTheDocument()
-        expect(screen.queryByText(0)).not.toBeInTheDocument()
-    })
+    // Expect counter to start at 0
+    expect(screen.queryByText(0)).toBeInTheDocument();
+    expect(screen.queryByText(-1)).not.toBeInTheDocument();
 
-    it('changes count to force count value when force button is clicked', async () => {
-        expect.assertions(4)
+    // Click the - button once
+    await user.click(screen.getByRole("button", { name: /decrement count/i }));
 
-        const user = userEvent.setup()
+    // Expect counter to have been decremented to -1
+    expect(screen.queryByText(-1)).toBeInTheDocument();
+    expect(screen.queryByText(0)).not.toBeInTheDocument();
+  });
 
-        setupTest()
+  it("changes count to force count value when force button is clicked", async () => {
+    expect.assertions(4);
 
-        // Expect counter to start at 0
-        expect(screen.queryByText(0)).toBeInTheDocument()
-        expect(screen.queryByText(5)).not.toBeInTheDocument()
+    const user = userEvent.setup();
 
-        await user.type(screen.getByRole('spinbutton'), '5')
-        await user.click(screen.getByRole('button', { name: /force!/i }))
+    setupTest();
 
-        // Expect counter to have been forced to 5
-        expect(screen.queryByText(5)).toBeInTheDocument()
-        expect(screen.queryByText(0)).not.toBeInTheDocument()
-    })
+    // Expect counter to start at 0
+    expect(screen.queryByText(0)).toBeInTheDocument();
+    expect(screen.queryByText(5)).not.toBeInTheDocument();
 
-    it('disables force button when force count input is empty', async () => {
-        expect.assertions(4)
+    await user.type(screen.getByRole("spinbutton"), "5");
+    await user.click(screen.getByRole("button", { name: /force!/i }));
 
-        const user = userEvent.setup()
+    // Expect counter to have been forced to 5
+    expect(screen.queryByText(5)).toBeInTheDocument();
+    expect(screen.queryByText(0)).not.toBeInTheDocument();
+  });
 
-        setupTest()
+  it("disables force button when force count input is empty", async () => {
+    expect.assertions(4);
 
-        // Expect force input to start empty
-        const inputForceCount = screen.getByRole('spinbutton')
-        expect(inputForceCount).toHaveValue(null)
+    const user = userEvent.setup();
 
-        // Expect force button to start disabled
-        const btnForceCount = screen.getByRole('button', { name: /force!/i })
-        expect(btnForceCount).toBeDisabled()
+    setupTest();
 
-        await user.type(inputForceCount, '5')
+    // Expect force input to start empty
+    const inputForceCount = screen.getByRole("spinbutton");
+    expect(inputForceCount).toHaveValue(null);
 
-        // Expect force button to become enabled
-        expect(btnForceCount).toBeEnabled()
+    // Expect force button to start disabled
+    const btnForceCount = screen.getByRole("button", { name: /force!/i });
+    expect(btnForceCount).toBeDisabled();
 
-        await user.clear(inputForceCount)
+    await user.type(inputForceCount, "5");
 
-        // Expect force button to become disabled again
-        expect(btnForceCount).toBeDisabled()
-    })
+    // Expect force button to become enabled
+    expect(btnForceCount).toBeEnabled();
 
-    it('resets count when reset button is clicked', async () => {
-        expect.assertions(6)
+    await user.clear(inputForceCount);
 
-        const user = userEvent.setup()
+    // Expect force button to become disabled again
+    expect(btnForceCount).toBeDisabled();
+  });
 
-        setupTest()
+  it("resets count when reset button is clicked", async () => {
+    expect.assertions(6);
 
-        // Expect counter to start at 0
-        expect(screen.queryByText(0)).toBeInTheDocument()
-        expect(screen.queryByText(3)).not.toBeInTheDocument()
+    const user = userEvent.setup();
 
-        // Click the + button 3x
-        await user.tripleClick(
-            screen.getByRole('button', { name: /increment count/i }),
-        )
+    setupTest();
 
-        // Expect counter to have been incremented to 3
-        expect(screen.queryByText(3)).toBeInTheDocument()
-        expect(screen.queryByText(0)).not.toBeInTheDocument()
+    // Expect counter to start at 0
+    expect(screen.queryByText(0)).toBeInTheDocument();
+    expect(screen.queryByText(3)).not.toBeInTheDocument();
 
-        // Click the reset button
-        await user.click(screen.getByRole('button', { name: /reset/i }))
+    // Click the + button 3x
+    await user.tripleClick(
+      screen.getByRole("button", { name: /increment count/i }),
+    );
 
-        // Expect counter to return to 0
-        expect(screen.queryByText(0)).toBeInTheDocument()
-        expect(screen.queryByText(3)).not.toBeInTheDocument()
-    })
-})
+    // Expect counter to have been incremented to 3
+    expect(screen.queryByText(3)).toBeInTheDocument();
+    expect(screen.queryByText(0)).not.toBeInTheDocument();
 
-describe('Counter class', () => {
-    it('defaults counter to 0', () => {
-        const c = new Counter()
-        expect(c.getCount()).toBe(0)
-    })
+    // Click the reset button
+    await user.click(screen.getByRole("button", { name: /reset/i }));
 
-    it('defaults counter to 2 when 2 is passed into the constructor', () => {
-        const c = new Counter(2)
-        expect(c.getCount()).toBe(2)
-    })
+    // Expect counter to return to 0
+    expect(screen.queryByText(0)).toBeInTheDocument();
+    expect(screen.queryByText(3)).not.toBeInTheDocument();
+  });
+});
 
-    it('sets the count to 1 when setCount(1) is called', () => {
-        const c = new Counter()
-        c.setCount(1)
-        expect(c.getCount()).toBe(1)
-    })
-})
+describe("Counter class", () => {
+  it("defaults counter to 0", () => {
+    const c = new Counter();
+    expect(c.getCount()).toBe(0);
+  });
+
+  it("defaults counter to 2 when 2 is passed into the constructor", () => {
+    const c = new Counter(2);
+    expect(c.getCount()).toBe(2);
+  });
+
+  it("sets the count to 1 when setCount(1) is called", () => {
+    const c = new Counter();
+    c.setCount(1);
+    expect(c.getCount()).toBe(1);
+  });
+});

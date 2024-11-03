@@ -1,77 +1,77 @@
-import compression from 'compression'
-import express from 'express'
-import path from 'path'
-import { StrictMode } from 'react'
-import { renderToString } from 'react-dom/server'
+import compression from "compression";
+import express from "express";
+import path from "path";
+import { StrictMode } from "react";
+import { renderToString } from "react-dom/server";
 
 import {
-    PATH_BACKEND_SRC,
-    PATH_BUILD_DEV,
-    PATH_FRONTEND_BUILD_DEV,
-} from '../../PATHS'
-import HelloWorld from '../frontend/HelloWorld'
+  PATH_BACKEND_SRC,
+  PATH_BUILD_DEV,
+  PATH_FRONTEND_BUILD_DEV,
+} from "../../PATHS";
+import HelloWorld from "../frontend/HelloWorld";
 
-const BUNDLED_BACK_BUILD_PATH = path.resolve(__dirname)
-const BUNDLED_FRONT_BUILD_PATH = path.resolve(__dirname, '../frontend')
+const BUNDLED_BACK_BUILD_PATH = path.resolve(__dirname);
+const BUNDLED_FRONT_BUILD_PATH = path.resolve(__dirname, "../frontend");
 const BUNDLED_GENERATED_VIEWS_BUILD_PATH = path.resolve(
-    __dirname,
-    '../generated-views',
-)
+  __dirname,
+  "../generated-views",
+);
 
-const app = express()
+const app = express();
 
 // Setup EJS templates
-app.set('view engine', 'ejs')
+app.set("view engine", "ejs");
 
 // Use the generated views from the frontend build
-const viewDirs = []
-if (process.env.NODE_ENV === 'test') {
-    viewDirs.push(
-        `${PATH_BUILD_DEV}/generated-views`,
-        `${PATH_BACKEND_SRC}/views`,
-    )
+const viewDirs = [];
+if (process.env.NODE_ENV === "test") {
+  viewDirs.push(
+    `${PATH_BUILD_DEV}/generated-views`,
+    `${PATH_BACKEND_SRC}/views`,
+  );
 } else {
-    viewDirs.push(
-        BUNDLED_GENERATED_VIEWS_BUILD_PATH,
-        `${BUNDLED_BACK_BUILD_PATH}/views`,
-    )
+  viewDirs.push(
+    BUNDLED_GENERATED_VIEWS_BUILD_PATH,
+    `${BUNDLED_BACK_BUILD_PATH}/views`,
+  );
 }
-app.set('views', viewDirs)
+app.set("views", viewDirs);
 
-if (process.env.NODE_ENV === 'production') {
-    app.use(compression()) // Middleware that compresses most response bodies
+if (process.env.NODE_ENV === "production") {
+  app.use(compression()); // Middleware that compresses most response bodies
 }
 
 /**
  * GET /
  * Server-side render the React app.
  */
-app.get('/', (req, res, next) => {
-    let serverSideRendering
+app.get("/", (req, res, next) => {
+  let serverSideRendering;
 
-    try {
-        serverSideRendering = renderToString(
-            <StrictMode>
-                <HelloWorld />
-            </StrictMode>,
-        )
-    } catch (err) {
-        return next(err)
-    }
+  try {
+    serverSideRendering = renderToString(
+      <StrictMode>
+        <HelloWorld />
+      </StrictMode>,
+    );
+  } catch (err) {
+    return next(err);
+  }
 
-    return res.render('index', {
-        title: 'ljas-react-express-postgres-ssr-ts',
-        content: serverSideRendering,
-    })
-})
+  return res.render("index", {
+    title: "ljas-react-express-postgres-ssr-ts",
+    content: serverSideRendering,
+  });
+});
 
 // Serve the frontend build directory as static files
-let frontBuildPath
-if (process.env.NODE_ENV === 'test') {
-    frontBuildPath = PATH_FRONTEND_BUILD_DEV
+let frontBuildPath;
+if (process.env.NODE_ENV === "test") {
+  frontBuildPath = PATH_FRONTEND_BUILD_DEV;
 } else {
-    frontBuildPath = BUNDLED_FRONT_BUILD_PATH
+  frontBuildPath = BUNDLED_FRONT_BUILD_PATH;
 }
-app.use('/', express.static(frontBuildPath))
+app.use("/", express.static(frontBuildPath));
 
-export default app
+export default app;

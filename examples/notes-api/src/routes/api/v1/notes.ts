@@ -1,51 +1,50 @@
-import { NextFunction, Request, Response, Router } from 'express'
-import { body } from 'express-validator'
+import { NextFunction, Request, Response, Router } from "express";
+import { body } from "express-validator";
 
 import {
-    isPrismaKnownRequestError,
-    validateErrorMiddleware,
-} from '../../../common/error'
-import { ServerError } from '../../../common/error'
-import { prisma } from '../../../common/prisma'
-import { isUuidv4 } from '../../../common/util'
+  isPrismaKnownRequestError,
+  validateErrorMiddleware,
+} from "../../../common/error";
+import { ServerError } from "../../../common/error";
+import { prisma } from "../../../common/prisma";
+import { isUuidv4 } from "../../../common/util";
 
-const router = Router()
+const router = Router();
 
 const noteValidationChain = () => [
-    body('title').isString().optional({ values: 'null' }),
-    body('content').isString().optional({ values: 'null' }),
-]
+  body("title").isString().optional({ values: "null" }),
+  body("content").isString().optional({ values: "null" }),
+];
 
 /**
  * Express middleware that generates response data from a note or an array of notes.
  */
 const genNoteDataMiddleware = (
-    req: Request,
-    res: Response,
-    next: NextFunction,
+  req: Request,
+  res: Response,
+  next: NextFunction,
 ) => {
-    if (Array.isArray(res.locals.notes)) {
-        res.locals.data = res.locals.notes.map((n) => {
-            const d = { ...n }
-            delete d.id
-            delete d.ownerUuid
-            return d
-        })
-    } else if (typeof res.locals.note === 'object') {
-        res.locals.data = { ...res.locals.note }
-        delete res.locals.data.id
-        delete res.locals.data.ownerUuid
-    } else {
-        console.warn(
-            `"res.locals.notes" and "res.locals.note" were both invalid data types. "res.locals.notes" had a type of "${typeof res
-                .locals
-                .notes}" and "res.locals.note" had a type of "${typeof res
-                .locals.note}".`,
-        )
-    }
+  if (Array.isArray(res.locals.notes)) {
+    res.locals.data = res.locals.notes.map((n) => {
+      const d = { ...n };
+      delete d.id;
+      delete d.ownerUuid;
+      return d;
+    });
+  } else if (typeof res.locals.note === "object") {
+    res.locals.data = { ...res.locals.note };
+    delete res.locals.data.id;
+    delete res.locals.data.ownerUuid;
+  } else {
+    console.warn(
+      `"res.locals.notes" and "res.locals.note" were both invalid data types. "res.locals.notes" had a type of "${typeof res
+        .locals.notes}" and "res.locals.note" had a type of "${typeof res.locals
+        .note}".`,
+    );
+  }
 
-    return next()
-}
+  return next();
+};
 
 /**
  * @openapi
@@ -95,31 +94,31 @@ const genNoteDataMiddleware = (
  *       - Notes
  */
 router.post(
-    '/',
-    noteValidationChain(),
-    validateErrorMiddleware,
-    async (req: Request, res: Response, next: NextFunction) => {
-        if (!req.user) {
-            return next(new ServerError(401))
-        }
+  "/",
+  noteValidationChain(),
+  validateErrorMiddleware,
+  async (req: Request, res: Response, next: NextFunction) => {
+    if (!req.user) {
+      return next(new ServerError(401));
+    }
 
-        try {
-            res.locals.note = await prisma.note.create({
-                data: {
-                    title: req.body.title,
-                    content: req.body.content,
-                    ownerUuid: req.user.uuid,
-                },
-            })
-        } catch (err) {
-            return next(err)
-        }
-        return next()
-    },
-    genNoteDataMiddleware,
-    (req: Request, res: Response) =>
-        res.status(201).json({ data: res.locals.data }),
-)
+    try {
+      res.locals.note = await prisma.note.create({
+        data: {
+          title: req.body.title,
+          content: req.body.content,
+          ownerUuid: req.user.uuid,
+        },
+      });
+    } catch (err) {
+      return next(err);
+    }
+    return next();
+  },
+  genNoteDataMiddleware,
+  (req: Request, res: Response) =>
+    res.status(201).json({ data: res.locals.data }),
+);
 
 /**
  * @openapi
@@ -159,27 +158,27 @@ router.post(
  *       - Notes
  */
 router.get(
-    '/',
-    async (req, res, next) => {
-        if (!req.user) {
-            return next(new ServerError(401))
-        }
+  "/",
+  async (req, res, next) => {
+    if (!req.user) {
+      return next(new ServerError(401));
+    }
 
-        try {
-            res.locals.notes = await prisma.note.findMany({
-                where: {
-                    ownerUuid: req.user.uuid,
-                },
-            })
-        } catch (err) {
-            return next(err)
-        }
+    try {
+      res.locals.notes = await prisma.note.findMany({
+        where: {
+          ownerUuid: req.user.uuid,
+        },
+      });
+    } catch (err) {
+      return next(err);
+    }
 
-        return next()
-    },
-    genNoteDataMiddleware,
-    (req, res) => res.json({ data: res.locals.data }),
-)
+    return next();
+  },
+  genNoteDataMiddleware,
+  (req, res) => res.json({ data: res.locals.data }),
+);
 
 /**
  * @openapi
@@ -235,48 +234,48 @@ router.get(
  *       - Notes
  */
 router.get(
-    '/:noteUuid',
-    async (req, res, next) => {
-        if (!req.user) {
-            return next(new ServerError(401))
-        }
+  "/:noteUuid",
+  async (req, res, next) => {
+    if (!req.user) {
+      return next(new ServerError(401));
+    }
 
-        if (!isUuidv4(req.params.noteUuid)) {
-            return next(
-                new ServerError(
-                    404,
-                    undefined,
-                    'Route parameter is not a valid version 4 UUID.',
-                ),
-            )
-        }
+    if (!isUuidv4(req.params.noteUuid)) {
+      return next(
+        new ServerError(
+          404,
+          undefined,
+          "Route parameter is not a valid version 4 UUID.",
+        ),
+      );
+    }
 
-        try {
-            res.locals.note = await prisma.note.findUniqueOrThrow({
-                where: {
-                    uuid_ownerUuid: {
-                        uuid: req.params.noteUuid,
-                        ownerUuid: req.user.uuid,
-                    },
-                },
-            })
-        } catch (err) {
-            if (
-                err instanceof Error &&
-                isPrismaKnownRequestError(err) &&
-                err.code === 'P2025' &&
-                err.message.match(/no note found/i)
-            ) {
-                return next(new ServerError(404, undefined, err))
-            }
-            return next(err)
-        }
+    try {
+      res.locals.note = await prisma.note.findUniqueOrThrow({
+        where: {
+          uuid_ownerUuid: {
+            uuid: req.params.noteUuid,
+            ownerUuid: req.user.uuid,
+          },
+        },
+      });
+    } catch (err) {
+      if (
+        err instanceof Error &&
+        isPrismaKnownRequestError(err) &&
+        err.code === "P2025" &&
+        err.message.match(/no note found/i)
+      ) {
+        return next(new ServerError(404, undefined, err));
+      }
+      return next(err);
+    }
 
-        return next()
-    },
-    genNoteDataMiddleware,
-    (req, res) => res.json({ data: res.locals.data }),
-)
+    return next();
+  },
+  genNoteDataMiddleware,
+  (req, res) => res.json({ data: res.locals.data }),
+);
 
 /**
  * @openapi
@@ -344,55 +343,55 @@ router.get(
  *       - Notes
  */
 router.put(
-    '/:noteUuid',
-    noteValidationChain(),
-    validateErrorMiddleware,
-    async (req: Request, res: Response, next: NextFunction) => {
-        if (!req.user) {
-            return next(new ServerError(401))
-        }
+  "/:noteUuid",
+  noteValidationChain(),
+  validateErrorMiddleware,
+  async (req: Request, res: Response, next: NextFunction) => {
+    if (!req.user) {
+      return next(new ServerError(401));
+    }
 
-        if (!isUuidv4(req.params.noteUuid)) {
-            return next(
-                new ServerError(
-                    404,
-                    undefined,
-                    'Route parameter is not a valid version 4 UUID.',
-                ),
-            )
-        }
+    if (!isUuidv4(req.params.noteUuid)) {
+      return next(
+        new ServerError(
+          404,
+          undefined,
+          "Route parameter is not a valid version 4 UUID.",
+        ),
+      );
+    }
 
-        try {
-            res.locals.note = await prisma.note.update({
-                where: {
-                    uuid_ownerUuid: {
-                        uuid: req.params.noteUuid,
-                        ownerUuid: req.user.uuid,
-                    },
-                },
-                data: {
-                    title: req.body.title ?? null,
-                    content: req.body.content ?? null,
-                },
-            })
-        } catch (err) {
-            if (
-                err instanceof Error &&
-                isPrismaKnownRequestError(err) &&
-                err.code === 'P2025' &&
-                typeof err.meta?.cause === 'string' &&
-                err.meta?.cause?.match(/record to update not found/i)
-            ) {
-                return next(new ServerError(404, undefined, err))
-            }
-            return next(err)
-        }
+    try {
+      res.locals.note = await prisma.note.update({
+        where: {
+          uuid_ownerUuid: {
+            uuid: req.params.noteUuid,
+            ownerUuid: req.user.uuid,
+          },
+        },
+        data: {
+          title: req.body.title ?? null,
+          content: req.body.content ?? null,
+        },
+      });
+    } catch (err) {
+      if (
+        err instanceof Error &&
+        isPrismaKnownRequestError(err) &&
+        err.code === "P2025" &&
+        typeof err.meta?.cause === "string" &&
+        err.meta?.cause?.match(/record to update not found/i)
+      ) {
+        return next(new ServerError(404, undefined, err));
+      }
+      return next(err);
+    }
 
-        return next()
-    },
-    genNoteDataMiddleware,
-    (req: Request, res: Response) => res.json({ data: res.locals.data }),
-)
+    return next();
+  },
+  genNoteDataMiddleware,
+  (req: Request, res: Response) => res.json({ data: res.locals.data }),
+);
 
 /**
  * @openapi
@@ -457,55 +456,55 @@ router.put(
  *       - Notes
  */
 router.patch(
-    '/:noteUuid',
-    noteValidationChain(),
-    validateErrorMiddleware,
-    async (req: Request, res: Response, next: NextFunction) => {
-        if (!req.user) {
-            return next(new ServerError(401))
-        }
+  "/:noteUuid",
+  noteValidationChain(),
+  validateErrorMiddleware,
+  async (req: Request, res: Response, next: NextFunction) => {
+    if (!req.user) {
+      return next(new ServerError(401));
+    }
 
-        if (!isUuidv4(req.params.noteUuid)) {
-            return next(
-                new ServerError(
-                    404,
-                    undefined,
-                    'Route parameter is not a valid version 4 UUID.',
-                ),
-            )
-        }
+    if (!isUuidv4(req.params.noteUuid)) {
+      return next(
+        new ServerError(
+          404,
+          undefined,
+          "Route parameter is not a valid version 4 UUID.",
+        ),
+      );
+    }
 
-        try {
-            res.locals.note = await prisma.note.update({
-                where: {
-                    uuid_ownerUuid: {
-                        uuid: req.params.noteUuid,
-                        ownerUuid: req.user.uuid,
-                    },
-                },
-                data: {
-                    title: req.body.title,
-                    content: req.body.content,
-                },
-            })
-        } catch (err) {
-            if (
-                err instanceof Error &&
-                isPrismaKnownRequestError(err) &&
-                err.code === 'P2025' &&
-                typeof err.meta?.cause === 'string' &&
-                err.meta?.cause?.match(/record to update not found/i)
-            ) {
-                return next(new ServerError(404, undefined, err))
-            }
-            return next(err)
-        }
+    try {
+      res.locals.note = await prisma.note.update({
+        where: {
+          uuid_ownerUuid: {
+            uuid: req.params.noteUuid,
+            ownerUuid: req.user.uuid,
+          },
+        },
+        data: {
+          title: req.body.title,
+          content: req.body.content,
+        },
+      });
+    } catch (err) {
+      if (
+        err instanceof Error &&
+        isPrismaKnownRequestError(err) &&
+        err.code === "P2025" &&
+        typeof err.meta?.cause === "string" &&
+        err.meta?.cause?.match(/record to update not found/i)
+      ) {
+        return next(new ServerError(404, undefined, err));
+      }
+      return next(err);
+    }
 
-        return next()
-    },
-    genNoteDataMiddleware,
-    (req: Request, res: Response) => res.json({ data: res.locals.data }),
-)
+    return next();
+  },
+  genNoteDataMiddleware,
+  (req: Request, res: Response) => res.json({ data: res.locals.data }),
+);
 
 /**
  * @openapi
@@ -561,48 +560,48 @@ router.patch(
  *       - Notes
  */
 router.delete(
-    '/:noteUuid',
-    async (req, res, next) => {
-        if (!req.user) {
-            return next(new ServerError(401))
-        }
+  "/:noteUuid",
+  async (req, res, next) => {
+    if (!req.user) {
+      return next(new ServerError(401));
+    }
 
-        if (!isUuidv4(req.params.noteUuid)) {
-            return next(
-                new ServerError(
-                    404,
-                    undefined,
-                    'Route parameter is not a valid version 4 UUID.',
-                ),
-            )
-        }
+    if (!isUuidv4(req.params.noteUuid)) {
+      return next(
+        new ServerError(
+          404,
+          undefined,
+          "Route parameter is not a valid version 4 UUID.",
+        ),
+      );
+    }
 
-        try {
-            res.locals.note = await prisma.note.delete({
-                where: {
-                    uuid_ownerUuid: {
-                        uuid: req.params.noteUuid,
-                        ownerUuid: req.user.uuid,
-                    },
-                },
-            })
-        } catch (err) {
-            if (
-                err instanceof Error &&
-                isPrismaKnownRequestError(err) &&
-                err.code === 'P2025' &&
-                typeof err.meta?.cause === 'string' &&
-                err.meta?.cause?.match(/record to delete does not exist/i)
-            ) {
-                return next(new ServerError(404, undefined, err))
-            }
-            return next(err)
-        }
+    try {
+      res.locals.note = await prisma.note.delete({
+        where: {
+          uuid_ownerUuid: {
+            uuid: req.params.noteUuid,
+            ownerUuid: req.user.uuid,
+          },
+        },
+      });
+    } catch (err) {
+      if (
+        err instanceof Error &&
+        isPrismaKnownRequestError(err) &&
+        err.code === "P2025" &&
+        typeof err.meta?.cause === "string" &&
+        err.meta?.cause?.match(/record to delete does not exist/i)
+      ) {
+        return next(new ServerError(404, undefined, err));
+      }
+      return next(err);
+    }
 
-        return next()
-    },
-    genNoteDataMiddleware,
-    (req, res) => res.json({ data: res.locals.data }),
-)
+    return next();
+  },
+  genNoteDataMiddleware,
+  (req, res) => res.json({ data: res.locals.data }),
+);
 
-export { router as noteHandler }
+export { router as noteHandler };

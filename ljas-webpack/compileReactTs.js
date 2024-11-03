@@ -1,6 +1,6 @@
-const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
+const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 
-const { compileReact } = require('.')
+const { compileReact } = require(".");
 
 /**
  * Compile React TypeScript code with babel-loader and type check with Fork TS Checker Webpack Plugin:
@@ -37,45 +37,42 @@ const { compileReact } = require('.')
  * @returns {Object} A webpack configuration object that sets up babel-loader and Fork TS Checker Webpack Plugin.
  */
 const compileReactTs = (options, mode) =>
-    compileReact(
-        {
-            rule: {
-                use: {
-                    loader: 'babel-loader',
-                    options: options?.babelLoader ?? {
-                        cacheDirectory: options?.babelLoaderCache,
-                        plugins: options?.babelLoaderPlugins,
-                        presets: options?.babelLoaderPresets ?? [
-                            [
-                                '@babel/preset-env',
-                                options?.babelPresetEnv ?? { modules: false },
-                            ],
-                            [
-                                '@babel/preset-react',
-                                options?.babelPresetReact ?? {
-                                    development: mode === 'development',
-                                    runtime: 'automatic',
-                                },
-                            ],
-                            [
-                                '@babel/preset-typescript',
-                                options?.babelPresetTypeScript,
-                            ],
-                        ],
-                    },
+  compileReact(
+    {
+      rule: {
+        use: {
+          loader: "babel-loader",
+          options: options?.babelLoader ?? {
+            cacheDirectory: options?.babelLoaderCache,
+            plugins: options?.babelLoaderPlugins,
+            presets: options?.babelLoaderPresets ?? [
+              [
+                "@babel/preset-env",
+                options?.babelPresetEnv ?? { modules: false },
+              ],
+              [
+                "@babel/preset-react",
+                options?.babelPresetReact ?? {
+                  development: mode === "development",
+                  runtime: "automatic",
                 },
-                ...options?.rule,
-                test: options?.rule?.test ?? /\.[jt]sx?$/,
-            },
-            plugins: options?.plugins ?? [
-                new ForkTsCheckerWebpackPlugin(options?.forkTsChecker),
+              ],
+              ["@babel/preset-typescript", options?.babelPresetTypeScript],
             ],
-            resolve: {
-                extensions: ['.js', '.jsx', '.json', '.ts', '.tsx', '.wasm'],
-                ...options?.resolve,
-            },
+          },
         },
-        mode,
-    )
+        ...options?.rule,
+        test: options?.rule?.test ?? /\.[jt]sx?$/,
+      },
+      plugins: options?.plugins ?? [
+        new ForkTsCheckerWebpackPlugin(options?.forkTsChecker),
+      ],
+      resolve: {
+        extensions: [".js", ".jsx", ".json", ".ts", ".tsx", ".wasm"],
+        ...options?.resolve,
+      },
+    },
+    mode,
+  );
 
-module.exports = compileReactTs
+module.exports = compileReactTs;

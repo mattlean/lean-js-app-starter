@@ -2,12 +2,12 @@
 
 ## Contents
 
--   [Node.js Applications & Electron Main Processes with Visual Studio Code](#nodejs-applications--electron-main-processes-with-visual-studio-code)
--   [Frontend Applications with Google Chrome](#frontend-applications-with-google-chrome)
--   [Jest Tests with Visual Studio Code](#jest-tests-with-visual-studio-code)
--   [Playwright Tests with Visual Studio Code Extension](#playwright-tests-with-visual-studio-code-extension)
--   [Playwright Tests with Playwright Inspector](#playwright-tests-with-playwright-inspector)
--   [webpack build process with Google Chrome](#webpack-build-process-with-google-chrome)
+- [Node.js Applications & Electron Main Processes with Visual Studio Code](#nodejs-applications--electron-main-processes-with-visual-studio-code)
+- [Frontend Applications with Google Chrome](#frontend-applications-with-google-chrome)
+- [Jest Tests with Visual Studio Code](#jest-tests-with-visual-studio-code)
+- [Playwright Tests with Visual Studio Code Extension](#playwright-tests-with-visual-studio-code-extension)
+- [Playwright Tests with Playwright Inspector](#playwright-tests-with-playwright-inspector)
+- [webpack build process with Google Chrome](#webpack-build-process-with-google-chrome)
 
 ---
 

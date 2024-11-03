@@ -17,29 +17,29 @@ _Note this uses [Render](https://render.com)'s free service so if the project ha
 
 This project extends the [**React + Browser** starter](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0-dev/starters/react-browser) with the following:
 
--   [React (v16.7)](https://legacy.reactjs.org): Library for user interfaces, uses pre-hook era code
--   [Flow](https://flow.org): Static type checker, alternative to TypeScript
--   [Redux](https://redux.js.org): React state management with "classic" Redux
--   [Redux Thunk](https://github.com/reduxjs/redux-thunk): Redux middleware used to execute network requests and store responses in Redux store
--   [Enzyme](https://enzymejs.github.io/enzyme): React testing utility, alternative to React Testing Library
--   [Sublime Text](https://sublimetext.com): Code editor, alternative to Visual Studio Code
--   [Yarn](https://yarnpkg.com): Package manager, alternative to npm
+- [React (v16.7)](https://legacy.reactjs.org): Library for user interfaces, uses pre-hook era code
+- [Flow](https://flow.org): Static type checker, alternative to TypeScript
+- [Redux](https://redux.js.org): React state management with "classic" Redux
+- [Redux Thunk](https://github.com/reduxjs/redux-thunk): Redux middleware used to execute network requests and store responses in Redux store
+- [Enzyme](https://enzymejs.github.io/enzyme): React testing utility, alternative to React Testing Library
+- [Sublime Text](https://sublimetext.com): Code editor, alternative to Visual Studio Code
+- [Yarn](https://yarnpkg.com): Package manager, alternative to npm
 
 The remaining technologies are inherited from the starter:
 
--   [JavaScript](https://tc39.es/ecma262): Just plain, vanilla JavaScript
--   [CSS](https://w3.org/Style/CSS/Overview.en.html): The standard language for styling
--   [Embedded JavaScript (EJS)](https://ejs.co): Templating language used to generate the build's `index.html` document
--   [Jest](https://jestjs.io): Testing framework used mainly for unit testing
--   [Mock Service Worker (MSW)](https://mswjs.io): API mocking library used to mock network requests
--   [webpack](https://webpack.js.org): Bundler used to create builds
--   [Babel](https://babeljs.io): Compiler used with webpack to output cross-browser compatible code
--   [ESLint](https://eslint.org): Linter used to identify problems in JavaScript
--   [Stylelint](https://stylelint.io): Linter used to identify problems in CSS
--   [Prettier](https://prettier.io): Formatter used to enforce code style
--   [Husky](https://typicode.github.io/husky) + [lint-staged](https://github.com/okonet/lint-staged): Pre-commit hooks to check for lint and formatting errors before Git commits are made
--   [Docker](https://docker.com): Used for an optional containerized development environment
--   [npm](https://npmjs.com): Package manager
+- [JavaScript](https://tc39.es/ecma262): Just plain, vanilla JavaScript
+- [CSS](https://w3.org/Style/CSS/Overview.en.html): The standard language for styling
+- [Embedded JavaScript (EJS)](https://ejs.co): Templating language used to generate the build's `index.html` document
+- [Jest](https://jestjs.io): Testing framework used mainly for unit testing
+- [Mock Service Worker (MSW)](https://mswjs.io): API mocking library used to mock network requests
+- [webpack](https://webpack.js.org): Bundler used to create builds
+- [Babel](https://babeljs.io): Compiler used with webpack to output cross-browser compatible code
+- [ESLint](https://eslint.org): Linter used to identify problems in JavaScript
+- [Stylelint](https://stylelint.io): Linter used to identify problems in CSS
+- [Prettier](https://prettier.io): Formatter used to enforce code style
+- [Husky](https://typicode.github.io/husky) + [lint-staged](https://github.com/okonet/lint-staged): Pre-commit hooks to check for lint and formatting errors before Git commits are made
+- [Docker](https://docker.com): Used for an optional containerized development environment
+- [npm](https://npmjs.com): Package manager
 
 ## Run This on Your Machine
 

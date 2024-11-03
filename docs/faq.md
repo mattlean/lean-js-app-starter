@@ -4,12 +4,12 @@ This document goes over frequently asked questions that don't really fit anywher
 
 ## Questions
 
--   [How do I remove all mentions of Lean JS App Starter from my project?](#how-do-i-remove-all-mentions-of-lean-js-app-starter-from-my-project)
--   [How do you change Node.js versions?](#how-do-you-change-nodejs-versions)
--   [Why is JSX only allowed in files with `.jsx` extensions?](#why-is-jsx-only-allowed-in-files-with-jsx-extensions)
--   [Why use Babel over the official TypeScript compiler?](#why-use-babel-over-the-official-typescript-compiler)
--   [Why are ECMAScript modules used for Node.js projects over CommonJS modules?](#why-are-ecmascript-modules-used-for-nodejs-projects-over-commonjs-modules)
--   [Why do you still use webpack for Node.js projects?](#why-do-you-still-use-webpack-for-nodejs-projects)
+- [How do I remove all mentions of Lean JS App Starter from my project?](#how-do-i-remove-all-mentions-of-lean-js-app-starter-from-my-project)
+- [How do you change Node.js versions?](#how-do-you-change-nodejs-versions)
+- [Why is JSX only allowed in files with `.jsx` extensions?](#why-is-jsx-only-allowed-in-files-with-jsx-extensions)
+- [Why use Babel over the official TypeScript compiler?](#why-use-babel-over-the-official-typescript-compiler)
+- [Why are ECMAScript modules used for Node.js projects over CommonJS modules?](#why-are-ecmascript-modules-used-for-nodejs-projects-over-commonjs-modules)
+- [Why do you still use webpack for Node.js projects?](#why-do-you-still-use-webpack-for-nodejs-projects)
 
 ---
 

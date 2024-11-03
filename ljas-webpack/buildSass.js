@@ -1,7 +1,7 @@
-const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-const buildCss = require('./buildCss')
+const buildCss = require("./buildCss");
 
 /**
  * Enable .sass and .scss file imports and build the CSS with css-loader, mini-css-extract-plugin, and sass-loader.
@@ -35,29 +35,29 @@ const buildCss = require('./buildCss')
  * @returns {Object} webpack configuration object that sets up css-loader, css-minimizer-webpack-plugin, mini-css-extract-plugin, and sass-loader.
  */
 const buildSass = (options) =>
-    buildCss({
-        rule: {
-            use: [
-                {
-                    loader: MiniCssExtractPlugin.loader,
-                    options: options?.miniCssExtractPluginLoader,
-                },
-                { loader: 'css-loader', options: options?.cssLoader },
-                { loader: 'sass-loader', options: options?.sassLoader },
-            ],
-            ...options?.rule,
-            test: options?.rule?.test ?? /\.s[ac]ss$/i,
+  buildCss({
+    rule: {
+      use: [
+        {
+          loader: MiniCssExtractPlugin.loader,
+          options: options?.miniCssExtractPluginLoader,
         },
-        plugins: options?.plugins ?? [
-            new MiniCssExtractPlugin({ ...options?.miniCssExtractPlugin }),
-        ],
-        optimization: {
-            minimizer: options?.minimizer ?? [
-                // For webpack@5 you can use the `...` syntax to extend existing minimizers (i.e. `terser-webpack-plugin`)
-                `...`,
-                new CssMinimizerPlugin(options?.cssMinimizer),
-            ],
-        },
-    })
+        { loader: "css-loader", options: options?.cssLoader },
+        { loader: "sass-loader", options: options?.sassLoader },
+      ],
+      ...options?.rule,
+      test: options?.rule?.test ?? /\.s[ac]ss$/i,
+    },
+    plugins: options?.plugins ?? [
+      new MiniCssExtractPlugin({ ...options?.miniCssExtractPlugin }),
+    ],
+    optimization: {
+      minimizer: options?.minimizer ?? [
+        // For webpack@5 you can use the `...` syntax to extend existing minimizers (i.e. `terser-webpack-plugin`)
+        `...`,
+        new CssMinimizerPlugin(options?.cssMinimizer),
+      ],
+    },
+  });
 
-module.exports = buildSass
+module.exports = buildSass;

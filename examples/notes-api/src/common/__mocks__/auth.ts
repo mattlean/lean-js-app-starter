@@ -1,4 +1,4 @@
 export const { createJWT, hashPassword, verifyPassword, verifyToken } =
-    jest.requireActual('../auth')
+  jest.requireActual("../auth");
 
-export const protectMiddleware = jest.fn()
+export const protectMiddleware = jest.fn();

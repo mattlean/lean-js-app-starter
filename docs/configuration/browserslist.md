@@ -16,7 +16,7 @@ For server-side rendering (SSR) supporting projects, the config file has one env
 
 ## Learning Resources
 
--   [Browserslist `README.md`](https://github.com/browserslist/browserslist)  
-    Get a basic overview of what Browserslist is and how to configure it.
--   [`browsersl.ist`](https://browsersl.ist)  
-    A useful tool to test the validity and targets for Browserslist queries.
+- [Browserslist `README.md`](https://github.com/browserslist/browserslist)  
+  Get a basic overview of what Browserslist is and how to configure it.
+- [`browsersl.ist`](https://browsersl.ist)  
+  A useful tool to test the validity and targets for Browserslist queries.

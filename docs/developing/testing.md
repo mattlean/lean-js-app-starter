@@ -2,19 +2,19 @@
 
 ## Contents
 
--   [Jest](#jest)
-    -   [Creating Jest Test Files](#creating-jest-test-files)
-    -   [Running Jest Tests](#running-jest-tests)
-    -   [Coverage with Jest](#coverage-with-jest)
-    -   [Debugging Jest Tests](#debugging-jest-tests)
-    -   [Configuring Jest](#configuring-jest)
-    -   [Jest Learning Resources](#jest-learning-resources)
--   [Playwright](#playwright)
-    -   [Creating Playwright Test Files](#creating-playwright-test-files)
-    -   [Running Playwright Tests](#running-playwright-tests)
-    -   [Debugging Playwright Tests](#debugging-playwright-tests)
-    -   [Configuring Playwright](#configuring-playwright)
-    -   [Playwright Learning Resources](#playwright-learning-resources)
+- [Jest](#jest)
+  - [Creating Jest Test Files](#creating-jest-test-files)
+  - [Running Jest Tests](#running-jest-tests)
+  - [Coverage with Jest](#coverage-with-jest)
+  - [Debugging Jest Tests](#debugging-jest-tests)
+  - [Configuring Jest](#configuring-jest)
+  - [Jest Learning Resources](#jest-learning-resources)
+- [Playwright](#playwright)
+  - [Creating Playwright Test Files](#creating-playwright-test-files)
+  - [Running Playwright Tests](#running-playwright-tests)
+  - [Debugging Playwright Tests](#debugging-playwright-tests)
+  - [Configuring Playwright](#configuring-playwright)
+  - [Playwright Learning Resources](#playwright-learning-resources)
 
 ## Jest
 
@@ -26,17 +26,17 @@ LJAS uses the default Jest behavior which only has two patterns that you will ne
 
 The first one is that it will match all JavaScript and TypeScript files with `.spec` or `.test` before its file extension. For example, the following file names would be matched:
 
--   `foo.test.js`
--   `bar.spec.jsx`
--   `baz.test.ts`
--   `xyzzy.spec.tsx`
+- `foo.test.js`
+- `bar.spec.jsx`
+- `baz.test.ts`
+- `xyzzy.spec.tsx`
 
 The second one is that it will match all JavaScript and TypeScript files within a `__tests__` directory, even if its file name does not have `.spec` or `.test` before its file extension. For example, the following files would be matched:
 
--   `__tests__/foo.js`
--   `bar/__tests__/baz.jsx`
--   `__tests__/xyzzy.test.ts`
--   `foo/bar/__tests__/plugh.spec.tsx`
+- `__tests__/foo.js`
+- `bar/__tests__/baz.jsx`
+- `__tests__/xyzzy.test.ts`
+- `foo/bar/__tests__/plugh.spec.tsx`
 
 ### Running Jest Tests
 
@@ -84,12 +84,12 @@ Read the [Jest configuration document](../configuration/jest.md) to learn how it
 
 ### Jest Learning Resources
 
--   [Jest Docs: Getting Started](https://jestjs.io/docs/getting-started)  
-    Learn the basics of writing and running Jest tests.
--   [React Testing Library (RTL) Tutorial](https://robinwieruch.de/react-testing-library)  
-     Learn [RTL](https://testing-library.com/docs/react-testing-library/intro) in a tutorial written by Robin Wieruch. This tutorial is recommended by the [Testing Library docs](https://testing-library.com/docs/react-testing-library/intro#tutorials).
--   [Mock Service Worker (MSW) Docs: Getting started](https://mswjs.io/docs/getting-started)  
-     Learn how to use MSW by following their getting started document.
+- [Jest Docs: Getting Started](https://jestjs.io/docs/getting-started)  
+  Learn the basics of writing and running Jest tests.
+- [React Testing Library (RTL) Tutorial](https://robinwieruch.de/react-testing-library)  
+   Learn [RTL](https://testing-library.com/docs/react-testing-library/intro) in a tutorial written by Robin Wieruch. This tutorial is recommended by the [Testing Library docs](https://testing-library.com/docs/react-testing-library/intro#tutorials).
+- [Mock Service Worker (MSW) Docs: Getting started](https://mswjs.io/docs/getting-started)  
+   Learn how to use MSW by following their getting started document.
 
 ## Playwright
 
@@ -108,10 +108,10 @@ Read the [Jest configuration document](../configuration/jest.md) to learn how it
 
 Playwright will look for all JavaScript and TypeScript files including `.spec` or `.test` before its file extension in the `src/playwright/` directory. For example, the following files would be matched:
 
--   `src/playwright/foo.test.js`
--   `src/playwright/bar.spec.ts`
--   `src/playwright/baz/xyzzy.spec.jsx`
--   `src/playwright/foo/bar/plugh.spec.tsx`
+- `src/playwright/foo.test.js`
+- `src/playwright/bar.spec.ts`
+- `src/playwright/baz/xyzzy.spec.jsx`
+- `src/playwright/foo/bar/plugh.spec.tsx`
 
 ### Running Playwright Tests
 
@@ -159,5 +159,5 @@ Read the [Playwright configuration document](../configuration/playwright.md) to 
 
 ### Playwright Learning Resources
 
--   [Playwright Docs: Getting Started](https://playwright.dev/docs/intro)  
-    Learn how to use and write tests with Playwright by following their getting started document.
+- [Playwright Docs: Getting Started](https://playwright.dev/docs/intro)  
+  Learn how to use and write tests with Playwright by following their getting started document.
