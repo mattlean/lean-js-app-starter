@@ -13,7 +13,7 @@ _Note this uses [Render](https://render.com)'s free service so if the project ha
 
 ## Technology Overview
 
-This project builds on top of the [**React + Browser** starter](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0-dev/starters/react-browser-ts).
+This project builds on top of the [**React + Browser** starter](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0/starters/react-browser-ts).
 
 - [JavaScript](https://tc39.es/ecma262): Just plain, vanilla JavaScript
 - [React](https://react.dev): Library for user interfaces
@@ -34,7 +34,7 @@ This project builds on top of the [**React + Browser** starter](https://github.c
 
 ## Run This on Your Machine
 
-Please refer to the ["Getting Started" section in the **React + Browser** starter's `README.md`](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0-dev/starters/react-browser#getting-started).
+Please refer to the ["Getting Started" section in the **React + Browser** starter's `README.md`](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0/starters/react-browser#getting-started).
 
 ## Project Background
 
@@ -42,4 +42,4 @@ This project was built following [the tic-tac-toe tutorial in the React docs](ht
 
 ## LJAS Documentation
 
-[📖 Learn more about **Lean JS App Starter** by reading its docs.](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0-dev/docs/README.md)
+[📖 Learn more about **Lean JS App Starter** by reading its docs.](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0/docs/README.md)

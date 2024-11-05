@@ -1,4 +1,14 @@
-## 1.0.0
+## 1.1.0
+
+- Create new React app example: `tic-tac-toe`
+- Create `CONTRIBUTING.md`
+- Update code formatting to use Prettier defaults
+- Update `react` package to ^18.3.1
+- Update `express` package to ^4.21.1
+- Update `prisma` & `@prisma/client` packages to ^4.16.2
+- Make minor fixes and adjustments to configurations and docs
+
+## 1.0.0 (Nov. 4, 2024)
 
 - Introduce Docker dev environments for all projects except for Electron-based projects
 - Introduce PostgreSQL support with new Express + PostgreSQL starters: `express-postgres` & `react-express-postgres-ssr`

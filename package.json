@@ -1,6 +1,6 @@
 {
   "name": "lean-js-app-starter",
-  "version": "1.1.0-dev",
+  "version": "1.1.0",
   "description": "Starter JavaScript/TypeScript projects for kicking off your web, Node.js, and native desktop apps",
   "author": "Matthew Lean <matt@mattlean.com> (https://mattlean.com)",
   "license": "MIT",

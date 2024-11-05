@@ -2,7 +2,7 @@
 
 This is a [**Lean JS App Starter (LJAS)**](https://github.com/mattlean/lean-js-app-starter) starter project for a [React](https://react.dev) application written in [TypeScript](https://typescriptlang.org) targeted for macOS, Windows, and Linux.
 
-_If you don't need TypeScript, then use the [React + Electron starter](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0-dev/starters/react-electron) instead._
+_If you don't need TypeScript, then use the [React + Electron starter](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0/starters/react-electron) instead._
 
 ## Technology Overview
 
@@ -25,7 +25,7 @@ _If you don't need TypeScript, then use the [React + Electron starter](https://g
 
 ## Getting Started
 
-First, [**download the starter project's ZIP file**](https://github.com/mattlean/lean-js-app-starter/releases/download/v1.1.0-dev/ljas-react-electron-ts_1-0-0.zip) and extract it.
+First, [**download the starter project's ZIP file**](https://github.com/mattlean/lean-js-app-starter/releases/download/v1.1.0/ljas-react-electron-ts_1-0-0.zip) and extract it.
 
 Then, choose one of the following methods:
 
@@ -94,7 +94,7 @@ Copy the `.env.example` file and paste it as the `.env` file. This can be done w
 cp .env.example .env
 ```
 
-[_Note: Learn more about the `.env` file in the LJAS docs._](https://github.com/mattlean/lean-js-app-starter/blob/v1.1.0-dev/docs/configuration/dotenv-file.md)
+[_Note: Learn more about the `.env` file in the LJAS docs._](https://github.com/mattlean/lean-js-app-starter/blob/v1.1.0/docs/configuration/dotenv-file.md)
 
 #### Step 3. Create a development build
 
@@ -104,7 +104,7 @@ Create a dev build with webpack using this `package.json` script:
 npm run build
 ```
 
-[_Note: Learn more about the build process in the LJAS docs._](https://github.com/mattlean/lean-js-app-starter/blob/v1.1.0-dev/docs/building.md)
+[_Note: Learn more about the build process in the LJAS docs._](https://github.com/mattlean/lean-js-app-starter/blob/v1.1.0/docs/building.md)
 
 #### (Optional) Setup Playwright
 
@@ -124,8 +124,8 @@ npm run dev
 
 When you're done working, you can press Ctrl+C in the terminal running the dev build to shut it down.
 
-[_Note: Learn more about the `dev` `package.json` script in the LJAS docs._](https://github.com/mattlean/lean-js-app-starter/blob/v1.1.0-dev/docs/developing/javascript-typescript.md#auto--hot-reloading)
+[_Note: Learn more about the `dev` `package.json` script in the LJAS docs._](https://github.com/mattlean/lean-js-app-starter/blob/v1.1.0/docs/developing/javascript-typescript.md#auto--hot-reloading)
 
 ## Learn More With the Documentation
 
-[📖 Read the docs to learn more about what else you can do with **Lean JS App Starter**.](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0-dev/docs/README.md)
+[📖 Read the docs to learn more about what else you can do with **Lean JS App Starter**.](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0/docs/README.md)
