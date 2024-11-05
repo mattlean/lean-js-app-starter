@@ -2,24 +2,24 @@
 
 This is a [**Lean JS App Starter (LJAS)**](https://github.com/mattlean/lean-js-app-starter) starter project for a [Node.js](https://nodejs.org) application written in vanilla JavaScript.
 
-_If you need TypeScript, then use the [Basic Node.js starter (TypeScript)](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0/starters/basic-node-ts) instead._
+_If you need TypeScript, then use the [Basic Node.js starter (TypeScript)](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0/starters/basic-node-ts) instead._
 
 ## Technology Overview
 
--   [JavaScript](https://tc39.es/ecma262): Just plain, vanilla JavaScript
--   [Node.js](https://nodejs.org): Runtime environment that allows JavaScript to execute outside of web browsers
--   [Jest](https://jestjs.io): Testing framework
--   [webpack](https://webpack.js.org): Bundler used to create builds
--   [Babel](https://babeljs.io): Compiler used with webpack to output Node.js-compatible code
--   [ESLint](https://eslint.org): Linter used to identify problems in JavaScript
--   [Prettier](https://prettier.io): Formatter used to enforce code style
--   [Husky](https://typicode.github.io/husky) + [lint-staged](https://github.com/okonet/lint-staged): Pre-commit hooks to check for lint and formatting errors before Git commits are made
--   [Docker](https://docker.com): Used for an optional containerized development environment
--   [npm](https://npmjs.com): Package manager
+- [JavaScript](https://tc39.es/ecma262): Just plain, vanilla JavaScript
+- [Node.js](https://nodejs.org): Runtime environment that allows JavaScript to execute outside of web browsers
+- [Jest](https://jestjs.io): Testing framework
+- [webpack](https://webpack.js.org): Bundler used to create builds
+- [Babel](https://babeljs.io): Compiler used with webpack to output Node.js-compatible code
+- [ESLint](https://eslint.org): Linter used to identify problems in JavaScript
+- [Prettier](https://prettier.io): Formatter used to enforce code style
+- [Husky](https://typicode.github.io/husky) + [lint-staged](https://github.com/okonet/lint-staged): Pre-commit hooks to check for lint and formatting errors before Git commits are made
+- [Docker](https://docker.com): Used for an optional containerized development environment
+- [npm](https://npmjs.com): Package manager
 
 ## Getting Started
 
-First, [**download the starter project's ZIP file**](https://github.com/mattlean/lean-js-app-starter/releases/download/v1.0.0/ljas-basic-node_1-0-0.zip) and extract it.
+First, [**download the starter project's ZIP file**](https://github.com/mattlean/lean-js-app-starter/releases/download/v1.1.0/ljas-basic-node_1-0-0.zip) and extract it.
 
 Then, choose one of the following methods:
 
@@ -65,7 +65,7 @@ When you're done working, you can press Ctrl+C in the terminal running the dev b
 
 This method is the simplest as it only only requires Docker. You won't even need to worry about Node.js since the dev environment will use a separate Node.js process inside the container.
 
-For more information on the Docker dev environment, please read the ["Docker Environments" document in the LJAS docs](https://github.com/mattlean/lean-js-app-starter/blob/v1.0.0/docs/developing/docker-environments.md).
+For more information on the Docker dev environment, please read the ["Docker Environments" document in the LJAS docs](https://github.com/mattlean/lean-js-app-starter/blob/v1.1.0/docs/developing/docker-environments.md).
 
 #### Prerequisites
 
@@ -113,7 +113,7 @@ Create a dev build with webpack using this `package.json` script:
 npm run build
 ```
 
-[_Note: Learn more about the build process in the LJAS docs._](https://github.com/mattlean/lean-js-app-starter/blob/v1.0.0/docs/building.md)
+[_Note: Learn more about the build process in the LJAS docs._](https://github.com/mattlean/lean-js-app-starter/blob/v1.1.0/docs/building.md)
 
 #### (Optional) Create a `.env` file
 
@@ -123,7 +123,7 @@ If your project relies on a `.env` file, then copy the `.env.example` file and p
 cp .env.example .env
 ```
 
-[_Note: Learn more about the `.env` file in the LJAS docs._](https://github.com/mattlean/lean-js-app-starter/blob/v1.0.0/docs/configuration/dotenv-file.md)
+[_Note: Learn more about the `.env` file in the LJAS docs._](https://github.com/mattlean/lean-js-app-starter/blob/v1.1.0/docs/configuration/dotenv-file.md)
 
 #### Step 3. Start the development build
 
@@ -135,8 +135,8 @@ npm run dev
 
 When you're done working, you can press Ctrl+C in the terminal running the dev build to shut it down.
 
-[_Note: Learn more about the `dev` `package.json` script in the LJAS docs._](https://github.com/mattlean/lean-js-app-starter/blob/v1.0.0/docs/developing/javascript-typescript.md#auto--hot-reloading)
+[_Note: Learn more about the `dev` `package.json` script in the LJAS docs._](https://github.com/mattlean/lean-js-app-starter/blob/v1.1.0/docs/developing/javascript-typescript.md#auto--hot-reloading)
 
 ## Learn More With the Documentation
 
-[📖 Read the docs to learn more about what else you can do with **Lean JS App Starter**.](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0/docs)
+[📖 Read the docs to learn more about what else you can do with **Lean JS App Starter**.](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0/docs/README.md)

@@ -6,30 +6,30 @@ This document is only relevant to the following Prisma-related starter projects:
 
 | Starter Project Name                  | JavaScript                                                                                                     | TypeScript                                                                                                        |
 | ------------------------------------- | -------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| Express + MongoDB                     | [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0/starters/express-mongo)              | [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0/starters/express-mongo-ts)              |
-| Express + PostgreSQL                  | [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0/starters/express-postgres)           | [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0/starters/express-postgres-ts)           |
-| React + Express + MongoDB with SSR    | [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0/starters/react-express-mongo-ssr)    | [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0/starters/react-express-mongo-ssr-ts)    |
-| React + Express + PostgreSQL with SSR | [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0/starters/react-express-postgres-ssr) | [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0/starters/react-express-postgres-ssr-ts) |
+| Express + MongoDB                     | [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0/starters/express-mongo)              | [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0/starters/express-mongo-ts)              |
+| Express + PostgreSQL                  | [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0/starters/express-postgres)           | [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0/starters/express-postgres-ts)           |
+| React + Express + MongoDB with SSR    | [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0/starters/react-express-mongo-ssr)    | [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0/starters/react-express-mongo-ssr-ts)    |
+| React + Express + PostgreSQL with SSR | [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0/starters/react-express-postgres-ssr) | [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0/starters/react-express-postgres-ssr-ts) |
 
 ## Contents
 
--   [Why Prisma?](#why-prisma)
--   [Learning Resources](#learning-resources)
--   [Prisma CLI](#prisma-cli)
--   [Prisma Studio](#prisma-studio)
--   [Connecting to Docker Databases Through a Terminal](#connecting-to-docker-databases-through-a-terminal)
--   [Connecting a Natively Running App with a Containerized Database](#connecting-a-natively-running-app-with-a-containerized-database)
--   [Prisma Configuration](#prisma-configuration)
--   [Examples](#examples)
--   [Frequently Asked Questions](#frequently-asked-questions-faq)
+- [Why Prisma?](#why-prisma)
+- [Learning Resources](#learning-resources)
+- [Prisma CLI](#prisma-cli)
+- [Prisma Studio](#prisma-studio)
+- [Connecting to Docker Databases Through a Terminal](#connecting-to-docker-databases-through-a-terminal)
+- [Connecting a Natively Running App with a Containerized Database](#connecting-a-natively-running-app-with-a-containerized-database)
+- [Prisma Configuration](#prisma-configuration)
+- [Examples](#examples)
+- [Frequently Asked Questions](#frequently-asked-questions-faq)
 
 ## Why Prisma?
 
 We decided to use Prisma primarily because of the following:
 
--   [Object-relational mapping (ORM) with support for both PostgreSQL & MongoDB](https://prisma.io/docs/orm/overview/databases)
--   [Generated types for TypeScript derived from models](https://prisma.io/docs/orm/prisma-client/type-safety#what-are-generated-types)
--   [Support for migrations](https://prisma.io/docs/orm/prisma-migrate/understanding-prisma-migrate/overview)
+- [Object-relational mapping (ORM) with support for both PostgreSQL & MongoDB](https://prisma.io/docs/orm/overview/databases)
+- [Generated types for TypeScript derived from models](https://prisma.io/docs/orm/prisma-client/type-safety#what-are-generated-types)
+- [Support for migrations](https://prisma.io/docs/orm/prisma-migrate/understanding-prisma-migrate/overview)
 
 The Prisma docs go over other good reasons to use their ORM in their [introduction docs](https://prisma.io/docs/orm/overview/introduction/why-prisma).
 
@@ -37,19 +37,19 @@ The Prisma docs go over other good reasons to use their ORM in their [introducti
 
 ### PostgreSQL
 
--   [PostgreSQL tutorial](https://postgresql.org/docs/current/tutorial.html)  
-    Learn the basic concepts for PostgreSQL and how to execute queries with `psql`.
--   [Prisma's relational databases guide](https://prisma.io/docs/getting-started/setup-prisma/start-from-scratch/relational-databases-typescript-postgresql)  
-    Learn the basics for Prisma with PostgreSQL.
+- [PostgreSQL tutorial](https://postgresql.org/docs/current/tutorial.html)  
+  Learn the basic concepts for PostgreSQL and how to execute queries with `psql`.
+- [Prisma's relational databases guide](https://prisma.io/docs/getting-started/setup-prisma/start-from-scratch/relational-databases-typescript-postgresql)  
+  Learn the basics for Prisma with PostgreSQL.
 
 ### MongoDB
 
--   [MongoDB manual introduction](https://mongodb.com/docs/manual/introduction)  
-     Learn the basic concepts for MongoDB.
--   [`mongo` shell docs](https://mongodb.com/docs/v4.4/mongo)  
-    Learn how to execute queries with the `mongo` shell.
--   [Prisma's MongoDB guide](https://prisma.io/docs/getting-started/setup-prisma/start-from-scratch/mongodb-typescript-mongodb)  
-    Learn the basics for Prisma with MongoDB.
+- [MongoDB manual introduction](https://mongodb.com/docs/manual/introduction)  
+   Learn the basic concepts for MongoDB.
+- [`mongo` shell docs](https://mongodb.com/docs/v4.4/mongo)  
+  Learn how to execute queries with the `mongo` shell.
+- [Prisma's MongoDB guide](https://prisma.io/docs/getting-started/setup-prisma/start-from-scratch/mongodb-typescript-mongodb)  
+  Learn the basics for Prisma with MongoDB.
 
 ## Prisma CLI
 
@@ -103,15 +103,15 @@ Read the [Prisma configuration document](../../configuration/prisma.md) to learn
 
 ## Examples
 
--   [Notes API](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0/examples/notes-api): REST API that uses PostgreSQL & Prisma
--   [\*chan](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0/examples/starchan): Server-side rendered React app that uses MongoDB & Prisma
+- [Notes API](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0/examples/notes-api): REST API that uses PostgreSQL & Prisma
+- [\*chan](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0/examples/starchan): Server-side rendered React app that uses MongoDB & Prisma
 
 ## Frequently Asked Questions (FAQ)
 
 ### Questions
 
--   [How do I fix type errors encountered with Prisma?](#how-do-i-fix-type-errors-encountered-with-prisma)
--   [Why do you still use MongoDB 4 and not a newer version?](#why-do-you-still-use-mongodb-4-and-not-a-newer-version)
+- [How do I fix type errors encountered with Prisma?](#how-do-i-fix-type-errors-encountered-with-prisma)
+- [Why do you still use MongoDB 4 and not a newer version?](#why-do-you-still-use-mongodb-4-and-not-a-newer-version)
 
 ---
 

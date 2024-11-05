@@ -1,4 +1,4 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 /**
  * Build the HTML file with HTML Webpack Plugin:
@@ -9,6 +9,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
  * @param {Object} [options] Options for HTML Webpack Plugin. (https://github.com/jantimon/html-webpack-plugin#options)
  * @returns {Object} A webpack configuration object that sets up HTML Webpack Plugin.
  */
-const buildHtml = (options) => ({ plugins: [new HtmlWebpackPlugin(options)] })
+const buildHtml = (options) => ({ plugins: [new HtmlWebpackPlugin(options)] });
 
-module.exports = buildHtml
+module.exports = buildHtml;

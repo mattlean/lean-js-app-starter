@@ -1,4 +1,4 @@
-const { PurgeCSSPlugin } = require('purgecss-webpack-plugin')
+const { PurgeCSSPlugin } = require("purgecss-webpack-plugin");
 
 /**
  * Remove unused CSS with purgecss-webpack-plugin:
@@ -10,7 +10,7 @@ const { PurgeCSSPlugin } = require('purgecss-webpack-plugin')
  * @returns {Object} A webpack configuration object that sets up purgecss-webpack-plugin.
  */
 const removeUnusedCss = (options) => ({
-    plugins: [new PurgeCSSPlugin(options)],
-})
+  plugins: [new PurgeCSSPlugin(options)],
+});
 
-module.exports = removeUnusedCss
+module.exports = removeUnusedCss;

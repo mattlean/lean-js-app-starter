@@ -2,10 +2,10 @@
 
 ## Contents
 
--   [Overview](#overview)
--   [Setup](#setup)
--   [Bypassing Pre-Commit Hooks](#bypassing-pre-commit-hooks)
--   [Disabling Pre-commit Hooks for Certain Environments](#disabling-pre-commit-hooks-for-certain-environments)
+- [Overview](#overview)
+- [Setup](#setup)
+- [Bypassing Pre-Commit Hooks](#bypassing-pre-commit-hooks)
+- [Disabling Pre-commit Hooks for Certain Environments](#disabling-pre-commit-hooks-for-certain-environments)
 
 ## Overview
 

@@ -1,60 +1,60 @@
 const {
-    buildSourceMaps,
-    ignoreWatch,
-    injectCss,
-    loadFonts,
-    loadImages,
-    setupDevServer,
-} = require('ljas-webpack')
-const { merge } = require('webpack-merge')
+  buildSourceMaps,
+  ignoreWatch,
+  injectCss,
+  loadFonts,
+  loadImages,
+  setupDevServer,
+} = require("ljas-webpack");
+const { merge } = require("webpack-merge");
 
-const { PATH_BUILD_DEV, PATH_SRC } = require('./PATHS')
+const { PATH_BUILD_DEV, PATH_SRC } = require("./PATHS");
 
 if (!process.env.PORT_WEBPACK_DEV_SERVER) {
-    throw new Error('🔴 webpack-dev-server port was not set')
+  throw new Error("🔴 webpack-dev-server port was not set");
 }
 
 module.exports = merge([
-    {
-        mode: 'development',
+  {
+    mode: "development",
 
-        output: {
-            filename: '[name].js',
-            path: PATH_BUILD_DEV,
-        },
-
-        target: 'browserslist:development',
+    output: {
+      filename: "[name].js",
+      path: PATH_BUILD_DEV,
     },
 
-    buildSourceMaps('cheap-module-source-map'),
+    target: "browserslist:development",
+  },
 
-    ignoreWatch(/node_modules/),
+  buildSourceMaps("cheap-module-source-map"),
 
-    injectCss({ rule: { include: PATH_SRC } }),
+  ignoreWatch(/node_modules/),
 
-    loadFonts({
-        rule: {
-            generator: { filename: 'assets/[name][ext][query]' },
-            // Export the asset as a data URI if it's below the maxSize threshold,
-            // otherwise emit it as a separate file and export the URL
-            parser: { dataUrlCondition: { maxSize: 50000 } },
-            type: 'asset',
-        },
-    }),
+  injectCss({ rule: { include: PATH_SRC } }),
 
-    loadImages({
-        rule: {
-            generator: { filename: 'assets/[name][ext][query]' },
-            // Export the asset as a data URI if it's below the maxSize threshold,
-            // otherwise emit it as a separate file and export the URL
-            parser: { dataUrlCondition: { maxSize: 15000 } },
-            type: 'asset',
-        },
-    }),
+  loadFonts({
+    rule: {
+      generator: { filename: "assets/[name][ext][query]" },
+      // Export the asset as a data URI if it's below the maxSize threshold,
+      // otherwise emit it as a separate file and export the URL
+      parser: { dataUrlCondition: { maxSize: 50000 } },
+      type: "asset",
+    },
+  }),
 
-    setupDevServer({
-        historyApiFallback: true,
-        port: process.env.PORT_WEBPACK_DEV_SERVER,
-        watchFiles: ['src/**/*.ejs'],
-    }),
-])
+  loadImages({
+    rule: {
+      generator: { filename: "assets/[name][ext][query]" },
+      // Export the asset as a data URI if it's below the maxSize threshold,
+      // otherwise emit it as a separate file and export the URL
+      parser: { dataUrlCondition: { maxSize: 15000 } },
+      type: "asset",
+    },
+  }),
+
+  setupDevServer({
+    historyApiFallback: true,
+    port: process.env.PORT_WEBPACK_DEV_SERVER,
+    watchFiles: ["src/**/*.ejs"],
+  }),
+]);

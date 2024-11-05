@@ -2,29 +2,29 @@
 
 This is a [**Lean JS App Starter (LJAS)**](https://github.com/mattlean/lean-js-app-starter) starter project for a vanilla JavaScript application targeted for macOS, Windows, and Linux.
 
-_If you need TypeScript, then use the [Basic Electron starter (TypeScript)](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0/starters/basic-electron-ts) instead._
+_If you need TypeScript, then use the [Basic Electron starter (TypeScript)](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0/starters/basic-electron-ts) instead._
 
 ## Technology Overview
 
--   [JavaScript](https://tc39.es/ecma262): Just plain, vanilla JavaScript
--   [Electron](https://electronjs.org): Framework for building desktop apps through [Node.js](https://nodejs.org) & [Chromium](https://chromium.org)
--   [CSS](https://w3.org/Style/CSS/Overview.en.html): The standard language for styling
--   [Embedded JavaScript (EJS)](https://ejs.co): Templating language used to generate the build's `index.html` document
--   [Jest](https://jestjs.io): Testing framework
--   [DOM Testing Library](https://testing-library.com/docs/dom-testing-library/intro): Unit testing library for DOM nodes
--   [Mock Service Worker (MSW)](https://mswjs.io): API mocking library used to mock network requests
--   [Playwright](https://playwright.dev): End-to-end (E2E) testing
--   [webpack](https://webpack.js.org): Bundler used to create builds
--   [Babel](https://babeljs.io): Compiler used with webpack to output Electron-compatible code
--   [ESLint](https://eslint.org): Linter used to identify problems in JavaScript
--   [Stylelint](https://stylelint.io): Linter used to identify problems in CSS
--   [Prettier](https://prettier.io): Formatter used to enforce code style
--   [Husky](https://typicode.github.io/husky) + [lint-staged](https://github.com/okonet/lint-staged): Pre-commit hooks to check for lint and formatting errors before Git commits are made
--   [npm](https://npmjs.com): Package manager
+- [JavaScript](https://tc39.es/ecma262): Just plain, vanilla JavaScript
+- [Electron](https://electronjs.org): Framework for building desktop apps through [Node.js](https://nodejs.org) & [Chromium](https://chromium.org)
+- [CSS](https://w3.org/Style/CSS/Overview.en.html): The standard language for styling
+- [Embedded JavaScript (EJS)](https://ejs.co): Templating language used to generate the build's `index.html` document
+- [Jest](https://jestjs.io): Testing framework
+- [DOM Testing Library](https://testing-library.com/docs/dom-testing-library/intro): Unit testing library for DOM nodes
+- [Mock Service Worker (MSW)](https://mswjs.io): API mocking library used to mock network requests
+- [Playwright](https://playwright.dev): End-to-end (E2E) testing
+- [webpack](https://webpack.js.org): Bundler used to create builds
+- [Babel](https://babeljs.io): Compiler used with webpack to output Electron-compatible code
+- [ESLint](https://eslint.org): Linter used to identify problems in JavaScript
+- [Stylelint](https://stylelint.io): Linter used to identify problems in CSS
+- [Prettier](https://prettier.io): Formatter used to enforce code style
+- [Husky](https://typicode.github.io/husky) + [lint-staged](https://github.com/okonet/lint-staged): Pre-commit hooks to check for lint and formatting errors before Git commits are made
+- [npm](https://npmjs.com): Package manager
 
 ## Getting Started
 
-First, [**download the starter project's ZIP file**](https://github.com/mattlean/lean-js-app-starter/releases/download/v1.0.0/ljas-basic-electron_1-0-0.zip) and extract it.
+First, [**download the starter project's ZIP file**](https://github.com/mattlean/lean-js-app-starter/releases/download/v1.1.0/ljas-basic-electron_1-0-0.zip) and extract it.
 
 Then, choose one of the following methods:
 
@@ -93,7 +93,7 @@ Copy the `.env.example` file and paste it as the `.env` file. This can be done w
 cp .env.example .env
 ```
 
-[_Note: Learn more about the `.env` file in the LJAS docs._](https://github.com/mattlean/lean-js-app-starter/blob/v1.0.0/docs/configuration/dotenv-file.md)
+[_Note: Learn more about the `.env` file in the LJAS docs._](https://github.com/mattlean/lean-js-app-starter/blob/v1.1.0/docs/configuration/dotenv-file.md)
 
 #### Step 3. Create a development build
 
@@ -103,7 +103,7 @@ Create a dev build with webpack using this `package.json` script:
 npm run build
 ```
 
-[_Note: Learn more about the build process in the LJAS docs._](https://github.com/mattlean/lean-js-app-starter/blob/v1.0.0/docs/building.md)
+[_Note: Learn more about the build process in the LJAS docs._](https://github.com/mattlean/lean-js-app-starter/blob/v1.1.0/docs/building.md)
 
 #### (Optional) Setup Playwright
 
@@ -123,8 +123,8 @@ npm run dev
 
 When you're done working, you can press Ctrl+C in the terminal running the dev build to shut it down.
 
-[_Note: Learn more about the `dev` `package.json` script in the LJAS docs._](https://github.com/mattlean/lean-js-app-starter/blob/v1.0.0/docs/developing/javascript-typescript.md#auto--hot-reloading)
+[_Note: Learn more about the `dev` `package.json` script in the LJAS docs._](https://github.com/mattlean/lean-js-app-starter/blob/v1.1.0/docs/developing/javascript-typescript.md#auto--hot-reloading)
 
 ## Learn More With the Documentation
 
-[📖 Read the docs to learn more about what else you can do with **Lean JS App Starter**.](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0/docs)
+[📖 Read the docs to learn more about what else you can do with **Lean JS App Starter**.](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0/docs/README.md)

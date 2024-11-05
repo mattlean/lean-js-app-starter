@@ -1,3 +1,3 @@
-export const MAX_THREADS = 200
+export const MAX_THREADS = 200;
 
-export const PAGE_SIZE = 20
+export const PAGE_SIZE = 20;

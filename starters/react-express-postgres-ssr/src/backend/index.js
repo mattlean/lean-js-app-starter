@@ -1,16 +1,16 @@
-import 'dotenv/config'
+import "dotenv/config";
 
-import app from './app'
+import app from "./app";
 
 if (
-    (process.env.E2E && !process.env.PORT_EXPRESS_E2E) ||
-    !process.env.PORT_EXPRESS
+  (process.env.E2E && !process.env.PORT_EXPRESS_E2E) ||
+  !process.env.PORT_EXPRESS
 ) {
-    throw new Error('🔴 Express port was not set')
+  throw new Error("🔴 Express port was not set");
 }
 
 const PORT = Number(
-    process.env.E2E ? process.env.PORT_EXPRESS_E2E : process.env.PORT_EXPRESS,
-)
+  process.env.E2E ? process.env.PORT_EXPRESS_E2E : process.env.PORT_EXPRESS,
+);
 
-app.listen(PORT, () => console.log(`🟢 Server listening on port ${PORT}`))
+app.listen(PORT, () => console.log(`🟢 Server listening on port ${PORT}`));

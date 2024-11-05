@@ -6,10 +6,10 @@ Most webpack configurations you'll come across on the web will cram all of their
 
 Every webpack process is split into four types of files:
 
--   `*.config.js`: The entry point into the webpack process's configuration.
--   `*.development.js`: Configurations specifically for the development build.
--   `*.production.js`: Configurations specifically for the production build.
--   `*.common.js`: Configurations that are common for all builds.
+- `*.config.js`: The entry point into the webpack process's configuration.
+- `*.development.js`: Configurations specifically for the development build.
+- `*.production.js`: Configurations specifically for the production build.
+- `*.common.js`: Configurations that are common for all builds.
 
 If there is only one webpack process in the project's build process, you will find the webpack config files in the project's root directory prefixed with `webpack`, e.g. `webpack.config.js`, `webpack.production.js`, etc.
 
@@ -19,11 +19,11 @@ LJAS also uses webpack configuration parts from our own package called [`ljas-we
 
 ## Learning Resources
 
--   [webpack's "Getting Started" guide](https://webpack.js.org/guides/getting-started)  
-    Learn the basics of webpack from the "Getting Started" guide in the webpack docs.
--   [webpack's "Production" guide](https://webpack.js.org/guides/production)  
-     Learn about webpack's best practices and write a configuration for production.
--   [SurviveJS webpack book](https://survivejs.com/books/webpack)  
-    A free book on webpack that starts from the basics and goes all the way to advanced techniques that will teach you how to get the most out of webpack. It was written by one of the founders of the webpack core team, [Juho Vepsäläinen](https://survivejs.com/about-me).
-    -   ["Composing Configuration" chapter](https://survivejs.com/webpack/developing/composing-configuration)  
-        This particular chapter is the most important one in the book because this is where LJAS's webpack configuration composition strategy comes from. It explains what webpack config parts are and how to compose webpack configs with `webpack-merge`.
+- [webpack's "Getting Started" guide](https://webpack.js.org/guides/getting-started)  
+  Learn the basics of webpack from the "Getting Started" guide in the webpack docs.
+- [webpack's "Production" guide](https://webpack.js.org/guides/production)  
+   Learn about webpack's best practices and write a configuration for production.
+- [SurviveJS webpack book](https://survivejs.com/books/webpack)  
+  A free book on webpack that starts from the basics and goes all the way to advanced techniques that will teach you how to get the most out of webpack. It was written by one of the founders of the webpack core team, [Juho Vepsäläinen](https://survivejs.com/about-me).
+  - ["Composing Configuration" chapter](https://survivejs.com/webpack/developing/composing-configuration)  
+    This particular chapter is the most important one in the book because this is where LJAS's webpack configuration composition strategy comes from. It explains what webpack config parts are and how to compose webpack configs with `webpack-merge`.

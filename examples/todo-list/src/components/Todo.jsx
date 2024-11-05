@@ -1,23 +1,23 @@
 // @flow
-import React from 'react'
+import React from "react";
 
 const Todo = ({
-    completed,
-    onClick,
-    text,
+  completed,
+  onClick,
+  text,
 }: {
-    completed: boolean,
-    onClick: () => void,
-    text: string,
+  completed: boolean,
+  onClick: () => void,
+  text: string,
 }) => (
-    <li
-        onClick={onClick}
-        style={{
-            textDecoration: completed ? 'line-through' : 'none',
-        }}
-    >
-        {text}
-    </li>
-)
+  <li
+    onClick={onClick}
+    style={{
+      textDecoration: completed ? "line-through" : "none",
+    }}
+  >
+    {text}
+  </li>
+);
 
-export default Todo
+export default Todo;

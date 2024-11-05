@@ -12,5 +12,5 @@ By default, LJAS sets up [a plugin for Prettier that sorts import declarations w
 
 ## Learning Resources
 
--   [Prettier Docs: Install](https://prettier.io/docs/en/install.html)  
-    Learn the basics of configuring Prettier by setting up a simple Prettier configuration from scratch.
+- [Prettier Docs: Install](https://prettier.io/docs/en/install.html)  
+  Learn the basics of configuring Prettier by setting up a simple Prettier configuration from scratch.

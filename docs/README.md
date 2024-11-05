@@ -14,9 +14,9 @@ _Find out why you should consider using LJAS for your project._
 
 _How to setup LJAS and start your project._
 
--   [Getting Started](./setup/getting-started.md)
--   [Code Editors](./setup/code-editors.md)
--   [Git Pre-Commit Hooks](./setup/git-pre-commit-hooks.md)
+- [Getting Started](./setup/getting-started.md)
+- [Code Editors](./setup/code-editors.md)
+- [Git Pre-Commit Hooks](./setup/git-pre-commit-hooks.md)
 
 ---
 
@@ -24,14 +24,14 @@ _How to setup LJAS and start your project._
 
 _How to develop with LJAS._
 
--   [JavaScript & TypeScript](./developing/javascript-typescript.md)
--   [Styling](./developing/styling.md)
--   [Databases](./developing/databases/README.md)
--   [Testing](./developing/testing.md)
--   [Debugging](./developing/debugging.md)
--   [Package Management](./developing/package-management.md)
--   [React Server-Side Rendering](./developing/react-ssr.md)
--   [Docker Environments](./developing/docker-environments.md)
+- [JavaScript & TypeScript](./developing/javascript-typescript.md)
+- [Styling](./developing/styling.md)
+- [Databases](./developing/databases/README.md)
+- [Testing](./developing/testing.md)
+- [Debugging](./developing/debugging.md)
+- [Package Management](./developing/package-management.md)
+- [React Server-Side Rendering](./developing/react-ssr.md)
+- [Docker Environments](./developing/docker-environments.md)
 
 ---
 
@@ -45,22 +45,22 @@ _How the build process works and how to create builds for production._
 
 _How the default configurations work and how to customize them._
 
--   [`.env` File](./configuration/dotenv-file.md)
--   [Babel](./configuration/babel.md)
--   [Browserslist](./configuration/browserslist.md)
--   [Docker](./configuration/docker.md)
--   [electron-builder](./configuration/electron-builder.md)
--   [ESLint](./configuration/eslint.md)
--   [Husky & lint-staged](./configuration/husky-lint-staged.md)
--   [Jest](./configuration/jest.md)
--   [nodemon](./configuration/nodemon.md)
--   [Playwright](./configuration/playwright.md)
--   [Prettier](./configuration/prettier.md)
--   [Prisma](./configuration/prisma.md)
--   [Stylelint](./configuration/stylelint.md)
--   [TypeScript](./configuration/typescript.md)
--   [Visual Studio Code](./configuration/vscode.md)
--   [webpack](./configuration/webpack.md)
+- [`.env` File](./configuration/dotenv-file.md)
+- [Babel](./configuration/babel.md)
+- [Browserslist](./configuration/browserslist.md)
+- [Docker](./configuration/docker.md)
+- [electron-builder](./configuration/electron-builder.md)
+- [ESLint](./configuration/eslint.md)
+- [Husky & lint-staged](./configuration/husky-lint-staged.md)
+- [Jest](./configuration/jest.md)
+- [nodemon](./configuration/nodemon.md)
+- [Playwright](./configuration/playwright.md)
+- [Prettier](./configuration/prettier.md)
+- [Prisma](./configuration/prisma.md)
+- [Stylelint](./configuration/stylelint.md)
+- [TypeScript](./configuration/typescript.md)
+- [Visual Studio Code](./configuration/vscode.md)
+- [webpack](./configuration/webpack.md)
 
 ---
 

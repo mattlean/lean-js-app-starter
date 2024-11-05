@@ -1,47 +1,47 @@
-const buildTransformedSass = require('ljas-webpack/buildTransformedSass')
-const { buildSourceMaps, loadFonts, loadImages } = require('ljas-webpack')
-const { merge } = require('webpack-merge')
+const buildTransformedSass = require("ljas-webpack/buildTransformedSass");
+const { buildSourceMaps, loadFonts, loadImages } = require("ljas-webpack");
+const { merge } = require("webpack-merge");
 
-const { PATH_BUILD_PROD, PATH_SRC } = require('./PATHS')
+const { PATH_BUILD_PROD, PATH_SRC } = require("./PATHS");
 
 module.exports = merge([
-    {
-        mode: 'production',
+  {
+    mode: "production",
 
-        output: {
-            assetModuleFilename: '[name].[contenthash][ext][query]',
-            chunkFilename: '[name].[contenthash].js',
-            filename: '[name].[contenthash].js',
-            path: PATH_BUILD_PROD,
-        },
-
-        optimization: {
-            splitChunks: {
-                cacheGroups: {
-                    commons: {
-                        test: /[\\/]node_modules[\\/]/,
-                        name: 'vendor',
-                        chunks: 'initial',
-                    },
-                },
-            },
-        },
-
-        target: 'browserslist:production',
+    output: {
+      assetModuleFilename: "[name].[contenthash][ext][query]",
+      chunkFilename: "[name].[contenthash].js",
+      filename: "[name].[contenthash].js",
+      path: PATH_BUILD_PROD,
     },
 
-    buildTransformedSass({
-        rule: { include: PATH_SRC },
-        miniCssExtractPlugin: { filename: '[name].[contenthash].css' },
-    }),
+    optimization: {
+      splitChunks: {
+        cacheGroups: {
+          commons: {
+            test: /[\\/]node_modules[\\/]/,
+            name: "vendor",
+            chunks: "initial",
+          },
+        },
+      },
+    },
 
-    buildSourceMaps('source-map'),
+    target: "browserslist:production",
+  },
 
-    loadFonts({
-        rule: { generator: { filename: 'assets/[name].[hash][ext][query]' } },
-    }),
+  buildTransformedSass({
+    rule: { include: PATH_SRC },
+    miniCssExtractPlugin: { filename: "[name].[contenthash].css" },
+  }),
 
-    loadImages({
-        rule: { generator: { filename: 'assets/[name].[hash][ext][query]' } },
-    }),
-])
+  buildSourceMaps("source-map"),
+
+  loadFonts({
+    rule: { generator: { filename: "assets/[name].[hash][ext][query]" } },
+  }),
+
+  loadImages({
+    rule: { generator: { filename: "assets/[name].[hash][ext][query]" } },
+  }),
+]);

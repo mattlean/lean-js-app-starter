@@ -16,12 +16,12 @@ All Docker environments use a `.dockerignore` file which determines which files 
 
 The following resources are beginner-level guides from the [Docker docs](https://docs.docker.com) that will teach you how to configure Docker.
 
--   [Building images: Understanding image layers](https://docs.docker.com/get-started/docker-concepts/building-images/understanding-image-layers)
--   [Building images: Writing a Dockerfile](https://docs.docker.com/get-started/docker-concepts/building-images/writing-a-dockerfile)
--   [Building images: Build, tag, and publish an image](https://docs.docker.com/get-started/docker-concepts/building-images/build-tag-and-publish-an-image)
--   [Running containers: Publishing and exposing ports](https://docs.docker.com/get-started/docker-concepts/running-containers/publishing-ports)
--   [Running containers: Overriding container defaults](https://docs.docker.com/get-started/docker-concepts/running-containers/overriding-container-defaults)
--   [Running containers: Persisting container data](https://docs.docker.com/get-started/docker-concepts/running-containers/persisting-container-data)
--   [Running containers: Sharing local files with containers](https://docs.docker.com/get-started/docker-concepts/running-containers/sharing-local-files)
--   [Running containers: Multi-container applications](https://docs.docker.com/get-started/docker-concepts/running-containers/multi-container-applications)
--   [Node.js language-specific guide](https://docs.docker.com/guides/nodejs)
+- [Building images: Understanding image layers](https://docs.docker.com/get-started/docker-concepts/building-images/understanding-image-layers)
+- [Building images: Writing a Dockerfile](https://docs.docker.com/get-started/docker-concepts/building-images/writing-a-dockerfile)
+- [Building images: Build, tag, and publish an image](https://docs.docker.com/get-started/docker-concepts/building-images/build-tag-and-publish-an-image)
+- [Running containers: Publishing and exposing ports](https://docs.docker.com/get-started/docker-concepts/running-containers/publishing-ports)
+- [Running containers: Overriding container defaults](https://docs.docker.com/get-started/docker-concepts/running-containers/overriding-container-defaults)
+- [Running containers: Persisting container data](https://docs.docker.com/get-started/docker-concepts/running-containers/persisting-container-data)
+- [Running containers: Sharing local files with containers](https://docs.docker.com/get-started/docker-concepts/running-containers/sharing-local-files)
+- [Running containers: Multi-container applications](https://docs.docker.com/get-started/docker-concepts/running-containers/multi-container-applications)
+- [Node.js language-specific guide](https://docs.docker.com/guides/nodejs)

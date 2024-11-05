@@ -1,9 +1,9 @@
-import { BrowserWindow, dialog } from 'electron'
-import { writeFile } from 'node:fs/promises'
-import { basename } from 'path'
+import { BrowserWindow, dialog } from "electron";
+import { writeFile } from "node:fs/promises";
+import { basename } from "path";
 
-import { getCurrFilePath, isFileOpen, setCurrFile } from './currFile'
-import { sendMainErrorMessage } from './interfaces/mse'
+import { getCurrFilePath, isFileOpen, setCurrFile } from "./currFile";
+import { sendMainErrorMessage } from "./interfaces/mse";
 
 /**
  * Save the markdown.
@@ -16,32 +16,32 @@ import { sendMainErrorMessage } from './interfaces/mse'
  * @returns A promise that will resolve to true if a save occured or false otherwise
  */
 export const saveFile = async (win: BrowserWindow, markdownSrc: string) => {
-    if (!markdownSrc && !isFileOpen()) {
-        return false
+  if (!markdownSrc && !isFileOpen()) {
+    return false;
+  }
+
+  const filePath = await getCurrFilePath(win, showSaveDialog);
+
+  if (!filePath) {
+    return false;
+  }
+
+  try {
+    await writeFile(filePath, markdownSrc, { encoding: "utf-8" });
+  } catch (err) {
+    if (err instanceof Error) {
+      sendMainErrorMessage(err, win);
+      return;
+    } else {
+      throw err;
     }
+  }
 
-    const filePath = await getCurrFilePath(win, showSaveDialog)
+  setCurrFile(filePath, markdownSrc, win);
+  win.setDocumentEdited(false);
 
-    if (!filePath) {
-        return false
-    }
-
-    try {
-        await writeFile(filePath, markdownSrc, { encoding: 'utf-8' })
-    } catch (err) {
-        if (err instanceof Error) {
-            sendMainErrorMessage(err, win)
-            return
-        } else {
-            throw err
-        }
-    }
-
-    setCurrFile(filePath, markdownSrc, win)
-    win.setDocumentEdited(false)
-
-    return true
-}
+  return true;
+};
 
 /**
  * Show the HTML export dialog and create an HTML file from the markdown source.
@@ -49,43 +49,43 @@ export const saveFile = async (win: BrowserWindow, markdownSrc: string) => {
  * @param html HTML string produced by markdown
  */
 export const showHtmlExportDialog = async (
-    win: BrowserWindow,
-    html: string,
+  win: BrowserWindow,
+  html: string,
 ) => {
-    const currFilePath = isFileOpen()
+  const currFilePath = isFileOpen();
 
-    let defaultPath: string | undefined = undefined
+  let defaultPath: string | undefined = undefined;
 
-    if (currFilePath) {
-        defaultPath = basename(currFilePath, '.md')
+  if (currFilePath) {
+    defaultPath = basename(currFilePath, ".md");
+  }
+
+  const result = await dialog.showSaveDialog(win, {
+    title: "Export HTML",
+    defaultPath,
+    filters: [{ name: "HTML File", extensions: ["html", "htm"] }],
+  });
+
+  if (result.canceled) {
+    return;
+  }
+
+  const { filePath } = result;
+
+  if (!filePath) {
+    return;
+  }
+
+  try {
+    await writeFile(filePath, html, { encoding: "utf-8" });
+  } catch (err) {
+    if (err instanceof Error) {
+      sendMainErrorMessage(err, win);
+    } else {
+      throw err;
     }
-
-    const result = await dialog.showSaveDialog(win, {
-        title: 'Export HTML',
-        defaultPath,
-        filters: [{ name: 'HTML File', extensions: ['html', 'htm'] }],
-    })
-
-    if (result.canceled) {
-        return
-    }
-
-    const { filePath } = result
-
-    if (!filePath) {
-        return
-    }
-
-    try {
-        await writeFile(filePath, html, { encoding: 'utf-8' })
-    } catch (err) {
-        if (err instanceof Error) {
-            sendMainErrorMessage(err, win)
-        } else {
-            throw err
-        }
-    }
-}
+  }
+};
 
 /**
  * Show the save dialog and create a new markdown file.
@@ -94,20 +94,20 @@ export const showHtmlExportDialog = async (
  *     or undefined otherwise
  */
 export const showSaveDialog = async (win: BrowserWindow) => {
-    const result = await dialog.showSaveDialog(win, {
-        title: 'Save Markdown',
-        filters: [{ name: 'Markdown File', extensions: ['md'] }],
-    })
+  const result = await dialog.showSaveDialog(win, {
+    title: "Save Markdown",
+    filters: [{ name: "Markdown File", extensions: ["md"] }],
+  });
 
-    if (result.canceled) {
-        return
-    }
+  if (result.canceled) {
+    return;
+  }
 
-    const { filePath } = result
+  const { filePath } = result;
 
-    if (!filePath) {
-        return
-    }
+  if (!filePath) {
+    return;
+  }
 
-    return filePath
-}
+  return filePath;
+};

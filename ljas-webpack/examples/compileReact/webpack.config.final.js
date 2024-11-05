@@ -3,26 +3,26 @@
  * with ljas-webpack.
  */
 module.exports = {
-    module: {
-        rules: [
-            {
-                test: /\.jsx?$/,
-                exclude: /node_modules/,
-                use: {
-                    loader: 'babel-loader',
-                    options: {
-                        presets: [
-                            ['@babel/preset-env', { modules: false }],
-                            [
-                                '@babel/preset-react',
-                                { development: false, runtime: 'automatic' },
-                            ],
-                        ],
-                    },
-                },
-            },
-        ],
-    },
+  module: {
+    rules: [
+      {
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: [
+              ["@babel/preset-env", { modules: false }],
+              [
+                "@babel/preset-react",
+                { development: false, runtime: "automatic" },
+              ],
+            ],
+          },
+        },
+      },
+    ],
+  },
 
-    resolve: { extensions: ['.js', '.jsx', '.json', '.wasm'] },
-}
+  resolve: { extensions: [".js", ".jsx", ".json", ".wasm"] },
+};

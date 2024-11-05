@@ -1,47 +1,47 @@
-version: '3.8'
+version: "3.8"
 name: ljas-express-mongo-ts-db
 services:
-    db:
-        build:
-            dockerfile: db.Dockerfile
-        image: ljas-express-mongo-ts-db
-        container_name: ljas-express-mongo-ts-db
-        restart: always
-        ports:
-            - '${MONGO_REPLICA_PORT}:${MONGO_REPLICA_PORT}'
-        env_file: .env
-        volumes:
-            - ljas-express-mongo-ts-db-data:/data/db
-        healthcheck:
-            test:
-                [
-                    'CMD',
-                    'mongo',
-                    'admin',
-                    '--port',
-                    '${MONGO_REPLICA_PORT}',
-                    '--eval',
-                    "db.adminCommand('ping')",
-                ]
-            interval: 5s
-            timeout: 2s
-            retries: 20
-    app:
-        build: .
-        image: ljas-express-mongo-ts
-        container_name: ljas-express-mongo-ts
-        depends_on:
-            db:
-                condition: service_healthy
-        restart: always
-        ports:
-            - '${PORT_EXPRESS}:${PORT_EXPRESS}'
-            - '5555:5555' # Exposes Prisma Studio. Also defined in the "prisma:studio" package.json script.
-            - '9229:9229' # Exposes Node.js debugger. Also defined in the "start:debug" package.json script.
-            - '9230:9230' # Exposes Jest debugger. Also defined in the "test:debug" package.json script.
-            - '9231:9231' # Exposes webpack debugger. Also defined in the build debug package.json scripts.
-        volumes:
-            - .:/code
-            - /code/node_modules
+  db:
+    build:
+      dockerfile: db.Dockerfile
+    image: ljas-express-mongo-ts-db
+    container_name: ljas-express-mongo-ts-db
+    restart: always
+    ports:
+      - "${MONGO_REPLICA_PORT}:${MONGO_REPLICA_PORT}"
+    env_file: .env
+    volumes:
+      - ljas-express-mongo-ts-db-data:/data/db
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "mongo",
+          "admin",
+          "--port",
+          "${MONGO_REPLICA_PORT}",
+          "--eval",
+          "db.adminCommand('ping')",
+        ]
+      interval: 5s
+      timeout: 2s
+      retries: 20
+  app:
+    build: .
+    image: ljas-express-mongo-ts
+    container_name: ljas-express-mongo-ts
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: always
+    ports:
+      - "${PORT_EXPRESS}:${PORT_EXPRESS}"
+      - "5555:5555" # Exposes Prisma Studio. Also defined in the "prisma:studio" package.json script.
+      - "9229:9229" # Exposes Node.js debugger. Also defined in the "start:debug" package.json script.
+      - "9230:9230" # Exposes Jest debugger. Also defined in the "test:debug" package.json script.
+      - "9231:9231" # Exposes webpack debugger. Also defined in the build debug package.json scripts.
+    volumes:
+      - .:/code
+      - /code/node_modules
 volumes:
-    ljas-express-mongo-ts-db-data:
+  ljas-express-mongo-ts-db-data:

@@ -1,10 +1,10 @@
-import helloWorld from './helloWorld'
-import { clearRootEl, setupRootEl } from './jestUtil'
+import helloWorld from "./helloWorld";
+import { clearRootEl, setupRootEl } from "./jestUtil";
 
-beforeAll(() => setupRootEl())
+beforeAll(() => setupRootEl());
 
-afterEach(() => clearRootEl())
+afterEach(() => clearRootEl());
 
 test('helloWorld function renders "Hello World!" div element', () => {
-    expect(helloWorld()).toMatchSnapshot()
-})
+  expect(helloWorld()).toMatchSnapshot();
+});

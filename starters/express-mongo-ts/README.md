@@ -2,27 +2,27 @@
 
 This is a [**Lean JS App Starter (LJAS)**](https://github.com/mattlean/lean-js-app-starter) starter project for an [Express](https://expressjs.com) application written in [TypeScript](https://typescriptlang.org) that works with [MongoDB](https://mongodb.com).
 
-_If you don't need TypeScript, then then use the [Express + MongoDB starter](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0/starters/express-mongo) instead._
+_If you don't need TypeScript, then then use the [Express + MongoDB starter](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0/starters/express-mongo) instead._
 
 ## Technology Overview
 
--   [TypeScript](https://typescriptlang.org): JavaScript with type safety
--   [Node.js](https://nodejs.org): Runtime environment that allows JavaScript to execute outside of web browsers
--   [Express](https://expressjs.com): Web framework for Node.js
--   [Prisma](https://prisma.io): Node.js object relational mapper (ORM) used to work with MongoDB
--   [MongoDB](https://mongodb.com): NoSQL database
--   [Jest](https://jestjs.io): Testing framework
--   [webpack](https://webpack.js.org): Bundler used to create builds
--   [Babel](https://babeljs.io): Compiler used with webpack to support TypeScript and output Node.js-compatible code
--   [ESLint](https://eslint.org): Linter used to identify problems in TypeScript & JavaScript
--   [Prettier](https://prettier.io): Formatter used to enforce code style
--   [Husky](https://typicode.github.io/husky) + [lint-staged](https://github.com/okonet/lint-staged): Pre-commit hooks to check for type, lint, and formatting errors before Git commits are made
--   [Docker](https://docker.com): Used for an optional containerized development environment
--   [npm](https://npmjs.com): Package manager
+- [TypeScript](https://typescriptlang.org): JavaScript with type safety
+- [Node.js](https://nodejs.org): Runtime environment that allows JavaScript to execute outside of web browsers
+- [Express](https://expressjs.com): Web framework for Node.js
+- [Prisma](https://prisma.io): Node.js object relational mapper (ORM) used to work with MongoDB
+- [MongoDB](https://mongodb.com): NoSQL database
+- [Jest](https://jestjs.io): Testing framework
+- [webpack](https://webpack.js.org): Bundler used to create builds
+- [Babel](https://babeljs.io): Compiler used with webpack to support TypeScript and output Node.js-compatible code
+- [ESLint](https://eslint.org): Linter used to identify problems in TypeScript & JavaScript
+- [Prettier](https://prettier.io): Formatter used to enforce code style
+- [Husky](https://typicode.github.io/husky) + [lint-staged](https://github.com/okonet/lint-staged): Pre-commit hooks to check for type, lint, and formatting errors before Git commits are made
+- [Docker](https://docker.com): Used for an optional containerized development environment
+- [npm](https://npmjs.com): Package manager
 
 ## Getting Started
 
-First, [**download the starter project's ZIP file**](https://github.com/mattlean/lean-js-app-starter/releases/download/v1.0.0/ljas-express-mongo-ts_1-0-0.zip) and extract it.
+First, [**download the starter project's ZIP file**](https://github.com/mattlean/lean-js-app-starter/releases/download/v1.1.0/ljas-express-mongo-ts_1-0-0.zip) and extract it.
 
 Then, choose one of the following methods:
 
@@ -40,8 +40,8 @@ This method is the simplest if you are not using the Docker dev environment (met
 
 Installation of the following is required before proceeding with this method:
 
--   [Node.js](https://nodejs.org/en/download/package-manager)
--   [MongoDB](https://mongodb.com)
+- [Node.js](https://nodejs.org/en/download/package-manager)
+- [MongoDB](https://mongodb.com)
 
 This was tested on Node.js v20.9.0, but any version from >=20.9 to <21 will work. This was also tested with MongoDB 4.4.25, but any version from >=4.4 to <5 will work.
 
@@ -81,7 +81,7 @@ When you're done working, you can press Ctrl+C in the terminal running the dev s
 
 This method is the simplest as it only requires Docker. You won't even need to worry about installing and configuring Node.js, MongoDB, and Prisma as they are all setup for you inside containers.
 
-For more information on the Docker dev environment, please read the ["Docker Environments" document in the LJAS docs](https://github.com/mattlean/lean-js-app-starter/blob/v1.0.0/docs/developing/docker-environments.md).
+For more information on the Docker dev environment, please read the ["Docker Environments" document in the LJAS docs](https://github.com/mattlean/lean-js-app-starter/blob/v1.1.0/docs/developing/docker-environments.md).
 
 #### Prerequisites
 
@@ -117,8 +117,8 @@ This method manually does what the init script does for you normally.
 
 Installation of the following is required before proceeding with this method:
 
--   [Node.js](https://nodejs.org/en/download/package-manager)
--   [MongoDB](https://mongodb.com)
+- [Node.js](https://nodejs.org/en/download/package-manager)
+- [MongoDB](https://mongodb.com)
 
 This was tested on Node.js v20.9.0, but any version from >=20.9 to <21 will work. This was also tested with MongoDB 4.4.25, but any version from >=4.4 to <5 will work.
 
@@ -142,7 +142,7 @@ cp .env.example .env
 
 Next, edit the `.env` file's `DATABASE_URL` environment variable to the appropriate [connection string](https://prisma.io/docs/orm/overview/databases/mongodb#connection-details) so Prisma can connect to MongoDB.
 
-[_Note: Learn more about the `.env` file in the LJAS docs._](https://github.com/mattlean/lean-js-app-starter/blob/v1.0.0/docs/configuration/dotenv-file.md)
+[_Note: Learn more about the `.env` file in the LJAS docs._](https://github.com/mattlean/lean-js-app-starter/blob/v1.1.0/docs/configuration/dotenv-file.md)
 
 #### Step 3. Setup database with Prisma
 
@@ -163,7 +163,7 @@ Create a dev build with webpack using this `package.json` script:
 npm run build
 ```
 
-[_Note: Learn more about the build process in the LJAS docs._](https://github.com/mattlean/lean-js-app-starter/blob/v1.0.0/docs/building.md)
+[_Note: Learn more about the build process in the LJAS docs._](https://github.com/mattlean/lean-js-app-starter/blob/v1.1.0/docs/building.md)
 
 #### Step 5. Start the development server
 
@@ -175,8 +175,8 @@ npm run dev
 
 When you're done working, you can press Ctrl+C in the terminal running the dev server to shut it down.
 
-[_Note: Learn more about the `dev` `package.json` script in the LJAS docs._](https://github.com/mattlean/lean-js-app-starter/blob/v1.0.0/docs/developing/javascript-typescript.md#auto--hot-reloading)
+[_Note: Learn more about the `dev` `package.json` script in the LJAS docs._](https://github.com/mattlean/lean-js-app-starter/blob/v1.1.0/docs/developing/javascript-typescript.md#auto--hot-reloading)
 
 ## Learn More With the Documentation
 
-[📖 Read the docs to learn more about what else you can do with **Lean JS App Starter**.](https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0/docs)
+[📖 Read the docs to learn more about what else you can do with **Lean JS App Starter**.](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0/docs/README.md)

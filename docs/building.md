@@ -2,14 +2,14 @@
 
 ## Contents
 
--   [Overview](#overview)
--   [Why use webpack still?](#why-use-webpack-still)
--   [webpack Build Scripts](#webpack-build-scripts)
--   [Build Targets](#build-targets)
--   [Building Distributable Applications for Electron](#building-distributable-applications-for-electron)
--   [Building Icons for Electron Applications](#building-icons-for-electron-applications)
--   [Debugging the webpack Build Process](#debugging-the-wepback-build-process)
--   [Troubleshooting](#troubleshooting)
+- [Overview](#overview)
+- [Why use webpack still?](#why-use-webpack-still)
+- [webpack Build Scripts](#webpack-build-scripts)
+- [Build Targets](#build-targets)
+- [Building Distributable Applications for Electron](#building-distributable-applications-for-electron)
+- [Building Icons for Electron Applications](#building-icons-for-electron-applications)
+- [Debugging the webpack Build Process](#debugging-the-wepback-build-process)
+- [Troubleshooting](#troubleshooting)
 
 ## Overview
 
@@ -74,10 +74,10 @@ Starters that involve multiple webpack processes will also provide variant scrip
 
 The following build process tools rely on Browserslist:
 
--   [webpack](https://webpack.js.org)
--   [Babel](https://babeljs.io)
--   [PostCSS](https://postcss.org)
--   [Autoprefixer](https://github.com/postcss/autoprefixer)
+- [webpack](https://webpack.js.org)
+- [Babel](https://babeljs.io)
+- [PostCSS](https://postcss.org)
+- [Autoprefixer](https://github.com/postcss/autoprefixer)
 
 Edit the `.browserslistrc` file in the project's root directory to change build targets. For more information on configuring Browserslist, please read the [Browserslist configuration document](./configuration/browserslist.md). Always try to define build targets as precisely as possible as it will exclude unnecessary code for irrelevant platforms and keep your build size as small as possible.
 

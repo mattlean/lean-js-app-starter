@@ -1,1 +1,1 @@
-export { prismaMock } from '../../../../prisma/singleton'
+export { prismaMock } from "../../../../prisma/singleton";

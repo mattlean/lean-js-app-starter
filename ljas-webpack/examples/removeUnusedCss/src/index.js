@@ -1,12 +1,12 @@
-import './index.css'
+import "./index.css";
 
 function helloElement() {
-    const element = document.createElement('div')
+  const element = document.createElement("div");
 
-    element.setAttribute('class', 'used-style')
-    element.innerHTML = 'Hello webpack'
+  element.setAttribute("class", "used-style");
+  element.innerHTML = "Hello webpack";
 
-    return element
+  return element;
 }
 
-document.body.appendChild(helloElement())
+document.body.appendChild(helloElement());

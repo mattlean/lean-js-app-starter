@@ -1,16 +1,16 @@
-import createApp from '.'
-import { clearRootEl, setupRootEl } from '../jestUtil'
+import createApp from ".";
+import { clearRootEl, setupRootEl } from "../jestUtil";
 
-beforeAll(() => setupRootEl())
+beforeAll(() => setupRootEl());
 
-afterEach(() => clearRootEl())
+afterEach(() => clearRootEl());
 
-test('App element matches snapshot', () => {
-    const rootEl = document.getElementById('root')
+test("App element matches snapshot", () => {
+  const rootEl = document.getElementById("root");
 
-    if (!rootEl) {
-        throw new Error('HTML element with an ID of "root" was not found.')
-    }
+  if (!rootEl) {
+    throw new Error('HTML element with an ID of "root" was not found.');
+  }
 
-    expect(createApp(rootEl)).toMatchSnapshot()
-})
+  expect(createApp(rootEl)).toMatchSnapshot();
+});

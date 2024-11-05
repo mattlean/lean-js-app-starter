@@ -2,12 +2,12 @@
 
 ## Contents
 
--   [Overview](#overview)
--   [Download & Install](#download--install)
--   [Install Extensions](#install-extensions)
--   [Debugging](#debugging)
--   [Developing Inside a Container](#developing-inside-a-container)
--   [Configuration](#configuration)
+- [Overview](#overview)
+- [Download & Install](#download--install)
+- [Install Extensions](#install-extensions)
+- [Debugging](#debugging)
+- [Developing Inside a Container](#developing-inside-a-container)
+- [Configuration](#configuration)
 
 ## Overview
 

@@ -1,16 +1,19 @@
-import { Router } from 'express'
+import { Router } from "express";
 
-import { apiErrorHandler, createNotFoundErrorHandler } from '../../common/error'
-import { v1Handler } from './v1'
+import {
+  apiErrorHandler,
+  createNotFoundErrorHandler,
+} from "../../common/error";
+import { v1Handler } from "./v1";
 
-const router = Router()
+const router = Router();
 
-router.use('/v1', v1Handler)
+router.use("/v1", v1Handler);
 
 // Handle unknown paths with a not found error handler
-router.all('*', createNotFoundErrorHandler(true))
+router.all("*", createNotFoundErrorHandler(true));
 
 // Catch all uncaught errors with an API error handler
-router.use(apiErrorHandler)
+router.use(apiErrorHandler);
 
-export { router as apiHandler }
+export { router as apiHandler };

@@ -10,7 +10,7 @@ By default, the Prisma Schema will look for the `DATABASE_URL` environment varia
 
 ## Learning Resources
 
--   [Set up Prisma ORM: Start from scratch - Relational databases](https://prisma.io/docs/getting-started/setup-prisma/start-from-scratch/relational-databases-typescript-postgresql)  
-    Learn the basics of configuring and using Prisma by setting it up with a relational database from scratch.
--   [Set up Prisma ORM: Start from scratch - MongoDB](https://prisma.io/docs/getting-started/setup-prisma/start-from-scratch/mongodb-typescript-mongodb)  
-    Learn the basics of configuring and using Prisma by setting it up with MongoDB from scratch.
+- [Set up Prisma ORM: Start from scratch - Relational databases](https://prisma.io/docs/getting-started/setup-prisma/start-from-scratch/relational-databases-typescript-postgresql)  
+  Learn the basics of configuring and using Prisma by setting it up with a relational database from scratch.
+- [Set up Prisma ORM: Start from scratch - MongoDB](https://prisma.io/docs/getting-started/setup-prisma/start-from-scratch/mongodb-typescript-mongodb)  
+  Learn the basics of configuring and using Prisma by setting it up with MongoDB from scratch.

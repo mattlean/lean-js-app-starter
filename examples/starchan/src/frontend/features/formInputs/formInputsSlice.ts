@@ -1,14 +1,14 @@
-import { PayloadAction, createSlice } from '@reduxjs/toolkit'
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 export interface FormInputsState {
-    subject: string
-    comment: string
+  subject: string;
+  comment: string;
 }
 
 const initialState: FormInputsState = {
-    subject: '',
-    comment: '',
-}
+  subject: "",
+  comment: "",
+};
 
 /**
  * The formInputsSlice slice stores the input states for the NewThreadForm and
@@ -21,19 +21,19 @@ const initialState: FormInputsState = {
  * to display an error message, your input state will persist.
  */
 export const formInputsSlice = createSlice({
-    name: 'formInputsSlice',
-    initialState,
-    reducers: {
-        clearForm: () => initialState,
-        setComment: (state: FormInputsState, action: PayloadAction<string>) => {
-            state.comment = action.payload
-        },
-        setSubject: (state: FormInputsState, action: PayloadAction<string>) => {
-            state.subject = action.payload
-        },
+  name: "formInputsSlice",
+  initialState,
+  reducers: {
+    clearForm: () => initialState,
+    setComment: (state: FormInputsState, action: PayloadAction<string>) => {
+      state.comment = action.payload;
     },
-})
+    setSubject: (state: FormInputsState, action: PayloadAction<string>) => {
+      state.subject = action.payload;
+    },
+  },
+});
 
-export const { clearForm, setComment, setSubject } = formInputsSlice.actions
+export const { clearForm, setComment, setSubject } = formInputsSlice.actions;
 
-export const formInputsReducer = formInputsSlice.reducer
+export const formInputsReducer = formInputsSlice.reducer;

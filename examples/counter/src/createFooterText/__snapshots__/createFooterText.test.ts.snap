@@ -11,7 +11,7 @@ exports[`Footer text element matches snapshot 1`] = `
     Learn about the tech stack used for this project and more at its 
     <a
       class="text-muted"
-      href="https://github.com/mattlean/lean-js-app-starter/tree/v1.0.0/examples/counter"
+      href="https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0/examples/counter"
     >
       GitHub repo
     </a>

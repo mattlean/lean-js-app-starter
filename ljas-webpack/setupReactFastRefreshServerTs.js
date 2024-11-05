@@ -1,9 +1,9 @@
-const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
-const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
-const { merge } = require('webpack-merge')
+const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
+const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
+const { merge } = require("webpack-merge");
 
-const compileReactTs = require('./compileReactTs')
-const { setupDevServer } = require('.')
+const compileReactTs = require("./compileReactTs");
+const { setupDevServer } = require(".");
 
 /**
  * Setup webpack-dev-server and babel-loader to handle React JavaScript code.
@@ -46,51 +46,49 @@ const { setupDevServer } = require('.')
  * @param {string} [mode=development] The webpack mode configuration option. Babel's preset-react will enable behavior specific to development when this is set to "development".  (https://webpack.js.org/configuration/mode)
  * @returns {Object} A webpack configuration object that sets up babel-loader, Fork TS Checker Webpack Plugin, React Refresh Webpack Plugin, and webpack-dev-server.
  */
-const setupReactFastRefreshServerTs = (options, mode = 'development') => {
-    const o = { ...options }
-    delete o.devServer
-    delete o.reactRefreshWebpackPlugin
+const setupReactFastRefreshServerTs = (options, mode = "development") => {
+  const o = { ...options };
+  delete o.devServer;
+  delete o.reactRefreshWebpackPlugin;
 
-    return merge([
-        { mode: 'development' },
+  return merge([
+    { mode: "development" },
 
-        compileReactTs(
-            {
-                ...o,
-                babelLoaderPlugins: o.babelLoaderPlugins ?? [
-                    require.resolve('react-refresh/babel'),
-                ],
-                plugins: o?.plugins ?? [
-                    new ReactRefreshWebpackPlugin(
-                        options?.reactRefreshWebpackPlugin,
-                    ),
-                    new ForkTsCheckerWebpackPlugin(
-                        options?.forkTsChecker ?? {
-                            typescript: {
-                                configOverwrite: {
-                                    exclude: [
-                                        '**/__mocks__',
-                                        '**/__tests__',
-                                        '**/*.spec.js',
-                                        '**/*.spec.jsx',
-                                        '**/*.spec.ts',
-                                        '**/*.spec.tsx',
-                                        '**/*.test.js',
-                                        '**/*.test.jsx',
-                                        '**/*.test.ts',
-                                        '**/*.test.tsx',
-                                    ],
-                                },
-                            },
-                        },
-                    ),
-                ],
+    compileReactTs(
+      {
+        ...o,
+        babelLoaderPlugins: o.babelLoaderPlugins ?? [
+          require.resolve("react-refresh/babel"),
+        ],
+        plugins: o?.plugins ?? [
+          new ReactRefreshWebpackPlugin(options?.reactRefreshWebpackPlugin),
+          new ForkTsCheckerWebpackPlugin(
+            options?.forkTsChecker ?? {
+              typescript: {
+                configOverwrite: {
+                  exclude: [
+                    "**/__mocks__",
+                    "**/__tests__",
+                    "**/*.spec.js",
+                    "**/*.spec.jsx",
+                    "**/*.spec.ts",
+                    "**/*.spec.tsx",
+                    "**/*.test.js",
+                    "**/*.test.jsx",
+                    "**/*.test.ts",
+                    "**/*.test.tsx",
+                  ],
+                },
+              },
             },
-            mode,
-        ),
+          ),
+        ],
+      },
+      mode,
+    ),
 
-        setupDevServer({ ...options?.devServer, hot: true }),
-    ])
-}
+    setupDevServer({ ...options?.devServer, hot: true }),
+  ]);
+};
 
-module.exports = setupReactFastRefreshServerTs
+module.exports = setupReactFastRefreshServerTs;
