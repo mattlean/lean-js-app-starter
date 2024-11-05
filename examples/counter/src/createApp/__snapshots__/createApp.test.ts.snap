@@ -99,7 +99,7 @@ exports[`App element matches snapshot 1`] = `
       Learn about the tech stack used for this project and more at its 
       <a
         class="text-muted"
-        href="https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0-dev/examples/counter"
+        href="https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0-rc-20241104/examples/counter"
       >
         GitHub repo
       </a>

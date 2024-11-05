@@ -2,14 +2,14 @@
 
 LJAS supports [CSS](https://w3.org/Style/CSS/Overview.en.html) for all frontend-related projects:
 
-| Starter Project Name                  | JavaScript                                                                                                         | TypeScript                                                                                                            |
-| ------------------------------------- | ------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------- |
-| Basic Browser                         | [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0-dev/starters/basic-browser)              | [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0-dev/starters/basic-browser-ts)              |
-| Basic Electron                        | [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0-dev/starters/basic-electron)             | [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0-dev/starters/basic-electron-ts)             |
-| React + Browser                       | [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0-dev/starters/react-browser)              | [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0-dev/starters/react-browser-ts)              |
-| React + Electron                      | [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0-dev/starters/react-electron)             | [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0-dev/starters/react-electron-ts)             |
-| React + Express + MongoDB with SSR    | [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0-dev/starters/react-express-mongo-ssr)    | [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0-dev/starters/react-express-mongo-ssr-ts)    |
-| React + Express + PostgreSQL with SSR | [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0-dev/starters/react-express-postgres-ssr) | [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0-dev/starters/react-express-postgres-ssr-ts) |
+| Starter Project Name                  | JavaScript                                                                                                                 | TypeScript                                                                                                                    |
+| ------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| Basic Browser                         | [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0-rc-20241104/starters/basic-browser)              | [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0-rc-20241104/starters/basic-browser-ts)              |
+| Basic Electron                        | [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0-rc-20241104/starters/basic-electron)             | [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0-rc-20241104/starters/basic-electron-ts)             |
+| React + Browser                       | [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0-rc-20241104/starters/react-browser)              | [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0-rc-20241104/starters/react-browser-ts)              |
+| React + Electron                      | [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0-rc-20241104/starters/react-electron)             | [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0-rc-20241104/starters/react-electron-ts)             |
+| React + Express + MongoDB with SSR    | [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0-rc-20241104/starters/react-express-mongo-ssr)    | [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0-rc-20241104/starters/react-express-mongo-ssr-ts)    |
+| React + Express + PostgreSQL with SSR | [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0-rc-20241104/starters/react-express-postgres-ssr) | [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0-rc-20241104/starters/react-express-postgres-ssr-ts) |
 
 ## Contents
 
@@ -71,10 +71,10 @@ To learn how to configure Prettier, read the [Prettier configuration document](.
 
 ## Examples
 
-- [\*chan](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0-dev/examples/starchan): Express server that server-side renders a React frontend
-- [Asset Test](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0-dev/examples/asset-test): Test for LJAS's asset loading capabilities
-- [Markdown Editor](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0-dev/examples/markdown-editor): Markdown editor desktop app
-- [Tic-Tac-Toe](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0-dev/examples/tic-tac-toe): A tic-tac-toe game
+- [\*chan](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0-rc-20241104/examples/starchan): Express server that server-side renders a React frontend
+- [Asset Test](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0-rc-20241104/examples/asset-test): Test for LJAS's asset loading capabilities
+- [Markdown Editor](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0-rc-20241104/examples/markdown-editor): Markdown editor desktop app
+- [Tic-Tac-Toe](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0-rc-20241104/examples/tic-tac-toe): A tic-tac-toe game
 
 ## Adding Support for Sass
 

@@ -60,7 +60,7 @@ exports[`App component matches snapshot 1`] = `
        
       <a
         className="text-muted"
-        href="https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0-dev/examples/asset-test"
+        href="https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0-rc-20241104/examples/asset-test"
       >
         GitHub repo
       </a>

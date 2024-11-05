@@ -2,7 +2,7 @@
 
 This is a [**Lean JS App Starter (LJAS)**](https://github.com/mattlean/lean-js-app-starter) starter project for a vanilla JavaScript application targeted for web browsers.
 
-_If you need TypeScript, then use the [Basic Browser starter (TypeScript)](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0-dev/starters/basic-browser-ts) instead._
+_If you need TypeScript, then use the [Basic Browser starter (TypeScript)](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0-rc-20241104/starters/basic-browser-ts) instead._
 
 ## Technology Overview
 
@@ -24,7 +24,7 @@ _If you need TypeScript, then use the [Basic Browser starter (TypeScript)](https
 
 ## Getting Started
 
-First, [**download the starter project's ZIP file**](https://github.com/mattlean/lean-js-app-starter/releases/download/v1.1.0-dev/ljas-basic-browser_1-0-0.zip) and extract it.
+First, [**download the starter project's ZIP file**](https://github.com/mattlean/lean-js-app-starter/releases/download/v1.1.0-rc-20241104/ljas-basic-browser_1-0-0.zip) and extract it.
 
 Then, choose one of the following methods:
 
@@ -70,7 +70,7 @@ When you're done working, you can press Ctrl+C in the terminal running the dev s
 
 This method is the simplest as it only only requires Docker. You won't even need to worry about Node.js since the dev environment will use a separate Node.js process inside the container.
 
-For more information on the Docker dev environment, please read the ["Docker Environments" document in the LJAS docs](https://github.com/mattlean/lean-js-app-starter/blob/v1.1.0-dev/docs/developing/docker-environments.md).
+For more information on the Docker dev environment, please read the ["Docker Environments" document in the LJAS docs](https://github.com/mattlean/lean-js-app-starter/blob/v1.1.0-rc-20241104/docs/developing/docker-environments.md).
 
 #### Prerequisites
 
@@ -126,7 +126,7 @@ Copy the `.env.example` file and paste it as the `.env` file. This can be done w
 cp .env.example .env
 ```
 
-[_Note: Learn more about the `.env` file in the LJAS docs._](https://github.com/mattlean/lean-js-app-starter/blob/v1.1.0-dev/docs/configuration/dotenv-file.md)
+[_Note: Learn more about the `.env` file in the LJAS docs._](https://github.com/mattlean/lean-js-app-starter/blob/v1.1.0-rc-20241104/docs/configuration/dotenv-file.md)
 
 #### (Optional) Setup Playwright
 
@@ -146,8 +146,8 @@ npm run dev
 
 When you're done working, you can press Ctrl+C in the terminal running the dev server to shut it down.
 
-[_Note: Learn more about the `dev` `package.json` script in the LJAS docs._](https://github.com/mattlean/lean-js-app-starter/blob/v1.1.0-dev/docs/developing/javascript-typescript.md#auto--hot-reloading)
+[_Note: Learn more about the `dev` `package.json` script in the LJAS docs._](https://github.com/mattlean/lean-js-app-starter/blob/v1.1.0-rc-20241104/docs/developing/javascript-typescript.md#auto--hot-reloading)
 
 ## Learn More With the Documentation
 
-[📖 Read the docs to learn more about what else you can do with **Lean JS App Starter**.](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0-dev/docs/README.md)
+[📖 Read the docs to learn more about what else you can do with **Lean JS App Starter**.](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0-rc-20241104/docs/README.md)

@@ -4,10 +4,10 @@ This document explains the details behind the approach LJAS uses to support Reac
 
 This document is only relevant to the following SSR-based starter projects:
 
-| Starter Project Name                  | JavaScript                                                                                                         | TypeScript                                                                                                            |
-| ------------------------------------- | ------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------- |
-| React + Express + MongoDB with SSR    | [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0-dev/starters/react-express-mongo-ssr)    | [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0-dev/starters/react-express-mongo-ssr-ts)    |
-| React + Express + PostgreSQL with SSR | [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0-dev/starters/react-express-postgres-ssr) | [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0-dev/starters/react-express-postgres-ssr-ts) |
+| Starter Project Name                  | JavaScript                                                                                                                 | TypeScript                                                                                                                    |
+| ------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| React + Express + MongoDB with SSR    | [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0-rc-20241104/starters/react-express-mongo-ssr)    | [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0-rc-20241104/starters/react-express-mongo-ssr-ts)    |
+| React + Express + PostgreSQL with SSR | [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0-rc-20241104/starters/react-express-postgres-ssr) | [View Source](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0-rc-20241104/starters/react-express-postgres-ssr-ts) |
 
 ## Contents
 
@@ -44,4 +44,4 @@ This means that loading the frontend through the Express server will more accura
 
 ## Examples
 
-- [\*chan](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0-dev/examples/starchan): Express server that server-side renders a React frontend
+- [\*chan](https://github.com/mattlean/lean-js-app-starter/tree/v1.1.0-rc-20241104/examples/starchan): Express server that server-side renders a React frontend
