@@ -22,7 +22,7 @@ _If you need TypeScript, then use the [Express + PostgreSQL starter (TypeScript)
 
 ## Getting Started
 
-First, [**download the starter project's ZIP file**](https://github.com/mattlean/lean-js-app-starter/releases/download/v1.1.0/ljas-express-postgres_1-0-0.zip) and extract it.
+First, [**download the starter project's ZIP file**](https://github.com/mattlean/lean-js-app-starter/releases/download/v1.1.0/ljas-express-postgres_1-1-0.zip) and extract it.
 
 Then, choose one of the following methods:
 

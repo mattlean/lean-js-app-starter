@@ -22,7 +22,7 @@ _If you don't need TypeScript, then then use the [Express + MongoDB starter](htt
 
 ## Getting Started
 
-First, [**download the starter project's ZIP file**](https://github.com/mattlean/lean-js-app-starter/releases/download/v1.1.0/ljas-express-mongo-ts_1-0-0.zip) and extract it.
+First, [**download the starter project's ZIP file**](https://github.com/mattlean/lean-js-app-starter/releases/download/v1.1.0/ljas-express-mongo-ts_1-1-0.zip) and extract it.
 
 Then, choose one of the following methods:
 
